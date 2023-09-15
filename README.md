@@ -1,2 +1,2 @@
 # Boshi_Project
-Mario Game Project for CSE 3902
+Mario Game Project for CSE 3902. 
