@@ -14,6 +14,5 @@ namespace Sprint0.Interfaces
 
         void RegisterCommand(Keys key, ICommand command);
 
-        void RegisterMouseCommand(string mouseState, ICommand command);
     }
 }

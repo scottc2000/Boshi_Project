@@ -18,11 +18,6 @@ namespace Sprint0.Controllers
             controllerMappings = new Dictionary<Keys, ICommand>();
         }
 
-        public void RegisterMouseCommand(string state, ICommand command)
-        {
-            //Not used
-        }
-
         public void RegisterCommand(Keys key, ICommand command)
         {
             controllerMappings.Add(key, command);

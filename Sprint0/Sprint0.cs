@@ -12,13 +12,17 @@ namespace Sprint0
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        public ISprite marioSprite;
         public ISprite luigiSprite;
+        
         ISprite textSprite;
         IController KeyboardController;
-        IController MouseController;
-        const int width = 800;
-        const int height = 475;
+   
         public GameTime myGameTime;
+
+        const int width = 475;
+        const int height = 300;
 
         public Sprint0()
         {
@@ -30,28 +34,14 @@ namespace Sprint0
         protected override void Initialize()
         {
             KeyboardController = new KeyboardController();
-            MouseController = new MouseController();
-
-            //Command interface implementations
-            ICommand Exit = new Exit(this);
-            ICommand SetStillSprite = new SetStillSpriteCommand(this);
-            ICommand SetDeadSprite = new SetDeadSpriteCommand(this);
-            ICommand SetRunInPlaceSprite = new SetRunInPlaceSpriteCommand(this);
-            ICommand SetRunAroundSprite = new SetRunAroundSpriteCommand(this);
 
             //Keyboard command mappings
-            KeyboardController.RegisterCommand(Keys.D0, Exit);
-            KeyboardController.RegisterCommand(Keys.D1, SetStillSprite);
-            KeyboardController.RegisterCommand(Keys.D2, SetRunInPlaceSprite);
-            KeyboardController.RegisterCommand(Keys.D3, SetDeadSprite);
-            KeyboardController.RegisterCommand(Keys.D4, SetRunAroundSprite);
+            KeyboardController.RegisterCommand(Keys.D0, new Exit(this));
+            KeyboardController.RegisterCommand(Keys.W, new playerJump(this));
+            KeyboardController.RegisterCommand(Keys.A, new playerLeft(this));
+            KeyboardController.RegisterCommand(Keys.S, new playerCrouch(this));
+            KeyboardController.RegisterCommand(Keys.D, new playerRight(this));
 
-            //Mouse command mappings
-            MouseController.RegisterMouseCommand("Exit", Exit);
-            MouseController.RegisterMouseCommand("TopLeft", SetStillSprite);
-            MouseController.RegisterMouseCommand("TopRight", SetRunInPlaceSprite);
-            MouseController.RegisterMouseCommand("BottomLeft", SetDeadSprite);
-            MouseController.RegisterMouseCommand("BottomRight", SetRunAroundSprite);
 
             base.Initialize();
         }
@@ -70,7 +60,6 @@ namespace Sprint0
             luigiSprite.Update();
 
             KeyboardController.Update();
-            MouseController.Update();
 
             base.Update(gameTime);
         }

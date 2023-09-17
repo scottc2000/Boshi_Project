@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class SetDeadSpriteCommand : ICommand
+    internal class playerLeft : ICommand
     {
         private Sprint0 mySprint0;
-        public SetDeadSpriteCommand(Sprint0 Sprint0)
+        public playerLeft(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new MovingSprite();
+            mySprint0.luigiSprite = new RunAroundSprite(mySprint0);
         }
 
     }

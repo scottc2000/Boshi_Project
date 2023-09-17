@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class SetStillSpriteCommand : ICommand
+    internal class playerRight : ICommand
     {
         private Sprint0 mySprint0;
-        public SetStillSpriteCommand(Sprint0 Sprint0)
+        public playerRight(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
