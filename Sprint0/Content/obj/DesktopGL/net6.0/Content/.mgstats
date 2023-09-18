@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/Credits.spritefont","C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2068,37919,0.5775746
+"C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/luigiDeadFloat.png","C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/luigiDeadFloat.xnb","TextureProcessor","Texture2DContent",499,2133,0.0486837
+"C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/luigiStill.png","C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/luigiStill.xnb","TextureProcessor","Texture2DContent",887,2133,0.0056348
+"C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/post-formatting_texture_atlas.png","C:/Users/muska/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/post-formatting_texture_atlas.xnb","TextureProcessor","Texture2DContent",983,10005,0.0072958
