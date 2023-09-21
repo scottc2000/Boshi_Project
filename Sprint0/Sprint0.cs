@@ -66,12 +66,12 @@ namespace Sprint0
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.LightSlateGray);
 
             _spriteBatch.Begin();
 
-            textSprite.Draw(_spriteBatch, width, height, Content);
-            luigiSprite.Draw(_spriteBatch, width, height, Content);
+            // textSprite.Draw(_spriteBatch, Content);
+            luigiSprite.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();
 

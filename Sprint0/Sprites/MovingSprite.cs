@@ -12,7 +12,7 @@ namespace Sprint0.Sprites
 {
     internal class MovingSprite : ISprite
     {
-        int x = 320, y = 95;
+        int x = 400, y = 240;
         bool up = true;
         public MovingSprite()
         {
@@ -37,11 +37,11 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int width, int height, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
-            Texture2D deadLuigi = Content.Load<Texture2D>("luigiDeadFloat");
+            Texture2D deadLuigi = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            spriteBatch.Draw(deadLuigi, new Rectangle(x, y, 90, 175), Color.White);
+            spriteBatch.Draw(deadLuigi, new Vector2(x, y), new Rectangle(307, 52, 16, 16), Color.White);
         }
 
     }
