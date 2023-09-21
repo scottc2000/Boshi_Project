@@ -10,7 +10,7 @@ using Sprint0.Interfaces;
 
 namespace Sprint0.Sprites
 {
-    internal class RunInPlaceSprite : ISprite
+    internal class CrouchingPlayer : ISprite
     {
         private Sprint0 mySprint0;
         public Texture2D Texture;
@@ -22,7 +22,7 @@ namespace Sprint0.Sprites
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public RunInPlaceSprite(Sprint0 Sprint0)
+        public CrouchingPlayer(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }

@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/LuigiSprite.png","C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/LuigiSprite.xnb","TextureProcessor","Texture2DContent",8869,119637,0.2717884
+"C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SuperMarioSprites.png","C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/SuperMarioSprites.xnb","TextureProcessor","Texture2DContent",5649,121245,0.2786914

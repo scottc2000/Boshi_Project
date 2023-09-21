@@ -18,7 +18,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new RunInPlaceSprite(mySprint0);
+            mySprint0.luigiSprite = new CrouchingPlayer(mySprint0);
         }
 
     }
