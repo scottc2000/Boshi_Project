@@ -23,11 +23,12 @@ namespace Sprint0.Sprites
             //Nothing needed here
         }
 
-        public void Draw(SpriteBatch spriteBatch, int width, int height, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
-            Texture2D stillLuigi = Content.Load<Texture2D>("luigiStill");
+            Texture2D stillLuigi = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            spriteBatch.Draw(stillLuigi, new Rectangle(width * 4 / 10, height * 2 / 10, 90, 175), Color.White);
+            spriteBatch.Draw(stillLuigi, new Vector2(400, 240), new Rectangle(1, 178, 17, 28), Color.White);
+
         }
     }
 }

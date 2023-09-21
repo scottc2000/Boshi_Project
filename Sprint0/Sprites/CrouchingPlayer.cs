@@ -14,17 +14,18 @@ namespace Sprint0.Sprites
     {
         private Sprint0 mySprint0;
         public Texture2D Texture;
-        public int Rows = 1;
-        public int Columns = 5;
         public int CurrentFrame = 0;
-        public int TotalFrames = 5;
-        public int x = 320, y = 95;
+        public int TotalFrames = 2;
+        public int x = 400, y = 240;
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
+        public Rectangle[] spriteFrames;
 
         public CrouchingPlayer(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
+            spriteFrames = new Rectangle[] { new Rectangle(19, 178, 17, 28), new Rectangle(37, 178, 17, 28) };
+
         }
         public void Update()
         {
@@ -41,19 +42,12 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int width, int height, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
-            Texture = Content.Load<Texture2D>("post-formatting_texture_atlas");
+            Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            int frameWidth = Texture.Width / Columns;
-            int frameHeight = Texture.Height / Rows;
-            int row = CurrentFrame / Columns;
-            int column = CurrentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(frameWidth * column, frameHeight * row, frameWidth, frameHeight);
-            Rectangle destinationRectangle = new Rectangle(x, y, 90, 175);
-
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, new Vector2(x,y), spriteFrames[CurrentFrame], Color.White);
         }
 
     }

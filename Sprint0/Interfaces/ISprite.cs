@@ -12,7 +12,7 @@ namespace Sprint0.Interfaces
     {
 
         void Update();
-        void Draw(SpriteBatch spriteBatch, int width, int height, ContentManager content);
+        void Draw(SpriteBatch spriteBatch, ContentManager content);
 
     }
 }

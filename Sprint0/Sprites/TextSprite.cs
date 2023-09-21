@@ -14,11 +14,11 @@ namespace Sprint0.Sprites
     internal class TextSprite : ISprite
     {
 
-        public void Draw(SpriteBatch spriteBatch, int width, int height, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
             SpriteFont font = Content.Load<SpriteFont>("Credits");
 
-            spriteBatch.DrawString(font, "Credits\nProgram Made By: Scott Chen\nSprites From: https://www.mariouniverse.com/sprites-nes-smb2/", new Vector2(width * 2 / 10, height * 3 / 4), Color.Black);
+            spriteBatch.DrawString(font, "Credits\nProgram Made By: Scott Chen\nSprites From: https://www.mariouniverse.com/sprites-nes-smb2/", new Vector2(400 * 2 / 10, 280 * 3 / 4), Color.Black);
         }
 
         public void Update()

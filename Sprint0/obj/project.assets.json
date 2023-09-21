@@ -102,7 +102,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\muska\\.nuget\\packages\\": {},
+    "C:\\Users\\Ben\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -118,7 +118,7 @@
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\muska\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ben\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
