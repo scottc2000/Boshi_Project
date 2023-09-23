@@ -56,3 +56,35 @@ C:\Users\Ben\Source\Repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\refi
 C:\Users\Ben\Source\Repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.pdb
 C:\Users\Ben\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\Ben\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\SpriteImages\playerssclear.xnb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\Credits.xnb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\luigiDeadFloat.xnb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\luigiStill.xnb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\post-formatting_texture_atlas.xnb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.exe
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.deps.json
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.runtimeconfig.json
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.pdb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\MonoGame.Framework.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.csproj.AssemblyReference.cache
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.AssemblyInfoInputs.cache
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.AssemblyInfo.cs
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.csproj.CoreCompileInputs.cache
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.csproj.CopyComplete
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\refint\Sprint0.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.pdb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\NES - Super Mario Bros 3 - Inventory and Map Items.xnb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.xnb

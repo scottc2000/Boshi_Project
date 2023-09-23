@@ -5,6 +5,7 @@ using Sprint0.Commands;
 using Sprint0.Controllers;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.Item_Sprites;
 
 namespace Sprint0
 {
@@ -15,6 +16,7 @@ namespace Sprint0
 
         public ISprite marioSprite;
         public ISprite luigiSprite;
+        public ISprite ItemSprite;
         
         ISprite textSprite;
         IController KeyboardController;
@@ -42,6 +44,9 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.S, new playerCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new playerRight(this));
 
+            KeyboardController.RegisterCommand(Keys.U, );
+            KeyboardController.RegisterCommand(Keys.I, );
+
 
             base.Initialize();
         }
@@ -51,6 +56,7 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             luigiSprite = new StillSprite();
+            ItemSprite = new RedMushroom();
             textSprite = new TextSprite();
         }
 
@@ -72,6 +78,7 @@ namespace Sprint0
 
             // textSprite.Draw(_spriteBatch, Content);
             luigiSprite.Draw(_spriteBatch, Content);
+            ItemSprite.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();
 

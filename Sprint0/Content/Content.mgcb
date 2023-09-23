@@ -44,6 +44,30 @@
 /processorParam:TextureFormat=Color
 /build:luigiStill.png
 
+#begin NES - Super Mario Bros 3 - Inventory and Map Items.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NES - Super Mario Bros 3 - Inventory and Map Items.png
+
+#begin NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png
+
 #begin post-formatting_texture_atlas.png
 /importer:TextureImporter
 /processor:TextureProcessor

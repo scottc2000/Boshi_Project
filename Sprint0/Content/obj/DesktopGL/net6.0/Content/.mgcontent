@@ -4,12 +4,18 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/Credits.spritefont</File>
-    <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/luigiDeadFloat.png</File>
-    <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/luigiStill.png</File>
-    <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/post-formatting_texture_atlas.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/Credits.spritefont</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/luigiDeadFloat.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/luigiStill.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/NES - Super Mario Bros 3 - Inventory and Map Items.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/post-formatting_texture_atlas.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
