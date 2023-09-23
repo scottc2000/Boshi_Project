@@ -70,7 +70,6 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
-            // textSprite.Draw(_spriteBatch, Content);
             luigiSprite.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();
