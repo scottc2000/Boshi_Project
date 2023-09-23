@@ -4,11 +4,9 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/LuigiSprite.png</File>
-    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SuperMarioSprites.png</File>
+    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

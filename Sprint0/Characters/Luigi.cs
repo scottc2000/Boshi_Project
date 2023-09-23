@@ -20,17 +20,20 @@ namespace Sprint0.Characters
         {
             stateMachine.ChangeDirection();
         }
-        public void BeStomped()
+
+        public void CrouchingLeft()
         {
-           stateMachine.BeStomped();
+            throw new NotImplementedException();
         }
+
         public void BeFlipped()
         {
-            stateMachine.BeFlipped();
+            throw new NotImplementedException();
         }
+
         public void Update()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

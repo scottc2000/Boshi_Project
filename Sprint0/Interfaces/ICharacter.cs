@@ -9,7 +9,7 @@ namespace Sprint0.Interfaces
     internal interface ICharcter
     {
         void ChangeDirection();
-        void BeStomped();
+        void CrouchingLeft();
         void BeFlipped();
         void Update();
 

@@ -11,7 +11,7 @@ internal class LuigiStateMachine : Sprint0.Interfaces.IStateMachine
         facingLeft = !facingLeft;
     }
 
-    public void BeStomped()
+    public void CrouchingLeft()
     {
         if (health != LuigiHealth.Stomped) // Note: the if is needed so we only do the transition once
         {
