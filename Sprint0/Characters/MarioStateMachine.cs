@@ -1,6 +1,9 @@
 ﻿using System;
+using Sprint0.Interfaces;
+using Sprint0.Commands;
+using Sprint0.Sprites;
 
-internal class MarioStateMachine : Sprint0.Interfaces.IStateMachine
+internal class MarioStateMachine : IStateMachine
 {
     private bool facingLeft = true;
     private enum MarioHealth { Normal, Stomped, Flipped };
@@ -11,13 +14,10 @@ internal class MarioStateMachine : Sprint0.Interfaces.IStateMachine
         facingLeft = !facingLeft;
     }
 
-    public void BeStomped()
+    public void CrouchingLeft()
     {
-        if (health != MarioHealth.Stomped) // Note: the if is needed so we only do the transition once
-        {
-            health = MarioHealth.Stomped;
-            // Compute and construct Mario sprite - requires if-else logic with value of health
-        }
+        
+       
     }
 
     public void BeFlipped()

@@ -13,15 +13,16 @@ namespace Sprint0.Characters
 
         public Mario() { 
             stateMachine = new MarioStateMachine();
+           
         }
 
         public void ChangeDirection()
         {
             stateMachine.ChangeDirection();
         }
-        public void BeStomped()
+        public void CrouchingLeft()
         {
-            stateMachine.BeStomped();
+            stateMachine.CrouchingLeft();
         }
         public void BeFlipped()
         {
