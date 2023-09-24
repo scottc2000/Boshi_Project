@@ -41,38 +41,63 @@ namespace Sprint0.Controllers
         // helper booleans
         private bool Left(Keys[] pressedKeys)
         {
-            return pressedKeys.Contains(Keys.A) &&
+            return (pressedKeys.Contains(Keys.A) && // Mario
                 !pressedKeys.Contains(Keys.W) &&
                 !pressedKeys.Contains(Keys.D) &&
-                !pressedKeys.Contains(Keys.S);
+                !pressedKeys.Contains(Keys.S))
+
+                || (pressedKeys.Contains(Keys.J) && // Luigi
+                !pressedKeys.Contains(Keys.I) &&
+                !pressedKeys.Contains(Keys.L) &&
+                !pressedKeys.Contains(Keys.K));
         }
         private bool Right(Keys[] pressedKeys)
         {
-            return !pressedKeys.Contains(Keys.A) &&
+            return (!pressedKeys.Contains(Keys.A) &&
                 !pressedKeys.Contains(Keys.W) &&
-                pressedKeys.Contains(Keys.D) &&
-                !pressedKeys.Contains(Keys.S);
+                 pressedKeys.Contains(Keys.D) &&
+                !pressedKeys.Contains(Keys.S))
+
+                || (!pressedKeys.Contains(Keys.J) &&
+                !pressedKeys.Contains(Keys.I) &&
+                 pressedKeys.Contains(Keys.L) &&
+                !pressedKeys.Contains(Keys.K));
         }
         private bool Down(Keys[] pressedKeys)
         {
-            return !pressedKeys.Contains(Keys.A) &&
+            return (!pressedKeys.Contains(Keys.A) &&
                 !pressedKeys.Contains(Keys.W) &&
-                !pressedKeys.Contains(Keys.D) &&
-                pressedKeys.Contains(Keys.S);
+                 !pressedKeys.Contains(Keys.D) &&
+                pressedKeys.Contains(Keys.S))
+
+                || (!pressedKeys.Contains(Keys.J) &&
+                !pressedKeys.Contains(Keys.I) &&
+                 !pressedKeys.Contains(Keys.L) &&
+                pressedKeys.Contains(Keys.K));
         }
         private bool Up(Keys[] pressedKeys)
         {
-            return !pressedKeys.Contains(Keys.A) &&
+            return (!pressedKeys.Contains(Keys.A) &&
                 pressedKeys.Contains(Keys.W) &&
-                !pressedKeys.Contains(Keys.D) &&
-                !pressedKeys.Contains(Keys.S);
+                 !pressedKeys.Contains(Keys.D) &&
+                !pressedKeys.Contains(Keys.S))
+
+                || (!pressedKeys.Contains(Keys.J) &&
+                 pressedKeys.Contains(Keys.I) &&
+                 !pressedKeys.Contains(Keys.L) &&
+                !pressedKeys.Contains(Keys.K));
         }
         private bool Idle(Keys[] pressedKeys)
         {
-            return !pressedKeys.Contains(Keys.A) &&
+            return (!pressedKeys.Contains(Keys.A) &&
                 !pressedKeys.Contains(Keys.W) &&
-                !pressedKeys.Contains(Keys.D) &&
-                !pressedKeys.Contains(Keys.S);
+                 !pressedKeys.Contains(Keys.D) &&
+                !pressedKeys.Contains(Keys.S))
+
+                || (!pressedKeys.Contains(Keys.J) &&
+                !pressedKeys.Contains(Keys.I) &&
+                 !pressedKeys.Contains(Keys.L) &&
+                !pressedKeys.Contains(Keys.K));
         }
 
     }
