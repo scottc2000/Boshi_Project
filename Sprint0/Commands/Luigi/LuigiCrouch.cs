@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Commands
+namespace Sprint0.Commands.Luigi
 {
-    internal class MarioCrouch : ICommand
+    internal class LuigiCrouch : ICommand
     {
         private Sprint0 mySprint0;
-        public MarioCrouch(Sprint0 Sprint0)
+        public LuigiCrouch(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            mySprint0.marioSprite = new CrouchingMario(mySprint0);
+            mySprint0.luigiSprite = new CrouchingLuigi(mySprint0);
         }
 
     }

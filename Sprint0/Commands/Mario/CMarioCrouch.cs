@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class LuigiJump : ICommand
+    internal class CMarioCrouch : ICommand
     {
         private Sprint0 mySprint0;
-        public LuigiJump(Sprint0 Sprint0)
+        private ICharacter marioState;
+        public CMarioCrouch(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new JumpingLuigi(mySprint0);
+            marioState = mySprint0.marioState;
+            marioState.Crouch();
+            mySprint0.marioSprite = new CrouchingMario(mySprint0);
         }
 
     }
