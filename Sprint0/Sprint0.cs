@@ -16,13 +16,14 @@ namespace Sprint0
 
         public ISprite marioSprite;
         public ISprite luigiSprite;
-        public ISprite ItemSprite;
+        public ISprite itemSprite;
         
         ISprite textSprite;
         IController KeyboardController;
    
         public GameTime myGameTime;
 
+        public int currentItemSprite = 0;
         const int width = 475;
         const int height = 300;
 
@@ -44,9 +45,8 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.S, new playerCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new playerRight(this));
 
-            KeyboardController.RegisterCommand(Keys.U, );
-            KeyboardController.RegisterCommand(Keys.I, );
-
+            KeyboardController.RegisterCommand(Keys.U, new previousItem(this));
+            KeyboardController.RegisterCommand(Keys.I, new nextItem(this));
 
             base.Initialize();
         }
@@ -56,7 +56,7 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             luigiSprite = new StillSprite();
-            ItemSprite = new RedMushroom();
+            itemSprite = new RedMushroom();
             textSprite = new TextSprite();
         }
 
@@ -64,6 +64,7 @@ namespace Sprint0
         {
             myGameTime = gameTime;
             luigiSprite.Update();
+            itemSprite.Update();
 
             KeyboardController.Update();
 
@@ -78,7 +79,7 @@ namespace Sprint0
 
             // textSprite.Draw(_spriteBatch, Content);
             luigiSprite.Draw(_spriteBatch, Content);
-            ItemSprite.Draw(_spriteBatch, Content);
+            itemSprite.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();
 

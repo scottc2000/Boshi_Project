@@ -17,7 +17,7 @@ namespace Sprint0.Sprites.Item_Sprites
 
         //Sprite frame numbers
         private int currentFrame = 0;
-        private int frameCount = 1;
+        private int frameCount = 2;
         
         //Sprite frames and location on screen
         private Rectangle[] shoeFrames;
