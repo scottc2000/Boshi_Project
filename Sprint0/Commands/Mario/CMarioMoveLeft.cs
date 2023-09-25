@@ -6,18 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace Sprint0.Commands
+
+namespace Sprint0.Commands.Mario
 {
-    internal class MarioCommandMoveRight : ICommand
+    internal class CMarioMoveLeft : ICommand
     {
         private Sprint0 mySprint0;
-        public MarioCommandMoveRight(Sprint0 Sprint0)
+        private ICharacter marioState;
+        public CMarioMoveLeft(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            mySprint0.marioSprite = new MarioMovingRight(mySprint0);
+            marioState = mySprint0.marioState;
+            marioState.MoveLeft();
+            mySprint0.marioSprite = new MarioMovingLeft(mySprint0);
         }
+
     }
 }

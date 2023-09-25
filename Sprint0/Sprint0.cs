@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Characters;
 using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Controllers;
@@ -16,6 +17,7 @@ namespace Sprint0
 
         public ISprite marioSprite;
         public ISprite luigiSprite;
+        public ICharacter marioState;
         
         ISprite textSprite;
         IController KeyboardController;
@@ -38,10 +40,11 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D9, new Reset(this));
 
             // Mario
-            KeyboardController.RegisterCommand(Keys.W, new MarioJump(this));
-            KeyboardController.RegisterCommand(Keys.A, new MarioCommandMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.S, new MarioCrouch(this));
-            KeyboardController.RegisterCommand(Keys.D, new MarioCommandMoveRight(this));
+            KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
+            KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
+            KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
+            KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
+            marioState = new Mario();
 
             // Luigi
             KeyboardController.RegisterCommand(Keys.I, new LuigiJump(this));
