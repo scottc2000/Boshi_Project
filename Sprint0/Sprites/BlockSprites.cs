@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Interfaces;
+using Microsoft.Xna.Framework.Content;
 
 namespace Sprint0.Sprites
 {
-    internal class BlockSprites
+    internal class BlockSprites : ISprite
     {
         private readonly Texture2D _blocks;
         private readonly int _columns = 74;
@@ -36,7 +38,12 @@ namespace Sprint0.Sprites
             
         }
 
-        public void Draw(SpriteBatch spriteBatch) 
+        public void Update()
+        {
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content) 
         {
             
         }

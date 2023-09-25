@@ -2,11 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Sprint0",
+    "\\Sprint0\\Blocks",
     "\\Sprint0\\Commands",
+    "\\Sprint0\\Commands\\Blocks",
+    "\\Sprint0\\Content",
     "\\Sprint0\\Controllers",
     "\\Sprint0\\Interfaces",
-    "\\Sprint0\\Sprites"
+    "\\Sprint0\\Sprites",
+    "\\Sprint0\\Sprites\\Luigi"
   ],
-  "SelectedNode": "\\Sprint0.sln",
+  "SelectedNode": "\\Sprint0\\Sprites\\BlockSprites.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -88,6 +88,7 @@ namespace Sprint0
 
             luigiSprite.Draw(_spriteBatch, Content);
             marioSprite.Draw(_spriteBatch, Content);
+            
 
             _spriteBatch.End();
 
