@@ -1,41 +1,41 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint0.Interfaces;
 
 namespace Sprint0.Sprites.Item_Sprites
 {
-    internal class Star : ISprite
+    internal class Shoe : ISprite
     {
-        private Sprint0 starSprint0 { get; set; }
-        private Texture2D star;
+        private Sprint0 shoeSprint0 {  get; set; }
+        private Texture2D shoe;
 
         //Sprite frame numbers
         private int currentFrame = 0;
-        private int frameCount = 3;
-
-        //Sprite frames and Location on screen
-        private Rectangle[] starFrames;
+        private int frameCount = 1;
+        
+        //Sprite frames and location on screen
+        private Rectangle[] shoeFrames;
         private Vector2 destination = new Vector2(100, 100);
 
         //Duration of frame
         private float timer = 0;
         private int interval = 50;
 
-        public Star(Sprint0 sprint0)
+        public Shoe(Sprint0 sprint0)
         {
-            starSprint0 = sprint0;
-            starFrames = new Rectangle[] {new Rectangle(73, 24, 16, 16), new Rectangle(90, 24, 16, 16), new Rectangle(107, 24, 16, 16), new Rectangle(124, 24, 16, 16) };
+            shoeSprint0 = sprint0;
+            shoeFrames = new Rectangle[] { new Rectangle(55, 42, 16, 16), new Rectangle(72, 42, 16, 16) };
         }
 
         public void Update()
         {
-            timer += (float)starSprint0.myGameTime.ElapsedGameTime.TotalMilliseconds / 2;
+            timer += (float)shoeSprint0.myGameTime.ElapsedGameTime.TotalMilliseconds / 2;
             if (timer > interval)
             {
                 currentFrame++;
@@ -46,9 +46,9 @@ namespace Sprint0.Sprites.Item_Sprites
 
         public void Draw(SpriteBatch spriteBatch, ContentManager content)
         {
-            star = content.Load<Texture2D>("NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs");
+            shoe = content.Load<Texture2D>("NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs");
 
-            spriteBatch.Draw(star, destination, starFrames[currentFrame], Color.White);
+            spriteBatch.Draw(shoe, destination, shoeFrames[currentFrame], Color.White);
 
         }
     }
