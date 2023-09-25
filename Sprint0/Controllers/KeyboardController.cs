@@ -30,10 +30,21 @@ namespace Sprint0.Controllers
 
             foreach (Keys key in pressedKeys)
             {
-                if (Down(pressedKeys)) { controllerMappings[key].Execute(); }
-                else if (Left(pressedKeys)) { controllerMappings[key].Execute(); }
-                else if (Right(pressedKeys)) { controllerMappings[key].Execute(); }
-                else if (Up(pressedKeys)) { controllerMappings[key].Execute(); }
+                if (Down(pressedKeys)) { 
+                    controllerMappings[key].Execute(); 
+                }
+                else if (Left(pressedKeys)) { 
+                    controllerMappings[key].Execute(); 
+                }
+                else if (Right(pressedKeys)) { 
+                    controllerMappings[key].Execute();
+                }
+                else if (Up(pressedKeys)) { 
+                    controllerMappings[key].Execute();
+                } else if (Idle(pressedKeys))
+                {
+                    mySprint.marioSprite = new MarioStillLeft();
+                }
             }
 
         }

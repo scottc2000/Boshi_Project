@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Sprint0.Commands
 {
-    internal class MarioCommandMoveRight : ICommand
+    internal class MarioMoveRightCommand : ICommand
     {
         private Sprint0 mySprint0;
-        public MarioCommandMoveRight(Sprint0 Sprint0)
+        public MarioMoveRightCommand(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            mySprint0.marioSprite = new MarioMovingRight(mySprint0);
+            mySprint0.marioSprite = new MarioMoveRightSprite(mySprint0);
         }
     }
 }

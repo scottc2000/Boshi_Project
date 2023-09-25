@@ -12,7 +12,7 @@ using System.Timers;
 
 namespace Sprint0.Sprites
 {
-    internal class JumpingMario : ISprite
+    internal class MarioJumpSprite : ISprite
     {
         private Sprint0 mySprint0;
         private Texture2D jumpMario;
@@ -22,15 +22,14 @@ namespace Sprint0.Sprites
         // Rectangle stats
         private Rectangle[] spriteFrames;
         private Rectangle destination;
-        int y;
 
         // Jump Physics
         private Vector2 position;
         private Vector2 velocity;
 
-        public JumpingMario(Sprint0 mySprint0)
+        public MarioJumpSprite(Sprint0 mySprint0, Rectangle[] frames)
         {
-            spriteFrames = new Rectangle[] { new Rectangle(72, 92, 17, 28), new Rectangle(36, 92, 17, 28) };
+            spriteFrames = frames;
             position.Y = 150;
             position.X = 150;
         }

@@ -12,7 +12,7 @@ using Sprint0.Sprites;
 
 namespace Sprint0.Sprites
 {
-    internal class CrouchingMario : ISprite
+    internal class MarioCrouchSprite : ISprite
     {
         private Sprint0 mySprint0;
         private Texture2D crouchingMario;
@@ -26,7 +26,7 @@ namespace Sprint0.Sprites
         private Rectangle[] spriteFrames;
         private Rectangle position;
 
-        public CrouchingMario(Sprint0 Sprint0)
+        public MarioCrouchSprite(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(54, 92, 17, 28) };

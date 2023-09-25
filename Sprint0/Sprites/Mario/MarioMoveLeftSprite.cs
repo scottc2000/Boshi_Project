@@ -8,13 +8,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Input;
-
 namespace Sprint0.Sprites
 {
-    internal class MarioMovingRight : ISprite
+    internal class MarioMoveLeftSprite : ISprite
     {
         private Sprint0 mySprint0;
-        private Texture2D marioMovingRight;
+        private Texture2D marioMovingLeft;
 
         // Frame Stats
         private int CurrentFrame = 0;
@@ -27,16 +26,16 @@ namespace Sprint0.Sprites
         private Rectangle destination;
 
         private Vector2 position;
-
-        public MarioMovingRight(Sprint0 Sprint0)
+        public MarioMoveLeftSprite(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(1, 92, 17, 28), new Rectangle(19, 92, 17, 28), new Rectangle(36, 92, 17, 28), new Rectangle(19, 92, 17, 28) };
             position.X = 150;
+
         }
+
         public void Update()
         {
-
             timeSinceLastFrame += mySprint0.myGameTime.ElapsedGameTime.Milliseconds;
 
             if (timeSinceLastFrame > millisecondsPerFrame)
@@ -49,23 +48,18 @@ namespace Sprint0.Sprites
                 }
             }
 
-            position.X += 1;
+            position.X -= 1;
+
 
         }
 
         public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
-            marioMovingRight = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            marioMovingLeft = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             destination = new Rectangle((int)position.X, 150, 34, 56);
 
-            // Overload parameters to flip sprite horizontally
-            SpriteEffects right = SpriteEffects.FlipHorizontally;
-            float rotation = 0;
-            float layer = 0;
-
-            spriteBatch.Draw(marioMovingRight, destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0,0), right, layer);
+            spriteBatch.Draw(marioMovingLeft, destination, spriteFrames[CurrentFrame], Color.White);
         }
-
     }
 }

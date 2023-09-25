@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class MarioCrouch : ICommand
+    internal class MarioJumpCommand : ICommand
     {
         private Sprint0 mySprint0;
-        public MarioCrouch(Sprint0 Sprint0)
+        private Rectangle[] frames;
+        public MarioJumpCommand(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
+            frames = new Rectangle[] { new Rectangle(72, 92, 17, 28), new Rectangle(36, 92, 17, 28) };
         }
         public void Execute()
         {
-            mySprint0.marioSprite = new CrouchingMario(mySprint0);
+            mySprint0.marioSprite = new MarioJumpSprite(mySprint0, frames);
         }
 
     }

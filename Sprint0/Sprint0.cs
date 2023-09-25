@@ -14,6 +14,8 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        public Texture2D spriteSheet;
+
         public ISprite marioSprite;
         public ISprite luigiSprite;
         
@@ -38,10 +40,11 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D9, new Reset(this));
 
             // Mario
-            KeyboardController.RegisterCommand(Keys.W, new MarioJump(this));
-            KeyboardController.RegisterCommand(Keys.A, new MarioCommandMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.S, new MarioCrouch(this));
-            KeyboardController.RegisterCommand(Keys.D, new MarioCommandMoveRight(this));
+            KeyboardController.RegisterCommand(Keys.W, new MarioJumpCommand(this));
+            KeyboardController.RegisterCommand(Keys.A, new MarioMoveLeftCommand(this));
+            KeyboardController.RegisterCommand(Keys.S, new MarioCrouchCommand(this));
+            KeyboardController.RegisterCommand(Keys.D, new MarioMoveRightCommand(this));
+            KeyboardController.RegisterCommand(Keys.E, new MarioChangeToFireCommand(this));
 
             // Luigi
             KeyboardController.RegisterCommand(Keys.I, new LuigiJump(this));
@@ -60,6 +63,9 @@ namespace Sprint0
             // Load inital sprite states
             luigiSprite = new LuigiStill();
             marioSprite = new MarioStillLeft();
+
+            // Load Texture
+            spriteSheet = Content.Load<Texture2D>("SpriteImages/playerssclear");
         }
 
         protected override void Update(GameTime gameTime)

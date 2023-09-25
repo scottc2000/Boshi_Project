@@ -8,18 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sprint0.Commands
-{
-    internal class MarioJump : ICommand
+{ 
+    internal class MarioFaceRightCommand : ICommand
     {
         private Sprint0 mySprint0;
-        public MarioJump(Sprint0 Sprint0)
+        public MarioFaceRightCommand(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            mySprint0.marioSprite = new JumpingMario(mySprint0);
+            mySprint0.marioSprite = new MarioFaceRightSprite(mySprint0);
         }
-
     }
 }
