@@ -13,5 +13,7 @@ namespace Sprint0.Interfaces
         public void Move();
 
         public void Stop();
+
+        public void Draw();
     }
 }

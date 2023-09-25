@@ -28,5 +28,39 @@ namespace Sprint0.Characters.MarioStates
         {
 
         }
+
+        public void Draw()
+        {
+            {
+                switch (mario.health)
+                {
+                    case (Mario.MarioHealth.Normal):
+                        {
+                            //sprite
+                            break;
+                        }
+
+
+                    case (Mario.MarioHealth.Star):
+                        {
+                            //sprite
+                            break;
+                        }
+
+                    case (Mario.MarioHealth.Fire):
+                        {
+                            //sprite
+                            break;
+                        }
+
+                    case (Mario.MarioHealth.Big):
+                        {
+                            //sprite
+                            break;
+                        }
+
+                }
+            }
+        }
     }
 }

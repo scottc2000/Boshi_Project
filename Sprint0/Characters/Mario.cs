@@ -12,9 +12,9 @@ namespace Sprint0.Characters
 {
     internal class Mario : ICharacter
     {
-        private enum MarioHealth { Normal, Star, Fire };
-        private MarioHealth health = MarioHealth.Normal;
         private bool facingLeft;
+        public enum MarioHealth { Normal, Star, Fire, Big};
+        public MarioHealth health = MarioHealth.Normal;
         public ICharacterState marioState;
 
         public Mario()
@@ -71,16 +71,6 @@ namespace Sprint0.Characters
             }
         }
 
-        public void StarState()
-        {
-
-        }
-
-        public void Firetate()
-        {
-
-        }
-
         public void Update()
         {
 
@@ -88,7 +78,7 @@ namespace Sprint0.Characters
 
         public void Draw()
         {
-
+            marioState.Draw();
         }
     }
 }
