@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Sprint0",
-    "\\Sprint0\\Characters",
-    "\\Sprint0\\Interfaces"
+    "\\Sprint0\\Commands",
+    "\\Sprint0\\Controllers",
+    "\\Sprint0\\Interfaces",
+    "\\Sprint0\\Sprites"
   ],
   "SelectedNode": "\\Sprint0.sln",
   "PreviewInSolutionExplorer": false

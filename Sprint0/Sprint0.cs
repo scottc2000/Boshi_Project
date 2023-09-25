@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Commands;
 using Sprint0.Commands.Mario;
+using Sprint0.Commands.Blocks;
 using Sprint0.Controllers;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
@@ -49,6 +50,10 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.K, new LuigiCrouch(this));
             KeyboardController.RegisterCommand(Keys.L, new LuigiRight(this));
 
+            //Blocks
+            KeyboardController.RegisterCommand(Keys.T, new BlockPrev(this));
+            KeyboardController.RegisterCommand(Keys.Y, new BlockNext(this));
+
 
             base.Initialize();
         }
@@ -56,6 +61,7 @@ namespace Sprint0
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
 
             // Load inital sprite states
             luigiSprite = new LuigiStill();
