@@ -71,6 +71,11 @@ namespace Sprint0.Characters
             }
         }
 
+        public void Stop()
+        {
+
+        }
+
         public void Update()
         {
 
