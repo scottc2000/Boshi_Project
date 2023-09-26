@@ -36,9 +36,15 @@ namespace Sprint0.Controllers
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            
 
             foreach (Keys key in pressedKeys)
             {
+                previousKeyState = currentKeyState;
+                if (controllerMappings.ContainsKey(key))
+                {
+
+                }
                 if (controllerMappings.ContainsKey(key))
                     controllerMappings[key].Execute();
             }

@@ -25,10 +25,10 @@ namespace Sprint0.Commands
             switch (mySprint0.currentItemSprite)
             {
                 case 0:
-                    mySprint0.itemSprite = new RedMushroom();
+                    mySprint0.itemSprite = new RedMushroom(mySprint0);
                     break;
                 case 1:
-                    mySprint0.itemSprite = new OneUpMushroom();
+                    mySprint0.itemSprite = new OneUpMushroom(mySprint0);
                     break;
                 case 2:
                     mySprint0.itemSprite = new FireFlower();

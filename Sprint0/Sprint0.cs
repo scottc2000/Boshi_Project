@@ -56,7 +56,7 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             luigiSprite = new StillSprite();
-            itemSprite = new RedMushroom();
+            itemSprite = new RedMushroom(this);
             textSprite = new TextSprite();
         }
 
