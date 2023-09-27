@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Commands
+namespace Sprint0.Commands.Luigi
 {
     internal class LuigiLeft : ICommand
     {

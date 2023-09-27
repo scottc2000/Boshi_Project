@@ -6,19 +6,14 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Interfaces
 {
-    public interface ICharacter
+    internal interface ICharacterState
     {
         public void ChangeDirection();
 
-        public void MoveRight();
+        public void Move();
 
-        public void MoveLeft();
+        public void Stop();
 
-        public void Jump();
-
-        public void Crouch();
-
-        void Update();
-
+        public void Draw();
     }
 }
