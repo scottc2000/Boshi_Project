@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection.Emit;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Sprint0.Sprites
 {
@@ -18,10 +20,15 @@ namespace Sprint0.Sprites
         
         private readonly int _columns = 74;
         private readonly int _rows = 21;
+
         
         private Rectangle[] blockSprite;
-        private int spriteX = 2076, spriteY = 2;
-        private int spriteWidth = 32, spriteHeight = 32;
+        // brick: 2076, 2, 32, 32
+        
+        public int SpriteX { get; set; }
+        public int SpriteY { get; set; }
+        public int SpriteWidth { get; set; }
+        public int SpriteHeight { get; set; }
 
         private Vector2 position;
         private Rectangle destination;
@@ -47,9 +54,13 @@ namespace Sprint0.Sprites
         //    }
         //}
 
-        public BlockSprites() 
+        public BlockSprites(int spriteX, int spriteY, int spriteWidth, int spriteHeight) 
         {
-            blockSprite = new Rectangle[] { new Rectangle(spriteX, spriteY, spriteWidth, spriteHeight) };
+            SpriteX = spriteX;
+            SpriteY = spriteY;
+            SpriteWidth = spriteWidth;
+            SpriteHeight = spriteHeight;
+            blockSprite = new Rectangle[] { new Rectangle(SpriteX, SpriteY, SpriteWidth, SpriteHeight) };
             position.X = 600;
             position.Y = 100;
         }

@@ -67,7 +67,7 @@ namespace Sprint0
             // Load inital sprite states
             luigiSprite = new LuigiStill();
             marioSprite = new MarioStillLeft();
-            blockSprite = new BlockSprites();
+            blockSprite = new BlockSprites(2076, 2, 32, 32);
         }
 
         protected override void Update(GameTime gameTime)

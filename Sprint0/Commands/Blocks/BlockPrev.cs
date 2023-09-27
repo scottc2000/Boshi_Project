@@ -18,7 +18,7 @@ namespace Sprint0.Commands.Blocks
 
         public void Execute() 
         {
-            game.blockSprite = new BlockSprites();
+            //game.blockSprite = new BlockSprites();
         }
     }
 }
