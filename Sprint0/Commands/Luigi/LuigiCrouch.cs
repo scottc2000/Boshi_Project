@@ -18,7 +18,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new CrouchingLuigi(mySprint0);
+            mySprint0.luigiSprite.currentSprite = new CrouchingLuigi(mySprint0, mySprint0.luigiSprite);
         }
 
     }

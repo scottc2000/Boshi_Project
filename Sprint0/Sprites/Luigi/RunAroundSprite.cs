@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
@@ -14,6 +15,7 @@ namespace Sprint0.Sprites
     {
 
         private Sprint0 mySprint0;
+        public Luigi myChar;
 
         // texture handling
         public Texture2D Texture;
@@ -35,9 +37,10 @@ namespace Sprint0.Sprites
         private Vector2 position;
         
 
-        public RunAroundSprite(Sprint0 Sprint0, int direction)
+        public RunAroundSprite(Sprint0 Sprint0, int direction, Luigi charc)
         {
             mySprint0 = Sprint0;
+            myChar = charc;
 
             // if direction is positive then the sprite will turn right (left by default)
             leftSpriteFrames = new Rectangle[] { new Rectangle(19, 178, 17, 28), new Rectangle(37, 178, 17, 28) };
@@ -68,7 +71,7 @@ namespace Sprint0.Sprites
                 }
             }
 
-            position.X += myDirection;
+            myChar.pos.X += myDirection;
 
         }
 
@@ -76,7 +79,7 @@ namespace Sprint0.Sprites
         {
             Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)myChar.pos.X, (int)myChar.pos.Y, 34, 56);
 
             spriteBatch.Draw(Texture, destination, leftSpriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), right, layer);
         }

@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Sprint0.Interfaces;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
@@ -17,19 +18,19 @@ namespace Sprint0.Sprites
         
         public Texture2D Texture;
         public Rectangle[] spriteFrames;
+        public Luigi myChar;
 
         Vector2 position;
         Rectangle destination;
         float rotation = 0, layer = 0;
         SpriteEffects right;
 
-        public CrouchingLuigi(Sprint0 Sprint0)
+        public CrouchingLuigi(Sprint0 Sprint0, Luigi charc)
         {
             mySprint0 = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(55, 180, 17, 28)};
             right = SpriteEffects.None;
-            position.X = 400;
-            position.Y = 240;
+            myChar = charc;
 
 
         }
@@ -42,7 +43,7 @@ namespace Sprint0.Sprites
         {
             Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)myChar.pos.X, (int)myChar.pos.Y, 34, 56);
 
             spriteBatch.Draw(Texture, destination, spriteFrames[0], Color.White, rotation, new Vector2(0, 0), right, layer);
         }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Characters;
 using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Controllers;
@@ -15,7 +16,7 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
 
         public ISprite marioSprite;
-        public ISprite luigiSprite;
+        public Luigi luigiSprite;
         
         ISprite textSprite;
         IController KeyboardController;
@@ -58,16 +59,17 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load inital sprite states
-            luigiSprite = new LuigiStill();
-            marioSprite = new MarioStillLeft();
+            luigiSprite = new Luigi();
+            
+            // marioSprite = new MarioStillLeft();
         }
 
         protected override void Update(GameTime gameTime)
         {
             myGameTime = gameTime;
 
-            luigiSprite.Update();
-            marioSprite.Update();
+            luigiSprite.currentSprite.Update();
+            // marioSprite.Update();
 
             KeyboardController.Update();
 
@@ -80,8 +82,8 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
-            luigiSprite.Draw(_spriteBatch, Content);
-            marioSprite.Draw(_spriteBatch, Content);
+            luigiSprite.currentSprite.Draw(_spriteBatch, Content);
+            // marioSprite.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();
 

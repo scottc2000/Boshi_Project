@@ -18,7 +18,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new RunAroundSprite(mySprint0, 1);
+            mySprint0.luigiSprite.currentSprite = new RunAroundSprite(mySprint0, 1, mySprint0.luigiSprite);
         }
 
     }

@@ -18,7 +18,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new JumpingLuigi(mySprint0);
+            // mySprint0.luigiSprite = new JumpingLuigi(mySprint0);
         }
 
     }

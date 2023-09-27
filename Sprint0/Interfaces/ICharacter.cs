@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Interfaces
 {
-    internal interface ICharcter
+    public interface ICharacter
     {
         void ChangeDirection();
         void CrouchingLeft();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Characters
 {
-    internal class Mario : ICharcter
+    internal class Mario : ICharacter
     {
         private MarioStateMachine stateMachine;
 

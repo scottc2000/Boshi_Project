@@ -8,6 +8,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
@@ -20,13 +21,16 @@ namespace Sprint0.Sprites
         Rectangle destination;
         float rotation = 0, layer = 0;
         SpriteEffects right;
+        Luigi player;
 
-        public LuigiStill()
+        public LuigiStill(Luigi playerc)
         {
             right = SpriteEffects.None;
 
             position.X = 400;
             position.Y = 240;
+
+            player = playerc;
 
             spriteFrames = new Rectangle[] {new Rectangle(1,179, 17, 28) };
         }
@@ -39,7 +43,7 @@ namespace Sprint0.Sprites
         {
             Texture2D Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)player.pos.X, (int)player.pos.Y, 34, 56);
 
             spriteBatch.Draw(Texture, destination, spriteFrames[0], Color.White, rotation, new Vector2(0, 0), right, layer);
 
