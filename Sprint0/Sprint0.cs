@@ -17,6 +17,7 @@ namespace Sprint0
 
         public ISprite marioSprite;
         public ISprite luigiSprite;
+        public ISprite blockSprite;
         
         ISprite textSprite;
         IController KeyboardController;
@@ -66,6 +67,7 @@ namespace Sprint0
             // Load inital sprite states
             luigiSprite = new LuigiStill();
             marioSprite = new MarioStillLeft();
+            blockSprite = new BlockSprites();
         }
 
         protected override void Update(GameTime gameTime)
@@ -74,6 +76,7 @@ namespace Sprint0
 
             luigiSprite.Update();
             marioSprite.Update();
+            blockSprite.Update();
 
             KeyboardController.Update();
 
@@ -88,6 +91,7 @@ namespace Sprint0
 
             luigiSprite.Draw(_spriteBatch, Content);
             marioSprite.Draw(_spriteBatch, Content);
+            blockSprite.Draw(_spriteBatch, Content);
             
 
             _spriteBatch.End();
