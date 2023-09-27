@@ -25,6 +25,7 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Characters\LuigiStates\" />
     <Folder Include="Commands\Luigi\" />
     <Folder Include="Sprites\Luigi\" />
   </ItemGroup>

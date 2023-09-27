@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sprint0.Commands
-{
+
     internal class LuigiCrouch : ICommand
     {
         private Sprint0 mySprint0;
@@ -18,7 +18,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new CrouchingLuigi(mySprint0);
+
         }
 
     }

@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Interfaces
 {
-    internal interface ICharcter
+    public interface ICharacter
     {
-        void ChangeDirection();
-        void CrouchingLeft();
-        void BeFlipped();
+        public void ChangeDirection();
+
+        public void MoveRight();
+
+        public void MoveLeft();
+
+        public void Jump();
+
+        public void Crouch();
+
+        public void Stop();
+
         void Update();
 
     }

@@ -11,14 +11,13 @@ namespace Sprint0
 {
     internal class Reset : ICommand
     {
-        private Sprint0 mySprint0;
+        private Sprint0 mySprint;
         public Reset(Sprint0 game) { 
-            mySprint0 = game;
+            mySprint = game;
         }
         public void Execute() 
         {
-            mySprint0.marioSprite = new MarioStillLeft();
-            mySprint0.luigiSprite = new LuigiStill();
+            mySprint.marioSprite = new MarioBigLeftIdleSprite(mySprint);
         }
 
     }
