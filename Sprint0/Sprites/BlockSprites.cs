@@ -18,9 +18,10 @@ namespace Sprint0.Sprites
         
         private readonly int _columns = 74;
         private readonly int _rows = 21;
-
+        
         private Rectangle[] blockSprite;
-        private readonly int spriteWidth = 32, spriteHeight = 32;
+        private int spriteX = 2076, spriteY = 2;
+        private int spriteWidth = 32, spriteHeight = 32;
 
         private Vector2 position;
         private Rectangle destination;
@@ -48,11 +49,9 @@ namespace Sprint0.Sprites
 
         public BlockSprites() 
         {
-            
-            blockSprite = new Rectangle[] { new Rectangle(2076, 2, spriteWidth, spriteHeight) };
+            blockSprite = new Rectangle[] { new Rectangle(spriteX, spriteY, spriteWidth, spriteHeight) };
             position.X = 600;
             position.Y = 100;
-            
         }
 
         public void Update()

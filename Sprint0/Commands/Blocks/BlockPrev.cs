@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
+using Sprint0.Sprites;
 
 namespace Sprint0.Commands.Blocks
 {
@@ -17,7 +18,7 @@ namespace Sprint0.Commands.Blocks
 
         public void Execute() 
         {
-            
+            game.blockSprite = new BlockSprites();
         }
     }
 }
