@@ -16,8 +16,7 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
 
         public ISprite marioSprite;
-        public ISprite luigiSprite;
-        public ICharacter marioState;
+        public ICharacter mario;
         
         ISprite textSprite;
         IController KeyboardController;
@@ -44,13 +43,11 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            marioState = new Mario();
-
-            // Luigi
-            KeyboardController.RegisterCommand(Keys.I, new LuigiJump(this));
-            KeyboardController.RegisterCommand(Keys.J, new LuigiLeft(this));
-            KeyboardController.RegisterCommand(Keys.K, new LuigiCrouch(this));
-            KeyboardController.RegisterCommand(Keys.L, new LuigiRight(this));
+           // KeyboardController.RegisterCommand(Keys.Z, new CMarioLeftIdle(this));
+           // KeyboardController.RegisterCommand(Keys.X, new CMarioRightIdle(this));
+           // KeyboardController.RegisterCommand(Keys.Q, new CMarioFire(this));
+           // KeyboardController.RegisterCommand(Keys.E, new CMarioStar(this));
+            mario = new Mario(this);
 
 
             base.Initialize();
@@ -61,15 +58,13 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load inital sprite states
-            luigiSprite = new LuigiStill();
-            marioSprite = new MarioStillLeft();
+            marioSprite = new MarioBigLeftIdleSprite();
         }
 
         protected override void Update(GameTime gameTime)
         {
             myGameTime = gameTime;
 
-            luigiSprite.Update();
             marioSprite.Update();
 
             KeyboardController.Update();
@@ -83,7 +78,6 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
-            luigiSprite.Draw(_spriteBatch, Content);
             marioSprite.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();

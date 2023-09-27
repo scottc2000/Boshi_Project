@@ -11,15 +11,17 @@ using Sprint0.Interfaces;
 
 namespace Sprint0.Sprites
 {
-    internal class MarioStillLeft : ISprite
+    internal class MarioBigLeftIdleSprite : ISprite
     {
+        private Sprint0 mySprint
         private Texture2D stillMario;
         private Rectangle spriteFrame;
         private Rectangle position;
-        public MarioStillLeft()
+        public MarioBigLeftIdleSprite(Sprint0 sprint0)
         {
-            spriteFrame = new Rectangle(1, 90, 17, 28);
+            spriteFrame = new Rectangle(1, 92, 17, 28);
             position = new Rectangle(150, 150, 34, 56);
+            mySprint = sprint0;
         }
         public void Update()
         {

@@ -18,6 +18,8 @@ namespace Sprint0.Interfaces
 
         public void Crouch();
 
+        public void Stop();
+
         void Update();
 
     }

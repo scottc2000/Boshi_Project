@@ -1,4 +1,5 @@
 ﻿using Sprint0.Interfaces;
+using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,26 +37,26 @@ namespace Sprint0.Characters.MarioStates
             {
                 case (Mario.MarioHealth.Normal):
                     {
-                        //sprite
+                        mario.mySprint.marioSprite = new MarioMoveLeftSprite(mario.mySprint);
                         break;
                     }
 
 
                 case (Mario.MarioHealth.Star):
                     {
-                        //sprite
+                        //mario.mySprint.marioSprite = new MarioStarMoveLeftSprite(mario.mySprint);
                         break;
                     }
 
                 case (Mario.MarioHealth.Fire):
                     {
-                        //sprite
+                        mario.mySprint.marioSprite = new MarioFireMoveLeftSprite(mario.mySprint);
                         break;
                     }
 
                 case (Mario.MarioHealth.Big):
                     {
-                        //sprite
+                        mario.mySprint.marioSprite = new MarioBigMoveLeftSprite(mario.mySprint);
                         break;
                     }
 

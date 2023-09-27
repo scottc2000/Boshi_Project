@@ -14,38 +14,36 @@ namespace Sprint0.Controllers
     {
         public Dictionary<Keys, ICommand> controllerMappings;
         public Sprint0 mySprint;
+        public KeyboardState current;
+        public KeyboardState previous;
+        public List<Keys> releasedKeys = new List<Keys>();
 
         public KeyboardController()
         {
             controllerMappings = new Dictionary<Keys, ICommand>();
+            previous = Keyboard.GetState();
+
         }
 
         public void RegisterCommand(Keys key, ICommand command)
         {
             controllerMappings.Add(key, command);
         }
+        private bool IsPressed(Keys key, KeyboardState current)
+        {
+            return (current.IsKeyDown(key) && !previous.IsKeyDown(key));
+        }
+
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
             foreach (Keys key in pressedKeys)
             {
-                if (Down(pressedKeys)) { 
-                    controllerMappings[key].Execute(); 
-                }
-                else if (Left(pressedKeys)) { 
-                    controllerMappings[key].Execute(); 
-                }
-                else if (Right(pressedKeys)) { 
+                if (controllerMappings.ContainsKey(key))
                     controllerMappings[key].Execute();
-                }
-                else if (Up(pressedKeys)) { 
-                    controllerMappings[key].Execute();
-                } else if (Idle(pressedKeys))
-                {
-                    mySprint.marioSprite = new MarioStillLeft();
-                }
             }
+
 
         }
 

@@ -31,7 +31,7 @@ namespace Sprint0.Sprites
         public MarioMoveRightSprite(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
-            spriteFrames = new Rectangle[] { new Rectangle(1, 92, 17, 28), new Rectangle(19, 92, 17, 28), new Rectangle(36, 92, 17, 28), new Rectangle(19, 92, 17, 28) };
+            spriteFrames = new Rectangle[] { new Rectangle(1, 0, 17, 28), new Rectangle(19, 0, 17, 28), new Rectangle(36, 0, 17, 28), new Rectangle(19, 0, 17, 28) };
             position.X = 150;
         }
         public void Update()

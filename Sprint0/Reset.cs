@@ -17,8 +17,8 @@ namespace Sprint0
         }
         public void Execute() 
         {
-            mySprint0.marioSprite = new MarioStillLeft();
-            mySprint0.luigiSprite = new LuigiStill();
+            mySprint0.marioSprite = new MarioBigLeftIdleSprite();
+         //   mySprint0.luigiSprite = new LuigiStill();
         }
 
     }

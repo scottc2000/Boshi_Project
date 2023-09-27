@@ -5,6 +5,7 @@ using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,12 +17,15 @@ namespace Sprint0.Characters
         public enum MarioHealth { Normal, Star, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
         public ICharacterState marioState;
-
-        public Mario()
+        public Vector2 position { get; set; }
+        public Sprint0 mySprint;
+        public Mario(Sprint0 sprint0)
         {
             health = MarioHealth.Normal;
             facingLeft = true;
             marioState = new MarioFaceLeft(this);
+            mySprint = sprint0;
+
         }
 
         public void ChangeDirection()
@@ -73,6 +77,13 @@ namespace Sprint0.Characters
 
         public void Stop()
         {
+            if(facingLeft)
+            {
+                marioState = new MarioFaceLeft(this);
+            } else
+            {
+                marioState = new MarioFaceRight(this);
+            }
 
         }
 

@@ -18,7 +18,7 @@ namespace Sprint0.Commands.Luigi
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new LuigiStill();
+           // mySprint0.luigiSprite = new LuigiStill();
         }
 
     }

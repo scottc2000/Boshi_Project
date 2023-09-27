@@ -8,9 +8,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Input;
+
 namespace Sprint0.Sprites
 {
-    internal class MarioMoveLeftSprite : ISprite
+    internal class MarioBigMoveLeftSprite : ISprite
     {
         private Sprint0 mySprint0;
         private Texture2D marioMovingLeft;
@@ -26,7 +27,7 @@ namespace Sprint0.Sprites
         private Rectangle destination;
 
         private Vector2 position;
-        public MarioMoveLeftSprite(Sprint0 Sprint0)
+        public MarioBigMoveLeftSprite(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(1, 92, 17, 28), new Rectangle(19, 92, 17, 28), new Rectangle(36, 92, 17, 28), new Rectangle(19, 92, 17, 28) };

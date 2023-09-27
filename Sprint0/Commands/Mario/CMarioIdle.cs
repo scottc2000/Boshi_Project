@@ -9,18 +9,19 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class MarioJumpCommand : ICommand
-    {
+    internal class CMarioIdle : ICommand
+    { 
         private Sprint0 mySprint0;
-        private Rectangle[] frames;
-        public MarioJumpCommand(Sprint0 Sprint0)
+        private ICharacter mario;
+        public CMarioIdle(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
-            frames = new Rectangle[] { new Rectangle(72, 92, 17, 28), new Rectangle(36, 92, 17, 28) };
         }
         public void Execute()
         {
-            mySprint0.marioSprite = new MarioJumpSprite(mySprint0, frames);
+            mario = mySprint0.mario;
+            mario.Stop();
+
         }
 
     }

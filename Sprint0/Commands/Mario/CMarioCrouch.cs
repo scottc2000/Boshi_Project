@@ -9,32 +9,19 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-<<<<<<<< HEAD:Sprint0/Commands/Mario/MarioChangeToFireCommand.cs
-    internal class MarioChangeToFireCommand : ICommand { 
-  
-        private Sprint0 mySprint0;
-        private Rectangle[] spriteFrames;
-        public MarioChangeToFireCommand(Sprint0 Sprint0)
-========
     internal class CMarioCrouch : ICommand
-    {
+    { 
         private Sprint0 mySprint0;
-        private ICharacter marioState;
+        private ICharacter mario;
         public CMarioCrouch(Sprint0 Sprint0)
->>>>>>>> 67867ebcd00e1da7b685c5f2cf443c0b654f2f63:Sprint0/Commands/Mario/CMarioCrouch.cs
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-<<<<<<<< HEAD:Sprint0/Commands/Mario/MarioChangeToFireCommand.cs
+            mario = mySprint0.mario;
+            mario.Crouch();
 
-            mySprint0.marioSprite = new MarioCrouchSprite(mySprint0);
-========
-            marioState = mySprint0.marioState;
-            marioState.Crouch();
-            mySprint0.marioSprite = new CrouchingMario(mySprint0);
->>>>>>>> 67867ebcd00e1da7b685c5f2cf443c0b654f2f63:Sprint0/Commands/Mario/CMarioCrouch.cs
         }
 
     }

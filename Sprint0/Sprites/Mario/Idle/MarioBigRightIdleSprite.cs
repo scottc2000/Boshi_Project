@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Sprint0.Sprites
 {
-    internal class MarioFaceRightSprite : ISprite
+    internal class MarioBigRightIdleSprite : ISprite
     {
         private Sprint0 mySprint0;
         private Texture2D marioMovingRight;
@@ -20,7 +20,7 @@ namespace Sprint0.Sprites
         private Rectangle spriteFrame;
         private Rectangle destination;
 
-        public MarioFaceRightSprite(Sprint0 Sprint0)
+        public MarioBigRightIdleSprite(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
             spriteFrame = new Rectangle(1, 92, 17, 28);
