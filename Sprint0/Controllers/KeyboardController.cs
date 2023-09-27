@@ -16,13 +16,13 @@ namespace Sprint0.Controllers
         public Sprint0 mySprint;
         public KeyboardState current;
         public KeyboardState previous;
-        public List<Keys> releasedKeys = new List<Keys>();
+        public Keys[] releasedKeys;
 
         public KeyboardController()
         {
             controllerMappings = new Dictionary<Keys, ICommand>();
             previous = Keyboard.GetState();
-
+            releasedKeys = new Keys[0];
         }
 
         public void RegisterCommand(Keys key, ICommand command)
@@ -38,12 +38,38 @@ namespace Sprint0.Controllers
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
-            foreach (Keys key in pressedKeys)
+            foreach(Keys key in pressedKeys)
             {
                 if (controllerMappings.ContainsKey(key))
                     controllerMappings[key].Execute();
             }
 
+          /*  if (pressedKeys.Contains(Keys.D0))
+            {
+                controllerMappings[Keys.D0].Execute();
+            }
+            if (pressedKeys.Contains(Keys.D9))
+            {
+                controllerMappings[Keys.D9].Execute();
+            }
+            if(Left(pressedKeys))
+            {
+                controllerMappings[Keys.A].Execute();
+            } else if (Right(pressedKeys))
+            {
+                controllerMappings[Keys.D].Execute();
+            } else if (Up(pressedKeys))
+            {
+                controllerMappings[Keys.W].Execute();
+            } else if (Down(pressedKeys))
+            {
+                controllerMappings[Keys.S].Execute();
+            } else if (Idle(pressedKeys))
+            {
+                controllerMappings[Keys.Z].Execute();
+            }
+
+            releasedKeys = pressedKeys; */
 
         }
 
@@ -81,7 +107,8 @@ namespace Sprint0.Controllers
             return !pressedKeys.Contains(Keys.A) &&
                 !pressedKeys.Contains(Keys.W) &&
                 !pressedKeys.Contains(Keys.D) &&
-                !pressedKeys.Contains(Keys.S);
+                !pressedKeys.Contains(Keys.S) &&
+                pressedKeys.Contains(Keys.Z);
         }
 
     }

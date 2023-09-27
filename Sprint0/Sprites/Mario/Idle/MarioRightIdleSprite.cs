@@ -23,7 +23,7 @@ namespace Sprint0.Sprites
         public MarioRightIdleSprite(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
-            spriteFrame = new Rectangle(1, 0, 17, 28);
+            spriteFrame = new Rectangle(1, 15, 17, 17);
             destination = new Rectangle(150, 150, 34, 56);
         }
         public void Update()

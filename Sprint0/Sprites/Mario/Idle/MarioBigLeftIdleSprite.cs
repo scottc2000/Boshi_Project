@@ -13,15 +13,17 @@ namespace Sprint0.Sprites
 {
     internal class MarioBigLeftIdleSprite : ISprite
     {
-        private Sprint0 mySprint
+        private Sprint0 mySprint;
         private Texture2D stillMario;
         private Rectangle spriteFrame;
+        private Vector2 location { get; set; }
+
         private Rectangle position;
         public MarioBigLeftIdleSprite(Sprint0 sprint0)
         {
             spriteFrame = new Rectangle(1, 92, 17, 28);
-            position = new Rectangle(150, 150, 34, 56);
             mySprint = sprint0;
+            position = new Rectangle((int)mySprint.marioPosition.X, (int)mySprint.marioPosition.Y, 34, 56);
         }
         public void Update()
         {

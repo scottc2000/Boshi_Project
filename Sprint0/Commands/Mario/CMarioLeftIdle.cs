@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class CMarioIdle : ICommand
+    internal class CMarioLeftIdle : ICommand
     { 
         private Sprint0 mySprint0;
         private ICharacter mario;
-        public CMarioIdle(Sprint0 Sprint0)
+        public CMarioLeftIdle(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }

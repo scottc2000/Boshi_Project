@@ -15,9 +15,10 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public ISprite marioSprite;
+        public ISprite marioSprite; // move into mario ICharacter
         public ICharacter mario;
-        
+        public Vector2 marioPosition; // move into mario ICharacter
+
         ISprite textSprite;
         IController KeyboardController;
    
@@ -43,12 +44,10 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-           // KeyboardController.RegisterCommand(Keys.Z, new CMarioLeftIdle(this));
+            KeyboardController.RegisterCommand(Keys.Z, new CMarioLeftIdle(this));
            // KeyboardController.RegisterCommand(Keys.X, new CMarioRightIdle(this));
            // KeyboardController.RegisterCommand(Keys.Q, new CMarioFire(this));
            // KeyboardController.RegisterCommand(Keys.E, new CMarioStar(this));
-            mario = new Mario(this);
-
 
             base.Initialize();
         }
@@ -57,17 +56,22 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // Load inital sprite states
-            marioSprite = new MarioBigLeftIdleSprite();
+            mario = new Mario(this);
+            marioPosition.X = 150;
+            marioPosition.Y = 150;
+
+            marioSprite = new MarioLeftIdleSprite(this);
+
         }
 
         protected override void Update(GameTime gameTime)
         {
             myGameTime = gameTime;
 
-            marioSprite.Update();
-
             KeyboardController.Update();
+            mario.Update();
+
+            marioSprite.Update();
 
             base.Update(gameTime);
         }
@@ -78,7 +82,7 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
-            marioSprite.Draw(_spriteBatch, Content);
+            //mario.Draw(_spriteBatch, Content); need to update parameters
 
             _spriteBatch.End();
 

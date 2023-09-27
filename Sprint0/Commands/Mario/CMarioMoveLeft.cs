@@ -21,7 +21,6 @@ namespace Sprint0.Commands.Mario
         {
             mario = mySprint0.mario;
             mario.MoveLeft();
-            mySprint0.marioSprite = new MarioMoveLeftSprite(mySprint0);
         }
 
     }

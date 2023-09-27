@@ -1,4 +1,6 @@
-﻿using Sprint0.Characters.MarioStates;
+﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Characters.MarioStates;
 using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
@@ -92,7 +94,7 @@ namespace Sprint0.Characters
 
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spritebatch, ContentManager content)
         {
             marioState.Draw();
         }

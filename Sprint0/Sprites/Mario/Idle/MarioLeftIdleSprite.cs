@@ -19,7 +19,7 @@ namespace Sprint0.Sprites
         private Rectangle position;
         public MarioLeftIdleSprite(Sprint0 sprint0)
         {
-            spriteFrame = new Rectangle(1, 0, 17, 28);
+            spriteFrame = new Rectangle(1, 15, 17, 17);
             position = new Rectangle(150, 150, 34, 56);
             mySprint = sprint0;
         }

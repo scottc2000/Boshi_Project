@@ -23,7 +23,6 @@ namespace Sprint0.Commands
         {
             mario = mySprint0.mario;
             mario.MoveRight();
-            mySprint0.marioSprite = new MarioMoveRightSprite(mySprint0);
         }
     }
 }
