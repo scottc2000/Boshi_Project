@@ -27,11 +27,7 @@ namespace Sprint0.Sprites
         public BlockSprites(Texture2D texture)
         {
             Texture = texture;
-<<<<<<< HEAD
             Position = new Vector2(0, 0);
-=======
-            Position = new Vector2(700, 100);
->>>>>>> 5a6f5ec1e6f1f792bfac033964323ec88da9546c
             Origin = new Vector2(0, 0);
             Rotation = 0;
             Scale = new Vector2(1, 1);
