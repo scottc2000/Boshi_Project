@@ -17,7 +17,7 @@ namespace Sprint0
 
         public ISprite marioSprite; // move into mario ICharacter
         public ICharacter mario;
-        public Vector2 marioPosition;
+        public Vector2 marioPosition; // move into mario ICharacter
 
         ISprite textSprite;
         IController KeyboardController;
@@ -56,9 +56,9 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            mario = new Mario(this);
             marioPosition.X = 150;
             marioPosition.Y = 150;
-            mario = new Mario(this, marioPosition);
 
             marioSprite = new MarioLeftIdleSprite(this);
 
@@ -82,8 +82,7 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
-            mario.State.Draw(_spriteBatch, marioPosition);
-            marioSprite.Draw(_spriteBatch, marioPosition); 
+            //mario.Draw(_spriteBatch, Content); need to update parameters
 
             _spriteBatch.End();
 

@@ -16,6 +16,7 @@ namespace Sprint0.Sprites
         private Sprint0 mySprint;
         private Texture2D stillMario;
         private Rectangle spriteFrame;
+        private Vector2 location { get; set; }
 
         private Rectangle position;
         public MarioBigLeftIdleSprite(Sprint0 sprint0)
@@ -29,11 +30,11 @@ namespace Sprint0.Sprites
             //Nothing needed here
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
-            Texture2D stillMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
+            Texture2D stillMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            spriteBatch.Draw(stillMario, location, new Rectangle(1, 90, 17, 28), Color.White);
+            spriteBatch.Draw(stillMario, position, new Rectangle(1, 90, 17, 28), Color.White);
 
         }
     }

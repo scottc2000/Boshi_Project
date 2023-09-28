@@ -13,7 +13,7 @@ namespace Sprint0.Sprites
 {
     internal class MarioBigCrouchLeftSprite : ISprite
     {
-        private Sprint0 mySprint;
+        private Sprint0 mySprint0;
         private Texture2D crouchingMario;
 
         // Keyboard States
@@ -25,8 +25,9 @@ namespace Sprint0.Sprites
 
         public MarioBigCrouchLeftSprite(Sprint0 Sprint0)
         {
-            mySprint = Sprint0;
+            mySprint0 = Sprint0;
             spriteFrames = new Rectangle(54, 92, 17, 28);
+            position = new Rectangle(150, 150, 34, 56);
 
         }
         public void Update()
@@ -34,11 +35,9 @@ namespace Sprint0.Sprites
             //Not needed - single file
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
-            crouchingMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
-
-            position = new Rectangle((int)location.X, (int)location.Y, 34, 56);
+            crouchingMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             spriteBatch.Draw(crouchingMario, position, spriteFrames, Color.White);
         }

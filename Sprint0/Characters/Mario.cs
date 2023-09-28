@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
-using Microsoft.Xna.Framework;
 using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,66 +15,65 @@ namespace Sprint0.Characters
 {
     internal class Mario : ICharacter
     {
-        public bool facingLeft;
+        private bool facingLeft;
         public enum MarioHealth { Normal, Star, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
-        public ICharacterState State { get; set; }
-        public Vector2 location;
+        public ICharacterState marioState;
+        public Vector2 position { get; set; }
         public Sprint0 mySprint;
-
-        public Mario(Sprint0 sprint0, Vector2 location)
+        public Mario(Sprint0 sprint0)
         {
-            this.health = MarioHealth.Normal;
-            this.facingLeft = true;
-            this.State = new MarioFaceLeft(this);
-            this.mySprint = sprint0;
-            this.location = location;
+            health = MarioHealth.Normal;
+            facingLeft = true;
+            marioState = new MarioFaceLeft(this);
+            mySprint = sprint0;
+
         }
 
         public void ChangeDirection()
         {
-            State.ChangeDirection();
+            marioState.ChangeDirection();
         }
 
         public void MoveRight()
         {
             if (facingLeft)
             {
-                State.ChangeDirection();
-                this.facingLeft = false;
+                marioState.ChangeDirection();
+                facingLeft = false;
             }
-            State.Move();
+            marioState.Move();
         }
 
         public void MoveLeft()
         {
             if (!facingLeft)
             {
-                State.ChangeDirection();
-                this.facingLeft = true;
+                marioState.ChangeDirection();
+                facingLeft = true;
             }
-            State.Move();
+            marioState.Move();
         }
 
         public void Jump()
         {
             if (facingLeft)
             {
-                State = new MarioJumpFaceLeft(this);
+                marioState = new MarioJumpFaceLeft(this);
             }
             else
             {
-                State = new MarioJumpFaceRight(this);
+                marioState = new MarioJumpFaceRight(this);
             }
         }
 
         public void Crouch()
         {
             if (facingLeft) { 
-                State = new MarioCrouchFaceLeft(this);
+                marioState = new MarioCrouchFaceLeft(this);
             } else
             {
-                State = new MarioCrouchFaceRight(this);
+                marioState = new MarioCrouchFaceRight(this);
             }
         }
 
@@ -82,18 +81,22 @@ namespace Sprint0.Characters
         {
             if(facingLeft)
             {
-                State = new MarioFaceLeft(this);
+                marioState = new MarioFaceLeft(this);
             } else
             {
-                State = new MarioFaceRight(this);
+                marioState = new MarioFaceRight(this);
             }
 
         }
 
         public void Update()
         {
-            //State.Update(); currently prompts errors
+
         }
 
+        public void Draw(SpriteBatch spritebatch, ContentManager content)
+        {
+            marioState.Draw();
+        }
     }
 }

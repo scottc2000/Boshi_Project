@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sprint0.Commands
-{ 
+
     internal class LuigiCrouch : ICommand
     {
         private Sprint0 mySprint0;

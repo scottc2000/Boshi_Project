@@ -14,7 +14,7 @@ namespace Sprint0.Sprites
 {
     internal class MarioFireCrouchRightSprite : ISprite
     {
-        private Sprint0 mySprint;
+        private Sprint0 mySprint0;
         private Texture2D crouchingMario;
 
         private int CurrentFrame;
@@ -28,8 +28,9 @@ namespace Sprint0.Sprites
 
         public MarioFireCrouchRightSprite(Sprint0 Sprint0)
         {
-            mySprint = Sprint0;
+            mySprint0 = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(54, 263, 17, 28) };
+            position = new Rectangle(150, 150, 34, 56);
             CurrentFrame = 0;
 
         }
@@ -38,11 +39,9 @@ namespace Sprint0.Sprites
             // Not needed - single frame
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
-            crouchingMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
-
-            position = new Rectangle((int)location.X, (int)location.Y, 34, 56);
+            crouchingMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             // Overload parameters to flip sprite horizontally
             SpriteEffects right = SpriteEffects.FlipHorizontally;

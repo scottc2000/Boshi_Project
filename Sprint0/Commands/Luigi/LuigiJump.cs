@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sprint0.Commands.Luigi
+
+namespace Sprint0.Commands
+
 {
     internal class LuigiJump : ICommand
     {
@@ -18,6 +21,8 @@ namespace Sprint0.Commands.Luigi
         }
         public void Execute()
         {
+           // mySprint0.luigiSprite = new JumpingLuigi(mySprint0);
+            mySprint0.luigiSprite = new JumpingLuigi(mySprint0);
 
         }
 

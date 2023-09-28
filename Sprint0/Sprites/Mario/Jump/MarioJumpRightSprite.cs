@@ -13,9 +13,7 @@ namespace Sprint0.Sprites
 {
     internal class MarioJumpRightSprite : ISprite
     {
-        //need to fix position issues
-
-        private Sprint0 mySprint;
+        private Sprint0 mySprint0;
         private Texture2D jumpMario;
 
         private int CurrentFrame = 0;
@@ -51,10 +49,10 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
             destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
-            jumpMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
+            jumpMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             // Overload parameters to flip sprite horizontally
             SpriteEffects right = SpriteEffects.FlipHorizontally;
