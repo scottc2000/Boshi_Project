@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 
 namespace Sprint0.Sprites
 {
-    internal class BlockSprites : ISprite
+    public class BlockSprites : ISprite
     {
         private Sprint0 game;
         private Rectangle[] blockSprite;

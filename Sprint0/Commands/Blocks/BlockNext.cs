@@ -19,7 +19,12 @@ namespace Sprint0.Commands.Blocks
 
         public void Execute() 
         {
-            //game.blockSprite = new BlockSprites(game, 2280, 2, 32, 32);
+            game.currentSpriteIndex++;
+            if (game.currentSpriteIndex == 5)
+            {
+                game.currentSpriteIndex = 0;
+            }
+            
         }
     }
 }

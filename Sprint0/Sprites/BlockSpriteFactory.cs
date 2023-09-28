@@ -13,7 +13,7 @@ namespace Sprint0.Sprites
 {
     public class BlockSpriteFactory
     {
-        private readonly List<BlockSprites> sprites;
+        public List<BlockSprites> sprites;
 
         public BlockSpriteFactory()
         {
@@ -29,10 +29,7 @@ namespace Sprint0.Sprites
                 spriteSheet.GetData(0, spriteRectangle, data, 0, data.Length);
                 spriteTexture.SetData(data);
 
-                var sprite = new BlockSprites(spriteTexture)
-                {
-                    Position = new Vector2(700, 100)
-                };
+                var sprite = new BlockSprites(spriteTexture){Position = new Vector2(700, 100)};
 
                 sprites.Add(sprite);
             }
@@ -50,5 +47,11 @@ namespace Sprint0.Sprites
                 sprite.Draw(spriteBatch, content);
             }
         }
+
+        public List<BlockSprites> GetSprites()
+        {
+            return sprites;
+        }
+
     }
 }

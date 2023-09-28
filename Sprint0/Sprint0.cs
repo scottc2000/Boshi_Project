@@ -16,6 +16,8 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private BlockSpriteFactory blockSpriteFactory;
+        private List<BlockSprites> blockSprites;
+        public int currentSpriteIndex;
 
         public ISprite marioSprite;
         public ISprite luigiSprite;
@@ -75,10 +77,16 @@ namespace Sprint0
             Texture2D blockTexture = Content.Load<Texture2D>("SpriteImages/blocks");
             List<Rectangle> spriteRectangles = new List<Rectangle>
             {
+                new Rectangle(2076, 274, 32, 32),
+                new Rectangle(2416, 2, 32, 32),
+                new Rectangle(2280, 2, 32, 32),
                 new Rectangle(2076, 2, 32, 32),
-                new Rectangle(2280, 2, 32, 32)
+                new Rectangle(2008, 36, 32, 32)
             };
             blockSpriteFactory.AddSprite(blockTexture, spriteRectangles);
+
+            blockSprites = blockSpriteFactory.sprites;
+            currentSpriteIndex = 0;
 
         }
 
@@ -103,7 +111,7 @@ namespace Sprint0
 
             luigiSprite.Draw(_spriteBatch, Content);
             marioSprite.Draw(_spriteBatch, Content);
-            blockSpriteFactory.Draw(_spriteBatch, Content);
+            blockSprites[currentSpriteIndex].Draw(_spriteBatch, Content);
             
 
             _spriteBatch.End();
