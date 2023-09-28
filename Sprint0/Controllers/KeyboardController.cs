@@ -34,6 +34,8 @@ namespace Sprint0.Controllers
                 else if (Left(pressedKeys)) { controllerMappings[key].Execute(); }
                 else if (Right(pressedKeys)) { controllerMappings[key].Execute(); }
                 else if (Up(pressedKeys)) { controllerMappings[key].Execute(); }
+                else if (next(pressedKeys)) { controllerMappings[key].Execute(); }
+                else if (prev(pressedKeys)) { controllerMappings[key].Execute(); }
             }
 
         }
@@ -98,6 +100,18 @@ namespace Sprint0.Controllers
                 !pressedKeys.Contains(Keys.I) &&
                  !pressedKeys.Contains(Keys.L) &&
                 !pressedKeys.Contains(Keys.K));
+        }
+
+        private bool next(Keys[] pressedKeys)
+        {
+            return (pressedKeys.Contains(Keys.Y) &&
+                 !pressedKeys.Contains(Keys.T));
+        }
+
+        private bool prev(Keys[] pressedKeys)
+        {
+            return (pressedKeys.Contains(Keys.T) &&
+                !pressedKeys.Contains(Keys.Y));
         }
 
     }
