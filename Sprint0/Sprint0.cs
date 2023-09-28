@@ -8,6 +8,7 @@ using Sprint0.Controllers;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System.Collections.Generic;
+using System;
 
 namespace Sprint0
 {
@@ -18,6 +19,8 @@ namespace Sprint0
         private BlockSpriteFactory blockSpriteFactory;
         private List<BlockSprites> blockSprites;
         public int currentSpriteIndex;
+        private TimeSpan spriteDelay;
+        private TimeSpan timeSinceLastSprite;
 
         public ISprite marioSprite;
         public ISprite luigiSprite;
@@ -87,6 +90,8 @@ namespace Sprint0
 
             blockSprites = blockSpriteFactory.sprites;
             currentSpriteIndex = 0;
+            spriteDelay = TimeSpan.FromMilliseconds(50);
+            timeSinceLastSprite = TimeSpan.Zero;
 
         }
 
@@ -98,8 +103,13 @@ namespace Sprint0
             marioSprite.Update();
             blockSpriteFactory.Update();
 
-            KeyboardController.Update();
+            timeSinceLastSprite += gameTime.ElapsedGameTime;
+            if (timeSinceLastSprite >= spriteDelay)
+            {
+                timeSinceLastSprite = TimeSpan.Zero;
+            }
 
+            KeyboardController.Update();
             base.Update(gameTime);
         }
 
