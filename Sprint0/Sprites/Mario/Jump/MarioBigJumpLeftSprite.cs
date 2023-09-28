@@ -13,7 +13,9 @@ namespace Sprint0.Sprites
 {
     internal class MarioBigJumpLeftSprite : ISprite
     {
-        private Sprint0 mySprint0;
+        //Need to fix position issues
+
+        private Sprint0 mySprint;
         private Texture2D jumpMario;
 
         private int CurrentFrame = 0;
@@ -30,9 +32,8 @@ namespace Sprint0.Sprites
         public MarioBigJumpLeftSprite(Sprint0 mySprint0)
         {
             spriteFrames = new Rectangle[] { new Rectangle(72, 92, 17, 28), new Rectangle(36, 92, 17, 28) };
-            position.Y = 150;
-            position.X = 150;
             hasJumped = true;
+            mySprint = mySprint0;
         }
         public void Update()
         {
@@ -49,10 +50,11 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
-            jumpMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
+
+            jumpMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             spriteBatch.Draw(jumpMario, destination, spriteFrames[CurrentFrame], Color.White);
         }

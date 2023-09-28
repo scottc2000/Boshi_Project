@@ -13,7 +13,7 @@ namespace Sprint0.Sprites
 {
     internal class MarioFireRightIdleSprite : ISprite
     {
-        private Sprint0 mySprint0;
+        private Sprint0 mySprint;
         private Texture2D marioMovingRight;
 
         // Rectanlges
@@ -22,18 +22,19 @@ namespace Sprint0.Sprites
 
         public MarioFireRightIdleSprite(Sprint0 Sprint0)
         {
-            mySprint0 = Sprint0;
+            mySprint = Sprint0;
             spriteFrame = new Rectangle(1, 263, 17, 28);
-            destination = new Rectangle(150, 150, 34, 56);
         }
         public void Update()
         {
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            marioMovingRight = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            marioMovingRight = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
+
+            destination = new Rectangle(150, 150, 34, 56);
 
             // Overload parameters to flip sprite horizontally
             SpriteEffects right = SpriteEffects.FlipHorizontally;

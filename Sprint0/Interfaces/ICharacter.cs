@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace Sprint0.Interfaces
 {
     public interface ICharacter
     {
+
+        ICharacterState State { get; set; }
         public void ChangeDirection();
 
         public void MoveRight();
@@ -19,8 +22,7 @@ namespace Sprint0.Interfaces
         public void Crouch();
 
         public void Stop();
-
-        void Update();
+        public void Update();
 
     }
 }

@@ -8,12 +8,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Input;
+using System.ComponentModel;
 
 namespace Sprint0.Sprites
 {
     internal class MarioBigCrouchRightSprite : ISprite
     {
-        private Sprint0 mySprint0;
+        private Sprint0 mySprint;
         private Texture2D crouchingMario;
 
         private int CurrentFrame;
@@ -27,9 +28,8 @@ namespace Sprint0.Sprites
 
         public MarioBigCrouchRightSprite(Sprint0 Sprint0)
         {
-            mySprint0 = Sprint0;
+            mySprint = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(54, 92, 17, 28) };
-            position = new Rectangle(150, 150, 34, 56);
             CurrentFrame = 0;
 
         }
@@ -38,9 +38,11 @@ namespace Sprint0.Sprites
             //Not needed - single file
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            crouchingMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            crouchingMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
+
+            position = new Rectangle((int)location.X, (int)location.Y, 34, 56);
 
             // Overload parameters to flip sprite horizontally
             SpriteEffects right = SpriteEffects.FlipHorizontally;

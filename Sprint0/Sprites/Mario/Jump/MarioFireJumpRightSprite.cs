@@ -13,7 +13,9 @@ namespace Sprint0.Sprites
 {
     internal class MarioFireJumpRightSprite : ISprite
     {
-        private Sprint0 mySprint0;
+        // Need to fix position issues
+
+        private Sprint0 mySprint;
         private Texture2D jumpMario;
 
         private int CurrentFrame = 0;
@@ -33,6 +35,7 @@ namespace Sprint0.Sprites
             position.Y = 150;
             position.X = 150;
             hasJumped = true;
+            mySprint = mySprint0;
         }
         public void Update()
         {
@@ -49,10 +52,10 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
-            jumpMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            jumpMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             // Overload parameters to flip sprite horizontally
             SpriteEffects right = SpriteEffects.FlipHorizontally;
