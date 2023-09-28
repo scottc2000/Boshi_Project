@@ -91,3 +91,4 @@ C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\runtimes\wi
 C:\Users\Michael\source\repos\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.csproj.CopyComplete
 C:\Users\Michael\source\repos\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\Michael\source\repos\Boshi_Project\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\SpriteImages\blocks.xnb

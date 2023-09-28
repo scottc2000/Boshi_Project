@@ -42,34 +42,36 @@ namespace Sprint0.Controllers
             {
                 if (controllerMappings.ContainsKey(key))
                     controllerMappings[key].Execute();
+                else if (next(pressedKeys)) { controllerMappings[key].Execute(); }
+                else if (prev(pressedKeys)) { controllerMappings[key].Execute(); }
             }
 
-          /*  if (pressedKeys.Contains(Keys.D0))
-            {
-                controllerMappings[Keys.D0].Execute();
-            }
-            if (pressedKeys.Contains(Keys.D9))
-            {
-                controllerMappings[Keys.D9].Execute();
-            }
-            if(Left(pressedKeys))
-            {
-                controllerMappings[Keys.A].Execute();
-            } else if (Right(pressedKeys))
-            {
-                controllerMappings[Keys.D].Execute();
-            } else if (Up(pressedKeys))
-            {
-                controllerMappings[Keys.W].Execute();
-            } else if (Down(pressedKeys))
-            {
-                controllerMappings[Keys.S].Execute();
-            } else if (Idle(pressedKeys))
-            {
-                controllerMappings[Keys.Z].Execute();
-            }
+            /*  if (pressedKeys.Contains(Keys.D0))
+              {
+                  controllerMappings[Keys.D0].Execute();
+              }
+              if (pressedKeys.Contains(Keys.D9))
+              {
+                  controllerMappings[Keys.D9].Execute();
+              }
+              if(Left(pressedKeys))
+              {
+                  controllerMappings[Keys.A].Execute();
+              } else if (Right(pressedKeys))
+              {
+                  controllerMappings[Keys.D].Execute();
+              } else if (Up(pressedKeys))
+              {
+                  controllerMappings[Keys.W].Execute();
+              } else if (Down(pressedKeys))
+              {
+                  controllerMappings[Keys.S].Execute();
+              } else if (Idle(pressedKeys))
+              {
+                  controllerMappings[Keys.Z].Execute();
+              }
 
-            releasedKeys = pressedKeys; */
+              releasedKeys = pressedKeys; */
 
         }
 
@@ -137,6 +139,18 @@ namespace Sprint0.Controllers
                 !pressedKeys.Contains(Keys.I) &&
                  !pressedKeys.Contains(Keys.L) &&
                 !pressedKeys.Contains(Keys.K));
+        }
+
+        private bool next(Keys[] pressedKeys)
+        {
+            return (pressedKeys.Contains(Keys.Y) &&
+                 !pressedKeys.Contains(Keys.T));
+        }
+
+        private bool prev(Keys[] pressedKeys)
+        {
+            return (pressedKeys.Contains(Keys.T) &&
+                !pressedKeys.Contains(Keys.Y));
         }
 
     }
