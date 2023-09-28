@@ -13,7 +13,7 @@ namespace Sprint0.Sprites
 {
     internal class MarioFireJumpLeftSprite : ISprite
     {
-        private Sprint0 mySprint0;
+        private Sprint0 mySprint;
         private Texture2D jumpMario;
 
         private int CurrentFrame = 0;
@@ -33,6 +33,7 @@ namespace Sprint0.Sprites
             position.Y = 150;
             position.X = 150;
             hasJumped = true;
+            mySprint = mySprint0;
         }
         public void Update()
         {
@@ -49,10 +50,10 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
-            jumpMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            jumpMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             spriteBatch.Draw(jumpMario, destination, spriteFrames[CurrentFrame], Color.White);
         }

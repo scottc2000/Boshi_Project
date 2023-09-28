@@ -1,4 +1,6 @@
-﻿using Sprint0.Interfaces;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -18,7 +20,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void ChangeDirection()
         {
-            mario.marioState = new MarioCrouchFaceLeft(mario);
+            mario.State = new MarioCrouchFaceLeft(mario);
         }
         public void Move()
         {
@@ -30,7 +32,7 @@ namespace Sprint0.Characters.MarioStates
 
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spritebatch, Vector2 location)
         {
             {
                 switch (mario.health)

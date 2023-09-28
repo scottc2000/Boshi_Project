@@ -13,7 +13,7 @@ namespace Sprint0.Sprites
 {
     internal class MarioMoveRightSprite : ISprite
     {
-        private Sprint0 mySprint0;
+        private Sprint0 mySprint;
         private Texture2D marioMovingRight;
 
         // Frame Stats
@@ -30,14 +30,14 @@ namespace Sprint0.Sprites
 
         public MarioMoveRightSprite(Sprint0 Sprint0)
         {
-            mySprint0 = Sprint0;
+            mySprint = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(1, 15, 17, 17), new Rectangle(19, 15, 17, 17), new Rectangle(36, 15, 17, 17), new Rectangle(19, 15, 17, 17) };
             position.X = 150;
         }
         public void Update()
         {
 
-            timeSinceLastFrame += mySprint0.myGameTime.ElapsedGameTime.Milliseconds;
+            timeSinceLastFrame += mySprint.myGameTime.ElapsedGameTime.Milliseconds;
 
             if (timeSinceLastFrame > millisecondsPerFrame)
             {
@@ -53,9 +53,9 @@ namespace Sprint0.Sprites
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            marioMovingRight = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            marioMovingRight = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             destination = new Rectangle((int)position.X, 150, 34, 56);
 

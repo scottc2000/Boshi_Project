@@ -13,7 +13,7 @@ namespace Sprint0.Sprites
 {
     internal class MarioFireMoveLeftSprite : ISprite
     {
-        private Sprint0 mySprint0;
+        private Sprint0 mySprint;
         private Texture2D marioMovingLeft;
 
         // Frame Stats
@@ -29,7 +29,7 @@ namespace Sprint0.Sprites
         private Vector2 position;
         public MarioFireMoveLeftSprite(Sprint0 Sprint0)
         {
-            mySprint0 = Sprint0;
+            mySprint = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(1, 263, 17, 28), new Rectangle(19, 263, 17, 28), new Rectangle(36, 0, 17, 28), new Rectangle(19, 263, 17, 28) };
             position.X = 150;
 
@@ -37,7 +37,7 @@ namespace Sprint0.Sprites
 
         public void Update()
         {
-            timeSinceLastFrame += mySprint0.myGameTime.ElapsedGameTime.Milliseconds;
+            timeSinceLastFrame += mySprint.myGameTime.ElapsedGameTime.Milliseconds;
 
             if (timeSinceLastFrame > millisecondsPerFrame)
             {
@@ -54,9 +54,9 @@ namespace Sprint0.Sprites
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            marioMovingLeft = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            marioMovingLeft = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             destination = new Rectangle((int)position.X, 150, 34, 56);
 

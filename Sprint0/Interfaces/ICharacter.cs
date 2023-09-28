@@ -8,6 +8,7 @@ namespace Sprint0.Interfaces
 {
     public interface ICharacter
     {
+        ICharacterState State { get; set; }
         public void ChangeDirection();
 
         public void MoveRight();

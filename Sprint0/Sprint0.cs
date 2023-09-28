@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Characters;
@@ -56,9 +57,9 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            mario = new Mario(this);
             marioPosition.X = 150;
             marioPosition.Y = 150;
+            mario = new Mario(this, marioPosition);
 
             marioSprite = new MarioLeftIdleSprite(this);
 
@@ -82,7 +83,8 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
-            //mario.Draw(_spriteBatch, Content); need to update parameters
+            mario.State.Draw(_spriteBatch, marioPosition);
+            marioSprite.Draw(_spriteBatch, marioPosition);
 
             _spriteBatch.End();
 

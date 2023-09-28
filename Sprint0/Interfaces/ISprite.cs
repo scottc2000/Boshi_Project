@@ -12,7 +12,7 @@ namespace Sprint0.Interfaces
     public interface ISprite
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch, ContentManager content);
+        void Draw(SpriteBatch spriteBatch, Vector2 location);
 
     }
 }

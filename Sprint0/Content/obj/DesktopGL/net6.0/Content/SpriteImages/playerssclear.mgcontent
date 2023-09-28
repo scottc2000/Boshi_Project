@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</SourceFile>
-  <SourceTime>2023-09-21T15:05:59.5862846-04:00</SourceTime>
+  <SourceTime>2023-09-27T15:20:32.5658455-04:00</SourceTime>
   <DestFile>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/SpriteImages/playerssclear.xnb</DestFile>
-  <DestTime>2023-09-21T15:25:54.8781439-04:00</DestTime>
+  <DestTime>2023-09-28T18:46:54.4471256-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

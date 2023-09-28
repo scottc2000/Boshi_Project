@@ -128,15 +128,12 @@ namespace Sprint0.Controllers
                 !pressedKeys.Contains(Keys.W) &&
                 !pressedKeys.Contains(Keys.D) &&
                 !pressedKeys.Contains(Keys.S) &&
-                pressedKeys.Contains(Keys.Z);
-
-                 !pressedKeys.Contains(Keys.D) &&
-                !pressedKeys.Contains(Keys.S))
+                pressedKeys.Contains(Keys.Z)
 
                 || (!pressedKeys.Contains(Keys.J) &&
                 !pressedKeys.Contains(Keys.I) &&
                  !pressedKeys.Contains(Keys.L) &&
-                !pressedKeys.Contains(Keys.K));
+                !pressedKeys.Contains(Keys.K)));
         }
 
     }
