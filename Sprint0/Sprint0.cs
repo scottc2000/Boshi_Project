@@ -7,6 +7,7 @@ using Sprint0.Commands.Blocks;
 using Sprint0.Controllers;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using System.Collections.Generic;
 
 namespace Sprint0
 {
@@ -14,6 +15,7 @@ namespace Sprint0
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private BlockSpriteFactory blockSpriteFactory;
 
         public ISprite marioSprite;
         public ISprite luigiSprite;
@@ -67,7 +69,17 @@ namespace Sprint0
             // Load inital sprite states
             luigiSprite = new LuigiStill();
             marioSprite = new MarioStillLeft();
-            blockSprite = new BlockSprites(2076, 2, 32, 32);
+
+            blockSpriteFactory = new BlockSpriteFactory();
+
+            Texture2D blockTexture = Content.Load<Texture2D>("SpriteImages/blocks");
+            List<Rectangle> spriteRectangles = new List<Rectangle>
+            {
+                new Rectangle(2076, 2, 32, 32),
+                new Rectangle(2280, 2, 32, 32)
+            };
+            blockSpriteFactory.AddSprite(blockTexture, spriteRectangles);
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -76,7 +88,7 @@ namespace Sprint0
 
             luigiSprite.Update();
             marioSprite.Update();
-            blockSprite.Update();
+            blockSpriteFactory.Update();
 
             KeyboardController.Update();
 
@@ -91,7 +103,7 @@ namespace Sprint0
 
             luigiSprite.Draw(_spriteBatch, Content);
             marioSprite.Draw(_spriteBatch, Content);
-            blockSprite.Draw(_spriteBatch, Content);
+            blockSpriteFactory.Draw(_spriteBatch, Content);
             
 
             _spriteBatch.End();
