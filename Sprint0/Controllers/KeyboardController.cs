@@ -40,6 +40,7 @@ namespace Sprint0.Controllers
                 if (controllerMappings.ContainsKey(key))
                 {
                     controllerMappings[key].Execute();
+<<<<<<< HEAD
                 }
             }
 
@@ -67,6 +68,38 @@ namespace Sprint0.Controllers
             {
                 new CReleasedMario(mySprint);
             }
+=======
+                if (next(pressedKeys)) { controllerMappings[key].Execute(); }
+                if (prev(pressedKeys)) { controllerMappings[key].Execute(); }
+            }
+
+            /*  if (pressedKeys.Contains(Keys.D0))
+              {
+                  controllerMappings[Keys.D0].Execute();
+              }
+              if (pressedKeys.Contains(Keys.D9))
+              {
+                  controllerMappings[Keys.D9].Execute();
+              }
+              if(Left(pressedKeys))
+              {
+                  controllerMappings[Keys.A].Execute();
+              } else if (Right(pressedKeys))
+              {
+                  controllerMappings[Keys.D].Execute();
+              } else if (Up(pressedKeys))
+              {
+                  controllerMappings[Keys.W].Execute();
+              } else if (Down(pressedKeys))
+              {
+                  controllerMappings[Keys.S].Execute();
+              } else if (Idle(pressedKeys))
+              {
+                  controllerMappings[Keys.Z].Execute();
+              }
+
+              releasedKeys = pressedKeys; */
+>>>>>>> f36c50eea6a6522d1878aedc5ed220b24a0ee4a3
 
             // Move Right
             else if (pressedKeys.Contains(Keys.D) && !releasedKeys.Contains(Keys.D))
@@ -92,6 +125,7 @@ namespace Sprint0.Controllers
             {
                 controllerMappings[Keys.S].Execute();
 
+<<<<<<< HEAD
             }
 
             // Not Crouching
@@ -119,7 +153,36 @@ namespace Sprint0.Controllers
             }
             */
             releasedKeys = pressedKeys;
+=======
+                || (!pressedKeys.Contains(Keys.J) &&
+                 pressedKeys.Contains(Keys.I) &&
+                 !pressedKeys.Contains(Keys.L) &&
+                !pressedKeys.Contains(Keys.K));
+        }
+        private bool Idle(Keys[] pressedKeys)
+        {
+            return (!pressedKeys.Contains(Keys.A) &&
+                !pressedKeys.Contains(Keys.W) &&
+                !pressedKeys.Contains(Keys.D) &&
+                !pressedKeys.Contains(Keys.S) &&
+                pressedKeys.Contains(Keys.Z))
 
+                 || !pressedKeys.Contains(Keys.D) &&
+                !pressedKeys.Contains(Keys.S)
+>>>>>>> f36c50eea6a6522d1878aedc5ed220b24a0ee4a3
+
+        }
+
+        private bool next(Keys[] pressedKeys)
+        {
+            return (pressedKeys.Contains(Keys.Y) &&
+                 !pressedKeys.Contains(Keys.T));
+        }
+
+        private bool prev(Keys[] pressedKeys)
+        {
+            return (pressedKeys.Contains(Keys.T) &&
+                !pressedKeys.Contains(Keys.Y));
         }
 
     }
