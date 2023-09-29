@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Commands
+namespace Sprint0.Commands.Luigi
 {
     internal class LuigiRight : ICommand
     {
@@ -18,7 +19,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new RunAroundSprite(mySprint0, 1);
+            mySprint0.luigi.luigiState = new LuigiMoveRight(mySprint0.luigi);
         }
 
     }

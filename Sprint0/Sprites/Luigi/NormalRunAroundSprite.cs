@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
-    internal class RunAroundSprite : ISprite
+    internal class NormalRunAroundSprite : ISprite
     {
 
-        private Sprint0 mySprint0;
+        private Luigi luigi;
 
         // texture handling
         public Texture2D Texture;
@@ -31,32 +32,30 @@ namespace Sprint0.Sprites
         // position handling
         float rotation;
         float layer;
-        int myDirection;
-        private Vector2 position;
+        // private Vector2 position; DEPRECIATED VARIABLE!!!!!
         
 
-        public RunAroundSprite(Sprint0 Sprint0, int direction)
+        public NormalRunAroundSprite(Luigi luigi)
         {
-            mySprint0 = Sprint0;
+            this.luigi = luigi;
 
             // if direction is positive then the sprite will turn right (left by default)
             leftSpriteFrames = new Rectangle[] { new Rectangle(19, 178, 17, 28), new Rectangle(37, 178, 17, 28) };
-         
-            myDirection = direction;
-            if (direction == 1)
+
+
+            if (this.luigi.myDirection == 1)
             {
                 right = SpriteEffects.FlipHorizontally;
             }
             rotation = 0;
             layer = 0;
-            position.X = 400;
-            position.Y = 240;
+            // position.Y = 240;
         }
 
 
         public void Update()
         {
-            timeSinceLastFrame += mySprint0.myGameTime.ElapsedGameTime.Milliseconds;
+            timeSinceLastFrame += luigi.mySprint.myGameTime.ElapsedGameTime.Milliseconds;
 
             if (timeSinceLastFrame > millisecondsPerFrame)
             {
@@ -68,7 +67,7 @@ namespace Sprint0.Sprites
                 }
             }
 
-            position.X += myDirection;
+            luigi.position.X += luigi.myDirection;
 
         }
 
@@ -76,7 +75,7 @@ namespace Sprint0.Sprites
         {
             Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
 
             spriteBatch.Draw(Texture, destination, leftSpriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), right, layer);
         }

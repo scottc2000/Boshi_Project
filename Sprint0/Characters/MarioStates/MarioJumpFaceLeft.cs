@@ -1,4 +1,7 @@
-﻿using Sprint0.Interfaces;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -61,6 +64,16 @@ namespace Sprint0.Characters.MarioStates
                     }
 
             }
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, ContentManager content)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -102,31 +102,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\muska\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/ismail/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\muska\\source\\repos\\Boshi_Project\\Sprint0\\Sprint0.csproj",
+      "projectUniqueName": "/Users/ismail/Projects/Boshi_Project/Sprint0/Sprint0.csproj",
       "projectName": "Sprint0",
-      "projectPath": "C:\\Users\\muska\\source\\repos\\Boshi_Project\\Sprint0\\Sprint0.csproj",
-      "packagesPath": "C:\\Users\\muska\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\muska\\source\\repos\\Boshi_Project\\Sprint0\\obj\\",
+      "projectPath": "/Users/ismail/Projects/Boshi_Project/Sprint0/Sprint0.csproj",
+      "packagesPath": "/Users/ismail/.nuget/packages/",
+      "outputPath": "/Users/ismail/Projects/Boshi_Project/Sprint0/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\muska\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/ismail/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -170,7 +163,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.414/RuntimeIdentifierGraph.json"
       }
     }
   }

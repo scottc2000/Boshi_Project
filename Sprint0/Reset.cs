@@ -18,6 +18,7 @@ namespace Sprint0
         public void Execute() 
         {
             mySprint.marioSprite = new MarioBigLeftIdleSprite(mySprint);
+            mySprint.luigi.currentSprite = new NormalLuigiStill(mySprint.luigi);
         }
 
     }

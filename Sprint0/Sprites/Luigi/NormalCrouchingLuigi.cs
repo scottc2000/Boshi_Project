@@ -7,42 +7,47 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Sprint0.Interfaces;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
-    internal class CrouchingLuigi : ISprite
+    internal class NormalCrouchingLuigi : ISprite
     {
-        private Sprint0 mySprint0;
+        private Luigi luigi;
 
-        
+        // sprite handling stuff
         public Texture2D Texture;
         public Rectangle[] spriteFrames;
-
-        Vector2 position;
         Rectangle destination;
         float rotation = 0, layer = 0;
+
         SpriteEffects right;
 
-        public CrouchingLuigi(Sprint0 Sprint0)
+        public NormalCrouchingLuigi(Luigi luigi)
         {
-            mySprint0 = Sprint0;
+            this.luigi = luigi;
             spriteFrames = new Rectangle[] { new Rectangle(55, 180, 17, 28)};
             right = SpriteEffects.None;
-            position.X = 400;
-            position.Y = 240;
+
+            // if direction is positive then the sprite will turn right (left by default)
+            if (this.luigi.myDirection == 1)
+            {
+                right = SpriteEffects.FlipHorizontally;
+            }
+
 
 
         }
         public void Update()
         {
-          
+          // nothing needed
         }
 
         public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
             Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
 
             spriteBatch.Draw(Texture, destination, spriteFrames[0], Color.White, rotation, new Vector2(0, 0), right, layer);
         }

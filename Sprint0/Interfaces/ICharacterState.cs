@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Interfaces
 {
-    internal interface ICharacterState
+    public interface ICharacterState
     {
         public void ChangeDirection();
 
@@ -14,6 +17,8 @@ namespace Sprint0.Interfaces
 
         public void Stop();
 
-        public void Draw();
+        public void Update(GameTime gameTime);
+
+        public void Draw(SpriteBatch spriteBatch, ContentManager content);
     }
 }

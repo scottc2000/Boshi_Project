@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Characters.MarioStates
 {
-    internal class MarioCrouchFaceLeft : ICharacterState
+    internal class LuigiCrouchState : ICharacterState
     {
-        private Mario mario;
+        private Luigi luigi;
 
-        public MarioCrouchFaceLeft(Mario mario)
+        public LuigiCrouchState(Luigi luigi)
         {
-            this.mario = mario;
+            this.luigi = luigi;
         }
         public void ChangeDirection()
         {
-            mario.marioState = new MarioCrouchFaceRight(mario);
+            luigi.position *= -1;
         }
         public void Move()
         {
@@ -35,38 +35,46 @@ namespace Sprint0.Characters.MarioStates
 
         public void Draw()
         {
-            switch (mario.health)
+            
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            switch (luigi.health)
             {
-                case (Mario.MarioHealth.Normal):
+                case (Luigi.LuigiHealth.Normal):
                     {
-                        // Nothing needed - little mario can't crouch
+                        if (luigi.currentSprite is NormalCrouchingLuigi)
+                        {
+                            luigi.currentSprite.Update();
+                        }
+                        else
+                        {
+                            luigi.currentSprite = new NormalCrouchingLuigi(luigi);
+                        }
+
                         break;
                     }
 
 
-                case (Mario.MarioHealth.Star):
+                case (Luigi.LuigiHealth.Star):
                     {
                         //mario.mySprint.marioSprite = new MarioStarCrouchLeftSprite(mario.mySprint);
                         break;
                     }
 
-                case (Mario.MarioHealth.Fire):
+                case (Luigi.LuigiHealth.Fire):
                     {
-                        mario.mySprint.marioSprite = new MarioFireCrouchLeftSprite(mario.mySprint);
+                        //luigi.mySprint.marioSprite = new MarioFireCrouchLeftSprite(luigi.mySprint);
                         break;
                     }
 
-                case (Mario.MarioHealth.Big):
+                case (Luigi.LuigiHealth.Big):
                     {
-                        mario.mySprint.marioSprite = new MarioBigCrouchLeftSprite(mario.mySprint);
+                        //luigi.mySprint.marioSprite = new MarioBigCrouchLeftSprite(luigi.mySprint);
                         break;
                     }
             }
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            throw new NotImplementedException();
         }
 
         public void Draw(SpriteBatch spriteBatch, ContentManager content)

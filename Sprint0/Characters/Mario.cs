@@ -96,7 +96,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch, ContentManager content)
         {
-            marioState.Draw();
+           // marioState.Draw();
         }
     }
 }

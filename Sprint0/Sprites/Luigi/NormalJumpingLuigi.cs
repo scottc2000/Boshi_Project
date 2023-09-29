@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
 using System.Reflection.Emit;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
-    internal class JumpingLuigi : ISprite
+    internal class NormalJumpingLuigi : ISprite
     {
 
-        private Sprint0 mySprint0;
+        private Luigi luigi;
+
+        // sprite handling stuff
         public Texture2D Texture;
         public int CurrentFrame = 0;
         public int TotalFrames = 1;
@@ -24,29 +27,28 @@ namespace Sprint0.Sprites
         public Rectangle[] spriteFrames;
 
 
-        public int y = 240;
-        Vector2 position;
         Rectangle destination;
         float rotation = 0, layer = 0;
         SpriteEffects right;
 
 
-        public JumpingLuigi(Sprint0 Sprint0)
+        public NormalJumpingLuigi(Luigi luigi)
         {
-            mySprint0 = Sprint0;
+            this.luigi = luigi;
             spriteFrames = new Rectangle[] { new Rectangle(73, 178, 17, 28)};
-            position.X = 400;
-            position.Y = 240;
-            y = 240;
             right = SpriteEffects.None;
+            // if direction is positive then the sprite will turn right (left by default)
+            if (this.luigi.myDirection == 1)
+            {
+                right = SpriteEffects.FlipHorizontally;
+            }
         }
         public void Update()
         {
-
-            if (position.Y > (y - 30))
-            {
-                position.Y--;
-            }
+                // changes position by making the sprite go to the direction of luigi and up
+                luigi.position.Y--;
+                luigi.position.X += luigi.myDirection;
+            
 
         }
 
@@ -55,7 +57,7 @@ namespace Sprint0.Sprites
             Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
 
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
 
             spriteBatch.Draw(Texture, destination, spriteFrames[0], Color.White, rotation, new Vector2(0, 0), right, layer);
         }

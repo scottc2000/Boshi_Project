@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Characters.LuigiStates;
+using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Commands.Luigi
 
 namespace Sprint0.Commands
 
@@ -21,10 +22,10 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-           // mySprint0.luigiSprite = new JumpingLuigi(mySprint0);
-            mySprint0.luigiSprite = new JumpingLuigi(mySprint0);
+            mySprint0.luigi.luigiState = new LuigiJumpState(mySprint0.luigi);
 
         }
 
     }
 }
+

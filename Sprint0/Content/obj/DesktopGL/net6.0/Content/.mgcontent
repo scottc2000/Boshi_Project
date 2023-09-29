@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
+    <File>/Users/ismail/Projects/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
