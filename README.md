@@ -15,3 +15,7 @@ Controls:
   Other:
     - q quit
     - r reset to initial state
+
+Known Bugs:
+
+Non required tools:
