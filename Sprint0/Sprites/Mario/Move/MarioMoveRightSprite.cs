@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters;
 using Sprint0.Interfaces;
+using System;
 
 namespace Sprint0.Sprites
 {
@@ -11,10 +12,9 @@ namespace Sprint0.Sprites
         private Mario mario;
 
         // Frame Stats
-        private int CurrentFrame = 0;
-        private int TotalFrames = 3;
-        private int timeSinceLastFrame = 0;
-        private int millisecondsPerFrame = 150;
+        private int currentFrame = 0;
+        private int totalFrames = 3;
+        private double frameSpeed = 0.2;
 
         // Rectanlges
         private Rectangle[] spriteFrames;
@@ -26,22 +26,6 @@ namespace Sprint0.Sprites
             spriteFrames = new Rectangle[] { new Rectangle(1, 15, 17, 17), new Rectangle(19, 15, 17, 17), new Rectangle(36, 15, 17, 17), new Rectangle(19, 15, 17, 17) };
             this.mario = mario;
         }
-        public void Update()
-        {
-
-            timeSinceLastFrame += mySprint.myGameTime.ElapsedGameTime.Milliseconds;
-
-            if (timeSinceLastFrame > millisecondsPerFrame)
-            {
-                timeSinceLastFrame -= millisecondsPerFrame;
-                CurrentFrame++;
-                if (CurrentFrame == TotalFrames)
-                {
-                    CurrentFrame = 0;
-                }
-            }
-
-        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -52,8 +36,16 @@ namespace Sprint0.Sprites
             float rotation = 0;
             float layer = 0;
 
-            spriteBatch.Draw(mario.marioTexture, destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0,0), right, layer);
+            spriteBatch.Draw(mario.marioTexture, destination, spriteFrames[currentFrame], Color.White, rotation, new Vector2(0, 0), right, layer);
         }
+
+        public void Update(GameTime gametime)
+        {
+            // Frame buffer : http://rbwhitaker.wikidot.com/forum/t-398346/animated-sprite-speed-display
+            currentFrame = (int)(gametime.TotalGameTime.TotalSeconds / frameSpeed);
+            currentFrame = currentFrame % totalFrames;
+        }
+
 
     }
 }

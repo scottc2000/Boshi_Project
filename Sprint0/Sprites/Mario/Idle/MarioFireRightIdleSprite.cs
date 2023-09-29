@@ -28,7 +28,7 @@ namespace Sprint0.Sprites
             spriteFrame = new Rectangle(1, 263, 17, 28);
             this.mario = mario;
         }
-        public void Update()
+        public void Update(GameTime gametime)
         {
       
         }

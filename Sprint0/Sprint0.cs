@@ -63,7 +63,7 @@ namespace Sprint0
             myGameTime = gameTime;
 
             KeyboardController.Update();
-            mario.Update();
+            mario.Update(gameTime);
 
             base.Update(gameTime);
         }

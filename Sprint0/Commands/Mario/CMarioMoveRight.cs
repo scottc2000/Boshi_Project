@@ -22,7 +22,8 @@ namespace Sprint0.Commands
         public void Execute()
         {
             mario = mySprint0.mario;
-            mario.MoveRight();
+            mario.facingLeft = false;
+            mario.Move();
         }
     }
 }

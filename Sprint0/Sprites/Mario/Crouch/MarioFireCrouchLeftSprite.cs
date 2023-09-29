@@ -29,7 +29,7 @@ namespace Sprint0.Sprites
             this.mario = mario;
 
         }
-        public void Update()
+        public void Update(GameTime gametime)
         {
         }
 

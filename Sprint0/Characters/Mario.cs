@@ -6,15 +6,16 @@ using Sprint0.Sprites;
 
 namespace Sprint0.Characters
 {
-    internal class Mario : ICharacter
+    public class Mario : ICharacter
     {
         public enum MarioHealth { Normal, Raccoon, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
-        public ICharacterState State { get; set; }
 
-        public bool isJumping;
-        public bool isFalling;
-        public bool facingLeft;
+        public enum MarioPose { Jump, Crouch, Idle, Walking};
+        public MarioPose pose = MarioPose.Idle;
+        public bool facingLeft { get; set; }
+
+        public ICharacterState State { get; set; }
 
         public Vector2 position;
         public Sprint0 mySprint;
@@ -22,14 +23,13 @@ namespace Sprint0.Characters
         public ISprite marioSprite;
         public Texture2D marioTexture;
 
+
         public Mario(Sprint0 sprint0)
         {
             this.health = MarioHealth.Normal;
-            this.State = new MarioFaceLeft(this);
+            this.State = new MarioIdleState(this);
 
             this.facingLeft = true;
-            this.isFalling = false;
-            this.isJumping = false;
 
             this.position.X= 150;
             this.position.Y = 150;
@@ -37,76 +37,64 @@ namespace Sprint0.Characters
 
             this.marioSprite = new MarioLeftIdleSprite(mySprint, this);
             marioTexture = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
+            //this.marioSprite = CharacterSpriteFactory.Instance.CreateMarioIdleRightSprite();
 
         }
 
 
-        public void MoveRight()
+        public void Move() 
         {
-            State.MoveRight();
-        }
-
-        public void MoveLeft()
-        {
-            State.MoveLeft();
+            State.Move();
         }
 
         public void Jump()
         {
-            if (facingLeft)
-            {
-                State.JumpLeft();
-            } else
-            {
-                State.JumpRight();
-            }
+            State.Jump();
         }
 
         public void Crouch()
         {
-            if (facingLeft)
-            {
-                State.CrouchLeft();
-            } else
-            {
-                State.CrouchRight();
-            }
+            State.Crouch();
         }
 
         public void Stop()
         {
-            if (facingLeft)
-            {
-                State.StopLeft();
-            } else
-            {
-                State.StopRight();
-            }
+            State.Stop();
         }
 
+        public void Die()
+        {
+            State.Die();
+        }
+    
+        // Will change with game functionality
         public void ChangeToFire()
         {
             health = MarioHealth.Fire;
+            State.ChangeHealth();
         }
 
         public void ChangeToRaccoon()
         {
             health = MarioHealth.Raccoon;
+            State.ChangeHealth();
         }
 
         public void ChangeToBig()
         {
             health = MarioHealth.Big;
+            State.ChangeHealth();
         }
 
         public void ChangeToNormal()
         {
             health = MarioHealth.Normal;
+            State.ChangeHealth();
         }
 
-        public void Update()
+        public void Update(GameTime gametime)
         {
-           State.Update();
+           State.Update(gametime);
         }
 
         public void Draw(SpriteBatch spritebatch)

@@ -11,10 +11,9 @@ namespace Sprint0.Sprites
         private Mario mario;
 
         // Frame Stats
-        private int CurrentFrame = 0;
-        private int TotalFrames = 3;
-        private int timeSinceLastFrame = 0;
-        private int millisecondsPerFrame = 150;
+        private int currentFrame = 0;
+        private int totalFrames = 3;
+        private double frameSpeed = 0.2;
 
         // Rectanlges
         private Rectangle[] spriteFrames;
@@ -28,19 +27,11 @@ namespace Sprint0.Sprites
 
         }
 
-        public void Update()
+        public void Update(GameTime gametime)
         {
-            timeSinceLastFrame += mySprint.myGameTime.ElapsedGameTime.Milliseconds;
-
-            if (timeSinceLastFrame > millisecondsPerFrame)
-            {
-                timeSinceLastFrame -= millisecondsPerFrame;
-                CurrentFrame++;
-                if (CurrentFrame == TotalFrames)
-                {
-                    CurrentFrame = 0;
-                }
-            }
+            // Frame buffer : http://rbwhitaker.wikidot.com/forum/t-398346/animated-sprite-speed-display
+            currentFrame = (int)(gametime.TotalGameTime.TotalSeconds / frameSpeed);
+            currentFrame = currentFrame % totalFrames;
 
 
         }
@@ -48,7 +39,7 @@ namespace Sprint0.Sprites
         public void Draw(SpriteBatch spriteBatch)
         {
             destination = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 56);
-            spriteBatch.Draw(mario.marioTexture, destination, spriteFrames[CurrentFrame], Color.White);
+            spriteBatch.Draw(mario.marioTexture, destination, spriteFrames[currentFrame], Color.White);
         }
     }
 }

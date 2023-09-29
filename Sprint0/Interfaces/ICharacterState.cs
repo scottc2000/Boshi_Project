@@ -1,23 +1,19 @@
-﻿namespace Sprint0.Interfaces
+﻿using Microsoft.Xna.Framework;
+
+namespace Sprint0.Interfaces
 {
     public interface ICharacterState
     {
-        public void MoveRight();
+        public void Move();
 
-        public void MoveLeft();
+        public void Jump();
+        public void Crouch();
+        public void Stop();
 
-        public void JumpLeft();
+        public void Die();
 
-        public void JumpRight();
+        public void ChangeHealth();
 
-        public void CrouchLeft();
-
-        public void CrouchRight();
-
-        public void StopLeft();
-
-        public void StopRight();
-
-        public void Update();
+        public void Update(GameTime gametime);
     }
 }

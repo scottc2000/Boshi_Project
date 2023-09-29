@@ -20,7 +20,7 @@ namespace Sprint0.Sprites
             mySprint = mySprint0;
             this.mario = mario;
         }
-        public void Update()
+        public void Update(GameTime gametime)
         {
 
         }
