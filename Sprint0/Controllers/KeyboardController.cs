@@ -20,6 +20,7 @@ namespace Sprint0.Controllers
 
         public KeyboardController(Sprint0 sprint)
         {
+            // controllerMappings is where all keys are stored with commands to correlate
             controllerMappings = new Dictionary<Keys, ICommand>();
             previous = Keyboard.GetState();
             releasedKeys = new Keys[0];
@@ -40,8 +41,9 @@ namespace Sprint0.Controllers
 
         public void Update()
         {
+            // goes through keys and excecutes method correlating to key
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            Console.WriteLine(pressedKeys);
+           
 
             foreach(Keys key in pressedKeys)
             {

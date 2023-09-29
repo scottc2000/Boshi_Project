@@ -100,7 +100,7 @@ namespace Sprint0.Characters.LuigiStates
             }
         }
 
-
+        // uneeded imo, drawing should be handled by Charecter object
         public void Draw(SpriteBatch spriteBatch, ContentManager content)
         {
 

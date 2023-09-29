@@ -37,7 +37,7 @@ namespace Sprint0
 
         protected override void Initialize()
         {
-            KeyboardController = new KeyboardController(this);
+            KeyboardController = new KeyboardController(this); // creates new keyboard controller
 
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.D0, new Exit(this));
@@ -53,7 +53,7 @@ namespace Sprint0
             // KeyboardController.RegisterCommand(Keys.Q, new CMarioFire(this));
             // KeyboardController.RegisterCommand(Keys.E, new CMarioStar(this));
 
-            //Luigi
+            //Luigi controlss
             KeyboardController.RegisterCommand(Keys.J, new LuigiLeft(this));
             KeyboardController.RegisterCommand(Keys.L, new LuigiRight(this));
             KeyboardController.RegisterCommand(Keys.K, new LuigiCrouch(this));
@@ -72,7 +72,8 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //  mario = new Mario(this);
-            luigi = new Luigi(this);
+
+            luigi = new Luigi(this); // create new luigi character 
             
             //marioPosition.X = 150;
             //marioPosition.Y = 150;
@@ -86,12 +87,13 @@ namespace Sprint0
         {
             myGameTime = gameTime;
 
+            // updates what is currently pressed, then updates luigi character
             KeyboardController.Update();
-
+            luigi.Update();
 
 
             //mario.Update(gameTime);
-            luigi.Update();
+
 
             //marioSprite.Update();
             //luigi.Update();
@@ -107,6 +109,8 @@ namespace Sprint0
             _spriteBatch.Begin();
 
             //mario.Draw(_spriteBatch, Content); need to update parameters
+
+
             luigi.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();
