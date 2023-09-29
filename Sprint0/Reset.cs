@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Sprint0.Characters;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 
 namespace Sprint0
 {
     internal class Reset : ICommand
     {
         private Sprint0 mySprint;
-        public Reset(Sprint0 game) { 
+
+        public Reset(Sprint0 game)
+        {
             mySprint = game;
         }
-        public void Execute() 
+        public void Execute()
         {
-            mySprint.marioSprite = new MarioBigLeftIdleSprite(mySprint);
+            // Error CS0118 when moving Reset.cs file to Commands folder
+            mySprint.mario = new Mario(mySprint);
         }
 
     }

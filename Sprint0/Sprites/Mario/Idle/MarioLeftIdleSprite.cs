@@ -8,31 +8,31 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
     internal class MarioLeftIdleSprite : ISprite
     {
         private Sprint0 mySprint;
-        private Texture2D stillMario;
+        private Mario mario;
+
         private Rectangle spriteFrame;
         private Rectangle position;
-        public MarioLeftIdleSprite(Sprint0 sprint0)
+        public MarioLeftIdleSprite(Sprint0 sprint0, Mario mario)
         {
             spriteFrame = new Rectangle(1, 15, 17, 17);
-            position = new Rectangle(150, 150, 34, 56);
             mySprint = sprint0;
+            this.mario = mario;
         }
-        public void Update()
+        public void Update(GameTime gametime)
         {
-            //Nothing needed here
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D stillMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
-
-            spriteBatch.Draw(stillMario, position, new Rectangle(1, 90, 17, 28), Color.White);
+            position = new Rectangle((int)mario.position.X, (int)mario.position.Y, 20, 28);
+            spriteBatch.Draw(mario.marioTexture, position, spriteFrame, Color.White);
 
         }
     }

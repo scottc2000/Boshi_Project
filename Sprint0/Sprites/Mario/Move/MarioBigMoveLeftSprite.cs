@@ -1,66 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+using Sprint0.Characters;
 using Sprint0.Interfaces;
-using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Sprint0.Sprites
 {
     internal class MarioBigMoveLeftSprite : ISprite
     {
-        private Sprint0 mySprint0;
-        private Texture2D marioMovingLeft;
+        private Sprint0 mySprint;
+        private Mario mario;
 
         // Frame Stats
-        private int CurrentFrame = 0;
-        private int TotalFrames = 3;
-        private int timeSinceLastFrame = 0;
-        private int millisecondsPerFrame = 150;
+        private int currentFrame = 0;
+        private int totalFrames = 3;
+        private double frameSpeed = 0.2;
 
         // Rectanlges
         private Rectangle[] spriteFrames;
         private Rectangle destination;
 
-        private Vector2 position;
-        public MarioBigMoveLeftSprite(Sprint0 Sprint0)
+        public MarioBigMoveLeftSprite(Sprint0 Sprint0, Mario mario)
         {
-            mySprint0 = Sprint0;
+            mySprint = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(1, 92, 17, 28), new Rectangle(19, 92, 17, 28), new Rectangle(36, 92, 17, 28), new Rectangle(19, 92, 17, 28) };
-            position.X = 150;
+            this.mario = mario;
+        }
+
+        public void Update(GameTime gametime)
+        {
+            // Frame buffer : http://rbwhitaker.wikidot.com/forum/t-398346/animated-sprite-speed-display
+            currentFrame = (int)(gametime.TotalGameTime.TotalSeconds / frameSpeed);
+            currentFrame = currentFrame % totalFrames;
 
         }
 
-        public void Update()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            timeSinceLastFrame += mySprint0.myGameTime.ElapsedGameTime.Milliseconds;
 
-            if (timeSinceLastFrame > millisecondsPerFrame)
-            {
-                timeSinceLastFrame -= millisecondsPerFrame;
-                CurrentFrame++;
-                if (CurrentFrame == TotalFrames)
-                {
-                    CurrentFrame = 0;
-                }
-            }
-
-            position.X -= 1;
-
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
-        {
-            marioMovingLeft = Content.Load<Texture2D>("SpriteImages/playerssclear");
-
-            destination = new Rectangle((int)position.X, 150, 34, 56);
-
-            spriteBatch.Draw(marioMovingLeft, destination, spriteFrames[CurrentFrame], Color.White);
+            destination = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 56);
+            spriteBatch.Draw(mario.marioTexture, destination, spriteFrames[currentFrame], Color.White);
         }
     }
 }

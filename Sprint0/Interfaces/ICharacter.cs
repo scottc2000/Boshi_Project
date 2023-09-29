@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Interfaces
 {
     public interface ICharacter
     {
-        public void ChangeDirection();
+        ICharacterState State { get; set; }
+        bool facingLeft { get; set; }
 
-        public void MoveRight();
-
-        public void MoveLeft();
+        public void Move();
 
         public void Jump();
 
@@ -20,7 +16,18 @@ namespace Sprint0.Interfaces
 
         public void Stop();
 
-        void Update();
+        public void Die();
 
+        void ChangeToFire();
+
+        void ChangeToRaccoon();
+
+        void ChangeToBig();
+
+        void ChangeToNormal();
+
+        void Update(GameTime gametime);
+
+        void Draw(SpriteBatch spritebatch);
     }
 }

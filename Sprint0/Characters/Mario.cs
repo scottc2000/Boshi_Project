@@ -1,102 +1,101 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
-using Sprint0.Commands;
-using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using Sprint0.Sprites;
 
 namespace Sprint0.Characters
 {
-    internal class Mario : ICharacter
+    public class Mario : ICharacter
     {
-        private bool facingLeft;
-        public enum MarioHealth { Normal, Star, Fire, Big};
+        public enum MarioHealth { Normal, Raccoon, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
-        public ICharacterState marioState;
-        public Vector2 position { get; set; }
+
+        public enum MarioPose { Jump, Crouch, Idle, Walking};
+        public MarioPose pose = MarioPose.Idle;
+        public bool facingLeft { get; set; }
+
+        public ICharacterState State { get; set; }
+
+        public Vector2 position;
         public Sprint0 mySprint;
+
+        public ISprite marioSprite;
+        public Texture2D marioTexture;
+
+
         public Mario(Sprint0 sprint0)
         {
-            health = MarioHealth.Normal;
-            facingLeft = true;
-            marioState = new MarioFaceLeft(this);
-            mySprint = sprint0;
+            this.health = MarioHealth.Normal;
+            this.State = new MarioIdleState(this);
+
+            this.facingLeft = true;
+
+            this.position.X= 150;
+            this.position.Y = 150;
+            this.mySprint = sprint0;
+
+            this.marioSprite = new MarioLeftIdleSprite(mySprint, this);
+            marioTexture = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
+            //this.marioSprite = CharacterSpriteFactory.Instance.CreateMarioIdleRightSprite();
 
         }
 
-        public void ChangeDirection()
-        {
-            marioState.ChangeDirection();
-        }
 
-        public void MoveRight()
+        public void Move() 
         {
-            if (facingLeft)
-            {
-                marioState.ChangeDirection();
-                facingLeft = false;
-            }
-            marioState.Move();
-        }
-
-        public void MoveLeft()
-        {
-            if (!facingLeft)
-            {
-                marioState.ChangeDirection();
-                facingLeft = true;
-            }
-            marioState.Move();
+            State.Move();
         }
 
         public void Jump()
         {
-            if (facingLeft)
-            {
-                marioState = new MarioJumpFaceLeft(this);
-            }
-            else
-            {
-                marioState = new MarioJumpFaceRight(this);
-            }
+            State.Jump();
         }
 
         public void Crouch()
         {
-            if (facingLeft) { 
-                marioState = new MarioCrouchFaceLeft(this);
-            } else
-            {
-                marioState = new MarioCrouchFaceRight(this);
-            }
+            State.Crouch();
         }
 
         public void Stop()
         {
-            if(facingLeft)
-            {
-                marioState = new MarioFaceLeft(this);
-            } else
-            {
-                marioState = new MarioFaceRight(this);
-            }
-
+            State.Stop();
         }
 
-        public void Update()
+        public void Die()
         {
-
+            State.Die();
+        }
+    
+        // Will change with game functionality
+        public void ChangeToFire()
+        {
+            health = MarioHealth.Fire;
         }
 
-        public void Draw(SpriteBatch spritebatch, ContentManager content)
+        public void ChangeToRaccoon()
         {
-            marioState.Draw();
+            health = MarioHealth.Raccoon;
+        }
+
+        public void ChangeToBig()
+        {
+            health = MarioHealth.Big;
+        }
+
+        public void ChangeToNormal()
+        {
+            health = MarioHealth.Normal;
+        }
+
+        public void Update(GameTime gametime)
+        {
+           State.Update(gametime);
+        }
+
+        public void Draw(SpriteBatch spritebatch)
+        {
+            marioSprite.Draw(spritebatch);
         }
     }
 }

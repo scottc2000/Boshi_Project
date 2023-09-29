@@ -8,38 +8,34 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
     internal class MarioBigCrouchLeftSprite : ISprite
     {
-        private Sprint0 mySprint0;
-        private Texture2D crouchingMario;
-
-        // Keyboard States
-        private KeyboardState current;
+        private Sprint0 mySprint;
+        private Mario mario;
 
         // Rectangles
         private Rectangle spriteFrames;
         private Rectangle position;
 
-        public MarioBigCrouchLeftSprite(Sprint0 Sprint0)
+        public MarioBigCrouchLeftSprite(Sprint0 Sprint0, Mario mario)
         {
-            mySprint0 = Sprint0;
+            mySprint = Sprint0;
             spriteFrames = new Rectangle(54, 92, 17, 28);
-            position = new Rectangle(150, 150, 34, 56);
-
+            this.mario = mario;
         }
-        public void Update()
+        public void Update(GameTime gametime)
         {
-            //Not needed - single file
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            crouchingMario = Content.Load<Texture2D>("SpriteImages/playerssclear");
+            position = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 56);
 
-            spriteBatch.Draw(crouchingMario, position, spriteFrames, Color.White);
+            spriteBatch.Draw(mario.marioTexture, position, spriteFrames, Color.White);
         }
 
     }
