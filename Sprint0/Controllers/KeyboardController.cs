@@ -42,8 +42,8 @@ namespace Sprint0.Controllers
             {
                 if (controllerMappings.ContainsKey(key))
                     controllerMappings[key].Execute();
-                else if (next(pressedKeys)) { controllerMappings[key].Execute(); }
-                else if (prev(pressedKeys)) { controllerMappings[key].Execute(); }
+                if (next(pressedKeys)) { controllerMappings[key].Execute(); }
+                if (prev(pressedKeys)) { controllerMappings[key].Execute(); }
             }
 
             /*  if (pressedKeys.Contains(Keys.D0))

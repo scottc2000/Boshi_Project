@@ -23,6 +23,19 @@ namespace Sprint0.Commands.Blocks
             {
                 game.currentSpriteIndex = 4;
             }
+
+            //switch (game.currentSpriteIndex)
+            //{
+            //    case 1:
+            //        game.tempSpriteIndex = 6;
+            //        break;
+            //    case 4:
+            //        game.tempSpriteIndex = 9;
+            //        break;
+            //    default:
+            //        game.tempSpriteIndex = game.currentSpriteIndex;
+            //        break;
+            //}
         }
     }
 }
