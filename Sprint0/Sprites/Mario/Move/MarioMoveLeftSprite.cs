@@ -26,13 +26,13 @@ namespace Sprint0.Sprites
         private Rectangle[] spriteFrames;
         private Rectangle destination;
 
-        private Vector2 position;
-        public MarioMoveLeftSprite(Sprint0 Sprint0)
+
+        public MarioMoveLeftSprite(Sprint0 Sprint0, Vector2 position)
         {
             mySprint = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(1, 15, 17, 17), new Rectangle(19, 15, 17, 17), new Rectangle(36, 15, 17, 17), new Rectangle(19, 15, 17, 17) };
-            position.X = 150;
 
+            destination = new Rectangle((int)position.X, (int)position.X, 20, 28);
         }
 
         public void Update()
@@ -49,16 +49,11 @@ namespace Sprint0.Sprites
                 }
             }
 
-            position.X -= 1;
-
-
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             marioMovingLeft = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
-
-            destination = new Rectangle((int)position.X, 150, 34, 56);
 
             spriteBatch.Draw(marioMovingLeft, destination, spriteFrames[CurrentFrame], Color.White);
         }

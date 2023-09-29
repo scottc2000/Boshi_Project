@@ -52,7 +52,7 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)position.X, (int)position.Y, 20, 28);
             jumpMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             spriteBatch.Draw(jumpMario, destination, spriteFrames[CurrentFrame], Color.White);

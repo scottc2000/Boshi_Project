@@ -13,19 +13,22 @@ namespace Sprint0.Characters.MarioStates
     internal class MarioMoveLeft : ICharacterState
     {
         private Mario mario;
+        private Vector2 currentLocation;
 
         public MarioMoveLeft(Mario mario)
         {
             this.mario = mario;
+            currentLocation = mario.position;
         }
         public void ChangeDirection()
         {
             mario.State = new MarioMoveRight(mario);
+
         }
 
         public void Move()
         {
-
+            currentLocation.X -= 1;
         }
 
         public void Stop()
@@ -39,7 +42,7 @@ namespace Sprint0.Characters.MarioStates
             {
                 case (Mario.MarioHealth.Normal):
                     {
-                        mario.mySprint.marioSprite = new MarioMoveLeftSprite(mario.mySprint);
+                        mario.mySprint.marioSprite = new MarioMoveLeftSprite(mario.mySprint, currentLocation);
                         break;
                     }
 

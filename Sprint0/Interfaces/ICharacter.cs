@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprint0.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Sprint0.Interfaces
     public interface ICharacter
     {
         ICharacterState State { get; set; }
+
         public void ChangeDirection();
 
         public void MoveRight();
@@ -19,9 +21,16 @@ namespace Sprint0.Interfaces
 
         public void Crouch();
 
+        public void Stand();
+
         public void Stop();
 
-        void Update();
+        void ChangeToFire();
 
+        void ChangeToBig();
+
+        void ChangeToNormal();
+
+        void Update();
     }
 }

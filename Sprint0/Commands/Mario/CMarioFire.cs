@@ -6,22 +6,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Sprint0.Characters.Mario;
 
-namespace Sprint0.Commands
+namespace Sprint0.Commands.Mario
 {
-    internal class CMarioLeftIdle : ICommand
-    { 
+    internal class CMarioFire : ICommand
+    {
         private Sprint0 mySprint0;
         private ICharacter mario;
-        public CMarioLeftIdle(Sprint0 Sprint0)
+        public CMarioFire(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
             mario = mySprint0.mario;
-            mario.Stop();
-
+            mario.ChangeToFire();
         }
 
     }

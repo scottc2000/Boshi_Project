@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Sprint0.Controllers
 {
@@ -17,11 +19,13 @@ namespace Sprint0.Controllers
         public KeyboardState current;
         public KeyboardState previous;
         public Keys[] releasedKeys;
+        public ICharacter mario;
 
-        public KeyboardController()
+        public KeyboardController(Sprint0 sprint0, ICharacter Mario)
         {
             controllerMappings = new Dictionary<Keys, ICommand>();
             previous = Keyboard.GetState();
+            mario = Mario;
             releasedKeys = new Keys[0];
         }
 
@@ -38,38 +42,81 @@ namespace Sprint0.Controllers
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
-            foreach(Keys key in pressedKeys)
-            {
-                if (controllerMappings.ContainsKey(key))
-                    controllerMappings[key].Execute();
-            }
-
-          /*  if (pressedKeys.Contains(Keys.D0))
+            // Quit
+             if (pressedKeys.Contains(Keys.D0) && !releasedKeys.Contains(Keys.D0))
             {
                 controllerMappings[Keys.D0].Execute();
             }
-            if (pressedKeys.Contains(Keys.D9))
+
+            // Reset
+            if (pressedKeys.Contains(Keys.D9) && !releasedKeys.Contains(Keys.D9))
             {
                 controllerMappings[Keys.D9].Execute();
             }
-            if(Left(pressedKeys))
+
+            // Move Left
+            if(Left(pressedKeys) && !Left(releasedKeys))
             {
                 controllerMappings[Keys.A].Execute();
-            } else if (Right(pressedKeys))
+            } 
+
+            // Stop Moving Left
+            else if(!Left(pressedKeys) && Left(releasedKeys))
+            {
+                new CReleasedMario(mySprint);
+            }    
+            
+            // Move Right
+            else if (Right(pressedKeys) && !Right(releasedKeys))
             {
                 controllerMappings[Keys.D].Execute();
-            } else if (Up(pressedKeys))
+            } 
+
+            // Stop Moving Right
+
+            else if (!Right(pressedKeys) && Right(releasedKeys))
+            {
+                new CReleasedMario(mySprint);
+            }
+            
+            // Jump
+            else if (Up(pressedKeys) && !Up(releasedKeys))
             {
                 controllerMappings[Keys.W].Execute();
-            } else if (Down(pressedKeys))
+            } 
+            
+            // Crouch
+            else if (Down(pressedKeys) && !Down(releasedKeys))
             {
                 controllerMappings[Keys.S].Execute();
-            } else if (Idle(pressedKeys))
+
+            } 
+
+            // Not Crouching
+            else if (!Down(pressedKeys) && Down(releasedKeys))
             {
-                controllerMappings[Keys.Z].Execute();
+                new CReleasedMario(mySprint);
+            }
+            
+            // Change to Fire State
+            else if (pressedKeys.Contains(Keys.Q) && !releasedKeys.Contains(Keys.Q))
+            {
+                controllerMappings[Keys.Q].Execute();
             }
 
-            releasedKeys = pressedKeys; */
+            // Change to Big State
+            else if (pressedKeys.Contains(Keys.D1) && !releasedKeys.Contains(Keys.D1))
+            {
+                controllerMappings[Keys.D1].Execute();
+            }
+
+            // Change to Normal State
+            else if (pressedKeys.Contains(Keys.D2) && !releasedKeys.Contains(Keys.D2))
+            {
+                controllerMappings[Keys.D2].Execute();
+            }
+
+            releasedKeys = pressedKeys;
 
         }
 

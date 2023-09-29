@@ -29,7 +29,7 @@ namespace Sprint0.Sprites
 
         public MarioJumpRightSprite(Sprint0 mySprint0)
         {
-            spriteFrames = new Rectangle[] { new Rectangle(72, 15, 17, 28), new Rectangle(36, 15, 17, 28) };
+            spriteFrames = new Rectangle[] { new Rectangle(72, 15, 17, 17), new Rectangle(36, 15, 17, 17) };
             position.Y = 150;
             position.X = 150;
             hasJumped = true;
@@ -52,7 +52,7 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)position.X, (int)position.Y, 34, 56);
+            destination = new Rectangle((int)position.X, (int)position.Y, 20, 28);
             jumpMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
             // Overload parameters to flip sprite horizontally

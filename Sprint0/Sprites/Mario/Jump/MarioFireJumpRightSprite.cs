@@ -29,7 +29,7 @@ namespace Sprint0.Sprites
 
         public MarioFireJumpRightSprite(Sprint0 mySprint0)
         {
-            spriteFrames = new Rectangle[] { new Rectangle(72, 92, 17, 28), new Rectangle(36, 92, 17, 28) };
+            spriteFrames = new Rectangle[] { new Rectangle(72, 263, 17, 28), new Rectangle(36, 263, 17, 28) };
             position.Y = 150;
             position.X = 150;
             hasJumped = true;

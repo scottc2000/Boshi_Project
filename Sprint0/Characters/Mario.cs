@@ -43,7 +43,7 @@ namespace Sprint0.Characters
                 State.ChangeDirection();
                 facingLeft = false;
             }
-            State.Move();
+            State = new MarioMoveRight(this);
         }
 
         public void MoveLeft()
@@ -53,7 +53,7 @@ namespace Sprint0.Characters
                 State.ChangeDirection();
                 facingLeft = true;
             }
-            State.Move();
+            State = new MarioMoveLeft(this);
         }
 
         public void Jump()
@@ -78,6 +78,17 @@ namespace Sprint0.Characters
             }
         }
 
+        public void Stand()
+        {
+            if (facingLeft)
+            {
+                State = new MarioFaceLeft(this);
+            } else
+            {
+                State = new MarioFaceRight(this);
+            }
+        }
+
         public void Stop()
         {
             if(facingLeft)
@@ -90,9 +101,24 @@ namespace Sprint0.Characters
 
         }
 
+        public void ChangeToFire()
+        {
+            health = MarioHealth.Fire;
+        }
+
+        public void ChangeToBig()
+        {
+            health = MarioHealth.Big;
+        }
+
+        public void ChangeToNormal()
+        {
+            health = MarioHealth.Normal;
+        }
+
         public void Update()
         {
-
+           // this.Update();
         }
 
         public void Draw(SpriteBatch spritebatch)

@@ -31,9 +31,9 @@ namespace Sprint0.Sprites
         {
             Texture2D stillMario = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            position = new Rectangle((int)location.X, (int)location.Y, 34, 56);
+            position = new Rectangle((int)location.X, (int)location.Y, 20, 28);
 
-            spriteBatch.Draw(stillMario, position, new Rectangle(1, 90, 17, 28), Color.White);
+            spriteBatch.Draw(stillMario, position, spriteFrame, Color.White);
 
         }
     }

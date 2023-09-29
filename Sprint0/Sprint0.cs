@@ -34,7 +34,7 @@ namespace Sprint0
 
         protected override void Initialize()
         {
-            KeyboardController = new KeyboardController();
+            KeyboardController = new KeyboardController(this, mario);
 
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.D0, new Exit(this));
@@ -45,9 +45,9 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            KeyboardController.RegisterCommand(Keys.Z, new CMarioLeftIdle(this));
-           // KeyboardController.RegisterCommand(Keys.X, new CMarioRightIdle(this));
-           // KeyboardController.RegisterCommand(Keys.Q, new CMarioFire(this));
+            KeyboardController.RegisterCommand(Keys.Q, new CMarioFire(this));
+            KeyboardController.RegisterCommand(Keys.D1, new CMarioBig(this));
+            KeyboardController.RegisterCommand(Keys.D2, new CMarioNormal(this));
            // KeyboardController.RegisterCommand(Keys.E, new CMarioStar(this));
 
             base.Initialize();
@@ -71,8 +71,6 @@ namespace Sprint0
 
             KeyboardController.Update();
             mario.Update();
-
-            marioSprite.Update();
 
             base.Update(gameTime);
         }

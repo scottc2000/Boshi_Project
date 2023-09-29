@@ -57,7 +57,7 @@ namespace Sprint0.Sprites
         {
             marioMovingRight = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)position.X, 150, 34, 56);
+            destination = new Rectangle((int)position.X, 150, 20, 28);
 
             // Overload parameters to flip sprite horizontally
             SpriteEffects right = SpriteEffects.FlipHorizontally;
