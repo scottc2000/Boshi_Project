@@ -40,7 +40,7 @@ namespace Sprint0.Sprites
             this.luigi = luigi;
 
             // if direction is positive then the sprite will turn right (left by default)
-            leftSpriteFrames = new Rectangle[] { new Rectangle(19, 178, 17, 28), new Rectangle(37, 178, 17, 28) };
+            leftSpriteFrames = new Rectangle[] { new Rectangle(1, 53, 16, 17) , new Rectangle(19, 51, 16, 17) };
 
 
             if (this.luigi.myDirection == 1)
@@ -75,7 +75,7 @@ namespace Sprint0.Sprites
         {
             Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y + 30, 27, 27);
 
             spriteBatch.Draw(Texture, destination, leftSpriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), right, layer);
         }

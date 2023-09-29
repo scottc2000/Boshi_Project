@@ -26,7 +26,7 @@ namespace Sprint0.Sprites
         public NormalCrouchingLuigi(Luigi luigi)
         {
             this.luigi = luigi;
-            spriteFrames = new Rectangle[] { new Rectangle(55, 180, 17, 28)};
+            spriteFrames = new Rectangle[] { new Rectangle(1, 52, 16, 67)};
             right = SpriteEffects.None;
 
             // if direction is positive then the sprite will turn right (left by default)
@@ -47,7 +47,7 @@ namespace Sprint0.Sprites
         {
             Texture = Content.Load<Texture2D>("SpriteImages/playerssclear");
 
-            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 16, 67);
 
             spriteBatch.Draw(Texture, destination, spriteFrames[0], Color.White, rotation, new Vector2(0, 0), right, layer);
         }

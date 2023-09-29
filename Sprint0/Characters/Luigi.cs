@@ -19,7 +19,7 @@ namespace Sprint0.Characters
     {
         private bool facingLeft; // no longer needed i think, myDirection can be used instead
         public enum LuigiHealth { Normal, Star, Fire, Big};
-        public LuigiHealth health = LuigiHealth.Normal; // normal by default
+        public LuigiHealth health; // big by default
 
         public ICharacterState luigiState; // states and sprites which can be modified from the outside.
         public ISprite currentSprite;
@@ -30,23 +30,24 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            health = LuigiHealth.Normal;
+            health = LuigiHealth.Big;
             myDirection = -1; // facing left by default
             facingLeft = true;
             position.X = 400; // center of screen by default
             position.Y = 240;
-            luigiState = new LuigiFaceLeft(this); // facing left still is default state machine
+            luigiState = new LuigiFaceLeft(this); // facing left still is default state
             
             mySprint = sprint0;
 
         }
 
-        // unsure how to implement these, right now I just have commands that change the directions and jump/crouch using sprite class
+        // unsure how to implement these , right now I just have commands that change the directions and jump/crouch using sprite class
         public void ChangeDirection()
         {
             luigiState.ChangeDirection();
         }
 
+        // unsure how to implement these , right now I just have commands that change the directions and jump/crouch using sprite class
         public void MoveRight()
         {
             
@@ -58,6 +59,7 @@ namespace Sprint0.Characters
             luigiState.Move();
         }
 
+        // unsure how to implement these , right now I just have commands that change the directions and jump/crouch using sprite class
         public void MoveLeft()
         {
             if (!facingLeft)
@@ -68,11 +70,13 @@ namespace Sprint0.Characters
             luigiState.Move();
         }
 
+        // unsure how to implement these , right now I just have commands that change the directions and jump/crouch using sprite class
         public void Jump()
         {
             luigiState = new LuigiJumpState(this);
         }
 
+        // unsure how to implement these , right now I just have commands that change the directions and jump/crouch using sprite class
         public void Crouch()
         {
             
@@ -82,25 +86,35 @@ namespace Sprint0.Characters
         // stop is the only method currently used by keyboard currently
         public void Stop()
         {
-            if(facingLeft)
-            {
-                luigiState = new LuigiFaceLeft(this);
-            } else
-            {
-                luigiState = new LuigiFaceRight(this);
-            }
+            luigiState.Stop();
 
         }
 
+        // Character state class should handle updating I think
         public void Update()
         {
-           
+            luigiState.Update(mySprint.myGameTime);
         }
 
         public void Draw(SpriteBatch spritebatch, ContentManager content)
         {
             // draws current sprite (determined by state machine) to screen
             currentSprite.Draw(spritebatch, content);
+        }
+
+        public void ChangeToFire()
+        {
+            health = LuigiHealth.Fire;
+        }
+
+        public void ChangeToBig()
+        {
+            health = LuigiHealth.Big;
+        }
+
+        public void ChangeToNormal()
+        {
+            health = LuigiHealth.Normal;
         }
     }
 }

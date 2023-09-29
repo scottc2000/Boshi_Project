@@ -77,6 +77,8 @@ namespace Sprint0.Characters
             }
         }
 
+
+
         public void Stop()
         {
             if(facingLeft)
@@ -97,6 +99,21 @@ namespace Sprint0.Characters
         public void Draw(SpriteBatch spritebatch, ContentManager content)
         {
            // marioState.Draw();
+        }
+
+        public void ChangeToFire()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeToBig()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ChangeToNormal()
+        {
+            throw new NotImplementedException();
         }
     }
 }

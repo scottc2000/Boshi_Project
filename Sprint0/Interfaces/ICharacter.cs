@@ -25,5 +25,11 @@ namespace Sprint0.Interfaces
 
         void Draw(SpriteBatch spritebatch, ContentManager content);
 
+        void ChangeToFire();
+
+        void ChangeToBig();
+
+        void ChangeToNormal();
+
     }
 }

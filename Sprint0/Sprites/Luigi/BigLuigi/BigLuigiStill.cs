@@ -12,7 +12,7 @@ using Sprint0.Characters;
 
 namespace Sprint0.Sprites
 {
-    internal class NormalLuigiStill : ISprite
+    internal class BigLuigiStill : ISprite
     {
 
         // sprite Drawing handling
@@ -24,7 +24,7 @@ namespace Sprint0.Sprites
         // character handling
         Luigi luigi;
 
-        public NormalLuigiStill(Luigi luigi)
+        public BigLuigiStill(Luigi luigi)
         {
 
             // gets direction currently facing and position from luigi character

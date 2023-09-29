@@ -15,6 +15,9 @@
     <None Remove="Icon.bmp" />
     <None Remove="Commands\Luigi\" />
     <None Remove="Sprites\Luigi\" />
+    <None Remove="Sprites\Luigi\BigLuigi\" />
+    <None Remove="Sprites\Luigi\NormalLuigi\" />
+    <None Remove="Sprites\Luigi\FIreLuigi\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -28,6 +31,9 @@
     <Folder Include="Characters\LuigiStates\" />
     <Folder Include="Commands\Luigi\" />
     <Folder Include="Sprites\Luigi\" />
+    <Folder Include="Sprites\Luigi\BigLuigi\" />
+    <Folder Include="Sprites\Luigi\NormalLuigi\" />
+    <Folder Include="Sprites\Luigi\FIreLuigi\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

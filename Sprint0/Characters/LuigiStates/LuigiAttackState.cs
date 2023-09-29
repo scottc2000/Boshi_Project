@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
@@ -11,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Characters.MarioStates
 {
-    internal class LuigiJumpState : ICharacterState
+    internal class LuigiAttackState : ICharacterState
     {
         private Luigi luigi;
 
-        public LuigiJumpState(Luigi luigi)
+        public LuigiAttackState(Luigi luigi)
         {
             this.luigi = luigi;
         }
@@ -30,6 +31,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
+            
 
         }
 
@@ -44,15 +46,7 @@ namespace Sprint0.Characters.MarioStates
             {
                 case (Luigi.LuigiHealth.Normal):
                     {
-                        if (luigi.currentSprite is NormalJumpingLuigi)
-                        {
-                            luigi.currentSprite.Update();
-                        }
-                        else
-                        {
-                            luigi.currentSprite = new NormalJumpingLuigi(luigi);
-                        }
-
+                        
                         break;
                     }
 
@@ -65,13 +59,13 @@ namespace Sprint0.Characters.MarioStates
 
                 case (Luigi.LuigiHealth.Fire):
                     {
-                        if (luigi.currentSprite is FireJumpingLuigi)
+                        if (luigi.currentSprite is FireLuigiAttack)
                         {
                             luigi.currentSprite.Update();
                         }
                         else
                         {
-                            luigi.currentSprite = new FireJumpingLuigi(luigi);
+                            luigi.currentSprite = new FireLuigiAttack(luigi);
                         }
 
                         break;
@@ -79,15 +73,7 @@ namespace Sprint0.Characters.MarioStates
 
                 case (Luigi.LuigiHealth.Big):
                     {
-                        if (luigi.currentSprite is BigJumpingLuigi)
-                        {
-                            luigi.currentSprite.Update();
-                        }
-                        else
-                        {
-                            luigi.currentSprite = new BigJumpingLuigi(luigi);
-                        }
-
+                        
                         break;
                     }
             }

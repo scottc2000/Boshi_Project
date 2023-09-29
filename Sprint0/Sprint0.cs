@@ -58,6 +58,10 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.L, new LuigiRight(this));
             KeyboardController.RegisterCommand(Keys.K, new LuigiCrouch(this));
             KeyboardController.RegisterCommand(Keys.I, new LuigiJump(this));
+            KeyboardController.RegisterCommand(Keys.M, new LuigiAttack(this));
+            KeyboardController.RegisterCommand(Keys.D6, new LuigiNormal(this));
+            KeyboardController.RegisterCommand(Keys.D7, new LuigiBig(this));
+            KeyboardController.RegisterCommand(Keys.D8, new LuigiFire(this));
 
 
             base.Initialize();
@@ -85,12 +89,12 @@ namespace Sprint0
             KeyboardController.Update();
 
 
-            
+
             //mario.Update(gameTime);
-            luigi.luigiState.Update(gameTime);
+            luigi.Update();
 
             //marioSprite.Update();
-            //luigi.Update();j;l
+            //luigi.Update();
 
 
             base.Update(gameTime);

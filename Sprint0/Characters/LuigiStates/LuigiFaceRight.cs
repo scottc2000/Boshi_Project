@@ -52,7 +52,7 @@ namespace Sprint0.Characters.LuigiStates
                             luigi.myDirection = 1;
                             luigi.currentSprite = new NormalLuigiStill(luigi);
                         }
-                        
+
                         break;
                     }
 
@@ -65,13 +65,31 @@ namespace Sprint0.Characters.LuigiStates
 
                 case (Luigi.LuigiHealth.Fire):
                     {
-                        luigi.mySprint.luigiSprite = new MarioFireLeftIdleSprite(luigi.mySprint);
+                        if (luigi.currentSprite is FireLuigiStill && luigi.myDirection == 1)
+                        {
+                            luigi.currentSprite.Update();
+                        }
+                        else
+                        {
+                            luigi.myDirection = 1;
+                            luigi.currentSprite = new FireLuigiStill(luigi);
+                        }
+
                         break;
                     }
 
                 case (Luigi.LuigiHealth.Big):
                     {
-                        luigi.mySprint.luigiSprite = new MarioBigLeftIdleSprite(luigi.mySprint);
+                        if (luigi.currentSprite is BigLuigiStill && luigi.myDirection == 1)
+                        {
+                            luigi.currentSprite.Update();
+                        }
+                        else
+                        {
+                            luigi.myDirection = 1;
+                            luigi.currentSprite = new BigLuigiStill(luigi);
+                        }
+
                         break;
                     }
 

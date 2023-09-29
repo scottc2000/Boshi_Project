@@ -56,7 +56,7 @@ namespace Sprint0.Controllers
             }
             if (luigiIdle(pressedKeys))
             {
-                mySprint.luigi.luigiState.Stop();
+                mySprint.luigi.Stop();
             }
 
           /*  if (pressedKeys.Contains(Keys.D0))

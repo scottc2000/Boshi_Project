@@ -44,15 +44,15 @@ namespace Sprint0.Characters.MarioStates
             {
                 case (Luigi.LuigiHealth.Normal):
                     {
-                        if (luigi.currentSprite is NormalCrouchingLuigi)
+
+                        if (luigi.currentSprite is NormalLuigiStill)
                         {
                             luigi.currentSprite.Update();
                         }
                         else
                         {
-                            luigi.currentSprite = new NormalCrouchingLuigi(luigi);
+                            luigi.currentSprite = new NormalLuigiStill(luigi);
                         }
-
                         break;
                     }
 
@@ -65,13 +65,29 @@ namespace Sprint0.Characters.MarioStates
 
                 case (Luigi.LuigiHealth.Fire):
                     {
-                        //luigi.mySprint.marioSprite = new MarioFireCrouchLeftSprite(luigi.mySprint);
+                        if (luigi.currentSprite is FireCrouchingLuigi)
+                        {
+                            luigi.currentSprite.Update();
+                        }
+                        else
+                        {
+                            luigi.currentSprite = new FireCrouchingLuigi(luigi);
+                        }
+
                         break;
                     }
 
                 case (Luigi.LuigiHealth.Big):
                     {
-                        //luigi.mySprint.marioSprite = new MarioBigCrouchLeftSprite(luigi.mySprint);
+                        if (luigi.currentSprite is BigCrouchingLuigi)
+                        {
+                            luigi.currentSprite.Update();
+                        }
+                        else
+                        {
+                            luigi.currentSprite = new BigCrouchingLuigi(luigi);
+                        }
+
                         break;
                     }
             }
