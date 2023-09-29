@@ -10,12 +10,22 @@ namespace Sprint0.Interfaces
 {
     public interface ICharacterState
     {
-        public void ChangeDirection();
+        public void MoveRight();
 
-        public void Move();
+        public void MoveLeft();
 
-        public void Stop();
+        public void JumpLeft();
 
-        public void Draw(SpriteBatch spritebatch, Vector2 location);
+        public void JumpRight();
+
+        public void CrouchLeft();
+
+        public void CrouchRight();
+
+        public void StopLeft();
+
+        public void StopRight();
+
+        public void Update();
     }
 }

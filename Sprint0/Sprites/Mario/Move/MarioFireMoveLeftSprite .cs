@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+using Sprint0.Characters;
 using Sprint0.Interfaces;
-using Microsoft.Xna.Framework.Input;
 
 namespace Sprint0.Sprites
 {
     internal class MarioFireMoveLeftSprite : ISprite
     {
         private Sprint0 mySprint;
-        private Texture2D marioMovingLeft;
+        private Mario mario;
 
         // Frame Stats
         private int CurrentFrame = 0;
@@ -26,12 +20,11 @@ namespace Sprint0.Sprites
         private Rectangle[] spriteFrames;
         private Rectangle destination;
 
-        private Vector2 position;
-        public MarioFireMoveLeftSprite(Sprint0 Sprint0)
+        public MarioFireMoveLeftSprite(Sprint0 Sprint0, Mario mario)
         {
             mySprint = Sprint0;
             spriteFrames = new Rectangle[] { new Rectangle(1, 263, 17, 28), new Rectangle(19, 263, 17, 28), new Rectangle(36, 0, 17, 28), new Rectangle(19, 263, 17, 28) };
-            position.X = 150;
+            this.mario = mario;
 
         }
 
@@ -49,18 +42,13 @@ namespace Sprint0.Sprites
                 }
             }
 
-            position.X -= 1;
-
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            marioMovingLeft = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
-
-            destination = new Rectangle((int)position.X, 150, 34, 56);
-
-            spriteBatch.Draw(marioMovingLeft, destination, spriteFrames[CurrentFrame], Color.White);
+            destination = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 56);
+            spriteBatch.Draw(mario.marioTexture, destination, spriteFrames[CurrentFrame], Color.White);
         }
     }
 }

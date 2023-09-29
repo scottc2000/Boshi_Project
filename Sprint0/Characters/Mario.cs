@@ -1,105 +1,87 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 using Sprint0.Characters.MarioStates;
-using Sprint0.Commands;
-using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sprint0.Sprites;
 
 namespace Sprint0.Characters
 {
     internal class Mario : ICharacter
     {
-        private bool facingLeft;
         public enum MarioHealth { Normal, Star, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
         public ICharacterState State { get; set; }
-        public bool isJumping { get; set; }
-        public bool isFalling { get; set; }
+
+        public bool isJumping;
+        public bool isFalling;
+        public bool facingLeft;
+
         public Vector2 position;
         public Sprint0 mySprint;
-        public int direction;
-        public Mario(Sprint0 sprint0, Vector2 location)
+
+        public ISprite marioSprite;
+        public Texture2D marioTexture;
+
+        public Mario(Sprint0 sprint0)
         {
             this.health = MarioHealth.Normal;
-            this.facingLeft = true;
             this.State = new MarioFaceLeft(this);
+
+            this.facingLeft = true;
+            this.isFalling = false;
+            this.isJumping = false;
+
+            this.position.X= 150;
+            this.position.Y = 150;
             this.mySprint = sprint0;
-            this.position = location;
-            this.direction = -1;
+
+            this.marioSprite = new MarioLeftIdleSprite(mySprint, this);
+            marioTexture = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
 
         }
 
-        public void ChangeDirection()
-        {
-            State.ChangeDirection();
-        }
 
         public void MoveRight()
         {
-            if (facingLeft)
-            {
-                State.ChangeDirection();
-                facingLeft = false;
-                direction = 1;
-            }
-            State = new MarioMoveRight(this);
+            State.MoveRight();
         }
 
         public void MoveLeft()
         {
-            if (!facingLeft)
-            {
-                State.ChangeDirection();
-                facingLeft = true;
-                direction = -1;
-            }
-            State = new MarioMoveLeft(this);
+            State.MoveLeft();
         }
 
         public void Jump()
         {
             if (facingLeft)
             {
-                direction = -1;
-                State = new MarioJumpFaceLeft(this);
-            }
-            else
+                State.JumpLeft();
+            } else
             {
-                direction = 1;
-                State = new MarioJumpFaceRight(this);
+                State.JumpRight();
             }
         }
 
         public void Crouch()
         {
-            if (facingLeft) {
-                direction = -1;
-                State = new MarioCrouchFaceLeft(this);
+            if (facingLeft)
+            {
+                State.CrouchLeft();
             } else
             {
-                direction = 1;
-                State = new MarioCrouchFaceRight(this);
+                State.CrouchRight();
             }
         }
 
         public void Stop()
         {
-            if(facingLeft)
+            if (facingLeft)
             {
-                direction = -1;
-                State = new MarioFaceLeft(this);
+                State.StopLeft();
             } else
             {
-                direction = 1;
-                State = new MarioFaceRight(this);
+                State.StopRight();
             }
-
         }
 
         public void ChangeToFire()
@@ -119,12 +101,12 @@ namespace Sprint0.Characters
 
         public void Update()
         {
-           // this.Update();
+           State.Update();
         }
 
         public void Draw(SpriteBatch spritebatch)
         {
-            State.Draw(spritebatch, position);
+            marioSprite.Draw(spritebatch);
         }
     }
 }

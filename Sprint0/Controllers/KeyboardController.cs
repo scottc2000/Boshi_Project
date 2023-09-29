@@ -35,6 +35,15 @@ namespace Sprint0.Controllers
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
+            foreach(Keys key in pressedKeys)
+            {
+                if (controllerMappings.ContainsKey(key))
+                {
+                    controllerMappings[key].Execute();
+                }
+            }
+
+            /*
             // Quit
             if (pressedKeys.Contains(Keys.Escape) && !releasedKeys.Contains(Keys.Escape))
             {
@@ -108,7 +117,7 @@ namespace Sprint0.Controllers
             {
                 controllerMappings[Keys.D2].Execute();
             }
-
+            */
             releasedKeys = pressedKeys;
 
         }

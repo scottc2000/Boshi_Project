@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint0.Characters;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 
@@ -17,7 +18,7 @@ namespace Sprint0
         }
         public void Execute() 
         {
-            mySprint.marioSprite = new MarioLeftIdleSprite(mySprint);
+            mySprint.mario = new Mario(mySprint);
         }
 
     }

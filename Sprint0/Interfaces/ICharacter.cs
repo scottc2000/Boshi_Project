@@ -1,8 +1,9 @@
-﻿using Sprint0.Characters;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Sprint0.Characters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,6 @@ namespace Sprint0.Interfaces
     {
         ICharacterState State { get; set; }
 
-        public void ChangeDirection();
 
         public void MoveRight();
 
@@ -31,5 +31,7 @@ namespace Sprint0.Interfaces
         void ChangeToNormal();
 
         void Update();
+
+        void Draw(SpriteBatch spritebatch);
     }
 }

@@ -18,29 +18,54 @@ namespace Sprint0.Characters.MarioStates
         {
             this.mario = mario;
         }
-        public void ChangeDirection()
-        {
-            mario.State = new MarioJumpFaceRight(mario);
+        public void MoveLeft()
+        { 
+            mario.State = new MarioMoveLeft(mario);
         }
 
-        public void Move()
-        {
-
-        }
-
-        public void Stop()
+        public void MoveRight()
         {
             mario.State = new MarioFaceRight(mario);
         }
 
-
-        public void Draw(SpriteBatch spritebatch, Vector2 location)
+        public void JumpLeft()
         {
+            mario.State = new MarioJumpFaceLeft(mario);
+        }
+
+        public void JumpRight()
+        {
+            mario.State = new MarioFaceRight(mario);
+        }
+
+        public void CrouchLeft()
+        {
+            mario.State = new MarioCrouchFaceLeft(mario);
+        }
+
+        public void CrouchRight()
+        {
+            mario.State = new MarioFaceRight(mario);
+        }
+
+        public void StopLeft()
+        {
+            mario.State = new MarioFaceLeft(mario);
+        }
+
+        public void StopRight()
+        {
+            mario.State = new MarioFaceRight(mario);
+        }
+
+        public void Update()
+        {
+            mario.facingLeft = true;
             switch (mario.health)
             {
                 case (Mario.MarioHealth.Normal):
                     {
-                        mario.mySprint.marioSprite = new MarioJumpLeftSprite(mario.mySprint);
+                        mario.marioSprite = new MarioJumpLeftSprite(mario.mySprint, mario);
                         break;
                     }
 
@@ -53,13 +78,13 @@ namespace Sprint0.Characters.MarioStates
 
                 case (Mario.MarioHealth.Fire):
                     {
-                        mario.mySprint.marioSprite = new MarioFireJumpLeftSprite(mario.mySprint);
+                        mario.marioSprite = new MarioFireJumpLeftSprite(mario.mySprint, mario);
                         break;
                     }
 
                 case (Mario.MarioHealth.Big):
                     {
-                        mario.mySprint.marioSprite = new MarioBigJumpLeftSprite(mario.mySprint);
+                        mario.marioSprite = new MarioBigJumpLeftSprite(mario.mySprint, mario);
                         break;
                     }
 
