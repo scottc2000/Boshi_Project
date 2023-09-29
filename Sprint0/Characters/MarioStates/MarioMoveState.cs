@@ -17,6 +17,38 @@ namespace Sprint0.Characters.MarioStates
         {
             if (mario.facingLeft)
             {
+                mario.position.X -= 1;
+            }
+            else
+            {
+                mario.position.X += 1;
+            }
+        }
+
+        public void Jump()
+        {
+            mario.State = new MarioJumpState(mario);
+        }
+
+        public void Crouch()
+        {
+            mario.State = new MarioCrouchState(mario);
+        }
+
+        public void Stop()
+        {
+            mario.State = new MarioIdleState(mario);
+        }
+
+        public void Die()
+        {
+           // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+        }
+
+        public void Update(GameTime gametime)
+        {
+            if (mario.facingLeft)
+            {
                 switch (mario.health)
                 {
                     case (Mario.MarioHealth.Normal):
@@ -76,65 +108,6 @@ namespace Sprint0.Characters.MarioStates
                         }
 
                 }
-            }
-        }
-
-        public void Jump()
-        {
-            mario.State = new MarioJumpState(mario);
-        }
-
-        public void Crouch()
-        {
-            mario.State = new MarioCrouchState(mario);
-        }
-
-        public void Stop()
-        {
-            mario.State = new MarioIdleState(mario);
-        }
-
-        public void Die()
-        {
-           // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
-        }
-
-        // Attempts to fix bug where mario animation does not change health at key press, only after pose is changed. Needs work
-        public void ChangeHealth()
-        {
-            switch (mario.pose)
-            {
-                case (Mario.MarioPose.Crouch):
-                    {
-                        mario.State = new MarioCrouchState(mario);
-                        break;
-                    }
-                case (Mario.MarioPose.Idle):
-                    {
-                        mario.State = new MarioIdleState(mario);
-                        break;
-                    }
-                case (Mario.MarioPose.Walking):
-                    {
-                        mario.State = new MarioMoveState(mario);
-                        break;
-                    }
-                case (Mario.MarioPose.Jump):
-                    {
-                        mario.State = new MarioJumpState(mario);
-                        break;
-                    }
-            }
-        }
-
-        public void Update(GameTime gametime)
-        {
-            if (mario.facingLeft)
-            {
-                mario.position.X -= 1;
-            } else
-            {
-                mario.position.X += 1;
             }
 
             mario.pose = Mario.MarioPose.Walking;

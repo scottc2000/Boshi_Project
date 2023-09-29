@@ -12,8 +12,6 @@ namespace Sprint0.Interfaces
 
         public void Die();
 
-        public void ChangeHealth();
-
         public void Update(GameTime gametime);
     }
 }

@@ -71,25 +71,21 @@ namespace Sprint0.Characters
         public void ChangeToFire()
         {
             health = MarioHealth.Fire;
-            State.ChangeHealth();
         }
 
         public void ChangeToRaccoon()
         {
             health = MarioHealth.Raccoon;
-            State.ChangeHealth();
         }
 
         public void ChangeToBig()
         {
             health = MarioHealth.Big;
-            State.ChangeHealth();
         }
 
         public void ChangeToNormal()
         {
             health = MarioHealth.Normal;
-            State.ChangeHealth();
         }
 
         public void Update(GameTime gametime)
