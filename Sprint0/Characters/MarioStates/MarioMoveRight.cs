@@ -29,7 +29,8 @@ namespace Sprint0.Characters.MarioStates
 
         }
 
-        public void Stop() {
+        public void Stop() 
+        {
             mario.State = new MarioFaceRight(mario);
         }
 

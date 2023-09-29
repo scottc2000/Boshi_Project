@@ -29,7 +29,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
-
+            mario.State = new MarioFaceRight(mario);
         }
 
         public void Draw(SpriteBatch spritebatch, Vector2 location)

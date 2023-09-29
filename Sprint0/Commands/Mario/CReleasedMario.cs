@@ -21,7 +21,7 @@ namespace Sprint0.Commands.Mario
         public void Execute()
         {
             mario = mySprint.mario;
-            mario.Stand();
+            mario.Stop();
         }
 
     }

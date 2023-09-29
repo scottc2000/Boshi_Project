@@ -37,8 +37,8 @@ namespace Sprint0
             KeyboardController = new KeyboardController(this, mario);
 
             //Keyboard command mappings
-            KeyboardController.RegisterCommand(Keys.D0, new Exit(this));
-            KeyboardController.RegisterCommand(Keys.D9, new Reset(this));
+            KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
+            KeyboardController.RegisterCommand(Keys.D0, new Reset(this));
 
             // Mario
             KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));

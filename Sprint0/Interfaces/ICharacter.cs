@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,8 +21,6 @@ namespace Sprint0.Interfaces
         public void Jump();
 
         public void Crouch();
-
-        public void Stand();
 
         public void Stop();
 

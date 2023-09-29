@@ -19,8 +19,11 @@ namespace Sprint0.Characters
         public enum MarioHealth { Normal, Star, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
         public ICharacterState State { get; set; }
-        public Vector2 position { get; set; }
+        public bool isJumping { get; set; }
+        public bool isFalling { get; set; }
+        public Vector2 position;
         public Sprint0 mySprint;
+        public int direction;
         public Mario(Sprint0 sprint0, Vector2 location)
         {
             this.health = MarioHealth.Normal;
@@ -28,6 +31,7 @@ namespace Sprint0.Characters
             this.State = new MarioFaceLeft(this);
             this.mySprint = sprint0;
             this.position = location;
+            this.direction = -1;
 
         }
 
@@ -42,6 +46,7 @@ namespace Sprint0.Characters
             {
                 State.ChangeDirection();
                 facingLeft = false;
+                direction = 1;
             }
             State = new MarioMoveRight(this);
         }
@@ -52,6 +57,7 @@ namespace Sprint0.Characters
             {
                 State.ChangeDirection();
                 facingLeft = true;
+                direction = -1;
             }
             State = new MarioMoveLeft(this);
         }
@@ -60,32 +66,25 @@ namespace Sprint0.Characters
         {
             if (facingLeft)
             {
+                direction = -1;
                 State = new MarioJumpFaceLeft(this);
             }
             else
             {
+                direction = 1;
                 State = new MarioJumpFaceRight(this);
             }
         }
 
         public void Crouch()
         {
-            if (facingLeft) { 
+            if (facingLeft) {
+                direction = -1;
                 State = new MarioCrouchFaceLeft(this);
             } else
             {
+                direction = 1;
                 State = new MarioCrouchFaceRight(this);
-            }
-        }
-
-        public void Stand()
-        {
-            if (facingLeft)
-            {
-                State = new MarioFaceLeft(this);
-            } else
-            {
-                State = new MarioFaceRight(this);
             }
         }
 
@@ -93,9 +92,11 @@ namespace Sprint0.Characters
         {
             if(facingLeft)
             {
+                direction = -1;
                 State = new MarioFaceLeft(this);
             } else
             {
+                direction = 1;
                 State = new MarioFaceRight(this);
             }
 

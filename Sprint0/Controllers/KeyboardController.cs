@@ -36,15 +36,15 @@ namespace Sprint0.Controllers
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
             // Quit
-            if (pressedKeys.Contains(Keys.D0) && !releasedKeys.Contains(Keys.D0))
+            if (pressedKeys.Contains(Keys.Escape) && !releasedKeys.Contains(Keys.Escape))
             {
-                controllerMappings[Keys.D0].Execute();
+                controllerMappings[Keys.Escape].Execute();
             }
 
             // Reset
-            if (pressedKeys.Contains(Keys.D9) && !releasedKeys.Contains(Keys.D9))
+            if (pressedKeys.Contains(Keys.D0) && !releasedKeys.Contains(Keys.D0))
             {
-                controllerMappings[Keys.D9].Execute();
+                controllerMappings[Keys.D0].Execute();
             }
 
             // Move Left
