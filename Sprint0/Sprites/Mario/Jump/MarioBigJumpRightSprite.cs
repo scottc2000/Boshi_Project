@@ -16,7 +16,7 @@ namespace Sprint0.Sprites
 
         public MarioBigJumpRightSprite(Sprint0 mySprint0, Mario mario)
         {
-            spriteFrame = new Rectangle(36, 92, 17, 28);
+            spriteFrame = new Rectangle(72, 92, 17, 28);
             mySprint = mySprint0;
             this.mario = mario;
         }

@@ -1,12 +1,5 @@
 ﻿using Sprint0.Interfaces;
-using Microsoft.Xna.Framework;
 using Sprint0.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -70,9 +63,9 @@ namespace Sprint0.Characters.MarioStates
                     }
 
 
-                case (Mario.MarioHealth.Star):
+                case (Mario.MarioHealth.Raccoon):
                     {
-                        //mySprint.marioSprite = new MarioStarJumpLeft(mySprint);
+                        //mySprint.marioSprite = new MarioRaccoonJumpLeft(mySprint, mario);
                         break;
                     }
 

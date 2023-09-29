@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Sprint0.Characters;
+﻿using Sprint0.Characters;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 
 namespace Sprint0
 {

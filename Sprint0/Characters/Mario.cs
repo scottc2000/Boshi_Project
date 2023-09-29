@@ -8,7 +8,7 @@ namespace Sprint0.Characters
 {
     internal class Mario : ICharacter
     {
-        public enum MarioHealth { Normal, Star, Fire, Big};
+        public enum MarioHealth { Normal, Raccoon, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
         public ICharacterState State { get; set; }
 
@@ -87,6 +87,11 @@ namespace Sprint0.Characters
         public void ChangeToFire()
         {
             health = MarioHealth.Fire;
+        }
+
+        public void ChangeToRaccoon()
+        {
+            health = MarioHealth.Raccoon;
         }
 
         public void ChangeToBig()

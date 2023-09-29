@@ -15,7 +15,6 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
 
         public ICharacter mario;
-        public Vector2 marioPosition; // move into mario ICharacter
 
         ISprite textSprite;
         IController KeyboardController;
@@ -42,10 +41,10 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            KeyboardController.RegisterCommand(Keys.Q, new CMarioFire(this));
-            KeyboardController.RegisterCommand(Keys.D1, new CMarioBig(this));
-            KeyboardController.RegisterCommand(Keys.D2, new CMarioNormal(this));
-           // KeyboardController.RegisterCommand(Keys.E, new CMarioStar(this));
+            //KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
+            KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
+            KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
+            KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
 
             base.Initialize();
         }

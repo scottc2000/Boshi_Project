@@ -27,7 +27,7 @@ namespace Sprint0.Sprites
         {
             mySprint = Sprint0;
             spriteFrame = new Rectangle(54, 92, 17, 28);
-
+            this.mario = mario;
         }
         public void Update()
         {
@@ -36,7 +36,7 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            position = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 5);
+            position = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 54);
 
             // Overload parameters to flip sprite horizontally
             SpriteEffects right = SpriteEffects.FlipHorizontally;

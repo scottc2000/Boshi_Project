@@ -1,12 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Sprint0.Interfaces;
+﻿using Sprint0.Interfaces;
 using Sprint0.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -60,20 +53,18 @@ namespace Sprint0.Characters.MarioStates
 
         public void Update()
         {
-            mario.facingLeft = true;
-
             switch (mario.health)
             {
                 case (Mario.MarioHealth.Normal):
                     {
-                        // Nothing needed - little mario can't crouch
+                        mario.marioSprite = new MarioLeftIdleSprite(mario.mySprint, mario);
                         break;
                     }
 
 
-                case (Mario.MarioHealth.Star):
+                case (Mario.MarioHealth.Raccoon):
                     {
-                        //mario.marioSprite = new MarioStarCrouchLeftSprite(mario.mySprint);
+                        //mario.marioSprite = new MarioRaccoonCrouchLeftSprite(mario.mySprint, mario);
                         break;
                     }
 
