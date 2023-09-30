@@ -1,14 +1,13 @@
 # Boshi_Project
 ## Mario Game Project for CSE 3902. 
-# 1:50 section Team Boshi
-# Team Members:
+# Team:
+1:50 section Team Boshi
 Muskan, Jerrin, Ismail, Michael, Scott, Ben
-
-url: github.com/scottc2000/Boshi_Project
 
 # Documentation
     - Code review/metrics in folder in master
     - Planning and tasks under Github Projects
+    - url: github.com/scottc2000/Boshi_Project
 
 # Sprint 2
 ## Controls:
