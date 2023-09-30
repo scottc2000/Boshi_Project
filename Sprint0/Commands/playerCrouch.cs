@@ -9,19 +9,16 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class CMarioLeftIdle : ICommand
-    { 
+    internal class playerCrouch : ICommand
+    {
         private Sprint0 mySprint0;
-        private ICharacter mario;
-        public CMarioLeftIdle(Sprint0 Sprint0)
+        public playerCrouch(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            mario = mySprint0.mario;
-            mario.Stop();
-
+            mySprint0.luigiSprite = new RunInPlaceSprite(mySprint0);
         }
 
     }

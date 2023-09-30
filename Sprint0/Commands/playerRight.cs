@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Commands.Luigi
+namespace Sprint0.Commands
 {
-    internal class LuigiRight : ICommand
+    internal class playerRight : ICommand
     {
         private Sprint0 mySprint0;
-        public LuigiRight(Sprint0 Sprint0)
+        public playerRight(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-           // mySprint0.luigiSprite = new LuigiStill();
+            mySprint0.luigiSprite = new StillSprite();
         }
 
     }

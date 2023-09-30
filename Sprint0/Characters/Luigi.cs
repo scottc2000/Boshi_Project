@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Characters
 {
-    internal class Mario : ICharcter
+    internal class Luigi : ICharcter
     {
-        private MarioStateMachine stateMachine;
+        private LuigiStateMachine stateMachine;
 
-        public Mario() { 
-            stateMachine = new MarioStateMachine();
+        public Luigi()
+        {
+            stateMachine = new LuigiStateMachine();
         }
 
         public void ChangeDirection()
@@ -21,7 +22,7 @@ namespace Sprint0.Characters
         }
         public void BeStomped()
         {
-            stateMachine.BeStomped();
+           stateMachine.BeStomped();
         }
         public void BeFlipped()
         {
