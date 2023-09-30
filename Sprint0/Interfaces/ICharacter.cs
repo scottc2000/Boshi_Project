@@ -7,6 +7,7 @@ namespace Sprint0.Interfaces
     {
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }
+        Vector2 position { get; set; }
 
         public void Move();
 
