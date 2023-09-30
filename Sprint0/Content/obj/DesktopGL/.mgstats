@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Micha/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png","C:/Users/Micha/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/SpriteImages/blocks.xnb","TextureProcessor","Texture2DContent",131694,7114261,0.200859
+"C:/Users/Micha/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png","C:/Users/Micha/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/SpriteImages/playerssclear.xnb","TextureProcessor","Texture2DContent",66286,2401285,0.0812815
