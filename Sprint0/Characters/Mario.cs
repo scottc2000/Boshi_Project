@@ -20,8 +20,8 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
 
-        public ISprite marioSprite;
-        public Texture2D marioTexture;
+        public AnimatedSprite currentSprite;
+        public CharacterSpriteFactory mySpriteFactory;
 
 
         public Mario(Sprint0 sprint0)
@@ -34,10 +34,10 @@ namespace Sprint0.Characters
             this.position.X= 150;
             this.position.Y = 150;
             this.mySprint = sprint0;
+            mySpriteFactory = new CharacterSpriteFactory(this);
+            mySpriteFactory.LoadTextures(mySprint.Content);
 
-            this.marioSprite = new MarioLeftIdleSprite(mySprint, this);
-            marioTexture = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
-            //this.marioSprite = CharacterSpriteFactory.Instance.CreateMarioIdleRightSprite();
+            currentSprite = mySpriteFactory.returnSprite("NormalMarioStillLeft");
 
         }
 
@@ -66,6 +66,14 @@ namespace Sprint0.Characters
         {
             State.Die();
         }
+
+        public void Throw()
+        {
+            if (health == Mario.MarioHealth.Fire)
+            {
+                State.Throw();
+            }
+        }
     
         // Will change with game functionality
         public void ChangeToFire()
@@ -88,6 +96,7 @@ namespace Sprint0.Characters
             health = MarioHealth.Normal;
         }
 
+
         public void Update(GameTime gametime)
         {
            State.Update(gametime);
@@ -95,7 +104,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch)
         {
-            marioSprite.Draw(spritebatch);
+            currentSprite.Draw(spritebatch);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Sprint0.Interfaces
         public void Jump();
         public void Crouch();
         public void Stop();
+        public void Throw();
 
         public void Die();
 

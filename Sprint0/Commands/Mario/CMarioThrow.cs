@@ -10,18 +10,20 @@ using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Commands.Mario
 {
-    internal class CMarioFire : ICommand
+    internal class CMarioThrow : ICommand
     {
         private Sprint0 mySprint0;
         private ICharacter mario;
-        public CMarioFire(Sprint0 Sprint0)
+        public CMarioThrow(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
+
             mario = mySprint0.mario;
-            mario.ChangeToFire();
+            mario.Throw();
+
         }
 
     }

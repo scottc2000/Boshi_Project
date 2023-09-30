@@ -16,6 +16,8 @@ namespace Sprint0.Interfaces
 
         public void Stop();
 
+        public void Throw();
+
         public void Die();
 
         void ChangeToFire();
