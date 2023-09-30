@@ -30,6 +30,8 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 # Known Bugs: 
     - Items cycle through at alarming speed
     - particles not animated yet for characters (mario,luigi)
+    - items and blocks do not reset
+    - items and blocks get passed protected variables from main game (sprint0)
     - manaul merging on the master branch due to complicated merge conflicts. will be fixed in the future with more frequent pulls/branches and efficient .gitignore file
 
 # Non required tools:

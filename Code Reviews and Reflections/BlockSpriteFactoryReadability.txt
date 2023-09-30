@@ -1,0 +1,7 @@
+
+Review Author: Smail Guled
+Date of Reviee: 9/28/23
+Sprint #: 2
+FIle Name: BlockSpriteFactory
+File Author: Micheal Chen
+Comments on Quality: I think this is an easy file to read and understand, there ar enot that much comments but I think it speaks for itself for the most part.

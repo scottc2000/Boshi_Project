@@ -1,0 +1,8 @@
+Review Author: Smail Guled
+Date of Review: 9/28/23
+Sprint #: 2
+FIle Name: NonAnimatedBlockSprite.cs
+File Author: Micheal Chen
+
+Comments: I think having a sprite class for non animated sprites will be a good idea in the long term if we want to add more animated blocks and want to
+seperate their features more. I think this is a good move for maintainability. 
