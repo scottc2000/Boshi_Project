@@ -42,7 +42,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Die()
         {
-            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            // mario.currentSprite = new mario.mySpriteFactory.returnSprite("DeadMario");
         }
         public void Update(GameTime gametime)
         {

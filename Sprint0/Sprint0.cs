@@ -56,7 +56,9 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
+            KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));
 
+            KeyboardController.RegisterCommand(Keys.D5, new CMarioDead(this));
             KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
             KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
             KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
