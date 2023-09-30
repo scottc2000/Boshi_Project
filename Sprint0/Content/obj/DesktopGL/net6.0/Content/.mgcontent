@@ -4,14 +4,17 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+<<<<<<< HEAD
     <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/Credits.spritefont</File>
     <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/luigiDeadFloat.png</File>
     <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/luigiStill.png</File>
     <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/post-formatting_texture_atlas.png</File>
+=======
+    <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png</File>
+    <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
+>>>>>>> BlockSpriteFactory
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

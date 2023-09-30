@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,8 @@ namespace Sprint0.Interfaces
 {
     public interface ISprite
     {
-
-        void Update();
-        void Draw(SpriteBatch spriteBatch, int width, int height, ContentManager content);
+        void Update(GameTime gameTime);
+        void Draw(SpriteBatch spriteBatch, ContentManager content);
 
     }
 }

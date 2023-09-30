@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< HEAD
   <SourceFile>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/luigiStill.png</SourceFile>
   <SourceTime>2023-09-29T23:16:26.6737233-04:00</SourceTime>
   <DestFile>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/luigiStill.xnb</DestFile>
   <DestTime>2023-09-29T23:17:36.8457518-04:00</DestTime>
+=======
+  <SourceFile>C:/Users/muska/Source/Repos/Boshi_Project/Sprint0/Content/luigiStill.png</SourceFile>
+  <SourceTime>2023-09-20T14:02:20.9546836-04:00</SourceTime>
+  <DestFile>C:/Users/muska/Source/Repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/luigiStill.xnb</DestFile>
+  <DestTime>2023-09-20T14:02:48.0933537-04:00</DestTime>
+>>>>>>> BlockSpriteFactory
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

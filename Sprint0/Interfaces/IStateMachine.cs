@@ -10,7 +10,7 @@ namespace Sprint0.Interfaces
     {
         void ChangeDirection();
 
-        void BeStomped();
+        void CrouchingLeft();
 
         void BeFlipped();
 
