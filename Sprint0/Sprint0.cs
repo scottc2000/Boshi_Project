@@ -92,7 +92,6 @@ namespace Sprint0
             KeyboardController.Update();
             mario.Update(gameTime);
 
-        //    blockSpriteFactory.Update();
 
             // switching blocks using t and y goes slower
             timeSinceLastSprite += gameTime.ElapsedGameTime;
@@ -115,7 +114,7 @@ namespace Sprint0
             _spriteBatch.Begin();
 
             mario.Draw(_spriteBatch);
-            //blockSprites[currentSpriteIndex].Draw(_spriteBatch);
+            block.Draw();
 
             _spriteBatch.End();
 

@@ -71,16 +71,16 @@ namespace Sprint0.Blocks
                 case 0:
                     grayBlockSprite.Draw(spriteBatch);
                     break;
-                case 4:
+                case 1:
                     questionBlockSprite.Draw(spriteBatch);
                     break;
-                case 1:
+                case 2:
                     woodBlockSprite.Draw(spriteBatch);
                     break;
                 case 3:
                     yellowBrickSprite.Draw(spriteBatch);
                     break;
-                case 2:
+                case 4:
                     emptyQuestionBlockSprite.Draw(spriteBatch);
                     break;
             }
