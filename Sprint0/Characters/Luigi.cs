@@ -21,8 +21,8 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
 
-        public AnimatedSprite currentSprite;
-        public CharacterSpriteFactory mySpriteFactory;
+        public AnimatedSpriteLuigi currentSprite;
+        public CharacterSpriteFactoryLuigi mySpriteFactory;
 
 
         public Luigi(Sprint0 sprint0)
@@ -31,11 +31,11 @@ namespace Sprint0.Characters
             this.State = new LuigiIdleState(this);
 
             this.facingLeft = true;
-            this.position.X = 150;
-            this.position.Y = 150;
+            this.position.X = 350;
+            this.position.Y = 350;
 
             this.mySprint = sprint0;
-            //mySpriteFactory = new CharacterSpriteFactory(this);
+            mySpriteFactory = new CharacterSpriteFactoryLuigi(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("NormalLuigiStillLeft");

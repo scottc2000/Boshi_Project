@@ -6,10 +6,10 @@ using System;
 
 namespace Sprint0.Sprites
 {
-    public class AnimatedSprite : ISprite
+    public class AnimatedSpriteLuigi: ISprite
     {
         private Sprint0 mySprint;
-        private Mario mario;
+        private Luigi luigi;
         private Texture2D texture;
 
         // Rectangles
@@ -27,13 +27,13 @@ namespace Sprint0.Sprites
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public AnimatedSprite(Rectangle[] currentFrames, Texture2D texture, Mario mario, SpriteEffects effect)
+        public AnimatedSpriteLuigi(Rectangle[] currentFrames, Texture2D texture, Luigi luigi, SpriteEffects effect)
         {
             spriteFrames = currentFrames;
             this.texture = texture;
-            this.mario = mario;
+            this.luigi = luigi;
             spriteEffect = effect;
-            this.position = mario.position;
+            this.position = luigi.position;
             this.spriteName = "X";
             TotalFrames = spriteFrames.Length;
         }
@@ -56,7 +56,7 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
 
             float rotation = 0;
             float layer = 0;

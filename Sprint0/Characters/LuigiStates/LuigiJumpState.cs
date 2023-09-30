@@ -60,7 +60,7 @@ namespace Sprint0.Characters.MarioStates
 
                     case (Luigi.LuigiHealth.Raccoon):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiJumpLeft");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiJumpLeft");
                             break;
                         }
 
@@ -89,7 +89,7 @@ namespace Sprint0.Characters.MarioStates
 
                     case (Luigi.LuigiHealth.Raccoon):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiJumpRight");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiJumpRight");
                             break;
                         }
 

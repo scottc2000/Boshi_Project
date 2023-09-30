@@ -57,16 +57,15 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));      // Still needs projectile
+            //KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));      // Still needs projectile
 
-            KeyboardController.RegisterCommand(Keys.D5, new CDeadMario(this));
+            //KeyboardController.RegisterCommand(Keys.D5, new CDeadMario(this));
             KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
             KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
             KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
             KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
 
-            //Luigi
-            /*
+
             KeyboardController.RegisterCommand(Keys.I, new CLuigiJump(this));
             KeyboardController.RegisterCommand(Keys.J, new CLuigiMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.K, new CLuigiCrouch(this));
@@ -76,7 +75,7 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D7, new CLuigiFire(this));
             KeyboardController.RegisterCommand(Keys.D6, new CLuigiBig(this));
             KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
-            */
+            
 
 
 
@@ -94,7 +93,7 @@ namespace Sprint0
             
 
             mario = new Mario(this);
-            // luigi = new Luigi(this);
+            luigi = new Luigi(this);
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
@@ -106,7 +105,7 @@ namespace Sprint0
 
             KeyboardController.Update();
             mario.Update(gameTime);
-            // luigi.Update(gameTime)
+            luigi.Update(gameTime);
 
 
             // switching blocks using t and y goes slower
@@ -130,6 +129,7 @@ namespace Sprint0
             _spriteBatch.Begin();
 
             mario.Draw(_spriteBatch);
+            luigi.Draw(_spriteBatch);
             block.Draw();
 
             _spriteBatch.End();

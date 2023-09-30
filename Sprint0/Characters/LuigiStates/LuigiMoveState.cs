@@ -74,13 +74,13 @@ namespace Sprint0.Characters.MarioStates
 
                     case (Luigi.LuigiHealth.Raccoon):
                         {
-                            if (luigi.currentSprite.spriteName.Equals("BigLuigiMoveLeft"))
+                            if (luigi.currentSprite.spriteName.Equals("RaccoonLuigiMoveLeft"))
                             {
                                 luigi.currentSprite.Update(gametime);
                             }
                             else
                             {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiMoveLeft");
+                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiMoveLeft");
                             }
                             break;
                         }
@@ -133,13 +133,13 @@ namespace Sprint0.Characters.MarioStates
 
                     case (Luigi.LuigiHealth.Raccoon):
                         {
-                            if (luigi.currentSprite.spriteName.Equals("BigLuigiMoveRight"))
+                            if (luigi.currentSprite.spriteName.Equals("RaccoonLuigiMoveRight"))
                             {
                                 luigi.currentSprite.Update(gametime);
                             }
                             else
                             {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiMoveRight");
+                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiMoveRight");
                             }
                             break;
                         }

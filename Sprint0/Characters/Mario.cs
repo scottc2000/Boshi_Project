@@ -21,8 +21,8 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
 
-        public AnimatedSprite currentSprite;
-        public CharacterSpriteFactory mySpriteFactory;
+        public AnimatedSpriteMario currentSprite;
+        public CharacterSpriteFactoryMario mySpriteFactory;
 
 
         public Mario(Sprint0 sprint0)
@@ -35,7 +35,7 @@ namespace Sprint0.Characters
             this.position.X = 150;
             this.position.Y = 150;
             this.mySprint = sprint0;
-            mySpriteFactory = new CharacterSpriteFactory(this);
+            mySpriteFactory = new CharacterSpriteFactoryMario(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("NormalMarioStillLeft");

@@ -55,7 +55,7 @@ namespace Sprint0.Controllers
                 !pressedKeys.Contains(Keys.K) &&
                !pressedKeys.Contains(Keys.L) && !pressedKeys.Contains(Keys.E))
             {
-                // mySprint.luigi.State.Stop();
+                mySprint.luigi.State.Stop();
             }
         }
 
