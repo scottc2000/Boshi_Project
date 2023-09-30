@@ -28,12 +28,14 @@ namespace Sprint0
         public ISprite luigiSprite;
         public ISprite blockSprite;
 
+        public Block block;
 
-        public ISprite grayBlockSprite;
-        public ISprite questionBlockSprite;
-        public ISprite woodBlockSprite;
-        public ISprite yellowBrickSprite;
-        public ISprite emptyQuestionBlockSprite;
+
+        //public ISprite grayBlockSprite;
+        //public ISprite questionBlockSprite;
+        //public ISprite woodBlockSprite;
+        //public ISprite yellowBrickSprite;
+        //public ISprite emptyQuestionBlockSprite;
 
         ISprite textSprite;
         IController KeyboardController;
@@ -100,13 +102,9 @@ namespace Sprint0
             luigiSprite = new LuigiStill();
             //marioSprite = new MarioStillLeft();
 
-            BlockSpriteFactory.Instance.LoadTextures(Content);
-            BlockSpriteFactory.Instance.SaveSpriteLocations(Content);
-            grayBlockSprite = BlockSpriteFactory.Instance.CreateGrayBlock(_spriteBatch, new Vector2(700, 100));
-            questionBlockSprite = BlockSpriteFactory.Instance.CreateQuestionBlock(_spriteBatch, new Vector2(700, 100));
-            woodBlockSprite = BlockSpriteFactory.Instance.CreateWoodBlock(_spriteBatch, new Vector2(700, 100));
-            yellowBrickSprite = BlockSpriteFactory.Instance.CreateYellowBrickSprite(_spriteBatch, new Vector2(700, 100));
-            emptyQuestionBlockSprite = BlockSpriteFactory.Instance.CreateEmptyQuestionBlock(_spriteBatch, new Vector2(700, 100));
+            block = new Block(this, _spriteBatch, Content);
+            block.LoadBlocks();
+            
 
         }
 
@@ -119,8 +117,8 @@ namespace Sprint0
 
             //marioSprite.Update();
             
-            questionBlockSprite.Update(gameTime);
-            yellowBrickSprite.Update(gameTime);
+            block.Update(gameTime);
+            
 
 
             base.Update(gameTime);
@@ -134,11 +132,7 @@ namespace Sprint0
             //luigiSprite.Draw(_spriteBatch, Content);
             //marioSprite.Draw(_spriteBatch, Content);
 
-            grayBlockSprite.Draw(_spriteBatch, Content);
-            questionBlockSprite.Draw(_spriteBatch, Content);
-            woodBlockSprite.Draw(_spriteBatch, Content);
-            yellowBrickSprite.Draw(_spriteBatch, Content);
-            emptyQuestionBlockSprite.Draw(_spriteBatch, Content);
+            block.Draw();
 
             //mario.Draw(_spriteBatch, Content); need to update parameters
             //marioSprite.Draw(_spriteBatch, Content);
