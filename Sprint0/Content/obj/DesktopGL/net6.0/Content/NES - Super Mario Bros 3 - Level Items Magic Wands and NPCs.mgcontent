@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/muska/source/repos/Boshi1/Sprint0/Content/NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png</SourceFile>
-  <SourceTime>2023-09-30T08:16:06.8436193-04:00</SourceTime>
-  <DestFile>C:/Users/muska/source/repos/Boshi1/Sprint0/Content/bin/DesktopGL/Content/NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.xnb</DestFile>
-  <DestTime>2023-09-30T08:16:55.0203269-04:00</DestTime>
+  <SourceFile>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png</SourceFile>
+  <SourceTime>2023-09-30T08:25:56.1969342-04:00</SourceTime>
+  <DestFile>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.xnb</DestFile>
+  <DestTime>2023-09-30T09:12:19.7739605-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
