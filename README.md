@@ -1,5 +1,8 @@
 # Boshi_Project
 Mario Game Project for CSE 3902. 
+Team Members:
+Muskan, Jerrin, Ismail, Michael, Scott, Ben
+
 Sprint 2
 Controls:
   Mario:
