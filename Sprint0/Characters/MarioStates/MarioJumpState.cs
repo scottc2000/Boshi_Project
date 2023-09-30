@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using System;
 using System.ComponentModel.Design;
 
 namespace Sprint0.Characters.MarioStates
@@ -21,7 +22,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Jump()
         {
-           // insert jump logic/physics
+            // insert jump logic/physics
         }
 
         public void Crouch()
@@ -29,6 +30,10 @@ namespace Sprint0.Characters.MarioStates
             mario.State = new MarioCrouchState(mario);
         }
 
+        public void Throw()
+        {
+            mario.State = new MarioThrowState(mario);
+        }
         public void Stop()
         {
             mario.State = new MarioIdleState(mario);
@@ -37,7 +42,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Die()
         {
-           // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
         }
         public void Update(GameTime gametime)
         {
@@ -48,26 +53,26 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            mario.marioSprite = new MarioJumpLeftSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioJumpLeft");
                             break;
                         }
 
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            // mario.marioSprite = new MarioRaccoonLeftIdleSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioJumpLeft");
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.marioSprite = new MarioFireJumpLeftSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioJumpLeft");
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.marioSprite = new MarioBigJumpLeftSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioJumpLeft");
                             break;
                         }
                 }
@@ -78,25 +83,25 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            mario.marioSprite = new MarioJumpRightSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioJumpRight");
                             break;
                         }
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            // mario.marioSprite = new MarioRaccoonLeftIdleSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioJumpRight");
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.marioSprite = new MarioFireJumpRightSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioJumpRight");
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.marioSprite = new MarioBigJumpRightSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioJumpRight");
                             break;
                         }
                 }

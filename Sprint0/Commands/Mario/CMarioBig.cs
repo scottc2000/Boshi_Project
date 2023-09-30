@@ -6,19 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Sprint0.Characters.Mario;
 
-namespace Sprint0.Commands
+namespace Sprint0.Commands.Mario
 {
-    internal class playerCrouch : ICommand
+    internal class CMarioBig : ICommand
     {
         private Sprint0 mySprint0;
-        public playerCrouch(Sprint0 Sprint0)
+        private ICharacter mario;
+        public CMarioBig(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            //mySprint0.luigiSprite = new RunInPlaceSprite(mySprint0);
+            mario = mySprint0.mario;
+            mario.ChangeToBig();
+
         }
 
     }
