@@ -11,7 +11,7 @@ namespace Sprint0.Characters
         public enum MarioHealth { Normal, Raccoon, Fire, Big};
         public MarioHealth health = MarioHealth.Normal;
 
-        public enum MarioPose { Jump, Crouch, Idle, Walking};
+        public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing};
         public MarioPose pose = MarioPose.Idle;
         public bool facingLeft { get; set; }
 

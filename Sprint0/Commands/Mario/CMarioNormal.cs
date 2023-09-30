@@ -23,6 +23,7 @@ namespace Sprint0.Commands.Mario
         {
             mario = mySprint0.mario;
             mario.ChangeToNormal();
+
         }
 
     }

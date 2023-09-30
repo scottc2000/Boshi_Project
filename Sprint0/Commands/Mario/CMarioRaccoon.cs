@@ -10,6 +10,7 @@ using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Commands.Mario
 {
+
     internal class CMarioRaccoon : ICommand
     {
         private Sprint0 mySprint0;

@@ -9,19 +9,23 @@ using Sprint0.Controllers;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 
-
 namespace Sprint0
 {
     public class Sprint0 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        
-        public Mario mario;
+   
+        public ICharacter mario;
+
+
+        public ISprite luigiSprite;
+        public ISprite blockSprite;
 
         IController KeyboardController;
  
 
+        
         public Sprint0()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -43,23 +47,24 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
+            KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));
 
             KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
             KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
             KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
             KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
 
-            KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));
-
-
+           
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+
             _spriteBatch = new SpriteBatch(GraphicsDevice); 
 
             mario = new Mario(this);
+
 
         }
 
@@ -67,6 +72,7 @@ namespace Sprint0
         {
 
             KeyboardController.Update();
+
 
             mario.Update(gameTime);
 
@@ -79,8 +85,8 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
-
             mario.Draw(_spriteBatch);
+
 
             _spriteBatch.End();
 

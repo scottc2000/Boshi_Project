@@ -48,3 +48,6 @@
 *.pdb
 *.mgcontent
 /Sprint0/Content/obj/DesktopGL/net6.0/Content/SpriteImages/blocks.mgcontent
+/.vs/ProjectEvaluation/sprint0.metadata.v7.bin
+/.vs/ProjectEvaluation/sprint0.projects.v7.bin
+/.vs/Sprint0/DesignTimeBuild/.dtbcache.v2

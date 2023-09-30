@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Characters;
 using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
@@ -41,8 +42,15 @@ namespace Sprint0.Controllers
                 {
                     controllerMappings[keys].Execute();
                 }
-            } 
-            
+            }
+
+            if (!pressedKeys.Contains(Keys.W) &&
+                !pressedKeys.Contains(Keys.A) &&
+                 !pressedKeys.Contains(Keys.S) &&
+                !pressedKeys.Contains(Keys.D) && !pressedKeys.Contains(Keys.E))
+            {
+                mySprint.mario.State.Stop();
+            }
         }
     }
 }

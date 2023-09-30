@@ -8,5 +8,6 @@ namespace Sprint0.Interfaces
         void Update(GameTime gametime);
         void Draw(SpriteBatch spriteBatch);
 
+
     }
 }

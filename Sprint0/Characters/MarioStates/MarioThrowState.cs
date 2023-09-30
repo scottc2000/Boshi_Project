@@ -46,7 +46,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Update(GameTime gametime)
         {
-            mario.pose = Mario.MarioPose.Jump;
+            mario.pose = Mario.MarioPose.Throwing;
             if (mario.facingLeft && mario.health == Mario.MarioHealth.Fire)
             {
                 if (mario.currentSprite.spriteName.Equals("FireMarioThrowLeft")){
