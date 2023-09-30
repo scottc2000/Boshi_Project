@@ -91,8 +91,8 @@ namespace Sprint0
             SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
 
             // Items
-            KeyboardController.RegisterCommand(Keys.V, new previousItem(item));
-            KeyboardController.RegisterCommand(Keys.B, new nextItem(item));
+            SpriteController.RegisterCommand(Keys.V, new previousItem(item));
+            SpriteController.RegisterCommand(Keys.B, new nextItem(item));
 
 
 
