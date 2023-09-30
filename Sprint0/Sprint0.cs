@@ -18,9 +18,9 @@ namespace Sprint0
     public class Sprint0 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private SpriteBatch _spriteBatch; 
         private BlockSpriteFactory spriteFactory;
-        private GameTime gametime;
+        private GameTime gametime; 
   
         public ICharacter mario;
         public ICharacter luigi;
@@ -57,7 +57,7 @@ namespace Sprint0
 
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
-            KeyboardController.RegisterCommand(Keys.D0, new Reset(this));
+            KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
             // Mario
             KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
@@ -91,8 +91,8 @@ namespace Sprint0
             SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
 
             // Items
-            KeyboardController.RegisterCommand(Keys.V, new previousItem(item));
-            KeyboardController.RegisterCommand(Keys.B, new nextItem(item));
+            SpriteController.RegisterCommand(Keys.V, new previousItem(item));
+            SpriteController.RegisterCommand(Keys.B, new nextItem(item));
 
 
 
