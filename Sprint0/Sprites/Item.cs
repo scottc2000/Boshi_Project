@@ -128,6 +128,10 @@ namespace Sprint0.Sprites
                     Leaf.Draw(spriteBatch);
                     itemSelect = ItemSelect.Leaf;
                     break;
+                case 3:
+                    FireFlower.Draw(spriteBatch);
+                    itemSelect = ItemSelect.FireFlower;
+                    break;
                 case 4:
                     Star.Draw(spriteBatch);
                     itemSelect = ItemSelect.Star;
