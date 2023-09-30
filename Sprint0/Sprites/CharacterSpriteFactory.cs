@@ -200,6 +200,136 @@ namespace Sprint0.Sprites
             effect = SpriteEffects.FlipHorizontally;
             statesAndSprites.Add("RaccoonMarioCrouchRight", new AnimatedSprite(currentFrames, texture, mario, effect));
 
+            // Normal Luigi States
+
+            // Luigi Still Left.
+            currentFrames = new Rectangle[] { new Rectangle(1, 53, 16, 17) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("NormalLuigiStillLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Still Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("NormalLuigiStillRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Move Left.
+            currentFrames = new Rectangle[] { new Rectangle(1, 53, 16, 17), new Rectangle(19, 51, 16, 17) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("NormalLuigiMoveLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Move Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("NormalLuigiMoveRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Jump Left.
+            currentFrames = new Rectangle[] { new Rectangle(73, 178, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("NormalLuigiJumpLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Jump Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("NormalLuigiJumpRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Crouch Left.
+            currentFrames = new Rectangle[] { new Rectangle(55, 180, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("NormalLuigiCrouchLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Crouch Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("NormalLuigiCrouchRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+
+            // Big Luigi States
+
+            // Luigi Still Left.
+            currentFrames = new Rectangle[] { new Rectangle(1, 179, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("BigLuigiStillLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Still Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("BigLuigiStillRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Move Left.
+            currentFrames = new Rectangle[] { new Rectangle(19, 178, 17, 28), new Rectangle(37, 178, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("BigLuigiMoveLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Move Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("BigLuigiMoveRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Jump Left.
+            currentFrames = new Rectangle[] { new Rectangle(73, 178, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("BigLuigiJumpLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Jump Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("BigLuigiJumpRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Crouch Left.
+            currentFrames = new Rectangle[] { new Rectangle(55, 180, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("BigLuigiCrouchLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Crouch Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("BigLuigiCrouchRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+
+
+            // Fire Luigi States
+
+            // Luigi Still Left.
+            currentFrames = new Rectangle[] { new Rectangle(1, 265, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("FireLuigiStillLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Still Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("FireLuigiStillRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Move Left.
+            currentFrames = new Rectangle[] { new Rectangle(19, 264, 17, 28), new Rectangle(37, 264, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("FireLuigiMoveLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Move Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("FireLuigiMoveRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Jump Left.
+            currentFrames = new Rectangle[] { new Rectangle(73, 264, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("FireLuigiJumpLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Jump Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("FireLuigiJumpRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Crouch Left.
+            currentFrames = new Rectangle[] { new Rectangle(55, 265, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("FireLuigiCrouchLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Crouch Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("FireLuigiCrouchRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Throw Left.
+            currentFrames = new Rectangle[] { new Rectangle(209, 298, 17, 28), new Rectangle(227, 298, 17, 28) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("FireLuigiThrowLeft", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+            // Luigi Throw Right.
+            effect = SpriteEffects.FlipHorizontally;
+            statesAndSprites.Add("FireLuigiThrowRight", new AnimatedSprite(currentFrames, texture, mario, effect));
+
+
+
+
+
         }
         public AnimatedSprite returnSprite(String spriteType)
         {

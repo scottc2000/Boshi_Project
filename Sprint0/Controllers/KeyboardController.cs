@@ -33,7 +33,7 @@ namespace Sprint0.Controllers
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
-            foreach(Keys key in pressedKeys)
+            foreach (Keys key in pressedKeys)
             {
                 if (controllerMappings.ContainsKey(key))
                 {
@@ -50,6 +50,13 @@ namespace Sprint0.Controllers
                 mySprint.mario.State.Stop();
             }
 
+            if (!pressedKeys.Contains(Keys.I) &&
+               !pressedKeys.Contains(Keys.J) &&
+                !pressedKeys.Contains(Keys.K) &&
+               !pressedKeys.Contains(Keys.L) && !pressedKeys.Contains(Keys.E))
+            {
+                // mySprint.luigi.State.Stop();
+            }
         }
 
     }

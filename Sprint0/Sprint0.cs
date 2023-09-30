@@ -21,6 +21,7 @@ namespace Sprint0
         private BlockSpriteFactory spriteFactory;
   
         public ICharacter mario;
+        public ICharacter luigi;
 
         public ISprite blockSprite;
 
@@ -62,6 +63,20 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
             KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
 
+            //Luigi
+            /*
+            KeyboardController.RegisterCommand(Keys.I, new CLuigiJump(this));
+            KeyboardController.RegisterCommand(Keys.J, new CLuigiMoveLeft(this));
+            KeyboardController.RegisterCommand(Keys.K, new CLuigiCrouch(this));
+            KeyboardController.RegisterCommand(Keys.L, new CLuigiMoveRight(this));
+
+            KeyboardController.RegisterCommand(Keys.D8, new CLuigiRaccoon(this));
+            KeyboardController.RegisterCommand(Keys.D7, new CLuigiFire(this));
+            KeyboardController.RegisterCommand(Keys.D6, new CLuigiBig(this));
+            KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
+            */
+
+
 
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
@@ -77,6 +92,7 @@ namespace Sprint0
             
 
             mario = new Mario(this);
+            // luigi = new Luigi(this);
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
@@ -88,6 +104,7 @@ namespace Sprint0
 
             KeyboardController.Update();
             mario.Update(gameTime);
+            // luigi.Update(gameTime)
 
 
             // switching blocks using t and y goes slower
