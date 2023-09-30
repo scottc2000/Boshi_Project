@@ -64,9 +64,6 @@ namespace Sprint0
 
 
             //Blocks
-            KeyboardController.RegisterCommand(Keys.T, new DoNothing(this));
-            KeyboardController.RegisterCommand(Keys.Y, new DoNothing(this));
-
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
             SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
 
