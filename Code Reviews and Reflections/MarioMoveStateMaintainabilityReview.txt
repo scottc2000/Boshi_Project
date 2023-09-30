@@ -1,7 +1,10 @@
-Review Author:
-Date of Review:
-Sprint #:
-File Name:
-File Author:
+Review Author: Michael Chen
+Date of Review: 9/28/2023
+Sprint #: 2
+File Name: MarioMoveState.cs
+File Author: Muskan
 Comments on Quality:
+Update contains a lot of nested if and switch case statements which may lower performance. The statements determine Mario's direction and health/power-up. There is also some coupling in the statements with lines such as "mario.currentSprite.spriteName.Equals("NormalMarioMoveLeft")".
+
 Hypothetical Change:
+As for the nested if and switch case statements, it is likely the best we are able to achieve since Mario has eight different states depending on his direction, and health/power-up. For the coupling, some coupling could be reduced by shifting the layer of encapsulation up or down. For example, mario could have a method that compares the name of the current sprite to a string instead of having tailing variables.
