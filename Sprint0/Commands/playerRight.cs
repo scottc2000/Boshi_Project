@@ -18,7 +18,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            mySprint0.luigiSprite = new StillSprite();
+            //mySprint0.luigiSprite = new StillSprite();
         }
 
     }

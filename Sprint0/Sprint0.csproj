@@ -11,6 +11,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Characters\LuigiStates\**" />
+    <Compile Remove="Commands\Luigi\**" />
+    <Compile Remove="Sprites\Luigi\**" />
+    <EmbeddedResource Remove="Characters\LuigiStates\**" />
+    <EmbeddedResource Remove="Commands\Luigi\**" />
+    <EmbeddedResource Remove="Sprites\Luigi\**" />
+    <None Remove="Characters\LuigiStates\**" />
+    <None Remove="Commands\Luigi\**" />
+    <None Remove="Sprites\Luigi\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="Commands\Luigi\" />
@@ -25,9 +36,7 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Characters\LuigiStates\" />
-    <Folder Include="Commands\Luigi\" />
-    <Folder Include="Sprites\Luigi\" />
+    <Folder Include="Characters\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
