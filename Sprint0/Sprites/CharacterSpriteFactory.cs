@@ -34,6 +34,11 @@ namespace Sprint0.Sprites
         {
             texture = content.Load<Texture2D>("SpriteImages/playerssclear");
 
+            // Dead Mario
+            currentFrames = new Rectangle[] { new Rectangle(305, 15, 17, 17) };
+            effect = SpriteEffects.None;
+            statesAndSprites.Add("DeadMario", new AnimatedSprite(currentFrames, texture, mario, effect));
+
             // Normal Mario States
 
             // Mario Still Left
