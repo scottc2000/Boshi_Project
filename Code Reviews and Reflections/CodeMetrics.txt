@@ -1,0 +1,36 @@
+Sprint 2:
+Week 1
+Project: Sprint0
+Configuration: Debug
+Scope: Assembly
+Assembly: C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.dll
+Maintainability Index: 90
+Cyclomatic Complexity: 95
+Depth of Inheritance: 2
+Class Coupling: 49
+Lines of Source code: 617
+Lines of Executable code: 133
+
+Week 2
+Project: Sprint0
+Configuration: Debug
+Scope: Assembly
+Assembly: C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.dll
+Maintainability Index: 84
+Cyclomatic Complexity: 365
+Depth of Inheritance: 2
+Class Coupling: 89
+Lines of Source code: 2,655
+Lines of Executable code: 587
+
+Week 3
+Project: Sprint0
+Configuration: Debug
+Scope: Assembly
+Assembly: C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.dll
+Maintainability Index: 86
+Cyclomatic Complexity: 379
+Depth of Inheritance: 2
+Class Coupling: 83
+Lines of Source code: 3,017
+Lines of Executable code: 801
