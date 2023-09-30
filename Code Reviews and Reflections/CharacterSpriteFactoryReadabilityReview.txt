@@ -1,0 +1,7 @@
+Review Author: Jerrin Wofford
+Date of Review: 9/28/23
+Sprint #: 2
+File Name: CharacterSpriteFactoryMario.cs
+File Author: Muskan Shergill
+Minutes to Complete Review: 9
+Comments: At first the large amount of spacing and code that looks repeated but similar is a bit jarring but as you explore with the comments it is easy to understand what each chunk's purpose is. It collects the data for where to pull sprites on their sprite sheets, then it sets the spriteeffects to none, and finally it adds everything into a dictionary to be called on in other classes.
