@@ -1,5 +1,7 @@
-﻿using Sprint0.Characters;
+﻿using Sprint0.Blocks;
+using Sprint0.Characters;
 using Sprint0.Interfaces;
+using Sprint0.Sprites;
 
 namespace Sprint0
 {
@@ -15,6 +17,7 @@ namespace Sprint0
         {
             // Error CS0118 when moving Reset.cs file to Commands folder
             mySprint.mario = new Mario(mySprint);
+            mySprint.luigi = new Luigi(mySprint);
         }
 
     }

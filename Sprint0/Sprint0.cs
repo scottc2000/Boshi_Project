@@ -18,9 +18,9 @@ namespace Sprint0
     public class Sprint0 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private SpriteBatch _spriteBatch; 
         private BlockSpriteFactory spriteFactory;
-        private GameTime gametime;
+        private GameTime gametime; 
   
         public ICharacter mario;
         public ICharacter luigi;
