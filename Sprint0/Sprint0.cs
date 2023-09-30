@@ -59,7 +59,7 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
             KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));      // Still needs projectile
 
-            //KeyboardController.RegisterCommand(Keys.D5, new CDeadMario(this));
+            KeyboardController.RegisterCommand(Keys.Q, new CDeadMario(this));
             KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
             KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
             KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
