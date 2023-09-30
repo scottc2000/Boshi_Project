@@ -17,6 +17,7 @@ namespace Sprint0.Blocks
         private Sprint0 game;
         private SpriteBatch spriteBatch;
         private ContentManager content;
+        private List<ISprite> blocks = new List<ISprite>();
 
         private ISprite grayBlockSprite;
         private ISprite questionBlockSprite;
@@ -25,6 +26,8 @@ namespace Sprint0.Blocks
         private ISprite emptyQuestionBlockSprite;
 
         public Vector2 location { get; set; }
+        private int blockCount;
+        private int blockIndex;
         
 
         public Block(Sprint0 game, SpriteBatch spriteBatch, ContentManager content)
@@ -39,11 +42,20 @@ namespace Sprint0.Blocks
         {
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.SaveSpriteLocations(content);
+
             grayBlockSprite = BlockSpriteFactory.Instance.CreateGrayBlock(spriteBatch, new Vector2(700, 100));
+            blocks.Add(grayBlockSprite);
             questionBlockSprite = BlockSpriteFactory.Instance.CreateQuestionBlock(spriteBatch, new Vector2(700, 100));
+            blocks.Add(questionBlockSprite);
             woodBlockSprite = BlockSpriteFactory.Instance.CreateWoodBlock(spriteBatch, new Vector2(700, 100));
+            blocks.Add(woodBlockSprite);
             yellowBrickSprite = BlockSpriteFactory.Instance.CreateYellowBrickSprite(spriteBatch, new Vector2(700, 100));
+            blocks.Add(yellowBrickSprite);
             emptyQuestionBlockSprite = BlockSpriteFactory.Instance.CreateEmptyQuestionBlock(spriteBatch, new Vector2(700, 100));
+            blocks.Add(emptyQuestionBlockSprite);
+
+            blockCount = blocks.Count;
+            blockIndex = 0;
         }
 
         public void Update(GameTime gameTime)
@@ -54,11 +66,43 @@ namespace Sprint0.Blocks
 
         public void Draw()
         {
-            grayBlockSprite.Draw(spriteBatch, content);
-            questionBlockSprite.Draw(spriteBatch, content);
-            woodBlockSprite.Draw(spriteBatch, content);
-            yellowBrickSprite.Draw(spriteBatch, content);
-            emptyQuestionBlockSprite.Draw(spriteBatch, content);
+            switch(blockIndex)
+            {
+                case 0:
+                    grayBlockSprite.Draw(spriteBatch, content);
+                    break;
+                case 1:
+                    questionBlockSprite.Draw(spriteBatch, content);
+                    break;
+                case 2:
+                    woodBlockSprite.Draw(spriteBatch, content);
+                    break;
+                case 3:
+                    yellowBrickSprite.Draw(spriteBatch, content);
+                    break;
+                case 4:
+                    emptyQuestionBlockSprite.Draw(spriteBatch, content);
+                    break;
+            }
+            
+        }
+
+        public void IncrementBlockIndex()
+        {
+            blockIndex++;
+            if(blockIndex >= blockCount)
+            {
+                blockIndex = 0;
+            }
+        }
+
+        public void DecrementBlockIndex()
+        {
+            blockIndex--;
+            if (blockIndex < 0)
+            {
+                blockIndex = blockCount - 1;
+            }
         }
     }
 }

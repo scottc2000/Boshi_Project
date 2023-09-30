@@ -29,13 +29,7 @@ namespace Sprint0
         public ISprite blockSprite;
 
         public Block block;
-
-
-        //public ISprite grayBlockSprite;
-        //public ISprite questionBlockSprite;
-        //public ISprite woodBlockSprite;
-        //public ISprite yellowBrickSprite;
-        //public ISprite emptyQuestionBlockSprite;
+        public TimeSpan spriteDelay, timeSinceLastSprite;
 
         ISprite textSprite;
         IController KeyboardController;
@@ -53,6 +47,10 @@ namespace Sprint0
 
         protected override void Initialize()
         {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            block = new Block(this, _spriteBatch, Content);
+            block.LoadBlocks();
+
             KeyboardController = new KeyboardController();
             SpriteController = new KeyboardController ();
 
@@ -79,16 +77,17 @@ namespace Sprint0
             //Blocks
             KeyboardController.RegisterCommand(Keys.T, new DoNothing(this));
             KeyboardController.RegisterCommand(Keys.Y, new DoNothing(this));
-            SpriteController.RegisterCommand(Keys.T, new BlockPrev(this));
-            SpriteController.RegisterCommand(Keys.Y, new BlockNext(this));
+            SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
+            SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
 
+            
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
 
             mario = new Mario(this);
             marioPosition.X = 150;
@@ -102,9 +101,8 @@ namespace Sprint0
             luigiSprite = new LuigiStill();
             //marioSprite = new MarioStillLeft();
 
-            block = new Block(this, _spriteBatch, Content);
-            block.LoadBlocks();
-            
+            spriteDelay = TimeSpan.FromMilliseconds(125);
+            timeSinceLastSprite = TimeSpan.Zero;
 
         }
 
@@ -116,7 +114,12 @@ namespace Sprint0
             mario.Update();
 
             //marioSprite.Update();
-            
+            timeSinceLastSprite += gameTime.ElapsedGameTime;
+            if (timeSinceLastSprite >= spriteDelay)
+            {
+                SpriteController.Update();
+                timeSinceLastSprite = TimeSpan.Zero;
+            }
             block.Update(gameTime);
             
 
