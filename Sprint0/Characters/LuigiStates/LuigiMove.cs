@@ -13,29 +13,31 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Characters.LuigiStates
 {
-    internal class LuigiFaceRight : ICharacterState
+    internal class LuigiMove : ICharacterState
     {
         private Luigi luigi;
 
-        public LuigiFaceRight(Luigi luigi)
+        public LuigiMove(Luigi luigi)
         {
             this.luigi = luigi;
 
         }
         public void ChangeDirection()
         {
-            luigi.luigiState = new LuigiFaceLeft(luigi);
+            luigi.luigiState = new LuigiFace(luigi);
         }
 
         public void Move()
         {
-            luigi.luigiState = new LuigiMoveLeft(luigi);
+            
         }
 
         public void Stop()
         {
-
+            luigi.luigiState = new LuigiFace(luigi);
         }
+
+
 
         public void Update(GameTime gameTime)
         {
@@ -43,15 +45,14 @@ namespace Sprint0.Characters.LuigiStates
             {
                 case (Luigi.LuigiHealth.Normal):
                     {
-                        if (luigi.currentSprite.spriteName.Equals("NormalLuigiStill") && luigi.myDirection == 1)
+                        if (luigi.currentSprite.spriteName.Equals("NormalLuigiRunAround"))
                         {
+                            luigi.position.X += luigi.myDirection;
                             luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {
-                            luigi.myDirection = 1;
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiStill", luigi.mySprint.myGameTime);
-                            
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiRunAround", gameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
@@ -66,15 +67,14 @@ namespace Sprint0.Characters.LuigiStates
 
                 case (Luigi.LuigiHealth.Fire):
                     {
-                        if (luigi.currentSprite.spriteName.Equals("FireLuigiStill") && luigi.myDirection == 1)
+                        if (luigi.currentSprite.spriteName.Equals("FireLuigiRunAround"))
                         {
+                            luigi.position.X += luigi.myDirection;
                             luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {
-                            luigi.myDirection = 1;
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiStill", luigi.mySprint.myGameTime);
-                            
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiRunAround", luigi.mySprint.myGameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
@@ -82,16 +82,14 @@ namespace Sprint0.Characters.LuigiStates
 
                 case (Luigi.LuigiHealth.Big):
                     {
-                        if (luigi.currentSprite.spriteName.Equals("BigLuigiStill") && luigi.myDirection == 1)
+                        if (String.Equals("BigLuigiRunAround", luigi.currentSprite.spriteName))
                         {
+                            luigi.position.X += luigi.myDirection;
                             luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {
-
-                            luigi.myDirection = 1;
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiStill", luigi.mySprint.myGameTime);
-                            
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiRunAround", gameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
@@ -107,4 +105,5 @@ namespace Sprint0.Characters.LuigiStates
         }
     }
 }
+
 

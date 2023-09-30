@@ -40,7 +40,7 @@ namespace Sprint0.Characters
             mySprint = sprint0;
             mySpriteFactory = sprint0.spriteFactory;
             currentSprite = mySpriteFactory.returnSprite("BigLuigiStill", mySprint.myGameTime);
-            luigiState = new LuigiFaceLeft(this);
+            luigiState = new LuigiFace(this);
             
             
             

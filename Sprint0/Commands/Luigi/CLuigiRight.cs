@@ -19,7 +19,8 @@ namespace Sprint0.Commands.Luigi
         }
         public void Execute()
         {
-            mySprint0.luigi.luigiState = new LuigiMoveRight(mySprint0.luigi);
+            mySprint0.luigi.myDirection = 1;
+            mySprint0.luigi.luigiState = new LuigiMove(mySprint0.luigi);
         }
 
     }
