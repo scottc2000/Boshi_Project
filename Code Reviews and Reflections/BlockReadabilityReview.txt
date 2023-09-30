@@ -1,7 +1,7 @@
-Review Author:
-Date of Review:
-Sprint #:
-File Name:
-File Author:
-Minutes taken to complete review:
-Comments:
+Review Author: Muskan
+Date of Review: 9/28
+Sprint #: 2
+File Name: Block.cs
+File Author: Michael Chen
+Minutes taken to complete review: 7 min
+Comments: The methods are have good naming convention and are easy to understand. LoadBlocks() loads each blocks sprite sheet cordinates. Update() is self-explanatory. Draw()'s switch case maps a number to each block type even though it's not explicitly stated. Could have used a dictionary for explicit mapping, but this works. The Block class handles all block information as expected.
