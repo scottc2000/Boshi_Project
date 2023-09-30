@@ -1,7 +1,7 @@
-Review Author:
-Date of Review:
-Sprint #:
-File Name:
-File Author:
-Comments on Quality:
-Hypothetical Change:
+Review Author: Muskan Shergill
+Date of Review: 9/29/2023
+Sprint #: 2
+File Name: BlockSpriteFactory.cs
+File Author: Michael Chen
+Comments on Quality: There's no coupling with is great! No need to reach into other people's stuff. SaveSpriteLocation may be handled by other "things" in future sprints, but it's a helpful method. This can be reused for other "static" drawings such as some items and background decor.
+Hypothetical Change: I don't have any hypothetical changes
