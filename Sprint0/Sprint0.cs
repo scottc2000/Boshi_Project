@@ -15,6 +15,8 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        public CharacterSpriteFactory spriteFactory;
+
         public ISprite marioSprite; // move into mario ICharacter
         public ISprite luigiSprite;
 
@@ -42,6 +44,7 @@ namespace Sprint0
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.D0, new Exit(this));
             KeyboardController.RegisterCommand(Keys.D9, new Reset(this));
+            spriteFactory = new CharacterSpriteFactory(Content, myGameTime);
 
             // Mario
             //KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
@@ -71,6 +74,8 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            spriteFactory.LoadTextures();
+
             //  mario = new Mario(this);
 
             luigi = new Luigi(this); // create new luigi character 
@@ -88,6 +93,7 @@ namespace Sprint0
             myGameTime = gameTime;
 
             // updates what is currently pressed, then updates luigi character
+
             KeyboardController.Update();
             luigi.Update();
 

@@ -59,15 +59,15 @@ namespace Sprint0.Characters.MarioStates
 
                 case (Luigi.LuigiHealth.Fire):
                     {
-                        if (luigi.currentSprite is FireLuigiAttack)
+                        if (luigi.currentSprite.spriteName.Equals("FireLuigiAttack"))
                         {
                             luigi.currentSprite.Update();
                         }
                         else
                         {
-                            luigi.currentSprite = new FireLuigiAttack(luigi);
+                            luigi.myDirection = -1;
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "FireLuigiAttack", luigi.mySprint.myGameTime);
                         }
-
                         break;
                     }
 

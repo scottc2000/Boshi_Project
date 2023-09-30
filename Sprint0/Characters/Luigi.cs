@@ -12,6 +12,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Characters.LuigiStates;
+using Sprint0.Sprites;
 
 namespace Sprint0.Characters
 {
@@ -22,11 +23,12 @@ namespace Sprint0.Characters
         public LuigiHealth health; // big by default
 
         public ICharacterState luigiState; // states and sprites which can be modified from the outside.
-        public ISprite currentSprite;
+        public AnimatedSprite currentSprite;
 
         public Vector2 position; 
         public Sprint0 mySprint;
         public int myDirection;
+        public CharacterSpriteFactory mySpriteFactory;
 
         public Luigi(Sprint0 sprint0)
         {
@@ -35,16 +37,20 @@ namespace Sprint0.Characters
             facingLeft = true;
             position.X = 400; // center of screen by default
             position.Y = 240;
-            luigiState = new LuigiFaceLeft(this); // facing left still is default state
-            
             mySprint = sprint0;
+            mySpriteFactory = sprint0.spriteFactory;
+            currentSprite = mySpriteFactory.returnSprite(position, "BigLuigiStill", mySprint.myGameTime);
+            luigiState = new LuigiFaceLeft(this);
+            
+            
+            
 
         }
 
         // unsure how to implement these , right now I just have commands that change the directions and jump/crouch using sprite class
-        public void ChangeDirection()
+        public void ChangeDirection(int dir)
         {
-            luigiState.ChangeDirection();
+            myDirection = dir;
         }
 
         // unsure how to implement these , right now I just have commands that change the directions and jump/crouch using sprite class
@@ -90,7 +96,7 @@ namespace Sprint0.Characters
 
         }
 
-        // Character state class should handle updating I think
+        // Character state class should handle updating I reckon
         public void Update()
         {
             luigiState.Update(mySprint.myGameTime);
@@ -115,6 +121,11 @@ namespace Sprint0.Characters
         public void ChangeToNormal()
         {
             health = LuigiHealth.Normal;
+        }
+
+        public void ChangeDirection()
+        {
+            throw new NotImplementedException();
         }
     }
 }

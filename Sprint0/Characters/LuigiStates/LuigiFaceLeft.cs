@@ -47,15 +47,14 @@ namespace Sprint0.Characters.LuigiStates
                 case (Luigi.LuigiHealth.Normal):
                     {
 
-                        // changes sprite if needed, otherwise keeps to same one
-                        if (luigi.currentSprite is NormalLuigiStill && luigi.myDirection == -1)
+                        if (luigi.currentSprite.spriteName.Equals("NormalLuigiStill"))
                         {
                             luigi.currentSprite.Update();
                         }
                         else
                         {
                             luigi.myDirection = -1;
-                            luigi.currentSprite = new NormalLuigiStill(luigi);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "NormalLuigiStill", luigi.mySprint.myGameTime);
                         }
                         break;
 
@@ -70,14 +69,14 @@ namespace Sprint0.Characters.LuigiStates
 
                 case (Luigi.LuigiHealth.Fire):
                     {
-                        if (luigi.currentSprite is FireLuigiStill && luigi.myDirection == -1)
+                        if (luigi.currentSprite.spriteName.Equals("FireLuigiStill"))
                         {
                             luigi.currentSprite.Update();
                         }
                         else
                         {
                             luigi.myDirection = -1;
-                            luigi.currentSprite = new FireLuigiStill(luigi);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "FireLuigiStill", luigi.mySprint.myGameTime);
                         }
                         break;
                     }
@@ -85,14 +84,14 @@ namespace Sprint0.Characters.LuigiStates
                 case (Luigi.LuigiHealth.Big):
                     {
                         // changes sprite if needed, otherwise keeps to same one
-                        if (luigi.currentSprite is BigLuigiStill && luigi.myDirection == -1)
+                        if (String.Equals(luigi.currentSprite.spriteName, "BigLuigiStill"))
                         {
                             luigi.currentSprite.Update();
                         }
                         else
                         {
                             luigi.myDirection = -1;
-                            luigi.currentSprite = new BigLuigiStill(luigi);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "BigLuigiStill", luigi.mySprint.myGameTime);
                         }
                         break;
                     }
