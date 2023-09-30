@@ -7,19 +7,20 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 ## Controls:
   ### Mario:
     - wasd movement
-    -D1, D2, D3, D4 state changes
+    -D1, D2, D3, D4, Q state changes
   ### Luigi:
     - ijkl movement
   ### Blocks/Obstacles
     - t, y cycle between blocks
   ### Items:
-    - u, i cycle between items
+    - v, b cycle between items
   ### Enemy/NPC:
     - o, p cycle between enemies
   ### Other:
     - escape quit
     - D0 reset to initial state
 
-# Known Bugs:
+# Known Bugs: 
+    - Items cycle through at alarming speed
 
 # Non required tools:
