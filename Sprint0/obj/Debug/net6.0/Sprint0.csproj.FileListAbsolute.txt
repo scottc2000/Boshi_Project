@@ -127,3 +127,4 @@ C:\Users\muska\source\repos\Boshi1\Sprint0\obj\Debug\net6.0\Sprint0.pdb
 C:\Users\muska\source\repos\Boshi1\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\muska\source\repos\Boshi1\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
 C:\Users\muska\source\repos\Boshi1\Sprint0\bin\Debug\net6.0\Content\NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.xnb
+C:\Users\muska\source\repos\Boshi1\Sprint0\bin\Debug\net6.0\Content\marioenemy.xnb
