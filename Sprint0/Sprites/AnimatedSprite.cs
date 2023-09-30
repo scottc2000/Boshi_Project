@@ -55,7 +55,7 @@ namespace Sprint0.Sprites
             this.spriteName = "X";
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager content, Vector2 pos)
+        public void Draw(SpriteBatch spriteBatch, Vector2 pos)
         {
             // int destination is used for destination rectangle alongsite passed in position
             Rectangle destinationrect = new Rectangle((int)pos.X, (int)pos.Y, destination[0], destination[1]);
@@ -95,6 +95,15 @@ namespace Sprint0.Sprites
             
         }
 
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, ContentManager content)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

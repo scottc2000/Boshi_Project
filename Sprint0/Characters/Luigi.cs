@@ -105,7 +105,7 @@ namespace Sprint0.Characters
         public void Draw(SpriteBatch spritebatch, ContentManager content)
         {
             // draws current sprite (determined by state machine) to screen
-            currentSprite.Draw(spritebatch, content, position);
+            currentSprite.Draw(spritebatch, position);
         }
 
         public void ChangeToFire()

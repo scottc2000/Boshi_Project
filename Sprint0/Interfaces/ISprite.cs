@@ -11,8 +11,8 @@ namespace Sprint0.Interfaces
 {
     public interface ISprite
     {
-        void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch, ContentManager content, Vector2 pos);
+        void Update();
+        void Draw(SpriteBatch spriteBatch, ContentManager content);
 
     }
 }
