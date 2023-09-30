@@ -7,18 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Commands
+namespace Sprint0.Commands.Mario
 {
-    internal class playerJump : ICommand
+    internal class CMarioMoveLeft : ICommand
     {
         private Sprint0 mySprint0;
-        public playerJump(Sprint0 Sprint0)
+        private ICharacter mario;
+        public CMarioMoveLeft(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            //mySprint0.luigiSprite = new MovingSprite();
+            mario = mySprint0.mario;
+            mario.facingLeft = true;
+            mario.Move();
         }
 
     }

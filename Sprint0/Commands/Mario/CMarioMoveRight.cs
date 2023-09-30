@@ -9,17 +9,21 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class playerLeft : ICommand
+    internal class CMarioMoveRight : ICommand
     {
+       
         private Sprint0 mySprint0;
-        public playerLeft(Sprint0 Sprint0)
+        private ICharacter mario;
+
+        public CMarioMoveRight(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-            //mySprint0.luigiSprite = new RunAroundSprite(mySprint0);
+            mario = mySprint0.mario;
+            mario.facingLeft = false;
+            mario.Move();
         }
-
     }
 }

@@ -21,7 +21,6 @@ namespace Sprint0
 
         public ISprite marioSprite; // move into mario ICharacter
         public ICharacter mario;
-        public Vector2 marioPosition; // move into mario ICharacter
 
         public ISprite luigiSprite;
         public ISprite blockSprite;
@@ -53,15 +52,21 @@ namespace Sprint0
             SpriteController = new KeyboardController ();
 
             //Keyboard command mappings
-            KeyboardController.RegisterCommand(Keys.D0, new Exit(this));
-            //KeyboardController.RegisterCommand(Keys.D9, new Reset(this));
+            KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
+            KeyboardController.RegisterCommand(Keys.D0, new Reset(this));
 
             // Mario
-            //KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
-            //KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
-            //KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
-            //KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            //KeyboardController.RegisterCommand(Keys.Z, new CMarioLeftIdle(this));
+            KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
+            KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
+            KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
+            KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
+<<<<<<< HEAD
+            //KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
+            KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
+            KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
+            KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
+=======
+            KeyboardController.RegisterCommand(Keys.Z, new CMarioLeftIdle(this));
             // KeyboardController.RegisterCommand(Keys.X, new CMarioRightIdle(this));
             // KeyboardController.RegisterCommand(Keys.Q, new CMarioFire(this));
             // KeyboardController.RegisterCommand(Keys.E, new CMarioStar(this));
@@ -87,11 +92,9 @@ namespace Sprint0
         {
             
 
-            //mario = new Mario(this);
-            marioPosition.X = 150;
-            marioPosition.Y = 150;
+            mario = new Mario(this);
 
-            //marioSprite = new MarioLeftIdleSprite(this);
+            marioSprite = new MarioLeftIdleSprite(this);
 
             
 
@@ -109,9 +112,15 @@ namespace Sprint0
             myGameTime = gameTime;
 
             KeyboardController.Update();
-            //mario.Update();
+<<<<<<< HEAD
+            mario.Update(gameTime);
+=======
+            mario.Update();
 
-            //marioSprite.Update();
+            marioSprite.Update();
+            blockSpriteFactory.Update();
+
+            // switching blocks using t and y goes slower
             timeSinceLastSprite += gameTime.ElapsedGameTime;
             if (timeSinceLastSprite >= spriteDelay)
             {
@@ -130,13 +139,17 @@ namespace Sprint0
             GraphicsDevice.Clear(Color.LightSlateGray);
 
             _spriteBatch.Begin();
-            //luigiSprite.Draw(_spriteBatch, Content);
-            //marioSprite.Draw(_spriteBatch, Content);
+<<<<<<< HEAD
 
-            block.Draw();
-
+            mario.Draw(_spriteBatch);
+=======
+            luigiSprite.Draw(_spriteBatch, Content);
+            marioSprite.Draw(_spriteBatch, Content);
+            blockSprites[currentSpriteIndex].Draw(_spriteBatch, Content);
+            
             //mario.Draw(_spriteBatch, Content); need to update parameters
-            //marioSprite.Draw(_spriteBatch, Content);
+            marioSprite.Draw(_spriteBatch, Content);
+>>>>>>> f36c50eea6a6522d1878aedc5ed220b24a0ee4a3
 
             _spriteBatch.End();
 

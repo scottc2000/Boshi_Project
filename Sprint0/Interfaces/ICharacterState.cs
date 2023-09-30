@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 
 namespace Sprint0.Interfaces
 {
-    internal interface ICharacterState
+    public interface ICharacterState
     {
-        public void ChangeDirection();
-
         public void Move();
 
+        public void Jump();
+        public void Crouch();
         public void Stop();
 
-        public void Draw();
+        public void Die();
+
+        public void Update(GameTime gametime);
     }
 }
