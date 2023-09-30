@@ -51,7 +51,7 @@ namespace Sprint0.Sprites
             statesAndSprites.Add("NormalMarioStillRight", new AnimatedSpriteMario(currentFrames, texture, mario, effect));
 
             // Mario Move Left
-            currentFrames = new Rectangle[] { new Rectangle(1, 15, 17, 17), new Rectangle(19, 15, 17, 17), new Rectangle(36, 15, 17, 17), new Rectangle(19, 15, 17, 17) };
+            currentFrames = new Rectangle[] { new Rectangle(1, 15, 17, 17), new Rectangle(19, 15, 17, 17), new Rectangle(54, 15, 17, 17), new Rectangle(19, 15, 17, 17) };
             effect = SpriteEffects.None;
             statesAndSprites.Add("NormalMarioMoveLeft", new AnimatedSpriteMario(currentFrames, texture, mario, effect));
 
@@ -60,7 +60,7 @@ namespace Sprint0.Sprites
             statesAndSprites.Add("NormalMarioMoveRight", new AnimatedSpriteMario(currentFrames, texture, mario, effect));
 
             // Mario Jump Left
-            currentFrames = new Rectangle[] { new Rectangle(72, 15, 17, 17) };
+            currentFrames = new Rectangle[] { new Rectangle(36, 15, 17, 17) };
             effect = SpriteEffects.None;
             statesAndSprites.Add("NormalMarioJumpLeft", new AnimatedSpriteMario(currentFrames, texture, mario, effect));
 

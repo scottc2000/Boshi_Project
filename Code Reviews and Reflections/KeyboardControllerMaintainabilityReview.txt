@@ -1,0 +1,7 @@
+Review Author: Jerrin Wofford
+Date of Review: 9/29/23
+Sprint #: 2
+File Name: KeyboardController.cs
+File Author: Smail Guled
+Comments on Quality: Quality on the KeyboardController is pretty good. One thing that is standing out to me is the boolean states for getting Mario to stop. This would definitely be something that would be difficult to maintain in the future and could use some refactoring.
+Hypothetical Change: Have a way to break up the keyboard states so that the state of the keyboard is read before and during the click to see the change in state.
