@@ -23,7 +23,7 @@ namespace Sprint0.Sprites
             spriteFrame = new Rectangle(1, 263, 17, 28);
             position = new Rectangle(150, 150, 34, 56);
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             //Nothing needed here
         }

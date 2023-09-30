@@ -33,7 +33,7 @@ namespace Sprint0.Sprites
             Scale = new Vector2(1, 1);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }

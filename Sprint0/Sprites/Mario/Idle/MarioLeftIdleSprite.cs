@@ -23,7 +23,7 @@ namespace Sprint0.Sprites
             position = new Rectangle(150, 150, 34, 56);
             mySprint = sprint0;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             //Nothing needed here
         }

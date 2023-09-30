@@ -26,7 +26,7 @@ namespace Sprint0.Sprites
             spriteFrame = new Rectangle(1, 15, 17, 17);
             destination = new Rectangle(150, 150, 34, 56);
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }

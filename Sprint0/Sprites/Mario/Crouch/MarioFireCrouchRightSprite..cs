@@ -34,7 +34,7 @@ namespace Sprint0.Sprites
             CurrentFrame = 0;
 
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             // Not needed - single frame
         }

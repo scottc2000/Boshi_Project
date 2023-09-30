@@ -30,7 +30,7 @@ namespace Sprint0.Sprites
 
             spriteFrames = new Rectangle[] {new Rectangle(1,179, 17, 28) };
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             //Nothing needed here
         }

@@ -33,7 +33,7 @@ namespace Sprint0.Sprites
 
 
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
           
         }

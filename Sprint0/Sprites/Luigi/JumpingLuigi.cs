@@ -40,7 +40,7 @@ namespace Sprint0.Sprites
             y = 240;
             right = SpriteEffects.None;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
             if (position.Y > (y - 30))

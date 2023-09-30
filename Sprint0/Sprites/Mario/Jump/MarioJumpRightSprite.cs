@@ -34,7 +34,7 @@ namespace Sprint0.Sprites
             position.X = 150;
             hasJumped = true;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
             if (position.Y <= 150 && position.Y != 100 && hasJumped)

@@ -10,6 +10,7 @@ using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System.Collections.Generic;
 using System;
+using Sprint0.Blocks;
 
 namespace Sprint0
 {
@@ -17,11 +18,8 @@ namespace Sprint0
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private BlockSpriteFactory blockSpriteFactory;
-        private List<BlockSprites> blockSprites;
-        public int currentSpriteIndex, tempSpriteIndex;
-        public TimeSpan spriteDelay, animationDelay;
-        public TimeSpan timeSinceLastSprite, timeSinceLastAnimation;
+        private BlockSpriteFactory spriteFactory;
+        
 
         public ISprite marioSprite; // move into mario ICharacter
         public ICharacter mario;
@@ -29,13 +27,21 @@ namespace Sprint0
 
         public ISprite luigiSprite;
         public ISprite blockSprite;
-        
+
+
+        public ISprite grayBlockSprite;
+        public ISprite questionBlockSprite;
+        public ISprite woodBlockSprite;
+        public ISprite yellowBrickSprite;
+        public ISprite emptyQuestionBlockSprite;
+
         ISprite textSprite;
         IController KeyboardController;
         IController SpriteController;
    
         public GameTime myGameTime;
 
+        
         public Sprint0()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -94,39 +100,13 @@ namespace Sprint0
             luigiSprite = new LuigiStill();
             //marioSprite = new MarioStillLeft();
 
-            blockSpriteFactory = new BlockSpriteFactory();
-
-            Texture2D blockTexture = Content.Load<Texture2D>("SpriteImages/blocks");
-            List<Rectangle> spriteRectangles = new List<Rectangle>
-            {
-                // five different blocks
-                new Rectangle(2076, 274, 32, 32),
-                new Rectangle(2416, 2, 32, 32),
-                new Rectangle(2280, 2, 32, 32),
-                new Rectangle(2076, 70, 32, 32),
-                new Rectangle(2008, 36, 32, 32),
-
-                // frames for question mark block
-                new Rectangle(2416, 2, 32, 32),
-                new Rectangle(2314, 2, 32, 32),
-                new Rectangle(2348, 2, 32, 32),
-                new Rectangle(2382, 2, 32, 32),
-
-                //frames for brick
-                new Rectangle(2008, 36, 32, 32),
-                new Rectangle(2110, 70, 32, 32),
-                new Rectangle(2144, 70, 32, 32),
-                new Rectangle(2178, 70, 32, 32)
-            };
-            blockSpriteFactory.AddSprite(blockTexture, spriteRectangles);
-
-            blockSprites = blockSpriteFactory.sprites;
-            currentSpriteIndex = 0;
-            tempSpriteIndex = 0;
-            spriteDelay = TimeSpan.FromMilliseconds(125);
-            animationDelay = TimeSpan.FromMilliseconds(200);
-            timeSinceLastSprite = TimeSpan.Zero;
-            timeSinceLastAnimation = TimeSpan.Zero;
+            BlockSpriteFactory.Instance.LoadTextures(Content);
+            BlockSpriteFactory.Instance.SaveSpriteLocations(Content);
+            grayBlockSprite = BlockSpriteFactory.Instance.CreateGrayBlock(_spriteBatch, new Vector2(700, 100));
+            questionBlockSprite = BlockSpriteFactory.Instance.CreateQuestionBlock(_spriteBatch, new Vector2(700, 100));
+            woodBlockSprite = BlockSpriteFactory.Instance.CreateWoodBlock(_spriteBatch, new Vector2(700, 100));
+            yellowBrickSprite = BlockSpriteFactory.Instance.CreateYellowBrickSprite(_spriteBatch, new Vector2(700, 100));
+            emptyQuestionBlockSprite = BlockSpriteFactory.Instance.CreateEmptyQuestionBlock(_spriteBatch, new Vector2(700, 100));
 
         }
 
@@ -137,34 +117,11 @@ namespace Sprint0
             KeyboardController.Update();
             mario.Update();
 
-            marioSprite.Update();
-            blockSpriteFactory.Update();
+            //marioSprite.Update();
+            
+            questionBlockSprite.Update(gameTime);
+            yellowBrickSprite.Update(gameTime);
 
-            // switching blocks using t and y goes slower
-            timeSinceLastSprite += gameTime.ElapsedGameTime;
-            if (timeSinceLastSprite >= spriteDelay)
-            {
-                SpriteController.Update();
-                timeSinceLastSprite = TimeSpan.Zero;
-            }
-
-            //timeSinceLastAnimation += gameTime.ElapsedGameTime;
-            //if (timeSinceLastAnimation >= animationDelay)
-            //{
-            //    if(tempSpriteIndex > 4)
-            //    {
-            //        tempSpriteIndex++;
-            //    }
-            //    if(currentSpriteIndex == 1 && tempSpriteIndex == 9)
-            //    {
-            //        tempSpriteIndex = 5;
-            //    }
-            //    if (currentSpriteIndex == 4 && tempSpriteIndex == 13)
-            //    {
-            //        tempSpriteIndex = 9;
-            //    }
-            //    timeSinceLastAnimation = TimeSpan.Zero;
-            //}
 
             base.Update(gameTime);
         }
@@ -174,12 +131,17 @@ namespace Sprint0
             GraphicsDevice.Clear(Color.LightSlateGray);
 
             _spriteBatch.Begin();
-            luigiSprite.Draw(_spriteBatch, Content);
-            marioSprite.Draw(_spriteBatch, Content);
-            blockSprites[currentSpriteIndex].Draw(_spriteBatch, Content);
-            
+            //luigiSprite.Draw(_spriteBatch, Content);
+            //marioSprite.Draw(_spriteBatch, Content);
+
+            grayBlockSprite.Draw(_spriteBatch, Content);
+            questionBlockSprite.Draw(_spriteBatch, Content);
+            woodBlockSprite.Draw(_spriteBatch, Content);
+            yellowBrickSprite.Draw(_spriteBatch, Content);
+            emptyQuestionBlockSprite.Draw(_spriteBatch, Content);
+
             //mario.Draw(_spriteBatch, Content); need to update parameters
-            marioSprite.Draw(_spriteBatch, Content);
+            //marioSprite.Draw(_spriteBatch, Content);
 
             _spriteBatch.End();
 

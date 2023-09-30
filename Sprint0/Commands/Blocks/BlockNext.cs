@@ -19,24 +19,7 @@ namespace Sprint0.Commands.Blocks
 
         public void Execute() 
         {
-            game.currentSpriteIndex++;
-            if (game.currentSpriteIndex == 5)
-            {
-                game.currentSpriteIndex = 0;
-            }
-
-            //switch (game.currentSpriteIndex)
-            //{
-            //    case 1:
-            //        game.tempSpriteIndex = 6;
-            //        break;
-            //    case 4:
-            //        game.tempSpriteIndex = 9;
-            //        break;
-            //    default:
-            //        game.tempSpriteIndex = game.currentSpriteIndex;
-            //        break;
-            //}
+            
 
         }
     }

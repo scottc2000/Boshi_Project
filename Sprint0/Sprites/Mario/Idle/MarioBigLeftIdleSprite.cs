@@ -25,7 +25,7 @@ namespace Sprint0.Sprites
             mySprint = sprint0;
             position = new Rectangle((int)mySprint.marioPosition.X, (int)mySprint.marioPosition.Y, 34, 56);
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             //Nothing needed here
         }

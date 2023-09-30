@@ -34,7 +34,7 @@ namespace Sprint0.Sprites
             spriteFrames = new Rectangle[] { new Rectangle(1, 15, 17, 17), new Rectangle(19, 15, 17, 17), new Rectangle(36, 15, 17, 17), new Rectangle(19, 15, 17, 17) };
             position.X = 150;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
             timeSinceLastFrame += mySprint0.myGameTime.ElapsedGameTime.Milliseconds;

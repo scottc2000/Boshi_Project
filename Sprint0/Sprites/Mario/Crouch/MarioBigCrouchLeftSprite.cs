@@ -30,7 +30,7 @@ namespace Sprint0.Sprites
             position = new Rectangle(150, 150, 34, 56);
 
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             //Not needed - single file
         }
