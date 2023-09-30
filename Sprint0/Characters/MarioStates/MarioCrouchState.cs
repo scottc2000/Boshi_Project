@@ -27,7 +27,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Crouch()
         {
-            // mario.State = new MarioCrouchState(mario);   
+            mario.State = new MarioCrouchState(mario); 
         }
 
         public void Stop()
@@ -42,7 +42,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Die()
         {
-            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            mario.State = new DeadMarioState(mario);
         }
         public void Update(GameTime gametime)
         {

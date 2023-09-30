@@ -11,6 +11,7 @@ using Sprint0.Sprites;
 using Sprint0.Commands.Blocks;
 using Sprint0.Blocks;
 using System;
+using System.ComponentModel;
 
 namespace Sprint0
 {
@@ -19,11 +20,13 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
+        private GameTime gametime;
   
         public ICharacter mario;
         public ICharacter luigi;
 
         public ISprite blockSprite;
+        public Item item;
 
         public Block block;
         public TimeSpan spriteDelay, timeSinceLastSprite;
@@ -43,7 +46,11 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             block = new Block(this, _spriteBatch, Content);
-            block.LoadBlocks();
+
+            mario = new Mario(this);
+            luigi = new Luigi(this);
+
+            item = new Item(this, gametime);
 
             KeyboardController = new KeyboardController(this);
             SpriteController = new KeyboardController (this);
@@ -66,6 +73,8 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
 
 
+
+            // Luigi
             KeyboardController.RegisterCommand(Keys.I, new CLuigiJump(this));
             KeyboardController.RegisterCommand(Keys.J, new CLuigiMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.K, new CLuigiCrouch(this));
@@ -77,23 +86,23 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
             
 
-
-
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
             SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
 
-            
+            // Items
+            KeyboardController.RegisterCommand(Keys.V, new previousItem(item));
+            KeyboardController.RegisterCommand(Keys.B, new nextItem(item));
+
+
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            
-
-            mario = new Mario(this);
-            luigi = new Luigi(this);
+            item.LoadItems();
+            block.LoadBlocks();
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
@@ -107,6 +116,8 @@ namespace Sprint0
             mario.Update(gameTime);
             luigi.Update(gameTime);
 
+            item.Update(gameTime);
+            item.UpdatePos(gameTime);
 
             // switching blocks using t and y goes slower
             timeSinceLastSprite += gameTime.ElapsedGameTime;
@@ -131,6 +142,7 @@ namespace Sprint0
             mario.Draw(_spriteBatch);
             luigi.Draw(_spriteBatch);
             block.Draw();
+            item.Draw(_spriteBatch);
 
             _spriteBatch.End();
 

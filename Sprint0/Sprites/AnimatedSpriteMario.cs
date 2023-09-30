@@ -8,7 +8,6 @@ namespace Sprint0.Sprites
 {
     public class AnimatedSpriteMario : ISprite
     {
-        private Sprint0 mySprint;
         private Mario mario;
         private Texture2D texture;
 
