@@ -1,25 +1,35 @@
 # Boshi_Project
 ## Mario Game Project for CSE 3902. 
-# Team Members:
+# Team:
+1:50 section Team Boshi
 Muskan, Jerrin, Ismail, Michael, Scott, Ben
+
+# Documentation
+    - Code review/metrics in folder in master
+    - Planning and tasks under Github Projects
+    - url: github.com/scottc2000/Boshi_Project
 
 # Sprint 2
 ## Controls:
   ### Mario:
     - wasd movement
-    -D1, D2, D3, D4 state changes
+    -D1, D2, D3, D4, Q state changes
   ### Luigi:
     - ijkl movement
+    - D8, D7, D6, D5
   ### Blocks/Obstacles
     - t, y cycle between blocks
   ### Items:
-    - u, i cycle between items
+    - v, b cycle between items
   ### Enemy/NPC:
     - o, p cycle between enemies
   ### Other:
     - escape quit
     - D0 reset to initial state
 
-# Known Bugs:
+# Known Bugs: 
+    - Items cycle through at alarming speed
+    - particles not animated yet for characters (mario,luigi)
+    - manaul merging on the master branch due to complicated merge conflicts. will be fixed in the future with more frequent pulls/branches and efficient .gitignore file
 
 # Non required tools:
