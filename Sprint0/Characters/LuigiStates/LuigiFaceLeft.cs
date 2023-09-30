@@ -49,12 +49,13 @@ namespace Sprint0.Characters.LuigiStates
 
                         if (luigi.currentSprite.spriteName.Equals("NormalLuigiStill"))
                         {
-                            luigi.currentSprite.Update();
+                            luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {
                             luigi.myDirection = -1;
                             luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "NormalLuigiStill", luigi.mySprint.myGameTime);
+                            luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
 
@@ -71,12 +72,13 @@ namespace Sprint0.Characters.LuigiStates
                     {
                         if (luigi.currentSprite.spriteName.Equals("FireLuigiStill"))
                         {
-                            luigi.currentSprite.Update();
+                            luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {
                             luigi.myDirection = -1;
                             luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "FireLuigiStill", luigi.mySprint.myGameTime);
+                            luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
                     }
@@ -86,12 +88,13 @@ namespace Sprint0.Characters.LuigiStates
                         // changes sprite if needed, otherwise keeps to same one
                         if (String.Equals(luigi.currentSprite.spriteName, "BigLuigiStill"))
                         {
-                            luigi.currentSprite.Update();
+                            luigi.currentSprite.Update(luigi.mySprint.myGameTime);  
                         }
                         else
                         {
                             luigi.myDirection = -1;
                             luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "BigLuigiStill", luigi.mySprint.myGameTime);
+                            luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
                     }

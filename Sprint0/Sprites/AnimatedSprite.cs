@@ -13,7 +13,8 @@ namespace Sprint0.Sprites
         public Texture2D texture;
         float rotation;
         float layer;
-        private Rectangle destination;
+        int[] destination;
+        public int direction;
 
         ContentManager content;
         GameTime gameTime;
@@ -27,11 +28,12 @@ namespace Sprint0.Sprites
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
         public SpriteEffects flip;
+        
 
 
 
 
-        public AnimatedSprite(Rectangle[] sprites, GameTime gameTime, Texture2D Texture, Rectangle destination)
+        public AnimatedSprite(Rectangle[] sprites, GameTime gameTime, Texture2D Texture, int[] destination, int myDirection)
 		{
             this.destination = destination;
             this.sprites = sprites;
@@ -41,19 +43,35 @@ namespace Sprint0.Sprites
             rotation = 0;
             layer = 0;
             flip = SpriteEffects.None;
+            direction = myDirection;
             this.spriteName = "X";
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager content)
+        public void Draw(SpriteBatch spriteBatch, ContentManager content, Vector2 pos)
         {
-            spriteBatch.Draw(texture, destination, sprites[CurrentFrame], Color.White, rotation, new Vector2(0, 0), flip, layer);
+            Rectangle destinationrect = new Rectangle((int)pos.X, (int)pos.Y, destination[0], destination[1]);
+            spriteBatch.Draw(texture, destinationrect, sprites[CurrentFrame], Color.White, rotation, new Vector2(0, 0), flip, layer);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
+            
         {
-            if (gameTime != null)
+            if (direction == 1)
             {
-                timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
+                // 1 = right, -1 = left
+                flip = SpriteEffects.FlipHorizontally;
+
+            }
+            else
+            {
+                flip = SpriteEffects.None;
+            }
+
+
+            this.gameTime = gameTime;
+            if (this.gameTime != null)
+            {
+                timeSinceLastFrame += this.gameTime.ElapsedGameTime.Milliseconds;
 
                 if (timeSinceLastFrame > millisecondsPerFrame)
                 {
@@ -65,6 +83,16 @@ namespace Sprint0.Sprites
                     }
                 }
             }
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, ContentManager content)
+        {
+            throw new NotImplementedException();
         }
     }
 }

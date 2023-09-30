@@ -46,12 +46,15 @@ namespace Sprint0.Characters.MarioStates
                     {
                         if(luigi.currentSprite.spriteName.Equals("NormalLuigiJump"))
                         {
-                            luigi.currentSprite.Update();
+                            luigi.position.Y -= 1;
+                            luigi.position.X += luigi.myDirection;
+                            luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {
-                            luigi.myDirection = -1;
                             luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "NormalLuigiJump", luigi.mySprint.myGameTime);
+                            
+                            luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
                     }
@@ -67,12 +70,15 @@ namespace Sprint0.Characters.MarioStates
                     {
                         if (luigi.currentSprite.spriteName.Equals("FireLuigiJump"))
                         {
-                            luigi.currentSprite.Update();
+                            luigi.position.Y -= 1;
+                            luigi.position.X += luigi.myDirection;
+                            luigi.currentSprite.Update(luigi.mySprint.myGameTime);
+                            
                         }
                         else
                         {
-                            luigi.myDirection = -1;
                             luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "FireLuigiJump", luigi.mySprint.myGameTime);
+                            luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
                     }
@@ -81,12 +87,14 @@ namespace Sprint0.Characters.MarioStates
                     {
                         if (luigi.currentSprite.spriteName.Equals("BigLuigiJump"))
                         {
-                            luigi.currentSprite.Update();
+                            luigi.position.Y -= 1;
+                            luigi.position.X += luigi.myDirection;
+                            luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {
-                            luigi.myDirection = -1;
                             luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "BigLuigiJump", luigi.mySprint.myGameTime);
+                            luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
                     }

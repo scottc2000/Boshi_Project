@@ -61,7 +61,7 @@ namespace Sprint0.Characters.MarioStates
                     {
                         if (luigi.currentSprite.spriteName.Equals("FireLuigiAttack"))
                         {
-                            luigi.currentSprite.Update();
+                            luigi.currentSprite.Update(luigi.mySprint.myGameTime);
                         }
                         else
                         {

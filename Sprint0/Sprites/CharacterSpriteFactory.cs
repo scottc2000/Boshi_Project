@@ -16,6 +16,7 @@ namespace Sprint0.Sprites
 		ContentManager content;
 		GameTime gameTime;
 		ICharacterState currentState;
+
 		public Dictionary<String, AnimatedSprite> statesAndSprites;
 		String spriteType;
         Texture2D texture;
@@ -41,20 +42,21 @@ namespace Sprint0.Sprites
 			// NORMAL LUIGI SPRITES
 
 			// LUIGI STILLc
+
 			Rectangle[] currentSprites = new Rectangle[]{ new Rectangle(1, 53, 16, 17) };
-			statesAndSprites.Add("NormalLuigiStill", new AnimatedSprite(currentSprites, this.gameTime, texture, new Rectangle((int)this.position.X, (int)this.position.Y, 27, 27)));
+			statesAndSprites.Add("NormalLuigiStill", new AnimatedSprite(currentSprites, this.gameTime, texture, new int[] {27, 27}, -1));
 
 			// LUIGI JUMPc
 			currentSprites = new Rectangle[] { new Rectangle(37, 51, 17, 17) };
-            statesAndSprites.Add("NormalLuigiJump", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y + 30, 27, 27)));
+            statesAndSprites.Add("NormalLuigiJump", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 27, 27 }, -1));
 
             // LUIGI Crouchc
             currentSprites = new Rectangle[] { new Rectangle(1, 53, 16, 17) };
-            statesAndSprites.Add("NormalLuigiCrouch", new AnimatedSprite(currentSprites, this.gameTime, texture, new Rectangle((int)this.position.X, (int)this.position.Y, 27, 27)));
+            statesAndSprites.Add("NormalLuigiCrouch", new AnimatedSprite(currentSprites, this.gameTime, texture, new int[] { 27, 27 }, -1));
 
             // LUIGI RUN AROUND  c
             currentSprites = new Rectangle[] { new Rectangle(1, 53, 16, 17), new Rectangle(19, 51, 16, 17) };
-            statesAndSprites.Add("NormalLuigiRunAround", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y + 30, 27, 27)));
+            statesAndSprites.Add("NormalLuigiRunAround", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 27, 27 }, -1));
 
 
 
@@ -62,41 +64,41 @@ namespace Sprint0.Sprites
 
             // LUIGI STILL c
             currentSprites = new Rectangle[] { new Rectangle(1, 179, 17, 28) };
-            statesAndSprites.Add("BigLuigiStill", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)this.position.X, (int)this.position.Y, 34, 56)));
+            statesAndSprites.Add("BigLuigiStill", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // LUIGI JUMP c
             currentSprites = new Rectangle[] { new Rectangle(73, 178, 17, 28) };
-            statesAndSprites.Add("BigLuigiJump", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y, 34, 56)));
+            statesAndSprites.Add("BigLuigiJump", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // LUIGI RUN AROUND c
             currentSprites = new Rectangle[] { new Rectangle(19, 178, 17, 28), new Rectangle(37, 178, 17, 28) };
-            statesAndSprites.Add("BigLuigiRunAround", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y, 34, 56)));
+            statesAndSprites.Add("BigLuigiRunAround", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // LUIGI Crouchc
             currentSprites = new Rectangle[] { new Rectangle(55, 180, 17, 28) };
-            statesAndSprites.Add("BigLuigiCrouch", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y + 5, 34, 56)));
+            statesAndSprites.Add("BigLuigiCrouch", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // FIRE LUIGI SPRITES
 
             // LUIGI STILL c
             currentSprites = new Rectangle[] { new Rectangle(1, 265, 17, 28) };
-            statesAndSprites.Add("FireLuigiStill", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y, 34, 56)));
+            statesAndSprites.Add("FireLuigiStill", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // LUIGI JUMP c
             currentSprites = new Rectangle[] { new Rectangle(73, 264, 17, 28) };
-            statesAndSprites.Add("FireLuigiJump", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y, 34, 56)));
+            statesAndSprites.Add("FireLuigiJump", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // LUIGI RUN AROUND 
             currentSprites = new Rectangle[] { new Rectangle(19, 264, 17, 28), new Rectangle(37, 264, 17, 28) };
-            statesAndSprites.Add("FireLuigiRunAround", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y, 34, 56)));
+            statesAndSprites.Add("FireLuigiRunAround", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // LUIGI ATTACK
             currentSprites = new Rectangle[] { new Rectangle(209, 298, 17, 28), new Rectangle(227, 298, 17, 28) };
-            statesAndSprites.Add("FireLuigiAttack", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y, 34, 56)));
+            statesAndSprites.Add("FireLuigiAttack", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
             // LUIGI Crouch
             currentSprites = new Rectangle[] { new Rectangle(55, 265, 17, 28) };
-            statesAndSprites.Add("FireLuigiCrouch", new AnimatedSprite(currentSprites, gameTime, texture, new Rectangle((int)position.X, (int)position.Y + 5, 34, 56)));
+            statesAndSprites.Add("FireLuigiCrouch", new AnimatedSprite(currentSprites, gameTime, texture, new int[] { 34, 56 }, -1));
 
 
 
