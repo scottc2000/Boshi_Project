@@ -35,6 +35,7 @@ namespace Sprint0
         protected override void Initialize()
         {
             KeyboardController = new KeyboardController();
+            item = new Item(this);
 
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.D0, new Exit(this));
@@ -52,14 +53,12 @@ namespace Sprint0
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            item = new Item(this);
+            item.LoadItems();
 
         }
 
         protected override void Update(GameTime gameTime)
         {
-            luigiSprite.Update(gameTime);
             item.Update(gameTime);
             item.UpdatePos(gameTime);
 
@@ -75,7 +74,7 @@ namespace Sprint0
             _spriteBatch.Begin();
 
             // textSprite.Draw(_spriteBatch, Content);
-            luigiSprite.Draw(_spriteBatch);
+            //luigiSprite.Draw(_spriteBatch);
             item.Draw(_spriteBatch);
 
             _spriteBatch.End();

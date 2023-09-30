@@ -22,12 +22,11 @@ namespace Sprint0.Sprites
 
         private int width = 16, height = 16;
 
-        public AniItemSprite(ItemSpriteFactory factory, String itemString)
+        public AniItemSprite(ItemSpriteFactory factory, Item item, String itemString)
         {
             this.factory = factory;
             this.itemString = itemString;
-            factory.LoadTextures();
-            factory.RegisterSprite();
+            this.item = item;
             frameCount = factory.itemAndFrames[itemString].Length;
         }
 

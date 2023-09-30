@@ -15,6 +15,7 @@ namespace Sprint0.Sprites
     {
         private ContentManager content;
         private GameTime gameTime;
+        Item item;
         
         public Dictionary<String, Rectangle> itemAndRectangle;
         public Dictionary<String, Rectangle[]> itemAndFrames;
@@ -22,12 +23,13 @@ namespace Sprint0.Sprites
         public Texture2D texture;
         Vector2 position;
 
-        public ItemSpriteFactory(ContentManager content, GameTime gameTime)
+        public ItemSpriteFactory(ContentManager content, Item item, GameTime gameTime)
         {
             this.content = content;
             this.gameTime = gameTime;
-
+            this.item = item;
             itemAndRectangle = new Dictionary<String, Rectangle>();
+            itemAndFrames = new Dictionary<String, Rectangle[]>();
         }
 
         public void LoadTextures()
@@ -51,5 +53,49 @@ namespace Sprint0.Sprites
             itemAndFrames.Add("Shoe", new Rectangle[] { new Rectangle(55, 42, 16, 16), new Rectangle(72, 42, 16, 16) });
         }
 
+        public ISprite createRedMushroom()
+        {
+            return new NonAniItemSprite(this, item, "RedMushroom");
+        }
+
+        public ISprite createOneUpMushroom()
+        {
+            return new NonAniItemSprite(this, item, "OneUpMushroom");
+        }
+
+        public ISprite createFireFlower()
+        {
+            return new NonAniItemSprite(this, item, "FireFlower");
+        }
+
+        public ISprite createLeaf()
+        {
+            return new NonAniItemSprite(this, item, "Leaf");
+        }
+
+        public ISprite createFrog()
+        {
+            return new NonAniItemSprite(this, item, "Frog");
+        }
+
+        public ISprite createTanooki()
+        {
+            return new NonAniItemSprite(this, item, "Tanooki");
+        }
+
+        public ISprite createHammer()
+        {
+            return new NonAniItemSprite(this, item, "Hammer");
+        }
+
+        public ISprite createStar()
+        {
+            return new AniItemSprite(this, item, "Star");
+        }
+
+        public ISprite createShoe()
+        {
+            return new AniItemSprite(this, item, "Shoe");
+        }
     }
 }

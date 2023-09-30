@@ -16,12 +16,11 @@ namespace Sprint0.Sprites
         String itemString;
         private int width = 16, height = 16;
 
-        public NonAniItemSprite(ItemSpriteFactory factory, String itemString)
+        public NonAniItemSprite(ItemSpriteFactory factory, Item item, String itemString)
         {
             this.factory = factory;
             this.itemString = itemString;
-            factory.RegisterSprite();
-            factory.LoadTextures();
+            this.item = item;
         }
 
         public void Update(GameTime gameTime)

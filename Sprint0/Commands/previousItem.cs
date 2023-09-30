@@ -10,7 +10,7 @@ namespace Sprint0.Commands
 {
     internal class previousItem : ICommand
     {
-        Item item { get; set; }
+        Item item;
 
         public previousItem(Item item)
         {
