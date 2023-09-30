@@ -53,7 +53,7 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, ContentManager content)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(textures, position, frames[currentFrame], Color.White);
         }

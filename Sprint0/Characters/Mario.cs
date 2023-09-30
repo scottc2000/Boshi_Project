@@ -3,15 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using System;
 
 namespace Sprint0.Characters
 {
     public class Mario : ICharacter
     {
-        public enum MarioHealth { Normal, Raccoon, Fire, Big};
+        public enum MarioHealth { Normal, Raccoon, Fire, Big };
         public MarioHealth health = MarioHealth.Normal;
 
-        public enum MarioPose { Jump, Crouch, Idle, Walking};
+        public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing };
         public MarioPose pose = MarioPose.Idle;
         public bool facingLeft { get; set; }
 
@@ -20,8 +21,8 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
 
-        public ISprite marioSprite;
-        public Texture2D marioTexture;
+        public AnimatedSprite currentSprite;
+        public CharacterSpriteFactory mySpriteFactory;
 
 
         public Mario(Sprint0 sprint0)
@@ -31,18 +32,18 @@ namespace Sprint0.Characters
 
             this.facingLeft = true;
 
-            this.position.X= 150;
+            this.position.X = 150;
             this.position.Y = 150;
             this.mySprint = sprint0;
+            mySpriteFactory = new CharacterSpriteFactory(this);
+            mySpriteFactory.LoadTextures(mySprint.Content);
 
-            this.marioSprite = new MarioLeftIdleSprite(mySprint, this);
-            marioTexture = mySprint.Content.Load<Texture2D>("SpriteImages/playerssclear");
-            //this.marioSprite = CharacterSpriteFactory.Instance.CreateMarioIdleRightSprite();
+            currentSprite = mySpriteFactory.returnSprite("NormalMarioStillLeft");
 
         }
 
 
-        public void Move() 
+        public void Move()
         {
             State.Move();
         }
@@ -66,7 +67,15 @@ namespace Sprint0.Characters
         {
             State.Die();
         }
-    
+
+        public void Throw()
+        {
+            if (health == Mario.MarioHealth.Fire)
+            {
+                State.Throw();
+            }
+        }
+
         // Will change with game functionality
         public void ChangeToFire()
         {
@@ -88,14 +97,15 @@ namespace Sprint0.Characters
             health = MarioHealth.Normal;
         }
 
+
         public void Update(GameTime gametime)
         {
-           State.Update(gametime);
+            State.Update(gametime);
         }
 
         public void Draw(SpriteBatch spritebatch)
         {
-            marioSprite.Draw(spritebatch);
+            currentSprite.Draw(spritebatch);
         }
     }
 }

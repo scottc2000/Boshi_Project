@@ -11,6 +11,7 @@ namespace Sprint0.Interfaces
         public void Stop();
 
         public void Die();
+        public void Throw();
 
         public void Update(GameTime gametime);
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using System;
 using System.ComponentModel.Design;
 
 namespace Sprint0.Characters.MarioStates
@@ -26,7 +27,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Crouch()
         {
-            
+            // mario.State = new MarioCrouchState(mario);   
         }
 
         public void Stop()
@@ -34,11 +35,14 @@ namespace Sprint0.Characters.MarioStates
             mario.State = new MarioIdleState(mario);
         }
 
-
+        public void Throw()
+        {
+            mario.State = new MarioThrowState(mario);
+        }
 
         public void Die()
         {
-           // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
         }
         public void Update(GameTime gametime)
         {
@@ -49,26 +53,26 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            //mario.marioSprite = new MarioLeftSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioCrouchLeft");
                             break;
                         }
 
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            // mario.marioSprite = new MarioRaccoonLeftIdleSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioCrouchLeft");
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.marioSprite = new MarioFireCrouchLeftSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioCrouchLeft");
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.marioSprite = new MarioBigCrouchLeftSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioCrouchLeft");
                             break;
                         }
                 }
@@ -79,25 +83,25 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            // mario.marioSprite = new MarioJumpCrouchRSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioCrouchRight");
                             break;
                         }
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            // mario.marioSprite = new MarioRaccoonLeftIdleSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioCrouchRight");
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.marioSprite = new MarioFireCrouchRightSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioCrouchRight");
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.marioSprite = new MarioBigCrouchRightSprite(mario.mySprint, mario);
+                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioCrouchRight");
                             break;
                         }
                 }
