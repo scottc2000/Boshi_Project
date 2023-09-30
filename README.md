@@ -1,24 +1,24 @@
 # Boshi_Project
-Mario Game Project for CSE 3902. 
-Team Members:
+## Mario Game Project for CSE 3902. 
+# Team Members:
 Muskan, Jerrin, Ismail, Michael, Scott, Ben
 
-Sprint 2
-Controls:
-  Mario:
+# Sprint 2
+## Controls:
+  ### Mario:
     - wasd movement
-  Luigi:
+  ### Luigi:
     - ijkl movement
-  Blocks/Obstacles
+  ### Blocks/Obstacles
     - t, y cycle between blocks
-  Items:
+  ### Items:
     - u, i cycle between items
-  Enemy/NPC:
+  ### Enemy/NPC:
     - o, p cycle between enemies
-  Other:
+  ### Other:
     - q quit
     - r reset to initial state
 
-Known Bugs:
+# Known Bugs:
 
-Non required tools:
+# Non required tools:
