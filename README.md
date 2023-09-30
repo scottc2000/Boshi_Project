@@ -7,6 +7,7 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 ## Controls:
   ### Mario:
     - wasd movement
+    -D1, D2, D3, D4 state changes
   ### Luigi:
     - ijkl movement
   ### Blocks/Obstacles
@@ -16,8 +17,8 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
   ### Enemy/NPC:
     - o, p cycle between enemies
   ### Other:
-    - q quit
-    - r reset to initial state
+    - escape quit
+    - D0 reset to initial state
 
 # Known Bugs:
 
