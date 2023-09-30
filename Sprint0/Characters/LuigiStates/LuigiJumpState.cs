@@ -52,7 +52,7 @@ namespace Sprint0.Characters.MarioStates
                         }
                         else
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "NormalLuigiJump", luigi.mySprint.myGameTime);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiJump", luigi.mySprint.myGameTime);
                             
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
@@ -77,7 +77,7 @@ namespace Sprint0.Characters.MarioStates
                         }
                         else
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "FireLuigiJump", luigi.mySprint.myGameTime);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiJump", luigi.mySprint.myGameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
@@ -93,7 +93,7 @@ namespace Sprint0.Characters.MarioStates
                         }
                         else
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "BigLuigiJump", luigi.mySprint.myGameTime);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiJump", luigi.mySprint.myGameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;

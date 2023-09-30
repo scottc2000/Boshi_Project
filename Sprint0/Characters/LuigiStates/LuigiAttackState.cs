@@ -66,7 +66,7 @@ namespace Sprint0.Characters.MarioStates
                         else
                         {
                             luigi.myDirection = -1;
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "FireLuigiAttack", luigi.mySprint.myGameTime);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite( "FireLuigiAttack", luigi.mySprint.myGameTime);
                         }
                         break;
                     }

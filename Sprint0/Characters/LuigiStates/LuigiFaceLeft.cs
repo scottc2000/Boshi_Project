@@ -54,7 +54,7 @@ namespace Sprint0.Characters.LuigiStates
                         else
                         {
                             luigi.myDirection = -1;
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "NormalLuigiStill", luigi.mySprint.myGameTime);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiStill", luigi.mySprint.myGameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
@@ -77,7 +77,7 @@ namespace Sprint0.Characters.LuigiStates
                         else
                         {
                             luigi.myDirection = -1;
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "FireLuigiStill", luigi.mySprint.myGameTime);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiStill", luigi.mySprint.myGameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;
@@ -93,7 +93,7 @@ namespace Sprint0.Characters.LuigiStates
                         else
                         {
                             luigi.myDirection = -1;
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite(luigi.position, "BigLuigiStill", luigi.mySprint.myGameTime);
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiStill", luigi.mySprint.myGameTime);
                             luigi.currentSprite.direction = luigi.myDirection;
                         }
                         break;

@@ -39,7 +39,7 @@ namespace Sprint0.Characters
             position.Y = 240;
             mySprint = sprint0;
             mySpriteFactory = sprint0.spriteFactory;
-            currentSprite = mySpriteFactory.returnSprite(position, "BigLuigiStill", mySprint.myGameTime);
+            currentSprite = mySpriteFactory.returnSprite("BigLuigiStill", mySprint.myGameTime);
             luigiState = new LuigiFaceLeft(this);
             
             

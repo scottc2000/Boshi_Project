@@ -28,7 +28,7 @@ namespace Sprint0.Sprites
 			this.content = content;
 			this.gameTime = gameTime;
             
-
+            // String used as ID for sprites needed, AnimatedSprite uses spritesheet locations currentSprite and destination rectangle int[]
 			statesAndSprites = new Dictionary<String, AnimatedSprite>();
 
 			
@@ -41,7 +41,7 @@ namespace Sprint0.Sprites
 
 			// NORMAL LUIGI SPRITES
 
-			// LUIGI STILLc
+			// LUIGI STILL
 
 			Rectangle[] currentSprites = new Rectangle[]{ new Rectangle(1, 53, 16, 17) };
 			statesAndSprites.Add("NormalLuigiStill", new AnimatedSprite(currentSprites, this.gameTime, texture, new int[] {27, 27}, -1));
@@ -103,9 +103,9 @@ namespace Sprint0.Sprites
 
 
         }
-        public AnimatedSprite returnSprite(Vector2 cposition, String spriteType, GameTime gameTime)
+        public AnimatedSprite returnSprite(String spriteType, GameTime gameTime)
         {
-            position = cposition;
+            // generates sprite and returns it
             this.gameTime = gameTime;
 			generatedCharacter = statesAndSprites[spriteType];
             generatedCharacter.spriteName = spriteType;

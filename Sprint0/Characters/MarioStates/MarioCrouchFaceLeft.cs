@@ -21,7 +21,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void ChangeDirection()
         {
-            mario.marioState = new MarioCrouchFaceRight(mario);
+            //mario.marioState = new MarioCrouchFaceRight(mario);
         }
         public void Move()
         {
@@ -52,13 +52,13 @@ namespace Sprint0.Characters.MarioStates
 
                 case (Mario.MarioHealth.Fire):
                     {
-                        mario.mySprint.marioSprite = new MarioFireCrouchLeftSprite(mario.mySprint);
+                        //mario.mySprint.marioSprite = new MarioFireCrouchLeftSprite(mario.mySprint);
                         break;
                     }
 
                 case (Mario.MarioHealth.Big):
                     {
-                        mario.mySprint.marioSprite = new MarioBigCrouchLeftSprite(mario.mySprint);
+                        //mario.mySprint.marioSprite = new MarioBigCrouchLeftSprite(mario.mySprint);
                         break;
                     }
             }

@@ -41,7 +41,7 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            mario.mySprint.marioSprite = new MarioLeftIdleSprite(mario.mySprint);
+                            //mario.mySprint.marioSprite = new MarioLeftIdleSprite(mario.mySprint);
                             break;
                         }
 
@@ -54,13 +54,13 @@ namespace Sprint0.Characters.MarioStates
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.mySprint.marioSprite = new MarioFireLeftIdleSprite(mario.mySprint);
+                            //mario.mySprint.marioSprite = new MarioFireLeftIdleSprite(mario.mySprint);
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.mySprint.marioSprite = new MarioBigLeftIdleSprite(mario.mySprint);
+                            //mario.mySprint.marioSprite = new MarioBigLeftIdleSprite(mario.mySprint);
                             break;
                         }
 
