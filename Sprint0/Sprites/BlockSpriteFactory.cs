@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection.Metadata;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
+using System.Reflection;
 
 namespace Sprint0.Sprites
 {
@@ -16,6 +20,8 @@ namespace Sprint0.Sprites
         private Texture2D blockTextures;
         private Dictionary<string, Rectangle> _sprites;
         private static BlockSpriteFactory spriteFactory = new BlockSpriteFactory();
+        private string fileName { get; set; }
+        private string jsonString { get; set; }
 
         public static BlockSpriteFactory Instance
         {
@@ -34,6 +40,9 @@ namespace Sprint0.Sprites
 
         public void SaveSpriteLocations(ContentManager content) 
         {
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "..\\..\\..\\Sprites\\BlockData.json");
+            jsonString = File.ReadAllText(path, Encoding.Default);
+            BlockSpriteFactory deserializer = JsonSerializer.Deserialize<BlockSpriteFactory>(jsonString);
             //Non Animated Blocks
             _sprites.Add("gray_block", new Rectangle(2076, 274, 32, 32));
             _sprites.Add("wood_block", new Rectangle(2008, 36, 32, 32));
