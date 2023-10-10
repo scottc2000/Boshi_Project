@@ -21,9 +21,10 @@ namespace Sprint0
     public class Sprint0 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private SpriteBatch _spriteBatch;       
         private BlockSpriteFactory spriteFactory;
         private GameTime gametime;
+        private LevelLoader level1;
 
         public ICharacter mario;
         public ICharacter luigi;
@@ -123,6 +124,9 @@ namespace Sprint0
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
 
+            level1 = new LevelLoader(this);
+            level1.Load();
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -164,6 +168,10 @@ namespace Sprint0
             block.Draw();
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
+
+            Texture2D background = Content.Load<Texture2D>("SpriteImages/Level 1-1 Background");
+             Rectangle initialCamPos = new Rectangle(0, 0, 432, 632);
+            _spriteBatch.Draw(background, initialCamPos, Color.White);
 
             _spriteBatch.End();
 
