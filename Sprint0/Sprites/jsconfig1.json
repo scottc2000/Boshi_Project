@@ -1,0 +1,110 @@
+{
+  "block_sprites": [
+    {
+      "name": "wood_floor_left",
+      "x": 886,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_floor_middle",
+      "x": 920,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_floor_right",
+      "x": 954,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_side_left",
+      "x": 886,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_side_middle",
+      "x": 920,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_floor_left",
+      "x": 954,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_topLeft",
+      "x": 1838,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_topMiddle",
+      "x": 1872,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_topRight",
+      "x": 1906,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_middleLeft",
+      "x": 1838,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_center",
+      "x": 1872,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_middleRight",
+      "x": 1906,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_bottomLeft",
+      "x": 1838,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_bottomMiddle",
+      "x": 1872,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_bottomRight",
+      "x": 1906,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    }
+    // Add more sprites as needed
+  ]
+}
