@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using Sprint0.Characters;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
+using Sprint0.Sprites;
 using System.Text.Json;
 using System.IO;
 using System.Net.Http.Json;
@@ -37,7 +38,7 @@ namespace Sprint0.Sprites
             statesAndSprites = new Dictionary<String, AnimatedSpriteLuigi>();
             this.luigi = luigi;
 
-            StreamReader r = new StreamReader("/Users/ismail/Projects/Boshi_Project/Sprint0/Sprites/playerdata.json");
+            StreamReader r = new StreamReader("playerdata.json");
             string playerdatajson = r.ReadToEnd();
 
             deserializedPlayerData = JsonConvert.DeserializeObject<Root>(playerdatajson);
