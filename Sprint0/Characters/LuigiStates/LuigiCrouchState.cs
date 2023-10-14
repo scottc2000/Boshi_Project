@@ -49,62 +49,13 @@ namespace Sprint0.Characters.MarioStates
             luigi.pose = Luigi.LuigiPose.Crouch;
             if (luigi.facingLeft)
             {
-                switch (luigi.health)
-                {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
-                            break;
-                        }
-
-
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
-                            break;
-                        }
-                }
+                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
             }
             else
-            {
-                switch (luigi.health)
-                {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
-                            break;
-                        }
-                }
+            {    
+                 luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
+                           
+                     
             }
         }
     }

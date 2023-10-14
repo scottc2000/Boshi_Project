@@ -56,125 +56,30 @@ namespace Sprint0.Characters.MarioStates
 
             if (luigi.facingLeft)
             {
-                switch (luigi.health)
+                if (luigi.currentSprite.spriteName.Equals("LuigiMoveLeft"))
                 {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveLeft"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
-                            }
-                            break;
-                        }
-
-
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveLeft"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
-                            }
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveLeft"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
-                            }
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveLeft"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
-                            }
-                            break;
-                        }
-
+                    luigi.currentSprite.Update(gametime);
+                }
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
                 }
             }
             else
             {
-                switch (luigi.health)
+                if (luigi.currentSprite.spriteName.Equals("LuigiMoveRight"))
                 {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveRight"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
-                            }
-                            break;
-                        }
-
-
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveRight"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
-                            }
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveRight"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
-                            }
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            if (luigi.currentSprite.spriteName.Equals("LuigiMoveRight"))
-                            {
-                                luigi.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
-                            }
-                            break;
-                        }
-
+                    luigi.currentSprite.Update(gametime);
                 }
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
+                }
+               
+            }
             }
 
-            luigi.pose = Luigi.LuigiPose.Walking;
+            
 
         }
     }
-}

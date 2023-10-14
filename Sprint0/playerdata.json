@@ -264,7 +264,7 @@
         {
           "name": "LuigiStillLeft",
           "spritesheet_pos": [ [ 1, 436 ] ],
-          "hitbox": [ 17, 28 ],
+          "hitbox": [ 21, 28 ],
           "facingLeft": true,
           "looping": false
 
@@ -273,15 +273,15 @@
         {
           "name": "LuigiStillRight",
           "spritesheet_pos": [ [ 1, 436 ] ],
-          "hitbox": [ 17, 28 ],
+          "hitbox": [ 21, 28 ],
           "facingLeft": false,
           "looping": false
         },
 
         {
           "name": "LuigiJumpLeft",
-          "spritesheet_pos": [ [ 103, 436 ] ],
-          "hitbox": [ 17, 28 ],
+          "spritesheet_pos": [ [ 105, 436 ] ],
+          "hitbox": [ 23, 28 ],
           "facingLeft": true,
           "looping": false
 
@@ -289,8 +289,8 @@
 
         {
           "name": "LuigiJumpRight",
-          "spritesheet_pos": [ [ 103, 436 ] ],
-          "hitbox": [ 17, 28 ],
+          "spritesheet_pos": [ [ 105, 436 ] ],
+          "hitbox": [ 23, 28 ],
           "facingLeft": false,
           "looping": false
         },
@@ -299,9 +299,9 @@
           "name": "LuigiMoveLeft",
           "spritesheet_pos": [
             [ 1, 436 ],
-            [ 25, 436 ]
+            [ 27, 436 ]
           ],
-          "hitbox": [ 17, 28 ],
+          "hitbox": [ 22, 28 ],
           "facingLeft": true,
           "looping": true
 
@@ -311,9 +311,9 @@
           "name": "LuigiMoveRight",
           "spritesheet_pos": [
             [ 1, 436 ],
-            [ 25, 436 ]
+            [ 27, 436 ]
           ],
-          "hitbox": [ 17, 28 ],
+          "hitbox": [ 22, 28 ],
           "facingLeft": false,
           "looping": true
         },
