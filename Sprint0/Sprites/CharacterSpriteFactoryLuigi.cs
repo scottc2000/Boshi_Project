@@ -13,7 +13,6 @@ using System.Text.Json;
 using System.IO;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using static Sprint0.Sprites.PlayerData;
 
 namespace Sprint0.Sprites
@@ -41,7 +40,7 @@ namespace Sprint0.Sprites
             StreamReader r = new StreamReader("playerdata.json");
             string playerdatajson = r.ReadToEnd();
 
-            deserializedPlayerData = JsonConvert.DeserializeObject<Root>(playerdatajson);
+            deserializedPlayerData = JsonSerializer.Deserialize<Root>(playerdatajson);
 
 
         }

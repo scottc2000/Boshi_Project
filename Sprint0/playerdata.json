@@ -120,8 +120,8 @@
         {
           "name": "LuigiMoveLeft",
           "spritesheet_pos": [
-            [ 19, 178 ],
-            [ 37, 178 ]
+            [ 19, 179 ],
+            [ 37, 179 ]
           ],
           "hitbox": [ 17, 28 ],
           "facingLeft": true,
@@ -132,8 +132,8 @@
         {
           "name": "LuigiMoveRight",
           "spritesheet_pos": [
-            [ 19, 178 ],
-            [ 37, 178 ]
+            [ 19, 179 ],
+            [ 37, 179 ]
           ],
           "hitbox": [ 17, 28 ],
           "facingLeft": false,
@@ -151,7 +151,7 @@
 
         {
           "name": "LuigiCrouchRight",
-          "spritesheet_pos": [ [ 1, 53 ] ],
+          "spritesheet_pos": [ [ 55, 180 ] ],
           "hitbox": [ 17, 28 ],
           "facingLeft": false,
           "looping": false

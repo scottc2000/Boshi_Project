@@ -55,7 +55,7 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, (spriteFrames[CurrentFrame].Width * 2), (spriteFrames[CurrentFrame].Height * 2));
 
             float rotation = 0;
             float layer = 0;
