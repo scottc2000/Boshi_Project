@@ -26,14 +26,14 @@ namespace Sprint0.Sprites
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public AnimatedSpriteLuigi(Rectangle[] currentFrames, Texture2D texture, Luigi luigi, SpriteEffects effect)
+        public AnimatedSpriteLuigi(Rectangle[] currentFrames, Texture2D texture, Luigi luigi, SpriteEffects effect, string name)
         {
             spriteFrames = currentFrames;
             this.texture = texture;
             this.luigi = luigi;
             spriteEffect = effect;
             this.position = luigi.position;
-            this.spriteName = "X";
+            this.spriteName = name;
             TotalFrames = spriteFrames.Length;
         }
 

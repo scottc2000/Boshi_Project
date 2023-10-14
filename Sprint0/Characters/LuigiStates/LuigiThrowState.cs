@@ -50,26 +50,26 @@ namespace Sprint0.Characters.MarioStates
             luigi.pose = Luigi.LuigiPose.Throwing;
             if (luigi.facingLeft && luigi.health == Luigi.LuigiHealth.Fire)
             {
-                if (luigi.currentSprite.spriteName.Equals("FireLuigiThrowLeft"))
+                if (luigi.currentSprite.spriteName.Equals("LuigiThrowLeft"))
                 {
 
                     luigi.currentSprite.Update(gametime);
                 }
                 else
                 {
-                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiThrowLeft");
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiThrowLeft");
                 }
             }
             else
             {
-                if (luigi.currentSprite.spriteName.Equals("FireLuigiThrowRight"))
+                if (luigi.currentSprite.spriteName.Equals("LuigiThrowRight"))
                 {
 
                     luigi.currentSprite.Update(gametime);
                 }
                 else
                 {
-                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiThrowRight");
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiThrowRight");
                 }
             }
         }

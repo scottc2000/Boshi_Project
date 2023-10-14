@@ -8,32 +8,47 @@ using Microsoft.Xna.Framework.Input;
 using Sprint0.Characters;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
-
+using System.Text.Json;
+using System.IO;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using static Sprint0.Sprites.PlayerData;
 
 namespace Sprint0.Sprites
 {
     public class CharacterSpriteFactoryLuigi
     {
-        private Luigi luigi;
+        private Characters.Luigi luigi;
         private Dictionary<String, AnimatedSpriteLuigi> statesAndSprites;
         private Rectangle[] currentFrames;
 
         private Texture2D texture;
         private String spriteType;
         private SpriteEffects effect;
+        private JsonElement playerData;
+        private dynamic array;
+        private Root deserializedPlayerData;
 
         AnimatedSpriteLuigi generatedCharacter;
 
-        public CharacterSpriteFactoryLuigi(Luigi luigi)
+        public CharacterSpriteFactoryLuigi(Characters.Luigi luigi)
         {
             statesAndSprites = new Dictionary<String, AnimatedSpriteLuigi>();
             this.luigi = luigi;
+
+            StreamReader r = new StreamReader("/Users/ismail/Projects/Boshi_Project/Sprint0/Sprites/playerdata.json");
+            string playerdatajson = r.ReadToEnd();
+
+            deserializedPlayerData = JsonConvert.DeserializeObject<Root>(playerdatajson);
+
 
         }
         public void LoadTextures(ContentManager content)
         {
             texture = content.Load<Texture2D>("SpriteImages/playerssclear");
 
+            /*
             // Normal Luigi States
 
             // Luigi Still Left.
@@ -199,15 +214,118 @@ namespace Sprint0.Sprites
             effect = SpriteEffects.FlipHorizontally;
             statesAndSprites.Add("RaccoonLuigiCrouchRight", new AnimatedSpriteLuigi(currentFrames, texture, luigi, effect));
 
-
+            */
 
         }
+
+        public Rectangle[] generateSprites(List<List<int>> sheetpos, List<int> hitbox) 
+        {
+            Rectangle[] myRect = new Rectangle[sheetpos.Count];
+
+            for (int i = 0; i < sheetpos.Count; i++)
+            {
+                myRect[i] = new Rectangle(sheetpos[i][0], sheetpos[i][1], hitbox[0], hitbox[1]);
+
+            }
+            return myRect;
+        }
+
         public AnimatedSpriteLuigi returnSprite(String spriteType)
         {
 
-            generatedCharacter = statesAndSprites[spriteType];
-            generatedCharacter.spriteName = spriteType;
-            return generatedCharacter;
+            //generatedCharacter = statesAndSprites[spriteType];
+            //generatedCharacter.spriteName = spriteType;
+            string spriteName = "X";
+
+            switch (luigi.health)
+            {
+                case (Characters.Luigi.LuigiHealth.Big):
+                    foreach (Sprite n in deserializedPlayerData.luigi.Big.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
+                        {
+                            if (n.facingLeft)
+                            {
+                                effect = SpriteEffects.None;
+                            }
+
+                            else
+                            {
+                                effect = SpriteEffects.FlipHorizontally;
+                            }
+
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
+                        }
+                    }
+                    break;
+
+                case (Characters.Luigi.LuigiHealth.Normal):
+                    foreach (Sprite n in deserializedPlayerData.luigi.Normal.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
+                        {
+                            if (n.facingLeft)
+                            {
+                                effect = SpriteEffects.None;
+                            }
+
+                            else
+                            {
+                                effect = SpriteEffects.FlipHorizontally;
+                            }
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
+                        }
+                    }
+                    break;
+
+                case (Characters.Luigi.LuigiHealth.Fire):
+                    foreach (Sprite n in deserializedPlayerData.luigi.Fire.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
+                        {
+                            if (n.facingLeft)
+                            {
+                                effect = SpriteEffects.None;
+                            }
+
+                            else
+                            {
+                                effect = SpriteEffects.FlipHorizontally;
+                            }
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
+                        }
+                    }
+                    break;
+
+                case (Characters.Luigi.LuigiHealth.Raccoon):
+                    foreach (Sprite n in deserializedPlayerData.luigi.Racoon.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
+                        {
+                            if (n.facingLeft)
+                            {
+                                effect = SpriteEffects.None;
+                            }
+
+                            else
+                            {
+                                effect = SpriteEffects.FlipHorizontally;
+                            }
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
+                        }
+                    }
+                    break;
+                default:
+                    Console.WriteLine("NOT FOUND!!!");
+                    Environment.Exit(1);
+                    break;
+            }
+
+            return new AnimatedSpriteLuigi(currentFrames, texture, luigi, effect, spriteName);
         }
     }
 

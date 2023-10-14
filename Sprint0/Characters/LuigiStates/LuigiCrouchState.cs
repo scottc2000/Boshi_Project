@@ -53,26 +53,26 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Luigi.LuigiHealth.Normal):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiCrouchLeft");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
                             break;
                         }
 
 
                     case (Luigi.LuigiHealth.Raccoon):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiCrouchLeft");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
                             break;
                         }
 
                     case (Luigi.LuigiHealth.Fire):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiCrouchLeft");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
                             break;
                         }
 
                     case (Luigi.LuigiHealth.Big):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiCrouchLeft");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
                             break;
                         }
                 }
@@ -83,25 +83,25 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Luigi.LuigiHealth.Normal):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiCrouchRight");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
                             break;
                         }
 
                     case (Luigi.LuigiHealth.Raccoon):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiCrouchRight");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
                             break;
                         }
 
                     case (Luigi.LuigiHealth.Fire):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiCrouchRight");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
                             break;
                         }
 
                     case (Luigi.LuigiHealth.Big):
                         {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiCrouchRight");
+                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
                             break;
                         }
                 }

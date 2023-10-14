@@ -27,7 +27,7 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Normal;
+            this.health = LuigiHealth.Big;
             this.State = new LuigiIdleState(this);
 
             this.facingLeft = true;
@@ -38,7 +38,7 @@ namespace Sprint0.Characters
             mySpriteFactory = new CharacterSpriteFactoryLuigi(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("NormalLuigiStillLeft");
+            currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
 
         }
 
