@@ -8,6 +8,7 @@ using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -22,6 +23,38 @@ namespace Sprint0.Controllers
         {
             controllerMappings = new Dictionary<Keys, ICommand>();
             mySprint = sprint0;
+            //Keyboard command mappings
+            RegisterCommand(Keys.Escape, new Exit(sprint0));
+            // KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
+
+            // Mario
+            RegisterCommand(Keys.W, new CMarioJump(sprint0));
+            RegisterCommand(Keys.A, new CMarioMoveLeft(sprint0));
+            RegisterCommand(Keys.S, new CMarioCrouch(sprint0));
+            RegisterCommand(Keys.D, new CMarioMoveRight(sprint0));
+            RegisterCommand(Keys.E, new CMarioThrow(sprint0));      // Still needs projectile
+
+            RegisterCommand(Keys.Q, new CDeadMario(sprint0));
+            RegisterCommand(Keys.D4, new CMarioRaccoon(sprint0));
+            RegisterCommand(Keys.D3, new CMarioFire(sprint0));
+            RegisterCommand(Keys.D2, new CMarioBig(sprint0));
+            RegisterCommand(Keys.D1, new CMarioNormal(sprint0));
+
+
+
+            // Luigi
+            RegisterCommand(Keys.I, new CLuigiJump(sprint0));
+            RegisterCommand(Keys.J, new CLuigiMoveLeft(sprint0));
+            RegisterCommand(Keys.K, new CLuigiCrouch(sprint0));
+            RegisterCommand(Keys.L, new CLuigiMoveRight(sprint0));
+            RegisterCommand(Keys.M, new CLuigiThrow(sprint0));
+
+            RegisterCommand(Keys.D8, new CLuigiRaccoon(sprint0));
+            RegisterCommand(Keys.D7, new CLuigiFire(sprint0));
+            RegisterCommand(Keys.D6, new CLuigiBig(sprint0));
+            RegisterCommand(Keys.D5, new CLuigiNormal(sprint0));
+
+            
         }
 
         public void RegisterCommand(Keys key, ICommand command)
@@ -53,7 +86,7 @@ namespace Sprint0.Controllers
             if (!pressedKeys.Contains(Keys.I) &&
                !pressedKeys.Contains(Keys.J) &&
                 !pressedKeys.Contains(Keys.K) &&
-               !pressedKeys.Contains(Keys.L) && !pressedKeys.Contains(Keys.E))
+               !pressedKeys.Contains(Keys.L) && !pressedKeys.Contains(Keys.E) && !pressedKeys.Contains(Keys.M))
             {
                 mySprint.luigi.State.Stop();
             }

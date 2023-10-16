@@ -55,6 +55,7 @@
     <Compile Include="Commands\Luigi\CLuigiNormal.cs" />
     <Compile Include="Commands\Luigi\CLuigiRaccoon.cs" />
     <Compile Include="Commands\Luigi\CReleasedLuigi.cs" />
+    <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Update="playerdata.json">
