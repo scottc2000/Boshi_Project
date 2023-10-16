@@ -1,5 +1,5 @@
 {
-  "block_sprites": [
+  "nonanimated_block_sprites": [
     {
       "name": "wood_floor_left",
       "x": 886,
@@ -105,6 +105,36 @@
       "width": 32,
       "height": 32
     }
-    
+
+  ],
+  "animated_block_sprites": [
+    {
+      "name": "question_block",
+      "frames": 4,
+      "x1": 2280,
+      "y1": 2,
+      "x2": 2314,
+      "y2": 2,
+      "x3": 2348,
+      "y3": 2,
+      "x4": 2382,
+      "y4": 2,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "flashing_yellow_brick",
+      "frames": 4,
+      "x1": 2076,
+      "y1": 70,
+      "x2": 2110,
+      "y2": 70,
+      "x3": 2144,
+      "y3": 70,
+      "x4": 2178,
+      "y4": 70,
+      "width": 32,
+      "height": 32
+    }
   ]
 }
