@@ -1,0 +1,7 @@
+*.dll
+*.so.*
+*.dylib
+*.txt
+*.editorconfig
+*.csproj
+*.cs
