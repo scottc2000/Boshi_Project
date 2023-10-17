@@ -150,6 +150,7 @@ namespace Sprint0.Characters
             }
 
             foreach (AnimatedProjectile item in gone) ThrownProjectiles.Remove(item);
+            gone.Clear();
         }
 
         public void Update(GameTime gametime)
