@@ -67,12 +67,14 @@ namespace Sprint0
             item = new Item(this, gametime);
 
             KeyboardController = new KeyboardController(this);
+            
             SpriteController = new KeyboardController(this);
-
+            /*
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
+            */
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
-
+            /*
             // Mario
             KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
@@ -98,7 +100,7 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D7, new CLuigiFire(this));
             KeyboardController.RegisterCommand(Keys.D6, new CLuigiBig(this));
             KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
-
+            */
 
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
