@@ -22,24 +22,16 @@ namespace Sprint0.Sprites
         private float frameInterval;
         private Vector2 position;
 
-        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle sprite, int rows, int columns, Vector2 position) 
+        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle[] sprite, Vector2 position) 
         {
             this.textures = textures;
             this.position = position;
-            totalFrames = rows * columns;
-            frames = new Rectangle[totalFrames];
+            
+            frames = sprite;
             currentFrame = 0;
+            totalFrames = 4;
             frameInterval = 0.1f;
 
-            int frameWidth = 32;
-            int frameHeight = 32;
-
-            for (int i = 0; i < totalFrames; i++)
-            {
-                int row = i / columns;
-                int col = i % columns;
-                frames[i] = new Rectangle(sprite.X + col * (frameWidth + 2), sprite.Y + row * frameHeight, frameWidth, frameHeight);
-            }
         }
 
         public void Update(GameTime gameTime)

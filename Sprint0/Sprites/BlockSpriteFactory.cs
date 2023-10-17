@@ -11,15 +11,19 @@ using System.Reflection.Metadata;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
+using System.Net.Http.Json;
 using System.Reflection;
+using System.ComponentModel.Design.Serialization;
 
 namespace Sprint0.Sprites
 {
     public class BlockSpriteFactory : ISpriteFactory
     {
         private Texture2D blockTextures;
-        private Dictionary<string, Rectangle> _sprites;
+        private Dictionary<string, Rectangle> nonanimated_sprites;
+        private Dictionary<string, Rectangle[]> animated_sprites;
         private static BlockSpriteFactory spriteFactory = new BlockSpriteFactory();
+        
         private string fileName { get; set; }
         private string jsonString { get; set; }
 
@@ -30,7 +34,8 @@ namespace Sprint0.Sprites
 
         public BlockSpriteFactory()
         {
-            _sprites = new Dictionary<string, Rectangle>();
+            nonanimated_sprites = new Dictionary<string, Rectangle>();
+            animated_sprites = new Dictionary<string, Rectangle[]>();
         }
 
         public void LoadTextures(ContentManager content)
@@ -38,48 +43,76 @@ namespace Sprint0.Sprites
             blockTextures = content.Load<Texture2D>("SpriteImages/blocks");
         }
 
-        public void SaveSpriteLocations(ContentManager content) 
+        public void LoadSpriteLocations(ContentManager content) 
         {
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "..\\..\\..\\Sprites\\BlockData.json");
+            // Deserialize the JSON data into an object
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "..\\..\\..\\Content\\BlockData.json");
             jsonString = File.ReadAllText(path, Encoding.Default);
-            BlockSpriteFactory deserializer = JsonSerializer.Deserialize<BlockSpriteFactory>(jsonString);
-            //Non Animated Blocks
-            _sprites.Add("gray_block", new Rectangle(2076, 274, 32, 32));
-            _sprites.Add("wood_block", new Rectangle(2008, 36, 32, 32));
-            _sprites.Add("empty_question_block", new Rectangle(2416, 2, 32, 32));
+            var data = JsonSerializer.Deserialize<SpriteData>(jsonString);
 
-            //Animated Blocks
-            _sprites.Add("question_block", new Rectangle(2280, 2, 32, 32));
-            _sprites.Add("yellow_brick", new Rectangle(2076, 70, 32, 32));
-            
+            // Load non-animated block sprites
+            foreach (var spriteData in data.nonanimated_block_sprites)
+            {
+                nonanimated_sprites[spriteData.name] = new Rectangle(spriteData.x, spriteData.y, spriteData.width, spriteData.height);
+            }
 
+            // Load animated block sprites
+            foreach (var spriteData in data.animated_block_sprites)
+            {
+                animated_sprites[spriteData.name] = new Rectangle[]
+                {
+                    new Rectangle(spriteData.x1, spriteData.y1, spriteData.width, spriteData.height),
+                    new Rectangle(spriteData.x2, spriteData.y2, spriteData.width, spriteData.height),
+                    new Rectangle(spriteData.x3, spriteData.y3, spriteData.width, spriteData.height),
+                    new Rectangle(spriteData.x4, spriteData.y4, spriteData.width, spriteData.height)
+                };
+            }
         }
 
-        // Non Animated Sprites
-        public ISprite CreateGrayBlock(SpriteBatch spriteBatch, Vector2 position)
+        // Non-animated sprites
+        public ISprite CreateNonAnimatedBlock(SpriteBatch spriteBatch, string spriteName, Vector2 position)
         {
-            return new NonAnimatedBlockSprite(spriteBatch, blockTextures, _sprites["gray_block"], position);
+            if (nonanimated_sprites.TryGetValue(spriteName, out Rectangle spriteRect))
+            {
+                return new NonAnimatedBlockSprite(spriteBatch, blockTextures, spriteRect, position);
+            }
+
+            return null;
         }
 
-        public ISprite CreateWoodBlock(SpriteBatch spriteBatch, Vector2 position)
+        // Animated sprites
+        public ISprite CreateAnimatedBlock(SpriteBatch spriteBatch, string spriteName, Vector2 position)
         {
-            return new NonAnimatedBlockSprite(spriteBatch, blockTextures, _sprites["wood_block"], position);
-        }
+            if (animated_sprites.TryGetValue(spriteName, out Rectangle[] spriteRects))
+            {
+                return new AnimatedBlockSprite(spriteBatch, blockTextures, spriteRects, position);
+            }
 
-        public ISprite CreateEmptyQuestionBlock(SpriteBatch spriteBatch, Vector2 position)
-        {
-            return new NonAnimatedBlockSprite(spriteBatch, blockTextures, _sprites["empty_question_block"], position);
+            return null;
         }
+    }
 
-        // Animated Sprites
-        public ISprite CreateQuestionBlock(SpriteBatch spriteBatch, Vector2 position)
-        {
-            return new AnimatedBlockSprite(spriteBatch, blockTextures, _sprites["question_block"], 1, 4, position);
-        }
+    public class SpriteData
+    {
+        public List<SpriteInfo> nonanimated_block_sprites { get; set; }
+        public List<SpriteInfo> animated_block_sprites { get; set; }
+    }
 
-        public ISprite CreateYellowBrickSprite(SpriteBatch spriteBatch, Vector2 position)
-        {
-            return new AnimatedBlockSprite(spriteBatch, blockTextures, _sprites["yellow_brick"], 1, 4, position);
-        }
+    public class SpriteInfo
+    {
+        public string name { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+        public int frames { get; set; }
+        public int x1 { get; set; }
+        public int y1 { get; set; }
+        public int x2 { get; set; }
+        public int y2 { get; set; }
+        public int x3 { get; set; }
+        public int y3 { get; set; }
+        public int x4 { get; set; }
+        public int y4 { get; set; }
     }
 }

@@ -19,11 +19,11 @@ namespace Sprint0.Blocks
         private ContentManager content;
         private List<ISprite> blocks = new List<ISprite>();
 
-        private ISprite grayBlockSprite;
-        private ISprite questionBlockSprite;
-        private ISprite woodBlockSprite;
-        private ISprite yellowBrickSprite;
-        private ISprite emptyQuestionBlockSprite;
+        private ISprite sprite1;
+        private ISprite sprite2;
+        private ISprite sprite3;
+        private ISprite sprite4;
+        private ISprite sprite5;
 
         public Vector2 location { get; set; }
         private int blockCount;
@@ -41,18 +41,18 @@ namespace Sprint0.Blocks
         public void LoadBlocks()
         {
             BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.SaveSpriteLocations(content);
+            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
 
-            grayBlockSprite = BlockSpriteFactory.Instance.CreateGrayBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(grayBlockSprite);
-            questionBlockSprite = BlockSpriteFactory.Instance.CreateQuestionBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(questionBlockSprite);
-            woodBlockSprite = BlockSpriteFactory.Instance.CreateWoodBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(woodBlockSprite);
-            yellowBrickSprite = BlockSpriteFactory.Instance.CreateYellowBrickSprite(spriteBatch, new Vector2(700, 100));
-            blocks.Add(yellowBrickSprite);
-            emptyQuestionBlockSprite = BlockSpriteFactory.Instance.CreateEmptyQuestionBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(emptyQuestionBlockSprite);
+            sprite1 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_floor_middle", new Vector2(700, 100));
+            blocks.Add(sprite1);
+            sprite2 = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(700, 100));
+            blocks.Add(sprite2);
+            sprite3 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_side_left", new Vector2(700, 100));
+            blocks.Add(sprite3);
+            sprite4 = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "flashing_yellow_brick", new Vector2(700, 100));
+            blocks.Add(sprite4);
+            sprite5 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_side_right", new Vector2(700, 100));
+            blocks.Add(sprite5);
 
             blockCount = blocks.Count;
             blockIndex = 0;
@@ -60,8 +60,8 @@ namespace Sprint0.Blocks
 
         public void Update(GameTime gameTime)
         {
-            questionBlockSprite.Update(gameTime);
-            yellowBrickSprite.Update(gameTime);
+            sprite2.Update(gameTime);
+            sprite4.Update(gameTime);
         }
 
         public void Draw()
@@ -69,19 +69,19 @@ namespace Sprint0.Blocks
             switch(blockIndex)
             {
                 case 0:
-                    grayBlockSprite.Draw(spriteBatch);
+                    sprite1.Draw(spriteBatch);
                     break;
                 case 1:
-                    questionBlockSprite.Draw(spriteBatch);
+                    sprite2.Draw(spriteBatch);
                     break;
                 case 2:
-                    woodBlockSprite.Draw(spriteBatch);
+                    sprite3.Draw(spriteBatch);
                     break;
                 case 3:
-                    yellowBrickSprite.Draw(spriteBatch);
+                    sprite4.Draw(spriteBatch);
                     break;
                 case 4:
-                    emptyQuestionBlockSprite.Draw(spriteBatch);
+                    sprite5.Draw(spriteBatch);
                     break;
             }
             
