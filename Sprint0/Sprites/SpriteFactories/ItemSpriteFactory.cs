@@ -8,8 +8,10 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Items;
+using Sprint0.Sprites.ItemSprites;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.SpriteFactories
 {
     internal class ItemSpriteFactory
     {
@@ -17,9 +19,9 @@ namespace Sprint0.Sprites
         private GameTime gameTime;
         Item item;
 
-        public Dictionary<String, Rectangle> itemAndRectangle;
-        public Dictionary<String, Rectangle[]> itemAndFrames;
-        String spriteType;
+        public Dictionary<string, Rectangle> itemAndRectangle;
+        public Dictionary<string, Rectangle[]> itemAndFrames;
+        string spriteType;
         public Texture2D texture;
         Vector2 position;
 
@@ -28,8 +30,8 @@ namespace Sprint0.Sprites
             this.content = content;
             this.gameTime = gameTime;
             this.item = item;
-            itemAndRectangle = new Dictionary<String, Rectangle>();
-            itemAndFrames = new Dictionary<String, Rectangle[]>();
+            itemAndRectangle = new Dictionary<string, Rectangle>();
+            itemAndFrames = new Dictionary<string, Rectangle[]>();
         }
 
         public void LoadTextures()

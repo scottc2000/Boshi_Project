@@ -43,7 +43,7 @@ namespace Sprint0.Sprites.HammerBroSprite
         }
     
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)hammerbro.position.X, (int)hammerbro.position.Y, 16, 24);
 

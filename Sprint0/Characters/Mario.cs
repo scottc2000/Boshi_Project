@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 
 namespace Sprint0.Characters
@@ -21,8 +22,7 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
 
-        public AnimatedSpriteMario currentSprite;
-        public CharacterSpriteFactoryMario mySpriteFactory;
+        public ISprite currentSprite;
 
 
         public Mario(Sprint0 sprint0)
@@ -35,10 +35,8 @@ namespace Sprint0.Characters
             this.position.X = 150;
             this.position.Y = 150;
             this.mySprint = sprint0;
-            mySpriteFactory = new CharacterSpriteFactoryMario(this);
-            mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("NormalMarioStillLeft");
+            currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioRightIdle();
 
         }
 
@@ -105,7 +103,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch)
         {
-            currentSprite.Draw(spritebatch);
+            currentSprite.Draw(spritebatch, position);
         }
     }
 }

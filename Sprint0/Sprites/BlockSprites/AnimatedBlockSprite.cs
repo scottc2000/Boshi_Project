@@ -10,7 +10,7 @@ using System.Data;
 using System.Net.Mime;
 using Microsoft.Xna.Framework.Content;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.BlockSprites
 {
     internal class AnimatedBlockSprite : ISprite
     {
@@ -22,7 +22,7 @@ namespace Sprint0.Sprites
         private float frameInterval;
         private Vector2 position;
 
-        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle sprite, int rows, int columns, Vector2 position) 
+        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle sprite, int rows, int columns, Vector2 position)
         {
             this.textures = textures;
             this.position = position;
@@ -53,7 +53,7 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             spriteBatch.Draw(textures, position, frames[currentFrame], Color.White);
         }

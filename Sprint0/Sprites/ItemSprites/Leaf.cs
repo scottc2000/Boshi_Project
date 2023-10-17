@@ -16,7 +16,7 @@ namespace Sprint0.Sprites.Item_Sprites
         {
 
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             //Texture2D leaf = content.Load<Texture2D>("NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs");
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.ComponentModel.Design;
 
@@ -53,26 +54,26 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioJumpLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioLeftJump();
                             break;
                         }
 
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioJumpLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateRaccoonMarioLeftJump();
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioJumpLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateFireMarioLeftJump();
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioJumpLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateBigMarioLeftJump();
                             break;
                         }
                 }
@@ -83,25 +84,25 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioJumpRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioRightJump();
                             break;
                         }
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioJumpRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateRaccoonMarioRightJump();
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioJumpRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateFireMarioRightJump();
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioJumpRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateBigMarioRightJump();
                             break;
                         }
                 }
