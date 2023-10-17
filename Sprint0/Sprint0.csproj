@@ -54,9 +54,19 @@
     <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
     <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
     <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
+    <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Update="playerdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="playerdata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+     <None Update="projectiledata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="projectiledata %28copy%29.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

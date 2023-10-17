@@ -94,6 +94,7 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.J, new CLuigiMoveLeft(this));
             KeyboardController.RegisterCommand(Keys.K, new CLuigiCrouch(this));
             KeyboardController.RegisterCommand(Keys.L, new CLuigiMoveRight(this));
+            KeyboardController.RegisterCommand(Keys.M, new CLuigiThrow(this));
 
             KeyboardController.RegisterCommand(Keys.D8, new CLuigiRaccoon(this));
             KeyboardController.RegisterCommand(Keys.D7, new CLuigiFire(this));

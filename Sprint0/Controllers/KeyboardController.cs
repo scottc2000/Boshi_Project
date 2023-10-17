@@ -53,7 +53,8 @@ namespace Sprint0.Controllers
             if (!pressedKeys.Contains(Keys.I) &&
                !pressedKeys.Contains(Keys.J) &&
                 !pressedKeys.Contains(Keys.K) &&
-               !pressedKeys.Contains(Keys.L) && !pressedKeys.Contains(Keys.E))
+               !pressedKeys.Contains(Keys.L) &&
+               !pressedKeys.Contains(Keys.E) && !pressedKeys.Contains(Keys.M)) 
             {
                 mySprint.luigi.State.Stop();
             }
