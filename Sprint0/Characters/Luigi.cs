@@ -20,6 +20,7 @@ namespace Sprint0.Characters
 
         public Vector2 position;
         public Sprint0 mySprint;
+        int sizeDiff;
 
         public AnimatedSpriteLuigi currentSprite;
         public CharacterSpriteFactoryLuigi mySpriteFactory;
@@ -27,18 +28,19 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Normal;
+            this.health = LuigiHealth.Big;
             this.State = new LuigiIdleState(this);
 
             this.facingLeft = true;
             this.position.X = 350;
             this.position.Y = 350;
+            this.sizeDiff = 25;
 
             this.mySprint = sprint0;
             mySpriteFactory = new CharacterSpriteFactoryLuigi(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("NormalLuigiStillLeft");
+            currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
 
         }
 
@@ -79,21 +81,37 @@ namespace Sprint0.Characters
         // Will change with game functionality
         public void ChangeToFire()
         {
+            if (health == LuigiHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = LuigiHealth.Fire;
         }
 
         public void ChangeToRaccoon()
         {
+            if (health == LuigiHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = LuigiHealth.Raccoon;
         }
 
         public void ChangeToBig()
         {
+            if (health == LuigiHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = LuigiHealth.Big;
         }
 
         public void ChangeToNormal()
         {
+            if (health != LuigiHealth.Normal)
+            {
+                position.Y += sizeDiff;
+            }
             health = LuigiHealth.Normal;
         }
 

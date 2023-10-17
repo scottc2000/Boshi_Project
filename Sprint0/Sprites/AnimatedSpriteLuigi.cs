@@ -26,14 +26,14 @@ namespace Sprint0.Sprites
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public AnimatedSpriteLuigi(Rectangle[] currentFrames, Texture2D texture, Luigi luigi, SpriteEffects effect)
+        public AnimatedSpriteLuigi(Rectangle[] currentFrames, Texture2D texture, Luigi luigi, SpriteEffects effect, string name)
         {
             spriteFrames = currentFrames;
             this.texture = texture;
             this.luigi = luigi;
             spriteEffect = effect;
             this.position = luigi.position;
-            this.spriteName = "X";
+            this.spriteName = name;
             TotalFrames = spriteFrames.Length;
         }
 
@@ -55,7 +55,7 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, (spriteFrames[CurrentFrame].Width * 2), (spriteFrames[CurrentFrame].Height * 2));
 
             float rotation = 0;
             float layer = 0;

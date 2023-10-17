@@ -40,11 +40,6 @@
     <Folder Include="Commands\Luigi\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\LuigiStates\LuigiCrouchState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiIdleState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
     <Compile Include="Commands\Luigi\CLuigiBig.cs" />
     <Compile Include="Commands\Luigi\CLuigiCrouch.cs" />
     <Compile Include="Commands\Luigi\CLuigiFire.cs" />
@@ -54,6 +49,16 @@
     <Compile Include="Commands\Luigi\CLuigiNormal.cs" />
     <Compile Include="Commands\Luigi\CLuigiRaccoon.cs" />
     <Compile Include="Commands\Luigi\CReleasedLuigi.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiCrouchState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiIdleState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="playerdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
