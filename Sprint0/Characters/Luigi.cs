@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.Collections.Generic;
 using static Sprint0.Sprites.PlayerData;
@@ -164,7 +165,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch)
         {
-            currentSprite.Draw(spritebatch);
+            currentSprite.Draw(spritebatch, position);
             foreach (AnimatedProjectile am in ThrownProjectiles)
             {
                 am.Draw(spritebatch);
