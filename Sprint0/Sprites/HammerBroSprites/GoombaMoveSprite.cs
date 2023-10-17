@@ -42,7 +42,7 @@ namespace Sprint0.Sprites.goombaSprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)goomba.position.X, (int)goomba.position.Y, 16, 16);
 

@@ -8,14 +8,13 @@ using Microsoft.Xna.Framework.Input;
 using Sprint0.Characters;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using System.Text.Json;
 using System.IO;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
 using static Sprint0.Sprites.PlayerData;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.SpriteFactories
 {
     public class CharacterSpriteFactoryLuigi
     {
@@ -46,7 +45,7 @@ namespace Sprint0.Sprites
 
         }
 
-        public Rectangle[] generateSprites(List<List<int>> sheetpos, List<int> hitbox) 
+        public Rectangle[] generateSprites(List<List<int>> sheetpos, List<int> hitbox)
         {
             Rectangle[] myRect = new Rectangle[sheetpos.Count];
 
@@ -58,14 +57,14 @@ namespace Sprint0.Sprites
             return myRect;
         }
 
-        public AnimatedSpriteLuigi returnSprite(String spriteType)
+        public AnimatedSpriteLuigi returnSprite(string spriteType)
         {
 
             string spriteName = "X";
 
             switch (luigi.health)
             {
-                case (Characters.Luigi.LuigiHealth.Big):
+                case Characters.Luigi.LuigiHealth.Big:
                     foreach (Sprite n in deserializedPlayerData.luigi.Big.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -86,7 +85,7 @@ namespace Sprint0.Sprites
                     }
                     break;
 
-                case (Characters.Luigi.LuigiHealth.Normal):
+                case Characters.Luigi.LuigiHealth.Normal:
                     foreach (Sprite n in deserializedPlayerData.luigi.Normal.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -106,7 +105,7 @@ namespace Sprint0.Sprites
                     }
                     break;
 
-                case (Characters.Luigi.LuigiHealth.Fire):
+                case Characters.Luigi.LuigiHealth.Fire:
                     foreach (Sprite n in deserializedPlayerData.luigi.Fire.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -126,7 +125,7 @@ namespace Sprint0.Sprites
                     }
                     break;
 
-                case (Characters.Luigi.LuigiHealth.Raccoon):
+                case Characters.Luigi.LuigiHealth.Raccoon:
                     foreach (Sprite n in deserializedPlayerData.luigi.Racoon.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))

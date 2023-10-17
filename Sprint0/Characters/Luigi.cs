@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 
 namespace Sprint0.Characters
@@ -123,7 +124,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch)
         {
-            currentSprite.Draw(spritebatch);
+            currentSprite.Draw(spritebatch, position);
         }
     }
 }

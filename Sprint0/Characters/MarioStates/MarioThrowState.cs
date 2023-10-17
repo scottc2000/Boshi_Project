@@ -50,27 +50,11 @@ namespace Sprint0.Characters.MarioStates
             mario.pose = Mario.MarioPose.Throwing;
             if (mario.facingLeft && mario.health == Mario.MarioHealth.Fire)
             {
-                if (mario.currentSprite.spriteName.Equals("FireMarioThrowLeft"))
-                {
-
-                    mario.currentSprite.Update(gametime);
-                }
-                else
-                {
-                    mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioThrowLeft");
-                }
+                
             }
             else
             {
-                if (mario.currentSprite.spriteName.Equals("FireMarioThrowRight"))
-                {
 
-                    mario.currentSprite.Update(gametime);
-                }
-                else
-                {
-                    mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioThrowRight");
-                }
             }
         }
     }

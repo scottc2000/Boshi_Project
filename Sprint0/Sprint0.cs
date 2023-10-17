@@ -7,7 +7,6 @@ using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Controllers;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
 using Sprint0.Blocks;
@@ -15,6 +14,8 @@ using System;
 using System.ComponentModel;
 using Sprint0.Enemies;
 using System.Collections.Generic;
+using Sprint0.Items;
+using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0
 {
@@ -124,6 +125,7 @@ namespace Sprint0
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
 
+            SpriteFactoryMario.Instance.LoadTextures(Content);
             level1 = new LevelLoader(this);
             level1.Load();
 
@@ -169,9 +171,9 @@ namespace Sprint0
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
 
-            Texture2D background = Content.Load<Texture2D>("SpriteImages/Level 1-1 Background");
-             Rectangle initialCamPos = new Rectangle(0, 0, 432, 632);
-            _spriteBatch.Draw(background, initialCamPos, Color.White);
+           // Texture2D background = Content.Load<Texture2D>("SpriteImages/Level 1-1 Background");
+         //    Rectangle initialCamPos = new Rectangle(0, 0, 432, 632);
+         //   _spriteBatch.Draw(background, initialCamPos, Color.White);
 
             _spriteBatch.End();
 

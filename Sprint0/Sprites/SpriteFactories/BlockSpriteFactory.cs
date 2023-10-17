@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection.Metadata;
+using Sprint0.Sprites.BlockSprites;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.SpriteFactories
 {
     public class BlockSpriteFactory : ISpriteFactory
     {
@@ -32,7 +33,7 @@ namespace Sprint0.Sprites
             blockTextures = content.Load<Texture2D>("SpriteImages/blocks");
         }
 
-        public void SaveSpriteLocations(ContentManager content) 
+        public void SaveSpriteLocations(ContentManager content)
         {
             //Non Animated Blocks
             _sprites.Add("gray_block", new Rectangle(2076, 274, 32, 32));
@@ -42,7 +43,7 @@ namespace Sprint0.Sprites
             //Animated Blocks
             _sprites.Add("question_block", new Rectangle(2280, 2, 32, 32));
             _sprites.Add("yellow_brick", new Rectangle(2076, 70, 32, 32));
-            
+
 
         }
 
