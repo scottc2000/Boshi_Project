@@ -6,14 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Items;
+using Sprint0.Sprites.SpriteFactories;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.ItemSprites
 {
     internal class AniItemSprite : ISprite
     {
         ItemSpriteFactory factory;
         Item item;
-        String itemString;
+        string itemString;
 
         private float timer = 0;
         private int interval = 50;
@@ -22,7 +24,7 @@ namespace Sprint0.Sprites
 
         private int width = 16, height = 16;
 
-        public AniItemSprite(ItemSpriteFactory factory, Item item, String itemString)
+        public AniItemSprite(ItemSpriteFactory factory, Item item, string itemString)
         {
             this.factory = factory;
             this.itemString = itemString;
@@ -41,7 +43,7 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             Rectangle position = new Rectangle((int)item.position.X, (int)item.position.Y, width, height);
             spriteBatch.Draw(factory.texture, position, factory.itemAndFrames[itemString][currentFrame], Color.White);

@@ -49,9 +49,9 @@ namespace Sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            goombaSprite.Draw(spriteBatch);
+            goombaSprite.Draw(spriteBatch, position);
         }
-
+        
         public void Update(GameTime gameTime)
         {
             goombaSprite.Update(gameTime);

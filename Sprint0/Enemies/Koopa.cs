@@ -50,7 +50,7 @@ namespace Sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            koopaSprite.Draw(spriteBatch);
+            koopaSprite.Draw(spriteBatch, position);
         }
 
         public void Update(GameTime gameTime)
