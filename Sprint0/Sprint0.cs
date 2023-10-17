@@ -1,21 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
+using Sprint0.Blocks;
 using Sprint0.Characters;
 using Sprint0.Commands;
-using Sprint0.Commands.Mario;
-using Sprint0.Controllers;
-using Sprint0.Interfaces;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
-using Sprint0.Blocks;
-using System;
-using System.ComponentModel;
+using Sprint0.Commands.Mario;
+using Sprint0.Controllers;
 using Sprint0.Enemies;
-using System.Collections.Generic;
+using Sprint0.Interfaces;
 using Sprint0.Sprites.ItemSprites;
 using Sprint0.Sprites.SpriteFactories;
+using System;
+using System.Collections.Generic;
 
 namespace Sprint0
 {
@@ -23,7 +21,6 @@ namespace Sprint0
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private BlockSpriteFactory spriteFactory;
         private GameTime gametime;
 
         public ICharacter mario;

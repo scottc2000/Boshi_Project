@@ -9,15 +9,11 @@ namespace Sprint0.Sprites
     public class PlayerSprite : ISprite
     {
         private Texture2D texture;
+        private SpriteEffects spriteEffect;
 
         // Rectangles
         private Rectangle[] spriteFrames;
         private Rectangle destination;
-
-        private Vector2 position;
-        public string spriteName;
-
-        SpriteEffects spriteEffect;
 
         // Frame stats
         public int CurrentFrame = 0;
