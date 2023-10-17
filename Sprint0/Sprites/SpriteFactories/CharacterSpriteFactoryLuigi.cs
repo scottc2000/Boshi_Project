@@ -10,23 +10,23 @@ using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.SpriteFactories
 {
     public class CharacterSpriteFactoryLuigi
     {
         private Luigi luigi;
-        private Dictionary<String, AnimatedSpriteLuigi> statesAndSprites;
+        private Dictionary<string, AnimatedSpriteLuigi> statesAndSprites;
         private Rectangle[] currentFrames;
 
         private Texture2D texture;
-        private String spriteType;
+        private string spriteType;
         private SpriteEffects effect;
 
         AnimatedSpriteLuigi generatedCharacter;
 
         public CharacterSpriteFactoryLuigi(Luigi luigi)
         {
-            statesAndSprites = new Dictionary<String, AnimatedSpriteLuigi>();
+            statesAndSprites = new Dictionary<string, AnimatedSpriteLuigi>();
             this.luigi = luigi;
 
         }
@@ -188,12 +188,12 @@ namespace Sprint0.Sprites
 
             // Luigi Jump Right
             effect = SpriteEffects.FlipHorizontally;
-            statesAndSprites.Add("RaccoonLuigiJumpRight", new AnimatedSpriteLuigi(currentFrames, texture, luigi, effect)) ;
+            statesAndSprites.Add("RaccoonLuigiJumpRight", new AnimatedSpriteLuigi(currentFrames, texture, luigi, effect));
 
             // Luigi Crouch Left
             currentFrames = new Rectangle[] { new Rectangle(77, 436, 24, 28) };
             effect = SpriteEffects.None;
-            statesAndSprites.Add("RaccoonLuigiCrouchLeft", new AnimatedSpriteLuigi(currentFrames, texture,luigi, effect));
+            statesAndSprites.Add("RaccoonLuigiCrouchLeft", new AnimatedSpriteLuigi(currentFrames, texture, luigi, effect));
 
             // Luigi Crouch Right
             effect = SpriteEffects.FlipHorizontally;
@@ -202,7 +202,7 @@ namespace Sprint0.Sprites
 
 
         }
-        public AnimatedSpriteLuigi returnSprite(String spriteType)
+        public AnimatedSpriteLuigi returnSprite(string spriteType)
         {
 
             generatedCharacter = statesAndSprites[spriteType];

@@ -7,7 +7,6 @@ using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Controllers;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
 using Sprint0.Blocks;
@@ -15,6 +14,8 @@ using System;
 using System.ComponentModel;
 using Sprint0.Enemies;
 using System.Collections.Generic;
+using Sprint0.Sprites.ItemSprites;
+using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0
 {
@@ -119,6 +120,7 @@ namespace Sprint0
         {
             item.LoadItems();
             block.LoadBlocks();
+            SpriteFactoryMario.Instance.LoadTextures(Content);
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;

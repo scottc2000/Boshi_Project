@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Sprint0.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection.Metadata;
+using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
@@ -69,19 +69,19 @@ namespace Sprint0.Blocks
             switch(blockIndex)
             {
                 case 0:
-                    grayBlockSprite.Draw(spriteBatch);
+                    grayBlockSprite.Draw(spriteBatch, location);
                     break;
                 case 1:
-                    questionBlockSprite.Draw(spriteBatch);
+                    questionBlockSprite.Draw(spriteBatch, location);
                     break;
                 case 2:
-                    woodBlockSprite.Draw(spriteBatch);
+                    woodBlockSprite.Draw(spriteBatch, location);
                     break;
                 case 3:
-                    yellowBrickSprite.Draw(spriteBatch);
+                    yellowBrickSprite.Draw(spriteBatch, location);
                     break;
                 case 4:
-                    emptyQuestionBlockSprite.Draw(spriteBatch);
+                    emptyQuestionBlockSprite.Draw(spriteBatch, location);
                     break;
             }
             

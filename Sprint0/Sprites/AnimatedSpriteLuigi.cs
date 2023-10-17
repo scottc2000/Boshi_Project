@@ -53,7 +53,7 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, 34, 56);
 

@@ -5,14 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 
 
-namespace Sprint0.Sprites.HammerBroSprite
+namespace Sprint0.Sprites.goombaSprite
 {
-    internal class HammerBroMoveSprite : ISprite
+    internal class GoombaMoveSprite : ISprite
     {
-        private HammerBro hammerbro;
+        private Goomba goomba;
 
         private int currentFrame = 0;
-        private int totalFrames = 4;
+        private int totalFrames = 2;
         private double frameSpeed = 0.2;
 
         public int timeSinceLastFrame = 0;
@@ -21,10 +21,10 @@ namespace Sprint0.Sprites.HammerBroSprite
         private Rectangle[] spriteFrames;
         private Rectangle destination;
 
-        public HammerBroMoveSprite(HammerBro hammerBro) 
+        public GoombaMoveSprite(Goomba goomba) 
         { 
-            this.hammerbro = hammerBro;
-            spriteFrames = new Rectangle[] { new Rectangle (0, 456, 16, 24), new Rectangle (16, 456, 16, 24 ), new Rectangle (32, 456, 16, 24 ), new Rectangle (48, 456, 16, 24 ) };
+            this.goomba = goomba;
+            spriteFrames = new Rectangle[] { new Rectangle (0, 16, 16, 16), new Rectangle (16, 16, 16, 16 ) };
         }
 
         public void Update(GameTime gametime)
@@ -41,13 +41,12 @@ namespace Sprint0.Sprites.HammerBroSprite
                 }
             }
         }
-    
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)hammerbro.position.X, (int)hammerbro.position.Y, 16, 24);
+            destination = new Rectangle((int)goomba.position.X, (int)goomba.position.Y, 16, 16);
 
-            spriteBatch.Draw(hammerbro.hammerBroTexture, destination, spriteFrames[currentFrame], Color.White);
+            spriteBatch.Draw(goomba.goombaTexture, destination, spriteFrames[currentFrame], Color.White);
         }
     }
 }

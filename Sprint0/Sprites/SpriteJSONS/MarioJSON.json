@@ -1,0 +1,109 @@
+{
+  "marioDead": [
+    {
+      "x": 307,
+      "y": 16
+    }
+  ],
+  "marioRaccoon": [
+    {
+      "ID": "Idle",
+      "x": 2,
+      "y": 350
+    },
+    {
+      "ID": "Walk",
+      "xArray": [ 2, 27, 53, 27 ],
+      "y": 350
+    },
+    {
+      "ID": "Jump",
+      "x": 105,
+      "y": 350
+    },
+    {
+      "ID": "Crouch",
+      "x": 79,
+      "y": 350
+    }
+  ],
+  "marioFire": [
+    {
+      "ID": "Idle",
+      "x": 2,
+      "y": 263
+    },
+    {
+      "ID": "Walk",
+      "xArray": [ 2, 19, 37, 19 ],
+      "y": 263
+    },
+    {
+      "ID": "Jump",
+      "x": 72,
+      "y": 263
+    },
+    {
+      "ID": "Crouch",
+      "x": 54,
+      "y": 263
+    }
+  ],
+  "marioBig": [
+    {
+      "ID": "Idle",
+      "x": 2,
+      "y": 92
+    },
+    {
+      "ID": "Walk",
+      "xArray": [ 2, 19, 37, 19 ],
+      "y": 92
+    },
+    {
+      "ID": "Jump",
+      "x": 72,
+      "y": 92
+    },
+    {
+      "ID": "Crouch",
+      "x": 54,
+      "y": 92
+    }
+  ],
+  "marioNormal": [
+    {
+      "ID": "Idle",
+      "x": 2,
+      "y": 16
+    },
+    {
+      "ID": "Walk",
+      "xArray": [ 2, 19, 37, 19 ],
+      "y": 16
+    },
+    {
+      "ID": "Jump",
+      "x": 36,
+      "y": 16
+    },
+    {
+      "ID": "Crouch",
+      "x": 2,
+      "y": 16
+    }
+  ],
+  "marioStats": [
+    {
+      "BigWidth": 14,
+      "BigWalkingWidth": 16,
+      "BigHeight": 27,
+      "BigCrouchHeight": 14,
+      "NormalWidth": 12,
+      "NormalWalkingWidth": 15,
+      "NormalHeight": 16,
+      "DeadWidth": 16,
+      "DeadHeight": 16
+    }
+  ]
+}

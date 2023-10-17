@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Sprites.SpriteFactories;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.ItemSprites
 {
     public class Item
     {
@@ -117,39 +118,39 @@ namespace Sprint0.Sprites
             switch (itemIndex)
             {
                 case 0:
-                    RedMushroom.Draw(spriteBatch);
+                    RedMushroom.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.RedMushroom;
                     break;
                 case 1:
-                    OneUpMushroom.Draw(spriteBatch);
+                    OneUpMushroom.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.OneUpMushroom;
                     break;
                 case 2:
-                    Leaf.Draw(spriteBatch);
+                    Leaf.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.Leaf;
                     break;
                 case 3:
-                    FireFlower.Draw(spriteBatch);
+                    FireFlower.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.FireFlower;
                     break;
                 case 4:
-                    Star.Draw(spriteBatch);
+                    Star.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.Star;
                     break;
                 case 5:
-                    Frog.Draw(spriteBatch);
+                    Frog.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.Frog;
                     break;
                 case 6:
-                    Tanooki.Draw(spriteBatch);
+                    Tanooki.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.Tanooki;
                     break;
                 case 7:
-                    Hammer.Draw(spriteBatch);
+                    Hammer.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.Hammer;
                     break;
                 case 8:
-                    Shoe.Draw(spriteBatch);
+                    Shoe.Draw(spriteBatch, position);
                     itemSelect = ItemSelect.Shoe;
                     break;
             }

@@ -42,7 +42,7 @@ namespace Sprint0.Sprites.KoopaSprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)koopa.position.X, (int)koopa.position.Y, 34, 56);
 

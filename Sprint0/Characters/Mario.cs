@@ -2,17 +2,17 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 
 namespace Sprint0.Characters
 {
     public class Mario : ICharacter
     {
-        public enum MarioHealth { Normal, Raccoon, Fire, Big };
+        public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health = MarioHealth.Normal;
 
-        public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing };
+        public enum MarioPose { Jump, Crouch, Idle, Move, Throw, Dead };
         public MarioPose pose = MarioPose.Idle;
         public bool facingLeft { get; set; }
 
@@ -21,8 +21,7 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
 
-        public AnimatedSpriteMario currentSprite;
-        public CharacterSpriteFactoryMario mySpriteFactory;
+        public ISprite currentSprite;
 
 
         public Mario(Sprint0 sprint0)
@@ -35,10 +34,8 @@ namespace Sprint0.Characters
             this.position.X = 150;
             this.position.Y = 150;
             this.mySprint = sprint0;
-            mySpriteFactory = new CharacterSpriteFactoryMario(this);
-            mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("NormalMarioStillLeft");
+            currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioRightIdle();
 
         }
 
@@ -105,7 +102,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch)
         {
-            currentSprite.Draw(spritebatch);
+            currentSprite.Draw(spritebatch, this.position);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.ComponentModel.Design;
 
@@ -53,26 +54,26 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioCrouchLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioLeftCrouch();
                             break;
                         }
 
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioCrouchLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateRaccoonMarioLeftCrouch();
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioCrouchLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateFireMarioLeftCrouch();
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioCrouchLeft");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateBigMarioLeftCrouch();
                             break;
                         }
                 }
@@ -83,25 +84,25 @@ namespace Sprint0.Characters.MarioStates
                 {
                     case (Mario.MarioHealth.Normal):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioCrouchRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioRightCrouch();
                             break;
                         }
 
                     case (Mario.MarioHealth.Raccoon):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioCrouchRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateRaccoonMarioRightCrouch();
                             break;
                         }
 
                     case (Mario.MarioHealth.Fire):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioCrouchRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateFireMarioRightCrouch();
                             break;
                         }
 
                     case (Mario.MarioHealth.Big):
                         {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioCrouchRight");
+                            mario.currentSprite = SpriteFactoryMario.Instance.CreateBigMarioRightCrouch();
                             break;
                         }
                 }
