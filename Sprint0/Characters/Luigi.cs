@@ -5,7 +5,9 @@ using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using static Sprint0.Sprites.PlayerData;
 
 namespace Sprint0.Characters
@@ -141,16 +143,13 @@ namespace Sprint0.Characters
             foreach (AnimatedProjectile am in ThrownProjectiles)
             {
                 am.Update(gametime);
-                if (am.pos.X > 850)
+                if (am.pos.X > 850 || am.pos.X < -50)
                 {
                     gone.Add(am);
                 }
             }
 
-            gone.Clear();
-
-
-
+            foreach (AnimatedProjectile item in gone) ThrownProjectiles.Remove(item);
         }
 
         public void Update(GameTime gametime)
