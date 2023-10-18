@@ -1,0 +1,257 @@
+{
+  "Zone1": {
+    "Blocks": [
+      {
+        "Name": "question_block",
+        "x": 176,
+        "y": 352,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "question_block",
+        "x": 192,
+        "y": 352,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "question_block",
+        "x": 224,
+        "y": 304,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "question_block",
+        "x": 240,
+        "y": 304,
+        "width": 16,
+        "height": 16
+      }
+    ]
+  },
+
+  "Zone2": {
+    "Blocks": [
+      {
+        "Name": "question_block",
+        "x": 416,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      }
+    ]
+  },
+
+  "Zone3": {
+    "Blocks": [
+      {
+        "Name": "question_block",
+        "x": 656,
+        "y": 384,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "question_block",
+        "x": 704,
+        "y": 352,
+        "width": 16,
+        "height": 16
+      }
+    ]
+  },
+
+  "Zone4": {
+    "Blocks": [
+      
+    ]
+  },
+
+  "Zone5": {
+    "Blocks": [
+
+    ]
+  },
+
+  "Zone6": {
+    "Blocks": [
+      {
+        "Name": "yellow_brick",
+        "x": 1440,
+        "y": 128,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "question_block",
+        "x": 1472,
+        "y": 368,
+        "width": 16,
+        "height": 16
+      }
+    ]
+  },
+  "Zone7": {
+    "Blocks": [
+      
+    ]
+  },
+
+  "Zone8": {
+    "Blocks": [
+      {
+        "Name": "yellow_brick",
+        "x": 1952,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 1968,
+        "y": 384,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 1968,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 1984,
+        "y": 368,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 1984,
+        "y": 384,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 1984,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2000,
+        "y": 368,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2000,
+        "y": 384,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2000,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2016,
+        "y": 368,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2016,
+        "y": 384,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2016,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2032,
+        "y": 368,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2032,
+        "y": 384,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2032,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      }
+    ]
+  },
+
+  "Zone9": {
+    "Blocks": [
+      {
+        "Name": "yellow_brick",
+        "x": 2048,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2096,
+        "y": 384,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2096,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "Name": "yellow_brick",
+        "x": 2112,
+        "y": 400,
+        "width": 16,
+        "height": 16
+      }
+    ]
+  },
+
+  "Zone10": {
+    "Blocks": [
+      
+      
+    ]
+  },
+
+  "Zone11": {
+    "Blocks": [
+
+    ]
+  }
+}
