@@ -44,9 +44,18 @@ namespace Sprint0.Characters.MarioStates
         {
             // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
         }
+
+        public void UpdateVelocity()
+        {
+            luigi.velocity *= luigi.decay;
+        }
+
         public void Update(GameTime gametime)
         {
             luigi.pose = Luigi.LuigiPose.Crouch;
+
+            UpdateVelocity();
+
             if (luigi.facingLeft)
             {
                 luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");

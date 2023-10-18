@@ -32,6 +32,7 @@ namespace Sprint0.Sprites.SpriteFactories
         {
             this.luigi = luigi;
 
+            // opens file that contains sprite information and deserializes it
             StreamReader r = new StreamReader("playerdata.json");
             string playerdatajson = r.ReadToEnd();
 
@@ -47,6 +48,7 @@ namespace Sprint0.Sprites.SpriteFactories
 
         public Rectangle[] generateSprites(List<List<int>> sheetpos, List<int> hitbox)
         {
+            // genereates list of sprite rectangles from the json locations
             Rectangle[] myRect = new Rectangle[sheetpos.Count];
 
             for (int i = 0; i < sheetpos.Count; i++)
@@ -62,6 +64,7 @@ namespace Sprint0.Sprites.SpriteFactories
 
             string spriteName = "X";
 
+            // goes through json for sprites (depending on which form), returns animated luigi sprite
             switch (luigi.health)
             {
                 case Characters.Luigi.LuigiHealth.Big:

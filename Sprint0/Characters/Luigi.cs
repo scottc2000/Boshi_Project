@@ -22,7 +22,12 @@ namespace Sprint0.Characters
         public bool facingLeft { get; set; }
         public bool fired;
 
+        public float velocity;
+        public float decay;
+
+
         public ICharacterState State { get; set; }
+
 
         public Vector2 position;
         public Sprint0 mySprint;
@@ -40,13 +45,20 @@ namespace Sprint0.Characters
             this.health = LuigiHealth.Big;
             this.State = new LuigiIdleState(this);
 
+            // default position stuff
             this.facingLeft = true;
             this.position.X = 350;
             this.position.Y = 350;
             this.sizeDiff = 25;
             this.fired = false;
 
+            // default velocity is zero (still), decay makes player slippery the higher it is.
+            this.velocity = 0.0f;
+            this.decay = 0.9f;
+
             this.mySprint = sprint0;
+
+            // creates new sprite factory and projectile factory
             mySpriteFactory = new CharacterSpriteFactoryLuigi(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
@@ -88,6 +100,7 @@ namespace Sprint0.Characters
 
         public void Throw()
         {
+            // projectiles stored in list, only three at a time on screen
             if (health == Luigi.LuigiHealth.Fire)
             {
                 if (!fired)
@@ -139,6 +152,7 @@ namespace Sprint0.Characters
 
         public void UpdateProjectiles(GameTime gametime)
         {
+            // checks if projectile is off screen, if so then deletes it
             List<AnimatedProjectile> gone = new List<AnimatedProjectile>();
             foreach (AnimatedProjectile am in ThrownProjectiles)
             {
@@ -153,18 +167,36 @@ namespace Sprint0.Characters
             gone.Clear();
         }
 
+        public void UpdateMovement(GameTime gametime)
+        {
+            // updates movement using pos +/- v * dt
+            if (facingLeft)
+            {
+                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            }
+            else
+            {
+                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            }
+
+        }
+
         public void Update(GameTime gametime)
         {
             UpdateProjectiles(gametime);
+            UpdateMovement(gametime);
             State.Update(gametime);
             if (!(pose == LuigiPose.Throwing))
             {
                 fired = false;
             }
+
         }
+        
 
         public void Draw(SpriteBatch spritebatch)
         {
+            
             currentSprite.Draw(spritebatch, position);
             foreach (AnimatedProjectile am in ThrownProjectiles)
             {
