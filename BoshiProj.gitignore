@@ -5,3 +5,5 @@
 *.editorconfig
 *.csproj
 *.cs
+*.exe
+*.v2
