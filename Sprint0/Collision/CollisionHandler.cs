@@ -27,10 +27,34 @@ namespace Sprint0.Collision
         {
             foreach (ICharacter character in Players)
             {
-                foreach (IEnemies enemies in Enemies)
+                foreach (IEnemies enemeny in Enemies)
                 {
                     //if (character.hitbox)
                 }
+
+                foreach (Item item in Items)
+                {
+                    //if (character.hitbox)
+                }
+
+                foreach (IBlock block in Blocks)
+                {
+                    //if (character.hitbox)
+                }
+            }
+
+            foreach (IBlock block in Blocks)
+            {
+                foreach (IEnemies enemeny in Enemies)
+                {
+                    //if (character.hitbox)
+                }
+
+                foreach (Item item in Items)
+                {
+                    //if (character.hitbox)
+                }
+
             }
         }
     }
