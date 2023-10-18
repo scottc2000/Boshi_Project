@@ -12,7 +12,7 @@ using static Sprint0.Sprites.PlayerData;
 
 namespace Sprint0.Characters
 {
-    public class Luigi : ICharacter
+    public class Luigi : ICharacter, IObject
     {
         public enum LuigiHealth { Normal, Raccoon, Fire, Big };
         public LuigiHealth health = LuigiHealth.Normal;

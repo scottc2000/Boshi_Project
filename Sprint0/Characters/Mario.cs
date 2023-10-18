@@ -8,7 +8,7 @@ using System;
 
 namespace Sprint0.Characters
 {
-    public class Mario : ICharacter
+    public class Mario : ICharacter, IObject
     {
         public enum MarioHealth { Normal, Raccoon, Fire, Big };
         public MarioHealth health = MarioHealth.Normal;

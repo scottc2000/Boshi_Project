@@ -8,7 +8,7 @@ using System;
 
 namespace Sprint0.Enemies
 {
-    public class Koopa :IEnemies
+    public class Koopa :IEnemies, IObject
     {
         public IEnemyState state;
         public Vector2 position;
