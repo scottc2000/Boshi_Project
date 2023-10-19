@@ -30,7 +30,10 @@ namespace Sprint0.Characters.MarioStates
         {
             luigi.State = new LuigiJumpState(luigi);
         }
+        public void Fall()
+        {
 
+        }
         public void Crouch()
         {
             luigi.State = new LuigiCrouchState(luigi);
@@ -46,7 +49,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Die()
         {
-            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+
         }
 
         public void Update(GameTime gametime)

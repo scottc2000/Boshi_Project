@@ -2,12 +2,11 @@
 using Sprint0.Characters;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
-
 using Sprint0.Blocks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-
+using Sprint0.Characters.MarioStates;
 
 namespace Sprint0
 {

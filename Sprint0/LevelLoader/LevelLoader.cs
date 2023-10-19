@@ -2,9 +2,9 @@
 using Sprint0.Interfaces;
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters;
 using System.IO;
 using System.Text.Json;
+using Sprint0.Characters;
 
 namespace Sprint0
 {

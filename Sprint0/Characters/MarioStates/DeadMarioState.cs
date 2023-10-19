@@ -25,6 +25,10 @@ namespace Sprint0.Characters.MarioStates
         {
 
         }
+        public void Fall()
+        {
+
+        }
 
         public void Crouch()
         {
@@ -48,7 +52,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Update(GameTime gametime)
         {
-            mario.currentSprite = SpriteFactoryMario.Instance.CreateDeadMario(); //need to reset game after death
+            mario.currentSprite.spriteName.Equals("MarioDead");
 
         }
     }

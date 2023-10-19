@@ -1,19 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.ComponentModel.Design;
+using static Sprint0.Sprites.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
     internal class MarioJumpState : ICharacterState
     {
         private Mario mario;
+        private Vector2 marioVelocity;
+
+        float jumpVelocity = -500f; // Initial jump velocity
+        float gravity = 20f; // Gravity strength
+        bool isJumping = false;
 
         public MarioJumpState(Mario mario)
         {
             this.mario = mario;
+            
         }
 
         public void Move()
@@ -23,7 +31,28 @@ namespace Sprint0.Characters.MarioStates
 
         public void Jump()
         {
-            // insert jump logic/physics
+            mario.pose = Mario.MarioPose.Jump;
+            if (mario.facingLeft)
+            {
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpLeft");
+
+            }
+            else
+            {
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpRight");
+            }
+        }
+        public void Fall()
+        {
+            if (mario.facingLeft)
+            {
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillLeft");
+
+            }
+            else
+            {
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillRight");
+            }
         }
 
         public void Crouch()
@@ -47,66 +76,27 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Update(GameTime gametime)
         {
-            mario.pose = Mario.MarioPose.Jump;
-            if (mario.facingLeft)
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && !isJumping)
             {
-                switch (mario.health)
-                {
-                    case (Mario.MarioHealth.Normal):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioLeftJump();
-                            break;
-                        }
-
-
-                    case (Mario.MarioHealth.Raccoon):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateRaccoonMarioLeftJump();
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Fire):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateFireMarioLeftJump();
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Big):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateBigMarioLeftJump();
-                            break;
-                        }
-                }
+                marioVelocity.Y = jumpVelocity;
+                isJumping = true;
             }
-            else
+
+            // Update Mario's position based on velocity
+            mario.position += marioVelocity * (float)gametime.ElapsedGameTime.TotalSeconds;
+
+            // Apply gravity
+            marioVelocity.Y += gravity;
+
+            // Check for ground collision
+            if (mario.position.Y >= mario.mySprint._graphics.PreferredBackBufferHeight - 100)
             {
-                switch (mario.health)
-                {
-                    case (Mario.MarioHealth.Normal):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioRightJump();
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Raccoon):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateRaccoonMarioRightJump();
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Fire):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateFireMarioRightJump();
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Big):
-                        {
-                            mario.currentSprite = SpriteFactoryMario.Instance.CreateBigMarioRightJump();
-                            break;
-                        }
-                }
+                mario.position.Y = mario.mySprint._graphics.PreferredBackBufferHeight - 100;
+                marioVelocity.Y = 0;
+                isJumping = false;
+                Fall();
             }
+
         }
     }
 }

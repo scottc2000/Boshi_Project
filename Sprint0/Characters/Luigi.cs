@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
+using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 

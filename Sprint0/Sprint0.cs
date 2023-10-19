@@ -7,6 +7,7 @@ using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Controllers;
 using Sprint0.Interfaces;
+using Sprint0.Sprites;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
 using Sprint0.Blocks;
@@ -21,11 +22,10 @@ namespace Sprint0
 {
     public class Sprint0 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;       
+        public GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
-        private GameTime gametime;
-        private LevelLoader level1;
+        public GameTime gametime;
 
         public ICharacter mario;
         public ICharacter luigi;
@@ -69,38 +69,13 @@ namespace Sprint0
             item = new Item(this, gametime);
 
             KeyboardController = new KeyboardController(this);
-            SpriteController = new KeyboardController(this);
 
+            SpriteController = new KeyboardController(this);
+            /*
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
+            */
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
-
-            // Mario
-            KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
-            KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
-            KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));      // Still needs projectile
-
-            KeyboardController.RegisterCommand(Keys.Q, new CDeadMario(this));
-            KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
-            KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
-            KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
-            KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
-
-
-
-            // Luigi
-            KeyboardController.RegisterCommand(Keys.I, new CLuigiJump(this));
-            KeyboardController.RegisterCommand(Keys.J, new CLuigiMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.K, new CLuigiCrouch(this));
-            KeyboardController.RegisterCommand(Keys.L, new CLuigiMoveRight(this));
-
-            KeyboardController.RegisterCommand(Keys.D8, new CLuigiRaccoon(this));
-            KeyboardController.RegisterCommand(Keys.D7, new CLuigiFire(this));
-            KeyboardController.RegisterCommand(Keys.D6, new CLuigiBig(this));
-            KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
-
 
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
@@ -124,10 +99,6 @@ namespace Sprint0
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
-
-            SpriteFactoryMario.Instance.LoadTextures(Content);
-            level1 = new LevelLoader(this);
-            level1.Load();
 
         }
 
@@ -170,10 +141,6 @@ namespace Sprint0
             block.Draw();
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
-
-           // Texture2D background = Content.Load<Texture2D>("SpriteImages/Level 1-1 Background");
-         //    Rectangle initialCamPos = new Rectangle(0, 0, 432, 632);
-         //   _spriteBatch.Draw(background, initialCamPos, Color.White);
 
             _spriteBatch.End();
 
