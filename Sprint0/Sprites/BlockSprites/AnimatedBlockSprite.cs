@@ -16,6 +16,7 @@ namespace Sprint0.Sprites
     {
         private Texture2D textures;
         private Rectangle[] frames;
+        private Rectangle scaledPosition;
         private int currentFrame;
         private int totalFrames;
         private float frameTimer;
@@ -26,10 +27,11 @@ namespace Sprint0.Sprites
         {
             this.textures = textures;
             this.position = position;
+            scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);
 
             frames = sprite;
             currentFrame = 0;
-            totalFrames = 4;
+            totalFrames = sprite.Length;
             frameInterval = 0.1f;
 
         }
@@ -45,9 +47,9 @@ namespace Sprint0.Sprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 vector)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            spriteBatch.Draw(textures, position, frames[currentFrame], Color.White);
+            spriteBatch.Draw(textures, scaledPosition, frames[currentFrame], Color.White);
         }
 
     }
