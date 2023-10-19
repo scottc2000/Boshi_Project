@@ -43,7 +43,7 @@ namespace Sprint0.Blocks
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations(content);
 
-            sprite1 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_floor_middle", new Vector2(0, 0));
+            sprite1 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_floor_middle", new Vector2(700, 100));
             blocks.Add(sprite1);
             sprite2 = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(700, 100));
             blocks.Add(sprite2);
