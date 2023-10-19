@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sprint0.Characters.MarioStates;
+using Sprint0.Commands.Mario;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint0.Sprites
@@ -20,19 +22,27 @@ namespace Sprint0.Sprites
             public Normal Normal { get; set; }
             public Big Big { get; set; }
             public Fire Fire { get; set; }
-            public Racoon Racoon { get; set; }
+            public Raccoon Raccoon { get; set; }
         }
 
         public class Mario
         {
+            public Dead Dead { get; set; }
+            public Normal Normal { get; set; }
+            public Big Big { get; set; }
+            public Fire Fire { get; set; }
+            public Raccoon Raccoon { get; set; }
         }
-
+        public class Dead
+        {
+            public List<Sprite> Sprites { get; set; }
+        }
         public class Normal
         {
             public List<Sprite> Sprites { get; set; }
         }
 
-        public class Racoon
+        public class Raccoon
         {
             public List<Sprite> Sprites { get; set; }
         }

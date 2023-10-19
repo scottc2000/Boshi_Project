@@ -24,7 +24,10 @@ namespace Sprint0.Characters.MarioStates
         {
             // insert jump logic/physics
         }
+        public void Fall()
+        {
 
+        }
         public void Crouch()
         {
             luigi.State = new LuigiCrouchState(luigi);

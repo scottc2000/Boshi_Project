@@ -7,6 +7,7 @@ using Sprint0.Commands;
 using Sprint0.Commands.Mario;
 using Sprint0.Controllers;
 using Sprint0.Interfaces;
+using Sprint0.Sprites;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
 using Sprint0.Blocks;
@@ -21,11 +22,10 @@ namespace Sprint0
 {
     public class Sprint0 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;       
+        public GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
-        private GameTime gametime;
-        private LevelLoader level1;
+        public GameTime gametime;
 
         public ICharacter mario;
         public ICharacter luigi;
@@ -69,12 +69,16 @@ namespace Sprint0
             item = new Item(this, gametime);
 
             KeyboardController = new KeyboardController(this);
-            SpriteController = new KeyboardController(this);
 
+            SpriteController = new KeyboardController(this);
+            /*
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
+            */
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
+<<<<<<< HEAD
+=======
             // Mario
             KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
             KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
@@ -103,6 +107,7 @@ namespace Sprint0
             KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
 
 
+>>>>>>> 0e31f3665bafaf53a2f1f7e43444f8bf38c6128d
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
             SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
@@ -125,10 +130,6 @@ namespace Sprint0
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
-
-            SpriteFactoryMario.Instance.LoadTextures(Content);
-            level1 = new LevelLoader(this);
-            level1.Load();
 
         }
 
@@ -171,10 +172,6 @@ namespace Sprint0
             block.Draw();
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
-
-           // Texture2D background = Content.Load<Texture2D>("SpriteImages/Level 1-1 Background");
-         //    Rectangle initialCamPos = new Rectangle(0, 0, 432, 632);
-         //   _spriteBatch.Draw(background, initialCamPos, Color.White);
 
             _spriteBatch.End();
 

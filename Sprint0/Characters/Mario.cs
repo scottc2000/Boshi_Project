@@ -3,14 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
 using System;
+using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters
 {
     public class Mario : ICharacter, IObject
     {
-        public enum MarioHealth { Normal, Raccoon, Fire, Big };
+        public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health = MarioHealth.Normal;
 
         public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing };
@@ -21,26 +23,28 @@ namespace Sprint0.Characters
 
         public Vector2 position;
         public Sprint0 mySprint;
+        int sizeDiff;
 
-        public ISprite currentSprite;
-
+        public AnimatedSpriteMario currentSprite;
+        public CharacterSpriteFactoryMario mySpriteFactory;
 
         public Mario(Sprint0 sprint0)
         {
-            this.health = MarioHealth.Normal;
-            this.State = new MarioIdleState(this);
+            health = MarioHealth.Big;
+            State = new MarioIdleState(this);
 
-            this.facingLeft = true;
+            facingLeft = true;
+            position.X = 150;
+            position.Y = 350;
+            sizeDiff = 25;
 
-            this.position.X = 150;
-            this.position.Y = 150;
-            this.mySprint = sprint0;
+            mySprint = sprint0;
+            mySpriteFactory = new CharacterSpriteFactoryMario(this);
+            mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = SpriteFactoryMario.Instance.CreateNormalMarioRightIdle();
+            currentSprite = mySpriteFactory.returnSprite("MarioStillLeft");
 
         }
-
-
         public void Move()
         {
             State.Move();
@@ -49,6 +53,10 @@ namespace Sprint0.Characters
         public void Jump()
         {
             State.Jump();
+        }
+        public void Fall()
+        {
+            State.Fall();
         }
 
         public void Crouch()
@@ -68,7 +76,7 @@ namespace Sprint0.Characters
 
         public void Throw()
         {
-            if (health == Mario.MarioHealth.Fire)
+            if (health == MarioHealth.Fire)
             {
                 State.Throw();
             }
@@ -77,21 +85,37 @@ namespace Sprint0.Characters
         // Will change with game functionality
         public void ChangeToFire()
         {
+            if (health == MarioHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = MarioHealth.Fire;
         }
 
         public void ChangeToRaccoon()
         {
+            if (health == MarioHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = MarioHealth.Raccoon;
         }
 
         public void ChangeToBig()
         {
+            if (health == MarioHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = MarioHealth.Big;
         }
 
         public void ChangeToNormal()
         {
+            if (health != MarioHealth.Normal)
+            {
+                position.Y += sizeDiff;
+            }
             health = MarioHealth.Normal;
         }
 

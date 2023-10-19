@@ -1,21 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters;
+using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using System;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.Players
 {
     public class AnimatedSpriteMario : ISprite
     {
-        private Mario mario;
         private Texture2D texture;
 
         // Rectangles
         private Rectangle[] spriteFrames;
         private Rectangle destination;
-
-        private Vector2 position;
         public string spriteName;
 
         SpriteEffects spriteEffect;
@@ -26,15 +24,14 @@ namespace Sprint0.Sprites
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public AnimatedSpriteMario(Rectangle[] currentFrames, Texture2D texture, Mario mario, SpriteEffects effect)
+        public AnimatedSpriteMario(Rectangle[] currentFrames, Texture2D texture, SpriteEffects effect, string name)
         {
             spriteFrames = currentFrames;
             this.texture = texture;
-            this.mario = mario;
             spriteEffect = effect;
-            this.position = mario.position;
-            this.spriteName = "X";
+            spriteName = name;
             TotalFrames = spriteFrames.Length;
+
         }
 
         public void Update(GameTime gameTime)
@@ -51,11 +48,12 @@ namespace Sprint0.Sprites
                     CurrentFrame = 0;
                 }
             }
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)mario.position.X, (int)mario.position.Y, 34, 56);
+            destination = new Rectangle((int)location.X, (int)location.Y, spriteFrames[CurrentFrame].Width * 2, spriteFrames[CurrentFrame].Height * 2);
 
             float rotation = 0;
             float layer = 0;
