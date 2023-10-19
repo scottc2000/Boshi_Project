@@ -10,7 +10,7 @@ using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters
 {
-    public class Mario : ICharacter
+    public class Mario : ICharacter, IObject
     {
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health = MarioHealth.Normal;

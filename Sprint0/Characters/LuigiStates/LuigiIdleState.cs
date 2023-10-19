@@ -45,6 +45,10 @@ namespace Sprint0.Characters.MarioStates
 
         }
 
+        public void UpdateVelocity()
+        {
+            luigi.velocity *= luigi.decay;
+        }
 
         public void Die()
         {
@@ -53,6 +57,9 @@ namespace Sprint0.Characters.MarioStates
         public void Update(GameTime gametime)
         {
             luigi.pose = Luigi.LuigiPose.Idle;
+
+            UpdateVelocity();
+
             if (luigi.facingLeft)
             {
                 luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillLeft");

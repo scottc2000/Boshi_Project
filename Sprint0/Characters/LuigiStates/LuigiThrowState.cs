@@ -41,8 +41,8 @@ namespace Sprint0.Characters.MarioStates
         public void Throw()
         {
 
-
         }
+
 
         public void Die()
         {

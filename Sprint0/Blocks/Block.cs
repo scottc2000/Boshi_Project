@@ -12,7 +12,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
-    public class Block: IBlock
+    public class Block: IBlock, IObject
     {
         private Sprint0 game;
         private SpriteBatch spriteBatch;

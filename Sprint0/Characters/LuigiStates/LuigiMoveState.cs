@@ -52,10 +52,17 @@ namespace Sprint0.Characters.MarioStates
 
         }
 
+        public void UpdateVelocity()
+        {
+            luigi.velocity = 4.0f;
+        }
+
         public void Update(GameTime gametime)
         {
 
             luigi.pose = Luigi.LuigiPose.Walking;
+
+            UpdateVelocity();
 
             if (luigi.facingLeft)
             {
