@@ -239,3 +239,8 @@ C:\Users\muska\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\NES -
 C:\Users\muska\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\SpriteImages\Level 1-1 Background.xnb
 C:\Users\muska\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\JSON\playerdata.json
 C:\Users\muska\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\JSON\projectiledata.json
+C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\JSON\playerdata.json
+C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\JSON\projectiledata.json
+C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\marioenemy.xnb
+C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.xnb
+C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\SpriteImages\Level 1-1 Background.xnb

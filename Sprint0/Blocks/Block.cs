@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Sprint0.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection.Metadata;
@@ -12,47 +13,47 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
-    public class Block: IBlock, IObject
+    public class Block : IBlock
     {
         private Sprint0 game;
         private SpriteBatch spriteBatch;
         private ContentManager content;
         private List<ISprite> blocks = new List<ISprite>();
 
-        private ISprite grayBlockSprite;
-        private ISprite questionBlockSprite;
-        private ISprite woodBlockSprite;
-        private ISprite yellowBrickSprite;
-        private ISprite emptyQuestionBlockSprite;
+        private ISprite sprite1;
+        private ISprite sprite2;
+        private ISprite sprite3;
+        private ISprite sprite4;
+        private ISprite sprite5;
 
         public Vector2 location { get; set; }
         private int blockCount;
         private int blockIndex;
-        
+
 
         public Block(Sprint0 game, SpriteBatch spriteBatch, ContentManager content)
         {
             this.game = game;
             this.spriteBatch = spriteBatch;
             this.content = content;
-            
+
         }
 
         public void LoadBlocks()
         {
             BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.SaveSpriteLocations(content);
+            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
 
-            grayBlockSprite = BlockSpriteFactory.Instance.CreateGrayBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(grayBlockSprite);
-            questionBlockSprite = BlockSpriteFactory.Instance.CreateQuestionBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(questionBlockSprite);
-            woodBlockSprite = BlockSpriteFactory.Instance.CreateWoodBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(woodBlockSprite);
-            yellowBrickSprite = BlockSpriteFactory.Instance.CreateYellowBrickSprite(spriteBatch, new Vector2(700, 100));
-            blocks.Add(yellowBrickSprite);
-            emptyQuestionBlockSprite = BlockSpriteFactory.Instance.CreateEmptyQuestionBlock(spriteBatch, new Vector2(700, 100));
-            blocks.Add(emptyQuestionBlockSprite);
+            sprite1 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_floor_middle", new Vector2(700, 100));
+            blocks.Add(sprite1);
+            sprite2 = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(700, 100));
+            blocks.Add(sprite2);
+            sprite3 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_side_left", new Vector2(700, 100));
+            blocks.Add(sprite3);
+            sprite4 = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "flashing_yellow_brick", new Vector2(700, 100));
+            blocks.Add(sprite4);
+            sprite5 = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_side_right", new Vector2(700, 100));
+            blocks.Add(sprite5);
 
             blockCount = blocks.Count;
             blockIndex = 0;
@@ -60,37 +61,37 @@ namespace Sprint0.Blocks
 
         public void Update(GameTime gameTime)
         {
-            questionBlockSprite.Update(gameTime);
-            yellowBrickSprite.Update(gameTime);
+            sprite2.Update(gameTime);
+            sprite4.Update(gameTime);
         }
 
         public void Draw()
         {
-            switch(blockIndex)
+            switch (blockIndex)
             {
                 case 0:
-                    grayBlockSprite.Draw(spriteBatch, location);
+                    sprite1.Draw(spriteBatch, location);
                     break;
                 case 1:
-                    questionBlockSprite.Draw(spriteBatch, location);
+                    sprite2.Draw(spriteBatch, location);
                     break;
                 case 2:
-                    woodBlockSprite.Draw(spriteBatch, location);
+                    sprite3.Draw(spriteBatch, location);
                     break;
                 case 3:
-                    yellowBrickSprite.Draw(spriteBatch, location);
+                    sprite4.Draw(spriteBatch, location);
                     break;
                 case 4:
-                    emptyQuestionBlockSprite.Draw(spriteBatch, location );
+                    sprite5.Draw(spriteBatch, location);
                     break;
             }
-            
+
         }
 
         public void IncrementBlockIndex()
         {
             blockIndex++;
-            if(blockIndex >= blockCount)
+            if (blockIndex >= blockCount)
             {
                 blockIndex = 0;
             }
@@ -105,4 +106,5 @@ namespace Sprint0.Blocks
             }
         }
     }
+
 }
