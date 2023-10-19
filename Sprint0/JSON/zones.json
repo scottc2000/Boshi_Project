@@ -43,7 +43,26 @@
         "width": 16,
         "height": 16
       }
+    ],
+    "Items": [
+      {
+        "Name": "RedMushroom",
+        "Spritesheet_pos": [ [ 1, 24 ] ],
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 240, 288 ]
+      }
+    ],
+    "Enemies": [
+    ],
+    "Players": [
+      {
+        "name": "MarioStillLeft",
+        "spritesheet_pos": [ [ 2, 16 ] ],
+        "hitbox": [ 16, 17 ],
+        "Location": []
+      }
     ]
+
   },
 
   "Zone2": {
@@ -151,7 +170,16 @@
         "width": 16,
         "height": 16
       }
+    ],
+    "Items": [
+      {
+        "Name": "Leaf",
+        "Spritesheet_pos": [ [ 55, 24 ] ],
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 656, 368 ]
+      }
     ]
+
   },
 
   "Zone4": {
@@ -264,7 +292,16 @@
         "width": 32,
         "height": 16
       }
+    ],
+    "Items": [
+      {
+        "Name": "OneUpMushroom",
+        "Spritesheet_pos": [ [ 19, 24 ] ],
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 1472, 352 ]
+      }
     ]
+
   },
   "Zone7": {
     "Blocks": [
