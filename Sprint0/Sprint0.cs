@@ -77,37 +77,6 @@ namespace Sprint0
             */
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
-<<<<<<< HEAD
-=======
-            // Mario
-            KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
-            KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
-            KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));      // Still needs projectile
-
-            KeyboardController.RegisterCommand(Keys.Q, new CDeadMario(this));
-            KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
-            KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
-            KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
-            KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
-
-
-
-            // Luigi
-            KeyboardController.RegisterCommand(Keys.I, new CLuigiJump(this));
-            KeyboardController.RegisterCommand(Keys.J, new CLuigiMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.K, new CLuigiCrouch(this));
-            KeyboardController.RegisterCommand(Keys.L, new CLuigiMoveRight(this));
-            KeyboardController.RegisterCommand(Keys.M, new CLuigiThrow(this));
-
-            KeyboardController.RegisterCommand(Keys.D8, new CLuigiRaccoon(this));
-            KeyboardController.RegisterCommand(Keys.D7, new CLuigiFire(this));
-            KeyboardController.RegisterCommand(Keys.D6, new CLuigiBig(this));
-            KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
-
-
->>>>>>> 0e31f3665bafaf53a2f1f7e43444f8bf38c6128d
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
             SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));

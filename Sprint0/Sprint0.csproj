@@ -57,16 +57,16 @@
     <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="playerdata.json">
+    <None Update="JSON\playerdata.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="playerdata.json">
+    <None Update="JSON\playerdata.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="playerdata %28copy%29.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-     <None Update="projectiledata.json">
+     <None Update="JSON\projectiledata.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="projectiledata %28copy%29.json">

@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using System;
 using System.ComponentModel.Design;
-using static Sprint0.Sprites.PlayerData;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {

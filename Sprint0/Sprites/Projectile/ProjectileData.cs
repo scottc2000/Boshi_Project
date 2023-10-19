@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.Projectile
 {
-	public class ProjectileData
-	{
+    public class ProjectileData
+    {
         public class Projectilesprite
         {
             public string name { get; set; }

@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using static Sprint0.Sprites.PlayerData;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Sprites.SpriteFactories
 {
@@ -27,7 +27,7 @@ namespace Sprint0.Sprites.SpriteFactories
             this.luigi = luigi;
 
             // opens file that contains sprite information and deserializes it
-            StreamReader r = new StreamReader("playerdata.json");
+            StreamReader r = new StreamReader("JSON/playerdata.json");
             string playerdatajson = r.ReadToEnd();
 
             deserializedPlayerData = JsonSerializer.Deserialize<Root>(playerdatajson);

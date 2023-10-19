@@ -30,7 +30,7 @@ namespace Sprint0.Characters
 
         public Mario(Sprint0 sprint0)
         {
-            health = MarioHealth.Big;
+            health = MarioHealth.Normal;
             State = new MarioIdleState(this);
 
             facingLeft = true;

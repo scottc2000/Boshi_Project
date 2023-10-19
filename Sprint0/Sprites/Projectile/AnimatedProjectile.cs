@@ -3,13 +3,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.Projectile
 {
-	public class AnimatedProjectile
-	{
-		public Vector2 pos;
-		bool facingLeft;
-		Rectangle[] spriteFrames;
+    public class AnimatedProjectile
+    {
+        public Vector2 pos;
+        bool facingLeft;
+        Rectangle[] spriteFrames;
         Texture2D texture;
         int direction;
         Rectangle destination;
@@ -25,7 +25,7 @@ namespace Sprint0.Sprites
             this.pos = pos;
             pos.X += 10;
             this.facingLeft = facingLeft;
-            this.spriteFrames = currentFrames;
+            spriteFrames = currentFrames;
             TotalFrames = spriteFrames.Length;
 
             this.texture = texture;
@@ -33,15 +33,15 @@ namespace Sprint0.Sprites
             if (this.facingLeft)
             {
                 direction = -3;
-                this.effect = SpriteEffects.FlipHorizontally;
+                effect = SpriteEffects.FlipHorizontally;
             }
             else
             {
                 direction = 3;
-                this.effect = SpriteEffects.None;
+                effect = SpriteEffects.None;
             }
 
-		}
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -63,7 +63,7 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)pos.X, (int)pos.Y, (spriteFrames[CurrentFrame].Width * 2), (spriteFrames[CurrentFrame].Height * 2));
+            destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width * 2, spriteFrames[CurrentFrame].Height * 2);
             float rotation = 0;
             float layer = 0;
 

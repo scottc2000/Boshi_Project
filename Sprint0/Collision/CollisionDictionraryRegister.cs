@@ -21,7 +21,7 @@ namespace Sprint0.Collision
 
         public void generate()
         {
-            collisions.RegisterCommand(Tuple<Mario, Block, CollisionDictionary.Side.Left>, Tuple </*moveMarioLeft*/, null >);
+            //collisions.RegisterCommand(Tuple<Mario, Block, CollisionDictionary.Side.Left>, Tuple </*moveMarioLeft*/, null >);
             //Needs every possible collision combination registered
         }
     }

@@ -3,12 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Players;
+using Sprint0.Sprites.Projectile;
 using Sprint0.Sprites.SpriteFactories;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
-using static Sprint0.Sprites.PlayerData;
 
 namespace Sprint0.Characters
 {

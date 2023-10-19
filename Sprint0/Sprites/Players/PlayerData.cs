@@ -3,7 +3,7 @@ using Sprint0.Commands.Mario;
 using System;
 using System.Collections.Generic;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.Players
 {
     public class PlayerData
     {

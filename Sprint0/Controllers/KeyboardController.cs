@@ -115,7 +115,6 @@ namespace Sprint0.Controllers
                     keyPressed[key].Execute();
             }
 
-<<<<<<< HEAD
         }
 
         private void heldKeys(KeyboardState current)
@@ -123,13 +122,6 @@ namespace Sprint0.Controllers
             Keys[] heldKeys = current.GetPressedKeys();
 
             foreach (Keys key in heldKeys)
-=======
-            if (!pressedKeys.Contains(Keys.I) &&
-               !pressedKeys.Contains(Keys.J) &&
-                !pressedKeys.Contains(Keys.K) &&
-               !pressedKeys.Contains(Keys.L) &&
-               !pressedKeys.Contains(Keys.E) && !pressedKeys.Contains(Keys.M)) 
->>>>>>> 0e31f3665bafaf53a2f1f7e43444f8bf38c6128d
             {
                 if (keyboardInput.ContainsKey(key))
                     keyboardInput[key].Execute();

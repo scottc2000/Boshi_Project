@@ -1,14 +1,9 @@
-﻿using Sprint0.Blocks;
-using Sprint0.Characters;
-using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using Sprint0.Blocks;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Sprint0.Characters.MarioStates;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Interfaces;
 
-namespace Sprint0
+namespace Sprint0.Commands
 {
     internal class Reset : ICommand
     {
@@ -20,16 +15,15 @@ namespace Sprint0
         public Reset(Sprint0 game, GameTime gameTime, ContentManager content)
         {
             mySprint = game;
-            
+
             myGameTime = gameTime;
             myContent = content;
         }
         public void Execute()
         {
-            // Error CS0118 when moving Reset.cs file to Commands folder
             spriteBatch = new SpriteBatch(mySprint.GraphicsDevice);
-            mySprint.mario = new Mario(mySprint);
-            mySprint.luigi = new Luigi(mySprint);
+            mySprint.mario = new Characters.Mario(mySprint);
+            mySprint.luigi = new Characters.Luigi(mySprint);
 
         }
 

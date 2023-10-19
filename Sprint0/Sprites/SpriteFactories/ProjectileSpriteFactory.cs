@@ -1,5 +1,5 @@
 ﻿using System;
-using static Sprint0.Sprites.PlayerData;
+using static Sprint0.Sprites.Players.PlayerData;
 using System.IO;
 using System.Text.Json;
 using Microsoft.Xna.Framework.Content;
@@ -7,12 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using static Sprint0.Sprites.ProjectileData;
+using static Sprint0.Sprites.Projectile.ProjectileData;
+using Sprint0.Sprites.Projectile;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.SpriteFactories
 {
-	public class ProjectileSpriteFactory
-	{
+    public class ProjectileSpriteFactory
+    {
         private ProjRoot deserializedData;
         private Texture2D texture;
 
@@ -20,8 +21,8 @@ namespace Sprint0.Sprites
         Rectangle[] sprites;
 
         public ProjectileSpriteFactory()
-		{
-            StreamReader r = new StreamReader("projectiledata.json");
+        {
+            StreamReader r = new StreamReader("JSON/projectiledata.json");
             string projdatajson = r.ReadToEnd();
 
             deserializedData = JsonSerializer.Deserialize<ProjRoot>(projdatajson);
@@ -45,13 +46,13 @@ namespace Sprint0.Sprites
             return myRect;
         }
 
-        public AnimatedProjectile returnSprite(String spriteType, Vector2 spawnpos, bool facingLeft)
+        public AnimatedProjectile returnSprite(string spriteType, Vector2 spawnpos, bool facingLeft)
         {
-            
+
 
             foreach (Projectilesprite s in deserializedData.projectilesprites)
             {
-                if (String.Equals(spriteType, s.name))
+                if (string.Equals(spriteType, s.name))
                 {
                     sprites = generateSprites(s.spritesheet_pos, s.hitbox);
                     returnedSprite = new AnimatedProjectile(sprites, texture, facingLeft, spawnpos);
