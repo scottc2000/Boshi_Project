@@ -57,6 +57,17 @@
     <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="LevelLoader\Level1Data.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="JSON\level1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Update="JSON\level1.json %28copy%29.json">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
     <None Update="JSON\playerdata.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

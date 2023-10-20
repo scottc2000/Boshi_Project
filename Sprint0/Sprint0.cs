@@ -1,23 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
+using Sprint0.Background;
+using Sprint0.Blocks;
 using Sprint0.Characters;
 using Sprint0.Commands;
-using Sprint0.Commands.Mario;
-using Sprint0.Controllers;
-using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
-using Sprint0.Blocks;
-using System;
-using System.ComponentModel;
+using Sprint0.Controllers;
 using Sprint0.Enemies;
-using System.Collections.Generic;
+using Sprint0.Interfaces;
 using Sprint0.Items;
 using Sprint0.Sprites.SpriteFactories;
-
+using System;
+using System.Collections.Generic;
 namespace Sprint0
 {
     public class Sprint0 : Game
@@ -26,6 +22,9 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
         public GameTime gametime;
+
+        private LevelLoader1 levelLoader;
+        public Terrain terrain;
 
         public ICharacter mario;
         public ICharacter luigi;
@@ -59,6 +58,7 @@ namespace Sprint0
 
             mario = new Mario(this);
             luigi = new Luigi(this);
+            terrain = new Terrain(this);
 
             //List used for demo cycling
             enemyList.Add(new Goomba(this));
@@ -97,6 +97,9 @@ namespace Sprint0
             item.LoadItems();
             block.LoadBlocks();
 
+            levelLoader = new LevelLoader1(this);
+            levelLoader.Load("JSON/level1.json");
+
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
 
@@ -108,6 +111,8 @@ namespace Sprint0
             KeyboardController.Update();
             //Just for demo
             enemies = enemyList[enemyIndex];
+
+            terrain.Update(gameTime);
             mario.Update(gameTime);
             luigi.Update(gameTime);
 
@@ -136,9 +141,10 @@ namespace Sprint0
 
             _spriteBatch.Begin();
 
+            terrain.Draw(_spriteBatch);
             mario.Draw(_spriteBatch);
             luigi.Draw(_spriteBatch);
-            block.Draw();
+            block.Draw(_spriteBatch);
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
 

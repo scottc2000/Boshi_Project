@@ -1,17 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
+using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 using static Sprint0.Characters.Mario;
+using static Sprint0.LevelLoader.GameObjectType;
 
 namespace Sprint0.Characters
 {
     public class Mario : ICharacter, IObject
     {
+        public ObjectType Type { get; } = ObjectType.Mario;
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health = MarioHealth.Normal;
 
@@ -21,9 +24,9 @@ namespace Sprint0.Characters
 
         public ICharacterState State { get; set; }
 
-        public Vector2 position;
         public Sprint0 mySprint;
         int sizeDiff;
+        public Vector2 position;
 
         public AnimatedSpriteMario currentSprite;
         public CharacterSpriteFactoryMario mySpriteFactory;
@@ -34,9 +37,9 @@ namespace Sprint0.Characters
             State = new MarioIdleState(this);
 
             facingLeft = true;
-            position.X = 150;
-            position.Y = 350;
             sizeDiff = 25;
+            position.X = 200;
+            position.Y = 400;
 
             mySprint = sprint0;
             mySpriteFactory = new CharacterSpriteFactoryMario(this);

@@ -64,7 +64,7 @@ namespace Sprint0.Blocks
             yellowBrickSprite.Update(gameTime);
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
             switch(blockIndex)
             {

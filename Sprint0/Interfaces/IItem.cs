@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Interfaces
 {
-    public interface IBlock
+    public interface IItem
     {
+
         void Draw(SpriteBatch spriteBatch);
         void Update(GameTime gameTime);
     }
