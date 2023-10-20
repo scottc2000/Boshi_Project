@@ -25,6 +25,7 @@ namespace Sprint0.Characters
         public Sprint0 mySprint;
         int sizeDiff;
         public Vector2 position;
+        public Rectangle destination { get; set; }
 
         public AnimatedSpriteMario currentSprite;
         public CharacterSpriteFactoryMario mySpriteFactory;
@@ -44,6 +45,7 @@ namespace Sprint0.Characters
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("MarioStillLeft");
+            destination = currentSprite.destination;
 
         }
         public void Move()

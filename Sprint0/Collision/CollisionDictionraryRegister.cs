@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Interfaces;
+using Sprint0.Commands.Luigi;
+using Sprint0.Commands.Mario;
 
 namespace Sprint0.Collision
 {
@@ -13,15 +16,18 @@ namespace Sprint0.Collision
     public class CollisionDictionraryRegister
     {
         public CollisionDictionary collisions;
+        public Sprint0 sprint;
 
-        public CollisionDictionraryRegister()
+        public CollisionDictionraryRegister(Sprint0 sprint)
         {
             collisions = new CollisionDictionary();
+            this.sprint = sprint;
         }
 
         public void generate()
         {
-            //collisions.RegisterCommand(Tuple<Mario, Block, CollisionDictionary.Side.Left>, Tuple </*moveMarioLeft*/, null >);
+            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.mario, sprint.luigi, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStop(sprint)));
+            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.luigi, sprint.mario, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStop(sprint)));
             //Needs every possible collision combination registered
         }
     }

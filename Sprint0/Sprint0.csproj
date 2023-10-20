@@ -20,6 +20,7 @@
     <None Remove="Characters\LuigiStates\**" />
     <None Remove="Commands\Luigi\**" />
     <None Remove="Sprites\Luigi\**" />
+    <None Remove="Collision\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -39,6 +40,7 @@
   <ItemGroup>
     <Folder Include="Characters\LuigiStates\" />
     <Folder Include="Commands\Collision\" />
+    <Folder Include="Collision\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Luigi\CLuigiBig.cs" />
@@ -83,6 +85,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="projectiledata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\blockdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="blockdata %28copy%29.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

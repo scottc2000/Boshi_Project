@@ -13,7 +13,7 @@ namespace Sprint0.Sprites.Players
 
         // Rectangles
         private Rectangle[] spriteFrames;
-        private Rectangle destination;
+        public Rectangle destination;
         public string spriteName;
 
         SpriteEffects spriteEffect;

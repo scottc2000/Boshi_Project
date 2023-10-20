@@ -29,6 +29,7 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
         int sizeDiff;
+        public Rectangle destination { get; set; }
 
         public AnimatedSpriteLuigi currentSprite;
         public CharacterSpriteFactoryLuigi mySpriteFactory;
@@ -66,6 +67,7 @@ namespace Sprint0.Characters
             projectileFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
+            destination = currentSprite.destination;
 
         }
 
