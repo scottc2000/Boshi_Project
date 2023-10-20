@@ -3,7 +3,9 @@ using Sprint0.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Sprint0.Blocks;
 using static Sprint0.LevelLoader.Level1Data;
+using System.Collections;
 
 namespace Sprint0
 {
@@ -38,21 +40,30 @@ namespace Sprint0
 
         public void Load(Root data)
         {
-            foreach(Block block in data.Blocks)
-            { 
-                if(block.Name == "floor")
-                {
-                    // need a Floor.c class that inherits from IBlock
-                    //floor.add(new Floor(block.x, block.y, block.width, block.height)); 
-                    //objectManager.Blocks.add(floor);
 
-                } else if (block.Name == "large_block")
+            foreach(LevelLoader.Level1Data.Block block in data.Blocks)
+            {
+                switch (block.Name)
                 {
-                    // need LargeBlock.c class that inherits from IBLock
-                    // largeblock.add(new LargeBlock(block.x, block.y, block.width, block.height));
-                    // objectManager.Blocks.add(largeblock);
+                    case "floor":
+                        //floor.add(new Floor(block.x, block.y, block.width, block.height)); 
+                        break;
+                    case "large_block":
+                        //largeblock.add(new LargeBlock(block.x, block.y, block.width, block.height));
+                        break;
+                    case "yellow_brick":
+
+                        break;
+                    case "wood_blocks":
+
+                        break;
+                    case "clouds":
+
+                        break;
+                    case "pipe":
+
+                        break;
                 }
-                // repeat for all block types in zone1
             }
             foreach(Item item in data.Items)
             {
