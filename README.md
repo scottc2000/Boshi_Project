@@ -9,19 +9,19 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     - url: github.com/scottc2000/Boshi_Project
 ## Sprint 2
 ## Controls:
-  Mario:
+  - Mario:
     - wasd movement
     -D1, D2, D3, D4, Q state changes
-  Luigi:
+  - Luigi:
     - ijkl movement
     - D8, D7, D6, D5
-  Blocks/Obstacles:
+  - Blocks/Obstacles:
     - t, y cycle between blocks
-  Itmes:
+  - Itmes:
     - v, b cycle between items
-  Enemy/NPC:
+  - Enemy/NPC:
     - o, p cycle between enemies
-  Other:
+  - Other:
     - escape quit
     - D0 reset to initial state
 ## Known Bugs: 
@@ -33,8 +33,8 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 
 ## Sprint 3
 ## Controls:
-    Blocks, Items, and enemy controls from Sprint 2 removed
-    Luigi movement changed to arrow keys
+    - Blocks, Items, and enemy controls from Sprint 2 removed
+    - Luigi movement changed to arrow keys
 
 ## Known Bugs:
     Player physics do not function as they would in the final game (backlog)
