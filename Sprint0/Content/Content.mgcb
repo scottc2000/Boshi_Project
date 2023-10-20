@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin level1_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:level1_1.png
+
 #begin marioenemy.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -25,18 +37,6 @@
 /processorParam:TextureFormat=Color
 /build:marioenemy.png
 
-#begin NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png
-
 #begin SpriteImages/blocks.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,18 +48,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SpriteImages/blocks.png
-
-#begin SpriteImages/Level 1-1 Background.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteImages/Level 1-1 Background.png
 
 #begin SpriteImages/playerssclear.png
 /importer:TextureImporter

@@ -1,8 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Sprint0.GameMangager;
+﻿using Sprint0.GameMangager;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -20,16 +17,12 @@ namespace Sprint0
         private JsonElement levelData;
         private Root data;
 
-        public BlockManager blockManager;
-        public ItemManager itemManager;
+        public ObjectManager objectManager;
 
         public LevelLoader1(Sprint0 sprint0)
         {
             this.sprint0 = sprint0;
-
-            // Initailize managers
-            blockManager = new BlockManager(this.sprint0);
-            itemManager = new ItemManager(this.sprint0);
+            objectManager = new ObjectManager(this.sprint0);
         }
         public void Load(string jsonFilePath)
         {
@@ -38,15 +31,16 @@ namespace Sprint0
             data = JsonSerializer.Deserialize<Root>(json);
 
             // Initialize Lists
-            blockManager.Blocks = new List<IBlock>();
-            itemManager.Items = new List<IItem>();
+            objectManager.Blocks = new List<IBlock>();
+            objectManager.Items = new List<IItem>();
+            objectManager.Enemies = new List<IEnemies>();
 
             Load(data);
         }
 
         public void Load(Root data)
         {
-            // Repeat this code for each zone1
+
             foreach(LevelLoader.Level1Data.Block block in data.Blocks)
             {
                 switch (block.Name)
@@ -69,24 +63,27 @@ namespace Sprint0
                     case "pipe":
 
                         break;
-                        // repeat for all block types in zone1
                 }
             }
             foreach(Item item in data.Items)
             {
                 // need a RedMushroom.c class that inherits from IItem
                // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
+               // objectManager.Items.add(redmushroom);
             }
-            // repeat for all item types in zone1
+            
+
             /*
              * ADD ENEMIES ONCE ADDED TO LEVEL1.JSON AND ENEMY CLASS(ES) ARE ADDED TO LEVEL1DATA.CS
              */
 
-        }
-
-        public void LoadBackground(SpriteBatch spriteBatch)
-        {
-            // Finish camera and then test
+            /*foreach(Enemy enemy in data.Enemy)
+            {
+                if (enemy.Name == "goomba"){
+                    goomba.add(new Goomba(enemy.Position, enemy.Hitbox);
+                    objectManager.Enemy.add(goomba);
+                }
+            }*/
 
         }
 
