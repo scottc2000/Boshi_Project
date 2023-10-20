@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "UUX3ZnJNcmbBdMPUOkJveWoBjj1SeA4gu/MSc7R8u85Y7Rb61MM7dWizalwTXSw7b8rNk4H1fJRWfS+OA9sZpw==",
+  "dgSpecHash": "4S0DFosu1sOohzt+i2i0plx4+ZhUerR4Y7QWanYoa/lyexGOccxomT7LvEHdPl+8oZ4F2TIvXTPTiXzMJiW0EA==",
   "success": true,
   "projectFilePath": "C:\\Users\\muska\\source\\repos\\Boshi_Project\\Sprint0\\Sprint0.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muska\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\muska\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\muska\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
+    "C:\\Users\\muska\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\muska\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }

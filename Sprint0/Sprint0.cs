@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Background;
 using Sprint0.Blocks;
+using Sprint0.Cam;
 using Sprint0.Characters;
 using Sprint0.Commands;
 using Sprint0.Commands.Blocks;
@@ -12,7 +13,6 @@ using Sprint0.Enemies;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using Sprint0.Sprites;
-using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.Collections.Generic;
 namespace Sprint0
@@ -26,6 +26,7 @@ namespace Sprint0
 
         private LevelLoader1 levelLoader;
         public Terrain terrain;
+        public Camera cam;
 
         public ICharacter mario;
         public ICharacter luigi;

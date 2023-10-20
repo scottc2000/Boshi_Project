@@ -8,13 +8,11 @@ using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 using static Sprint0.Characters.Mario;
-using static Sprint0.LevelLoader.GameObjectType;
 
 namespace Sprint0.Characters
 {
     public class Mario : ICharacter
     {
-        public ObjectType Type { get; } = ObjectType.Mario;
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health = MarioHealth.Normal;
 
