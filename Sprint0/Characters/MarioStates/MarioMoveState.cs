@@ -20,11 +20,11 @@ namespace Sprint0.Characters.MarioStates
         {
             if (mario.facingLeft)
             {
-                mario.position.X -= 1;
+                mario.position = new Vector2(mario.position.X - 1, mario.position.Y);
             }
             else
             {
-                mario.position.X += 1;
+                mario.position = new Vector2(mario.position.X + 1, mario.position.Y);
             }
         }
 

@@ -18,11 +18,11 @@ namespace Sprint0.Characters.MarioStates
         {
             if (luigi.facingLeft)
             {
-                luigi.position.X -= 1;
+                luigi.position = new Vector2(luigi.position.X - 1, luigi.position.Y);
             }
             else
             {
-                luigi.position.X += 1;
+                luigi.position = new Vector2(luigi.position.X + 1, luigi.position.Y);
             }
         }
 

@@ -90,7 +90,7 @@ namespace Sprint0.Characters.MarioStates
             // Check for ground collision
             if (mario.position.Y >= mario.mySprint._graphics.PreferredBackBufferHeight - 100)
             {
-                mario.position.Y = mario.mySprint._graphics.PreferredBackBufferHeight - 100;
+                mario.position = new Vector2(mario.position.X, mario.mySprint._graphics.PreferredBackBufferHeight - 100);
                 marioVelocity.Y = 0;
                 isJumping = false;
                 Fall();
