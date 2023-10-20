@@ -57,7 +57,7 @@ namespace Sprint0.Sprites.SpriteFactories
 
             switch (mario.health)
             {
-                case Characters.Mario.MarioHealth.Big:
+                case Characters.Mario.Health.Big:
                     foreach (Sprite n in deserializedPlayerData.mario.Big.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -78,7 +78,7 @@ namespace Sprint0.Sprites.SpriteFactories
                     }
                     break;
 
-                case Characters.Mario.MarioHealth.Normal:
+                case Characters.Mario.Health.Normal:
                     foreach (Sprite n in deserializedPlayerData.mario.Normal.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -98,7 +98,7 @@ namespace Sprint0.Sprites.SpriteFactories
                     }
                     break;
 
-                case Characters.Mario.MarioHealth.Fire:
+                case Characters.Mario.Health.Fire:
                     foreach (Sprite n in deserializedPlayerData.mario.Fire.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -118,7 +118,7 @@ namespace Sprint0.Sprites.SpriteFactories
                     }
                     break;
 
-                case Characters.Mario.MarioHealth.Raccoon:
+                case Characters.Mario.Health.Raccoon:
                     foreach (Sprite n in deserializedPlayerData.mario.Raccoon.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -137,7 +137,7 @@ namespace Sprint0.Sprites.SpriteFactories
                         }
                     }
                 break;
-                case Characters.Mario.MarioHealth.Dead:
+                case Characters.Mario.Health.Dead:
                     foreach (Sprite n in deserializedPlayerData.mario.Dead.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))

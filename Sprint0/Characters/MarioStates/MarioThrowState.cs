@@ -52,7 +52,7 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.pose = Mario.MarioPose.Throwing;
 
-            if (mario.health == Mario.MarioHealth.Fire)
+            if (mario.health == Mario.Health.Fire)
             {
                 if (mario.facingLeft)
                 {

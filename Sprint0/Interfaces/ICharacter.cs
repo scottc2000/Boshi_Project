@@ -6,7 +6,9 @@ namespace Sprint0.Interfaces
     public interface ICharacter
     {
         ICharacterState State { get; set; }
+        public enum Health{Normal, Raccoon, Fire, Big, Dead}
         bool facingLeft { get; set; }
+        public Vector2 position { get; set; }
 
         public void Move();
 

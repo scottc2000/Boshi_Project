@@ -11,8 +11,8 @@ namespace Sprint0.Characters
 {
     public class Luigi : ICharacter, IObject
     {
-        public enum LuigiHealth { Normal, Raccoon, Fire, Big };
-        public LuigiHealth health = LuigiHealth.Normal;
+        public enum Health { Normal, Raccoon, Fire, Big };
+        public Health health = Health.Normal;
 
         public enum LuigiPose { Jump, Crouch, Idle, Walking, Throwing };
         public LuigiPose pose = LuigiPose.Idle;
@@ -25,8 +25,8 @@ namespace Sprint0.Characters
 
         public ICharacterState State { get; set; }
 
+        public Vector2 position {  get; set; }
 
-        public Vector2 position;
         public Sprint0 mySprint;
         int sizeDiff;
 
@@ -39,13 +39,12 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Big;
+            this.health = Health.Big;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
             this.facingLeft = true;
-            this.position.X = 350;
-            this.position.Y = 350;
+            position = new Vector2(150, 350);
             this.sizeDiff = 25;
             this.fired = false;
 
@@ -98,7 +97,7 @@ namespace Sprint0.Characters
         public void Throw()
         {
             // projectiles stored in list, only three at a time on screen
-            if (health == Luigi.LuigiHealth.Fire)
+            if (health == Luigi.Health.Fire)
             {
                 if (!fired)
                 {
@@ -113,38 +112,38 @@ namespace Sprint0.Characters
         // Will change with game functionality
         public void ChangeToFire()
         {
-            if (health == LuigiHealth.Normal)
+            if (health == Health.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
-            health = LuigiHealth.Fire;
+            health = Health.Fire;
         }
 
         public void ChangeToRaccoon()
         {
-            if (health == LuigiHealth.Normal)
+            if (health == Health.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
-            health = LuigiHealth.Raccoon;
+            health = Health.Raccoon;
         }
 
         public void ChangeToBig()
         {
-            if (health == LuigiHealth.Normal)
+            if (health == Health.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
-            health = LuigiHealth.Big;
+            health = Health.Big;
         }
 
         public void ChangeToNormal()
         {
-            if (health != LuigiHealth.Normal)
+            if (health != Health.Normal)
             {
-                position.Y += sizeDiff;
+                position = new Vector2(position.X, position.Y + sizeDiff);
             }
-            health = LuigiHealth.Normal;
+            health = Health.Normal;
         }
 
         public void UpdateProjectiles(GameTime gametime)
@@ -169,11 +168,11 @@ namespace Sprint0.Characters
             // updates movement using pos +/- v * dt
             if (facingLeft)
             {
-                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position = new Vector2(position.X - (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
             else
             {
-                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position = new Vector2(position.X + (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
 
         }

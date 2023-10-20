@@ -10,10 +10,12 @@ using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters
 {
+
+    
     public class Mario : ICharacter, IObject
     {
-        public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
-        public MarioHealth health = MarioHealth.Normal;
+        public enum Health { Normal, Raccoon, Fire, Big, Dead };
+        public Health health = Health.Normal;
 
         public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing };
         public MarioPose pose = MarioPose.Idle;
@@ -21,7 +23,8 @@ namespace Sprint0.Characters
 
         public ICharacterState State { get; set; }
 
-        public Vector2 position;
+        public Vector2 position { get; set; }
+
         public Sprint0 mySprint;
         int sizeDiff;
 
@@ -30,12 +33,12 @@ namespace Sprint0.Characters
 
         public Mario(Sprint0 sprint0)
         {
-            health = MarioHealth.Normal;
+            health = Health.Normal;
             State = new MarioIdleState(this);
 
             facingLeft = true;
-            position.X = 150;
-            position.Y = 350;
+            position = new Vector2(150, 350);
+
             sizeDiff = 25;
 
             mySprint = sprint0;
@@ -76,7 +79,7 @@ namespace Sprint0.Characters
 
         public void Throw()
         {
-            if (health == MarioHealth.Fire)
+            if (health == Health.Fire)
             {
                 State.Throw();
             }
@@ -85,38 +88,38 @@ namespace Sprint0.Characters
         // Will change with game functionality
         public void ChangeToFire()
         {
-            if (health == MarioHealth.Normal)
+            if (health == Health.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
-            health = MarioHealth.Fire;
+            health = Health.Fire;
         }
 
         public void ChangeToRaccoon()
         {
-            if (health == MarioHealth.Normal)
+            if (health == Health.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
-            health = MarioHealth.Raccoon;
+            health = Health.Raccoon;
         }
 
         public void ChangeToBig()
         {
-            if (health == MarioHealth.Normal)
+            if (health == Health.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
-            health = MarioHealth.Big;
+            health = Health.Big;
         }
 
         public void ChangeToNormal()
         {
-            if (health != MarioHealth.Normal)
+            if (health != Health.Normal)
             {
-                position.Y += sizeDiff;
+                position = new Vector2(position.X, position.Y + sizeDiff);
             }
-            health = MarioHealth.Normal;
+            health = Health.Normal;
         }
 
 

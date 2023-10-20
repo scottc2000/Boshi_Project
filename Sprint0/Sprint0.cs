@@ -27,6 +27,11 @@ namespace Sprint0
         private BlockSpriteFactory spriteFactory;
         public GameTime gametime;
 
+        public static int ScreenWidth;
+        public static int ScreenHeight;
+
+        public Camera camera;
+
         public ICharacter mario;
         public ICharacter luigi;
 
@@ -57,6 +62,11 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             block = new Block(this, _spriteBatch, Content);
 
+            ScreenWidth = _graphics.PreferredBackBufferWidth;
+            ScreenHeight = _graphics.PreferredBackBufferHeight;
+
+            camera = new Camera();
+            
             mario = new Mario(this);
             luigi = new Luigi(this);
 
@@ -125,7 +135,7 @@ namespace Sprint0
             }
             block.Update(gameTime);
 
-
+            camera.follow(luigi);
 
             base.Update(gameTime);
         }
@@ -134,7 +144,7 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(transformMatrix: camera.transform);
 
             mario.Draw(_spriteBatch);
             luigi.Draw(_spriteBatch);

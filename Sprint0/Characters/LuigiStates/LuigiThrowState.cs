@@ -52,7 +52,7 @@ namespace Sprint0.Characters.MarioStates
         {
             luigi.pose = Luigi.LuigiPose.Throwing;
 
-            if (luigi.health == Luigi.LuigiHealth.Fire)
+            if (luigi.health == Luigi.Health.Fire)
             {
                 if (luigi.facingLeft)
                 {

@@ -61,7 +61,7 @@ namespace Sprint0.Sprites.SpriteFactories
             // goes through json for sprites (depending on which form), returns animated luigi sprite
             switch (luigi.health)
             {
-                case Characters.Luigi.LuigiHealth.Big:
+                case Characters.Luigi.Health.Big:
                     foreach (Sprite n in deserializedPlayerData.luigi.Big.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -82,7 +82,7 @@ namespace Sprint0.Sprites.SpriteFactories
                     }
                     break;
 
-                case Characters.Luigi.LuigiHealth.Normal:
+                case Characters.Luigi.Health.Normal:
                     foreach (Sprite n in deserializedPlayerData.luigi.Normal.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -102,7 +102,7 @@ namespace Sprint0.Sprites.SpriteFactories
                     }
                     break;
 
-                case Characters.Luigi.LuigiHealth.Fire:
+                case Characters.Luigi.Health.Fire:
                     foreach (Sprite n in deserializedPlayerData.luigi.Fire.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
@@ -122,7 +122,7 @@ namespace Sprint0.Sprites.SpriteFactories
                     }
                     break;
 
-                case Characters.Luigi.LuigiHealth.Raccoon:
+                case Characters.Luigi.Health.Raccoon:
                     foreach (Sprite n in deserializedPlayerData.luigi.Raccoon.Sprites)
                     {
                         if (string.Equals(n.name, spriteType))
