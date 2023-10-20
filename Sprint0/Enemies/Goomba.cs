@@ -7,7 +7,7 @@ using System;
 
 namespace Sprint0.Enemies
 {
-    public class Goomba :IEnemies, IObject
+    public class Goomba :IEnemies
     {
         public IEnemyState state;
         public Vector2 position;

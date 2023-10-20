@@ -12,7 +12,7 @@ using static Sprint0.LevelLoader.GameObjectType;
 
 namespace Sprint0.Characters
 {
-    public class Mario : ICharacter, IObject
+    public class Mario : ICharacter
     {
         public ObjectType Type { get; } = ObjectType.Mario;
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };

@@ -7,7 +7,7 @@ using System;
 
 namespace Sprint0.Enemies
 {
-    public class HammerBro : IEnemies, IObject
+    public class HammerBro : IEnemies
     {
         public IEnemyState state;
         public Vector2 position;

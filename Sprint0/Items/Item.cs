@@ -11,7 +11,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Items
 {
-    public class Item : IObject
+    public class Item : IItem
     {
         public enum ItemSelect { RedMushroom, OneUpMushroom, FireFlower, Leaf, Star, Frog, Tanooki, Hammer, Shoe };
         public Vector2 position;

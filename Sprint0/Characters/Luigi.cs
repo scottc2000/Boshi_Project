@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Sprint0.Characters
 {
-    public class Luigi : ICharacter, IObject
+    public class Luigi : ICharacter
     {
         public enum LuigiHealth { Normal, Raccoon, Fire, Big };
         public LuigiHealth health = LuigiHealth.Normal;

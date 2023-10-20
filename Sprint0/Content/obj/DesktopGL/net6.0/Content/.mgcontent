@@ -4,11 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/marioenemy.png</File>
-    <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png</File>
-    <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png</File>
-    <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/Level 1-1 Background.png</File>
-    <File>C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
+    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/marioenemy.png</File>
+    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs.png</File>
+    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png</File>
+    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/Level 1-1 Background.png</File>
+    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

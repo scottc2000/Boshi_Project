@@ -11,6 +11,7 @@ using Sprint0.Controllers;
 using Sprint0.Enemies;
 using Sprint0.Interfaces;
 using Sprint0.Items;
+using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.Collections.Generic;
