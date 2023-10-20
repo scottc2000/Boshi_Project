@@ -13,12 +13,12 @@ namespace Sprint0.Sprites.BlockSprites
     internal class NonAnimatedBlockSprite : ISprite
     {
         private Texture2D textures;
-        private Vector2 position;
+        private Rectangle scaledPosition;
         private Rectangle sprite;
         public NonAnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle sprite, Vector2 position)
         {
             this.textures = textures;
-            this.position = position;
+            scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);
             this.sprite = sprite;
         }
 
@@ -29,7 +29,7 @@ namespace Sprint0.Sprites.BlockSprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            spriteBatch.Draw(textures, position, sprite, Color.White);
+            spriteBatch.Draw(textures, scaledPosition, sprite, Color.White);
         }
     }
 }

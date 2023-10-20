@@ -10,36 +10,28 @@ using System.Data;
 using System.Net.Mime;
 using Microsoft.Xna.Framework.Content;
 
-namespace Sprint0.Sprites.BlockSprites
+namespace Sprint0.Sprites
 {
     internal class AnimatedBlockSprite : ISprite
     {
         private Texture2D textures;
         private Rectangle[] frames;
+        private Rectangle scaledPosition;
         private int currentFrame;
         private int totalFrames;
         private float frameTimer;
         private float frameInterval;
-        private Vector2 position;
 
-        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle sprite, int rows, int columns, Vector2 position)
+        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle[] sprite, Vector2 position)
         {
             this.textures = textures;
-            this.position = position;
-            totalFrames = rows * columns;
-            frames = new Rectangle[totalFrames];
+            scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);
+
+            frames = sprite;
             currentFrame = 0;
+            totalFrames = sprite.Length;
             frameInterval = 0.1f;
 
-            int frameWidth = 32;
-            int frameHeight = 32;
-
-            for (int i = 0; i < totalFrames; i++)
-            {
-                int row = i / columns;
-                int col = i % columns;
-                frames[i] = new Rectangle(sprite.X + col * (frameWidth + 2), sprite.Y + row * frameHeight, frameWidth, frameHeight);
-            }
         }
 
         public void Update(GameTime gameTime)
@@ -55,7 +47,7 @@ namespace Sprint0.Sprites.BlockSprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            spriteBatch.Draw(textures, position, frames[currentFrame], Color.White);
+            spriteBatch.Draw(textures, scaledPosition, frames[currentFrame], Color.White);
         }
 
     }
