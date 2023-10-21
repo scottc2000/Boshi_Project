@@ -13,6 +13,8 @@ namespace Sprint0.GameMangager
         public List<IBlock> Blocks { get; set; }
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
+        public ICharacter mario { get; set; }
+        public ICharacter luigi { get; set; }
 
         private Sprint0 sprint;
         
@@ -34,6 +36,8 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
+            mario.Draw(spriteBatch);
+            luigi.Draw(spriteBatch);
         }
 
         public void Update(GameTime gameTime)
@@ -50,6 +54,18 @@ namespace Sprint0.GameMangager
             {
                 enemy.Update(gameTime);
             }
+            mario.Update(gameTime);
+            luigi.Update(gameTime);
+        }
+
+        /*
+         * Will update when camera is set up
+         * checks if object is on the screen
+         * use this to draw and update objects 
+         */
+        private static bool IsInView()
+        {
+            return true;
         }
     }
 

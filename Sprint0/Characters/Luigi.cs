@@ -21,8 +21,6 @@ namespace Sprint0.Characters
 
         public float velocity;
         public float decay;
-
-
         public ICharacterState State { get; set; }
 
 
@@ -70,7 +68,6 @@ namespace Sprint0.Characters
             destination = currentSprite.destination;
 
         }
-
 
         public void Move()
         {

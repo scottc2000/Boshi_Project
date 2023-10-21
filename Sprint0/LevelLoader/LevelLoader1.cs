@@ -18,11 +18,15 @@ namespace Sprint0
         private Root data;
 
         public ObjectManager objectManager;
+        private ICharacter mario;
+        private ICharacter luigi;
 
-        public LevelLoader1(Sprint0 sprint0)
+        public LevelLoader1(Sprint0 sprint0, ICharacter mario, ICharacter luigi)
         {
             this.sprint0 = sprint0;
             objectManager = new ObjectManager(this.sprint0);
+            this.mario = mario;
+            this.luigi = luigi;
         }
         public void Load(string jsonFilePath)
         {
@@ -34,6 +38,10 @@ namespace Sprint0
             objectManager.Blocks = new List<IBlock>();
             objectManager.Items = new List<IItem>();
             objectManager.Enemies = new List<IEnemies>();
+
+            // Initialize Players
+            objectManager.mario = mario;
+            objectManager.luigi = luigi;
 
             Load(data);
         }

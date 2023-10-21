@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Background;
 using Sprint0.Blocks;
-using Sprint0.Cam;
+using Sprint0.Camera;
 using Sprint0.Characters;
 using Sprint0.Commands;
 using Sprint0.Commands.Blocks;
@@ -25,10 +25,10 @@ namespace Sprint0
         public GameTime gametime;
 
         private LevelLoader1 levelLoader;
+        Camera1 camera;
         public Terrain terrain;
-        public Camera cam;
 
-        public ICharacter mario;
+        public Mario mario;
         public ICharacter luigi;
 
         public ISprite blockSprite;
@@ -56,6 +56,9 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            camera = new Camera1(GraphicsDevice.Viewport);
+
             block = new Block(this, _spriteBatch, Content);
 
             mario = new Mario(this);
@@ -73,10 +76,7 @@ namespace Sprint0
             KeyboardController = new KeyboardController(this);
 
             SpriteController = new KeyboardController(this);
-            /*
-            //Keyboard command mappings
-            KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
-            */
+
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
             //Blocks
@@ -99,7 +99,7 @@ namespace Sprint0
             item.LoadItems();
             block.LoadBlocks();
 
-            levelLoader = new LevelLoader1(this);
+            levelLoader = new LevelLoader1(this, mario, luigi);
             levelLoader.Load("JSON/level1.json");
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
@@ -132,7 +132,7 @@ namespace Sprint0
             }
             block.Update(gameTime);
 
-
+            camera.Update(gameTime, mario);
 
             base.Update(gameTime);
         }
@@ -141,7 +141,7 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
             terrain.Draw(_spriteBatch);
             mario.Draw(_spriteBatch);
