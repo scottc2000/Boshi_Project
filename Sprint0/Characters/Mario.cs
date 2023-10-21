@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Camera;
 using Sprint0.Characters.MarioStates;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
@@ -8,13 +9,11 @@ using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 using static Sprint0.Characters.Mario;
-using static Sprint0.LevelLoader.GameObjectType;
 
 namespace Sprint0.Characters
 {
     public class Mario : ICharacter
     {
-        public ObjectType Type { get; } = ObjectType.Mario;
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health = MarioHealth.Normal;
 
@@ -27,9 +26,11 @@ namespace Sprint0.Characters
         public Sprint0 mySprint;
         int sizeDiff;
         public Vector2 position;
+        public Rectangle destination { get; set; }
 
         public AnimatedSpriteMario currentSprite;
         public CharacterSpriteFactoryMario mySpriteFactory;
+        public Camera1 camera;
 
         public Mario(Sprint0 sprint0)
         {
@@ -46,6 +47,7 @@ namespace Sprint0.Characters
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("MarioStillLeft");
+            destination = currentSprite.destination;
 
         }
         public void Move()

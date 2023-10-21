@@ -3,11 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Interfaces
 {
-    public interface ICharacter
+    public interface ICharacter : ICollidable
     {
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }
-
         public void Move();
 
         public void Jump();

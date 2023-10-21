@@ -47,7 +47,7 @@ namespace Sprint0.Sprites
         public void LoadSpriteLocations(ContentManager content)
         {
             // Deserialize the JSON data into an object
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "..\\..\\..\\JSON\\BlockData.json");
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "JSON/blockdata.json");
             jsonString = File.ReadAllText(path, Encoding.Default);
             var data = JsonSerializer.Deserialize<SpriteData>(jsonString);
 

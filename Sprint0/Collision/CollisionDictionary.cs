@@ -13,15 +13,15 @@ using System.Drawing;
 public class CollisionDictionary
 { 
     public enum Side { Left, Right, Top, Bottom };
-	//public Dictionary<Tuple<IObject, IObject, Side>, Tuple<ICommand, ICommand>> commandDictionary;
+	public Dictionary<Tuple<ICollidable, ICollidable, Side>, Tuple<ICommand, ICommand>> commandDictionary;
 
     public CollisionDictionary()
 	{
-      //  commandDictionary = new Dictionary<Tuple<IObject, IObject, Side>, Tuple<ICommand, ICommand>>();
+      commandDictionary = new Dictionary<Tuple<ICollidable, ICollidable, Side>, Tuple<ICommand, ICommand>>();
     }
 
-  /*  public void RegisterCommand(Tuple<IObject, IObject, Side> collisionType, Tuple<ICommand, ICommand> commands)
+  public void RegisterCommand(Tuple<ICollidable, ICollidable, Side> collisionType, Tuple<ICommand, ICommand> commands)
     {
            commandDictionary.Add(collisionType, commands);
-    }*/
+    }
 }

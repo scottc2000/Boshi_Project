@@ -1,12 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Sprint0.GameMangager;
+﻿using Sprint0.GameMangager;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Sprint0.Blocks;
 using static Sprint0.LevelLoader.Level1Data;
+using System.Collections;
 
 namespace Sprint0
 {
@@ -18,16 +17,16 @@ namespace Sprint0
         private JsonElement levelData;
         private Root data;
 
-        public BlockManager blockManager;
-        public ItemManager itemManager;
+        public ObjectManager objectManager;
+        private ICharacter mario;
+        private ICharacter luigi;
 
-        public LevelLoader1(Sprint0 sprint0)
+        public LevelLoader1(Sprint0 sprint0, ICharacter mario, ICharacter luigi)
         {
             this.sprint0 = sprint0;
-
-            // Initailize managers
-            blockManager = new BlockManager(this.sprint0);
-            itemManager = new ItemManager(this.sprint0);
+            objectManager = new ObjectManager(this.sprint0);
+            this.mario = mario;
+            this.luigi = luigi;
         }
         public void Load(string jsonFilePath)
         {
@@ -36,44 +35,63 @@ namespace Sprint0
             data = JsonSerializer.Deserialize<Root>(json);
 
             // Initialize Lists
-            blockManager.Blocks = new List<IBlock>();
-            itemManager.Items = new List<IItem>();
+            objectManager.Blocks = new List<IBlock>();
+            objectManager.Items = new List<IItem>();
+            objectManager.Enemies = new List<IEnemies>();
+
+            // Initialize Players
+            objectManager.mario = mario;
+            objectManager.luigi = luigi;
 
             Load(data);
         }
 
         public void Load(Root data)
         {
-            // Repeat this code for each zone1
-            foreach(Block block in data.Blocks)
-            { 
-                if(block.Name == "floor")
-                {
-                    // need a Floor.c class that inherits from IBlock
-                    //floor.add(new Floor(block.x, block.y, block.width, block.height)); 
 
-                } else if (block.Name == "large_block")
+            foreach(LevelLoader.Level1Data.Block block in data.Blocks)
+            {
+                switch (block.Name)
                 {
-                    // need LargeBlock.c class that inherits from IBLock
-                    // largeblock.add(new LargeBlock(block.x, block.y, block.width, block.height));
+                    case "floor":
+                        //floor.add(new Floor(block.x, block.y, block.width, block.height)); 
+                        break;
+                    case "large_block":
+                        //largeblock.add(new LargeBlock(block.x, block.y, block.width, block.height));
+                        break;
+                    case "yellow_brick":
+
+                        break;
+                    case "wood_blocks":
+
+                        break;
+                    case "clouds":
+
+                        break;
+                    case "pipe":
+
+                        break;
                 }
-                // repeat for all block types in zone1
             }
             foreach(Item item in data.Items)
             {
                 // need a RedMushroom.c class that inherits from IItem
                // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
+               // objectManager.Items.add(redmushroom);
             }
-            // repeat for all item types in zone1
+            
+
             /*
              * ADD ENEMIES ONCE ADDED TO LEVEL1.JSON AND ENEMY CLASS(ES) ARE ADDED TO LEVEL1DATA.CS
              */
 
-        }
-
-        public void LoadBackground(SpriteBatch spriteBatch)
-        {
-            // Finish camera and then test
+            /*foreach(Enemy enemy in data.Enemy)
+            {
+                if (enemy.Name == "goomba"){
+                    goomba.add(new Goomba(enemy.Position, enemy.Hitbox);
+                    objectManager.Enemy.add(goomba);
+                }
+            }*/
 
         }
 
