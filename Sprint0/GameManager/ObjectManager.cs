@@ -71,7 +71,7 @@ namespace Sprint0.GameMangager
             foreach (ICharacter player in Players)
             {
                 player.Update(gameTime);
-                collision.Update();
+                collision.playerUpdate();
 
             }
         }

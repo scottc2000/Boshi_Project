@@ -30,7 +30,7 @@ namespace Sprint0.Collision
             register.generate();
         }
 
-        public void Update()
+        public void playerUpdate()
         {
             foreach (ICharacter character in Players)
             {
@@ -49,15 +49,16 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
-           
+
                 foreach (ICharacter character1 in Players)
                 {
-                    if (character.destination.Intersects(character1.destination) && !(character.Equals(character1))) {
+                    if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
+                    {
 
                         if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
                         {
-                            register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item1.Execute();
-                            register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item2.Execute();
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
 
                         }
                         else
@@ -82,7 +83,10 @@ namespace Sprint0.Collision
                 }
 
             }
+        }
 
+        public void blockUpdate()
+        {
             foreach (IBlock block in Blocks)
             {
                 foreach (IEnemies enemeny in Enemies)
@@ -95,7 +99,43 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
+                foreach (ICharacter player in Players)
+                {
+
+                }
+
             }
+        }
+
+
+        public void enemyUpdate()
+        {
+            foreach (IEnemies enemy in Enemies)
+            {
+                foreach (IBlock block in Blocks)
+                {
+                    //if (character.hitbox)
+                }
+
+                foreach (Item item in Items)
+                {
+                    //if (character.hitbox)
+                }
+
+                foreach (ICharacter player in Players)
+                {
+
+                }
+
+            }
+        }
+
+
+        public void Update()
+        {
+            
+
+        
         }
     }
 }

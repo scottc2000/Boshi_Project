@@ -11,6 +11,7 @@ namespace Sprint0.Commands.Luigi
     {
         private Sprint0 mySprint0;
         private ICharacter luigi;
+
         public CLuigiStop(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;

@@ -193,6 +193,11 @@ namespace Sprint0.Characters
             gone.Clear();
         }
 
+        public void collideX()
+        {
+
+        }
+
         public void UpdateMovement(GameTime gametime)
         {
             // updates movement using pos +/- v * dt

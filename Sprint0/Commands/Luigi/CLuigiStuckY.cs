@@ -18,7 +18,7 @@ namespace Sprint0.Commands.Luigi
         {
 
             luigi = mySprint0.objects.Players[1];
-            luigi.lefthit = true;
+            luigi.uphit = true;
 
 
         }

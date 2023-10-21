@@ -27,8 +27,12 @@ namespace Sprint0.Collision
 
         public void generate()
         {
-            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.objects.Players[0], sprint.objects.Players[1], CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckX(sprint)));
-            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.objects.Players[1], sprint.objects.Players[0], CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CLuigiStuckX(sprint), new CMarioStop(sprint)));
+            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckX(sprint)));
+
+
+
+
+            //collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckX(sprint)));
             //Needs every possible collision combination registered
         }
     }
