@@ -41,5 +41,6 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     Projectiles are not loaded and do not have collision components (backlog)
     Collisions are not completely functional yet. Players collide with each other mostly correct but sometimes don't register when a player moves while another player is still (backlog)
     Gravity has not been implemented due to block collisions not being done (backlog)
+    Camera follows mario but screenscrolling is buggy (backlog)
     
 
