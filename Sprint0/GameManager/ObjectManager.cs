@@ -27,11 +27,8 @@ namespace Sprint0.GameMangager
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
-
-            // Blocks.Add(new Block(this, _spriteBatch, Content);)
             Players.Add(new Mario(sprint));
             Players.Add(new Luigi(sprint));
-
 
         }
         public void Draw(SpriteBatch spriteBatch)

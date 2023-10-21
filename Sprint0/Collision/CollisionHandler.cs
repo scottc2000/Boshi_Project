@@ -60,21 +60,22 @@ namespace Sprint0.Collision
                             register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
                             register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
 
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Right)].Item1.Execute();
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Right)].Item2.Execute();
+
                         }
                         else
                         {
                             if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
                             {
-
-                                // if object above
-                                ;
+                               // register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Top)].Item1.Execute();
+                                //register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Top)].Item2.Execute();
                             }
 
                             else
                             {
-
-                                // if object below
-                                ;
+                              //  register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Bottom)].Item1.Execute();
+                              //  register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Bottom)].Item2.Execute();
                             }
                         }
 

@@ -2,6 +2,7 @@
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -57,6 +58,10 @@ namespace Sprint0.Characters.MarioStates
             luigi.pose = Luigi.LuigiPose.Walking;
 
             if (!(luigi.lefthit))
+            {
+                UpdateVelocity();
+            }
+            if (!(luigi.righthit))
             {
                 UpdateVelocity();
             }

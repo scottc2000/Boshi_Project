@@ -30,11 +30,6 @@ namespace Sprint0
             string json = File.ReadAllText(jsonFilePath);
             data = JsonSerializer.Deserialize<Root>(json);
 
-            // Initialize Lists
-            objectManager.Blocks = new List<IBlock>();
-            objectManager.Items = new List<IItem>();
-            objectManager.Enemies = new List<IEnemies>();
-
             Load(data);
         }
 

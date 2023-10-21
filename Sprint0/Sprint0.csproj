@@ -39,7 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Characters\LuigiStates\" />
-    <Folder Include="Commands\Collision\" />
     <Folder Include="Collision\" />
   </ItemGroup>
   <ItemGroup>
@@ -59,8 +58,6 @@
     <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
     <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
     <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
-    <Compile Include="Commands\Luigi\CLuigiStuckY.cs" />
-    <Compile Include="Commands\Luigi\CLuigiStuckX.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LevelLoader\Level1Data.cs">

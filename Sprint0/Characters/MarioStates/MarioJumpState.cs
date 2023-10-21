@@ -11,10 +11,9 @@ namespace Sprint0.Characters.MarioStates
     internal class MarioJumpState : ICharacterState
     {
         private Mario mario;
-        private Vector2 marioVelocity;
 
+        private Vector2 marioVelocity;
         float jumpVelocity = -500f; // Initial jump velocity
-        float gravity = 20f; // Gravity strength
         bool isJumping = false;
 
         public MarioJumpState(Mario mario)
@@ -67,7 +66,10 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioIdleState(mario);
         }
-
+        public void UpdateGravity()
+        {
+            mario.gravity = 20f;
+        }
 
         public void Die()
         {
@@ -81,11 +83,19 @@ namespace Sprint0.Characters.MarioStates
                 isJumping = true;
             }
 
+            if (!mario.uphit)
+            {
+                UpdateGravity();
+            } else
+            {
+                isJumping = false;
+            }
+
             // Update Mario's position based on velocity
             mario.position += marioVelocity * (float)gametime.ElapsedGameTime.TotalSeconds;
 
             // Apply gravity
-            marioVelocity.Y += gravity;
+            marioVelocity.Y += mario.gravity;
 
             // Check for ground collision
             if (mario.position.Y >= mario.mySprint._graphics.PreferredBackBufferHeight - 100)
