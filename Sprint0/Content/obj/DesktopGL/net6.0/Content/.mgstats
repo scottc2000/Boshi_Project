@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/marioenemy.png","C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/marioenemy.xnb","TextureProcessor","Texture2DContent",110936,2449365,0.3663913
+"C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png","C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/SpriteImages/blocks.xnb","TextureProcessor","Texture2DContent",131694,7114261,0.2581414
+"C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png","C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/SpriteImages/playerssclear.xnb","TextureProcessor","Texture2DContent",66286,2401285,0.1060472

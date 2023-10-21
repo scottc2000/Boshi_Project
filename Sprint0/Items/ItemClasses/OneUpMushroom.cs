@@ -7,17 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using Sprint0.Sprites.SpriteFactories;
-using Sprint0.Sprites.ItemSprites;
 
-namespace Sprint0.Sprites.Item_Sprites
+namespace Sprint0.Items.ItemClasses
 {
-    internal class Hammer : ISprite
+    internal class OneUpMushroom : IItem
     {
-        private ItemSpriteFactory spriteFactory;
         private Item item;
-        
-        public Hammer(Item item, ItemSpriteFactory spriteFactory)
+        private ItemSpriteFactory spriteFactory;
+
+        public OneUpMushroom(Item item, ItemSpriteFactory spriteFactory)
         {
             this.item = item;
             this.spriteFactory = spriteFactory;
@@ -25,12 +25,13 @@ namespace Sprint0.Sprites.Item_Sprites
 
         public void Update(GameTime gameTime)
         {
-
+            item.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+
+        public void Draw(SpriteBatch spriteBatch)
         {
-            item.setHammer();
-            item.aniSprite = spriteFactory.returnSprite("Hammer");
+            item.setOneUpMushroom();
+            item.aniSprite = spriteFactory.returnSprite("OneUpMushroom");
         }
     }
 }

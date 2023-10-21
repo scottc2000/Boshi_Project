@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
-using Sprint0.Sprites.ItemSprites;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Items.ItemClasses;
 
 namespace Sprint0.Items
 {
@@ -31,7 +31,6 @@ namespace Sprint0.Items
         private ISprite ShoeItem;
         private ItemSpriteFactory spriteFactory;
 
-        //private int itemIndex = 0;
         private int itemCount;
         public ItemSelect itemSelect;
 
@@ -44,31 +43,14 @@ namespace Sprint0.Items
         {
             position = new Vector2(100, 100);
             spriteFactory = new ItemSpriteFactory(this);
-            //spriteFactory.RegisterSprite();
             spriteFactory.LoadTextures(game.Content);
             itemCount += spriteFactory.itemAndRectangle.Count;
             itemCount += spriteFactory.itemAndFrames.Count;
             aniSprite = spriteFactory.returnSprite("RedMushroom");
             itemSelect = ItemSelect.RedMushroom;
-            //nonAniSprite = new NonAniItemSprite(spriteFactory, this, "RedMushroom");
 
         }
 
-        /*
-        public void LoadItems()
-        {
-            RedMushroom = spriteFactory.createRedMushroom();
-            OneUpMushroom = spriteFactory.createOneUpMushroom();
-            FireFlower = spriteFactory.createFireFlower();
-            Leaf = spriteFactory.createLeaf();
-            Star = spriteFactory.createStar();
-            Frog = spriteFactory.createFrog();
-            Tanooki = spriteFactory.createTanooki();
-            Hammer = spriteFactory.createHammer();
-            Shoe = spriteFactory.createShoe();
-
-        }
-        */
 
         public void setRedMushroom()
         {
@@ -114,26 +96,6 @@ namespace Sprint0.Items
         {
             itemSelect = ItemSelect.Shoe;
         }
-
-        /*
-        public void incrementItem()
-        {
-            itemIndex++;
-            if (itemIndex >= itemCount)
-            {
-                itemIndex = 0;
-            }
-        }
-
-        public void decrementItem()
-        {
-            itemIndex--;
-            if (itemIndex < 0)
-            {
-                itemIndex = itemCount - 1;
-            }
-        }
-        */
 
         public void UpdatePos(GameTime gameTime)
         {

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Sprites.ItemSprites
+namespace Sprint0.Items.ItemClasses
 {
     internal class NonAniItemSprite : ISprite
     {
