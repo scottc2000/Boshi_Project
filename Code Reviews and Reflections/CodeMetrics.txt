@@ -34,3 +34,15 @@ Depth of Inheritance: 2
 Class Coupling: 83
 Lines of Source code: 3,017
 Lines of Executable code: 801
+
+Week 6
+Project: Sprint0
+Configuration: Debug
+Scope: Assembly
+Assembly: C:\Users\Michael\source\repos\Boshi_Project\Sprint0\bin\Debug\net6.0\Sprint0.dll
+Maintainability Index: 89
+Cyclomatic Complexity: 1,033
+Depth of Inheritance: 2
+Class Coupling: 168
+Lines of Source code: 5,323
+Lines of Executable code: 1,160
