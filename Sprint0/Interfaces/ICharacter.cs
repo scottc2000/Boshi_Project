@@ -7,7 +7,6 @@ namespace Sprint0.Interfaces
     {
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }
-
         public void Move();
 
         public void Jump();

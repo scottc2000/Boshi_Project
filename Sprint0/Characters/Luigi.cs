@@ -86,7 +86,6 @@ namespace Sprint0.Characters
 
         }
 
-
         public void Move()
         {
             State.Move();

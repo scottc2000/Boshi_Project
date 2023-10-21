@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Camera;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System.Data;
@@ -12,7 +13,7 @@ namespace Sprint0.Background
         private Sprint0 sprint0;
         private ISprite sprite;
         private Vector2 location;
-
+        private Camera1 camera;
         public Terrain(Sprint0 sprint0)
         {
             this.sprint0 = sprint0;

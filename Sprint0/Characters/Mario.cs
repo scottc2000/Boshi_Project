@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Camera;
 using Sprint0.Characters.MarioStates;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
@@ -39,6 +40,7 @@ namespace Sprint0.Characters
 
         public AnimatedSpriteMario currentSprite;
         public CharacterSpriteFactoryMario mySpriteFactory;
+        public Camera1 camera;
 
         public Mario(Sprint0 sprint0)
         {

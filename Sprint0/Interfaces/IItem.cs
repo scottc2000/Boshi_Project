@@ -1,3 +1,6 @@
+
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -10,7 +13,6 @@ namespace Sprint0.Interfaces
 {
     public interface IItem
     {
-
         void Draw(SpriteBatch spriteBatch);
         void Update(GameTime gameTime);
     }

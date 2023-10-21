@@ -2,8 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Enemies.HammerBroStates;
 using Sprint0.Interfaces;
+using Sprint0.Sprites.goombaSprite;
 using Sprint0.Sprites.HammerBroSprite;
-using Sprint0.Sprites.KoopaSprite;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 
 namespace Sprint0.Enemies
@@ -23,19 +24,24 @@ namespace Sprint0.Enemies
         public ISprite koopaSprite;
         public Texture2D koopaTexture;
 
+        public KoopaMoveSprite currentSprite;
+        public EnemySpriteFactoryKoopa mySpriteFactory;
 
         public Koopa(Sprint0 sprint0)
         {
             this.state = new RightMovingKoopaState(this);
 
-            this.facingLeft = false;
+            this.facingLeft = true;
 
             this.position.X = 500;
             this.position.Y = 400;
             this.mySprint = sprint0;
 
-            this.koopaSprite = new KoopaMoveSprite(this);
-            koopaTexture = mySprint.Content.Load<Texture2D>("marioenemy");
+            mySpriteFactory = new EnemySpriteFactoryKoopa(this);
+            mySpriteFactory.LoadTextures(mySprint.Content);
+
+            currentSprite = mySpriteFactory.returnSprite("KoopaMove");
+            destination = currentSprite.destination;
         }
 
         public void ChangeDirection()
@@ -55,12 +61,12 @@ namespace Sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            koopaSprite.Draw(spriteBatch, position);
+            currentSprite.Draw(spriteBatch, position);
         }
 
         public void Update(GameTime gameTime)
         {
-            koopaSprite.Update(gameTime);
+            currentSprite.Update(gameTime);
             state.Update();
         }
 

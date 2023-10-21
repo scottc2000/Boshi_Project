@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Background;
 using Sprint0.Blocks;
-using Sprint0.Cam;
+using Sprint0.Camera;
 using Sprint0.Characters;
 using Sprint0.Collision;
 using Sprint0.Commands;
@@ -28,16 +28,16 @@ namespace Sprint0
         public ObjectManager objects;
 
         private LevelLoader1 levelLoader;
+        Camera1 camera;
         public Terrain terrain;
-        public Camera cam;
 
-        public ICharacter mario;
+        public Mario mario;
         public ICharacter luigi;
 
+        public List<IBlock> blockList;
         public ISprite blockSprite;
         public Item item;
 
-        public Block block;
         public TimeSpan spriteDelay, timeSinceLastSprite;
 
         //List just for demo
@@ -63,6 +63,8 @@ namespace Sprint0
             block = new Block(this, _spriteBatch, Content);
             objects = new ObjectManager(this);
 
+            camera = new Camera1(GraphicsDevice.Viewport);
+
             //mario = new Mario(this);
             //luigi = new Luigi(this);
             terrain = new Terrain(this);
@@ -78,15 +80,8 @@ namespace Sprint0
             KeyboardController = new KeyboardController(this);
 
             SpriteController = new KeyboardController(this);
-            /*
-            //Keyboard command mappings
-            KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
-            */
-            KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
-            //Blocks
-            SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
-            SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
+            KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
             // Items
             SpriteController.RegisterCommand(Keys.V, new previousItem(item));
@@ -104,10 +99,9 @@ namespace Sprint0
 
         protected override void LoadContent()
         {
-            item.LoadItems();
-            block.LoadBlocks();
+            //item.LoadItems();
 
-            levelLoader = new LevelLoader1(this);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content, mario, luigi);
             levelLoader.Load("JSON/level1.json");
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
@@ -141,8 +135,13 @@ namespace Sprint0
                 SpriteController.Update();
                 timeSinceLastSprite = TimeSpan.Zero;
             }
-            block.Update(gameTime);
-        
+            blockList = levelLoader.getBlockList();
+            foreach (IBlock block in blockList)
+            {
+                block.Update(gameTime);
+            }
+
+            camera.Update(gameTime, mario);
 
             base.Update(gameTime);
         }
@@ -151,17 +150,13 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
             
 
             terrain.Draw(_spriteBatch);
-            //mario.Draw(_spriteBatch);
-            //luigi.Draw(_spriteBatch);
             objects.Draw(_spriteBatch);
-            block.Draw(_spriteBatch);
-            item.Draw(_spriteBatch);
-            enemies.Draw(_spriteBatch);
+
             
             _spriteBatch.End();
 
