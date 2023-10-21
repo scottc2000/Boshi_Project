@@ -34,8 +34,12 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 ## Sprint 3
 ## Controls:
     - Blocks, Items, and enemy controls from Sprint 2 removed
-    - Luigi movement changed to arrow keys
+    - Luigi movement changed to arrow keys, mario remains the same
 
 ## Known Bugs:
     Player physics do not function as they would in the final game (backlog)
     Projectiles are not loaded and do not have collision components (backlog)
+    Collisions are not completely functional yet. Players collide with each other mostly correct but sometimes don't register when a player moves while another player is still (backlog)
+    Gravity has not been implemented due to block collisions not being done (backlog)
+    
+
