@@ -68,64 +68,64 @@ namespace Sprint0.Collision
                         }
                     }
 
-
-                    foreach (ICharacter character1 in Players)
+                }
+                foreach (ICharacter character1 in Players)
+                {
+                    if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
                     {
-                        if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
+
+                        // if objects hit on x axis (left or right)
+                        if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
                         {
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
 
-                            // if objects hit on x axis (left or right)
-                            if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
+                        }
+                        else
+                        {
+                            if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
                             {
-                                register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
-                                register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
 
+                                // if object above
+                                ;
                             }
+
                             else
                             {
-                                if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
-                                {
 
-                                    // if object above
-                                    ;
-                                }
-
-                                else
-                                {
-
-                                    // if object below
-                                    ;
-                                }
+                                // if object below
+                                ;
                             }
-
-                            Console.WriteLine("HIT");
                         }
-                    }
 
+                        Console.WriteLine("HIT");
+                    }
                 }
+
+                
             }
         }
-            public void blockUpdate()
+        public void blockUpdate()
+        {
+            foreach (IBlock block in Blocks)
             {
-                foreach (IBlock block in Blocks)
+                foreach (IEnemies enemeny in Enemies)
                 {
-                    foreach (IEnemies enemeny in Enemies)
-                    {
-                        //if (character.hitbox)
-                    }
+                    //if (character.hitbox)
+                }
 
-                    foreach (Item item in Items)
-                    {
-                        //if (character.hitbox)
-                    }
+                foreach (Item item in Items)
+                {
+                    //if (character.hitbox)
+                }
 
-                    foreach (ICharacter player in Players)
-                    {
-
-                    }
+                foreach (ICharacter player in Players)
+                {
 
                 }
+
             }
+        }
         
 
 
