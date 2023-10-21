@@ -5,14 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 
 
-namespace Sprint0.Sprites.KoopaSprite
+namespace Sprint0.Sprites.HammerBroSprite
 {
-    internal class KoopaMoveSprite : ISprite
+    internal class HammerBroMoveSprite : ISprite
     {
-        private Koopa koopa;
+        private HammerBro hammerbro;
 
         private int currentFrame = 0;
-        private int totalFrames = 2;
+        private int totalFrames = 4;
         private double frameSpeed = 0.2;
 
         public int timeSinceLastFrame = 0;
@@ -21,10 +21,10 @@ namespace Sprint0.Sprites.KoopaSprite
         private Rectangle[] spriteFrames;
         private Rectangle destination;
 
-        public KoopaMoveSprite(Koopa koopa) 
+        public HammerBroMoveSprite(HammerBro hammerBro) 
         { 
-            this.koopa = koopa;
-            spriteFrames = new Rectangle[] { new Rectangle (0, 51, 16, 27), new Rectangle (16, 51, 16, 27 ) };
+            this.hammerbro = hammerBro;
+            spriteFrames = new Rectangle[] { new Rectangle (0, 456, 16, 24), new Rectangle (16, 456, 16, 24 ), new Rectangle (32, 456, 16, 24 ), new Rectangle (48, 456, 16, 24 ) };
         }
 
         public void Update(GameTime gametime)
@@ -41,12 +41,13 @@ namespace Sprint0.Sprites.KoopaSprite
                 }
             }
         }
+    
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)koopa.position.X, (int)koopa.position.Y, 34, 56);
+            destination = new Rectangle((int)hammerbro.position.X, (int)hammerbro.position.Y, 16, 24);
 
-            spriteBatch.Draw(koopa.koopaTexture, destination, spriteFrames[currentFrame], Color.White);
+            spriteBatch.Draw(hammerbro.hammerBroTexture, destination, spriteFrames[currentFrame], Color.White);
         }
     }
 }
