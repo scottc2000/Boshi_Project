@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/marioenemy.png</SourceFile>
-  <SourceTime>2023-10-04T21:16:27.1893038-04:00</SourceTime>
+  <SourceTime>2023-10-20T22:16:02.1727875-04:00</SourceTime>
   <DestFile>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/marioenemy.xnb</DestFile>
-  <DestTime>2023-10-20T12:41:47.2182699-04:00</DestTime>
+  <DestTime>2023-10-20T22:19:14.4742848-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
