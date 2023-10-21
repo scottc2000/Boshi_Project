@@ -99,7 +99,7 @@ namespace Sprint0
         {
             item.LoadItems();
 
-            levelLoader = new LevelLoader1(this, objects, _spriteBatch, Content);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
 
             spriteDelay = TimeSpan.FromMilliseconds(125);

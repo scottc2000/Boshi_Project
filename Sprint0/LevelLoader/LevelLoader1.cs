@@ -25,10 +25,10 @@ namespace Sprint0
 
         public ObjectManager objectManager;
 
-        public LevelLoader1(Sprint0 sprint0, ObjectManager objectManager, SpriteBatch spriteBatch, ContentManager content)
+        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content)
         {
             this.sprint0 = sprint0;
-            this.objectManager = objectManager;
+            objectManager = sprint0.objects;
             this.spriteBatch = spriteBatch;
             this.content = content;
         }
