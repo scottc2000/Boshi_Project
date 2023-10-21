@@ -1,15 +1,9 @@
-﻿using Sprint0.Characters;
-using Sprint0.Blocks;
-using Sprint0.Enemies;
+﻿using Sprint0.Commands.Collision;
+using Sprint0.Commands.Collisions;
+using Sprint0.Commands.Mario;
+using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sprint0.Interfaces;
-using Sprint0.Commands.Luigi;
-using Sprint0.Commands.Mario;
-using Sprint0.Commands;
 
 namespace Sprint0.Collision
 {
@@ -27,10 +21,14 @@ namespace Sprint0.Collision
 
         public void generate()
         {
-            // this is where all possible collisions should be added with their commands
-            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckX(sprint)));
+            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
+            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
+            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckY(sprint)));
 
 
+
+            //collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckX(sprint)));
+            //Needs every possible collision combination registered
         }
     }
 }

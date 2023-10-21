@@ -2,6 +2,7 @@
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -60,6 +61,10 @@ namespace Sprint0.Characters.MarioStates
             {
                 UpdateVelocity();
             }
+            if (!(luigi.righthit))
+            {
+                UpdateVelocity();
+            }
 
             if (luigi.facingLeft)
             {
@@ -82,11 +87,11 @@ namespace Sprint0.Characters.MarioStates
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
                 }
-               
-            }
-            }
 
-            
-
+            }
         }
+
+
+
     }
+}

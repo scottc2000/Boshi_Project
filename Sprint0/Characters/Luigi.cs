@@ -18,15 +18,16 @@ namespace Sprint0.Characters
         public LuigiPose pose = LuigiPose.Idle;
         public bool facingLeft { get; set; }
         public bool fired;
-        public bool stuck;
 
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
         public bool uphit { get; set; }
         public bool downhit { get; set; }
+        public bool stuck { get; set; }
 
         public float velocity;
         public float decay;
+        public float gravity;
 
 
         public ICharacterState State { get; set; }
@@ -85,7 +86,6 @@ namespace Sprint0.Characters
 
         }
 
-
         public void Move()
         {
             State.Move();
@@ -122,6 +122,7 @@ namespace Sprint0.Characters
             this.uphit = false;
             this.lefthit = false;
             this.righthit = false;
+            this.stuck = false;
         }
 
         public void Throw()
@@ -201,23 +202,40 @@ namespace Sprint0.Characters
         public void UpdateMovement(GameTime gametime)
         {
             // updates movement using pos +/- v * dt
-            
-                if (facingLeft)
-                {
-                    position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
-                }
-                else
-                {
-                    position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
-                }           
+
+            if (facingLeft)
+            {
+                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            }
+            else
+            {
+                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            }
 
         }
-
+        public void LeftStuck()
+        {
+            position.X += 1;
+        }
+        public void RightStuck()
+        {
+            position.X -= 1;
+        }
         public void Update(GameTime gametime)
         {
             UpdateProjectiles(gametime);
 
-            if (!lefthit)
+            if (!lefthit && !stuck)
+                UpdateMovement(gametime);
+            else if (lefthit && stuck)
+                LeftStuck();
+
+            if (!righthit && !stuck)
+                UpdateMovement(gametime);
+            else if (righthit && stuck)
+                RightStuck();
+
+            if (!uphit)
             {
                 UpdateMovement(gametime);
             }
@@ -233,11 +251,11 @@ namespace Sprint0.Characters
             resetHits();
 
         }
-        
+
 
         public void Draw(SpriteBatch spritebatch)
         {
-            
+
             currentSprite.Draw(spritebatch, position);
             foreach (AnimatedProjectile am in ThrownProjectiles)
             {

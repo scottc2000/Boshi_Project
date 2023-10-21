@@ -3,8 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Background;
 using Sprint0.Blocks;
-using Sprint0.Cam;
-using Sprint0.Characters;
+using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Commands;
 using Sprint0.Commands.Blocks;
@@ -28,11 +27,8 @@ namespace Sprint0
         public ObjectManager objects;
 
         private LevelLoader1 levelLoader;
+        Camera1 camera;
         public Terrain terrain;
-        public Camera cam;
-
-        public ICharacter mario;
-        public ICharacter luigi;
 
         public ISprite blockSprite;
         public Item item;
@@ -60,11 +56,12 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            camera = new Camera1(GraphicsDevice.Viewport);
+
             block = new Block(this, _spriteBatch, Content);
             objects = new ObjectManager(this);
 
-            //mario = new Mario(this);
-            //luigi = new Luigi(this);
             terrain = new Terrain(this);
 
             //List used for demo cycling
@@ -124,8 +121,6 @@ namespace Sprint0
             
 
             terrain.Update(gameTime);
-            //mario.Update(gameTime);
-            //luigi.Update(gameTime);
 
             objects.Update(gameTime, collision);
 
@@ -142,7 +137,8 @@ namespace Sprint0
                 timeSinceLastSprite = TimeSpan.Zero;
             }
             block.Update(gameTime);
-        
+
+            camera.Update(gameTime, objects.Players[0]);
 
             base.Update(gameTime);
         }
@@ -151,13 +147,9 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin();
-
-            
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
             terrain.Draw(_spriteBatch);
-            //mario.Draw(_spriteBatch);
-            //luigi.Draw(_spriteBatch);
             objects.Draw(_spriteBatch);
             block.Draw(_spriteBatch);
             item.Draw(_spriteBatch);

@@ -18,14 +18,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Move()
         {
-            if (mario.facingLeft)
-            {
-                mario.position.X -= 1;
-            }
-            else
-            {
-                mario.position.X += 1;
-            }
+            mario.State = new MarioMoveState(mario);
         }
 
         public void Jump()
@@ -53,10 +46,23 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new DeadMarioState(mario);
         }
+        public void UpdateVelocity()
+        {
+            mario.velocity = 1.0f;
+        }
 
         public void Update(GameTime gametime)
         {
             mario.pose = Mario.MarioPose.Walking;
+
+            if (!(mario.lefthit))
+            {
+                UpdateVelocity();
+            }
+            if (!(mario.righthit))
+            {
+                UpdateVelocity();
+            }
 
             if (mario.facingLeft)
             {
@@ -86,4 +92,3 @@ namespace Sprint0.Characters.MarioStates
 
     }
 }
-
