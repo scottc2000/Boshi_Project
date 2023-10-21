@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.Runtime.CompilerServices;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -24,6 +25,10 @@ namespace Sprint0.Characters.MarioStates
             mario.State = new MarioJumpState(mario);
         }
 
+        public void Fall()
+        {
+
+        }
         public void Crouch()
         {
             mario.State = new MarioCrouchState(mario);
@@ -39,7 +44,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
-
+            mario.pose = Mario.MarioPose.Idle;
         }
 
 
@@ -52,62 +57,12 @@ namespace Sprint0.Characters.MarioStates
             mario.pose = Mario.MarioPose.Idle;
             if (mario.facingLeft)
             {
-                switch (mario.health)
-                {
-                    case (Mario.MarioHealth.Normal):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioStillLeft");
-                            break;
-                        }
-
-
-                    case (Mario.MarioHealth.Raccoon):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioStillLeft");
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Fire):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioStillLeft");
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Big):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioStillLeft");
-                            break;
-                        }
-                }
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillLeft");
             }
+
             else
             {
-                switch (mario.health)
-                {
-                    case (Mario.MarioHealth.Normal):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioStillRight");
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Raccoon):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioStillRight");
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Fire):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioStillRight");
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Big):
-                        {
-                            mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioStillRight");
-                            break;
-                        }
-                }
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillRight");
             }
         }
     }

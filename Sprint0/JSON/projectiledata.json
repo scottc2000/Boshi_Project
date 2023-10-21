@@ -1,0 +1,28 @@
+﻿{
+
+  "projectilesprites": [
+    {
+      "name": "PlayerFireLeft",
+      "spritesheet_pos": [
+        [ 162, 178 ],
+        [ 178, 178 ],
+        [ 162, 194 ],
+        [ 178, 194 ]
+      ],
+      "hitbox": [ 12, 12 ],
+      "facingLeft": true
+    },
+    {
+      "name": "PlayerFireRight",
+      "spritesheet_pos": [
+        [ 162, 178 ],
+        [ 178, 178 ],
+        [ 162, 194 ],
+        [ 178, 194 ]
+      ],
+      "hitbox": [ 12, 12 ],
+      "facingLeft": false
+    }
+  ]
+
+}

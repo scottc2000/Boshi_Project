@@ -20,6 +20,20 @@
     <None Remove="Characters\LuigiStates\**" />
     <None Remove="Commands\Luigi\**" />
     <None Remove="Sprites\Luigi\**" />
+    <None Remove="Collision\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\libmojoshader_64.dll" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.deps.json" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.dll" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.exe" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.pdb" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.runtimeconfig.dev.json" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.runtimeconfig.json" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\SharpDX.D3DCompiler.dll" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\SharpDX.D3DCompiler.xml" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\SharpDX.dll" />
+    <Content Remove="C:\Users\muska\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\SharpDX.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -32,19 +46,16 @@
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Characters\LuigiStates\" />
-    <Folder Include="Commands\Luigi\" />
+    <Folder Include="Commands\Collision\" />
+    <Folder Include="Collision\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\LuigiStates\LuigiCrouchState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiIdleState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
     <Compile Include="Commands\Luigi\CLuigiBig.cs" />
     <Compile Include="Commands\Luigi\CLuigiCrouch.cs" />
     <Compile Include="Commands\Luigi\CLuigiFire.cs" />
@@ -53,7 +64,48 @@
     <Compile Include="Commands\Luigi\CLuigiMoveRight.cs" />
     <Compile Include="Commands\Luigi\CLuigiNormal.cs" />
     <Compile Include="Commands\Luigi\CLuigiRaccoon.cs" />
+    <Compile Include="Commands\Luigi\CLuigiStop.cs" />
     <Compile Include="Commands\Luigi\CReleasedLuigi.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiCrouchState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiIdleState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
+    <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="LevelLoader\Level1Data.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="JSON\level1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Update="JSON\level1.json %28copy%29.json">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+    <None Update="JSON\playerdata.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\playerdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="playerdata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+     <None Update="JSON\projectiledata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="projectiledata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\blockdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="blockdata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Update="itemdata.json">

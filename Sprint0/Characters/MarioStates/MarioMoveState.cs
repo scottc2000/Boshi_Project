@@ -1,13 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
     internal class MarioMoveState : ICharacterState
     {
         private Mario mario;
+        float moveSpeed = 200f; // Mario's horizontal movement speed
 
         public MarioMoveState(Mario mario)
         {
@@ -30,7 +32,10 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioJumpState(mario);
         }
+        public void Fall()
+        {
 
+        }
         public void Crouch()
         {
             mario.State = new MarioCrouchState(mario);
@@ -51,130 +56,34 @@ namespace Sprint0.Characters.MarioStates
 
         public void Update(GameTime gametime)
         {
-
             mario.pose = Mario.MarioPose.Walking;
 
             if (mario.facingLeft)
             {
-                switch (mario.health)
+                if (mario.currentSprite.spriteName.Equals("MarioMoveLeft"))
                 {
-                    case (Mario.MarioHealth.Normal):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("NormalMarioMoveLeft"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioMoveLeft");
-                            }
-                            break;
-                        }
-
-
-                    case (Mario.MarioHealth.Raccoon):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("RaccoonMarioMoveLeft"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioMoveLeft");
-                            }
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Fire):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("FireMarioMoveLeft"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioMoveLeft");
-                            }
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Big):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("BigMarioMoveLeft"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioMoveLeft");
-                            }
-                            break;
-                        }
-
+                    mario.currentSprite.Update(gametime);
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioMoveLeft");
                 }
             }
             else
             {
-                switch (mario.health)
+                if (mario.currentSprite.spriteName.Equals("MarioMoveRight"))
                 {
-                    case (Mario.MarioHealth.Normal):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("NormalMarioMoveRight"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("NormalMarioMoveRight");
-                            }
-                            break;
-                        }
-
-
-                    case (Mario.MarioHealth.Raccoon):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("RaccoonMarioMoveRight"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("RaccoonMarioMoveRight");
-                            }
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Fire):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("FireMarioMoveRight"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioMoveRight");
-                            }
-                            break;
-                        }
-
-                    case (Mario.MarioHealth.Big):
-                        {
-                            if (mario.currentSprite.spriteName.Equals("BigMarioMoveRight"))
-                            {
-                                mario.currentSprite.Update(gametime);
-                            }
-                            else
-                            {
-                                mario.currentSprite = mario.mySpriteFactory.returnSprite("BigMarioMoveRight");
-                            }
-                            break;
-                        }
-
+                    mario.currentSprite.Update(gametime);
                 }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioMoveRight");
+                }
+
             }
 
-            mario.pose = Mario.MarioPose.Walking;
-
         }
+
     }
 }
+

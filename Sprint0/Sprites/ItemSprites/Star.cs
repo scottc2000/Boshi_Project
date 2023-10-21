@@ -26,7 +26,7 @@ namespace Sprint0.Sprites.Item_Sprites
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             item.setStar();
             item.aniSprite = spriteFactory.returnSprite("Star");

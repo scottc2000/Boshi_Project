@@ -49,7 +49,7 @@ namespace Sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            hammerBroSprite.Draw(spriteBatch);
+            hammerBroSprite.Draw(spriteBatch, position);
         }
 
         public void Update(GameTime gameTime)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.ComponentModel.Design;
 
@@ -21,6 +22,10 @@ namespace Sprint0.Characters.MarioStates
         }
 
         public void Jump()
+        {
+
+        }
+        public void Fall()
         {
 
         }
@@ -47,7 +52,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Update(GameTime gametime)
         {
-            mario.currentSprite = mario.mySpriteFactory.returnSprite("DeadMario"); //need to reset game after death
+            mario.currentSprite.spriteName.Equals("MarioDead");
 
         }
     }

@@ -1,13 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Blocks;
 using Sprint0.Characters;
 using Sprint0.Commands;
+using Sprint0.Commands.Blocks;
+using Sprint0.Commands.Enemies;
+using Sprint0.Commands.Luigi;
 using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -15,47 +21,129 @@ namespace Sprint0.Controllers
 {
     public class KeyboardController : IController
     {
-        public Dictionary<Keys, ICommand> controllerMappings;
+        public Dictionary<Keys, ICommand> keyboardInput;
+        public Dictionary<Keys, ICommand> keyPressed;
+        public Dictionary<Keys, ICommand> keyReleased;
+        private KeyboardState currentState;
+        private KeyboardState previousState;
         public Sprint0 mySprint;
 
         public KeyboardController(Sprint0 sprint0)
         {
-            controllerMappings = new Dictionary<Keys, ICommand>();
+            keyboardInput = new Dictionary<Keys, ICommand>();
+            keyPressed = new Dictionary<Keys, ICommand>();
+            keyReleased = new Dictionary<Keys, ICommand>();
             mySprint = sprint0;
+            setKeyboardDict();
         }
 
         public void RegisterCommand(Keys key, ICommand command)
         {
-            controllerMappings.Add(key, command);
+            keyboardInput.Add(key, command);
+        }
+
+        public void RegisterPressCommand(Keys key, ICommand command)
+        {
+            keyPressed.Add(key, command);
+        }
+
+        public void RegisterReleaseCommand(Keys key, ICommand command)
+        {
+            keyReleased.Add(key, command);
         }
 
         public void Update()
         {
-            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
+            currentState = Keyboard.GetState();
 
-            foreach (Keys key in pressedKeys)
+            pressedKeys(currentState, previousState);
+            heldKeys(currentState);
+            releasedKeys(currentState, previousState);
+
+            previousState = currentState;
+        }
+
+        public void setKeyboardDict()
+        {
+            RegisterCommand(Keys.Escape, new Exit(mySprint));
+            //RegisterCommand(Keys.D0, new Reset(mySprint, gametime, Content));
+
+            RegisterPressCommand(Keys.W, new CMarioJump(mySprint));
+            RegisterPressCommand(Keys.A, new CMarioMoveLeft(mySprint));
+            RegisterReleaseCommand(Keys.A, new CMarioStop(mySprint));
+            RegisterPressCommand(Keys.S, new CMarioCrouch(mySprint));
+            RegisterReleaseCommand(Keys.S, new CMarioStop(mySprint));
+            RegisterPressCommand(Keys.D, new CMarioMoveRight(mySprint));
+            RegisterReleaseCommand(Keys.D, new CMarioStop(mySprint));
+            RegisterPressCommand(Keys.E, new CMarioThrow(mySprint));      // Still needs projectile
+
+            RegisterPressCommand(Keys.Q, new CDeadMario(mySprint));
+            RegisterPressCommand(Keys.D4, new CMarioRaccoon(mySprint));
+            RegisterPressCommand(Keys.D3, new CMarioFire(mySprint));
+            RegisterPressCommand(Keys.D2, new CMarioBig(mySprint));
+            RegisterPressCommand(Keys.D1, new CMarioNormal(mySprint));
+
+            RegisterPressCommand(Keys.Up, new CLuigiJump(mySprint));
+            RegisterCommand(Keys.Left, new CLuigiMoveLeft(mySprint));
+            RegisterReleaseCommand(Keys.Left, new CLuigiStop(mySprint));
+            RegisterCommand(Keys.Down, new CLuigiCrouch(mySprint));
+            RegisterReleaseCommand(Keys.Down, new CLuigiStop(mySprint));
+            RegisterCommand(Keys.Right, new CLuigiMoveRight(mySprint));
+            RegisterReleaseCommand(Keys.Right, new CLuigiStop(mySprint));
+
+            RegisterPressCommand(Keys.D8, new CLuigiRaccoon(mySprint));
+            RegisterPressCommand(Keys.D7, new CLuigiFire(mySprint));
+            RegisterPressCommand(Keys.D6, new CLuigiBig(mySprint));
+            RegisterPressCommand(Keys.D5, new CLuigiNormal(mySprint));
+        }
+
+        private void pressedKeys(KeyboardState current, KeyboardState previous)
+        {
+            Keys[] oldKeys = previous.GetPressedKeys();
+            List<Keys> justPressed = new List<Keys>();
+            for (int i = 0; i < oldKeys.Length; i++)
             {
-                if (controllerMappings.ContainsKey(key))
+                if (current.IsKeyDown(oldKeys[i]))
                 {
-                    controllerMappings[key].Execute();
-
+                    justPressed.Add(oldKeys[i]);
                 }
             }
 
-            if (!pressedKeys.Contains(Keys.W) &&
-                !pressedKeys.Contains(Keys.A) &&
-                 !pressedKeys.Contains(Keys.S) &&
-                !pressedKeys.Contains(Keys.D) && !pressedKeys.Contains(Keys.E))
+            foreach (Keys key in justPressed)
             {
-                mySprint.mario.State.Stop();
+                if (keyPressed.ContainsKey(key))
+                    keyPressed[key].Execute();
             }
 
-            if (!pressedKeys.Contains(Keys.I) &&
-               !pressedKeys.Contains(Keys.J) &&
-                !pressedKeys.Contains(Keys.K) &&
-               !pressedKeys.Contains(Keys.L) && !pressedKeys.Contains(Keys.E))
+        }
+
+        private void heldKeys(KeyboardState current)
+        {
+            Keys[] heldKeys = current.GetPressedKeys();
+
+            foreach (Keys key in heldKeys)
             {
-                mySprint.luigi.State.Stop();
+                if (keyboardInput.ContainsKey(key))
+                    keyboardInput[key].Execute();
+            }
+        }
+
+        private void releasedKeys(KeyboardState current, KeyboardState previous)
+        {
+            Keys[] oldKeys = previous.GetPressedKeys();
+            List<Keys> justReleased = new List<Keys>();
+            for (int i = 0; i < oldKeys.Length; i++)
+            {
+                if (current.IsKeyUp(oldKeys[i]))
+                {
+                    justReleased.Add(oldKeys[i]);
+                }
+            }
+
+            foreach (Keys key in justReleased)
+            {
+                if (keyReleased.ContainsKey(key))
+                    keyReleased[key].Execute();
             }
         }
 

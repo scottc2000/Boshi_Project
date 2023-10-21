@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Sprites.ItemSprites;
 
 namespace Sprint0.Sprites.Item_Sprites
 {
@@ -25,7 +27,7 @@ namespace Sprint0.Sprites.Item_Sprites
         {
 
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             item.setHammer();
             item.aniSprite = spriteFactory.returnSprite("Hammer");

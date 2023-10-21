@@ -2,8 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
+using Sprint0.Sprites.Players;
+using Sprint0.Sprites.Projectile;
+using Sprint0.Sprites.SpriteFactories;
+using System.Collections.Generic;
 
 namespace Sprint0.Characters
 {
@@ -15,33 +17,57 @@ namespace Sprint0.Characters
         public enum LuigiPose { Jump, Crouch, Idle, Walking, Throwing };
         public LuigiPose pose = LuigiPose.Idle;
         public bool facingLeft { get; set; }
+        public bool fired;
 
+        public float velocity;
+        public float decay;
         public ICharacterState State { get; set; }
+
 
         public Vector2 position;
         public Sprint0 mySprint;
+        int sizeDiff;
+        public Rectangle destination { get; set; }
 
         public AnimatedSpriteLuigi currentSprite;
         public CharacterSpriteFactoryLuigi mySpriteFactory;
 
+        public ProjectileSpriteFactory projectileFactory;
+
+        public List<AnimatedProjectile> ThrownProjectiles;
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Normal;
+            this.health = LuigiHealth.Big;
             this.State = new LuigiIdleState(this);
 
+            // default position stuff
             this.facingLeft = true;
             this.position.X = 350;
             this.position.Y = 350;
+            this.sizeDiff = 25;
+            this.fired = false;
+
+            // default velocity is zero (still), decay makes player slippery the higher it is.
+            this.velocity = 0.0f;
+            this.decay = 0.9f;
 
             this.mySprint = sprint0;
+
+            // creates new sprite factory and projectile factory
             mySpriteFactory = new CharacterSpriteFactoryLuigi(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("NormalLuigiStillLeft");
+            projectileFactory = new ProjectileSpriteFactory();
+
+            ThrownProjectiles = new List<AnimatedProjectile>();
+
+            projectileFactory.LoadTextures(mySprint.Content);
+
+            currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
+            destination = currentSprite.destination;
 
         }
-
 
         public void Move()
         {
@@ -70,8 +96,15 @@ namespace Sprint0.Characters
 
         public void Throw()
         {
+            // projectiles stored in list, only three at a time on screen
             if (health == Luigi.LuigiHealth.Fire)
             {
+                if (!fired)
+                {
+                    ThrownProjectiles.Add(projectileFactory.returnSprite("PlayerFireRight", position, facingLeft));
+                    fired = true;
+                }
+
                 State.Throw();
             }
         }
@@ -79,33 +112,93 @@ namespace Sprint0.Characters
         // Will change with game functionality
         public void ChangeToFire()
         {
+            if (health == LuigiHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = LuigiHealth.Fire;
         }
 
         public void ChangeToRaccoon()
         {
+            if (health == LuigiHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = LuigiHealth.Raccoon;
         }
 
         public void ChangeToBig()
         {
+            if (health == LuigiHealth.Normal)
+            {
+                position.Y -= sizeDiff;
+            }
             health = LuigiHealth.Big;
         }
 
         public void ChangeToNormal()
         {
+            if (health != LuigiHealth.Normal)
+            {
+                position.Y += sizeDiff;
+            }
             health = LuigiHealth.Normal;
         }
 
+        public void UpdateProjectiles(GameTime gametime)
+        {
+            // checks if projectile is off screen, if so then deletes it
+            List<AnimatedProjectile> gone = new List<AnimatedProjectile>();
+            foreach (AnimatedProjectile am in ThrownProjectiles)
+            {
+                am.Update(gametime);
+                if (am.pos.X > 850 || am.pos.X < -50)
+                {
+                    gone.Add(am);
+                }
+            }
+
+            foreach (AnimatedProjectile item in gone) ThrownProjectiles.Remove(item);
+            gone.Clear();
+        }
+
+        public void UpdateMovement(GameTime gametime)
+        {
+            // updates movement using pos +/- v * dt
+            if (facingLeft)
+            {
+                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            }
+            else
+            {
+                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            }
+
+        }
 
         public void Update(GameTime gametime)
         {
+            UpdateProjectiles(gametime);
+            UpdateMovement(gametime);
             State.Update(gametime);
+            if (!(pose == LuigiPose.Throwing))
+            {
+                fired = false;
+            }
+
         }
+        
 
         public void Draw(SpriteBatch spritebatch)
         {
-            currentSprite.Draw(spritebatch);
+            
+            currentSprite.Draw(spritebatch, position);
+            foreach (AnimatedProjectile am in ThrownProjectiles)
+            {
+                am.Draw(spritebatch);
+            }
+
         }
     }
 }
