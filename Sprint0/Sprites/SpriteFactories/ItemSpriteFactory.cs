@@ -8,7 +8,10 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Items;
-using Sprint0.Sprites.ItemSprites;
+using static Sprint0.Sprites.ItemData;
+using Sprint0.Items.ItemClasses;
+using System.IO;
+using System.Text.Json;
 
 namespace Sprint0.Sprites.SpriteFactories
 {

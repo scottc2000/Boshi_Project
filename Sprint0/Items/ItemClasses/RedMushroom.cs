@@ -1,15 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Items;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Sprites.ItemSprites
+namespace Sprint0.Items.ItemClasses
 {
-    internal class RedMushroom : IItem, ISprite
+    internal class RedMushroom : IItem
     {
         private Item item;
         private ItemSpriteFactory spriteFactory;
@@ -21,9 +23,9 @@ namespace Sprint0.Sprites.ItemSprites
 
         public void Update(GameTime gameTime)
         {
-
+            item.Update(gameTime);
         }
-        
+
         public void Draw(SpriteBatch spriteBatch)
         {
             item.setRedMushroom();

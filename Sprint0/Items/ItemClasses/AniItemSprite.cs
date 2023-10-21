@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using Sprint0.Items;
 using Sprint0.Sprites.SpriteFactories;
 
-namespace Sprint0.Sprites.ItemSprites
+namespace Sprint0.Items.ItemClasses
 {
-    public class AniItemSprite : ISprite
+    public class AniItemSprite : IItem
     {
         ItemSpriteFactory factory;
         Item item;
@@ -24,7 +24,7 @@ namespace Sprint0.Sprites.ItemSprites
 
         private int width = 16, height = 16;
 
-        public AniItemSprite(ItemSpriteFactory factory, Item item, string itemString)
+        public AniItemSprite(ItemSpriteFactory factory, Item item, string itemString, Rectangle[] currentFrames)
         {
             this.factory = factory;
             this.itemString = itemString;
@@ -43,7 +43,7 @@ namespace Sprint0.Sprites.ItemSprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle position = new Rectangle((int)item.position.X, (int)item.position.Y, width, height);
             spriteBatch.Draw(factory.texture, position, spriteFrames[currentFrame], Color.White);

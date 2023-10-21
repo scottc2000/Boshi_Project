@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
+using Sprint0.Sprites.SpriteFactories;
 
-namespace Sprint0.Sprites.Item_Sprites
+namespace Sprint0.Items.ItemClasses
 {
-    internal class Star : IItem, ISprite
+    internal class Star : IItem
     {
         private Item item;
         private ItemSpriteFactory spriteFactory;
@@ -26,7 +27,7 @@ namespace Sprint0.Sprites.Item_Sprites
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             item.setStar();
             item.aniSprite = spriteFactory.returnSprite("Star");

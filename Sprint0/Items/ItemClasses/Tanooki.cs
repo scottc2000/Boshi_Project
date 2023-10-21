@@ -8,29 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Sprites.SpriteFactories;
-using Sprint0.Sprites.ItemSprites;
 
-namespace Sprint0.Sprites.Item_Sprites
+namespace Sprint0.Items.ItemClasses
 {
-    internal class Frog : IItem, ISprite
+    internal class Tanooki : IItem
     {
-        private ItemSpriteFactory spriteFactory;
         private Item item;
-        
-        public Frog(Item item, ItemSpriteFactory spriteFactory)
+        private ItemSpriteFactory spriteFactory;
+
+        public Tanooki(Item item, ItemSpriteFactory spriteFactory)
         {
             this.item = item;
             this.spriteFactory = spriteFactory;
         }
-
         public void Update(GameTime gameTime)
         {
-
+            item.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            item.setFrog();
-            item.aniSprite = spriteFactory.returnSprite("Frog");
+            item.setToonki();
+            item.aniSprite = spriteFactory.returnSprite("Tanooki");
         }
     }
 }

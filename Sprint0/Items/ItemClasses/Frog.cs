@@ -1,37 +1,35 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
-using Sprint0.Sprites.ItemSprites;
 
-namespace Sprint0.Sprites.Item_Sprites
+namespace Sprint0.Items.ItemClasses
 {
-    internal class FireFlower : IItem, ISprite
+    internal class Frog : IItem
     {
         private ItemSpriteFactory spriteFactory;
         private Item item;
 
-        public FireFlower(Item item, ItemSpriteFactory spriteFactory)
+        public Frog(Item item, ItemSpriteFactory spriteFactory)
         {
-            this.spriteFactory = spriteFactory;
             this.item = item;
+            this.spriteFactory = spriteFactory;
         }
-        
+
         public void Update(GameTime gameTime)
         {
-
+            item.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            item.setFireFlower();
-            item.aniSprite = spriteFactory.returnSprite("FireFlower");
-
+            item.setFrog();
+            item.aniSprite = spriteFactory.returnSprite("Frog");
         }
     }
 }
