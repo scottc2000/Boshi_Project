@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Diagnostics;
+using Sprint0.Enemies;
 
 namespace Sprint0
 {
@@ -82,19 +83,27 @@ namespace Sprint0
                // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
                // objectManager.Items.add(redmushroom);
             }
-            
+
 
             /*
              * ADD ENEMIES ONCE ADDED TO LEVEL1.JSON AND ENEMY CLASS(ES) ARE ADDED TO LEVEL1DATA.CS
              */
 
-            /*foreach(Enemy enemy in data.Enemy)
+            foreach (Enemy enemy in data.Enemies)
             {
-                if (enemy.Name == "goomba"){
-                    goomba.add(new Goomba(enemy.Position, enemy.Hitbox);
-                    objectManager.Enemy.add(goomba);
+                if (enemy.Name == "Goomba")
+                {
+                    IEnemies goomba = new Goomba(sprint0);
+                    goomba.SetPosition(enemy.Position);
+                    objectManager.Enemies.Add(goomba);
                 }
-            }*/
+                if (enemy.Name == "Koopa")
+                {
+                    IEnemies koopa = new Koopa(sprint0);
+                    koopa.SetPosition(enemy.Position);
+                    objectManager.Enemies.Add(koopa);
+                }
+            }
 
         }
 

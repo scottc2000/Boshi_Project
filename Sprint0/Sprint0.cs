@@ -7,7 +7,6 @@ using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Commands;
 using Sprint0.Commands.Blocks;
-using Sprint0.Commands.Enemies;
 using Sprint0.Controllers;
 using Sprint0.Enemies;
 using Sprint0.GameMangager;
@@ -35,11 +34,6 @@ namespace Sprint0
 
         public TimeSpan spriteDelay, timeSinceLastSprite;
 
-        //List just for demo
-        public List<IEnemies> enemyList = new List<IEnemies>();
-        public int enemyIndex;
-        public IEnemies enemies;
-
         IController KeyboardController;
         IController SpriteController;
 
@@ -63,12 +57,6 @@ namespace Sprint0
 
             terrain = new Terrain(this);
 
-            //List used for demo cycling
-            enemyList.Add(new Goomba(this));
-            enemyList.Add(new HammerBro(this));
-            enemyList.Add(new Koopa(this));
-            enemies = enemyList[enemyIndex];
-
             item = new Item(this, gametime);
 
             KeyboardController = new KeyboardController(this);
@@ -84,10 +72,6 @@ namespace Sprint0
             // Items
             SpriteController.RegisterCommand(Keys.V, new previousItem(item));
             SpriteController.RegisterCommand(Keys.B, new nextItem(item));
-
-            //Enemies
-            SpriteController.RegisterCommand(Keys.O, new EnemyPrev(this));
-            SpriteController.RegisterCommand(Keys.P, new EnemyNext(this));
 
             // collision
             collision = new CollisionHandler(this);
@@ -112,14 +96,11 @@ namespace Sprint0
 
             KeyboardController.Update();
             //Just for demo
-            enemies = enemyList[enemyIndex];
             
 
             terrain.Update(gameTime);
 
             objects.Update(gameTime, collision);
-
-            enemies.Update(gameTime);
 
             item.Update(gameTime);
             item.UpdatePos(gameTime);
@@ -146,7 +127,6 @@ namespace Sprint0
             terrain.Draw(_spriteBatch);
             objects.Draw(_spriteBatch);
             item.Draw(_spriteBatch);
-            enemies.Draw(_spriteBatch);
             
             _spriteBatch.End();
 
