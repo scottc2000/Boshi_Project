@@ -21,8 +21,6 @@ namespace Sprint0.Characters
 
         public float velocity;
         public float decay;
-
-
         public ICharacterState State { get; set; }
 
 
@@ -68,7 +66,6 @@ namespace Sprint0.Characters
             currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
 
         }
-
 
         public void Move()
         {
