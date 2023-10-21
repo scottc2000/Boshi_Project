@@ -56,22 +56,22 @@ namespace Sprint0
                 switch (block.Name)
                 {
                     case "floor":
-                        objectManager.Blocks.Add(new Floor(block.x, block.y, block.width, block.height)); 
+                        objectManager.Blocks.Add(new Floor(spriteBatch, content, block.x, block.y, block.width, block.height)); 
                         break;
                     case "large_block":
-                        objectManager.Blocks.Add(new LargeBlock(block.x, block.y, block.width, block.height));
+                        objectManager.Blocks.Add(new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "yellow_brick":
-                        objectManager.Blocks.Add(new YellowBrick(spriteBatch, block.x, block.y, block.width, block.height));
+                        objectManager.Blocks.Add(new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "wood_blocks":
-                        objectManager.Blocks.Add(new WoodBlocks(block.x, block.y, block.width, block.height));
+                        objectManager.Blocks.Add(new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "clouds":
-                        objectManager.Blocks.Add(new Clouds(block.x, block.y, block.width, block.height));
+                        objectManager.Blocks.Add(new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "pipe":
-                        objectManager.Blocks.Add(new Pipe(block.x, block.y, block.width, block.height));
+                        objectManager.Blocks.Add(new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "question_block":
                         objectManager.Blocks.Add(new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
