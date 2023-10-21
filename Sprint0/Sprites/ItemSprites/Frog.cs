@@ -12,12 +12,16 @@ using Sprint0.Sprites.ItemSprites;
 
 namespace Sprint0.Sprites.Item_Sprites
 {
-    internal class Frog : ISprite
+    internal class Frog : IItem, ISprite
     {
-        private ItemSpriteFactory factory;
-        private NonAniItemSprite sprite;
-        private int width = 16;
-        private int height = 16;
+        private ItemSpriteFactory spriteFactory;
+        private Item item;
+        
+        public Frog(Item item, ItemSpriteFactory spriteFactory)
+        {
+            this.item = item;
+            this.spriteFactory = spriteFactory;
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -25,10 +29,8 @@ namespace Sprint0.Sprites.Item_Sprites
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            //Rectangle position = new Rectangle((int)sprite.position.X, (int)sprite.position.Y, width, height);
-
-            //spriteBatch.Draw(factory.frog, position, factory.frogRect, Color.White);
-
+            item.setFrog();
+            item.aniSprite = spriteFactory.returnSprite("Frog");
         }
     }
 }

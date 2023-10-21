@@ -11,7 +11,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Sprites.ItemSprites
 {
-    internal class AniItemSprite : ISprite
+    public class AniItemSprite : ISprite
     {
         ItemSpriteFactory factory;
         Item item;
@@ -20,7 +20,7 @@ namespace Sprint0.Sprites.ItemSprites
         private float timer = 0;
         private int interval = 50;
         private int currentFrame = 0;
-        private int frameCount;
+        public Rectangle[] spriteFrames;
 
         private int width = 16, height = 16;
 
@@ -29,7 +29,7 @@ namespace Sprint0.Sprites.ItemSprites
             this.factory = factory;
             this.itemString = itemString;
             this.item = item;
-            frameCount = factory.itemAndFrames[itemString].Length;
+            spriteFrames = currentFrames;
         }
 
         public void Update(GameTime gameTime)
@@ -39,14 +39,14 @@ namespace Sprint0.Sprites.ItemSprites
             {
                 currentFrame++;
                 timer = 0;
-                if (currentFrame == frameCount) currentFrame = 0;
+                if (currentFrame == spriteFrames.Length) currentFrame = 0;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             Rectangle position = new Rectangle((int)item.position.X, (int)item.position.Y, width, height);
-            spriteBatch.Draw(factory.texture, position, factory.itemAndFrames[itemString][currentFrame], Color.White);
+            spriteBatch.Draw(factory.texture, position, spriteFrames[currentFrame], Color.White);
         }
     }
 }

@@ -12,42 +12,24 @@ namespace Sprint0.Sprites.Item_Sprites
 {
     internal class Shoe : ISprite
     {
-        private Sprint0 shoeSprint0 { get; set; }
-        private Texture2D shoe;
+        private ItemSpriteFactory spriteFactory;
+        private Item item;
 
-        //Sprite frame numbers
-        private int currentFrame = 0;
-        private int frameCount = 2;
-
-        //Sprite frames and location on screen
-        private Rectangle[] shoeFrames;
-        private Vector2 destination = new Vector2(100, 100);
-
-        //Duration of frame
-        private float timer = 0;
-        private int interval = 50;
-
-        public Shoe(Sprint0 sprint0)
+        public Shoe(Item item, ItemSpriteFactory spriteFactory)
         {
-            shoeSprint0 = sprint0;
-            shoeFrames = new Rectangle[] { new Rectangle(55, 42, 16, 16), new Rectangle(72, 42, 16, 16) };
+            this.item = item;
+            this.spriteFactory = spriteFactory;
         }
 
         public void Update(GameTime time)
         {
-            timer += (float)time.ElapsedGameTime.TotalMilliseconds / 2;
-            if (timer > interval)
-            {
-                currentFrame++;
-                timer = 0;
-                if (currentFrame == frameCount) currentFrame = 0;
-            }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            spriteBatch.Draw(shoe, destination, shoeFrames[currentFrame], Color.White);
-
+            item.setShoe();
+            item.aniSprite = spriteFactory.returnSprite("Shoe");
         }
     }
 }

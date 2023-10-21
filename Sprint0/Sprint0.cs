@@ -96,7 +96,7 @@ namespace Sprint0
 
         protected override void LoadContent()
         {
-            item.LoadItems();
+            //item.LoadItems();
             block.LoadBlocks();
 
             levelLoader = new LevelLoader1(this, mario, luigi);
