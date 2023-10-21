@@ -19,24 +19,13 @@ namespace Sprint0.Items
         private Vector2 velocity;
 
         public AniItemSprite aniSprite;
-        //private NonAniItemSprite nonAniSprite;
-        private ISprite RedMushroomItem;
-        private ISprite OneUpMushroomItem;
-        private ISprite FireFlowerItem;
-        private ISprite LeafItem;
-        private ISprite StarItem;
-        private ISprite FrogItem;
-        private ISprite TanookiItem;
-        private ISprite HammerItem;
-        private ISprite ShoeItem;
         private ItemSpriteFactory spriteFactory;
 
-        private int itemCount;
         public ItemSelect itemSelect;
 
         private float timer = 0f;
-        private int interval = 50;
-        private int itemSpeed = 3;
+        private int interval = 15;
+        private int itemSpeed = 1;
         private bool moveRight = false;
 
         public Item(Sprint0 game, GameTime gametime)
@@ -44,8 +33,6 @@ namespace Sprint0.Items
             position = new Vector2(100, 100);
             spriteFactory = new ItemSpriteFactory(this);
             spriteFactory.LoadTextures(game.Content);
-            itemCount += spriteFactory.itemAndRectangle.Count;
-            itemCount += spriteFactory.itemAndFrames.Count;
             aniSprite = spriteFactory.returnSprite("RedMushroom");
             itemSelect = ItemSelect.RedMushroom;
 
@@ -103,7 +90,7 @@ namespace Sprint0.Items
             {
                 case ItemSelect.RedMushroom:
                 case ItemSelect.OneUpMushroom:
-                    timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
+                    timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                     if (timer > interval && moveRight)
                     {
                         position.X += itemSpeed;
@@ -129,47 +116,6 @@ namespace Sprint0.Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            /*
-            switch (itemSelect)
-            {
-                case 0:
-                    RedMushroom.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.RedMushroom;
-                    break;
-                case 1:
-                    OneUpMushroom.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.OneUpMushroom;
-                    break;
-                case 2:
-                    Leaf.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.Leaf;
-                    break;
-                case 3:
-                    FireFlower.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.FireFlower;
-                    break;
-                case 4:
-                    Star.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.Star;
-                    break;
-                case 5:
-                    Frog.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.Frog;
-                    break;
-                case 6:
-                    Tanooki.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.Tanooki;
-                    break;
-                case 7:
-                    Hammer.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.Hammer;
-                    break;
-                case 8:
-                    Shoe.Draw(spriteBatch, position);
-                    itemSelect = ItemSelect.Shoe;
-                    break;
-            }
-            */
             aniSprite.Draw(spriteBatch);
         }
     }

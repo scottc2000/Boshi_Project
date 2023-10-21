@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0.Items.ItemClasses
 {

@@ -11,7 +11,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Items.ItemClasses
 {
-    internal class Hammer : ISprite
+    internal class Hammer : IItem
     {
         private ItemSpriteFactory spriteFactory;
         private Item item;
@@ -26,7 +26,7 @@ namespace Sprint0.Items.ItemClasses
         {
             item.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             item.setHammer();
             item.aniSprite = spriteFactory.returnSprite("Hammer");

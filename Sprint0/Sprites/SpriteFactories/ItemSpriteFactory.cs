@@ -67,15 +67,10 @@ namespace Sprint0.Sprites.SpriteFactories
 
             foreach (Sprite n in deserializedItemData.itemJSON.Sprites)
             {
-                System.Diagnostics.Debug.WriteLine("name: " + n.name + "," + spriteName);
-                System.Diagnostics.Debug.WriteLine("pos: " + n.spritesheet_pos);
                 if (string.Equals(n.name, spriteType))
                     {
                         spriteName = n.name;
-                        System.Diagnostics.Debug.WriteLine("spriteName: " + spriteName);
                         currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                        //System.Diagnostics.Debug.WriteLine("name: " + spriteName);
-                        //spriteName = n.name;
                     }
             }
 

@@ -13,6 +13,7 @@ using Sprint0.Enemies;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using Sprint0.Sprites;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.Collections.Generic;
 namespace Sprint0
@@ -22,6 +23,7 @@ namespace Sprint0
         public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
+        public ItemSpriteFactory itemSpriteFactory;
         public GameTime gametime;
 
         private LevelLoader1 levelLoader;
@@ -72,6 +74,7 @@ namespace Sprint0
             enemies = enemyList[enemyIndex];
 
             item = new Item(this, gametime);
+            itemSpriteFactory = new ItemSpriteFactory(item);
 
             KeyboardController = new KeyboardController(this);
 
@@ -82,10 +85,6 @@ namespace Sprint0
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
             SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
-
-            // Items
-            SpriteController.RegisterCommand(Keys.V, new previousItem(item));
-            SpriteController.RegisterCommand(Keys.B, new nextItem(item));
 
             //Enemies
             SpriteController.RegisterCommand(Keys.O, new EnemyPrev(this));
@@ -99,7 +98,7 @@ namespace Sprint0
             //item.LoadItems();
             block.LoadBlocks();
 
-            levelLoader = new LevelLoader1(this, mario, luigi);
+            levelLoader = new LevelLoader1(this, mario, luigi, item, itemSpriteFactory);
             levelLoader.Load("JSON/level1.json");
 
             spriteDelay = TimeSpan.FromMilliseconds(125);

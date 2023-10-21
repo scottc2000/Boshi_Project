@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Items;
 using Sprint0.LevelLoader;
 using System.Collections.Generic;
 
@@ -15,6 +16,8 @@ namespace Sprint0.GameMangager
         public List<IEnemies> Enemies { get;set; }
         public ICharacter mario { get; set; }
         public ICharacter luigi { get; set; }
+
+        public Item item;
 
         private Sprint0 sprint;
         
@@ -31,6 +34,7 @@ namespace Sprint0.GameMangager
             foreach(var item in Items)
             {
                 item.Draw(spriteBatch);
+                this.item.Draw(spriteBatch);
             }
             foreach(var enemy in Enemies)
             {
