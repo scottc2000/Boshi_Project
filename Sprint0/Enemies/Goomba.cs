@@ -17,8 +17,14 @@ namespace Sprint0.Enemies
         public bool facingLeft { get; set;}
         public Rectangle destination { get; set; }
 
-        public GoombaMoveSprite currentSprite;
-        public EnemySpriteFactoryGoomba mySpriteFactory;
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+
+        public ISprite goombaSprite;
+        public Texture2D goombaTexture;
+
 
         public Goomba(Sprint0 sprint0)
         {

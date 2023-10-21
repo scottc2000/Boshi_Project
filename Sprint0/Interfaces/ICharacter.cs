@@ -27,6 +27,8 @@ namespace Sprint0.Interfaces
 
         void ChangeToNormal();
 
+        void Reverse();
+
         void Update(GameTime gametime);
 
         void Draw(SpriteBatch spritebatch);

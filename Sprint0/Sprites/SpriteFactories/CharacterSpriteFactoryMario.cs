@@ -161,7 +161,7 @@ namespace Sprint0.Sprites.SpriteFactories
                     break;
             }
 
-            return new AnimatedSpriteMario(currentFrames, texture, effect, spriteName);
+            return new AnimatedSpriteMario(currentFrames, texture, mario, effect, spriteName);
         }
     }
 

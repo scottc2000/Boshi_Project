@@ -23,6 +23,16 @@ namespace Sprint0.Characters
 
         public ICharacterState State { get; set; }
 
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool stuck { get; set; }
+
+        public float velocity;
+        public float decay;
+        public float gravity;
+
         public Sprint0 mySprint;
         int sizeDiff;
         public Vector2 position;
@@ -39,8 +49,18 @@ namespace Sprint0.Characters
 
             facingLeft = true;
             sizeDiff = 25;
-            position.X = 200;
+            position.X = 300;
             position.Y = 400;
+
+            this.downhit = false;
+            this.uphit = false;
+            this.lefthit = false;
+            this.righthit = false;
+
+            // default velocity is zero (still), decay makes player slippery the higher it is.
+            this.velocity = 0.0f;
+            this.decay = 0.9f;
+            this.stuck = false;
 
             mySprint = sprint0;
             mySpriteFactory = new CharacterSpriteFactoryMario(this);
@@ -79,6 +99,18 @@ namespace Sprint0.Characters
             State.Die();
         }
 
+        public void Reverse()
+        {
+            velocity *= -1;
+        }
+        public void resetHits()
+        {
+            this.downhit = false;
+            this.uphit = false;
+            this.lefthit = false;
+            this.righthit = false;
+            this.stuck = false;
+        }
         public void Throw()
         {
             if (health == MarioHealth.Fire)
@@ -123,11 +155,49 @@ namespace Sprint0.Characters
             }
             health = MarioHealth.Normal;
         }
+        public void UpdateMovement(GameTime gametime)
+        {
+            // updates movement using pos +/- v * dt
 
+            if (facingLeft)
+            {
+                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            }
+            else
+            {
+                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / ( 1.0f / 60.0f)));
+            }
 
+        }
+        public void LeftStuck()
+        {
+            position.X += 1;
+        }
+        public void RightStuck()
+        {
+            position.X -= 1;
+        }
         public void Update(GameTime gametime)
         {
+            if (!lefthit && !stuck)
+                UpdateMovement(gametime);
+            else if (lefthit && stuck)
+                LeftStuck();
+            
+
+            if (!righthit && !stuck)
+                UpdateMovement(gametime);
+            else if (righthit && stuck)
+                RightStuck();
+
+            if (!uphit)
+            {
+                UpdateMovement(gametime);
+            }
+
             State.Update(gametime);
+            destination = currentSprite.destination;
+            resetHits();
         }
 
         public void Draw(SpriteBatch spritebatch)

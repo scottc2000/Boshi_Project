@@ -14,8 +14,15 @@ namespace Sprint0.Enemies
         public IEnemyState state;
         public Vector2 position;
         public Sprint0 mySprint;
-        public bool facingLeft { get; set; }
-        public Rectangle destination { get; set; }
+        public bool facingLeft { get; set;}
+
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+
+        public ISprite koopaSprite;
+        public Texture2D koopaTexture;
 
         public KoopaMoveSprite currentSprite;
         public EnemySpriteFactoryKoopa mySpriteFactory;

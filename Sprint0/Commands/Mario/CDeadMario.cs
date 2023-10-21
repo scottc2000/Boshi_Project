@@ -22,7 +22,7 @@ namespace Sprint0.Commands.Mario
 
         public void Execute()
         {
-            mario = mysprint.mario;
+            mario = mysprint.objects.Players[0];
             mario.Die();
         }
     }

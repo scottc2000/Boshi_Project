@@ -52,9 +52,15 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new DeadMarioState(mario);
         }
+        public void UpdateVelocity()
+        {
+            mario.velocity *= 0;
+        }
         public void Update(GameTime gametime)
         {
             mario.pose = Mario.MarioPose.Idle;
+
+            UpdateVelocity();
             if (mario.facingLeft)
             {
                 mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillLeft");

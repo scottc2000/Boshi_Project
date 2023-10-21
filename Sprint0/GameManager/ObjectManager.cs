@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.LevelLoader;
 using System.Collections.Generic;
+using Sprint0.Characters;
+using Sprint0.Enemies;
+using Sprint0.Collision;
 
 namespace Sprint0.GameMangager
 {
@@ -13,14 +16,20 @@ namespace Sprint0.GameMangager
         public List<IBlock> Blocks { get; set; }
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
-        public ICharacter mario { get; set; }
-        public ICharacter luigi { get; set; }
+        public List<ICharacter> Players { get; set; }
 
         private Sprint0 sprint;
         
         public ObjectManager(Sprint0 sprint0)
         {
             this.sprint = sprint0;
+            Players = new List<ICharacter>();
+            Items = new List<IItem>();
+            Enemies = new List<IEnemies>();
+            Blocks = new List<IBlock>();
+            Players.Add(new Mario(sprint));
+            Players.Add(new Luigi(sprint));
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -36,11 +45,13 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
-            mario.Draw(spriteBatch);
-            luigi.Draw(spriteBatch);
+            foreach (ICharacter player in Players)
+            {
+                player.Draw(spriteBatch);
+            }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, CollisionHandler collision)
         {
           foreach(var block in Blocks)
           {
@@ -54,18 +65,17 @@ namespace Sprint0.GameMangager
             {
                 enemy.Update(gameTime);
             }
-            mario.Update(gameTime);
-            luigi.Update(gameTime);
+            foreach (ICharacter player in Players)
+            {
+                player.Update(gameTime);
+                collision.playerUpdate();
+
+            }
         }
 
-        /*
-         * Will update when camera is set up
-         * checks if object is on the screen
-         * use this to draw and update objects 
-         */
-        private static bool IsInView()
+        public void Update(GameTime gameTime)
         {
-            return true;
+            throw new System.NotImplementedException();
         }
     }
 

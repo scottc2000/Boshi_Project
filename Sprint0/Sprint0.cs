@@ -5,11 +5,13 @@ using Sprint0.Background;
 using Sprint0.Blocks;
 using Sprint0.Camera;
 using Sprint0.Characters;
+using Sprint0.Collision;
 using Sprint0.Commands;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
 using Sprint0.Controllers;
 using Sprint0.Enemies;
+using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using Sprint0.Sprites;
@@ -23,6 +25,7 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
         public GameTime gametime;
+        public ObjectManager objects;
 
         private LevelLoader1 levelLoader;
         Camera1 camera;
@@ -45,6 +48,7 @@ namespace Sprint0
         IController KeyboardController;
         IController SpriteController;
 
+        CollisionHandler collision; 
 
         public Sprint0()
         {
@@ -56,11 +60,13 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            block = new Block(this, _spriteBatch, Content);
+            objects = new ObjectManager(this);
 
             camera = new Camera1(GraphicsDevice.Viewport);
 
-            mario = new Mario(this);
-            luigi = new Luigi(this);
+            //mario = new Mario(this);
+            //luigi = new Luigi(this);
             terrain = new Terrain(this);
 
             //List used for demo cycling
@@ -85,6 +91,9 @@ namespace Sprint0
             SpriteController.RegisterCommand(Keys.O, new EnemyPrev(this));
             SpriteController.RegisterCommand(Keys.P, new EnemyNext(this));
 
+            // collision
+            collision = new CollisionHandler(this);
+
             base.Initialize();
         }
 
@@ -106,10 +115,13 @@ namespace Sprint0
             KeyboardController.Update();
             //Just for demo
             enemies = enemyList[enemyIndex];
+            
 
             terrain.Update(gameTime);
-            mario.Update(gameTime);
-            luigi.Update(gameTime);
+            //mario.Update(gameTime);
+            //luigi.Update(gameTime);
+
+            objects.Update(gameTime, collision);
 
             enemies.Update(gameTime);
 
@@ -140,17 +152,12 @@ namespace Sprint0
 
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
-            terrain.Draw(_spriteBatch);
-            mario.Draw(_spriteBatch);
-            luigi.Draw(_spriteBatch);
-            blockList = levelLoader.getBlockList();
-            foreach (IBlock block in blockList)
-            {
-                block.Draw(_spriteBatch);
-            }
-            item.Draw(_spriteBatch);
-            enemies.Draw(_spriteBatch);
+            
 
+            terrain.Draw(_spriteBatch);
+            objects.Draw(_spriteBatch);
+
+            
             _spriteBatch.End();
 
             base.Draw(gameTime);

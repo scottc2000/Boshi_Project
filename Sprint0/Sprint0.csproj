@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Characters\LuigiStates\" />
-    <Folder Include="Commands\Collision\" />
     <Folder Include="Collision\" />
   </ItemGroup>
   <ItemGroup>

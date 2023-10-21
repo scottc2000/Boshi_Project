@@ -18,8 +18,7 @@ namespace Sprint0.Background
         {
             this.sprint0 = sprint0;
             terrain = sprint0.Content.Load<Texture2D>("level1_1");
-            location = Vector2.Zero;
-            sprite = new DrawBackground(terrain, new Rectangle((int)location.X, (int)location.Y, 2816, 626));
+            sprite = new DrawBackground(terrain, new Rectangle(0, 0, 2816, 626));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
