@@ -1,22 +1,25 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Sprint0.Interfaces;
+using Sprint0.Enemies;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters;
-using Sprint0.Characters.MarioStates;
-using Sprint0.Interfaces;
 using System;
+using System.Xml.Linq;
+using MonoGame.Extended.Timers;
 
-namespace Sprint0.Sprites.Players
+
+namespace Sprint0.Sprites.goombaSprite
 {
-    public class AnimatedSpriteMario : ISprite
+    public class KoopaMoveSprite : ISprite
     {
+        private Koopa koopa;
         private Texture2D texture;
 
         // Rectangles
         private Rectangle[] spriteFrames;
         public Rectangle destination;
-        public string spriteName;
 
-        SpriteEffects spriteEffect;
+        private Vector2 position;
+        public string spriteName;
 
         // Frame stats
         public int CurrentFrame = 0;
@@ -24,14 +27,14 @@ namespace Sprint0.Sprites.Players
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public AnimatedSpriteMario(Rectangle[] currentFrames, Texture2D texture, SpriteEffects effect, string name)
+        public KoopaMoveSprite(Rectangle[] currentFrames, Texture2D texture, Koopa koopa, string name)
         {
             spriteFrames = currentFrames;
             this.texture = texture;
-            spriteEffect = effect;
+            this.koopa = koopa;
+            position = koopa.position;
             spriteName = name;
-            TotalFrames = spriteFrames.Length;
-
+            TotalFrames = spriteFrames.Length; ;
         }
 
         public void Update(GameTime gameTime)
@@ -48,17 +51,13 @@ namespace Sprint0.Sprites.Players
                     CurrentFrame = 0;
                 }
             }
-
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)location.X, (int)location.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
+            destination = new Rectangle((int)koopa.position.X, (int)koopa.position.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
 
-            float rotation = 0;
-            float layer = 0;
-
-            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), spriteEffect, layer);
+            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], Color.White);
         }
     }
 }

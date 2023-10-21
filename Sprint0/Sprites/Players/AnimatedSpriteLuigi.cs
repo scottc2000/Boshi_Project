@@ -55,7 +55,7 @@ namespace Sprint0.Sprites.Players
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, spriteFrames[CurrentFrame].Width * 2, spriteFrames[CurrentFrame].Height * 2);
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
 
             float rotation = 0;
             float layer = 0;

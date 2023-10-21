@@ -1,5 +1,4 @@
 {
-
   "goomba": {
     "Sprites": {
       "name": "GoombaMove",
@@ -37,5 +36,4 @@
       "facingLeft": true
     }
   }
-
 }

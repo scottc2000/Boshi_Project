@@ -4,6 +4,7 @@ using Sprint0.Enemies.HammerBroStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.HammerBroSprite;
 using System;
+using System.Collections.Generic;
 
 namespace Sprint0.Enemies
 {
@@ -13,11 +14,6 @@ namespace Sprint0.Enemies
         public Vector2 position;
         public Sprint0 mySprint;
         public bool facingLeft { get; set; }
-
-        public bool lefthit { get; set; }
-        public bool righthit { get; set; }
-        public bool uphit { get; set; }
-        public bool downhit { get; set; }
 
         public ISprite hammerBroSprite;
         public Texture2D hammerBroTexture;
@@ -35,6 +31,12 @@ namespace Sprint0.Enemies
 
             this.hammerBroSprite = new HammerBroMoveSprite(this);
             hammerBroTexture = mySprint.Content.Load<Texture2D>("marioenemy");
+        }
+
+        public void SetPosition(List<int> position)
+        {
+            this.position.X = position[0];
+            this.position.Y = position[1];
         }
 
         public void ChangeDirection()

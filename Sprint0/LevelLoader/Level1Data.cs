@@ -24,10 +24,18 @@ namespace Sprint0.LevelLoader
             public List<int> Position { get; set; }
         }
 
+        public class Enemy
+        {
+            public string Name { get; set; }
+            public List<int> Hitbox { get; set; }
+            public List<int> Position { get; set; }
+        }
+
         public class Root
         {
             public List<Block> Blocks { get; set; }
             public List<Item> Items { get; set; }
+            public List<Enemy> Enemies { get; set; }
         }
 
 
