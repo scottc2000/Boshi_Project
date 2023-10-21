@@ -16,7 +16,7 @@ namespace Sprint0.Collision
         List<Item> Items;
         List<IBlock> Blocks;
         CollisionDictionraryRegister register;
-       
+
 
         public CollisionHandler(Sprint0 sprint)
         {
@@ -25,7 +25,7 @@ namespace Sprint0.Collision
             Items = new List<Item>();
             Blocks = new List<IBlock>();
             register = new CollisionDictionraryRegister(sprint);
-            
+
             register.generate();
         }
 
@@ -45,67 +45,88 @@ namespace Sprint0.Collision
 
                 foreach (IBlock block in Blocks)
                 {
-                    //if (character.hitbox)
-                }
-
-
-                foreach (ICharacter character1 in Players)
-                {
-                    if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
+                    if (character.destination.Intersects(new Rectangle(block.x, block.y, block.width, block.height)))
                     {
 
-                        // if objects hit on x axis (left or right)
-                        if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
+                        if (Rectangle.Intersect(character.destination, new Rectangle(block.x, block.y, block.width, block.height)).Width <= Rectangle.Intersect(character.destination, new Rectangle(block.x, block.y, block.width, block.height)).Height)
                         {
-                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
-                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
+                            register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Left)].Item2.Execute();
 
+                        }
+                        else if (Rectangle.Intersect(character.destination, new Rectangle(block.x, block.y, block.width, block.height)).Y < character.destination.Y)
+                        {
+
+                            // if object above
+                            ;
                         }
                         else
                         {
-                            if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
+
+                            // if object below
+                            ;
+                        }
+                    }
+
+
+                    foreach (ICharacter character1 in Players)
+                    {
+                        if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
+                        {
+
+                            // if objects hit on x axis (left or right)
+                            if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
                             {
+                                register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
+                                register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
 
-                                // if object above
-                                ;
                             }
-
                             else
                             {
+                                if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
+                                {
 
-                                // if object below
-                                ;
+                                    // if object above
+                                    ;
+                                }
+
+                                else
+                                {
+
+                                    // if object below
+                                    ;
+                                }
                             }
+
+                            Console.WriteLine("HIT");
                         }
-
-                        Console.WriteLine("HIT");
                     }
-                }
 
+                }
             }
         }
-
-        public void blockUpdate()
-        {
-            foreach (IBlock block in Blocks)
+            public void blockUpdate()
             {
-                foreach (IEnemies enemeny in Enemies)
+                foreach (IBlock block in Blocks)
                 {
-                    //if (character.hitbox)
+                    foreach (IEnemies enemeny in Enemies)
+                    {
+                        //if (character.hitbox)
+                    }
+
+                    foreach (Item item in Items)
+                    {
+                        //if (character.hitbox)
+                    }
+
+                    foreach (ICharacter player in Players)
+                    {
+
+                    }
+
                 }
-
-                foreach (Item item in Items)
-                {
-                    //if (character.hitbox)
-                }
-
-                foreach (ICharacter player in Players)
-                {
-
-                }
-
             }
-        }
+        
 
 
         public void enemyUpdate()
@@ -133,9 +154,9 @@ namespace Sprint0.Collision
 
         public void Update()
         {
-            
 
-        
+
+
         }
     }
-}
+    }

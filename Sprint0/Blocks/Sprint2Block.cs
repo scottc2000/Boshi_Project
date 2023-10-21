@@ -15,6 +15,10 @@ namespace Sprint0.Blocks
 {
     public class Sprint2Block : IBlock
     {
+        public int x { get; set; }
+        public int y { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
         private Sprint0 game;
         private SpriteBatch spriteBatch;
         private ContentManager content;

@@ -15,6 +15,10 @@ namespace Sprint0.Blocks
 {
     internal class YellowBrick : IBlock
     {
+        public int x { get; set; }
+        public int y { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
         private ISprite sprite;
         private Vector2 location { get; set; }
 

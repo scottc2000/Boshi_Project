@@ -14,10 +14,19 @@ namespace Sprint0.Blocks
 {
     internal class Floor : IBlock
     {
+        public int x {  get; set; }
+        public int y { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+
         private ISprite sprite;
         private Vector2 location { get; set; }
         public Floor(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
         {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations(content);
             sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "floor", new Vector2(x, y));
