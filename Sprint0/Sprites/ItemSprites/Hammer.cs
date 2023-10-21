@@ -14,10 +14,14 @@ namespace Sprint0.Sprites.Item_Sprites
 {
     internal class Hammer : ISprite
     {
-        private ItemSpriteFactory factory;
-        private NonAniItemSprite sprite;
-        private int width = 16;
-        private int height = 16;
+        private ItemSpriteFactory spriteFactory;
+        private Item item;
+        
+        public Hammer(Item item, ItemSpriteFactory spriteFactory)
+        {
+            this.item = item;
+            this.spriteFactory = spriteFactory;
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -25,10 +29,8 @@ namespace Sprint0.Sprites.Item_Sprites
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            //Rectangle position = new Rectangle((int)sprite.position.X, (int)sprite.position.Y, width, height);
-
-            //spriteBatch.Draw(factory.hammer, position, factory.hammerRect, Color.White);
-
+            item.setHammer();
+            item.aniSprite = spriteFactory.returnSprite("Hammer");
         }
     }
 }
