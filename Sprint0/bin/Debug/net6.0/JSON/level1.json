@@ -577,5 +577,48 @@
       "Hitbox": [ 16, 16 ],
       "Position": [ 1472, 352 ]
     }
+  ],
+  "Enemies": [
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 231, 415 ]
+    },
+    {
+      "Name": "Koopa",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 595, 383 ]
+    },
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 770, 399 ]
+    },
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 880, 399 ]
+    },
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 960, 399 ]
+    },
+    {
+      "Name": "Koopa",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 1358, 383 ]
+    },
+    {
+      "Name": "Koopa",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 1418, 319 ]
+    },
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 2049, 415 ]
+    }
   ]
+
 }
