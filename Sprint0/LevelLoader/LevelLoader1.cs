@@ -98,10 +98,5 @@ namespace Sprint0
 
         }
 
-        public List<IBlock> getBlockList()
-        {
-            return objectManager.Blocks;
-        }
-
     }
 }
