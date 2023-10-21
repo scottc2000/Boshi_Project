@@ -10,6 +10,7 @@ using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
 using Sprint0.Controllers;
 using Sprint0.Enemies;
+using Sprint0.GameManager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using Sprint0.Sprites;
@@ -23,6 +24,7 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
         public GameTime gametime;
+        public ObjectManager objects;
 
         private LevelLoader1 levelLoader;
         Camera1 camera;

@@ -1,8 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Camera;
 using Sprint0.Characters.MarioStates;
-using Sprint0.GameMangager;
+using Sprint0.GameManager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.Players;
@@ -23,6 +22,11 @@ namespace Sprint0.Characters
 
         public ICharacterState State { get; set; }
 
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+
         public Sprint0 mySprint;
         int sizeDiff;
         public Vector2 position;
@@ -30,7 +34,6 @@ namespace Sprint0.Characters
 
         public AnimatedSpriteMario currentSprite;
         public CharacterSpriteFactoryMario mySpriteFactory;
-        public Camera1 camera;
 
         public Mario(Sprint0 sprint0)
         {
@@ -41,6 +44,11 @@ namespace Sprint0.Characters
             sizeDiff = 25;
             position.X = 200;
             position.Y = 400;
+
+            this.downhit = false;
+            this.uphit = false;
+            this.lefthit = false;
+            this.righthit = false;
 
             mySprint = sprint0;
             mySpriteFactory = new CharacterSpriteFactoryMario(this);
@@ -79,6 +87,10 @@ namespace Sprint0.Characters
             State.Die();
         }
 
+        public void Reverse()
+        {
+
+        }
         public void Throw()
         {
             if (health == MarioHealth.Fire)
@@ -128,6 +140,7 @@ namespace Sprint0.Characters
         public void Update(GameTime gametime)
         {
             State.Update(gametime);
+            destination = currentSprite.destination;
         }
 
         public void Draw(SpriteBatch spritebatch)

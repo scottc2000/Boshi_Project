@@ -1,4 +1,5 @@
-﻿using Sprint0.Interfaces;
+﻿using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
 using Sprint0.Items;
 using System;
 using System.Collections.Generic;
@@ -15,23 +16,20 @@ namespace Sprint0.Collision
         List<Item> Items;
         List<IBlock> Blocks;
         CollisionDictionraryRegister register;
-        Sprint0 sprint;
+
 
         public CollisionHandler(Sprint0 sprint)
         {
-            Players = new List<ICharacter>();
+            //Players = sprint.objects.Players;
             Enemies = new List<IEnemies>();
             Items = new List<Item>();
             Blocks = new List<IBlock>();
-            this.sprint = sprint;
             register = new CollisionDictionraryRegister(sprint);
-            
-            Players.Add(sprint.mario);
-            Players.Add(sprint.luigi);
+
             register.generate();
         }
 
-        public void Update()
+        public void playerUpdate()
         {
             foreach (ICharacter character in Players)
             {
@@ -50,19 +48,45 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
-           
+
                 foreach (ICharacter character1 in Players)
                 {
-                    if (character.destination.Intersects(character1.destination) && !(character.Equals(character1))) {
+                    if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
+                    {
 
-                        register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item1.Execute();
-                        register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item2.Execute();
+                        // if objects hit on x axis (left or right)
+                        if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
+                        {
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
+
+                        }
+                        else
+                        {
+                            if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
+                            {
+
+                                // if object above
+                                ;
+                            }
+
+                            else
+                            {
+
+                                // if object below
+                                ;
+                            }
+                        }
+
                         Console.WriteLine("HIT");
                     }
                 }
 
             }
+        }
 
+        public void blockUpdate()
+        {
             foreach (IBlock block in Blocks)
             {
                 foreach (IEnemies enemeny in Enemies)
@@ -75,7 +99,43 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
+                foreach (ICharacter player in Players)
+                {
+
+                }
+
             }
+        }
+
+
+        public void enemyUpdate()
+        {
+            foreach (IEnemies enemy in Enemies)
+            {
+                foreach (IBlock block in Blocks)
+                {
+                    //if (character.hitbox)
+                }
+
+                foreach (Item item in Items)
+                {
+                    //if (character.hitbox)
+                }
+
+                foreach (ICharacter player in Players)
+                {
+
+                }
+
+            }
+        }
+
+
+        public void Update()
+        {
+
+
+
         }
     }
 }

@@ -1,5 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/level1_1.png","C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/level1_1.xnb","TextureProcessor","Texture2DContent",31494,7051349,0.2847978
+"C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/level1_1.png","C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/level1_1.xnb","TextureProcessor","Texture2DContent",37569,7051349,0.297374
 "C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/marioenemy.png","C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/marioenemy.xnb","TextureProcessor","Texture2DContent",110936,2449365,0.074482
 "C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png","C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/SpriteImages/blocks.xnb","TextureProcessor","Texture2DContent",131694,7114261,0.1805589
 "C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png","C:/Users/Michael/source/repos/Boshi_Project/Sprint0/Content/bin/DesktopGL/Content/SpriteImages/playerssclear.xnb","TextureProcessor","Texture2DContent",66286,2401285,0.0506786

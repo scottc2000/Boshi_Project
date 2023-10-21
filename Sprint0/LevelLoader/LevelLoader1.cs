@@ -1,4 +1,4 @@
-﻿using Sprint0.GameMangager;
+﻿using Sprint0.GameManager;
 using Sprint0.Interfaces;
 using System.Collections.Generic;
 using System.IO;

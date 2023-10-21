@@ -4,7 +4,7 @@ using Sprint0.Interfaces;
 using Sprint0.LevelLoader;
 using System.Collections.Generic;
 
-namespace Sprint0.GameMangager
+namespace Sprint0.GameManager
 {
     public class ObjectManager : IGameObject
     {

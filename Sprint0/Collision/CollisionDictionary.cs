@@ -11,17 +11,27 @@ using System.Drawing;
 
 
 public class CollisionDictionary
-{ 
+{
     public enum Side { Left, Right, Top, Bottom };
-	public Dictionary<Tuple<ICollidable, ICollidable, Side>, Tuple<ICommand, ICommand>> commandDictionary;
+
+    // dictionary for each possible combination of collisions (enemy, player), (player, player), (player block), (enemies, block)
+
+    public Dictionary<Tuple<List<ICharacter>, List<IEnemies>, Side>, Tuple<ICommand, ICommand>> enemyPlayerDict;
+
+    public Dictionary<Tuple<List<ICharacter>, List<ICharacter>, Side>, Tuple<ICommand, ICommand>> playerPlayerDict;
+
+    public Dictionary<Tuple<List<ICharacter>, List<IBlock>, Side>, Tuple<ICommand, ICommand>> playerBlockDict;
+
+    public Dictionary<Tuple<List<IEnemies>, List<IBlock>, Side>, Tuple<ICommand, ICommand>> enemiesBlockDict;
+
 
     public CollisionDictionary()
-	{
-      commandDictionary = new Dictionary<Tuple<ICollidable, ICollidable, Side>, Tuple<ICommand, ICommand>>();
-    }
-
-  public void RegisterCommand(Tuple<ICollidable, ICollidable, Side> collisionType, Tuple<ICommand, ICommand> commands)
     {
-           commandDictionary.Add(collisionType, commands);
+
+        enemyPlayerDict = new Dictionary<Tuple<List<ICharacter>, List<IEnemies>, Side>, Tuple<ICommand, ICommand>>();
+        playerPlayerDict = new Dictionary<Tuple<List<ICharacter>, List<ICharacter>, Side>, Tuple<ICommand, ICommand>>();
+        playerBlockDict = new Dictionary<Tuple<List<ICharacter>, List<IBlock>, Side>, Tuple<ICommand, ICommand>>();
+        enemiesBlockDict = new Dictionary<Tuple<List<IEnemies>, List<IBlock>, Side>, Tuple<ICommand, ICommand>>();
+
     }
 }
