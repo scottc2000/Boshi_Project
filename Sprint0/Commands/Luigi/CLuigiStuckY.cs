@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Commands
 {
-    internal class CLuigiStuck : ICommand
+    internal class CLuigiStuckY : ICommand
     {
        
         private Sprint0 mySprint0;
         private ICharacter luigi;
 
-        public CLuigiStuck(Sprint0 Sprint0)
+        public CLuigiStuckY(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }

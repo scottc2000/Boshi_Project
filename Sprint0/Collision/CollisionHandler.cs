@@ -1,4 +1,5 @@
-﻿using Sprint0.Interfaces;
+﻿using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
 using Sprint0.Items;
 using System;
 using System.Collections.Generic;
@@ -53,8 +54,28 @@ namespace Sprint0.Collision
                 {
                     if (character.destination.Intersects(character1.destination) && !(character.Equals(character1))) {
 
-                        register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item1.Execute();
-                        register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item2.Execute();
+                        if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
+                        {
+                            register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item2.Execute();
+
+                        }
+                        else
+                        {
+                            if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
+                            {
+
+                                // if object above
+                                ;
+                            }
+
+                            else
+                            {
+
+                                // if object below
+                                ;
+                            }
+                        }
 
                         Console.WriteLine("HIT");
                     }
