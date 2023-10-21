@@ -1,42 +1,76 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
+using static Sprint0.Sprites.ItemData;
 
 namespace Sprint0.Sprites
 {
-    internal class ItemSpriteFactory
+    public class ItemSpriteFactory
     {
-        private ContentManager content;
-        private GameTime gameTime;
         Item item;
 
         public Dictionary<String, Rectangle> itemAndRectangle;
         public Dictionary<String, Rectangle[]> itemAndFrames;
         String spriteType;
         public Texture2D texture;
-        Vector2 position;
 
-        public ItemSpriteFactory(ContentManager content, Item item, GameTime gameTime)
+        //private JsonElement itemData;
+        private Root deserializedItemData;
+
+        AniItemSprite generatedItem;
+
+        public ItemSpriteFactory(Item item)
         {
-            this.content = content;
-            this.gameTime = gameTime;
             this.item = item;
             itemAndRectangle = new Dictionary<String, Rectangle>();
             itemAndFrames = new Dictionary<String, Rectangle[]>();
+
+            StreamReader r = new StreamReader("itemdata.json");
+            string itemdatajson = r.ReadToEnd();
+
+            deserializedItemData = JsonSerializer.Deserialize<Root>(itemdatajson);
         }
 
-        public void LoadTextures()
+        public void LoadTextures(ContentManager content)
         {
             texture = content.Load<Texture2D>("NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs");
         }
 
+        public Rectangle[] generateSprites(List<List<int>> sheetpos, List<int> hitbox)
+        {
+            Rectangle[] myRect = new Rectangle[sheetpos.Count];
+
+            for (int i = 0; i < sheetpos.Count; i++)
+            {
+                myRect[i] = new Rectangle(sheetpos[i][0], sheetpos[i][1], hitbox[0], hitbox[1]);
+            }
+
+            return myRect;
+        }
+
+        public AniItemSprite returnSprite(string spriteType)
+        {
+            string spriteName = "X";
+
+            foreach (Sprite n in deserializedItemData.itemJSON.Sprites)
+            {
+                System.Diagnostics.Debug.WriteLine("pos: " + n.spritesheet_pos);
+                if (string.Equals(n.name, spriteType))
+                    {
+                        generatedItem.spriteFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                    System.Diagnostics.Debug.WriteLine("name: " + n.name);
+                        spriteName = n.name;
+                    }
+            }
+
+            return new AniItemSprite(this, item, spriteName);
+        }
+
+        /*
         public void RegisterSprite()
         {
             //Non-Animated Sprites
@@ -97,5 +131,6 @@ namespace Sprint0.Sprites
         {
             return new AniItemSprite(this, item, "Shoe");
         }
+        */
     }
 }

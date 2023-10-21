@@ -55,6 +55,14 @@
     <Compile Include="Commands\Luigi\CLuigiRaccoon.cs" />
     <Compile Include="Commands\Luigi\CReleasedLuigi.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="itemdata.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Update="itemdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
+	</None>
+  </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
     <Exec Command="dotnet tool restore" />

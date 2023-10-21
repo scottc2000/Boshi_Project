@@ -12,16 +12,22 @@ namespace Sprint0.Sprites.Item_Sprites
 {
     internal class Tanooki : ISprite
     {
+        private Item item;
+        private ItemSpriteFactory spriteFactory;
+
+        public Tanooki(Item item, ItemSpriteFactory spriteFactory)
+        {
+            this.item = item;
+            this.spriteFactory = spriteFactory;
+        }
         public void Update(GameTime gameTime)
         {
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            //Texture2D tanooki = content.Load<Texture2D>("NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs");
-
-            //spriteBatch.Draw(tanooki, new Vector2(100, 100), new Rectangle(19, 42, 16, 16), Color.White);
-
+            item.setToonki();
+            item.aniSprite = spriteFactory.returnSprite("Tanooki");
         }
     }
 }

@@ -13,42 +13,46 @@ namespace Sprint0.Sprites
     {
         public enum ItemSelect { RedMushroom, OneUpMushroom, FireFlower, Leaf, Star, Frog, Tanooki, Hammer, Shoe };
         public Vector2 position;
+        private Vector2 gravity;
+        private Vector2 velocity;
 
-        private AniItemSprite aniSprite;
-        private NonAniItemSprite nonAniSprite;
-        private ISprite RedMushroom;
-        private ISprite OneUpMushroom;
-        private ISprite FireFlower;
-        private ISprite Leaf;
-        private ISprite Star;
-        private ISprite Frog;
-        private ISprite Tanooki;
-        private ISprite Hammer;
-        private ISprite Shoe;
+        public AniItemSprite aniSprite;
+        //private NonAniItemSprite nonAniSprite;
+        private ISprite RedMushroomItem;
+        private ISprite OneUpMushroomItem;
+        private ISprite FireFlowerItem;
+        private ISprite LeafItem;
+        private ISprite StarItem;
+        private ISprite FrogItem;
+        private ISprite TanookiItem;
+        private ISprite HammerItem;
+        private ISprite ShoeItem;
         private ItemSpriteFactory spriteFactory;
 
-        private int itemIndex = 0;
+        //private int itemIndex = 0;
         private int itemCount;
-        private ItemSelect itemSelect;
+        public ItemSelect itemSelect;
 
         private float timer = 0f;
         private int interval = 50;
         private int itemSpeed = 3;
-        private bool moveRight = true;
+        private bool moveRight = false;
 
         public Item(Sprint0 game, GameTime gametime)
         {
             position = new Vector2(100, 100);
-            spriteFactory = new ItemSpriteFactory(game.Content, this, gametime);
-            spriteFactory.RegisterSprite();
-            spriteFactory.LoadTextures();
+            spriteFactory = new ItemSpriteFactory(this);
+            //spriteFactory.RegisterSprite();
+            spriteFactory.LoadTextures(game.Content);
             itemCount += spriteFactory.itemAndRectangle.Count;
             itemCount += spriteFactory.itemAndFrames.Count;
-            aniSprite = new AniItemSprite(spriteFactory, this, "Star");
-            nonAniSprite = new NonAniItemSprite(spriteFactory, this, "RedMushroom");
+            aniSprite = spriteFactory.returnSprite("RedMushroom");
+            itemSelect = ItemSelect.RedMushroom;
+            //nonAniSprite = new NonAniItemSprite(spriteFactory, this, "RedMushroom");
 
         }
 
+        /*
         public void LoadItems()
         {
             RedMushroom = spriteFactory.createRedMushroom();
@@ -62,7 +66,54 @@ namespace Sprint0.Sprites
             Shoe = spriteFactory.createShoe();
 
         }
+        */
 
+        public void setRedMushroom()
+        {
+            itemSelect = ItemSelect.RedMushroom;
+        }
+
+        public void setOneUpMushroom()
+        {
+            itemSelect = ItemSelect.OneUpMushroom;
+        }
+
+        public void setFireFlower()
+        {
+            itemSelect = ItemSelect.FireFlower;
+        }
+
+        public void setLeaf()
+        {
+            itemSelect = ItemSelect.Leaf;
+        }
+
+        public void setStar()
+        {
+            itemSelect = ItemSelect.Star;
+        }
+
+        public void setFrog()
+        {
+            itemSelect = ItemSelect.Frog;
+        }
+
+        public void setToonki()
+        {
+            itemSelect = ItemSelect.Tanooki;
+        }
+
+        public void setHammer()
+        {
+            itemSelect = ItemSelect.Hammer;
+        }
+
+        public void setShoe()
+        {
+            itemSelect = ItemSelect.Shoe;
+        }
+
+        /*
         public void incrementItem()
         {
             itemIndex++;
@@ -80,6 +131,7 @@ namespace Sprint0.Sprites
                 itemIndex = itemCount - 1;
             }
         }
+        */
 
         public void UpdatePos(GameTime gameTime)
         {
@@ -107,52 +159,45 @@ namespace Sprint0.Sprites
 
         public void Update(GameTime gameTime)
         {
-            Shoe.Update(gameTime);
-            Star.Update(gameTime);
+            aniSprite.Update(gameTime);
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            switch (itemIndex)
+            /*
+            switch (itemSelect)
             {
-                case 0:
-                    RedMushroom.Draw(spriteBatch);
-                    itemSelect = ItemSelect.RedMushroom;
+                case ItemSelect.RedMushroom:
+                    RedMushroomItem.Draw(spriteBatch);
                     break;
-                case 1:
-                    OneUpMushroom.Draw(spriteBatch);
-                    itemSelect = ItemSelect.OneUpMushroom;
+                case ItemSelect.OneUpMushroom:
+                    OneUpMushroomItem.Draw(spriteBatch);
                     break;
-                case 2:
-                    Leaf.Draw(spriteBatch);
-                    itemSelect = ItemSelect.Leaf;
+                case ItemSelect.Leaf:
+                    LeafItem.Draw(spriteBatch);
                     break;
-                case 3:
-                    FireFlower.Draw(spriteBatch);
-                    itemSelect = ItemSelect.FireFlower;
+                case ItemSelect.FireFlower:
+                    FireFlowerItem.Draw(spriteBatch);
                     break;
-                case 4:
-                    Star.Draw(spriteBatch);
-                    itemSelect = ItemSelect.Star;
+                case ItemSelect.Star:
+                    StarItem.Draw(spriteBatch);
                     break;
-                case 5:
-                    Frog.Draw(spriteBatch);
-                    itemSelect = ItemSelect.Frog;
+                case ItemSelect.Frog:
+                    FrogItem.Draw(spriteBatch);
                     break;
-                case 6:
-                    Tanooki.Draw(spriteBatch);
-                    itemSelect = ItemSelect.Tanooki;
+                case ItemSelect.Tanooki:
+                    TanookiItem.Draw(spriteBatch);
                     break;
-                case 7:
-                    Hammer.Draw(spriteBatch);
-                    itemSelect = ItemSelect.Hammer;
+                case ItemSelect.Hammer:
+                    HammerItem.Draw(spriteBatch);
                     break;
-                case 8:
-                    Shoe.Draw(spriteBatch);
-                    itemSelect = ItemSelect.Shoe;
+                case ItemSelect.Shoe:
+                    ShoeItem.Draw(spriteBatch);
                     break;
             }
+            */
+            aniSprite.Draw(spriteBatch);
         }
     }
 }

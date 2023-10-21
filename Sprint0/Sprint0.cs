@@ -118,7 +118,7 @@ namespace Sprint0
 
         protected override void LoadContent()
         {
-            item.LoadItems();
+            //item.LoadItems();
             block.LoadBlocks();
 
             spriteDelay = TimeSpan.FromMilliseconds(125);

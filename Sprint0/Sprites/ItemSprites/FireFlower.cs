@@ -7,24 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0.Sprites.Item_Sprites
 {
-    internal class FireFlower : ISprite
+    internal class FireFlower : IItem, ISprite
     {
-        private ItemSpriteFactory factory;
-        private NonAniItemSprite sprite;
-        private int width = 16;
-        private int height = 16;
+        private ItemSpriteFactory spriteFactory;
+        private Item item;
+
+        public FireFlower(Item item, ItemSpriteFactory spriteFactory)
+        {
+            this.spriteFactory = spriteFactory;
+            this.item = item;
+        }
+        
         public void Update(GameTime gameTime)
         {
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            //Rectangle position = new Rectangle((int)sprite.position.X, (int)sprite.position.Y, width, height);
-
-            //spriteBatch.Draw(factory.fireFlower, position, factory.fireFlowerRect, Color.White);
+            item.setFireFlower();
+            item.aniSprite = spriteFactory.returnSprite("FireFlower");
 
         }
     }

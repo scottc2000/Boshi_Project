@@ -234,3 +234,5 @@ C:\Users\Ben\Source\Repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\refi
 C:\Users\Ben\Source\Repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.pdb
 C:\Users\Ben\Source\Repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\Sprint0.genruntimeconfig.cache
 C:\Users\Ben\Source\Repos\scottc2000\Boshi_Project\Sprint0\obj\Debug\net6.0\ref\Sprint0.dll
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\Content\SpriteImages\Level 1-1 Background.xnb
+C:\Users\Jerrin W\source\repos\scottc2000\Boshi_Project\Sprint0\bin\Debug\net6.0\itemdata.json
