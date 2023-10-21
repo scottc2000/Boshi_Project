@@ -30,9 +30,9 @@ namespace Sprint0
 
         public void LoadCharacters()
         {
-            string marioFile = "Mario.json";
-            string marioString = File.ReadAllText(marioFile);
-            mario = JsonSerializer.Deserialize<Mario>(marioString)!;
+            //string marioFile = "Mario.json";
+            //string marioString = File.ReadAllText(marioFile);
+            //mario = JsonSerializer.Deserialize<Mario>(marioString)!;
         }
 
         public void LoadBackground()

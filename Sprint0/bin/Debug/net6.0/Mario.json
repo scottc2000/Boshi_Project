@@ -1,0 +1,7 @@
+"{
+        "MarioHealth": "Normal",
+        "MarioPose": "Idle",
+        "facingLeft": "true",
+        "xCoord": 150,
+        "yCoord" : 150
+}";

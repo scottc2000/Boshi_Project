@@ -57,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="itemdata.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-	<None Update="itemdata.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
-	</None>
+    <None Update="Mario.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

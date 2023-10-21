@@ -169,9 +169,9 @@ namespace Sprint0
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
 
-            Texture2D background = Content.Load<Texture2D>("SpriteImages/Level 1-1 Background");
-             Rectangle initialCamPos = new Rectangle(0, 0, 432, 632);
-            _spriteBatch.Draw(background, initialCamPos, Color.White);
+            //Texture2D background = Content.Load<Texture2D>("SpriteImages/Level 1-1 Background");
+            // Rectangle initialCamPos = new Rectangle(0, 0, 432, 632);
+            //_spriteBatch.Draw(background, initialCamPos, Color.White);
 
             _spriteBatch.End();
 

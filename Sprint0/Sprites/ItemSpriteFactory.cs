@@ -13,10 +13,12 @@ namespace Sprint0.Sprites
     {
         Item item;
 
-        public Dictionary<String, Rectangle> itemAndRectangle;
-        public Dictionary<String, Rectangle[]> itemAndFrames;
-        String spriteType;
+        public Dictionary<string, Rectangle> itemAndRectangle;
+        public Dictionary<string, Rectangle[]> itemAndFrames;
+        string spriteType;
+        string spriteName;
         public Texture2D texture;
+        private Rectangle[] currentFrames;
 
         //private JsonElement itemData;
         private Root deserializedItemData;
@@ -26,13 +28,14 @@ namespace Sprint0.Sprites
         public ItemSpriteFactory(Item item)
         {
             this.item = item;
-            itemAndRectangle = new Dictionary<String, Rectangle>();
-            itemAndFrames = new Dictionary<String, Rectangle[]>();
+            itemAndRectangle = new Dictionary<string, Rectangle>();
+            itemAndFrames = new Dictionary<string, Rectangle[]>();
 
             StreamReader r = new StreamReader("itemdata.json");
             string itemdatajson = r.ReadToEnd();
 
             deserializedItemData = JsonSerializer.Deserialize<Root>(itemdatajson);
+            spriteName = "";
         }
 
         public void LoadTextures(ContentManager content)
@@ -54,83 +57,24 @@ namespace Sprint0.Sprites
 
         public AniItemSprite returnSprite(string spriteType)
         {
-            string spriteName = "X";
+            
 
             foreach (Sprite n in deserializedItemData.itemJSON.Sprites)
             {
+                System.Diagnostics.Debug.WriteLine("name: " + n.name + "," + spriteName);
                 System.Diagnostics.Debug.WriteLine("pos: " + n.spritesheet_pos);
                 if (string.Equals(n.name, spriteType))
                     {
-                        generatedItem.spriteFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                    System.Diagnostics.Debug.WriteLine("name: " + n.name);
                         spriteName = n.name;
+                        System.Diagnostics.Debug.WriteLine("spriteName: " + spriteName);
+                        currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                        //System.Diagnostics.Debug.WriteLine("name: " + spriteName);
+                        //spriteName = n.name;
                     }
             }
 
-            return new AniItemSprite(this, item, spriteName);
+            return new AniItemSprite(this, item, spriteName, currentFrames);
         }
 
-        /*
-        public void RegisterSprite()
-        {
-            //Non-Animated Sprites
-            itemAndRectangle.Add("RedMushroom", new Rectangle(1, 24, 16, 16));
-            itemAndRectangle.Add("OneUpMushroom", new Rectangle(19, 24, 16, 16));
-            itemAndRectangle.Add("FireFlower", new Rectangle(37, 24, 16, 16));
-            itemAndRectangle.Add("Leaf", new Rectangle(55, 24, 16, 16));
-            itemAndRectangle.Add("Frog", new Rectangle(1, 42, 16, 16));
-            itemAndRectangle.Add("Tanooki", new Rectangle(19, 42, 16, 16));
-            itemAndRectangle.Add("Hammer", new Rectangle(37, 42, 16, 16));
-
-            //Animated Sprites
-            itemAndFrames.Add("Star", new Rectangle[] { new Rectangle(73, 24, 16, 16), new Rectangle(90, 24, 16, 16), new Rectangle(107, 24, 16, 16), new Rectangle(124, 24, 16, 16) });
-            itemAndFrames.Add("Shoe", new Rectangle[] { new Rectangle(55, 42, 16, 16), new Rectangle(72, 42, 16, 16) });
-        }
-
-        public ISprite createRedMushroom()
-        {
-            return new NonAniItemSprite(this, item, "RedMushroom");
-        }
-
-        public ISprite createOneUpMushroom()
-        {
-            return new NonAniItemSprite(this, item, "OneUpMushroom");
-        }
-
-        public ISprite createFireFlower()
-        {
-            return new NonAniItemSprite(this, item, "FireFlower");
-        }
-
-        public ISprite createLeaf()
-        {
-            return new NonAniItemSprite(this, item, "Leaf");
-        }
-
-        public ISprite createFrog()
-        {
-            return new NonAniItemSprite(this, item, "Frog");
-        }
-
-        public ISprite createTanooki()
-        {
-            return new NonAniItemSprite(this, item, "Tanooki");
-        }
-
-        public ISprite createHammer()
-        {
-            return new NonAniItemSprite(this, item, "Hammer");
-        }
-
-        public ISprite createStar()
-        {
-            return new AniItemSprite(this, item, "Star");
-        }
-
-        public ISprite createShoe()
-        {
-            return new AniItemSprite(this, item, "Shoe");
-        }
-        */
     }
 }

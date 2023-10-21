@@ -13,7 +13,7 @@ namespace Sprint0.Sprites
     {
         ItemSpriteFactory factory;
         Item item;
-        String itemString;
+        string itemString;
 
         private float timer = 0;
         private int interval = 50;
@@ -22,11 +22,12 @@ namespace Sprint0.Sprites
 
         private int width = 16, height = 16;
 
-        public AniItemSprite(ItemSpriteFactory factory, Item item, String itemString)
+        public AniItemSprite(ItemSpriteFactory factory, Item item, string itemString, Rectangle[] currentFrames)
         {
             this.factory = factory;
             this.itemString = itemString;
             this.item = item;
+            spriteFrames = currentFrames;
         }
 
         public void Update(GameTime gameTime)
