@@ -16,7 +16,7 @@ namespace Sprint0.Collision
         List<Item> Items;
         List<IBlock> Blocks;
         CollisionDictionraryRegister register;
-        Sprint0 sprint;
+       
 
         public CollisionHandler(Sprint0 sprint)
         {
@@ -24,7 +24,6 @@ namespace Sprint0.Collision
             Enemies = new List<IEnemies>();
             Items = new List<Item>();
             Blocks = new List<IBlock>();
-            this.sprint = sprint;
             register = new CollisionDictionraryRegister(sprint);
             
             register.generate();
@@ -55,6 +54,7 @@ namespace Sprint0.Collision
                     if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
                     {
 
+                        // if objects hit on x axis (left or right)
                         if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
                         {
                             register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();

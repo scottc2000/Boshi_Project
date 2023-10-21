@@ -5,6 +5,7 @@ namespace Sprint0.Interfaces
 {
 	public interface ICollidable
 	{
+        // destination rectangle which contains x, y , hitbox width (x) and height (y)
 		public Rectangle destination {get; set;}
 
 		public bool lefthit { get; set; }
