@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Characters;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using System;
@@ -16,6 +17,7 @@ namespace Sprint0.Collision
         List<Item> Items;
         List<IBlock> Blocks;
         CollisionDictionraryRegister register;
+        Rectangle blockHitbox;
 
 
         public CollisionHandler(Sprint0 sprint)
@@ -45,24 +47,22 @@ namespace Sprint0.Collision
 
                 foreach (IBlock block in Blocks)
                 {
-                    if (character.destination.Intersects(new Rectangle(block.x, block.y, block.width, block.height)))
+                    blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
+                    if (character.destination.Intersects(blockHitbox))
                     {
 
-                        if (Rectangle.Intersect(character.destination, new Rectangle(block.x, block.y, block.width, block.height)).Width <= Rectangle.Intersect(character.destination, new Rectangle(block.x, block.y, block.width, block.height)).Height)
+                        if (Rectangle.Intersect(character.destination, blockHitbox).Width <= Rectangle.Intersect(character.destination, blockHitbox).Height)
                         {
                             register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
-                            register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Left)].Item2.Execute();
 
                         }
-                        else if (Rectangle.Intersect(character.destination, new Rectangle(block.x, block.y, block.width, block.height)).Y < character.destination.Y)
+                        else if (Rectangle.Intersect(character.destination, blockHitbox).Y < character.destination.Y)
                         {
-
-                            // if object above
-                            ;
+                            register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
                         }
                         else
                         {
-
+                            
                             // if object below
                             ;
                         }
