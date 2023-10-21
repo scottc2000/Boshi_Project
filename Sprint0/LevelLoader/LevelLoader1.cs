@@ -6,6 +6,10 @@ using System.Text.Json;
 using Sprint0.Blocks;
 using static Sprint0.LevelLoader.Level1Data;
 using System.Collections;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using System;
+using System.Diagnostics;
 
 namespace Sprint0
 {
@@ -13,16 +17,20 @@ namespace Sprint0
     public class LevelLoader1
     {
         private Sprint0 sprint0;
+        private SpriteBatch spriteBatch;
+        private ContentManager content;
 
         private JsonElement levelData;
         private Root data;
 
         public ObjectManager objectManager;
 
-        public LevelLoader1(Sprint0 sprint0)
+        public LevelLoader1(Sprint0 sprint0, ObjectManager objectManager, SpriteBatch spriteBatch, ContentManager content)
         {
             this.sprint0 = sprint0;
-            objectManager = new ObjectManager(this.sprint0);
+            this.objectManager = objectManager;
+            this.spriteBatch = spriteBatch;
+            this.content = content;
         }
         public void Load(string jsonFilePath)
         {
@@ -41,31 +49,34 @@ namespace Sprint0
         public void Load(Root data)
         {
 
-            foreach(LevelLoader.Level1Data.Block block in data.Blocks)
+            foreach (Block block in data.Blocks)
             {
                 switch (block.Name)
                 {
                     case "floor":
-                        //floor.add(new Floor(block.x, block.y, block.width, block.height)); 
+                        objectManager.Blocks.Add(new Floor(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "large_block":
-                        //largeblock.add(new LargeBlock(block.x, block.y, block.width, block.height));
+                        objectManager.Blocks.Add(new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "yellow_brick":
-
+                        objectManager.Blocks.Add(new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "wood_blocks":
-
+                        objectManager.Blocks.Add(new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "clouds":
-
+                        objectManager.Blocks.Add(new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                     case "pipe":
-
+                        objectManager.Blocks.Add(new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        break;
+                    case "question_block":
+                        objectManager.Blocks.Add(new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                 }
             }
-            foreach(Item item in data.Items)
+            foreach (Item item in data.Items)
             {
                 // need a RedMushroom.c class that inherits from IItem
                // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
@@ -85,6 +96,11 @@ namespace Sprint0
                 }
             }*/
 
+        }
+
+        public List<IBlock> getBlockList()
+        {
+            return objectManager.Blocks;
         }
 
     }

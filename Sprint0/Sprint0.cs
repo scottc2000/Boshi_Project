@@ -33,7 +33,6 @@ namespace Sprint0
         public ISprite blockSprite;
         public Item item;
 
-        public Block block;
         public TimeSpan spriteDelay, timeSinceLastSprite;
 
         //List just for demo
@@ -59,7 +58,7 @@ namespace Sprint0
 
             camera = new Camera1(GraphicsDevice.Viewport);
 
-            block = new Block(this, _spriteBatch, Content);
+            
             objects = new ObjectManager(this);
 
             terrain = new Terrain(this);
@@ -81,9 +80,6 @@ namespace Sprint0
             */
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
-            //Blocks
-            SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
-            SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
 
             // Items
             SpriteController.RegisterCommand(Keys.V, new previousItem(item));
@@ -102,9 +98,8 @@ namespace Sprint0
         protected override void LoadContent()
         {
             item.LoadItems();
-            block.LoadBlocks();
 
-            levelLoader = new LevelLoader1(this);
+            levelLoader = new LevelLoader1(this, objects, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
@@ -136,7 +131,6 @@ namespace Sprint0
                 SpriteController.Update();
                 timeSinceLastSprite = TimeSpan.Zero;
             }
-            block.Update(gameTime);
 
             camera.Update(gameTime, objects.Players[0]);
 
@@ -151,7 +145,6 @@ namespace Sprint0
 
             terrain.Draw(_spriteBatch);
             objects.Draw(_spriteBatch);
-            block.Draw(_spriteBatch);
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
             

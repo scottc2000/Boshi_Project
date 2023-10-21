@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using Sprint0.Characters;
 using Sprint0.Enemies;
 using Sprint0.Collision;
+using System;
+using System.Diagnostics;
 
 namespace Sprint0.GameMangager
 {
@@ -28,7 +30,7 @@ namespace Sprint0.GameMangager
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
 
-            // Blocks.Add(new Block(this, _spriteBatch, Content);)
+            
             Players.Add(new Mario(sprint));
             Players.Add(new Luigi(sprint));
 
@@ -36,7 +38,7 @@ namespace Sprint0.GameMangager
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach(var block in Blocks)
+            foreach (var block in Blocks)
             {
                 block.Draw(spriteBatch);
             }
