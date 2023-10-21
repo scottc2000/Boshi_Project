@@ -1,0 +1,609 @@
+{
+  "nonanimated_block_sprites": [
+    {
+      "name": "wood_floor_left",
+      "x": 886,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_floor_middle",
+      "x": 920,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_floor_right",
+      "x": 954,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_side_left",
+      "x": 886,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_side_middle",
+      "x": 920,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "wood_side_right",
+      "x": 954,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_pipe_topLeft",
+      "x": 138,
+      "y": 70,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_pipe_topRight",
+      "x": 172,
+      "y": 70,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_pipe_sideLeft",
+      "x": 140,
+      "y": 104,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_pipe_sideRight",
+      "x": 172,
+      "y": 104,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "greenHill_leftSide",
+      "x": 614,
+      "y": 648,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "greenHill_rightSide",
+      "x": 648,
+      "y": 648,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "greenHill_leftTop",
+      "x": 614,
+      "y": 614,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "greenHill_rightTop",
+      "x": 614,
+      "y": 614,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "greenHill_leftIntersect",
+      "x": 614,
+      "y": 682,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "greenHill_rightIntersect",
+      "x": 648,
+      "y": 682,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "bush",
+      "x": 750,
+      "y": 648,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "cloud_block",
+      "x": 1396,
+      "y": 2,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "cloud_topLeft",
+      "x": 1430,
+      "y": 2,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "cloud_topMiddle",
+      "x": 1464,
+      "y": 2,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "cloud_topRight",
+      "x": 1498,
+      "y": 2,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "cloud_bottomLeft",
+      "x": 1430,
+      "y": 36,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "cloud_bottomMiddle",
+      "x": 1464,
+      "y": 36,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "flower_outline",
+      "x": 1600,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "star_outline",
+      "x": 1634,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "mushroom_outline",
+      "x": 1668,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "cloud_bottomRight",
+      "x": 1498,
+      "y": 36,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_topLeft",
+      "x": 1838,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_topMiddle",
+      "x": 1872,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_topRight",
+      "x": 1906,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_middleLeft",
+      "x": 1838,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_middleMiddle",
+      "x": 1872,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_middleRight",
+      "x": 1906,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_bottomLeft",
+      "x": 1838,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_bottomMiddle",
+      "x": 1872,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "pink_block_bottomRight",
+      "x": 1906,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_topLeft",
+      "x": 1940,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_topMiddle",
+      "x": 1974,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_topRight",
+      "x": 2008,
+      "y": 274,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_middleLeft",
+      "x": 1940,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_middleMiddle",
+      "x": 1974,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_middleRight",
+      "x": 2008,
+      "y": 308,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_bottomLeft",
+      "x": 1940,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_bottomMiddle",
+      "x": 1974,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "blue_block_bottomRight",
+      "x": 2008,
+      "y": 342,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_topLeft",
+      "x": 1838,
+      "y": 376,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_topMiddle",
+      "x": 1872,
+      "y": 376,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_topRight",
+      "x": 1906,
+      "y": 376,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_middleLeft",
+      "x": 1838,
+      "y": 410,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_middlemiddle",
+      "x": 1872,
+      "y": 410,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_middleRight",
+      "x": 1906,
+      "y": 410,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_bottomLeft",
+      "x": 1838,
+      "y": 444,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_bottomMiddle",
+      "x": 1872,
+      "y": 444,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "green_block_bottomRight",
+      "x": 1906,
+      "y": 444,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_topLeft",
+      "x": 1940,
+      "y": 376,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_topMiddle",
+      "x": 1974,
+      "y": 376,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_topRight",
+      "x": 2008,
+      "y": 376,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_middleLeft",
+      "x": 1940,
+      "y": 410,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_middlemiddle",
+      "x": 1974,
+      "y": 410,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_middleRight",
+      "x": 2008,
+      "y": 410,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_bottomLeft",
+      "x": 1940,
+      "y": 444,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_bottomMiddle",
+      "x": 1974,
+      "y": 444,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "white_block_bottomRight",
+      "x": 2008,
+      "y": 444,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "block_shadow_bottomLeft",
+      "x": 2042,
+      "y": 460,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "block_shadow_bottomRight",
+      "x": 2078,
+      "y": 460,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "block_shadow_topRight",
+      "x": 2078,
+      "y": 442,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "block_shadow_side",
+      "x": 2060,
+      "y": 460,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "name": "yellow_brick",
+      "x": 2212,
+      "y": 138,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "empty_question_block",
+      "x": 2416,
+      "y": 2,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_bonus_pipe_topLeft",
+      "x": 2,
+      "y": 138,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_bonus_pipe_topRight",
+      "x": 36,
+      "y": 138,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_bonus_pipe_sideLeft",
+      "x": 2,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "vertical_bonus_pipe_sideRight",
+      "x": 36,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "bonus_block",
+      "x": 2110,
+      "y": 376,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "black",
+      "x": 1396,
+      "y": 70,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "goalTransition_convex",
+      "x": 1396,
+      "y": 138,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "goalTransition_concave",
+      "x": 1396,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "goalHill_leftSide",
+      "x": 1430,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "goalHill_rightSide",
+      "x": 1464,
+      "y": 172,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "goalHill_leftTop",
+      "x": 1430,
+      "y": 138,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "goalHill_rightTop",
+      "x": 1464,
+      "y": 138,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "goal",
+      "x": 1300,
+      "y": 212,
+      "width": 52,
+      "height": 52
+    }
+
+  ],
+  "animated_block_sprites": [
+    {
+      "name": "question_block",
+      "frames": 4,
+      "x1": 2280,
+      "y1": 2,
+      "x2": 2314,
+      "y2": 2,
+      "x3": 2348,
+      "y3": 2,
+      "x4": 2382,
+      "y4": 2,
+      "width": 32,
+      "height": 32
+    },
+    {
+      "name": "flashing_yellow_brick",
+      "frames": 4,
+      "x1": 2076,
+      "y1": 70,
+      "x2": 2110,
+      "y2": 70,
+      "x3": 2144,
+      "y3": 70,
+      "x4": 2178,
+      "y4": 70,
+      "width": 32,
+      "height": 32
+    }
+  ]
+}

@@ -11,8 +11,8 @@ namespace Sprint0.Commands.Blocks
 {
     internal class BlockPrev : ICommand
     {
-        private Block block;
-        public BlockPrev(Block block)
+        private Sprint2Block block;
+        public BlockPrev(Sprint2Block block)
         {
             this.block = block;
         }

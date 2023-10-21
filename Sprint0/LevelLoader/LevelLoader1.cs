@@ -6,6 +6,10 @@ using System.Text.Json;
 using Sprint0.Blocks;
 using static Sprint0.LevelLoader.Level1Data;
 using System.Collections;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using Sprint0.Sprites;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0
 {
@@ -13,15 +17,21 @@ namespace Sprint0
     public class LevelLoader1
     {
         private Sprint0 sprint0;
+        private SpriteBatch spriteBatch;
+        private ContentManager content;
 
         private JsonElement levelData;
         private Root data;
 
         public ObjectManager objectManager;
 
-        public LevelLoader1(Sprint0 sprint0)
+        private ISprite block1;
+
+        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content)
         {
             this.sprint0 = sprint0;
+            this.spriteBatch = spriteBatch;
+            this.content = content;
             objectManager = new ObjectManager(this.sprint0);
         }
         public void Load(string jsonFilePath)
@@ -41,27 +51,30 @@ namespace Sprint0
         public void Load(Root data)
         {
 
-            foreach(LevelLoader.Level1Data.Block block in data.Blocks)
+            foreach(Block block in data.Blocks)
             {
                 switch (block.Name)
                 {
                     case "floor":
-                        //floor.add(new Floor(block.x, block.y, block.width, block.height)); 
+                        objectManager.Blocks.Add(new Floor(block.x, block.y, block.width, block.height)); 
                         break;
                     case "large_block":
-                        //largeblock.add(new LargeBlock(block.x, block.y, block.width, block.height));
+                        objectManager.Blocks.Add(new LargeBlock(block.x, block.y, block.width, block.height));
                         break;
                     case "yellow_brick":
-
+                        objectManager.Blocks.Add(new YellowBrick(spriteBatch, block.x, block.y, block.width, block.height));
                         break;
                     case "wood_blocks":
-
+                        objectManager.Blocks.Add(new WoodBlocks(block.x, block.y, block.width, block.height));
                         break;
                     case "clouds":
-
+                        objectManager.Blocks.Add(new Clouds(block.x, block.y, block.width, block.height));
                         break;
                     case "pipe":
-
+                        objectManager.Blocks.Add(new Pipe(block.x, block.y, block.width, block.height));
+                        break;
+                    case "question_block":
+                        objectManager.Blocks.Add(new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
                 }
             }
@@ -85,6 +98,11 @@ namespace Sprint0
                 }
             }*/
 
+        }
+
+        public List<IBlock> getBlockList()
+        {
+            return objectManager.Blocks;
         }
 
     }

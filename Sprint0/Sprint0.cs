@@ -15,6 +15,7 @@ using Sprint0.Items;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
+using Sprint0.LevelLoader;
 namespace Sprint0
 {
     public class Sprint0 : Game
@@ -31,10 +32,10 @@ namespace Sprint0
         public ICharacter mario;
         public ICharacter luigi;
 
+        public List<IBlock> blockList;
         public ISprite blockSprite;
         public Item item;
 
-        public Block block;
         public TimeSpan spriteDelay, timeSinceLastSprite;
 
         //List just for demo
@@ -56,7 +57,7 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            block = new Block(this, _spriteBatch, Content);
+            
 
             mario = new Mario(this);
             luigi = new Luigi(this);
@@ -79,10 +80,6 @@ namespace Sprint0
             */
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
 
-            //Blocks
-            SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
-            SpriteController.RegisterCommand(Keys.Y, new BlockNext(block));
-
             // Items
             SpriteController.RegisterCommand(Keys.V, new previousItem(item));
             SpriteController.RegisterCommand(Keys.B, new nextItem(item));
@@ -97,9 +94,9 @@ namespace Sprint0
         protected override void LoadContent()
         {
             item.LoadItems();
-            block.LoadBlocks();
+            
 
-            levelLoader = new LevelLoader1(this);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
@@ -130,7 +127,11 @@ namespace Sprint0
                 SpriteController.Update();
                 timeSinceLastSprite = TimeSpan.Zero;
             }
-            block.Update(gameTime);
+            blockList = levelLoader.getBlockList();
+            foreach (IBlock block in blockList)
+            {
+                block.Update(gameTime);
+            }
 
 
 
@@ -146,7 +147,11 @@ namespace Sprint0
             terrain.Draw(_spriteBatch);
             mario.Draw(_spriteBatch);
             luigi.Draw(_spriteBatch);
-            block.Draw(_spriteBatch);
+            blockList = levelLoader.getBlockList();
+            foreach(IBlock block in blockList)
+            {
+                block.Draw(_spriteBatch);
+            }
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
 
