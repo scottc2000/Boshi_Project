@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using System;
 using System.ComponentModel.Design;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -24,7 +24,10 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioJumpState(mario);
         }
+        public void Fall()
+        {
 
+        }
         public void Crouch()
         {
             mario.State = new MarioCrouchState(mario);
@@ -48,30 +51,35 @@ namespace Sprint0.Characters.MarioStates
         public void Update(GameTime gametime)
         {
             mario.pose = Mario.MarioPose.Throwing;
-            if (mario.facingLeft && mario.health == Mario.MarioHealth.Fire)
-            {
-                if (mario.currentSprite.spriteName.Equals("FireMarioThrowLeft"))
-                {
 
-                    mario.currentSprite.Update(gametime);
+            if (mario.health == Mario.MarioHealth.Fire)
+            {
+                if (mario.facingLeft)
+                {
+                    if (mario.currentSprite.spriteName.Equals("MarioThrowLeft"))
+                    {
+
+                        mario.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioThrowLeft");
+                    }
                 }
                 else
                 {
-                    mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioThrowLeft");
-                }
-            }
-            else
-            {
-                if (mario.currentSprite.spriteName.Equals("FireMarioThrowRight"))
-                {
+                    if (mario.currentSprite.spriteName.Equals("MarioThrowRight"))
+                    {
 
-                    mario.currentSprite.Update(gametime);
-                }
-                else
-                {
-                    mario.currentSprite = mario.mySpriteFactory.returnSprite("FireMarioThrowRight");
+                        mario.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioThrowRight");
+                    }
                 }
             }
+
         }
     }
 }

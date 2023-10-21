@@ -14,6 +14,11 @@ namespace Sprint0.Enemies
         public Sprint0 mySprint;
         public bool facingLeft { get; set;}
 
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+
         public ISprite goombaSprite;
         public Texture2D goombaTexture;
 
@@ -49,9 +54,9 @@ namespace Sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            goombaSprite.Draw(spriteBatch);
+            goombaSprite.Draw(spriteBatch, position);
         }
-
+        
         public void Update(GameTime gameTime)
         {
             goombaSprite.Update(gameTime);

@@ -12,14 +12,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Characters\LuigiStates\**" />
+    <Compile Remove="Commands\Collision\**" />
     <Compile Remove="Commands\Luigi\**" />
     <Compile Remove="Sprites\Luigi\**" />
     <EmbeddedResource Remove="Characters\LuigiStates\**" />
+    <EmbeddedResource Remove="Commands\Collision\**" />
     <EmbeddedResource Remove="Commands\Luigi\**" />
     <EmbeddedResource Remove="Sprites\Luigi\**" />
     <None Remove="Characters\LuigiStates\**" />
+    <None Remove="Commands\Collision\**" />
     <None Remove="Commands\Luigi\**" />
     <None Remove="Sprites\Luigi\**" />
+    <None Remove="Collision\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -32,19 +36,15 @@
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Characters\LuigiStates\" />
-    <Folder Include="Commands\Luigi\" />
+    <Folder Include="Collision\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\LuigiStates\LuigiCrouchState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiIdleState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
-    <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
     <Compile Include="Commands\Luigi\CLuigiBig.cs" />
     <Compile Include="Commands\Luigi\CLuigiCrouch.cs" />
     <Compile Include="Commands\Luigi\CLuigiFire.cs" />
@@ -53,7 +53,48 @@
     <Compile Include="Commands\Luigi\CLuigiMoveRight.cs" />
     <Compile Include="Commands\Luigi\CLuigiNormal.cs" />
     <Compile Include="Commands\Luigi\CLuigiRaccoon.cs" />
+    <Compile Include="Commands\Luigi\CLuigiStop.cs" />
     <Compile Include="Commands\Luigi\CReleasedLuigi.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiCrouchState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiIdleState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
+    <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="LevelLoader\Level1Data.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="JSON\level1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Update="JSON\level1.json %28copy%29.json">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+    <None Update="JSON\playerdata.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\playerdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="playerdata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+     <None Update="JSON\projectiledata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="projectiledata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JSON\blockdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="blockdata %28copy%29.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

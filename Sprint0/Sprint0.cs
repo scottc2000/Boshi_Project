@@ -1,32 +1,34 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Sprint0.Characters;
+using Sprint0.Background;
+using Sprint0.Blocks;
+using Sprint0.Camera;
+using Sprint0.Collision;
 using Sprint0.Commands;
-using Sprint0.Commands.Mario;
-using Sprint0.Controllers;
-using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Enemies;
-using Sprint0.Blocks;
-using System;
-using System.ComponentModel;
+using Sprint0.Controllers;
 using Sprint0.Enemies;
+using Sprint0.GameMangager;
+using Sprint0.Interfaces;
+using Sprint0.Items;
+using Sprint0.Sprites;
+using System;
 using System.Collections.Generic;
-
 namespace Sprint0
 {
     public class Sprint0 : Game
     {
-        private GraphicsDeviceManager _graphics;
+        public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private BlockSpriteFactory spriteFactory;
-        private GameTime gametime;
+        public GameTime gametime;
+        public ObjectManager objects;
 
-        public ICharacter mario;
-        public ICharacter luigi;
+        private LevelLoader1 levelLoader;
+        Camera1 camera;
+        public Terrain terrain;
 
         public ISprite blockSprite;
         public Item item;
@@ -42,6 +44,7 @@ namespace Sprint0
         IController KeyboardController;
         IController SpriteController;
 
+        CollisionHandler collision; 
 
         public Sprint0()
         {
@@ -53,10 +56,13 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            block = new Block(this, _spriteBatch, Content);
 
-            mario = new Mario(this);
-            luigi = new Luigi(this);
+            camera = new Camera1(GraphicsDevice.Viewport);
+
+            block = new Block(this, _spriteBatch, Content);
+            objects = new ObjectManager(this);
+
+            terrain = new Terrain(this);
 
             //List used for demo cycling
             enemyList.Add(new Goomba(this));
@@ -67,38 +73,13 @@ namespace Sprint0
             item = new Item(this, gametime);
 
             KeyboardController = new KeyboardController(this);
-            SpriteController = new KeyboardController(this);
 
+            SpriteController = new KeyboardController(this);
+            /*
             //Keyboard command mappings
             KeyboardController.RegisterCommand(Keys.Escape, new Exit(this));
+            */
             KeyboardController.RegisterCommand(Keys.D0, new Reset(this, gametime, Content));
-
-            // Mario
-            KeyboardController.RegisterCommand(Keys.W, new CMarioJump(this));
-            KeyboardController.RegisterCommand(Keys.A, new CMarioMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.S, new CMarioCrouch(this));
-            KeyboardController.RegisterCommand(Keys.D, new CMarioMoveRight(this));
-            KeyboardController.RegisterCommand(Keys.E, new CMarioThrow(this));      // Still needs projectile
-
-            KeyboardController.RegisterCommand(Keys.Q, new CDeadMario(this));
-            KeyboardController.RegisterCommand(Keys.D4, new CMarioRaccoon(this));
-            KeyboardController.RegisterCommand(Keys.D3, new CMarioFire(this));
-            KeyboardController.RegisterCommand(Keys.D2, new CMarioBig(this));
-            KeyboardController.RegisterCommand(Keys.D1, new CMarioNormal(this));
-
-
-
-            // Luigi
-            KeyboardController.RegisterCommand(Keys.I, new CLuigiJump(this));
-            KeyboardController.RegisterCommand(Keys.J, new CLuigiMoveLeft(this));
-            KeyboardController.RegisterCommand(Keys.K, new CLuigiCrouch(this));
-            KeyboardController.RegisterCommand(Keys.L, new CLuigiMoveRight(this));
-
-            KeyboardController.RegisterCommand(Keys.D8, new CLuigiRaccoon(this));
-            KeyboardController.RegisterCommand(Keys.D7, new CLuigiFire(this));
-            KeyboardController.RegisterCommand(Keys.D6, new CLuigiBig(this));
-            KeyboardController.RegisterCommand(Keys.D5, new CLuigiNormal(this));
-
 
             //Blocks
             SpriteController.RegisterCommand(Keys.T, new BlockPrev(block));
@@ -112,6 +93,9 @@ namespace Sprint0
             SpriteController.RegisterCommand(Keys.O, new EnemyPrev(this));
             SpriteController.RegisterCommand(Keys.P, new EnemyNext(this));
 
+            // collision
+            collision = new CollisionHandler(this);
+
             base.Initialize();
         }
 
@@ -119,6 +103,9 @@ namespace Sprint0
         {
             item.LoadItems();
             block.LoadBlocks();
+
+            levelLoader = new LevelLoader1(this);
+            levelLoader.Load("JSON/level1.json");
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
@@ -131,8 +118,11 @@ namespace Sprint0
             KeyboardController.Update();
             //Just for demo
             enemies = enemyList[enemyIndex];
-            mario.Update(gameTime);
-            luigi.Update(gameTime);
+            
+
+            terrain.Update(gameTime);
+
+            objects.Update(gameTime, collision);
 
             enemies.Update(gameTime);
 
@@ -148,7 +138,7 @@ namespace Sprint0
             }
             block.Update(gameTime);
 
-
+            camera.Update(gameTime, objects.Players[0]);
 
             base.Update(gameTime);
         }
@@ -157,14 +147,14 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
-            mario.Draw(_spriteBatch);
-            luigi.Draw(_spriteBatch);
-            block.Draw();
+            terrain.Draw(_spriteBatch);
+            objects.Draw(_spriteBatch);
+            block.Draw(_spriteBatch);
             item.Draw(_spriteBatch);
             enemies.Draw(_spriteBatch);
-
+            
             _spriteBatch.End();
 
             base.Draw(gameTime);

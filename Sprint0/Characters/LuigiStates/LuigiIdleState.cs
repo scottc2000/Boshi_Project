@@ -23,7 +23,10 @@ namespace Sprint0.Characters.MarioStates
         {
             luigi.State = new LuigiJumpState(luigi);
         }
+        public void Fall()
+        {
 
+        }
         public void Crouch()
         {
             luigi.State = new LuigiCrouchState(luigi);
@@ -39,9 +42,13 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
-
+            luigi.State = new LuigiIdleState(luigi);
         }
 
+        public void UpdateVelocity()
+        {
+            luigi.velocity *= 0;
+        }
 
         public void Die()
         {
@@ -50,64 +57,17 @@ namespace Sprint0.Characters.MarioStates
         public void Update(GameTime gametime)
         {
             luigi.pose = Luigi.LuigiPose.Idle;
+
+            UpdateVelocity();
+
             if (luigi.facingLeft)
             {
-                switch (luigi.health)
-                {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiStillLeft");
-                            break;
-                        }
-
-
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiStillLeft");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiStillLeft");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiStillLeft");
-                            break;
-                        }
-                }
+                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillLeft");
             }
+            
             else
             {
-                switch (luigi.health)
-                {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiStillRight");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiStillRight");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiStillRight");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiStillRight");
-                            break;
-                        }
-                }
+                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillRight");
             }
         }
     }

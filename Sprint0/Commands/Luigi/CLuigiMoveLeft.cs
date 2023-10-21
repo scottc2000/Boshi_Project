@@ -19,9 +19,12 @@ namespace Sprint0.Commands.Mario
         }
         public void Execute()
         {
-            luigi = mySprint0.luigi;
+            luigi = mySprint0.objects.Players[1];
             luigi.facingLeft = true;
-            luigi.Move();
+            if (!luigi.lefthit)
+            {
+                luigi.Move();
+            }
         }
 
     }

@@ -1,14 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using System;
 using System.ComponentModel.Design;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
     internal class LuigiJumpState : ICharacterState
     {
         private Luigi luigi;
+
+        private Vector2 luigiVelocity;
+        float jumpVelocity = -500f; // Initial jump velocity
+        bool isJumping = false;
 
         public LuigiJumpState(Luigi luigi)
         {
@@ -22,9 +28,28 @@ namespace Sprint0.Characters.MarioStates
 
         public void Jump()
         {
-            // insert jump logic/physics
+            luigi.pose = Luigi.LuigiPose.Jump;
+            if (luigi.facingLeft)
+            {
+                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiJumpLeft");
+            }
+            else
+            {
+                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiJumpRight");
+            }
         }
+        public void Fall()
+        {
+            if (luigi.facingLeft)
+            {
+                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillLeft");
 
+            }
+            else
+            {
+                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillRight");
+            }
+        }
         public void Crouch()
         {
             luigi.State = new LuigiCrouchState(luigi);
@@ -38,73 +63,43 @@ namespace Sprint0.Characters.MarioStates
         {
             luigi.State = new LuigiIdleState(luigi);
         }
-
-
+        public void UpdateGravity()
+        {
+            luigi.gravity = 20f;
+        }
         public void Die()
         {
             // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
         }
         public void Update(GameTime gametime)
         {
-            luigi.pose = Luigi.LuigiPose.Jump;
-            if (luigi.facingLeft)
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && !isJumping)
             {
-                switch (luigi.health)
-                {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiJumpLeft");
-                            break;
-                        }
-
-
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiJumpLeft");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiJumpLeft");
-                            break;
-                        }
-
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiJumpLeft");
-                            break;
-                        }
-                }
+                luigiVelocity.Y = jumpVelocity;
+                isJumping = true;
+            }
+            if (!(luigi.uphit))
+            {
+                UpdateGravity();
             }
             else
             {
-                switch (luigi.health)
-                {
-                    case (Luigi.LuigiHealth.Normal):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("NormalLuigiJumpRight");
-                            break;
-                        }
+                isJumping = false;
+            }
 
-                    case (Luigi.LuigiHealth.Raccoon):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("RaccoonLuigiJumpRight");
-                            break;
-                        }
+            // Update Luigi's position based on velocity
+            luigi.position += luigiVelocity * (float)gametime.ElapsedGameTime.TotalSeconds;
 
-                    case (Luigi.LuigiHealth.Fire):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiJumpRight");
-                            break;
-                        }
+            // Apply gravity
+            luigiVelocity.Y += luigi.gravity;
 
-                    case (Luigi.LuigiHealth.Big):
-                        {
-                            luigi.currentSprite = luigi.mySpriteFactory.returnSprite("BigLuigiJumpRight");
-                            break;
-                        }
-                }
+            // Check for ground collision
+            if (luigi.position.Y >= luigi.mySprint._graphics.PreferredBackBufferHeight - 100)
+            {
+                luigi.position.Y = luigi.mySprint._graphics.PreferredBackBufferHeight - 100;
+                luigiVelocity.Y = 0;
+                isJumping = false;
+                Fall();
             }
         }
     }

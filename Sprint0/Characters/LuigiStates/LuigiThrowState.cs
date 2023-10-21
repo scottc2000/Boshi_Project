@@ -24,7 +24,10 @@ namespace Sprint0.Characters.MarioStates
         {
             luigi.State = new LuigiJumpState(luigi);
         }
+        public void Fall()
+        {
 
+        }
         public void Crouch()
         {
             luigi.State = new LuigiCrouchState(luigi);
@@ -38,8 +41,8 @@ namespace Sprint0.Characters.MarioStates
         public void Throw()
         {
 
-
         }
+
 
         public void Die()
         {
@@ -48,30 +51,35 @@ namespace Sprint0.Characters.MarioStates
         public void Update(GameTime gametime)
         {
             luigi.pose = Luigi.LuigiPose.Throwing;
-            if (luigi.facingLeft && luigi.health == Luigi.LuigiHealth.Fire)
-            {
-                if (luigi.currentSprite.spriteName.Equals("FireLuigiThrowLeft"))
-                {
 
-                    luigi.currentSprite.Update(gametime);
+            if (luigi.health == Luigi.LuigiHealth.Fire)
+            {
+                if (luigi.facingLeft)
+                {
+                    if (luigi.currentSprite.spriteName.Equals("LuigiThrowLeft"))
+                    {
+
+                        luigi.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiThrowLeft");
+                    }
                 }
                 else
                 {
-                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiThrowLeft");
-                }
-            }
-            else
-            {
-                if (luigi.currentSprite.spriteName.Equals("FireLuigiThrowRight"))
-                {
+                    if (luigi.currentSprite.spriteName.Equals("LuigiThrowRight"))
+                    {
 
-                    luigi.currentSprite.Update(gametime);
-                }
-                else
-                {
-                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("FireLuigiThrowRight");
+                        luigi.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiThrowRight");
+                    }
                 }
             }
+            
         }
     }
 }

@@ -21,9 +21,13 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
-            luigi = mySprint0.luigi;
+            luigi = mySprint0.objects.Players[1];
             luigi.facingLeft = false;
-            luigi.Move();
+            if (!luigi.lefthit)
+            {
+                luigi.Move();
+            }
         }
     }
-}
+    }
+
