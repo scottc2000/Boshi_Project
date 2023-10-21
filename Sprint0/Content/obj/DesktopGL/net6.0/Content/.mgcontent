@@ -4,10 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/level1_1.png</File>
-    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/marioenemy.png</File>
-    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png</File>
-    <File>C:/Users/muska/source/repos/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/level1_1.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/marioenemy.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/SpriteImages/blocks.png</File>
+    <File>C:/Users/Jerrin W/source/repos/scottc2000/Boshi_Project/Sprint0/Content/SpriteImages/playerssclear.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

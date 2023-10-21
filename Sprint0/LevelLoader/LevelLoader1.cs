@@ -76,6 +76,7 @@ namespace Sprint0
             foreach(Item item in data.Items)
             {
                 // need a RedMushroom.c class that inherits from IItem
+                
                // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
                // objectManager.Items.add(redmushroom);
             }
