@@ -13,7 +13,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
-    public class Block : IBlock
+    public class Sprint2Block : IBlock
     {
         private Sprint0 game;
         private SpriteBatch spriteBatch;
@@ -31,7 +31,7 @@ namespace Sprint0.Blocks
         private int blockIndex;
 
 
-        public Block(Sprint0 game, SpriteBatch spriteBatch, ContentManager content)
+        public Sprint2Block(Sprint0 game, SpriteBatch spriteBatch, ContentManager content)
         {
             this.game = game;
             this.spriteBatch = spriteBatch;

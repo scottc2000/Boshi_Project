@@ -12,8 +12,8 @@ namespace Sprint0.Commands.Blocks
 {
     internal class BlockNext : ICommand
     {
-        private Block block;
-        public BlockNext(Block block) 
+        private Sprint2Block block;
+        public BlockNext(Sprint2Block block) 
         {
             this.block = block;
         }

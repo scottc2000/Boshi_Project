@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "2jNC/wxSLWiv+xB35lzCJT7loa54srf2+JMfFCcC+6uO1mmqW98ivWrLmEQyofreABCjBndHAu53C2X3NZ6uAg==",
+  "dgSpecHash": "n4nEgE89EW0HGbppkSsbyyPLwvb2DUNIOmTJkha2iLtIm5MP4S2nax8wwVx7DtvyJAIcEr8Td6rk9jOqzuPDdQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jerrin W\\source\\repos\\scottc2000\\Boshi_Project\\Sprint0\\Sprint0.csproj",
+  "projectFilePath": "C:\\Users\\Michael\\source\\repos\\Boshi_Project\\Sprint0\\Sprint0.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Jerrin W\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\Jerrin W\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
-    "C:\\Users\\Jerrin W\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\Jerrin W\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+    "C:\\Users\\Michael\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\Michael\\.nuget\\packages\\monogame.extended\\3.8.0\\monogame.extended.3.8.0.nupkg.sha512",
+    "C:\\Users\\Michael\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\Michael\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }
