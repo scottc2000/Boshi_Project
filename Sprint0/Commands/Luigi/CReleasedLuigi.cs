@@ -20,7 +20,7 @@ namespace Sprint0.Commands.Mario
 
         public void Execute()
         {
-            luigi = mySprint.luigi;
+            luigi = mySprint.objects.Players[1];
             luigi.Stop();
         }
 

@@ -18,6 +18,12 @@ namespace Sprint0.Characters
         public LuigiPose pose = LuigiPose.Idle;
         public bool facingLeft { get; set; }
         public bool fired;
+        public bool stuck;
+
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
 
         public float velocity;
         public float decay;
@@ -38,21 +44,29 @@ namespace Sprint0.Characters
 
         public List<AnimatedProjectile> ThrownProjectiles;
 
+
+
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Big;
+            this.health = LuigiHealth.Normal;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
             this.facingLeft = true;
-            this.position.X = 350;
-            this.position.Y = 350;
+            this.position.X = 100;
+            this.position.Y = 400;
             this.sizeDiff = 25;
             this.fired = false;
+
+            this.downhit = false;
+            this.uphit = false;
+            this.lefthit = false;
+            this.righthit = false;
 
             // default velocity is zero (still), decay makes player slippery the higher it is.
             this.velocity = 0.0f;
             this.decay = 0.9f;
+            this.stuck = false;
 
             this.mySprint = sprint0;
 
@@ -95,6 +109,19 @@ namespace Sprint0.Characters
         public void Die()
         {
             State.Die();
+        }
+
+        public void Reverse()
+        {
+            velocity *= -1;
+        }
+
+        public void resetHits()
+        {
+            this.downhit = false;
+            this.uphit = false;
+            this.lefthit = false;
+            this.righthit = false;
         }
 
         public void Throw()
@@ -169,26 +196,36 @@ namespace Sprint0.Characters
         public void UpdateMovement(GameTime gametime)
         {
             // updates movement using pos +/- v * dt
-            if (facingLeft)
-            {
-                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
-            }
-            else
-            {
-                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
-            }
+            
+                if (facingLeft)
+                {
+                    position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                }
+                else
+                {
+                    position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                }           
 
         }
 
         public void Update(GameTime gametime)
         {
             UpdateProjectiles(gametime);
-            UpdateMovement(gametime);
+
+            if (!lefthit)
+            {
+                UpdateMovement(gametime);
+            }
+
             State.Update(gametime);
+            destination = currentSprite.destination;
+
             if (!(pose == LuigiPose.Throwing))
             {
                 fired = false;
             }
+
+            resetHits();
 
         }
         

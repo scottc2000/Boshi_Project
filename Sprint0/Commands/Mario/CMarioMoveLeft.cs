@@ -19,7 +19,7 @@ namespace Sprint0.Commands.Mario
         }
         public void Execute()
         {
-            mario = mySprint0.mario;
+            mario = mySprint0.objects.Players[0];
             mario.facingLeft = true;
             mario.Move();
         }

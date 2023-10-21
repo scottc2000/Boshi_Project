@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Sprint0.Interfaces;
 using Sprint0.Commands.Luigi;
 using Sprint0.Commands.Mario;
+using Sprint0.Commands;
 
 namespace Sprint0.Collision
 {
@@ -26,8 +27,8 @@ namespace Sprint0.Collision
 
         public void generate()
         {
-            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.mario, sprint.luigi, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStop(sprint)));
-            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.luigi, sprint.mario, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStop(sprint)));
+            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.objects.Players[0], sprint.objects.Players[1], CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuck(sprint)));
+            collisions.RegisterCommand(new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(sprint.objects.Players[1], sprint.objects.Players[0], CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CLuigiStuck(sprint), new CMarioStop(sprint)));
             //Needs every possible collision combination registered
         }
     }

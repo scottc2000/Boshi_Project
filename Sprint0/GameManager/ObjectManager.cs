@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.LevelLoader;
 using System.Collections.Generic;
+using Sprint0.Characters;
+using Sprint0.Enemies;
+using Sprint0.Collision;
 
 namespace Sprint0.GameMangager
 {
@@ -13,12 +16,23 @@ namespace Sprint0.GameMangager
         public List<IBlock> Blocks { get; set; }
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
+        public List<ICharacter> Players { get; set; }
 
         private Sprint0 sprint;
         
         public ObjectManager(Sprint0 sprint0)
         {
             this.sprint = sprint0;
+            Players = new List<ICharacter>();
+            Items = new List<IItem>();
+            Enemies = new List<IEnemies>();
+            Blocks = new List<IBlock>();
+
+            // Blocks.Add(new Block(this, _spriteBatch, Content);)
+            Players.Add(new Mario(sprint));
+            Players.Add(new Luigi(sprint));
+
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -34,9 +48,13 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
+            foreach (ICharacter player in Players)
+            {
+                player.Draw(spriteBatch);
+            }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, CollisionHandler collision)
         {
           foreach(var block in Blocks)
           {
@@ -50,6 +68,17 @@ namespace Sprint0.GameMangager
             {
                 enemy.Update(gameTime);
             }
+            foreach (ICharacter player in Players)
+            {
+                player.Update(gameTime);
+                collision.Update();
+
+            }
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            throw new System.NotImplementedException();
         }
     }
 

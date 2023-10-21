@@ -42,12 +42,12 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
-
+            luigi.State = new LuigiIdleState(luigi);
         }
 
         public void UpdateVelocity()
         {
-            luigi.velocity *= luigi.decay;
+            luigi.velocity *= 0;
         }
 
         public void Die()

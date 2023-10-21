@@ -19,15 +19,13 @@ namespace Sprint0.Collision
 
         public CollisionHandler(Sprint0 sprint)
         {
-            Players = new List<ICharacter>();
+            Players = sprint.objects.Players;
             Enemies = new List<IEnemies>();
             Items = new List<Item>();
             Blocks = new List<IBlock>();
             this.sprint = sprint;
             register = new CollisionDictionraryRegister(sprint);
             
-            Players.Add(sprint.mario);
-            Players.Add(sprint.luigi);
             register.generate();
         }
 
@@ -57,6 +55,7 @@ namespace Sprint0.Collision
 
                         register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item1.Execute();
                         register.collisions.commandDictionary[new Tuple<ICollidable, ICollidable, CollisionDictionary.Side>(character, character1, CollisionDictionary.Side.Left)].Item2.Execute();
+
                         Console.WriteLine("HIT");
                     }
                 }
