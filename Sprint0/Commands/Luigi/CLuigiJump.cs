@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Sprint0.Characters.Mario;
 
-namespace Sprint0.Commands.Mario
+namespace Sprint0.Commands.Luigi
 {
     internal class CLuigiJump : ICommand
     {
@@ -21,8 +21,12 @@ namespace Sprint0.Commands.Mario
         public void Execute()
         {
 
-            luigi = mySprint0.objects.Players[1];
-            luigi.Jump();
+            luigi = mySprint0.objects.luigi;
+
+            if (luigi.uphit)
+            {
+                luigi.Jump();
+            }
 
         }
 

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Sprint0.Characters.Mario;
 
-namespace Sprint0.Commands.Mario
+namespace Sprint0.Commands.Luigi
 {
     internal class CLuigiCrouch : ICommand
     {
@@ -21,7 +21,7 @@ namespace Sprint0.Commands.Mario
         public void Execute()
         {
 
-            luigi = mySprint0.objects.Players[1];
+            luigi = mySprint0.objects.luigi;
             luigi.Crouch();
 
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Characters;
+using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using System;
@@ -12,33 +13,36 @@ namespace Sprint0.Collision
 {
     public class CollisionHandler
     {
-        List<ICharacter> Players;
+        
         List<IEnemies> Enemies;
         List<Item> Items;
         List<IBlock> Blocks;
         CollisionDictionraryRegister register;
         Rectangle blockHitbox;
+        ICharacter luigi;
+        ICharacter mario;
+        
 
-
-        public CollisionHandler(Sprint0 sprint)
-        {
-            Players = sprint.objects.Players;
+        public CollisionHandler(Sprint0 sprint, ObjectManager objects)
+        { 
             Enemies = new List<IEnemies>();
             Items = new List<Item>();
-            Blocks = new List<IBlock>();
+            Blocks = objects.Blocks;
+            luigi = objects.luigi;
+            mario = objects.mario;
+
             register = new CollisionDictionraryRegister(sprint);
 
             register.generate();
         }
 
-        public void playerUpdate()
+        public void luigiUpdate()
         {
-            foreach (ICharacter character in Players)
-            {
-                foreach (IEnemies enemeny in Enemies)
-                {
+            
+            foreach (IEnemies enemeny in Enemies)
+               {
                     //if (character.hitbox)
-                }
+               }
 
                 foreach (Item item in Items)
                 {
@@ -48,63 +52,71 @@ namespace Sprint0.Collision
                 foreach (IBlock block in Blocks)
                 {
                     blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
-                    if (character.destination.Intersects(blockHitbox))
+
+                    if (luigi.destination.Intersects(blockHitbox))
                     {
 
-                        if (Rectangle.Intersect(character.destination, blockHitbox).Width <= Rectangle.Intersect(character.destination, blockHitbox).Height)
+                        if (luigi.destination.Intersects(blockHitbox))
                         {
-                            register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                           //register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
 
-                        }
-                        else if (Rectangle.Intersect(character.destination, blockHitbox).Y < character.destination.Y)
-                        {
-                            register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
-                        }
-                        else
-                        {
                             
-                            // if object below
-                            ;
-                        }
-                    }
-
-                }
-                foreach (ICharacter character1 in Players)
-                {
-                    if (character.destination.Intersects(character1.destination) && !(character.Equals(character1)))
-                    {
-
-                        // if objects hit on x axis (left or right)
-                        if (Rectangle.Intersect(character.destination, character1.destination).Width <= Rectangle.Intersect(character.destination, character1.destination).Height)
-                        {
-                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
-                            register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
-
-                        }
-                        else
-                        {
-                            if (Rectangle.Intersect(character.destination, character1.destination).Y < character.destination.Y)
+                            if (Rectangle.Intersect(luigi.destination, blockHitbox).Width >= Rectangle.Intersect(luigi.destination, blockHitbox).Height)
                             {
+                                if (blockHitbox.Y > luigi.destination.Y)
+                                {
+                                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
+                                }
 
-                                // if object above
-                                ;
+                                else if (blockHitbox.Y < luigi.destination.Y)
+                                {
+                                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
+                                }
                             }
+
 
                             else
                             {
+                                if (blockHitbox.X > luigi.destination.X)
+                                {
+                                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                                }
 
-                                // if object below
-                                ;
+                                else if (blockHitbox.X < luigi.destination.X)
+                                {
+                                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
+                                }
                             }
-                        }
 
-                        Console.WriteLine("HIT");
+
+
+                        }
+                        
                     }
+
                 }
 
+
                 
-            }
+                if (mario.destination.Intersects(luigi.destination))
+                    {
+                        register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item1.Execute();
+                        register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item2.Execute();
+
+                // if objects hit on x axis (left or right)
+                        if (Rectangle.Intersect(mario.destination, luigi.destination).Width <= Rectangle.Intersect(mario.destination, luigi.destination).Height)
+                             {
+                           
+
+                              }
+       
+                    }
+                
+
+                
+            
         }
+
         public void blockUpdate()
         {
             foreach (IBlock block in Blocks)
@@ -119,10 +131,7 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
-                foreach (ICharacter player in Players)
-                {
-
-                }
+                
 
             }
         }
@@ -143,20 +152,17 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
-                foreach (ICharacter player in Players)
-                {
-
-                }
+                
 
             }
         }
 
 
-        public void Update()
+            public void Update()
         {
 
 
 
         }
     }
-    }
+}
