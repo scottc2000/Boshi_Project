@@ -61,14 +61,29 @@ namespace Sprint0.Characters.MarioStates
             mario.pose = Mario.MarioPose.Idle;
 
             UpdateVelocity();
+
             if (mario.facingLeft)
             {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillLeft");
+                if (mario.currentSprite.spriteName.Equals("MarioIdleLeft"))
+                {
+                    mario.currentSprite.Update(gametime);
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioIdleLeft");
+                }
             }
-
             else
             {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillRight");
+                if (mario.currentSprite.spriteName.Equals("MarioIdleRight"))
+                {
+                    mario.currentSprite.Update(gametime);
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioIdleRight");
+                }
+
             }
         }
     }

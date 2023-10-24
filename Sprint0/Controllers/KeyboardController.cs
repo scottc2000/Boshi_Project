@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Sprint0.Commands;
 using Sprint0.Commands.Luigi;
 using Sprint0.Commands.Mario;
@@ -82,6 +83,8 @@ namespace Sprint0.Controllers
             RegisterPressCommand(Keys.D7, new CLuigiFire(mySprint));
             RegisterPressCommand(Keys.D6, new CLuigiBig(mySprint));
             RegisterPressCommand(Keys.D5, new CLuigiNormal(mySprint));
+
+            RegisterCommand(Keys.D0, new Reset(mySprint, mySprint.gametime, mySprint.Content));
         }
 
         private void pressedKeys(KeyboardState current, KeyboardState previous)

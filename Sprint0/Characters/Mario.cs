@@ -2,13 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
 using Sprint0.Characters.MarioStates;
-using Sprint0.GameMangager;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
-using System;
-using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters
 {
@@ -119,7 +115,26 @@ namespace Sprint0.Characters
             }
         }
 
-        // Will change with game functionality
+        public void TakeDamage()
+        {
+            switch (health) 
+            {
+                case MarioHealth.Fire:
+                    health = MarioHealth.Big;
+                    break;
+                case MarioHealth.Raccoon:
+                    health = MarioHealth.Big;
+                    break;
+                case MarioHealth.Big:
+                    health = MarioHealth.Normal;
+                    break;
+                case MarioHealth.Normal:
+                    health = MarioHealth.Dead;
+                    break;
+            }
+        }
+
+        // Needed for collision testing - will be removed later
         public void ChangeToFire()
         {
             if (health == MarioHealth.Normal)
@@ -197,6 +212,7 @@ namespace Sprint0.Characters
 
             State.Update(gametime);
             destination = currentSprite.destination;
+
             resetHits();
         }
 

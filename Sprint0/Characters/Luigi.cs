@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters.MarioStates;
+using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.Projectile;
@@ -11,7 +11,7 @@ namespace Sprint0.Characters
 {
     public class Luigi : ICharacter
     {
-        public enum LuigiHealth { Normal, Raccoon, Fire, Big };
+        public enum LuigiHealth { Normal, Raccoon, Fire, Big, Dead };
         public LuigiHealth health = LuigiHealth.Normal;
 
         public enum LuigiPose { Jump, Crouch, Idle, Walking, Throwing };
@@ -28,7 +28,6 @@ namespace Sprint0.Characters
         public float velocity;
         public float decay;
         public float gravity;
-
 
         public ICharacterState State { get; set; }
 
@@ -137,6 +136,25 @@ namespace Sprint0.Characters
                 }
 
                 State.Throw();
+            }
+        }
+
+        public void TakeDamage()
+        {
+            switch (health)
+            {
+                case LuigiHealth.Fire:
+                    health = LuigiHealth.Big;
+                    break;
+                case LuigiHealth.Raccoon:
+                    health = LuigiHealth.Big;
+                    break;
+                case LuigiHealth.Big:
+                    health = LuigiHealth.Normal;
+                    break;
+                case LuigiHealth.Normal:
+                    health = LuigiHealth.Dead;
+                    break;
             }
         }
 

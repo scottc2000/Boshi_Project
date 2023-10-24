@@ -20,6 +20,7 @@ namespace Sprint0.Interfaces
 
         public void Throw();
 
+        void TakeDamage();
         void ChangeToFire();
 
         void ChangeToRaccoon();

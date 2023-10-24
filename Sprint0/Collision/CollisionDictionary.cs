@@ -14,7 +14,7 @@ public class CollisionDictionary
 {
     public enum Side { Left, Right, Top, Bottom };
 
-    // dictionary for each possible combination of collisions (enemy, player), (player, player), (player block), (enemies, block)
+    // dictionary for each possible combination of collisions (enemy, player), (player, player), (player, block), (enemies, block)
 
     public Dictionary<Tuple<List<ICharacter>, List<IEnemies>, Side>, Tuple<ICommand, ICommand>> enemyPlayerDict;
 

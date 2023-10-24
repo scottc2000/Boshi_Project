@@ -21,9 +21,14 @@ namespace Sprint0.Collision
 
         public void generate()
         {
+            // players run towards each other
             collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
             collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
             collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckY(sprint)));
+
+            // player hits enemy moving left and right
+            collisions.enemyPlayerDict.Add(new Tuple<List<ICharacter>, List<IEnemies>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Enemies, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new TakeDamage(sprint), null));
+            collisions.enemyPlayerDict.Add(new Tuple<List<ICharacter>, List<IEnemies>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Enemies, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new TakeDamage(sprint), null));
 
             collisions.playerBlockDict.Add(new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), null));
             collisions.playerBlockDict.Add(new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), null));

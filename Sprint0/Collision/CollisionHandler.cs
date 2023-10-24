@@ -1,12 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint0.Characters;
 using Sprint0.Interfaces;
-using Sprint0.Items;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint0.Collision
 {
@@ -14,7 +9,7 @@ namespace Sprint0.Collision
     {
         List<ICharacter> Players;
         List<IEnemies> Enemies;
-        List<Item> Items;
+        List<IItem> Items;
         List<IBlock> Blocks;
         CollisionDictionraryRegister register;
         Rectangle blockHitbox;
@@ -23,9 +18,9 @@ namespace Sprint0.Collision
         public CollisionHandler(Sprint0 sprint)
         {
             Players = sprint.objects.Players;
-            Enemies = new List<IEnemies>();
-            Items = new List<Item>();
-            Blocks = new List<IBlock>();
+            Enemies = sprint.objects.Enemies;
+            Items = sprint.objects.Items;
+            Blocks = sprint.objects.Blocks;
             register = new CollisionDictionraryRegister(sprint);
 
             register.generate();
@@ -35,12 +30,22 @@ namespace Sprint0.Collision
         {
             foreach (ICharacter character in Players)
             {
-                foreach (IEnemies enemeny in Enemies)
+                foreach (IEnemies enemy in Enemies)
                 {
-                    //if (character.hitbox)
+                    if (character.destination.Intersects(enemy.destination))
+                    {
+                        // if objects hit on x axis (left or right)
+                        if (Rectangle.Intersect(character.destination, enemy.destination).Width <= Rectangle.Intersect(character.destination, enemy.destination).Height)
+                        {
+                            register.collisions.enemyPlayerDict[new Tuple<List<ICharacter>, List<IEnemies>, CollisionDictionary.Side>(Players, Enemies, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.enemyPlayerDict[new Tuple<List<ICharacter>, List<IEnemies>, CollisionDictionary.Side>(Players, Enemies, CollisionDictionary.Side.Right)].Item1.Execute();
+
+                            System.Diagnostics.Debug.WriteLine("Player hit enemy");
+                        }
+                    }
                 }
 
-                foreach (Item item in Items)
+                foreach (IItem item in Items)
                 {
                     //if (character.hitbox)
                 }
@@ -79,7 +84,7 @@ namespace Sprint0.Collision
                         {
                             register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item1.Execute();
                             register.collisions.playerPlayerDict[new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(Players, Players, CollisionDictionary.Side.Left)].Item2.Execute();
-
+                            System.Diagnostics.Debug.WriteLine("Player hit player");
                         }
                         else
                         {
@@ -114,7 +119,7 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
-                foreach (Item item in Items)
+                foreach (IItem item in Items)
                 {
                     //if (character.hitbox)
                 }
@@ -138,10 +143,6 @@ namespace Sprint0.Collision
                     //if (character.hitbox)
                 }
 
-                foreach (Item item in Items)
-                {
-                    //if (character.hitbox)
-                }
 
                 foreach (ICharacter player in Players)
                 {
