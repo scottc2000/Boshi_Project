@@ -21,14 +21,15 @@ namespace Sprint0.Collision
 
         public void generate()
         {
-            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
-            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
-            collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckY(sprint)));
+            collisions.luigiMario.Add(new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(this.sprint.objects.mario, this.sprint.objects.luigi, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
+            collisions.luigiMario.Add(new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(this.sprint.objects.mario, this.sprint.objects.luigi, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
+            collisions.luigiMario.Add(new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(this.sprint.objects.mario, this.sprint.objects.luigi, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), new CLuigiStuckY(sprint)));
+            collisions.luigiMario.Add(new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(this.sprint.objects.mario, this.sprint.objects.luigi, CollisionDictionary.Side.Bottom), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), new CLuigiStuckY(sprint)));
 
-            collisions.playerBlockDict.Add(new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), null));
-            collisions.playerBlockDict.Add(new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), null));
-            collisions.playerBlockDict.Add(new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Blocks, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), null));
-            collisions.playerBlockDict.Add(new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Blocks, CollisionDictionary.Side.Bottom), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, this.sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CLuigiStuckX(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, this.sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CLuigiStuckX(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, this.sprint.objects.Blocks, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CLuigiStuckY(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, this.sprint.objects.Blocks, CollisionDictionary.Side.Bottom), new Tuple<ICommand, ICommand>(new CLuigiStuckY(sprint), null));
 
             //collisions.playerPlayerDict.Add(new Tuple<List<ICharacter>, List<ICharacter>, CollisionDictionary.Side>(this.sprint.objects.Players, this.sprint.objects.Players, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStop(sprint), new CLuigiStuckX(sprint)));
             //Needs every possible collision combination registered

@@ -50,7 +50,7 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            camera = new Camera1(GraphicsDevice.Viewport);
+            //camera = new Camera1(GraphicsDevice.Viewport);
 
             
             objects = new ObjectManager(this);
@@ -73,9 +73,6 @@ namespace Sprint0
             SpriteController.RegisterCommand(Keys.V, new previousItem(item));
             SpriteController.RegisterCommand(Keys.B, new nextItem(item));
 
-            // collision
-            collision = new CollisionHandler(this);
-
             base.Initialize();
         }
 
@@ -85,6 +82,9 @@ namespace Sprint0
 
             levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
+
+            // collision
+            collision = new CollisionHandler(this, objects);
 
             spriteDelay = TimeSpan.FromMilliseconds(125);
             timeSinceLastSprite = TimeSpan.Zero;
@@ -113,7 +113,7 @@ namespace Sprint0
                 timeSinceLastSprite = TimeSpan.Zero;
             }
 
-            camera.Update(gameTime, objects.Players[0]);
+            //camera.Update(gameTime, objects.mario);
 
             base.Update(gameTime);
         }
@@ -122,7 +122,7 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
+            _spriteBatch.Begin(/*SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform*/);
 
             terrain.Draw(_spriteBatch);
             objects.Draw(_spriteBatch);

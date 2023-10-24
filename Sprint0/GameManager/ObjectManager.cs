@@ -18,23 +18,23 @@ namespace Sprint0.GameMangager
         public List<IBlock> Blocks { get; set; }
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
-        public List<ICharacter> Players { get; set; }
+
+        public ICharacter mario;
+        public ICharacter luigi;
 
         private Sprint0 sprint;
         
         public ObjectManager(Sprint0 sprint0)
         {
             this.sprint = sprint0;
-            Players = new List<ICharacter>();
+
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
 
+            mario = new Mario(sprint);
+            luigi = new Luigi(sprint);
             
-            Players.Add(new Mario(sprint));
-            Players.Add(new Luigi(sprint));
-
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -50,10 +50,8 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
-            foreach (ICharacter player in Players)
-            {
-                player.Draw(spriteBatch);
-            }
+            mario.Draw(spriteBatch);
+            luigi.Draw(spriteBatch);
         }
 
         public void Update(GameTime gameTime, CollisionHandler collision)
@@ -70,12 +68,13 @@ namespace Sprint0.GameMangager
             {
                 enemy.Update(gameTime);
             }
-            foreach (ICharacter player in Players)
-            {
-                player.Update(gameTime);
-                collision.playerUpdate();
 
-            }
+           mario.Update(gameTime);
+
+           luigi.Update(gameTime);
+           collision.luigiUpdate();
+
+            
         }
 
         public void Update(GameTime gameTime)

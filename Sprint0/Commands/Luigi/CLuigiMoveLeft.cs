@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Commands.Mario
+namespace Sprint0.Commands.Luigi
 {
     internal class CLuigiMoveLeft : ICommand
     {
@@ -19,12 +19,11 @@ namespace Sprint0.Commands.Mario
         }
         public void Execute()
         {
-            luigi = mySprint0.objects.Players[1];
+            luigi = mySprint0.objects.luigi;
             luigi.facingLeft = true;
-            if (!luigi.lefthit)
-            {
-                luigi.Move();
-            }
+            
+            luigi.Move();
+            
         }
 
     }

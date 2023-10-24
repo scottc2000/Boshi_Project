@@ -4,7 +4,7 @@ using Sprint0.Sprites;
 using System;
 using System.ComponentModel.Design;
 
-namespace Sprint0.Characters.MarioStates
+namespace Sprint0.Characters.LuigiStates
 {
     internal class LuigiThrowState : ICharacterState
     {
