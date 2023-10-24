@@ -55,7 +55,11 @@ namespace Sprint0
                 switch (block.Name)
                 {
                     case "floor":
-                        objectManager.Blocks.Add(new Floor(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        Floor floor = new Floor(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(floor);
+                        objectManager.TopCollidableBlocks.Add(floor);
+                        objectManager.SideCollidableBlocks.Add(floor);
+
                         break;
                     case "large_block":
                         objectManager.Blocks.Add(new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
