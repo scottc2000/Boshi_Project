@@ -75,6 +75,9 @@ namespace Sprint0
                     case "question_block":
                         objectManager.Blocks.Add(new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
                         break;
+                    case "spinning_coin":
+                        objectManager.Blocks.Add(new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        break;
                 }
             }
             foreach (Item item in data.Items)
