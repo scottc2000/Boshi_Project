@@ -59,13 +59,18 @@ namespace Sprint0
                         objectManager.Blocks.Add(floor);
                         objectManager.TopCollidableBlocks.Add(floor);
                         objectManager.SideCollidableBlocks.Add(floor);
-
                         break;
                     case "large_block":
-                        objectManager.Blocks.Add(new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        LargeBlock large_block = new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(large_block);
+                        objectManager.TopCollidableBlocks.Add(large_block);
                         break;
                     case "yellow_brick":
-                        objectManager.Blocks.Add(new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        YellowBrick yellow_brick = new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(yellow_brick);
+                        objectManager.TopCollidableBlocks.Add(yellow_brick);
+                        objectManager.BottomCollidableBlocks.Add(yellow_brick);
+                        objectManager.SideCollidableBlocks.Add(yellow_brick);
                         break;
                     case "wood_blocks":
                         objectManager.Blocks.Add(new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height));
