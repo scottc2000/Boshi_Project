@@ -22,8 +22,8 @@ namespace Sprint0.Commands
         public void Execute()
         {
             spriteBatch = new SpriteBatch(mySprint.GraphicsDevice);
-            mySprint.objects.Players[0] = new Characters.Mario(mySprint);
-            mySprint.objects.Players[1] = new Characters.Luigi(mySprint);
+            mySprint.objects.mario = new Characters.Mario(mySprint);
+            mySprint.objects.luigi = new Characters.Luigi(mySprint);
 
         }
 

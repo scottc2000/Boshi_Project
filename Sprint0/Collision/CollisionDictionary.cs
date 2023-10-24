@@ -20,6 +20,12 @@ public class CollisionDictionary
 
     public Dictionary<Tuple<List<ICharacter>, List<ICharacter>, Side>, Tuple<ICommand, ICommand>> playerPlayerDict;
 
+    public Dictionary<Tuple<ICharacter, List<IEnemies>, Side>, Tuple<ICommand, ICommand>> luigiEnemy;
+
+    public Dictionary<Tuple<ICharacter, List<IBlock>, Side>, Tuple<ICommand, ICommand>> luigiBlock;
+
+    public Dictionary<Tuple<ICharacter, ICharacter, Side>, Tuple<ICommand, ICommand>> luigiMario;
+
     public Dictionary<Tuple<List<ICharacter>, List<IBlock>, Side>, Tuple<ICommand, ICommand>> playerBlockDict;
 
     public Dictionary<Tuple<List<IEnemies>, List<IBlock>, Side>, Tuple<ICommand, ICommand>> enemiesBlockDict;
@@ -32,6 +38,10 @@ public class CollisionDictionary
         playerPlayerDict = new Dictionary<Tuple<List<ICharacter>, List<ICharacter>, Side>, Tuple<ICommand, ICommand>>();
         playerBlockDict = new Dictionary<Tuple<List<ICharacter>, List<IBlock>, Side>, Tuple<ICommand, ICommand>>();
         enemiesBlockDict = new Dictionary<Tuple<List<IEnemies>, List<IBlock>, Side>, Tuple<ICommand, ICommand>>();
+
+        luigiEnemy = new Dictionary<Tuple<ICharacter, List<IEnemies>, Side>, Tuple<ICommand, ICommand>>();
+        luigiBlock = new Dictionary<Tuple<ICharacter, List<IBlock>, Side>, Tuple<ICommand, ICommand>>();
+        luigiMario = new Dictionary<Tuple<ICharacter, ICharacter, Side>, Tuple<ICommand, ICommand>>();
 
     }
 }
