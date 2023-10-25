@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint0.Characters;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint0.Collision
 {
@@ -15,7 +11,7 @@ namespace Sprint0.Collision
     {
         
         List<IEnemies> Enemies;
-        List<Item> Items;
+        List<IItem> Items;
         List<IBlock> Blocks;
         CollisionDictionraryRegister register;
         Rectangle blockHitbox;
@@ -25,8 +21,8 @@ namespace Sprint0.Collision
 
         public CollisionHandler(Sprint0 sprint, ObjectManager objects)
         { 
-            Enemies = new List<IEnemies>();
-            Items = new List<Item>();
+            Enemies = objects.Enemies;
+            Items = objects.Items;
             Blocks = objects.Blocks;
             luigi = objects.luigi;
             mario = objects.mario;
@@ -36,31 +32,17 @@ namespace Sprint0.Collision
             register.generate();
         }
 
-        public void luigiUpdate()
+        public void luigiBlockUpdate() 
         {
-            
-            foreach (IEnemies enemeny in Enemies)
-               {
-                    //if (character.hitbox)
-               }
 
-                foreach (Item item in Items)
-                {
-                    //if (character.hitbox)
-                }
-
-                foreach (IBlock block in Blocks)
-                {
-                    blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
+            foreach (IBlock block in Blocks)
+            {
+                blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
 
                     if (luigi.destination.Intersects(blockHitbox))
                     {
-
                         if (luigi.destination.Intersects(blockHitbox))
                         {
-                           //register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
-
-                            
                             if (Rectangle.Intersect(luigi.destination, blockHitbox).Width >= Rectangle.Intersect(luigi.destination, blockHitbox).Height)
                             {
                                 if (blockHitbox.Y > luigi.destination.Y)
@@ -73,8 +55,6 @@ namespace Sprint0.Collision
                                     register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
                                 }
                             }
-
-
                             else
                             {
                                 if (blockHitbox.X > luigi.destination.X)
@@ -88,81 +68,115 @@ namespace Sprint0.Collision
                                 }
                             }
 
-
-
                         }
-                        
+
                     }
-
-                }
-
-
-                
-                if (mario.destination.Intersects(luigi.destination))
-                    {
-                        register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item1.Execute();
-                        register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item2.Execute();
-
-                // if objects hit on x axis (left or right)
-                        if (Rectangle.Intersect(mario.destination, luigi.destination).Width <= Rectangle.Intersect(mario.destination, luigi.destination).Height)
-                             {
-                           
-
-                              }
-       
-                    }
-                
-
-                
-            
+            }
+    
         }
 
-        public void blockUpdate()
+        public void marioLuigiUpdate()
         {
+            if (mario.destination.Intersects(luigi.destination))
+            {
+                // if objects hit on x axis (left or right)
+                if (Rectangle.Intersect(mario.destination, luigi.destination).Width <= Rectangle.Intersect(mario.destination, luigi.destination).Height)
+                {
+                    register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item1.Execute();
+                    register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item2.Execute();
+                }
+            }
+        }
+      
+        public void marioEnemyUpdate()
+        {
+            foreach(IEnemies enemy in Enemies)
+            {
+                if (mario.destination.Intersects(enemy.destination))
+                {
+                    // if object hit on x axis (left or right)
+                    if (Rectangle.Intersect(mario.destination, enemy.destination).Width <= Rectangle.Intersect(mario.destination, enemy.destination).Height)
+                    {
+                        register.collisions.marioEnemy[new Tuple<ICharacter, List<IEnemies>, CollisionDictionary.Side>(mario, Enemies, CollisionDictionary.Side.Left)].Item1.Execute();
+                        register.collisions.marioEnemy[new Tuple<ICharacter, List<IEnemies>, CollisionDictionary.Side>(mario, Enemies, CollisionDictionary.Side.Right)].Item1.Execute();
+                        System.Diagnostics.Debug.WriteLine("Mario hit enemy");
+                    }
+                }
+            }
+        }
+
+        public void marioBlockUpdate()
+        {
+
             foreach (IBlock block in Blocks)
             {
-                foreach (IEnemies enemeny in Enemies)
+                blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
+
+                if (mario.destination.Intersects(blockHitbox))
                 {
-                    //if (character.hitbox)
+                    if (mario.destination.Intersects(blockHitbox))
+                    {
+                        if (Rectangle.Intersect(mario.destination, blockHitbox).Width >= Rectangle.Intersect(mario.destination, blockHitbox).Height)
+                        {
+                            if (blockHitbox.Y > mario.destination.Y)
+                            {
+                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
+                            }
+
+                            else if (blockHitbox.Y < mario.destination.Y)
+                            {
+                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
+                            }
+                        }
+                        else
+                        {
+                            if (blockHitbox.X > mario.destination.X)
+                            {
+                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                            }
+
+                            else if (blockHitbox.X < mario.destination.X)
+                            {
+                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
+                            }
+                        }
+
+                    }
+
                 }
-
-                foreach (Item item in Items)
-                {
-                    //if (character.hitbox)
-                }
-
-                
-
             }
+
         }
-        
-
-
-        public void enemyUpdate()
+        public void marioItemUpdate()
         {
-            foreach (IEnemies enemy in Enemies)
+            foreach(IItem item in Items)
             {
-                foreach (IBlock block in Blocks)
+                // Commented out while items are still being worked on - Update when completed
+
+                /*if (mario.destination.Intersects(item.destination) && item == "RedMushroom")
                 {
-                    //if (character.hitbox)
+                    register.collisions.marioEnemy[new Tuple<ICharacter, List<IItem>, CollisionDictionary.Side>(mario, Items, CollisionDictionary.Side.Any)].Item1.Execute();
+                    register.collisions.marioEnemy[new Tuple<ICharacter, List<IItem>, CollisionDictionary.Side>(mario, Items, CollisionDictionary.Side.Any)].Item2.Execute();
                 }
-
-                foreach (Item item in Items)
+                else if (mario.destination.Intersects(item.destination) && item == "RaccoonLeaf")
                 {
-                    //if (character.hitbox)
+                    register.collisions.marioEnemy[new Tuple<ICharacter, List<IItem>, CollisionDictionary.Side>(mario, Items, CollisionDictionary.Side.Any)].Item1.Execute();
+                    register.collisions.marioEnemy[new Tuple<ICharacter, List<IItem>, CollisionDictionary.Side>(mario, Items, CollisionDictionary.Side.Any)].Item2.Execute();
                 }
-
-                
-
+                else if (mario.destination.Intersects(item.destination) && item == "FireFlower")
+                {
+                    register.collisions.marioEnemy[new Tuple<ICharacter, List<IItem>, CollisionDictionary.Side>(mario, Items, CollisionDictionary.Side.Any)].Item1.Execute();
+                    register.collisions.marioEnemy[new Tuple<ICharacter, List<IItem>, CollisionDictionary.Side>(mario, Items, CollisionDictionary.Side.Any)].Item2.Execute();
+                }*/
             }
         }
-
-
-            public void Update()
+        public void Update()
         {
-
-
-
+            luigiBlockUpdate();
+            marioLuigiUpdate();
+            marioEnemyUpdate();
+            marioBlockUpdate();
+            marioItemUpdate();
         }
     }
 }

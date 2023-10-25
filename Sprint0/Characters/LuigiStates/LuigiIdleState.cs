@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
-using System.Runtime.CompilerServices;
 
 namespace Sprint0.Characters.LuigiStates
 {

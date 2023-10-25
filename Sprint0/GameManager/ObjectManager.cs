@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Interfaces;
-using Sprint0.LevelLoader;
-using System.Collections.Generic;
 using Sprint0.Characters;
-using Sprint0.Enemies;
 using Sprint0.Collision;
-using System;
-using System.Diagnostics;
+using Sprint0.Interfaces;
+using System.Collections.Generic;
 
 namespace Sprint0.GameMangager
 {
@@ -70,9 +66,8 @@ namespace Sprint0.GameMangager
             }
 
            mario.Update(gameTime);
-
            luigi.Update(gameTime);
-           collision.luigiUpdate();
+           collision.Update();
 
             
         }
