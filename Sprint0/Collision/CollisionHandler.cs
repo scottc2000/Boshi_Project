@@ -5,6 +5,7 @@ using Sprint0.Interfaces;
 using Sprint0.Items;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace Sprint0.Collision
             Enemies = new List<IEnemies>();
             Items = new List<Item>();
             Blocks = objects.Blocks;
+            Debug.WriteLine(Blocks.Count);
             TopCollidableBlocks = objects.TopCollidableBlocks;
             BottomCollidableBlocks = objects.BottomCollidableBlocks;
             SideCollidableBlocks = objects.SideCollidableBlocks;

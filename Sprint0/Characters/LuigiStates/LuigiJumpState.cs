@@ -57,7 +57,7 @@ namespace Sprint0.Characters.LuigiStates {
         {
             if (!luigi.downhit && luigi.timeGap < 500)
             {
-                luigi.velocityY = -2.0f;
+                luigi.velocityY = -4.0f;
             }
             else
             {
