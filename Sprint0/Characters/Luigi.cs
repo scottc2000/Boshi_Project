@@ -58,7 +58,7 @@ namespace Sprint0.Characters
             // default position stuff
             this.facingLeft = true;
             this.position.X = 100;
-            this.position.Y = 400;
+            this.position.Y = 300;
             this.sizeDiff = 25;
             this.fired = false;
             this.timeGap = 0;

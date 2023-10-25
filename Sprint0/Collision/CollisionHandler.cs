@@ -16,7 +16,7 @@ namespace Sprint0.Collision
         
         List<IEnemies> Enemies;
         List<Item> Items;
-        List<IBlock> Blocks;
+        List<IBlock> Blocks, TopCollidableBlocks, BottomCollidableBlocks, SideCollidableBlocks;
         CollisionDictionraryRegister register;
         Rectangle blockHitbox;
         ICharacter luigi;
@@ -28,6 +28,10 @@ namespace Sprint0.Collision
             Enemies = new List<IEnemies>();
             Items = new List<Item>();
             Blocks = objects.Blocks;
+            TopCollidableBlocks = objects.TopCollidableBlocks;
+            BottomCollidableBlocks = objects.BottomCollidableBlocks;
+            SideCollidableBlocks = objects.SideCollidableBlocks;
+
             luigi = objects.luigi;
             mario = objects.mario;
 
@@ -54,28 +58,33 @@ namespace Sprint0.Collision
                     blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
 
                     if (luigi.destination.Intersects(blockHitbox))
-                    {
-
-                        if (luigi.destination.Intersects(blockHitbox))
-                        {
-                           //register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
+                    {               
+                        //register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
 
                             
-                            if (Rectangle.Intersect(luigi.destination, blockHitbox).Width >= Rectangle.Intersect(luigi.destination, blockHitbox).Height)
+                        if (Rectangle.Intersect(luigi.destination, blockHitbox).Width >= Rectangle.Intersect(luigi.destination, blockHitbox).Height)
+                        {
+                            if (blockHitbox.Y > luigi.destination.Y)
                             {
-                                if (blockHitbox.Y > luigi.destination.Y)
-                                {
+                                if (TopCollidableBlocks.Contains(block))
+                                {   
                                     register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
                                 }
+                            }
 
-                                else if (blockHitbox.Y < luigi.destination.Y)
+                            else if (blockHitbox.Y < luigi.destination.Y)
+                            {
+                                if (BottomCollidableBlocks.Contains(block))
                                 {
                                     register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
                                 }
                             }
+                        }
 
 
-                            else
+                        else
+                        {
+                            if (SideCollidableBlocks.Contains(block))
                             {
                                 if (blockHitbox.X > luigi.destination.X)
                                 {
@@ -87,14 +96,15 @@ namespace Sprint0.Collision
                                     register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
                                 }
                             }
-
-
-
                         }
-                        
-                    }
 
+
+
+                    }
+                        
                 }
+
+                
 
 
                 
