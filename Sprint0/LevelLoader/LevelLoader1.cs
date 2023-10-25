@@ -73,19 +73,36 @@ namespace Sprint0
                         objectManager.SideCollidableBlocks.Add(yellow_brick);
                         break;
                     case "wood_blocks":
-                        objectManager.Blocks.Add(new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        WoodBlocks wood_blocks = new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(wood_blocks);
+                        objectManager.TopCollidableBlocks.Add(wood_blocks);
+                        objectManager.BottomCollidableBlocks.Add(wood_blocks);
+                        objectManager.SideCollidableBlocks.Add(wood_blocks);
                         break;
                     case "clouds":
-                        objectManager.Blocks.Add(new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        Clouds clouds = new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(clouds);
+                        objectManager.TopCollidableBlocks.Add(clouds);
                         break;
                     case "pipe":
-                        objectManager.Blocks.Add(new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        Pipe pipe = new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(pipe);
+                        objectManager.TopCollidableBlocks.Add(pipe);
+                        objectManager.SideCollidableBlocks.Add(pipe);
                         break;
                     case "question_block":
-                        objectManager.Blocks.Add(new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(question_block);
+                        objectManager.TopCollidableBlocks.Add(question_block);
+                        objectManager.BottomCollidableBlocks.Add(question_block);
+                        objectManager.SideCollidableBlocks.Add(question_block);
                         break;
                     case "spinning_coin":
-                        objectManager.Blocks.Add(new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(spinning_coin);
+                        objectManager.TopCollidableBlocks.Add(spinning_coin);
+                        objectManager.BottomCollidableBlocks.Add(spinning_coin);
+                        objectManager.SideCollidableBlocks.Add(spinning_coin);
                         break;
                 }
             }
