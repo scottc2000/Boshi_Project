@@ -55,28 +55,54 @@ namespace Sprint0
                 switch (block.Name)
                 {
                     case "floor":
-                        objectManager.Blocks.Add(new Floor(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        Floor floor = new Floor(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(floor);
+                        objectManager.TopCollidableBlocks.Add(floor);
+                        objectManager.SideCollidableBlocks.Add(floor);
                         break;
                     case "large_block":
-                        objectManager.Blocks.Add(new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        LargeBlock large_block = new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(large_block);
+                        objectManager.TopCollidableBlocks.Add(large_block);
                         break;
                     case "yellow_brick":
-                        objectManager.Blocks.Add(new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        YellowBrick yellow_brick = new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(yellow_brick);
+                        objectManager.TopCollidableBlocks.Add(yellow_brick);
+                        objectManager.BottomCollidableBlocks.Add(yellow_brick);
+                        objectManager.SideCollidableBlocks.Add(yellow_brick);
                         break;
                     case "wood_blocks":
-                        objectManager.Blocks.Add(new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        WoodBlocks wood_blocks = new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(wood_blocks);
+                        objectManager.TopCollidableBlocks.Add(wood_blocks);
+                        objectManager.BottomCollidableBlocks.Add(wood_blocks);
+                        objectManager.SideCollidableBlocks.Add(wood_blocks);
                         break;
                     case "clouds":
-                        objectManager.Blocks.Add(new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        Clouds clouds = new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(clouds);
+                        objectManager.TopCollidableBlocks.Add(clouds);
                         break;
                     case "pipe":
-                        objectManager.Blocks.Add(new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        Pipe pipe = new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(pipe);
+                        objectManager.TopCollidableBlocks.Add(pipe);
+                        objectManager.SideCollidableBlocks.Add(pipe);
                         break;
                     case "question_block":
-                        objectManager.Blocks.Add(new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(question_block);
+                        objectManager.TopCollidableBlocks.Add(question_block);
+                        objectManager.BottomCollidableBlocks.Add(question_block);
+                        objectManager.SideCollidableBlocks.Add(question_block);
                         break;
                     case "spinning_coin":
-                        objectManager.Blocks.Add(new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height));
+                        SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(spinning_coin);
+                        objectManager.TopCollidableBlocks.Add(spinning_coin);
+                        objectManager.BottomCollidableBlocks.Add(spinning_coin);
+                        objectManager.SideCollidableBlocks.Add(spinning_coin);
                         break;
                 }
             }
