@@ -1,4 +1,5 @@
 ﻿using System;
+using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 
 namespace Sprint0.Commands.Collisions
@@ -17,7 +18,8 @@ namespace Sprint0.Commands.Collisions
         public void Execute()
         {
 
-            luigi = mySprint0.objects.Players[1];
+            luigi = mySprint0.objects.luigi;
+
             if (luigi.facingLeft)
             {
                 luigi.stuck = true;
@@ -29,6 +31,7 @@ namespace Sprint0.Commands.Collisions
                 luigi.righthit = true;
             }
 
+            
         }
     }
 }

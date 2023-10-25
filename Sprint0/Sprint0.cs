@@ -1,11 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Sprint0.Background;
-using Sprint0.Camera;
 using Sprint0.Collision;
+using Sprint0.Commands;
 using Sprint0.Controllers;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
+using Sprint0.Items;
+using System;
 namespace Sprint0
 {
     public class Sprint0 : Game
@@ -13,15 +16,18 @@ namespace Sprint0
         public GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public GameTime gametime;
-
         public ObjectManager objects;
-        CollisionHandler collision;
 
         private LevelLoader1 levelLoader;
-        Camera1 camera;
+        //Camera1 camera;
         public Terrain terrain;
 
+        public TimeSpan spriteDelay, timeSinceLastSprite;
+
         IController KeyboardController;
+        IController SpriteController;
+
+        CollisionHandler collision; 
 
         public Sprint0()
         {
@@ -34,9 +40,10 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-           // camera = new Camera1(GraphicsDevice.Viewport);  
-            objects = new ObjectManager(this);
+            //camera = new Camera1(GraphicsDevice.Viewport);
             terrain = new Terrain(this);
+            objects = new ObjectManager(this);
+
 
             KeyboardController = new KeyboardController(this);
 
@@ -45,11 +52,12 @@ namespace Sprint0
 
         protected override void LoadContent()
         {
+
             levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
 
             // collision
-            collision = new CollisionHandler(this);
+            collision = new CollisionHandler(this, objects);
 
         }
 
@@ -57,9 +65,12 @@ namespace Sprint0
         {
 
             KeyboardController.Update();
+
             terrain.Update(gameTime);
+
             objects.Update(gameTime, collision);
-           // camera.Update(gameTime, objects.Players[0]);
+
+            //camera.Update(gameTime, objects.mario);
 
             base.Update(gameTime);
         }

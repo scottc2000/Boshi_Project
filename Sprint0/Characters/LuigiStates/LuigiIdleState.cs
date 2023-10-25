@@ -39,13 +39,17 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Stop()
         {
+            luigi.timeGap = 0;
             luigi.State = new LuigiIdleState(luigi);
         }
 
         public void UpdateVelocity()
         {
-            luigi.velocity *= 0;
+            luigi.velocityX *= 0;
+            luigi.velocityY *= 0;
+
         }
+
 
         public void Die()
         {
@@ -59,12 +63,33 @@ namespace Sprint0.Characters.LuigiStates
 
             if (luigi.facingLeft)
             {
-                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillLeft");
+                if (luigi.currentSprite.spriteName.Equals("LuigiStillLeft")) {
+
+                    luigi.currentSprite.Update(gametime);
+                    
+                }
+
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillLeft");
+                    luigi.UpStuck();
+                }
+
             }
             
             else
             {
-                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillRight");
+                if (luigi.currentSprite.spriteName.Equals("LuigiStillRight"))
+                {
+
+                    luigi.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillRight");
+                    luigi.UpStuck();
+                }
             }
         }
     }

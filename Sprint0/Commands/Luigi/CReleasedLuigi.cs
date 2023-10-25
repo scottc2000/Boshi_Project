@@ -15,8 +15,9 @@ namespace Sprint0.Commands.Luigi
 
         public void Execute()
         {
-            luigi = mySprint.objects.Players[1];
+            luigi = mySprint.objects.luigi;
             luigi.Stop();
+            
         }
 
     }

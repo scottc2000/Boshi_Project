@@ -32,6 +32,7 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Stop()
         {
+            luigi.timeGap = 0;
             luigi.State = new LuigiIdleState(luigi);
         }
 
@@ -47,7 +48,7 @@ namespace Sprint0.Characters.LuigiStates
 
         public void UpdateVelocity()
         {
-            luigi.velocity *= luigi.decay;
+            luigi.velocityX *= luigi.decay;
         }
 
         public void Update(GameTime gametime)
@@ -58,13 +59,33 @@ namespace Sprint0.Characters.LuigiStates
 
             if (luigi.facingLeft)
             {
-                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
+                if (luigi.currentSprite.spriteName.Equals("LuigiCrouchLeft"))
+                {
+
+                    luigi.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
+                    luigi.UpStuck();
+                }
+
             }
+
             else
-            {    
-                 luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
-                           
-                     
+            {
+                if (luigi.currentSprite.spriteName.Equals("LuigiCrouchRight"))
+                {
+
+                    luigi.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
+                    luigi.UpStuck();
+                }
             }
         }
     }
