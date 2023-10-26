@@ -8,6 +8,7 @@ using Sprint0.Controllers;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
+using Sprint0.Sprites.SpriteFactories;
 using System;
 namespace Sprint0
 {
@@ -56,6 +57,7 @@ namespace Sprint0
             levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
 
+            ItemSpriteFactory.Instance.LoadTextures(Content);
             // collision
             collision = new CollisionHandler(this, objects);
 

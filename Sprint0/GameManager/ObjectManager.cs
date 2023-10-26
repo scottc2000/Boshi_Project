@@ -52,23 +52,22 @@ namespace Sprint0.GameMangager
 
         public void Update(GameTime gameTime, CollisionHandler collision)
         {
-          foreach(var block in Blocks)
-          {
-             block.Update(gameTime);
-          }
-          foreach(var item in Items)
+            foreach(var block in Blocks)
+            {
+                block.Update(gameTime);
+            }
+            foreach(var item in Items)
             {
                 item.Update(gameTime);
             }
-          foreach (var enemy in Enemies)
+            foreach (var enemy in Enemies)
             {
                 enemy.Update(gameTime);
             }
 
-           mario.Update(gameTime);
-           luigi.Update(gameTime);
-           collision.Update();
-
+            mario.Update(gameTime);
+            luigi.Update(gameTime);
+            collision.Update();
             
         }
 
