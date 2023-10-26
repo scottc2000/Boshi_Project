@@ -11,6 +11,9 @@ using Microsoft.Xna.Framework.Content;
 using System;
 using System.Diagnostics;
 using Sprint0.Enemies;
+using Sprint0.Items;
+using Sprint0.Sprites.SpriteFactories;
+using Item = Sprint0.LevelLoader.Level1Data.Item;
 
 namespace Sprint0
 {
@@ -108,9 +111,57 @@ namespace Sprint0
             }
             foreach (Item item in data.Items)
             {
+                switch (item.Name)
+                {
+                    case "RedMushroom":
+                        IItem RedMushroom = new RedMushroom();
+                        RedMushroom.setPosition(item.Position);
+                        objectManager.Items.Add(RedMushroom);
+                        break;
+                    case "OneUpMushroom":
+                        IItem OneUpMushroom = new OneUpMushroom();
+                        OneUpMushroom.setPosition(item.Position);
+                        objectManager.Items.Add(OneUpMushroom);
+                        break;
+                    case "FireFlower":
+                        IItem FireFlower = new FireFlower();
+                        FireFlower.setPosition(item.Position);
+                        objectManager.Items.Add(FireFlower);
+                        break;
+                    case "Leaf":
+                        IItem Leaf = new Leaf();
+                        Leaf.setPosition(item.Position);
+                        objectManager.Items.Add(Leaf);
+                        break;
+                    case "Star":
+                        IItem Star = new Star();
+                        Star.setPosition(item.Position);
+                        objectManager.Items.Add(Star);
+                        break;
+                    case "Frog":
+                        IItem Frog = new Frog();
+                        Frog.setPosition(item.Position);
+                        objectManager.Items.Add(Frog);
+                        break;
+                    case "Tanooki":
+                        IItem Tanooki = new Tanooki();
+                        Tanooki.setPosition(item.Position);
+                        objectManager.Items.Add(Tanooki);
+                        break;
+                    case "Hammer":
+                        IItem Hammer = new Hammer();
+                        Hammer.setPosition(item.Position);
+                        objectManager.Items.Add(Hammer);
+                        break;
+                    case "Shoe":
+                        IItem Shoe = new Shoe();
+                        Shoe.setPosition(item.Position);
+                        objectManager.Items.Add(Shoe);
+                        break;
+                }
                 // need a RedMushroom.c class that inherits from IItem
-               // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
-               // objectManager.Items.add(redmushroom);
+                // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
+                // objectManager.Items.add(redmushroom);
             }
 
 

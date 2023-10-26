@@ -70,6 +70,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Update="JSON\itemdata.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="JSON\level1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
