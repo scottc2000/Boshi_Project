@@ -17,7 +17,6 @@ namespace Sprint0.Sprites.SpriteFactories
 {
     internal class ItemSpriteFactory
     {
-        string spriteType;
         public Texture2D texture;
         private Rectangle[] currentFrames;
 

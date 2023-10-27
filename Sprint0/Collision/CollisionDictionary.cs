@@ -25,6 +25,8 @@ public class CollisionDictionary
 
     public Dictionary<Tuple<List<IEnemies>, List<IBlock>, Side>, Tuple<ICommand, ICommand>> enemiesBlockDict;
 
+    public Dictionary<Tuple<List<IItem>, List<IBlock>, Side>, Tuple<ICommand, ICommand>> itemBlock;
+
 
     public CollisionDictionary()
     {
@@ -38,6 +40,8 @@ public class CollisionDictionary
         marioEnemy = new Dictionary<Tuple<ICharacter, List<IEnemies>, Side>, Tuple<ICommand, ICommand>>();
         marioBlock = new Dictionary<Tuple<ICharacter, List<IBlock>, Side>, Tuple<ICommand, ICommand>>();
         marioItem = new Dictionary<Tuple<ICharacter, List<IItem>, Side>, Tuple<ICommand, ICommand>>();
+
+        itemBlock = new Dictionary<Tuple<List<IItem>, List<IBlock>, Side>, Tuple<ICommand, ICommand>>();
 
     }
 }

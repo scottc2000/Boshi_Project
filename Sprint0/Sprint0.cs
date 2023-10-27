@@ -26,7 +26,6 @@ namespace Sprint0
         public TimeSpan spriteDelay, timeSinceLastSprite;
 
         IController KeyboardController;
-        IController SpriteController;
 
         CollisionHandler collision; 
 
