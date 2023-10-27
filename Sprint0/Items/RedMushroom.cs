@@ -14,9 +14,11 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
+        public Rectangle itemRectangle { get; set; }
+
         private int itemSpeed = 1;
 
-        private bool moveRight = false;
+        public bool moveRight = false;
 
         private float timer = 0f;
         private int interval = 15;
@@ -24,6 +26,7 @@ namespace Sprint0.Items
         public RedMushroom()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("RedMushroom");
+            itemRectangle = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)

@@ -18,8 +18,7 @@ namespace Sprint0.Items
         private int interval = 50;
         private int currentFrame = 0;
         public Rectangle[] spriteFrames;
-
-        private int width = 16, height = 16;
+        public Rectangle itemPosition;
 
         public AniItemSprite(Rectangle[] currentFrames)
         {
@@ -39,8 +38,8 @@ namespace Sprint0.Items
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Rectangle position = new Rectangle((int)location.X, (int)location.Y, width, height);
-            spriteBatch.Draw(ItemSpriteFactory.Instance.texture, position, spriteFrames[currentFrame], Color.White);
+            itemPosition = new Rectangle((int)location.X, (int)location.Y, spriteFrames[currentFrame].Width, spriteFrames[currentFrame].Height);
+            spriteBatch.Draw(ItemSpriteFactory.Instance.texture, itemPosition, spriteFrames[currentFrame], Color.White);
         }
     }
 }

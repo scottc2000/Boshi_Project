@@ -24,7 +24,7 @@ namespace Sprint0.Collision
             Enemies = objects.Enemies;
             Items = objects.Items;
             Blocks = objects.Blocks;
-            
+          
             TopCollidableBlocks = objects.TopCollidableBlocks;
             BottomCollidableBlocks = objects.BottomCollidableBlocks;
             SideCollidableBlocks = objects.SideCollidableBlocks;
@@ -91,6 +91,7 @@ namespace Sprint0.Collision
 
             }
         }
+
                 
 
         public void marioLuigiUpdate()
@@ -132,35 +133,30 @@ namespace Sprint0.Collision
 
                 if (mario.destination.Intersects(blockHitbox))
                 {
-                    if (mario.destination.Intersects(blockHitbox))
+                    if (Rectangle.Intersect(mario.destination, blockHitbox).Width >= Rectangle.Intersect(mario.destination, blockHitbox).Height)
                     {
-                        if (Rectangle.Intersect(mario.destination, blockHitbox).Width >= Rectangle.Intersect(mario.destination, blockHitbox).Height)
+                        if (blockHitbox.Y > mario.destination.Y)
                         {
-                            if (blockHitbox.Y > mario.destination.Y)
-                            {
-                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
-                            }
-
-                            else if (blockHitbox.Y < mario.destination.Y)
-                            {
-                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
-                            }
-                        }
-                        else
-                        {
-                            if (blockHitbox.X > mario.destination.X)
-                            {
-                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
-                            }
-
-                            else if (blockHitbox.X < mario.destination.X)
-                            {
-                                register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
-                            }
+                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
                         }
 
+                        else if (blockHitbox.Y < mario.destination.Y)
+                        {
+                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
+                        }
                     }
+                    else
+                    {
+                        if (blockHitbox.X > mario.destination.X)
+                        {
+                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                        }
 
+                        else if (blockHitbox.X < mario.destination.X)
+                        {
+                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
+                        }
+                    }
                 }
             }
 
@@ -188,6 +184,18 @@ namespace Sprint0.Collision
                 }*/
             }
         }
+
+        public void itemBlockUpdate()
+        {
+            foreach(IItem item in Items)
+            {
+                if (mario.destination.Intersects(item.itemRectangle))
+                {
+
+                }
+            }
+        }
+
         public void Update()
         {
             luigiBlockUpdate();

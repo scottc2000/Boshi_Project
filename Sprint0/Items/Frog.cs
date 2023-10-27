@@ -15,9 +15,12 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
+        public Rectangle itemRectangle { get; set; }
+
         public Frog()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Frog");
+            itemRectangle = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)

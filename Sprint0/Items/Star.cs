@@ -15,7 +15,9 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        private bool moveRight = true;
+        public Rectangle itemRectangle { get; set; }
+
+        public bool moveRight = true;
 
         //Physics
 
@@ -30,6 +32,7 @@ namespace Sprint0.Items
         public Star()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Star");
+            itemRectangle = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)

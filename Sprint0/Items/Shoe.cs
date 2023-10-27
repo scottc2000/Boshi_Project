@@ -15,10 +15,12 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
+        public Rectangle itemRectangle { get; set; }
 
         public Shoe()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Shoe");
+            itemRectangle = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)
