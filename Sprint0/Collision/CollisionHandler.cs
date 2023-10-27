@@ -24,7 +24,7 @@ namespace Sprint0.Collision
             Enemies = objects.Enemies;
             Items = objects.Items;
             Blocks = objects.Blocks;
-            System.Diagnostics.Debug.WriteLine(Blocks.Count);
+          
             TopCollidableBlocks = objects.TopCollidableBlocks;
             BottomCollidableBlocks = objects.BottomCollidableBlocks;
             SideCollidableBlocks = objects.SideCollidableBlocks;
