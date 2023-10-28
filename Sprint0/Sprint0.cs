@@ -2,19 +2,15 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint0.Background;
-using Sprint0.Blocks;
 using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Commands;
-using Sprint0.Commands.Blocks;
 using Sprint0.Controllers;
-using Sprint0.Enemies;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using Sprint0.Sprites;
 using System;
-using System.Collections.Generic;
 namespace Sprint0
 {
     public class Sprint0 : Game

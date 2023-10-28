@@ -2,13 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
 using Sprint0.Characters.MarioStates;
-using Sprint0.GameMangager;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
-using System;
-using static Sprint0.Characters.Mario;
+using Sprint0.Camera;
+using SprintZero.ScreenCamera;
 
 namespace Sprint0.Characters
 {
@@ -195,6 +193,7 @@ namespace Sprint0.Characters
                 UpdateMovement(gametime);
             }
 
+            MarioCamera.Instance.SetView(position);
             State.Update(gametime);
             destination = currentSprite.destination;
             resetHits();
