@@ -17,7 +17,7 @@ namespace Sprint0.Commands.Collision
         public void Execute()
         {
 
-            mario = mySprint0.objects.Players[0];
+            mario = mySprint0.objects.mario;
             if (mario.facingLeft)
             {
                 mario.stuck = true;

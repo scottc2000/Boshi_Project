@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
-using static Sprint0.Sprites.Players.PlayerData;
 
-namespace Sprint0.Characters.MarioStates
+namespace Sprint0.Characters.LuigiStates
 {
     internal class LuigiMoveState : ICharacterState
     {
@@ -17,11 +15,13 @@ namespace Sprint0.Characters.MarioStates
 
         public void Move()
         {
+            
             luigi.State = new LuigiMoveState(luigi);
         }
 
         public void Jump()
         {
+            luigi.timeGap = 0;
             luigi.State = new LuigiJumpState(luigi);
         }
         public void Fall()
@@ -35,6 +35,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
+            luigi.timeGap = 0;
             luigi.State = new LuigiIdleState(luigi);
         }
         public void Throw()
@@ -48,14 +49,15 @@ namespace Sprint0.Characters.MarioStates
 
         public void UpdateVelocity()
         {
-            luigi.velocity = 1.0f;
+            luigi.velocityX = 1.0f;
+            luigi.velocityY *= 0;
         }
 
 
         public void Update(GameTime gametime)
         {
 
-            luigi.pose = Luigi.LuigiPose.Walking;
+            
 
             if (!(luigi.lefthit))
             {
@@ -75,6 +77,7 @@ namespace Sprint0.Characters.MarioStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
+                    luigi.UpStuck();
                 }
             }
             else
@@ -86,12 +89,11 @@ namespace Sprint0.Characters.MarioStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
+                    luigi.UpStuck();
+
                 }
 
             }
         }
-
-
-
     }
 }

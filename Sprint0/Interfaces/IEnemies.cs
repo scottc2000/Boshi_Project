@@ -11,6 +11,7 @@ namespace Sprint0.Interfaces
     public interface IEnemies
     {
         public void SetPosition(List<int> position);
+        public Rectangle destination { get; set; }
         public void ChangeDirection();
 
         public void BeStomped();

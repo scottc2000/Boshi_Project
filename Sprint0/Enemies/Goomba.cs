@@ -66,7 +66,8 @@ namespace Sprint0.Enemies
         
         public void Update(GameTime gameTime)
         {
-            currentSprite.Update(gameTime); 
+            currentSprite.Update(gameTime);
+            destination = currentSprite.destination;
             state.Update();
         }
 

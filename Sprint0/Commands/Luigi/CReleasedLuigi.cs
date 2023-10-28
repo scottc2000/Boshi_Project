@@ -1,11 +1,6 @@
 ﻿using Sprint0.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sprint0.Commands.Mario
+namespace Sprint0.Commands.Luigi
 {
     public class CReleasedLuigi : ICommand
     {
@@ -20,8 +15,9 @@ namespace Sprint0.Commands.Mario
 
         public void Execute()
         {
-            luigi = mySprint.objects.Players[1];
+            luigi = mySprint.objects.luigi;
             luigi.Stop();
+            
         }
 
     }
