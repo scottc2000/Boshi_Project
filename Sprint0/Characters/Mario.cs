@@ -102,31 +102,7 @@ namespace Sprint0.Characters
         }
         public void TakeDamage()
         {
-            if (health == MarioHealth.Normal)
-            {
-                health = MarioHealth.Dead;
-                State.Die();
-                velocity = Vector2.Zero; // Stop movement
-            }
-            else
-            {
-                // Handle other health states as you were previously doing
-                switch (health)
-                {
-                    case MarioHealth.Fire:
-                        health = MarioHealth.Big;
-                        State.TakeDamage();
-                        break;
-                    case MarioHealth.Raccoon:
-                        health = MarioHealth.Big;
-                        State.TakeDamage();
-                        break;
-                    case MarioHealth.Big:
-                        health = MarioHealth.Normal;
-                        State.TakeDamage();
-                        break;
-                }
-            }
+            State.TakeDamage();
             System.Diagnostics.Debug.WriteLine("health in MarioClass; " + health);
         }
         public void Throw()
