@@ -22,7 +22,7 @@ namespace Sprint0.Camera
         
         public void Update(GameTime gameTime, Mario mario)
         {
-            center = new Vector2(mario.currentSprite.destination.X + (mario.destination.Width / 2) - 305, mario.currentSprite.destination.X + (mario.destination.Height / 2) - 50);
+            center = new Vector2(mario.currentSprite.destination.X + (mario.destination.Width / 2) - 305, mario.currentSprite.destination.Y + (mario.destination.Height / 2) - 50);
             var zoom = Matrix.CreateScale(new Vector3((float)1.5, (float)1.5, 0));
             var translation = Matrix.CreateTranslation(new Vector3(-center.X, -center.Y, 0));
 
