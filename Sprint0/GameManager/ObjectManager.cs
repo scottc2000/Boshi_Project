@@ -46,6 +46,8 @@ namespace Sprint0.GameMangager
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            terrain.Draw(spriteBatch); // need to draw terrain before any game objects
+
             foreach (var block in Blocks)
             {
                 block.Draw(spriteBatch);
@@ -58,14 +60,17 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
-            terrain.Draw(spriteBatch);
+
             mario.Draw(spriteBatch);
             luigi.Draw(spriteBatch);
+
         }
 
         public void Update(GameTime gameTime, CollisionHandler collision)
         {
-            foreach(var block in Blocks)
+            terrain.Update(gameTime);   // need to update terrain before any game objects
+
+            foreach (var block in Blocks)
             {
                 block.Update(gameTime);
             }
@@ -77,19 +82,12 @@ namespace Sprint0.GameMangager
             {
                 enemy.Update(gameTime);
             }
-
-            terrain.Update(gameTime);
             mario.Update(gameTime);
             luigi.Update(gameTime);
             collision.Update();
 
             camera.Update(gameTime, mario);
             
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            throw new System.NotImplementedException();
         }
     }
 

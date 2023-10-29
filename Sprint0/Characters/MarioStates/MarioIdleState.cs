@@ -41,6 +41,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
+            mario.timeGap = 0;
             mario.pose = Mario.MarioPose.Idle;
         }
 
@@ -51,7 +52,8 @@ namespace Sprint0.Characters.MarioStates
         }
         public void UpdateVelocity()
         {
-            mario.velocity *= 0;
+            mario.velocity.X *= 0;
+            mario.velocity.Y *= 0;
         }
         public void Update(GameTime gametime)
         {
