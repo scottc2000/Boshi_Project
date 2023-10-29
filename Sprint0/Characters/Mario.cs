@@ -5,6 +5,7 @@ using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters
 {
@@ -81,9 +82,12 @@ namespace Sprint0.Characters
         public void Stop()  {   State.Stop();   }
 
         public void Die()   
-        {   
-            State.Die();
-            currentSprite = mySpriteFactory.returnSprite("MarioDead");
+        {
+            if (health == MarioHealth.Dead)
+            {
+                // Set the sprite to the "Mario dead" sprite
+                currentSprite = mySpriteFactory.returnSprite("MarioDead");
+            }
         }
 
         public void Reverse()   {   velocity *= -1; }
@@ -98,22 +102,32 @@ namespace Sprint0.Characters
         }
         public void TakeDamage()
         {
-            switch(health)
+            if (health == MarioHealth.Normal)
             {
-                case MarioHealth.Fire:
-                    ChangeToBig();
-                    break;
-                case MarioHealth.Raccoon:
-                    ChangeToBig();
-                    break;
-                case MarioHealth.Big:
-                    ChangeToNormal();
-                    break;
-                case MarioHealth.Normal:
-                    Die();
-                    break;
-
+                health = MarioHealth.Dead;
+                State.Die();
+                velocity = Vector2.Zero; // Stop movement
             }
+            else
+            {
+                // Handle other health states as you were previously doing
+                switch (health)
+                {
+                    case MarioHealth.Fire:
+                        health = MarioHealth.Big;
+                        State.TakeDamage();
+                        break;
+                    case MarioHealth.Raccoon:
+                        health = MarioHealth.Big;
+                        State.TakeDamage();
+                        break;
+                    case MarioHealth.Big:
+                        health = MarioHealth.Normal;
+                        State.TakeDamage();
+                        break;
+                }
+            }
+            System.Diagnostics.Debug.WriteLine("health in MarioClass; " + health);
         }
         public void Throw()
         {
@@ -136,7 +150,6 @@ namespace Sprint0.Characters
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
 
-            UpdateState();
         }
         
         public void ChangeToRaccoon()
@@ -152,7 +165,6 @@ namespace Sprint0.Characters
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
 
-            UpdateState();
         }
 
         public void ChangeToBig()
@@ -168,7 +180,6 @@ namespace Sprint0.Characters
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
 
-            UpdateState();
         }
 
         public void ChangeToNormal()
@@ -184,26 +195,6 @@ namespace Sprint0.Characters
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
 
-            UpdateState();
-        }
-
-        public void UpdateState()
-        {
-            switch(pose)
-            {
-                case MarioPose.Idle:
-                    State.Stop();
-                    break;
-                case MarioPose.Crouch:
-                    State.Crouch();
-                    break;
-                case MarioPose.Walking:
-                    State.Move();
-                    break;
-                case MarioPose.Jump:
-                    State.Move();
-                    break;
-            }
         }
 
         public void UpdateMovement(GameTime gametime)

@@ -10,7 +10,7 @@ namespace Sprint0.Interfaces
         public void Fall();
         public void Crouch();
         public void Stop();
-
+        public void TakeDamage();
         public void Die();
         public void Throw();
 

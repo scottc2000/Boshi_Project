@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using System;
-using System.ComponentModel.Design;
-using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -42,6 +39,41 @@ namespace Sprint0.Characters.MarioStates
         {
 
 
+        }
+        public void TakeDamage() {
+            if (mario.health == Mario.MarioHealth.Normal)
+            {
+                mario.health = Mario.MarioHealth.Dead; // Set Mario's health to Dead
+                mario.State = new DeadMarioState(mario); // Set Mario's state to DeadMarioState
+                mario.velocity = Vector2.Zero; // Stop Mario's movement for Small Mario
+            }
+            else if (mario.gothit)
+            {
+                // Handle other health states
+                switch (mario.health)
+                {
+                    case Mario.MarioHealth.Fire:
+                        mario.health = Mario.MarioHealth.Big;
+                        mario.State = new MarioThrowState(mario); // Transition back to MarioMoveState
+                        UpdateVelocity();
+                        break;
+                    case Mario.MarioHealth.Raccoon:
+                        mario.health = Mario.MarioHealth.Big;
+                        mario.State = new MarioThrowState(mario); // Transition back to MarioMoveState
+                        UpdateVelocity();
+                        break;
+                    case Mario.MarioHealth.Big:
+                        mario.health = Mario.MarioHealth.Normal;
+                        mario.State = new MarioThrowState(mario); // Transition back to MarioMoveState
+                        UpdateVelocity();
+                        break;
+                }
+            }
+        }
+        public void UpdateVelocity()
+        {
+            mario.velocity.X = 1.0f;
+            mario.velocity.Y *= 0;
         }
 
         public void Die()

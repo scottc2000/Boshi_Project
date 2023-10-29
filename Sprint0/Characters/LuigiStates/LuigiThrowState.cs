@@ -40,7 +40,7 @@ namespace Sprint0.Characters.LuigiStates
 
         }
 
-
+        public void TakeDamage() { }
         public void Die()
         {
             // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();

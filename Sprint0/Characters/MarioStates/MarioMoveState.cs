@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -41,9 +42,45 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioThrowState(mario);
         }
+        public void TakeDamage()
+        {
+            if (mario.health == Mario.MarioHealth.Normal)
+            {
+                mario.health = Mario.MarioHealth.Dead; // Set Mario's health to Dead
+                mario.State = new DeadMarioState(mario); // Set Mario's state to DeadMarioState
+                mario.velocity = Vector2.Zero; // Stop Mario's movement for Small Mario
+            }
+            else if (mario.gothit)
+            {
+                // Handle other health states
+                switch (mario.health)
+                {
+                    case Mario.MarioHealth.Fire:
+                        mario.health = Mario.MarioHealth.Big;
+                        mario.State = new MarioMoveState(mario); // Transition back to MarioMoveState
+                        UpdateVelocity();
+                        break;
+                    case Mario.MarioHealth.Raccoon:
+                        mario.health = Mario.MarioHealth.Big;
+                        mario.State = new MarioMoveState(mario); // Transition back to MarioMoveState
+                        UpdateVelocity();
+                        break;
+                    case Mario.MarioHealth.Big:
+                        mario.health = Mario.MarioHealth.Normal;
+                        mario.State = new MarioMoveState(mario); // Transition back to MarioMoveState
+                        UpdateVelocity();
+                        break;
+                }
+            }
+            System.Diagnostics.Debug.WriteLine("MarioHealth in MarioMoveState: " + mario.health);
+        }
         public void Die()
         {
-
+            if (mario.health == MarioHealth.Dead)
+            {
+                // Set the sprite to the "Mario dead" sprite
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioDead");
+            }
         }
 
         public void UpdateVelocity()
@@ -55,8 +92,6 @@ namespace Sprint0.Characters.MarioStates
 
         public void Update(GameTime gametime)
         {
-
-
 
             if (!(mario.lefthit))
             {
