@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Interfaces;
-using Sprint0.LevelLoader;
-using System.Collections.Generic;
 using Sprint0.Characters;
-using Sprint0.Enemies;
 using Sprint0.Collision;
-using System;
-using System.Diagnostics;
+using Sprint0.Interfaces;
+using System.Collections.Generic;
 
 namespace Sprint0.GameMangager
 {
@@ -16,25 +12,31 @@ namespace Sprint0.GameMangager
         public string Name { get; }
 
         public List<IBlock> Blocks { get; set; }
+        public List<IBlock> TopCollidableBlocks { get; set; }
+        public List<IBlock> BottomCollidableBlocks { get; set; }
+        public List<IBlock> SideCollidableBlocks { get; set; }
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
-        public List<ICharacter> Players { get; set; }
+
+        public ICharacter mario;
+        public ICharacter luigi;
 
         private Sprint0 sprint;
         
         public ObjectManager(Sprint0 sprint0)
         {
             this.sprint = sprint0;
-            Players = new List<ICharacter>();
+
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
+            TopCollidableBlocks = new List<IBlock>();
+            BottomCollidableBlocks = new List<IBlock>();
+            SideCollidableBlocks = new List<IBlock>();
 
+            mario = new Mario(sprint);
+            luigi = new Luigi(sprint);
             
-            Players.Add(new Mario(sprint));
-            Players.Add(new Luigi(sprint));
-
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -50,32 +52,29 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
-            foreach (ICharacter player in Players)
-            {
-                player.Draw(spriteBatch);
-            }
+            mario.Draw(spriteBatch);
+            luigi.Draw(spriteBatch);
         }
 
         public void Update(GameTime gameTime, CollisionHandler collision)
         {
-          foreach(var block in Blocks)
-          {
-             block.Update(gameTime);
-          }
-          foreach(var item in Items)
+            foreach(var block in Blocks)
+            {
+                block.Update(gameTime);
+            }
+            foreach(var item in Items)
             {
                 item.Update(gameTime);
             }
-          foreach (var enemy in Enemies)
+            foreach (var enemy in Enemies)
             {
                 enemy.Update(gameTime);
             }
-            foreach (ICharacter player in Players)
-            {
-                player.Update(gameTime);
-                collision.playerUpdate();
 
-            }
+            mario.Update(gameTime);
+            luigi.Update(gameTime);
+            collision.Update();
+            
         }
 
         public void Update(GameTime gameTime)

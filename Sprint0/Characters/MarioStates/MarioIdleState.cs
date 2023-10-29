@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites.SpriteFactories;
-using System;
-using System.Runtime.CompilerServices;
 using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
@@ -63,12 +60,25 @@ namespace Sprint0.Characters.MarioStates
             UpdateVelocity();
             if (mario.facingLeft)
             {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillLeft");
+                if (mario.currentSprite.spriteName.Equals("MarioStillLeft"))
+                {
+                    mario.currentSprite.Update(gametime);
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillLeft");
+                }
             }
-
             else
             {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillRight");
+                if (mario.currentSprite.spriteName.Equals("MarioStillRight"))
+                {
+                    mario.currentSprite.Update(gametime);
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillRight");
+                }
             }
         }
     }

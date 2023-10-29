@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters.MarioStates;
+using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.Projectile;
@@ -11,7 +11,7 @@ namespace Sprint0.Characters
 {
     public class Luigi : ICharacter
     {
-        public enum LuigiHealth { Normal, Raccoon, Fire, Big };
+        public enum LuigiHealth { Normal, Raccoon, Fire, Big, Dead };
         public LuigiHealth health = LuigiHealth.Normal;
 
         public enum LuigiPose { Jump, Crouch, Idle, Walking, Throwing };
@@ -23,11 +23,14 @@ namespace Sprint0.Characters
         public bool righthit { get; set; }
         public bool uphit { get; set; }
         public bool downhit { get; set; }
+        public bool gothit { get; set; }
         public bool stuck { get; set; }
 
-        public float velocity;
+        public float velocityX;
+        public float velocityY;
         public float decay;
         public float gravity;
+        public int timeGap;
 
 
         public ICharacterState State { get; set; }
@@ -55,9 +58,10 @@ namespace Sprint0.Characters
             // default position stuff
             this.facingLeft = true;
             this.position.X = 100;
-            this.position.Y = 400;
+            this.position.Y = 300;
             this.sizeDiff = 25;
             this.fired = false;
+            this.timeGap = 0;
 
             this.downhit = false;
             this.uphit = false;
@@ -65,9 +69,11 @@ namespace Sprint0.Characters
             this.righthit = false;
 
             // default velocity is zero (still), decay makes player slippery the higher it is.
-            this.velocity = 0.0f;
+            this.velocityX = 0.0f;
+            this.velocityY = 0.0f;
             this.decay = 0.9f;
             this.stuck = false;
+            this.gravity = 1.0f;
 
             this.mySprint = sprint0;
 
@@ -86,6 +92,7 @@ namespace Sprint0.Characters
 
         }
 
+
         public void Move()
         {
             State.Move();
@@ -103,6 +110,7 @@ namespace Sprint0.Characters
 
         public void Stop()
         {
+            timeGap = 0;
             State.Stop();
         }
 
@@ -113,7 +121,7 @@ namespace Sprint0.Characters
 
         public void Reverse()
         {
-            velocity *= -1;
+            velocityX *= -1;
         }
 
         public void resetHits()
@@ -137,6 +145,25 @@ namespace Sprint0.Characters
                 }
 
                 State.Throw();
+            }
+        }
+
+        public void TakeDamage()
+        {
+            switch (health)
+            {
+                case LuigiHealth.Fire:
+                    health = LuigiHealth.Big;
+                    break;
+                case LuigiHealth.Raccoon:
+                    health = LuigiHealth.Big;
+                    break;
+                case LuigiHealth.Big:
+                    health = LuigiHealth.Normal;
+                    break;
+                case LuigiHealth.Normal:
+                    health = LuigiHealth.Dead;
+                    break;
             }
         }
 
@@ -194,9 +221,20 @@ namespace Sprint0.Characters
             gone.Clear();
         }
 
-        public void collideX()
-        {
 
+        public void applyGravity()
+        { 
+            if (!uphit)
+            {
+                position.Y += this.gravity;
+            }
+
+            if (!downhit)
+            {
+                position.Y += velocityY;
+            }
+
+           
         }
 
         public void UpdateMovement(GameTime gametime)
@@ -205,42 +243,54 @@ namespace Sprint0.Characters
 
             if (facingLeft)
             {
-                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position.X -= (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
             }
             else
             {
-                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position.X += (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
             }
 
         }
-        public void LeftStuck()
+
+        public void LeftStuck(GameTime gametime)
         {
-            position.X += 1;
+            position.X += (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
         }
-        public void RightStuck()
+        public void RightStuck(GameTime gametime)
         {
-            position.X -= 1;
+            position.X -= (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
         }
+
+        public void UpStuck()
+        {
+            position.Y -= (gravity / 2);
+        }
+
         public void Update(GameTime gametime)
         {
             UpdateProjectiles(gametime);
+            
 
             if (!lefthit && !stuck)
-                UpdateMovement(gametime);
-            else if (lefthit && stuck)
-                LeftStuck();
-
-            if (!righthit && !stuck)
-                UpdateMovement(gametime);
-            else if (righthit && stuck)
-                RightStuck();
-
-            if (!uphit)
             {
                 UpdateMovement(gametime);
             }
 
-            State.Update(gametime);
+            else if (lefthit && stuck)
+            {
+                LeftStuck(gametime);
+            }
+
+            if (!righthit && !stuck)
+            {
+                UpdateMovement(gametime);
+            }
+                
+            else if (righthit && stuck)
+            {
+                RightStuck(gametime);
+            }
+                   
             destination = currentSprite.destination;
 
             if (!(pose == LuigiPose.Throwing))
@@ -248,6 +298,9 @@ namespace Sprint0.Characters
                 fired = false;
             }
 
+            applyGravity();
+
+            State.Update(gametime);
             resetHits();
 
         }

@@ -12,6 +12,7 @@ namespace Sprint0.Interfaces
         public bool righthit { get; set; }
         public bool uphit { get; set; }
         public bool downhit { get; set; }
+        public bool gothit { get; set; }
         public bool stuck { get; set; }
     }
 }

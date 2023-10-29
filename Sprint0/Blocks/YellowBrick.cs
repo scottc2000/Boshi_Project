@@ -24,6 +24,10 @@ namespace Sprint0.Blocks
 
         public YellowBrick(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
         {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations(content);
             sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "yellow_brick", new Vector2(x, y));
