@@ -2,7 +2,6 @@
 using Sprint0.Characters;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
-using Sprint0.Items;
 using System;
 using System.Collections.Generic;
 
@@ -86,8 +85,6 @@ namespace Sprint0.Collision
                         }
                     }
 
-
-
                 }
 
             }
@@ -134,31 +131,47 @@ namespace Sprint0.Collision
 
                 if (mario.destination.Intersects(blockHitbox))
                 {
+                    //register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
+
+
                     if (Rectangle.Intersect(mario.destination, blockHitbox).Width >= Rectangle.Intersect(mario.destination, blockHitbox).Height)
                     {
                         if (blockHitbox.Y > mario.destination.Y)
                         {
-                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
+                            if (TopCollidableBlocks.Contains(block))
+                            {
+                                register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
+                            }
                         }
 
                         else if (blockHitbox.Y < mario.destination.Y)
                         {
-                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
+                            if (BottomCollidableBlocks.Contains(block))
+                            {
+                                register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
+                            }
                         }
                     }
+
+
                     else
                     {
-                        if (blockHitbox.X > mario.destination.X)
+                        if (SideCollidableBlocks.Contains(block))
                         {
-                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
-                        }
+                            if (blockHitbox.X > mario.destination.X)
+                            {
+                                register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                            }
 
-                        else if (blockHitbox.X < mario.destination.X)
-                        {
-                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
+                            else if (blockHitbox.X < mario.destination.X)
+                            {
+                                register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
+                            }
                         }
                     }
+
                 }
+
             }
 
         }
@@ -188,13 +201,13 @@ namespace Sprint0.Collision
 
         public void itemBlockUpdate()
         {
-            foreach(IItem item in Items)
+           /* foreach(IItem item in Items)
             {
                 if (mario.destination.Intersects(item.itemRectangle))
                 {
 
                 }
-            }
+            }*/
         }
 
         public void Update()

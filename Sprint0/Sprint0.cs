@@ -1,16 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Background;
 using Sprint0.Camera;
-using Sprint0.Characters;
 using Sprint0.Collision;
 using Sprint0.Controllers;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Sprint0
 {

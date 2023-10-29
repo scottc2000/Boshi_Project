@@ -40,7 +40,7 @@ namespace Sprint0.Characters.LuigiStates
         {
             luigi.State = new LuigiThrowState(luigi);
         }
-
+        public void TakeDamage() { }
         public void Die()
         {
     

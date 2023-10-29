@@ -4,6 +4,7 @@ using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.ComponentModel.Design;
+using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -45,14 +46,26 @@ namespace Sprint0.Characters.MarioStates
 
 
         }
-
+        public void TakeDamage() 
+        {
+            if (mario.health == Mario.MarioHealth.Normal)
+            {
+                mario.health = Mario.MarioHealth.Dead; // Set Mario's health to Dead
+                mario.State = new DeadMarioState(mario); // Set Mario's state to DeadMarioState
+                mario.velocity = Vector2.Zero; // Stop Mario's movement for Small Mario
+            }
+        }
         public void Die()
         {
-            //death movement
+            if (mario.health == MarioHealth.Dead)
+            {
+                // Set the sprite to the "Mario dead" sprite
+                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioDead");
+            }
         }
         public void Update(GameTime gametime)
         {
-            mario.currentSprite.spriteName.Equals("MarioDead");
+            mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioDead");
 
         }
     }

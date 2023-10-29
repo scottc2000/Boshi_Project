@@ -49,7 +49,7 @@ namespace Sprint0.Characters.LuigiStates
             luigi.velocityY *= 0;
 
         }
-
+        public void TakeDamage() { }
 
         public void Die()
         {
