@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Characters;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
@@ -16,7 +17,7 @@ namespace Sprint0.Collision
         CollisionDictionraryRegister register;
         Rectangle blockHitbox;
         ICharacter luigi;
-        ICharacter mario;
+        Mario mario;
         
 
         public CollisionHandler(Sprint0 sprint, ObjectManager objects)
@@ -101,8 +102,8 @@ namespace Sprint0.Collision
                 // if objects hit on x axis (left or right)
                 if (Rectangle.Intersect(mario.destination, luigi.destination).Width <= Rectangle.Intersect(mario.destination, luigi.destination).Height)
                 {
-                    register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item1.Execute();
-                    register.collisions.luigiMario[new Tuple<ICharacter, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item2.Execute();
+                    register.collisions.luigiMario[new Tuple<Mario, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item1.Execute();
+                    register.collisions.luigiMario[new Tuple<Mario, ICharacter, CollisionDictionary.Side>(mario, luigi, CollisionDictionary.Side.Left)].Item2.Execute();
                 }
             }
         }
@@ -116,8 +117,8 @@ namespace Sprint0.Collision
                     // if object hit on x axis (left or right)
                     if (Rectangle.Intersect(mario.destination, enemy.destination).Width <= Rectangle.Intersect(mario.destination, enemy.destination).Height)
                     {
-                        register.collisions.marioEnemy[new Tuple<ICharacter, List<IEnemies>, CollisionDictionary.Side>(mario, Enemies, CollisionDictionary.Side.Left)].Item1.Execute();
-                        register.collisions.marioEnemy[new Tuple<ICharacter, List<IEnemies>, CollisionDictionary.Side>(mario, Enemies, CollisionDictionary.Side.Right)].Item1.Execute();
+                        register.collisions.marioEnemy[new Tuple<Mario, List<IEnemies>, CollisionDictionary.Side>(mario, Enemies, CollisionDictionary.Side.Left)].Item1.Execute();
+                        register.collisions.marioEnemy[new Tuple<Mario, List<IEnemies>, CollisionDictionary.Side>(mario, Enemies, CollisionDictionary.Side.Right)].Item1.Execute();
                         System.Diagnostics.Debug.WriteLine("Mario hit enemy");
                     }
                 }
@@ -137,24 +138,24 @@ namespace Sprint0.Collision
                     {
                         if (blockHitbox.Y > mario.destination.Y)
                         {
-                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
+                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
                         }
 
                         else if (blockHitbox.Y < mario.destination.Y)
                         {
-                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
+                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Bottom)].Item1.Execute();
                         }
                     }
                     else
                     {
                         if (blockHitbox.X > mario.destination.X)
                         {
-                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
                         }
 
                         else if (blockHitbox.X < mario.destination.X)
                         {
-                            register.collisions.marioBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
+                            register.collisions.marioBlock[new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(mario, Blocks, CollisionDictionary.Side.Right)].Item1.Execute();
                         }
                     }
                 }

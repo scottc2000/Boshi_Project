@@ -37,7 +37,7 @@ namespace Sprint0.Characters
 
         public AnimatedSpriteMario currentSprite;
         public CharacterSpriteFactoryMario mySpriteFactory;
-        public Camera1 camera;
+        public MarioCamera camera;
 
         public Mario(Sprint0 sprint0)
         {
