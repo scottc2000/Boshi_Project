@@ -14,15 +14,22 @@ namespace Sprint0.Camera
         public Matrix transform;// Used to draw camera to screen
         Viewport view;
         Vector2 center;
+        float leftBound;
 
         public MarioCamera(Viewport newview)
         {
             view = newview;
+            leftBound = 25;
         }
         
         public void Update(GameTime gameTime, Mario mario)
         {
-            center = new Vector2(mario.position.X + (mario.destination.Width / 2) - 305, mario.position.Y + (mario.destination.Height / 2) - 50);
+            center = new Vector2(mario.position.X + (mario.destination.Width / 2) - 305, mario.position.Y + (mario.destination.Height / 2) - 150);
+
+            if (center.X < leftBound )
+            {
+                center = new Vector2(leftBound, mario.position.Y + (mario.destination.Height / 2) - 150);
+            }
             var zoom = Matrix.CreateScale(new Vector3((float)1.5, (float)1.5, 0));
             var translation = Matrix.CreateTranslation(new Vector3(-center.X, -center.Y, 0));
 
