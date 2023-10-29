@@ -13,7 +13,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
-    internal class QuestionBlock : IBlock
+    internal class SpinningCoin : IBlock
     {
         public int x { get; set; }
         public int y { get; set; }
@@ -22,7 +22,7 @@ namespace Sprint0.Blocks
         private ISprite sprite;
         private Vector2 location { get; set; }
 
-        public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public SpinningCoin(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
         {
             this.x = x;
             this.y = y;
@@ -30,7 +30,7 @@ namespace Sprint0.Blocks
             this.height = height;
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(x, y));
+            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "spinning_coin", new Vector2(x, y));
         }
 
         public void Update(GameTime gameTime)
