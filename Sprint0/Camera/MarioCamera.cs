@@ -1,88 +1,33 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Characters;
 
-namespace SprintZero.ScreenCamera
+namespace Sprint0.Camera
 {
     /*
-     * The Outline for this class is based on an outline provided by Peter Henry from the 
-     * youtube channel CodingMadeEasy. The specific video that inspired this code is:
-     * https://youtu.be/OULYMsb6olk his website is: http://www.codingmadeeasy.ca
+     * Code structre inspired from Oyyou youtube channel
+     * Video: XNA Tutorial 20 - 2D Camera
+     * Needs to be adjusted to match final game funcitonality
      */
     public class MarioCamera
     {
-        private static MarioCamera instance;
-        public int RightBound { get; set; }
-        public int LeftBound { get; set; }
-        public int ViewPoint { get; set; }
-        public int UpperBound { get; set; }
-        public int VerticalView { get; set; }
-        public Matrix View => Matrix.CreateTranslation(new Vector3(ViewPoint, VerticalView, 0));
+        public Matrix transform;// Used to draw camera to screen
+        Viewport view;
+        Vector2 center;
 
-        public static MarioCamera Instance
+        public MarioCamera(Viewport newview)
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new MarioCamera
-                    {
-                        RightBound = 600,
-                        LeftBound = 0,
-                        VerticalView = 0,
-                        ViewPoint = 0,
-                        UpperBound = 120,
-                    };
-                }
-                return instance;
-            }
+            view = newview;
         }
+        
+        public void Update(GameTime gameTime, Mario mario)
+        {
+            center = new Vector2(mario.currentSprite.destination.X + (mario.destination.Width / 2) - 305, mario.currentSprite.destination.X + (mario.destination.Height / 2) - 50);
+            var zoom = Matrix.CreateScale(new Vector3((float)1.5, (float)1.5, 0));
+            var translation = Matrix.CreateTranslation(new Vector3(-center.X, -center.Y, 0));
 
-        private MarioCamera()
-        {
+            transform = zoom * translation;
         }
-
-        public void SetView(Vector2 marioPos)
-        {
-            if (marioPos.X >= RightBound)
-            {
-                LeftBound += (int)marioPos.X - RightBound;
-                ViewPoint -= (int)marioPos.X - RightBound;
-                RightBound += (int)marioPos.X - RightBound;
-            }
-            if (marioPos.X <= LeftBound + 100)
-            {
-                ViewPoint += -1 * ((int)marioPos.X - (LeftBound + 100));
-                RightBound -= -1 * ((int)marioPos.X - (LeftBound + 100));
-                LeftBound = RightBound - 600;
-            }
-
-            if (marioPos.Y <= UpperBound)
-            {
-                VerticalView += UpperBound - (int)marioPos.Y;
-                UpperBound -= UpperBound - (int)marioPos.Y;
-            }
-            if (marioPos.Y > UpperBound + 472)
-            {
-                VerticalView -= (int)marioPos.Y - (UpperBound + 472);
-                UpperBound += (int)marioPos.Y - (UpperBound + 472);
-                if (VerticalView < 0)
-                {
-                    VerticalView = 0;
-                    UpperBound = 120;
-                }
-            }
-        }
-
-        public void Update()
-        {
-        }
-        public void Reset()
-        {
-            instance.RightBound = 600;
-            instance.LeftBound = 0;
-            instance.ViewPoint = 0;
-            instance.VerticalView = 0;
-            instance.UpperBound = 120;
-        }
+      
     }
 }

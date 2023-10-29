@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Background;
+using Sprint0.Camera;
 using Sprint0.Characters;
 using Sprint0.Collision;
 using Sprint0.Interfaces;
@@ -11,6 +13,9 @@ namespace Sprint0.GameMangager
     {
         public string Name { get; }
 
+        private MarioCamera camera;
+
+        public Terrain terrain;
         public List<IBlock> Blocks { get; set; }
         public List<IBlock> TopCollidableBlocks { get; set; }
         public List<IBlock> BottomCollidableBlocks { get; set; }
@@ -18,15 +23,16 @@ namespace Sprint0.GameMangager
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
 
-        public ICharacter mario;
+        public Mario mario;
         public ICharacter luigi;
 
         private Sprint0 sprint;
         
-        public ObjectManager(Sprint0 sprint0)
+        public ObjectManager(Sprint0 sprint0, MarioCamera camera)
         {
             this.sprint = sprint0;
-
+            this.camera = camera;
+            terrain = new Terrain(this.sprint);
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
@@ -52,6 +58,7 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
+            terrain.Draw(spriteBatch);
             mario.Draw(spriteBatch);
             luigi.Draw(spriteBatch);
         }
@@ -71,9 +78,12 @@ namespace Sprint0.GameMangager
                 enemy.Update(gameTime);
             }
 
+            terrain.Update(gameTime);
             mario.Update(gameTime);
             luigi.Update(gameTime);
             collision.Update();
+
+            camera.Update(gameTime, mario);
             
         }
 
