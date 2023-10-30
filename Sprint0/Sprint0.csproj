@@ -24,6 +24,8 @@
     <None Remove="Commands\Luigi\**" />
     <None Remove="Sprites\Luigi\**" />
     <None Remove="Collision\" />
+    <None Remove="Content\01-main-theme-overworld.mp3" />
+    <None Remove="Content\jumpSmall.wav" />
     <None Remove="Controllers\" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +65,10 @@
     <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
     <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
     <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\01-main-theme-overworld.mp3" />
+    <Content Include="Content\jumpSmall.wav" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LevelLoader\Level1Data.cs">

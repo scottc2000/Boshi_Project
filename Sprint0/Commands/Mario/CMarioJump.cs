@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using Sprint0.SFX;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,18 @@ namespace Sprint0.Commands.Mario
     {
         private Sprint0 mySprint0;
         private ICharacter mario;
+        AudioManager sfx;
         public CMarioJump(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
+            sfx = AudioManager.Instance;
         }
         public void Execute()
         {
 
             mario = mySprint0.objects.mario;
             mario.Jump();
-
+            sfx.PlaySFX("jumpSmall");
         }
-
     }
 }
