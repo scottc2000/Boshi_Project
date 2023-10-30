@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
 using Sprint0.Collision;
@@ -6,7 +7,10 @@ using Sprint0.Controllers;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.SFX;
 using System;
+using System.Drawing;
+using System.Reflection.Metadata;
 
 namespace Sprint0
 {
@@ -16,6 +20,7 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
         public GameTime gametime;
         public ObjectManager objects;
+        public SFXManager sfx;
 
         private LevelLoader1 levelLoader;
         public MarioCamera camera;
@@ -43,6 +48,7 @@ namespace Sprint0
 
             camera = new MarioCamera(GraphicsDevice.Viewport);
             objects = new ObjectManager(this, camera);
+            sfx = new SFXManager(Content);
 
             KeyboardController = new KeyboardController(this);
 
@@ -59,6 +65,7 @@ namespace Sprint0
             // collision
             collision = new CollisionHandler(this, objects);
 
+            sfx.Load();
         }
 
         protected override void Update(GameTime gameTime)

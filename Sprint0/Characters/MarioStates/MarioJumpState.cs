@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 
+
 namespace Sprint0.Characters.MarioStates
 {
     internal class MarioJumpState : ICharacterState

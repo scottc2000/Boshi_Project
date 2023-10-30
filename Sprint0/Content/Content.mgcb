@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 01-main-theme-overworld.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:01-main-theme-overworld.mp3
+
 #begin level1_1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,6 +42,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:marioenemy.png
+
+#begin smb_jumpsmall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_jumpsmall.wav;jumpSmall.wav
 
 #begin SpriteImages/blocks.png
 /importer:TextureImporter
