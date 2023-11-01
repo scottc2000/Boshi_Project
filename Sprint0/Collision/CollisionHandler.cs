@@ -46,13 +46,13 @@ namespace Sprint0.Collision
 
                 if (SideCollidableBlocks.Contains(block))
                 {
-                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Left)].Item1.Execute(Rectangle.Intersect(luigi.destination, blockHitbox));
+                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Left)].Item1.Execute(blockHitbox);
 
                 }
 
                 if (TopCollidableBlocks.Contains(block) || BottomCollidableBlocks.Contains(block))
                 {
-                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Top)].Item1.Execute(Rectangle.Intersect(luigi.destination, blockHitbox));
+                    register.collisions.luigiBlock[new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(luigi, Blocks, CollisionDictionary.Side.Top)].Item1.Execute(blockHitbox);
 
                 }
 

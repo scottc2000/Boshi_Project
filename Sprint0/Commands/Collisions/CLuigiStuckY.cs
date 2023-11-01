@@ -20,24 +20,26 @@ namespace Sprint0.Commands.Collisions
 
             luigi = mySprint0.objects.luigi;
             luigi.uphit = true;
+
         }
 
         public void Execute(Rectangle hitbox)
         {
             luigi = mySprint0.objects.luigi;
 
-            if (hitbox.Width >= hitbox.Height)
+            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.destination);
+
+            if (hitarea.Width >= hitarea.Height)
             {
                 if (hitbox.Y <= luigi.position.Y)
                 {
-                    luigi.position.Y += hitbox.Height;
-                    luigi.velocityY *= -1;
-
+                    luigi.position.Y += hitarea.Height;
+                                              
                 }
                 else
                 {
                     luigi.uphit = true;
-                    luigi.position.Y -= hitbox.Height;
+                    luigi.position.Y -= hitarea.Height;
                 }
             }
             

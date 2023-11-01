@@ -38,19 +38,18 @@ namespace Sprint0.Commands.Collisions
         public void Execute(Rectangle hitbox)
         {
             luigi = mySprint0.objects.luigi;
-            if (hitbox.Width > hitbox.Height)
-            {
-                ;
-            }
-            else
+
+            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.destination);
+
+            if (!(hitarea.Width >= hitarea.Height))
             {
                 if (luigi.facingLeft)
                 {
-                    luigi.position.X += hitbox.Width;
+                    luigi.position.X += hitarea.Width;
                 }
                 else
                 {
-                    luigi.position.X -= hitbox.Width;
+                    luigi.position.X -= hitarea.Width;
                 }
             }
         }
