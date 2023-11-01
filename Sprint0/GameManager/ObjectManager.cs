@@ -24,7 +24,7 @@ namespace Sprint0.GameMangager
         public List<IEnemies> Enemies { get;set; }
 
         public Mario mario;
-        public ICharacter luigi;
+        public Luigi luigi;
 
         private Sprint0 sprint;
         

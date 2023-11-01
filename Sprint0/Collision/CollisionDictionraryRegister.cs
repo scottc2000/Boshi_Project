@@ -23,16 +23,17 @@ namespace Sprint0.Collision
         public void generate()
         {
             // mario luigi collisions
+
             collisions.luigiMario.Add(new Tuple< Mario, ICharacter, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.luigi, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
             collisions.luigiMario.Add(new Tuple<Mario, ICharacter, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.luigi, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), new CLuigiStuckX(sprint)));
             collisions.luigiMario.Add(new Tuple<Mario, ICharacter, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.luigi, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), new CLuigiStuckY(sprint)));
             collisions.luigiMario.Add(new Tuple<Mario, ICharacter, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.luigi, CollisionDictionary.Side.Bottom), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), new CLuigiStuckY(sprint)));
 
             // luigi block collisions
-            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CLuigiStuckX(sprint), null));
-            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CLuigiStuckX(sprint), null));
-            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CLuigiStuckY(sprint), null));
-            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Bottom), new Tuple<ICommand, ICommand>(new CLuigiStuckY(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICollidableCommand, ICommand>(new CLuigiStuckX(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICollidableCommand, ICommand>(new CLuigiStuckX(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Top), new Tuple<ICollidableCommand, ICommand>(new CLuigiStuckY(sprint), null));
+            collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Bottom), new Tuple<ICollidableCommand, ICommand>(new CLuigiStuckY(sprint), null));
 
             // mario block collisions
             collisions.marioBlock.Add(new Tuple<Mario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), null));

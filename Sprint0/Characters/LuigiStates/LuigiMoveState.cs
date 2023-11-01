@@ -21,8 +21,7 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Jump()
         {
-            luigi.timeGap = 0;
-            luigi.State = new LuigiJumpState(luigi);
+            //luigi.State = new LuigiJumpState(luigi);
         }
         public void Fall()
         {
@@ -35,8 +34,9 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Stop()
         {
-            luigi.timeGap = 0;
+            
             luigi.State = new LuigiIdleState(luigi);
+
         }
         public void Throw()
         {
@@ -50,24 +50,18 @@ namespace Sprint0.Characters.LuigiStates
 
         public void UpdateVelocity()
         {
-            luigi.velocityX = 1.0f;
-            luigi.velocityY *= 0;
+            luigi.velocityX = 3.0f;
+            luigi.velocityY = 0;
         }
 
 
         public void Update(GameTime gametime)
         {
 
-            
 
-            if (!(luigi.lefthit))
-            {
-                UpdateVelocity();
-            }
-            if (!(luigi.righthit))
-            {
-                UpdateVelocity();
-            }
+            luigi.pose = Luigi.LuigiPose.Walking;
+
+            UpdateVelocity();
 
             if (luigi.facingLeft)
             {
@@ -78,7 +72,7 @@ namespace Sprint0.Characters.LuigiStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
-                    luigi.UpStuck();
+                    
                 }
             }
             else
@@ -90,7 +84,7 @@ namespace Sprint0.Characters.LuigiStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
-                    luigi.UpStuck();
+                    
 
                 }
 

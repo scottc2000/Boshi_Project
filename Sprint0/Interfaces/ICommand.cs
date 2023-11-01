@@ -1,9 +1,10 @@
-﻿namespace Sprint0.Interfaces
+﻿using Microsoft.Xna.Framework;
+
+namespace Sprint0.Interfaces
 {
     public interface ICommand
     {
 
         void Execute();
-
     }
 }
