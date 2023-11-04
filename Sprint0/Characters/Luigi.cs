@@ -25,6 +25,7 @@ namespace Sprint0.Characters
         public bool downhit { get; set; }
         public bool gothit { get; set; }
         public bool stuck { get; set; }
+        public bool isInvinsible { get; set; }
 
         public float velocityX;
         public float velocityY;

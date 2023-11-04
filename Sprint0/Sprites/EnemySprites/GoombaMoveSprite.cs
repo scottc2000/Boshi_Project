@@ -1,10 +1,7 @@
-﻿using Sprint0.Interfaces;
-using Sprint0.Enemies;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Xml.Linq;
-using MonoGame.Extended.Timers;
+using Sprint0.Enemies;
+using Sprint0.Interfaces;
 
 
 namespace Sprint0.Sprites.goombaSprite
