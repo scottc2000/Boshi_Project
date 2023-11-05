@@ -18,7 +18,6 @@ namespace Sprint0.Collision
         Rectangle blockHitbox;
         ICharacter luigi;
         IMario mario;
-        
 
         public CollisionHandler(Sprint0 sprint, ObjectManager objects)
         { 
@@ -50,7 +49,6 @@ namespace Sprint0.Collision
                 {
                     //register.collisions.playerBlockDict[new Tuple<List<ICharacter>, List<IBlock>, CollisionDictionary.Side>(Players, Blocks, CollisionDictionary.Side.Top)].Item1.Execute();
 
-
                     if (Rectangle.Intersect(luigi.destination, blockHitbox).Width >= Rectangle.Intersect(luigi.destination, blockHitbox).Height)
                     {
                         if (blockHitbox.Y > luigi.destination.Y)
@@ -70,7 +68,6 @@ namespace Sprint0.Collision
                         }
                     }
 
-
                     else
                     {
                         if (SideCollidableBlocks.Contains(block))
@@ -86,9 +83,7 @@ namespace Sprint0.Collision
                             }
                         }
                     }
-
                 }
-
             }
         }
 
@@ -172,8 +167,8 @@ namespace Sprint0.Collision
                 }
 
             }
-
         }
+
         public void marioItemUpdate()
         {
             foreach(IItem item in Items)
@@ -190,12 +185,23 @@ namespace Sprint0.Collision
 
         public void itemBlockUpdate()
         {
+
            /* foreach(IItem item in Items)
             {
-                if (mario.destination.Intersects(item.itemRectangle))
+                foreach (IBlock block in Blocks)
                 {
-
+                    blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
+                    if (item.itemRectangle.Intersects(blockHitbox))
+                    {
+                        //handles x collisions (left and right)
+                        if (Rectangle.Intersect(item.itemRectangle, blockHitbox).Width <= Rectangle.Intersect(item.itemRectangle, blockHitbox).Height)
+                        {
+                            register.collisions.itemBlock[new Tuple<List<IItem>, List<IBlock>, CollisionDictionary.Side>(Items, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
+                            register.collisions.itemBlock[new Tuple<List<IItem>, List<IBlock>, CollisionDictionary.Side>(Items, Blocks, CollisionDictionary.Side.Right)].Item2.Execute();
+                        }
+                    }
                 }
+
             }*/
         }
 
