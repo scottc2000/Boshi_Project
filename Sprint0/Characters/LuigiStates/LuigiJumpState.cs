@@ -50,15 +50,16 @@ namespace Sprint0.Characters.LuigiStates
 
         public void UpdateVelocity(GameTime gametime)
         {
-            if (!luigi.downhit && luigi.timeGap < 500)
+            if (luigi.timeGap < 500 )
             {
-                luigi.velocityY = -4.0f;
+                luigi.velocityY = -3.0f;
             }
             else
             {
                 luigi.velocityY = 0;
             }
 
+            
             luigi.timeGap += gametime.ElapsedGameTime.Milliseconds;
 
         }
@@ -81,7 +82,7 @@ namespace Sprint0.Characters.LuigiStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiJumpLeft");
-                    luigi.UpStuck();
+                    
                 }
 
             }
@@ -97,7 +98,7 @@ namespace Sprint0.Characters.LuigiStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiJumpRight");
-                    luigi.UpStuck();
+                    
                 }
             }
 
