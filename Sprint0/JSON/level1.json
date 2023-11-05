@@ -2,6 +2,20 @@
   "Blocks": [
     {
       "Name": "floor",
+      "x": -16,
+      "y": 0,
+      "width": 16,
+      "height": 432
+    },
+    {
+      "Name": "floor",
+      "x": 2816,
+      "y": 0,
+      "width": 16,
+      "height": 432
+    },
+    {
+      "Name": "floor",
       "x": 0,
       "y": 416,
       "width": 256,
