@@ -35,10 +35,10 @@ namespace Sprint0.Collision
             collisions.luigiBlock.Add(new Tuple<ICharacter, List<IBlock>, CollisionDictionary.Side>(sprint.objects.luigi, sprint.objects.Blocks, CollisionDictionary.Side.Bottom), new Tuple<ICollidableCommand, ICommand>(new CLuigiStuckY(sprint), null));
 
             // mario block collisions
-            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), null));
-            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CMarioStuckX(sprint), null));
-            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Top), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), null));
-            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Bottom), new Tuple<ICommand, ICommand>(new CMarioStuckY(sprint), null));
+            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICollidableCommand, ICommand>(new CMarioStuckX(sprint), null));
+            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICollidableCommand, ICommand>(new CMarioStuckX(sprint), null));
+            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Top), new Tuple<ICollidableCommand, ICommand>(new CMarioStuckY(sprint), null));
+            collisions.marioBlock.Add(new Tuple<IMario, List<IBlock>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Blocks, CollisionDictionary.Side.Bottom), new Tuple<ICollidableCommand, ICommand>(new CMarioStuckY(sprint), null));
 
             // mario enemy collision
             collisions.marioEnemy.Add(new Tuple<IMario, List<IEnemies>, CollisionDictionary.Side>(sprint.objects.mario, sprint.objects.Enemies, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CMarioTakeDamage(sprint), null));

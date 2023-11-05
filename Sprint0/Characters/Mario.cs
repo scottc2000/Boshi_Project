@@ -13,7 +13,7 @@ namespace Sprint0.Characters
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health { get; set; }
 
-        public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing };
+        public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing, Flying };
         public MarioPose pose = MarioPose.Idle;
         public bool facingLeft { get; set; }
 
@@ -31,6 +31,8 @@ namespace Sprint0.Characters
         public float decay;
         public float gravity;
         public int timeGap;
+        public int raccoonTimer;
+        public int raccoonBoost;
 
         public Sprint0 mySprint;
         int sizeDiff;
@@ -53,12 +55,14 @@ namespace Sprint0.Characters
             sizeDiff = 12;
             position = new Vector2(115, 300);
             timeGap = 0;
+            raccoonTimer = 0;
+            raccoonBoost = 0;
 
             resetHits();
 
             // default velocity is zero (still), decay makes player slippery the higher it is.
             velocity = new Vector2(0,0);
-            gravity = 1f;
+            gravity = 1.0f;
             decay = 0.9f;
             stuck = false;
             isInvinsible = false;
@@ -73,16 +77,25 @@ namespace Sprint0.Characters
         }
         public void Move()  { State.Move(); }
 
-        public void Jump()  { State.Jump(); }
+        public void Jump()  
+        {   
+            if (uphit)
+                State.Jump(); 
+        }
+        public void Fly() { State.Fly(); }
         public void Fall()  { State.Fall(); }
 
         public void Crouch()  { State.Crouch(); }
 
-        public void Stop() { State.Stop(); }
+        public void Stop() 
+        {
+            timeGap = 0;
+            State.Stop(); 
+        }
 
         public void Die()  { State.Die(); }
 
-        public void Reverse() { velocity *= -1; }
+        public void Reverse() { velocity.X *= -1; }
         public void resetHits()
         {
             this.downhit = false;
@@ -93,6 +106,7 @@ namespace Sprint0.Characters
             this.stuck = false;
         }
       
+        // Throw logic needs to be updated for mario
         public void Throw()
         {
             if (health == MarioHealth.Fire)
@@ -159,36 +173,26 @@ namespace Sprint0.Characters
                 position = new Vector2(position.X - (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             else
                 position = new Vector2(position.X + (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
+
+            position = new Vector2(position.X, position.Y + (velocity.Y * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))));
         }
 
         public void applyGravity()
         {
-            if (!uphit)
-                position = new Vector2(position.X, position.Y + gravity);
-
-            if (!downhit)
-                position = new Vector2(position.X, position.Y + velocity.Y);
+            position = new Vector2(position.X, position.Y + gravity);
         }
 
         // Stuck methods
-        public void LeftStuck() {   position = new Vector2(position.X + 1, position.Y); }
-        public void RightStuck() {  position = new Vector2(position.X - 1, position.Y); }
-        public void UpStuck()   {   position = new Vector2(position.X, position.Y - (gravity/2));   }
+        public void LeftStuck(GameTime gametime) { position = new Vector2(position.X + (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y); }
+        public void RightStuck(GameTime gametime) { position = new Vector2(position.X - (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y); }
+        public void UpStuck()   { position = new Vector2(position.X, position.Y - (gravity/2));  }
 
         public void Update(GameTime gametime)
         {
-            if (!lefthit && !stuck)
-                UpdateMovement(gametime);
-            else if (lefthit && stuck)
-                LeftStuck();
-
-            if (!righthit && !stuck)
-                UpdateMovement(gametime);
-            else if (righthit && stuck)
-                RightStuck();
-
             State.Update(gametime);
+            UpdateMovement(gametime);
             applyGravity();
+
             destination = currentSprite.destination;
             resetHits();
         }

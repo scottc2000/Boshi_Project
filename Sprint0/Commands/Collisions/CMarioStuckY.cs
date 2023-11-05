@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 
 namespace Sprint0.Commands.Collision
 {
-    public class CMarioStuckY : ICommand
+    public class CMarioStuckY : ICommand, ICollidableCommand
     {
 
         private Sprint0 mySprint0;
@@ -16,11 +16,25 @@ namespace Sprint0.Commands.Collision
 
         public void Execute()
         {
-
             mario = mySprint0.objects.mario;
             mario.uphit = true;
+        }
 
+        public void Execute(Rectangle hitbox)
+        {
+            mario = mySprint0.objects.mario;
+            Rectangle hitarea = Rectangle.Intersect(hitbox, mario.destination);
 
+            if (hitarea.Width >= hitarea.Height)
+            {
+                if (hitbox.Y <= mario.position.Y)
+                    mario.position = new Vector2(mario.position.X, mario.position.Y + hitarea.Height);
+                else
+                {
+                    mario.uphit = true;
+                    mario.position = new Vector2(mario.position.X, mario.position.Y - hitarea.Height);
+                }
+            }
         }
     }
 }

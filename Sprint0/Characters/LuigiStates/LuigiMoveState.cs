@@ -4,7 +4,7 @@ using Sprint0.Interfaces;
 
 namespace Sprint0.Characters.LuigiStates
 {
-    internal class LuigiMoveState : ICharacterState
+    public class LuigiMoveState : ICharacterState
     {
         private Luigi luigi;
 
@@ -22,6 +22,10 @@ namespace Sprint0.Characters.LuigiStates
         public void Jump()
         {
             //luigi.State = new LuigiJumpState(luigi);
+        }
+        public void Fly()
+        {
+
         }
         public void Fall()
         {
@@ -42,7 +46,6 @@ namespace Sprint0.Characters.LuigiStates
         {
             luigi.State = new LuigiThrowState(luigi);
         }
-        public void TakeDamage() { }
         public void Die()
         {
 

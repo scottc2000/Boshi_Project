@@ -1,10 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
-    internal class MarioIdleState : ICharacterState
+    public class MarioIdleState : ICharacterState
     {
         private Mario mario;
         public MarioIdleState(Mario mario)
@@ -19,9 +18,13 @@ namespace Sprint0.Characters.MarioStates
 
         public void Jump()
         {
-            mario.State = new MarioJumpState(mario);
+            if (mario.timeGap == 0)
+                mario.State = new MarioJumpState(mario);
         }
-
+        public void Fly()
+        {
+            mario.State = new MarioFlyState(mario);
+        }
         public void Fall()
         {
 
@@ -43,11 +46,6 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.timeGap = 0;
             mario.pose = Mario.MarioPose.Idle;
-        }
-
-        public void TakeDamage() 
-        {
-          
         }
         public void Die()
         {

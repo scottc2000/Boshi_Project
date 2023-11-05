@@ -58,6 +58,7 @@ namespace Sprint0.Characters
         public void Die()  { decoratedMario.Die();  }
 
         public void Jump() { decoratedMario.Jump();  }
+        public void Fly() { decoratedMario.Fly(); }
 
         public void Move() { decoratedMario.Move();  }
 

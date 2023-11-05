@@ -17,6 +17,7 @@ namespace Sprint0.Interfaces
         public void Move();
 
         public void Jump();
+        public void Fly();
 
         public void Crouch();
 

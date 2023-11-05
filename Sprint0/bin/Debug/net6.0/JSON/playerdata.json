@@ -686,6 +686,54 @@
         },
 
         {
+          "name": "MarioRunLeft",
+          "spritesheet_pos": [
+            [ 182, 350 ],
+            [ 208, 350 ],
+            [ 234, 350 ]
+          ],
+          "hitbox": [ 24, 29 ],
+          "facingleft": true,
+          "looping": true
+        },
+
+        {
+          "name": "MarioRunRight",
+          "spritesheet_pos": [
+            [ 182, 350 ],
+            [ 208, 350 ],
+            [ 234, 350 ]
+          ],
+          "hitbox": [ 24, 29 ],
+          "facingleft": false,
+          "looping": true
+        },
+
+        {
+          "name": "MarioFlyLeft",
+          "spritesheet_pos": [
+            [ 286, 350 ],
+            [ 312, 350 ],
+            [ 260, 350 ]
+          ],
+          "hitbox": [ 24, 29 ],
+          "facingleft": true,
+          "looping": true
+        },
+
+        {
+          "name": "MarioFlyRight",
+          "spritesheet_pos": [
+            [ 286, 350 ],
+            [ 312, 350 ],
+            [ 260, 350 ]
+          ],
+          "hitbox": [ 24, 29 ],
+          "facingleft": false,
+          "looping": true
+        },
+
+        {
           "name": "MarioCrouchLeft",
           "spritesheet_pos": [ [ 79, 350 ] ],
           "hitbox": [ 24, 28 ],

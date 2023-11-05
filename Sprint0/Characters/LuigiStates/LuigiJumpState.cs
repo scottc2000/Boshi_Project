@@ -21,7 +21,7 @@ namespace Sprint0.Characters.LuigiStates
         {
             luigi.State = new LuigiJumpState(luigi);
         }
-
+        public void Fly() { }
         public void Fall()
         {
 
@@ -41,8 +41,7 @@ namespace Sprint0.Characters.LuigiStates
             luigi.velocityY = 0;
             luigi.State = new LuigiIdleState(luigi);
         }
-        
-        public void TakeDamage() { }
+
         public void Die()
         {
             // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();

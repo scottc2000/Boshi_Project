@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -21,10 +22,13 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioJumpState(mario);
         }
-
+        public void Fly()
+        {
+            mario.State = new MarioFlyState(mario);
+        }
         public void Fall()
         {
-
+            
         }
 
         public void Crouch()
@@ -49,13 +53,16 @@ namespace Sprint0.Characters.MarioStates
 
         public void UpdateVelocity(GameTime gametime)
         {
-            if (!mario.downhit && mario.timeGap < 500)
-                mario.velocity.Y = -4.0f;
+            if (mario.timeGap < 500)
+            {
+                mario.velocity.Y = -3.0f;
+            }
             else
+            {
                 mario.velocity.Y = 0;
+            }
 
             mario.timeGap += gametime.ElapsedGameTime.Milliseconds;
-
         }
 
         public void Update(GameTime gametime)
@@ -76,7 +83,6 @@ namespace Sprint0.Characters.MarioStates
                 else
                 {
                     mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpLeft");
-                    mario.UpStuck();
                 }
 
             }
@@ -92,7 +98,6 @@ namespace Sprint0.Characters.MarioStates
                 else
                 {
                     mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpRight");
-                    mario.UpStuck();
                 }
             }
 

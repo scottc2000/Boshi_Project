@@ -23,6 +23,7 @@ namespace Sprint0.Characters.LuigiStates
                 luigi.State = new LuigiJumpState(luigi);
             }
         }
+        public void Fly() { }
         public void Fall()
         {
 
@@ -52,7 +53,6 @@ namespace Sprint0.Characters.LuigiStates
             luigi.velocityY *= 0;
 
         }
-        public void TakeDamage() { }
 
         public void Die()
         {

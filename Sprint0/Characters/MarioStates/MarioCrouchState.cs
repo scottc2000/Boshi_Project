@@ -21,6 +21,10 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioJumpState(mario);
         }
+        public void Fly()
+        {
+            mario.State = new MarioFlyState(mario);
+        }
         public void Fall()
         {
 

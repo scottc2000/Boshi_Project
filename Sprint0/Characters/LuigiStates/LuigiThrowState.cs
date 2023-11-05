@@ -21,6 +21,7 @@ namespace Sprint0.Characters.LuigiStates
         {
             luigi.State = new LuigiJumpState(luigi);
         }
+        public void Fly() { }
         public void Fall()
         {
 
