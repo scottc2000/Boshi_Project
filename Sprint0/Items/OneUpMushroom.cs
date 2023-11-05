@@ -38,6 +38,7 @@ namespace Sprint0.Items
 
         public void Update(GameTime gameTime)
         {
+
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (timer > interval && moveRight)
             {
@@ -49,6 +50,7 @@ namespace Sprint0.Items
                 position.X -= itemSpeed;
                 timer = 0;
             }
+            itemRectangle = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

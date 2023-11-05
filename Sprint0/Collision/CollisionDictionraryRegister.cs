@@ -45,6 +45,10 @@ namespace Sprint0.Collision
 
             // mario item collision
             //collisions.marioItem.Add(new Tuple<ICharacter, List<IItem>, CollisionDictionary.Side>(sprint.objects.mario, this.sprint.objects.Items, CollisionDictionary.Side.Any), new Tuple<ICommand, ICommand>(new CPowerUp(sprint, IItem item), new CItemDisappear(sprint)));
+
+            // item block collision
+            collisions.itemBlock.Add(new Tuple<List<IItem>, List<IBlock>, CollisionDictionary.Side>(sprint.objects.Items, sprint.objects.Blocks, CollisionDictionary.Side.Left), new Tuple<ICommand, ICommand>(new CItemBlockX(sprint), null));
+            collisions.itemBlock.Add(new Tuple<List<IItem>, List<IBlock>, CollisionDictionary.Side>(sprint.objects.Items, sprint.objects.Blocks, CollisionDictionary.Side.Right), new Tuple<ICommand, ICommand>(new CItemBlockX(sprint), null));
         }
     }
 }
