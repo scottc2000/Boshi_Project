@@ -4,6 +4,7 @@ using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using System;
 using System.ComponentModel.Design;
+using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -45,14 +46,17 @@ namespace Sprint0.Characters.MarioStates
 
 
         }
+        public void TakeDamage() 
+        {
 
+        }
         public void Die()
         {
-            //death movement
+             mario.velocity = Vector2.Zero;
         }
         public void Update(GameTime gametime)
         {
-            mario.currentSprite.spriteName.Equals("MarioDead");
+            mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioDead");
 
         }
     }

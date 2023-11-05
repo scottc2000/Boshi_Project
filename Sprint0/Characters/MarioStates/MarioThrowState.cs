@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using System;
-using System.ComponentModel.Design;
-using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -43,10 +40,15 @@ namespace Sprint0.Characters.MarioStates
 
 
         }
+        public void UpdateVelocity()
+        {
+            mario.velocity.X = 1.0f;
+            mario.velocity.Y *= 0;
+        }
 
         public void Die()
         {
-            mario.State = new DeadMarioState(mario); // big mario falls -> KO
+            mario.State = new DeadMarioState(mario);
         }
         public void Update(GameTime gametime)
         {

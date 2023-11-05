@@ -40,7 +40,13 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioThrowState(mario);
         }
-
+        public void TakeDamage() 
+        {
+        }
+        public void UpdateVelocity()
+        {
+            mario.velocity = Vector2.Zero;
+        }
         public void Die()
         {
             mario.State = new DeadMarioState(mario);

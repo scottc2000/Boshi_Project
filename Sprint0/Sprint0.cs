@@ -1,15 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Sprint0.Background;
+using Sprint0.Camera;
 using Sprint0.Collision;
-using Sprint0.Commands;
 using Sprint0.Controllers;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
-using Sprint0.Items;
 using Sprint0.Sprites.SpriteFactories;
 using System;
+
 namespace Sprint0
 {
     public class Sprint0 : Game
@@ -20,8 +18,9 @@ namespace Sprint0
         public ObjectManager objects;
 
         private LevelLoader1 levelLoader;
-        //Camera1 camera;
-        public Terrain terrain;
+        public MarioCamera camera;
+        public static int ScreenWidth;
+        public static int ScreenHeight;
 
         public TimeSpan spriteDelay, timeSinceLastSprite;
 
@@ -39,11 +38,11 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            ScreenHeight = _graphics.PreferredBackBufferHeight;
+            ScreenWidth = _graphics.PreferredBackBufferWidth;
 
-            //camera = new Camera1(GraphicsDevice.Viewport);
-            terrain = new Terrain(this);
-            objects = new ObjectManager(this);
-
+            camera = new MarioCamera(GraphicsDevice.Viewport);
+            objects = new ObjectManager(this, camera);
 
             KeyboardController = new KeyboardController(this);
 
@@ -65,9 +64,7 @@ namespace Sprint0
         protected override void Update(GameTime gameTime)
         {
 
-            KeyboardController.Update();
-
-            terrain.Update(gameTime);
+            KeyboardController.Update();;
 
             objects.Update(gameTime, collision);
 
@@ -80,9 +77,9 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin(/*SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform*/);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
+                null, null, null, null, camera.transform);
 
-            terrain.Draw(_spriteBatch);
             objects.Draw(_spriteBatch);
             
             _spriteBatch.End();

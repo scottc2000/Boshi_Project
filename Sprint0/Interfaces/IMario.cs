@@ -1,10 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Characters;
+using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
 {
-    public interface ICharacter : ICollidable
+    public interface IMario : ICollidable
     {
+        Mario.MarioHealth health { get; set; }
+        AnimatedSpriteMario currentSprite { get; set; }
+        Vector2 position { get; set; }
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }
         bool isInvinsible { get; set; }
@@ -20,7 +25,7 @@ namespace Sprint0.Interfaces
         public void Die();
 
         public void Throw();
-      
+
         void ChangeToFire();
 
         void ChangeToRaccoon();
@@ -34,5 +39,6 @@ namespace Sprint0.Interfaces
         void Update(GameTime gametime);
 
         void Draw(SpriteBatch spritebatch);
+
     }
 }

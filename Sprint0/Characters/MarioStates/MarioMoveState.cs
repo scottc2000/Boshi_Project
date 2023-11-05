@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using static Sprint0.Characters.Mario;
 
 namespace Sprint0.Characters.MarioStates
 {
     internal class MarioMoveState : ICharacterState
     {
         private Mario mario;
-        float moveSpeed = 200f; // Mario's horizontal movement speed
 
         public MarioMoveState(Mario mario)
         {
@@ -15,11 +15,13 @@ namespace Sprint0.Characters.MarioStates
 
         public void Move()
         {
+
             mario.State = new MarioMoveState(mario);
         }
 
         public void Jump()
         {
+            mario.timeGap = 0;
             mario.State = new MarioJumpState(mario);
         }
         public void Fall()
@@ -33,24 +35,28 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
+            mario.timeGap = 0;
             mario.State = new MarioIdleState(mario);
         }
         public void Throw()
         {
             mario.State = new MarioThrowState(mario);
         }
+
         public void Die()
         {
             mario.State = new DeadMarioState(mario);
         }
+
         public void UpdateVelocity()
         {
-            mario.velocity = 1.0f;
+            mario.velocity.X = 1.0f;
+            mario.velocity.Y *= 0;
         }
+
 
         public void Update(GameTime gametime)
         {
-            mario.pose = Mario.MarioPose.Walking;
 
             if (!(mario.lefthit))
             {
@@ -70,6 +76,7 @@ namespace Sprint0.Characters.MarioStates
                 else
                 {
                     mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioMoveLeft");
+                    mario.UpStuck();
                 }
             }
             else
@@ -81,11 +88,11 @@ namespace Sprint0.Characters.MarioStates
                 else
                 {
                     mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioMoveRight");
+                    mario.UpStuck();
+
                 }
 
             }
-
         }
-
     }
 }

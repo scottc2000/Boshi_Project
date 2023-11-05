@@ -1,18 +1,14 @@
-﻿using Sprint0.GameMangager;
+﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Blocks;
+using Sprint0.Enemies;
+using Sprint0.GameMangager;
 using Sprint0.Interfaces;
+using Sprint0.Items;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using Sprint0.Blocks;
 using static Sprint0.LevelLoader.Level1Data;
-using System.Collections;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using System;
-using System.Diagnostics;
-using Sprint0.Enemies;
-using Sprint0.Items;
-using Sprint0.Sprites.SpriteFactories;
 using Item = Sprint0.LevelLoader.Level1Data.Item;
 
 namespace Sprint0
@@ -41,11 +37,6 @@ namespace Sprint0
             // Deserialize json file
             string json = File.ReadAllText(jsonFilePath);
             data = JsonSerializer.Deserialize<Root>(json);
-
-            // Initialize Lists
-            objectManager.Blocks = new List<IBlock>();
-            objectManager.Items = new List<IItem>();
-            objectManager.Enemies = new List<IEnemies>();
 
             Load(data);
         }
@@ -159,15 +150,7 @@ namespace Sprint0
                         objectManager.Items.Add(Shoe);
                         break;
                 }
-                // need a RedMushroom.c class that inherits from IItem
-                // redmushroom.add(new RedMushroom(item.Position, item.Hitbox));
-                // objectManager.Items.add(redmushroom);
             }
-
-
-            /*
-             * ADD ENEMIES ONCE ADDED TO LEVEL1.JSON AND ENEMY CLASS(ES) ARE ADDED TO LEVEL1DATA.CS
-             */
 
             foreach (Enemy enemy in data.Enemies)
             {

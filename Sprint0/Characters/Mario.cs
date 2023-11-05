@@ -8,10 +8,10 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Characters
 {
-    public class Mario : ICharacter
+    public class Mario : IMario
     {
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
-        public MarioHealth health = MarioHealth.Normal;
+        public MarioHealth health { get; set; }
 
         public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing };
         public MarioPose pose = MarioPose.Idle;
@@ -25,42 +25,45 @@ namespace Sprint0.Characters
         public bool downhit { get; set; }
         public bool gothit { get; set; }
         public bool stuck { get; set; }
+        public bool isInvinsible { get; set; }
 
-        public float velocity;
+        public Vector2 velocity;
         public float decay;
         public float gravity;
+        public int timeGap;
 
         public Sprint0 mySprint;
         int sizeDiff;
-        public Vector2 position;
+        public Vector2 position { get; set; }
+
         public Rectangle destination { get; set; }
 
-        public AnimatedSpriteMario currentSprite;
+        public AnimatedSpriteMario currentSprite { get; set; }
         public CharacterSpriteFactoryMario mySpriteFactory;
-        public Camera1 camera;
+        public MarioCamera camera;
 
         public Mario(Sprint0 sprint0)
         {
+            mySprint = sprint0;
+
             health = MarioHealth.Normal;
             State = new MarioIdleState(this);
 
             facingLeft = true;
             sizeDiff = 12;
-            position.X = 300;
-            position.Y = 400;
+            position = new Vector2(115, 300);
+            timeGap = 0;
 
-            this.downhit = false;
-            this.uphit = false;
-            this.lefthit = false;
-            this.righthit = false;
-            this.gothit = false;
+            resetHits();
 
             // default velocity is zero (still), decay makes player slippery the higher it is.
-            this.velocity = 0.0f;
-            this.decay = 0.9f;
-            this.stuck = false;
+            velocity = new Vector2(0,0);
+            gravity = 1f;
+            decay = 0.9f;
+            stuck = false;
+            isInvinsible = false;
 
-            mySprint = sprint0;
+            // Sprite initalization
             mySpriteFactory = new CharacterSpriteFactoryMario(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
@@ -68,41 +71,18 @@ namespace Sprint0.Characters
             destination = currentSprite.destination;
 
         }
-        public void Move()
-        {
-            State.Move();
-        }
+        public void Move()  { State.Move(); }
 
-        public void Jump()
-        {
-            State.Jump();
-        }
-        public void Fall()
-        {
-            State.Fall();
-        }
+        public void Jump()  { State.Jump(); }
+        public void Fall()  { State.Fall(); }
 
-        public void Crouch()
-        {
-            State.Crouch();
-        }
+        public void Crouch()  { State.Crouch(); }
 
-        public void Stop()
-        {
-            State.Stop();
-        }
+        public void Stop() { State.Stop(); }
 
-        public void Die()
-        {
-            State.Die();
+        public void Die()  { State.Die(); }
 
-            currentSprite = mySpriteFactory.returnSprite("MarioDead");
-        }
-
-        public void Reverse()
-        {
-            velocity *= -1;
-        }
+        public void Reverse() { velocity *= -1; }
         public void resetHits()
         {
             this.downhit = false;
@@ -112,71 +92,44 @@ namespace Sprint0.Characters
             this.gothit = false;
             this.stuck = false;
         }
-        public void TakeDamage()
-        {
-            switch(health)
-            {
-                case MarioHealth.Fire:
-                    ChangeToBig();
-                    break;
-                case MarioHealth.Raccoon:
-                    ChangeToBig();
-                    break;
-                case MarioHealth.Big:
-                    ChangeToNormal();
-                    break;
-                case MarioHealth.Normal:
-                    Die();
-                    break;
-
-            }
-        }
+      
         public void Throw()
         {
             if (health == MarioHealth.Fire)
-            {
                 State.Throw();
-            }
         }
 
         public void ChangeToFire()
         {
             if (health == MarioHealth.Normal)
-            {
-                position.Y -= sizeDiff;
-            }
+                position = new Vector2(position.X, position.Y - sizeDiff);
+ 
             health = MarioHealth.Fire;
 
             if (facingLeft)
                 currentSprite = mySpriteFactory.returnSprite("MarioStillLeft");
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
-
-            UpdateState();
         }
         
         public void ChangeToRaccoon()
         {
             if (health == MarioHealth.Normal)
-            {
-                position.Y -= sizeDiff;
-            }
+                position = new Vector2(position.X, position.Y - sizeDiff);
+
             health = MarioHealth.Raccoon;
 
             if (facingLeft)
                 currentSprite = mySpriteFactory.returnSprite("MarioStillLeft");
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
-
-            UpdateState();
         }
 
         public void ChangeToBig()
         {
             if (health == MarioHealth.Normal)
-            {
-                position.Y -= sizeDiff;
-            }
+                position = new Vector2(position.X, position.Y - sizeDiff);
+
             health = MarioHealth.Big;
 
             if (facingLeft)
@@ -184,65 +137,44 @@ namespace Sprint0.Characters
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
 
-            UpdateState();
         }
-
         public void ChangeToNormal()
         {
             if (health != MarioHealth.Normal)
-            {
-                position.Y += sizeDiff;
-            }
+                position = new Vector2(position.X, position.Y + sizeDiff);
+            
             health = MarioHealth.Normal;
 
             if (facingLeft)
                 currentSprite = mySpriteFactory.returnSprite("MarioStillLeft");
             else
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
-
-            UpdateState();
         }
 
-        public void UpdateState()
-        {
-            switch(pose)
-            {
-                case MarioPose.Idle:
-                    State.Stop();
-                    break;
-                case MarioPose.Crouch:
-                    State.Crouch();
-                    break;
-                case MarioPose.Walking:
-                    State.Move();
-                    break;
-                case MarioPose.Jump:
-                    State.Move();
-                    break;
-            }
-        }
         public void UpdateMovement(GameTime gametime)
         {
             // updates movement using pos +/- v * dt
 
             if (facingLeft)
-            {
-                position.X -= (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
-            }
+                position = new Vector2(position.X - (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             else
-            {
-                position.X += (velocity * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
-            }
+                position = new Vector2(position.X + (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
+        }
 
-        }
-        public void LeftStuck()
+        public void applyGravity()
         {
-            position.X += 1;
+            if (!uphit)
+                position = new Vector2(position.X, position.Y + gravity);
+
+            if (!downhit)
+                position = new Vector2(position.X, position.Y + velocity.Y);
         }
-        public void RightStuck()
-        {
-            position.X -= 1;
-        }
+
+        // Stuck methods
+        public void LeftStuck() {   position = new Vector2(position.X + 1, position.Y); }
+        public void RightStuck() {  position = new Vector2(position.X - 1, position.Y); }
+        public void UpStuck()   {   position = new Vector2(position.X, position.Y - (gravity/2));   }
+
         public void Update(GameTime gametime)
         {
             if (!lefthit && !stuck)
@@ -250,28 +182,20 @@ namespace Sprint0.Characters
             else if (lefthit && stuck)
                 LeftStuck();
 
-
             if (!righthit && !stuck)
                 UpdateMovement(gametime);
             else if (righthit && stuck)
                 RightStuck();
 
-            if (!uphit)
-            {
-                UpdateMovement(gametime);
-            }
-
-            if (gothit)
-                TakeDamage();
-
             State.Update(gametime);
+            applyGravity();
             destination = currentSprite.destination;
             resetHits();
         }
 
         public void Draw(SpriteBatch spritebatch)
         {
-            currentSprite.Draw(spritebatch, position);
+            currentSprite.Draw(spritebatch, position, Color.White);
         }
     }
 }
