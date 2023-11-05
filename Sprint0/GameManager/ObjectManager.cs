@@ -13,9 +13,9 @@ namespace Sprint0.GameMangager
     {
         public string Name { get; }
 
-        private MarioCamera camera;
+        public MarioCamera camera;
 
-        public Terrain terrain;
+        private Terrain terrain;
         public List<IBlock> Blocks { get; set; }
         public List<IBlock> TopCollidableBlocks { get; set; }
         public List<IBlock> BottomCollidableBlocks { get; set; }
@@ -23,8 +23,8 @@ namespace Sprint0.GameMangager
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
 
-        public Mario mario;
         public Luigi luigi;
+        public IMario mario;
 
         private Sprint0 sprint;
         
@@ -65,6 +65,7 @@ namespace Sprint0.GameMangager
             luigi.Draw(spriteBatch);
 
         }
+
 
         public void Update(GameTime gameTime, CollisionHandler collision)
         {
