@@ -14,6 +14,7 @@ namespace Sprint0
     {
         public Dictionary<string, SoundEffect> sfxDictionary;
         public Dictionary<string, SoundEffect> musicDictionary;
+        SoundEffectInstance musicLoop;
 
         private static AudioManager instance;
         public static AudioManager Instance
@@ -36,9 +37,11 @@ namespace Sprint0
 
         public void Load(ContentManager Content)
         {
-            sfxDictionary.Add("jumpSmall", Content.Load<SoundEffect>("jumpSmall"));
+            sfxDictionary.Add("jump", Content.Load<SoundEffect>("jumpSmall"));
+            sfxDictionary.Add("die", Content.Load<SoundEffect>("smb_mariodie"));
+            sfxDictionary.Add("fireball", Content.Load<SoundEffect>("smb_fireball"));
             musicDictionary.Add("mainTheme", Content.Load<SoundEffect>("01-main-theme-overworld"));
-            //this.PlayMusic("mainTheme");
+            
         }
 
         public void PlaySFX(string name)
@@ -60,13 +63,18 @@ namespace Sprint0
             exists = musicDictionary.TryGetValue(name, out SoundEffect music);
             if (exists)
             {
-                SoundEffectInstance musicLoop = music.CreateInstance();
+                musicLoop = music.CreateInstance();
                 musicLoop.IsLooped = true;
                 musicLoop.Play();
             } else
             {
                 System.Diagnostics.Debug.WriteLine("File not found.");
             }
+        }
+
+        public void StopMusic() 
+        {
+            musicLoop.Stop();
         }
     }
 }

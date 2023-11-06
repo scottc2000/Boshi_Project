@@ -23,6 +23,8 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.timeGap = 0;
             mario.State = new MarioJumpState(mario);
+            AudioManager audioManager = AudioManager.Instance;
+            audioManager.PlaySFX("jump");
         }
         public void Fall()
         {

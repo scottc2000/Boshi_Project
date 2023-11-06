@@ -17,6 +17,5 @@ namespace Sprint0.Commands.Mario
             mario.Jump();
 
         }
-
     }
 }

@@ -20,6 +20,8 @@ namespace Sprint0.Characters.LuigiStates
         public void Jump()
         {
             luigi.State = new LuigiJumpState(luigi);
+            AudioManager audioManager = AudioManager.Instance;
+            audioManager.PlaySFX("jump");
         }
         public void Fall()
         {

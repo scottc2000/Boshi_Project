@@ -23,6 +23,8 @@ namespace Sprint0.Characters.LuigiStates
         {
             luigi.timeGap = 0;
             luigi.State = new LuigiJumpState(luigi);
+            AudioManager audioManager = AudioManager.Instance;
+            audioManager.PlaySFX("jump");
         }
         public void Fall()
         {

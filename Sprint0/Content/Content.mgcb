@@ -49,6 +49,18 @@
 /processorParam:TextureFormat=Color
 /build:marioenemy.png
 
+#begin smb_fireball.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_fireball.wav
+
+#begin smb_mariodie.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_mariodie.wav
+
 #begin SpriteImages/blocks.png
 /importer:TextureImporter
 /processor:TextureProcessor

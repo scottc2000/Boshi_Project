@@ -32,7 +32,7 @@ namespace Sprint0
             objectManager = sprint0.objects;
             this.spriteBatch = spriteBatch;
             this.content = content;
-            audioManager = sprint0.audioManager;
+            audioManager = AudioManager.Instance;
         }
         public void Load(string jsonFilePath)
         {
