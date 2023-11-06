@@ -16,6 +16,13 @@ namespace Sprint0.Commands
         {
             mario = mySprint0.objects.mario;
             mario.facingLeft = false;
+
+            if (mario.health == Characters.Mario.MarioHealth.Raccoon && mario.pose == Characters.Mario.MarioPose.Walking)
+                mario.runningTimer++;
+            else
+                mario.runningTimer = 0;
+            System.Diagnostics.Debug.WriteLine("running timer: " + mario.runningTimer);
+
             mario.Move();
         }
     }

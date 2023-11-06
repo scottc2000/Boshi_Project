@@ -58,6 +58,7 @@ namespace Sprint0.Characters.MarioStates
         public void Update(GameTime gametime)
         {
             mario.pose = Mario.MarioPose.Crouch;
+
             if (mario.facingLeft)
             {
                 mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioCrouchLeft");

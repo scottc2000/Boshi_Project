@@ -686,7 +686,7 @@
         },
 
         {
-          "name": "MarioRunLeft",
+          "name": "MarioBoostLeft",
           "spritesheet_pos": [
             [ 182, 350 ],
             [ 208, 350 ],
@@ -698,7 +698,7 @@
         },
 
         {
-          "name": "MarioRunRight",
+          "name": "MarioBoostRight",
           "spritesheet_pos": [
             [ 182, 350 ],
             [ 208, 350 ],

@@ -21,9 +21,6 @@ namespace Sprint0.Camera
         Vector2 center;         // point to focus on
         Vector2 originalCenter;
 
-        float leftBound;
-        float rightBound;
-
         public MarioCamera(Viewport newview)
         {
             view = newview;
@@ -33,8 +30,6 @@ namespace Sprint0.Camera
             zoom = ((0.5f * view.Height) / MathF.Tan(0.5f * fieldOfView));*/
 
             originalCenter = new Vector2(3, 288);
-            leftBound = 25;
-            rightBound = 200;
         }
         
         public void Update(GameTime gameTime, IMario mario)
@@ -42,13 +37,15 @@ namespace Sprint0.Camera
             // zoom1: -130, -300
             center = new Vector2(mario.position.X + (mario.destination.Width / 2) - 120, mario.position.Y + (mario.destination.Height / 2) - 200);
 
-            var zoom = Matrix.CreateScale(new Vector3((float)1.5, (float)1.5, 0));
+            if (center.X < originalCenter.X)
+            {
+                center.X = originalCenter.X;
+            }
 
-            System.Diagnostics.Debug.WriteLine("Center2: " + center);
+            var zoom = Matrix.CreateScale(new Vector3((float)1.5, (float)1.5, 0));
             var translation = Matrix.CreateTranslation(new Vector3((float)(-center.X * 1.5), (float)(-center.Y * 1.5), 0));
 
             transform = zoom * translation;
-            System.Diagnostics.Debug.WriteLine("Transform: " + translation);
 
         }
       

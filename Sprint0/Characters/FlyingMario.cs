@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Sprint0.Characters
 {
-    public class DamagedMario : IMario
+    public class FlyingMario : IMario
     {
         public MarioCamera camera;
         public ICharacterState State { get; set; }
@@ -37,7 +37,7 @@ namespace Sprint0.Characters
             Color.Transparent,
             Color.White
         };
-        public DamagedMario(IMario mario, ObjectManager manager) 
+        public FlyingMario(IMario mario, ObjectManager manager) 
         {
             this.manager = manager;
             camera = manager.camera;

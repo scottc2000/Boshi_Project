@@ -14,7 +14,7 @@ namespace Sprint0.Characters
         public MarioHealth health { get; set; }
 
         public enum MarioPose { Jump, Crouch, Idle, Walking, Throwing, Flying };
-        public MarioPose pose = MarioPose.Idle;
+        public MarioPose pose { get; set; }
         public bool facingLeft { get; set; }
 
         public ICharacterState State { get; set; }
@@ -31,8 +31,8 @@ namespace Sprint0.Characters
         public float decay;
         public float gravity;
         public int timeGap;
-        public int raccoonTimer;
-        public int raccoonBoost;
+        public int runningTimer { get; set; }
+        public int flyingTimer { get; set; }
 
         public Sprint0 mySprint;
         int sizeDiff;
@@ -49,14 +49,15 @@ namespace Sprint0.Characters
             mySprint = sprint0;
 
             health = MarioHealth.Normal;
+            pose = MarioPose.Walking;
             State = new MarioIdleState(this);
 
             facingLeft = true;
             sizeDiff = 12;
             position = new Vector2(115, 300);
             timeGap = 0;
-            raccoonTimer = 0;
-            raccoonBoost = 0;
+            runningTimer = 0;
+            flyingTimer = 0;
 
             resetHits();
 
@@ -75,7 +76,10 @@ namespace Sprint0.Characters
             destination = currentSprite.destination;
 
         }
-        public void Move()  { State.Move(); }
+        public void Move()  
+        { 
+            State.Move(); 
+        }
 
         public void Jump()  
         {   

@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using Sprint0.Commands;
 using Sprint0.Commands.Luigi;
 using Sprint0.Commands.Mario;
