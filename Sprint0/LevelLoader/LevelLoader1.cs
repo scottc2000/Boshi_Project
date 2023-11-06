@@ -5,6 +5,7 @@ using Sprint0.Enemies;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items;
+using Sprint0.SFX;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -19,6 +20,7 @@ namespace Sprint0
         private Sprint0 sprint0;
         private SpriteBatch spriteBatch;
         private ContentManager content;
+        private AudioManager music;
 
         private JsonElement levelData;
         private Root data;
@@ -31,6 +33,7 @@ namespace Sprint0
             objectManager = sprint0.objects;
             this.spriteBatch = spriteBatch;
             this.content = content;
+            music = AudioManager.Instance;
         }
         public void Load(string jsonFilePath)
         {
@@ -39,6 +42,8 @@ namespace Sprint0
             data = JsonSerializer.Deserialize<Root>(json);
 
             Load(data);
+
+            music.PlayMusic("mainTheme");
         }
 
         public void Load(Root data)
