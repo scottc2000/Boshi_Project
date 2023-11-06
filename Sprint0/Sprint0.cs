@@ -16,6 +16,7 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
         public GameTime gametime;
         public ObjectManager objects;
+        public AudioManager audioManager;
 
         private LevelLoader1 levelLoader;
         public MarioCamera camera;
@@ -46,11 +47,14 @@ namespace Sprint0
 
             KeyboardController = new KeyboardController(this);
 
+            audioManager = AudioManager.Instance;
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            audioManager.Load(Content);
 
             levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
@@ -58,7 +62,6 @@ namespace Sprint0
             ItemSpriteFactory.Instance.LoadTextures(Content);
             // collision
             collision = new CollisionHandler(this, objects);
-
         }
 
         protected override void Update(GameTime gameTime)

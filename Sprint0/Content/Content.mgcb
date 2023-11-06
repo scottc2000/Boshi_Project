@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 01-main-theme-overworld.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:01-main-theme-overworld.wav
+
+#begin jumpSmall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:jumpSmall.wav
+
 #begin level1_1.png
 /importer:TextureImporter
 /processor:TextureProcessor
