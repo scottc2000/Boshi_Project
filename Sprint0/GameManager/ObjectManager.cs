@@ -87,7 +87,7 @@ namespace Sprint0.GameMangager
             luigi.Update(gameTime);
             collision.Update();
 
-            camera.Update(gameTime, mario);
+            camera.Update(gameTime, (Mario)mario);
             
         }
     }

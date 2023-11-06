@@ -1,5 +1,6 @@
 
 ﻿using Sprint0.Interfaces;
+using Sprint0.Characters;
 
 namespace Sprint0.Commands.Mario
 {
@@ -12,13 +13,11 @@ namespace Sprint0.Commands.Mario
         public CMarioJump(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
-            sfx = AudioManager.Instance;
         }
         public void Execute()
         {
             mario = mySprint0.objects.mario;
             mario.Jump();
-            sfx.PlaySFX("jumpSmall");
         }
     }
 }
