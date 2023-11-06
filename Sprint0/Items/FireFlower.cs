@@ -31,7 +31,7 @@ namespace Sprint0.Items
 
         public void Update(GameTime gameTime)
         {
-
+            itemRectangle = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

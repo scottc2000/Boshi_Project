@@ -7,7 +7,7 @@ namespace Sprint0.Commands.Collision
     {
 
         private Sprint0 mySprint0;
-        private ICharacter mario;
+        private IMario mario;
 
         public CMarioStuckX(Sprint0 mySprint0)
         {

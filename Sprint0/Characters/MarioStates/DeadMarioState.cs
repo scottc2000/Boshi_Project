@@ -48,20 +48,11 @@ namespace Sprint0.Characters.MarioStates
         }
         public void TakeDamage() 
         {
-            if (mario.health == Mario.MarioHealth.Normal)
-            {
-                mario.health = Mario.MarioHealth.Dead; // Set Mario's health to Dead
-                mario.State = new DeadMarioState(mario); // Set Mario's state to DeadMarioState
-                mario.velocity = Vector2.Zero; // Stop Mario's movement for Small Mario
-            }
+
         }
         public void Die()
         {
-            if (mario.health == MarioHealth.Dead)
-            {
-                // Set the sprite to the "Mario dead" sprite
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioDead");
-            }
+             mario.velocity = Vector2.Zero;
         }
         public void Update(GameTime gametime)
         {

@@ -1,16 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Sprint0.Sprites.SpriteFactories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Sprites.SpriteFactories;
+using System.Collections.Generic;
 
 namespace Sprint0.Items
 {
-    internal class RedMushroom : IItem
+   public class RedMushroom : IItem
     {
         private AniItemSprite aniItem;
         private Vector2 position;
@@ -48,6 +44,7 @@ namespace Sprint0.Items
                 position.X -= itemSpeed;
                 timer = 0;
             }
+            itemRectangle = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

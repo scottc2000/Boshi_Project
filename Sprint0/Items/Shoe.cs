@@ -31,6 +31,7 @@ namespace Sprint0.Items
 
         public void Update(GameTime time)
         {
+            itemRectangle = aniItem.itemPosition;
             aniItem.Update(time);
         }
 
