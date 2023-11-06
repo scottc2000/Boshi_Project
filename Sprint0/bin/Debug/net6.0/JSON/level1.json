@@ -878,6 +878,10 @@
       "Hitbox": [ 16, 16 ],
       "Position": [ 2049, 400 ]
     }
+  ],
+  "Songs": [
+    {
+      "Name": "mainTheme"
+    }
   ]
-
 }

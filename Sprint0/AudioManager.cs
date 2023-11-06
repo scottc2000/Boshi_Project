@@ -40,8 +40,13 @@ namespace Sprint0
             sfxDictionary.Add("jump", Content.Load<SoundEffect>("jumpSmall"));
             sfxDictionary.Add("die", Content.Load<SoundEffect>("smb_mariodie"));
             sfxDictionary.Add("fireball", Content.Load<SoundEffect>("smb_fireball"));
+            sfxDictionary.Add("coin", Content.Load<SoundEffect>("smb_coin"));
+            sfxDictionary.Add("stomp", Content.Load<SoundEffect>("smb_stomp"));
+            sfxDictionary.Add("powerup", Content.Load<SoundEffect>("smb_powerup"));
+            sfxDictionary.Add("1up", Content.Load<SoundEffect>("smb_1-up"));
+            sfxDictionary.Add("breakblock", Content.Load<SoundEffect>("smb_breakblock"));
+            sfxDictionary.Add("falgpole", Content.Load<SoundEffect>("smb_flagpole"));
             musicDictionary.Add("mainTheme", Content.Load<SoundEffect>("01-main-theme-overworld"));
-            
         }
 
         public void PlaySFX(string name)

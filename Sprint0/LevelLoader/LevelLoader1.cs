@@ -41,7 +41,8 @@ namespace Sprint0
             data = JsonSerializer.Deserialize<Root>(json);
 
             Load(data);
-            audioManager.PlayMusic("mainTheme");
+            audioManager.PlayMusic(data.Songs[0].Name);
+            System.Diagnostics.Debug.WriteLine(data.Songs[0].Name);
         }
 
         public void Load(Root data)
