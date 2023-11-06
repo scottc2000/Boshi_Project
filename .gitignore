@@ -31,3 +31,4 @@
 *.mgstats
 /Sprint0/Content/obj/DesktopGL/net6.0/Content/level1_1.mgcontent
 /Sprint0/Content/obj/DesktopGL/net6.0/Content/marioenemy.mgcontent
+/.vs/slnx.sqlite
