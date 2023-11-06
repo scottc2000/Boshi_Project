@@ -21,10 +21,8 @@ namespace Sprint0.Commands.Mario
         }
         public void Execute()
         {
-
             mario = mySprint0.objects.mario;
             mario.ChangeToFire();
         }
-
     }
 }

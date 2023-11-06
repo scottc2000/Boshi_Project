@@ -31,12 +31,13 @@ namespace Sprint0.SFX
         private AudioManager()
         {
             sfxDictionary = new Dictionary<string, SoundEffect>();
+            musicDictionary = new Dictionary<string, SoundEffect>();
         }
 
         public void Load()
         {
-            sfxDictionary.Add("jumpSmall", Content.Load<SoundEffect>("jumpSmall"));
-            musicDictionary.Add("mainTheme", Content.Load<SoundEffect>("01-main-theme-overworld"));
+            sfxDictionary.Add("jumpSmall", Content.Load<SoundEffect>("Content/jumpSmall"));
+            musicDictionary.Add("mainTheme", Content.Load<SoundEffect>("Content/01-main-theme"));
         }
 
         public void PlaySFX(string name)

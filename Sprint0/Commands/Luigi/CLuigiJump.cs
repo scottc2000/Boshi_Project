@@ -12,15 +12,12 @@ namespace Sprint0.Commands.Luigi
         }
         public void Execute()
         {
-
             luigi = mySprint0.objects.luigi;
 
             if (luigi.uphit)
             {
                 luigi.Jump();
             }
-
         }
-
     }
 }

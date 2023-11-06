@@ -13,11 +13,11 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin 01-main-theme-overworld.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin 01-main-theme.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:01-main-theme-overworld.mp3
+/build:01-main-theme.wav
 
 #begin jumpSmall.wav
 /importer:WavImporter
