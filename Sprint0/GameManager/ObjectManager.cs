@@ -30,9 +30,9 @@ namespace Sprint0.GameMangager
         
         public ObjectManager(Sprint0 sprint0, MarioCamera camera)
         {
-            this.sprint = sprint0;
+            sprint = sprint0;
             this.camera = camera;
-            terrain = new Terrain(this.sprint);
+            terrain = new Terrain(sprint);
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
@@ -48,6 +48,7 @@ namespace Sprint0.GameMangager
         {
             terrain.Draw(spriteBatch); // need to draw terrain before any game objects
 
+            // Draw each game object
             foreach (var block in Blocks)
             {
                 block.Draw(spriteBatch);
@@ -71,6 +72,7 @@ namespace Sprint0.GameMangager
         {
             terrain.Update(gameTime);   // need to update terrain before any game objects
 
+            // Update each game object
             foreach (var block in Blocks)
             {
                 block.Update(gameTime);

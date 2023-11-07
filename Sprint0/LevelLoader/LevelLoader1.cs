@@ -19,8 +19,6 @@ namespace Sprint0
         private Sprint0 sprint0;
         private SpriteBatch spriteBatch;
         private ContentManager content;
-
-        private JsonElement levelData;
         private Root data;
 
         public ObjectManager objectManager;
@@ -43,7 +41,7 @@ namespace Sprint0
 
         public void Load(Root data)
         {
-
+            // Load all blocks from the JSON file to objectManager
             foreach (Block block in data.Blocks)
             {
                 switch (block.Name)
@@ -100,6 +98,8 @@ namespace Sprint0
                         break;
                 }
             }
+
+            // Load all items from JSON file to object manager
             foreach (Item item in data.Items)
             {
                 switch (item.Name)
@@ -152,6 +152,7 @@ namespace Sprint0
                 }
             }
 
+            // Load all enemies from JSON file to object manager
             foreach (Enemy enemy in data.Enemies)
             {
                 if (enemy.Name == "Goomba")

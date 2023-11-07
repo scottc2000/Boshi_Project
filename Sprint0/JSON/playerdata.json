@@ -693,7 +693,7 @@
             [ 234, 350 ]
           ],
           "hitbox": [ 24, 29 ],
-          "facingleft": true,
+          "facingLeft": true,
           "looping": true
         },
 
@@ -705,7 +705,7 @@
             [ 234, 350 ]
           ],
           "hitbox": [ 24, 29 ],
-          "facingleft": false,
+          "facingLeft": false,
           "looping": true
         },
 
@@ -717,7 +717,7 @@
             [ 260, 350 ]
           ],
           "hitbox": [ 24, 29 ],
-          "facingleft": true,
+          "facingLeft": true,
           "looping": true
         },
 
@@ -729,7 +729,7 @@
             [ 260, 350 ]
           ],
           "hitbox": [ 24, 29 ],
-          "facingleft": false,
+          "facingLeft": false,
           "looping": true
         },
 

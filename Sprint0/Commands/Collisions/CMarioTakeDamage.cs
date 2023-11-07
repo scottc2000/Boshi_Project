@@ -27,7 +27,7 @@ namespace Sprint0.Commands.Collisions
                     }
                 case Characters.Mario.MarioHealth.Big:
                     {
-                        IMario damagedMario = new DamagedMario(mario, sprint.objects);
+                        IMario damagedMario = new FlyingMario(mario, sprint.objects);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
                         sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToNormal();
@@ -35,7 +35,7 @@ namespace Sprint0.Commands.Collisions
                     }
                 case Characters.Mario.MarioHealth.Fire:
                     {
-                        IMario damagedMario = new DamagedMario(mario, sprint.objects);
+                        IMario damagedMario = new FlyingMario(mario, sprint.objects);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
                         sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToBig();
@@ -43,7 +43,7 @@ namespace Sprint0.Commands.Collisions
                     }
                 case Characters.Mario.MarioHealth.Raccoon:
                     {
-                        IMario damagedMario = new DamagedMario(mario, sprint.objects);
+                        IMario damagedMario = new FlyingMario(mario, sprint.objects);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
                         sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToBig();

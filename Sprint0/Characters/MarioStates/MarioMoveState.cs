@@ -1,18 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using System.Threading;
 
 namespace Sprint0.Characters.MarioStates
 {
     public class MarioMoveState : ICharacterState
     {
         private Mario mario;
-        private bool boosted;
 
         public MarioMoveState(Mario mario)
         {
             this.mario = mario;
-            boosted = false;
+            mario.boosted = false;    // initially mario does not have the boost
         }
 
         public void Move()
@@ -22,7 +20,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Jump()
         {
-            //mario.State = new MarioJumpState(mario);
+            mario.State = new MarioJumpState(mario);
         }
         public void Fly()
         {
@@ -30,7 +28,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Fall()
         {
-
+            // may be removed - unsure if needed for raccoon flight
         }
         public void Crouch()
         {
@@ -53,12 +51,16 @@ namespace Sprint0.Characters.MarioStates
 
         public void UpdateVelocity()
         {
+            // if raccoon mario runs for certain amount of time, flight boost is given
             if (mario.runningTimer < 75)
+            {
                 mario.velocity.X = 3.0f;
+                mario.boosted = false;
+            }
             else if (mario.runningTimer > 75)
             {
                 mario.velocity.X = 4.0f;
-                boosted = true;
+                mario.boosted = true;
             }
 
             mario.velocity.Y *= 0;
@@ -72,7 +74,7 @@ namespace Sprint0.Characters.MarioStates
             UpdateVelocity();
 
             // Sprites if mario isn't in racoon boost mode
-            if (mario.facingLeft && !boosted)
+            if (mario.facingLeft && !mario.boosted)
             {
                 if (mario.currentSprite.spriteName.Equals("MarioMoveLeft"))
                 {
@@ -83,7 +85,7 @@ namespace Sprint0.Characters.MarioStates
                     mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioMoveLeft");
                 }
             }
-            else if (!mario.facingLeft && !boosted)
+            else if (!mario.facingLeft && !mario.boosted)
             {
                 if (mario.currentSprite.spriteName.Equals("MarioMoveRight"))
                 {
@@ -97,7 +99,7 @@ namespace Sprint0.Characters.MarioStates
             }
 
             // Sprites when mario's raccoon is in boost mode
-            if (mario.facingLeft && boosted)
+            if (mario.facingLeft && mario.boosted)
             {
                 if (mario.currentSprite.spriteName.Equals("MarioBoostLeft"))
                 {
@@ -108,7 +110,7 @@ namespace Sprint0.Characters.MarioStates
                     mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioBoostLeft");
                 }
             }
-            else if (!mario.facingLeft && boosted)
+            else if (!mario.facingLeft && mario.boosted)
             {
                 if (mario.currentSprite.spriteName.Equals("MarioBoostRight"))
                 {

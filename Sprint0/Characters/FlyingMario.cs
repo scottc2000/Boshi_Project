@@ -33,10 +33,6 @@ namespace Sprint0.Characters
         public IMario decoratedMario;
         public int timer;
 
-        private List<Color> colors = new List<Color> {
-            Color.Transparent,
-            Color.White
-        };
         public FlyingMario(IMario mario, ObjectManager manager) 
         {
             this.manager = manager;
@@ -77,10 +73,6 @@ namespace Sprint0.Characters
             if (timer == 0)
             {
                
-                // Update the position of DamagedMario based on the offset
-                System.Diagnostics.Debug.WriteLine("position: " + position);
-
-                isInvinsible = false;
                 RemoveDecorator();
             }
 
@@ -91,13 +83,12 @@ namespace Sprint0.Characters
 
         void RemoveDecorator()
         {
-            System.Diagnostics.Debug.WriteLine("invinsible: " + isInvinsible);
             manager.mario = decoratedMario;
         }
 
         public void Draw(SpriteBatch spritebatch) 
         { 
-            currentSprite.Draw(spritebatch, position, colors[(timer / 3) % 2]); 
+            currentSprite.Draw(spritebatch, position, Color.White); 
         }
     }
 }

@@ -27,12 +27,15 @@ namespace Sprint0.Characters
         public bool stuck { get; set; }
         public bool isInvinsible { get; set; }
 
+        // move into physics class eventually
         public Vector2 velocity;
         public float decay;
         public float gravity;
+
         public int timeGap;
         public int runningTimer { get; set; }
         public int flyingTimer { get; set; }
+        public bool boosted { get; set; }
 
         public Sprint0 mySprint;
         int sizeDiff;
@@ -48,16 +51,21 @@ namespace Sprint0.Characters
         {
             mySprint = sprint0;
 
+            // mario states
             health = MarioHealth.Normal;
             pose = MarioPose.Walking;
             State = new MarioIdleState(this);
 
+            // mario object information
             facingLeft = true;
             sizeDiff = 12;
             position = new Vector2(115, 300);
+            
+            // timers
             timeGap = 0;
             runningTimer = 0;
             flyingTimer = 0;
+            boosted = false;
 
             resetHits();
 
@@ -76,6 +84,8 @@ namespace Sprint0.Characters
             destination = currentSprite.destination;
 
         }
+
+        /* ----------------------- Mario States --------------------*/
         public void Move()  
         { 
             State.Move(); 
@@ -86,10 +96,19 @@ namespace Sprint0.Characters
             if (uphit)
                 State.Jump(); 
         }
-        public void Fly() { State.Fly(); }
-        public void Fall()  { State.Fall(); }
+        public void Fly() 
+        { 
+            State.Fly();
+        }
+        public void Fall()  
+        { 
+            State.Fall();
+        }
 
-        public void Crouch()  { State.Crouch(); }
+        public void Crouch()  
+        { 
+            State.Crouch(); 
+        }
 
         public void Stop() 
         {
@@ -97,19 +116,11 @@ namespace Sprint0.Characters
             State.Stop(); 
         }
 
-        public void Die()  { State.Die(); }
-
-        public void Reverse() { velocity.X *= -1; }
-        public void resetHits()
-        {
-            this.downhit = false;
-            this.uphit = false;
-            this.lefthit = false;
-            this.righthit = false;
-            this.gothit = false;
-            this.stuck = false;
+        public void Die()  
+        { 
+            State.Die();
         }
-      
+        
         // Throw logic needs to be updated for mario
         public void Throw()
         {
@@ -117,6 +128,7 @@ namespace Sprint0.Characters
                 State.Throw();
         }
 
+        /* ----------------------- Health State Changes --------------------*/
         public void ChangeToFire()
         {
             if (health == MarioHealth.Normal)
@@ -169,6 +181,7 @@ namespace Sprint0.Characters
                 currentSprite = mySpriteFactory.returnSprite("MarioStillRight");
         }
 
+        /* ----------------------- Physics/Collision Methods --------------------*/
         public void UpdateMovement(GameTime gametime)
         {
             // updates movement using pos +/- v * dt
@@ -191,6 +204,18 @@ namespace Sprint0.Characters
         public void RightStuck(GameTime gametime) { position = new Vector2(position.X - (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y); }
         public void UpStuck()   { position = new Vector2(position.X, position.Y - (gravity/2));  }
 
+        public void Reverse() { velocity.X *= -1; }
+        public void resetHits()
+        {
+            this.downhit = false;
+            this.uphit = false;
+            this.lefthit = false;
+            this.righthit = false;
+            this.gothit = false;
+            this.stuck = false;
+        }
+
+        /* ----------------------- Update & Draw --------------------*/
         public void Update(GameTime gametime)
         {
             State.Update(gametime);

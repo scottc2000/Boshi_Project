@@ -1,10 +1,6 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Screens;
-using Sprint0.Characters;
 using Sprint0.Interfaces;
-using System;
 
 namespace Sprint0.Camera
 {
@@ -17,31 +13,28 @@ namespace Sprint0.Camera
     {
 
         public Matrix transform;    // Used to draw camera to screen
-        Viewport view;
+        Viewport view;              // view port
         Vector2 center;         // point to focus on
-        Vector2 originalCenter;
+        float leftBound;        // left bound to prevent mario from moving off level
 
         public MarioCamera(Viewport newview)
         {
             view = newview;
-            /*
-            aspectRatio = (float)view.Width / view.Height;
-            this.fieldOfView = MathHelper.PiOver2;
-            zoom = ((0.5f * view.Height) / MathF.Tan(0.5f * fieldOfView));*/
-
-            originalCenter = new Vector2(3, 288);
+            leftBound = 3; ;
         }
         
         public void Update(GameTime gameTime, IMario mario)
         {
-            // zoom1: -130, -300
+            // center camera on mario
             center = new Vector2(mario.position.X + (mario.destination.Width / 2) - 120, mario.position.Y + (mario.destination.Height / 2) - 200);
 
-            if (center.X < originalCenter.X)
+            // if mario moves past the left bound, reset the camera
+            if (center.X < leftBound)
             {
-                center.X = originalCenter.X;
+                center.X = leftBound;
             }
 
+            // zoom camera to mimic final game functionality
             var zoom = Matrix.CreateScale(new Vector3((float)1.5, (float)1.5, 0));
             var translation = Matrix.CreateTranslation(new Vector3((float)(-center.X * 1.5), (float)(-center.Y * 1.5), 0));
 

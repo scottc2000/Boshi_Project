@@ -83,7 +83,7 @@ namespace Sprint0.Controllers
             RegisterPressCommand(Keys.D6, new CLuigiBig(mySprint));
             RegisterPressCommand(Keys.D5, new CLuigiNormal(mySprint));
 
-            RegisterCommand(Keys.D0, new Reset(mySprint, mySprint.gametime, mySprint.Content));
+            RegisterCommand(Keys.D0, new Reset(mySprint));
         }
 
         private void pressedKeys(KeyboardState current, KeyboardState previous)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Sprint0.Interfaces;
 
 namespace Sprint0.Characters.MarioStates
@@ -6,7 +7,7 @@ namespace Sprint0.Characters.MarioStates
     public class MarioFlyState : ICharacterState
     {
         private Mario mario;
-        public MarioFlyState(Mario mario) 
+        public MarioFlyState(Mario mario)
         {
             this.mario = mario;
         }
@@ -22,12 +23,12 @@ namespace Sprint0.Characters.MarioStates
 
         public void Fall()
         {
-            
+
         }
 
         public void Fly()
         {
-            // insert logic 
+            mario.State = new MarioFlyState(mario);
         }
 
         public void Jump()
@@ -42,7 +43,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
-            
+
         }
 
         public void Throw()
@@ -50,20 +51,42 @@ namespace Sprint0.Characters.MarioStates
             mario.State = new MarioThrowState(mario);
         }
 
+        public void UpdateVelocity(GameTime gametime)
+        {
+            if (mario.boosted)
+            {
+                mario.velocity.Y = -1.0f; // Ascend
+                mario.flyingTimer++;
+            }
+            else
+            {
+                mario.velocity.Y = 1.0f; // Gradually descend
+            }
+            if (mario.flyingTimer >= 100)
+            {
+                mario.velocity.Y = 0;
+            }
+        }
         public void Update(GameTime gametime)
         {
-            mario.pose = Mario.MarioPose.Flying;
+           mario.pose = Mario.MarioPose.Flying;
 
-            if (mario.facingLeft)
+           UpdateVelocity(gametime);
+            
+           SetSprites(gametime);
+        }
+        public void SetSprites(GameTime gametime)
             {
-                if (mario.currentSprite.spriteName.Equals("MarioFlyLeft"))
-                {
+            if (mario.facingLeft)
+               {
+               if (mario.currentSprite.spriteName.Equals("MarioFlyLeft"))
+               {
                     mario.currentSprite.Update(gametime);
-                }
-                else
-                {
-                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioFlyLeft");
-                }
+               }
+               else
+               {
+                   mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioFlyLeft");
+               }
             }
             else
             {
@@ -77,6 +100,7 @@ namespace Sprint0.Characters.MarioStates
                 }
 
             }
-        }
+       }
     }
 }
+
