@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Background;
 using Sprint0.Camera;
 using Sprint0.Characters;
+using Sprint0.HUD;
 using Sprint0.Collision;
 using Sprint0.Interfaces;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Sprint0.GameMangager
         public MarioCamera camera;
 
         private Terrain terrain;
+        public GameStats hud;
         public List<IBlock> Blocks { get; set; }
         public List<IBlock> TopCollidableBlocks { get; set; }
         public List<IBlock> BottomCollidableBlocks { get; set; }
@@ -33,6 +35,7 @@ namespace Sprint0.GameMangager
             sprint = sprint0;
             this.camera = camera;
             terrain = new Terrain(sprint);
+            hud = new GameStats(sprint);
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
@@ -64,6 +67,7 @@ namespace Sprint0.GameMangager
 
             mario.Draw(spriteBatch);
             luigi.Draw(spriteBatch);
+            hud.Draw(spriteBatch);
 
         }
 
@@ -90,6 +94,7 @@ namespace Sprint0.GameMangager
             collision.Update();
 
             camera.Update(gameTime, mario);
+            hud.Update(gameTime);
             
         }
     }

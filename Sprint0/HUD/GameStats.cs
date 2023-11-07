@@ -1,28 +1,34 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Threading;
+using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.HUD
 {
-    public class HUD
+    public class GameStats
     {
         public static readonly int MAXCOINS = 100;
         public static readonly int MINCOINS = 0;
         public static readonly int STARTINGLIVES = 3;
         public static readonly int GAMEOVER = 0;
+
+        private Sprint0 sprint;
         public int coins { get; set; }
         public int lives { get; set; }
         public int score { get; set; }
         public int player { get; set; }
         public int gameTimer { get; set; }
         public int powerBoost { get; set; }
+        public HUDFactory mySpriteFactory;
 
-        public HUD()
+        public GameStats(Sprint0 sprint)
         {
+            this.sprint = sprint;
             coins = MINCOINS;
             lives = STARTINGLIVES;
             score = 0;
             gameTimer = 500;
+            mySpriteFactory = new HUDFactory(sprint);
+            mySpriteFactory.LoadAllTextures(sprint.Content);
         }
 
         public void IncrementCoin()

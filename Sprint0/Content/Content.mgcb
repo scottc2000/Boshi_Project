@@ -19,6 +19,18 @@
 /processorParam:Quality=Best
 /build:01-main-theme-overworld.wav
 
+#begin HUD_transparent1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD_transparent1.png
+
 #begin jumpSmall.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
