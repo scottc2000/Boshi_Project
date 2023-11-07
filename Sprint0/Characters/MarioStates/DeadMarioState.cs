@@ -15,6 +15,9 @@ namespace Sprint0.Characters.MarioStates
         public DeadMarioState(Mario mario)
         {
             this.mario = mario;
+            AudioManager audioManager = AudioManager.Instance;
+            audioManager.PlaySFX("die");
+            audioManager.StopMusic();
         }
 
         public void Move()
@@ -57,11 +60,12 @@ namespace Sprint0.Characters.MarioStates
         public void Die()
         {
              mario.velocity = Vector2.Zero;
+            
         }
         public void Update(GameTime gametime)
         {
             mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioDead");
-
+            
         }
     }
 }

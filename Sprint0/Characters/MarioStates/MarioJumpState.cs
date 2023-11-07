@@ -11,6 +11,7 @@ namespace Sprint0.Characters.MarioStates
         public MarioJumpState(Mario mario)
         {
             this.mario = mario;
+           
         }
 
         public void Move()

@@ -22,6 +22,7 @@ namespace Sprint0
         private Root data;
 
         public ObjectManager objectManager;
+        public AudioManager audioManager;
 
         public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content)
         {
@@ -29,6 +30,7 @@ namespace Sprint0
             objectManager = sprint0.objects;
             this.spriteBatch = spriteBatch;
             this.content = content;
+            audioManager = AudioManager.Instance;
         }
         public void Load(string jsonFilePath)
         {
@@ -37,6 +39,8 @@ namespace Sprint0
             data = JsonSerializer.Deserialize<Root>(json);
 
             Load(data);
+            audioManager.PlayMusic(data.Songs[0].Name);
+            System.Diagnostics.Debug.WriteLine(data.Songs[0].Name);
         }
 
         public void Load(Root data)
