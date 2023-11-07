@@ -23,6 +23,7 @@ namespace Sprint0.Characters.MarioStates
             AudioManager audioManager = AudioManager.Instance;
             audioManager.PlaySFX("jump");
         }
+        public void Fly() { }
         public void Fall()
         {
 

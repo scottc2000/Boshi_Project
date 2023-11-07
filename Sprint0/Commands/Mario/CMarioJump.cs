@@ -12,10 +12,15 @@ namespace Sprint0.Commands.Mario
         }
         public void Execute()
         {
-
             mario = mySprint0.objects.mario;
-            mario.Jump();
-
+            if (mario.health == Characters.Mario.MarioHealth.Raccoon && mario.runningTimer >= 75)
+            {
+                mario.Fly();
+            }
+            else
+            {
+                mario.Jump();
+            }
         }
     }
 }

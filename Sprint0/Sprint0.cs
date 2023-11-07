@@ -12,9 +12,10 @@ namespace Sprint0
 {
     public class Sprint0 : Game
     {
-        public GraphicsDeviceManager _graphics;
+        private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public GameTime gametime;
+        private GameTime gametime;
+        
         public ObjectManager objects;
         public AudioManager audioManager;
 
@@ -22,12 +23,10 @@ namespace Sprint0
         public MarioCamera camera;
         public static int ScreenWidth;
         public static int ScreenHeight;
+       
+        private IController KeyboardController;
 
-        public TimeSpan spriteDelay, timeSinceLastSprite;
-
-        IController KeyboardController;
-
-        CollisionHandler collision; 
+        private CollisionHandler collision; 
 
         public Sprint0()
         {
@@ -39,12 +38,14 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // May be removed later if not needed
             ScreenHeight = _graphics.PreferredBackBufferHeight;
             ScreenWidth = _graphics.PreferredBackBufferWidth;
 
+            // Initialize game components
             camera = new MarioCamera(GraphicsDevice.Viewport);
             objects = new ObjectManager(this, camera);
-
             KeyboardController = new KeyboardController(this);
 
             audioManager = AudioManager.Instance;
@@ -56,22 +57,20 @@ namespace Sprint0
         {
             audioManager.Load(Content);
 
+            // load level
             levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
 
             ItemSpriteFactory.Instance.LoadTextures(Content);
+            
             // collision
             collision = new CollisionHandler(this, objects);
         }
 
         protected override void Update(GameTime gameTime)
         {
-
             KeyboardController.Update();;
-
             objects.Update(gameTime, collision);
-
-            //camera.Update(gameTime, objects.mario);
 
             base.Update(gameTime);
         }

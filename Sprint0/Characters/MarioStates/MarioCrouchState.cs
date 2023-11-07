@@ -23,6 +23,10 @@ namespace Sprint0.Characters.MarioStates
             AudioManager audioManager = AudioManager.Instance;
             audioManager.PlaySFX("jump");
         }
+        public void Fly()
+        {
+            mario.State = new MarioFlyState(mario);
+        }
         public void Fall()
         {
 
@@ -56,6 +60,7 @@ namespace Sprint0.Characters.MarioStates
         public void Update(GameTime gametime)
         {
             mario.pose = Mario.MarioPose.Crouch;
+
             if (mario.facingLeft)
             {
                 mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioCrouchLeft");

@@ -15,10 +15,9 @@ namespace Sprint0.Commands.Luigi
 
             luigi = mySprint0.objects.luigi;
 
-            if (luigi.uphit)
-            {
-                luigi.Jump();
-            }
+            
+            luigi.Jump();
+            
 
         }
 

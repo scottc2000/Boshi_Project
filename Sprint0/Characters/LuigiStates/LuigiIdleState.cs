@@ -18,10 +18,13 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Jump()
         {
-            luigi.State = new LuigiJumpState(luigi);
-            AudioManager audioManager = AudioManager.Instance;
-            audioManager.PlaySFX("jump");
+            if (luigi.timeGap == 0)
+            {
+                luigi.State = new LuigiJumpState(luigi);
+            }
+
         }
+        public void Fly() { }
         public void Fall()
         {
 
@@ -51,7 +54,6 @@ namespace Sprint0.Characters.LuigiStates
             luigi.velocityY *= 0;
 
         }
-        public void TakeDamage() { }
 
         public void Die()
         {
@@ -74,7 +76,7 @@ namespace Sprint0.Characters.LuigiStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillLeft");
-                    luigi.UpStuck();
+                    
                 }
 
             }
@@ -90,7 +92,7 @@ namespace Sprint0.Characters.LuigiStates
                 else
                 {
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiStillRight");
-                    luigi.UpStuck();
+                    
                 }
             }
         }

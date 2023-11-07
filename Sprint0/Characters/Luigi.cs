@@ -101,7 +101,10 @@ namespace Sprint0.Characters
 
         public void Jump()
         {
-            State.Jump();
+            if (uphit)
+            {
+                State.Jump();
+            }
         }
 
         public void Crouch()
@@ -225,16 +228,8 @@ namespace Sprint0.Characters
 
         public void applyGravity()
         { 
-            if (!uphit)
-            {
-                position.Y += this.gravity;
-            }
-
-            if (!downhit)
-            {
-                position.Y += velocityY;
-            }
-
+           
+           position.Y += this.gravity;
            
         }
 
@@ -250,6 +245,8 @@ namespace Sprint0.Characters
             {
                 position.X += (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
             }
+
+            position.Y += (velocityY * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
 
         }
 
@@ -269,39 +266,18 @@ namespace Sprint0.Characters
 
         public void Update(GameTime gametime)
         {
-            UpdateProjectiles(gametime);
-            
-
-            if (!lefthit && !stuck)
-            {
-                UpdateMovement(gametime);
-            }
-
-            else if (lefthit && stuck)
-            {
-                LeftStuck(gametime);
-            }
-
-            if (!righthit && !stuck)
-            {
-                UpdateMovement(gametime);
-            }
-                
-            else if (righthit && stuck)
-            {
-                RightStuck(gametime);
-            }
-                   
-            destination = currentSprite.destination;
+           // UpdateProjectiles(gametime);        
 
             if (!(pose == LuigiPose.Throwing))
             {
                 fired = false;
             }
 
+            State.Update(gametime);
+            UpdateMovement(gametime);
             applyGravity();
 
-            State.Update(gametime);
+            destination = currentSprite.destination;
             resetHits();
 
         }

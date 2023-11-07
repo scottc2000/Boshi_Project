@@ -1,14 +1,15 @@
 ﻿using System;
-using Sprint0.Characters.MarioStates;
+using Microsoft.Xna.Framework;
+using Sprint0.Characters;
 using Sprint0.Interfaces;
 
 namespace Sprint0.Commands.Collisions
 {
-    public class CLuigiStuckX : ICommand
+    public class CLuigiStuckX : ICommand, ICollidableCommand
     {
 
         private Sprint0 mySprint0;
-        private ICharacter luigi;
+        Characters.Luigi luigi;
 
         public CLuigiStuckX(Sprint0 mySprint0)
         {
@@ -32,6 +33,25 @@ namespace Sprint0.Commands.Collisions
             }
 
             
+        }
+
+        public void Execute(Rectangle hitbox)
+        {
+            luigi = mySprint0.objects.luigi;
+
+            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.destination);
+
+            if (!(hitarea.Width >= hitarea.Height))
+            {
+                if (luigi.facingLeft)
+                {
+                    luigi.position.X += hitarea.Width;
+                }
+                else
+                {
+                    luigi.position.X -= hitarea.Width;
+                }
+            }
         }
     }
 }
