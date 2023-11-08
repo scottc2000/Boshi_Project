@@ -66,7 +66,7 @@ namespace Sprint0.Sprites.SpriteFactories
             }
 
 
-            return new KoopaMoveSprite(currentFrames, texture, koopa, spriteName);
+            return new KoopaMoveSprite(currentFrames, texture, koopa);
         }
     }
 

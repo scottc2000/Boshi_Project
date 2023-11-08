@@ -15,22 +15,17 @@ namespace Sprint0.Sprites.goombaSprite
         private Rectangle[] spriteFrames;
         public Rectangle destination;
 
-        private Vector2 position;
-        public string spriteName;
-
         // Frame stats
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public GoombaMoveSprite(Rectangle[] currentFrames, Texture2D texture, Goomba goomba, string name) 
+        public GoombaMoveSprite(Rectangle[] currentFrames, Texture2D texture, Goomba goomba) 
         {
             spriteFrames = currentFrames;
             this.texture = texture;
             this.goomba = goomba;
-            position = goomba.position;
-            spriteName = name;
             TotalFrames = spriteFrames.Length; ;
         }
 

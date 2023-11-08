@@ -9,12 +9,10 @@ namespace Sprint0.Commands.Collisions
 {
     internal class CItemBlockX : ICommand
     {
-        private Sprint0 myGame;
         private IItem item;
 
-        public CItemBlockX(Sprint0 myGame, IItem item)
+        public CItemBlockX(IItem item)
         {
-            this.myGame = myGame;
             this.item = item;
         }
 

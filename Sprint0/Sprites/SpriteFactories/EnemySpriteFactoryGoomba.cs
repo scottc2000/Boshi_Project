@@ -66,7 +66,7 @@ namespace Sprint0.Sprites.SpriteFactories
             }
 
 
-            return new GoombaMoveSprite(currentFrames, texture, goomba, spriteName);
+            return new GoombaMoveSprite(currentFrames, texture, goomba);
         }
     }
 

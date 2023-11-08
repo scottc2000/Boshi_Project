@@ -15,7 +15,7 @@ namespace Sprint0.Sprites.BlockSprites
         private Texture2D textures;
         private Rectangle scaledPosition;
         private Rectangle sprite;
-        public NonAnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle sprite, Vector2 position)
+        public NonAnimatedBlockSprite(Texture2D textures, Rectangle sprite, Vector2 position)
         {
             this.textures = textures;
             scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);

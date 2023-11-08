@@ -22,7 +22,7 @@ namespace Sprint0.Sprites
         private float frameTimer;
         private float frameInterval;
 
-        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle[] sprite, Vector2 position)
+        public AnimatedBlockSprite(Texture2D textures, Rectangle[] sprite, Vector2 position)
         {
             this.textures = textures;
             scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);

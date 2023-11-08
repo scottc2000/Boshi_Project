@@ -46,13 +46,10 @@ namespace Sprint0.Sprites.SpriteFactories
 
         public AniItemSprite returnSprite(string spriteType)
         {
-            string spriteName = "";
-
             foreach (Sprite n in deserializedItemData.itemJSON.Sprites)
             {
                 if (string.Equals(n.name, spriteType))
                 {
-                    spriteName = n.name;
                     currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
                 }
             }

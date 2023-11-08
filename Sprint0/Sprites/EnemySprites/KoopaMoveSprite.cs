@@ -18,22 +18,17 @@ namespace Sprint0.Sprites.goombaSprite
         private Rectangle[] spriteFrames;
         public Rectangle destination;
 
-        private Vector2 position;
-        public string spriteName;
-
         // Frame stats
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
 
-        public KoopaMoveSprite(Rectangle[] currentFrames, Texture2D texture, Koopa koopa, string name)
+        public KoopaMoveSprite(Rectangle[] currentFrames, Texture2D texture, Koopa koopa)
         {
             spriteFrames = currentFrames;
             this.texture = texture;
             this.koopa = koopa;
-            position = koopa.position;
-            spriteName = name;
             TotalFrames = spriteFrames.Length; ;
         }
 

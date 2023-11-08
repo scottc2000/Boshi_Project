@@ -75,7 +75,7 @@ namespace Sprint0.Sprites
         {
             if (nonanimated_sprites.TryGetValue(spriteName, out Rectangle spriteRect))
             {
-                return new NonAnimatedBlockSprite(spriteBatch, blockTextures, spriteRect, position);
+                return new NonAnimatedBlockSprite(blockTextures, spriteRect, position);
             }
 
             return null;
@@ -86,7 +86,7 @@ namespace Sprint0.Sprites
         {
             if (animated_sprites.TryGetValue(spriteName, out Rectangle[] spriteRects))
             {
-                return new AnimatedBlockSprite(spriteBatch, blockTextures, spriteRects, position);
+                return new AnimatedBlockSprite(blockTextures, spriteRects, position);
             }
 
             return null;

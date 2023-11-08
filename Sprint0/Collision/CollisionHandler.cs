@@ -185,22 +185,8 @@ namespace Sprint0.Collision
             }
         }
 
-        public void itemBlockUpdate()
-        {
-            foreach (IItem item in Items)
-            {
-                ICommand changeItemDirection = new CItemBlockX(sprint, item);
-                changeItemDirection.Execute();   
-            }
-        }
-
         public void Update()
         {
-            luigiBlockUpdate();
-            marioLuigiUpdate();
-            marioEnemyUpdate();
-            marioBlockUpdate();
-            marioItemUpdate();
             for (int i = 0; i < objectManager.DynamicEntities.Count; i++)
             {
                 IEntity entity1 = objectManager.DynamicEntities[i];
@@ -210,7 +196,7 @@ namespace Sprint0.Collision
                     IEntity entity2 = objectManager.DynamicEntities[j];
                     if (entity1.destination.Intersects(entity2.destination))
                     {
-                        if ()
+                        
                     }
                 }
                 foreach (IEntity sEntity in objectManager.StaticEntities)
