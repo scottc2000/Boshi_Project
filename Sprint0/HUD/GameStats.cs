@@ -27,6 +27,7 @@ namespace Sprint0.HUD
         private ISprite coinSprite;
         private ISprite lifeSprite;
         private ISprite scoreSprite;
+        private ISprite timerSprite;
         private ISprite powerSprite;
 
         public GameStats(Sprint0 sprint)
@@ -47,6 +48,9 @@ namespace Sprint0.HUD
             staticSprite = mySpriteFactory.CreateHud("static");
             coinSprite = mySpriteFactory.UpdateCoins(coins);
             lifeSprite = mySpriteFactory.UpdateLives(lives);
+            //scoreSprite = mySpriteFactory.UpdateScore(score);
+            //timerSprite = mySpriteFactory.UpdateTimer(score);
+            //powerSprite = mySpriteFactory.UpdatePower(score);
 
         }
 

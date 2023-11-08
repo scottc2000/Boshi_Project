@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Sprites;
 using Sprint0.Interfaces;
 
 namespace Sprint0.Sprites.Hud
