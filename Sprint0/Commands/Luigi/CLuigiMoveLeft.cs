@@ -1,13 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sprint0.Interfaces;
 
-namespace Sprint0.Commands.Mario
+namespace Sprint0.Commands.Luigi
 {
     internal class CLuigiMoveLeft : ICommand
     {
@@ -19,12 +12,11 @@ namespace Sprint0.Commands.Mario
         }
         public void Execute()
         {
-            luigi = mySprint0.objects.Players[1];
+            luigi = mySprint0.objects.luigi;
             luigi.facingLeft = true;
-            if (!luigi.lefthit)
-            {
-                luigi.Move();
-            }
+            
+            luigi.Move();
+            
         }
 
     }

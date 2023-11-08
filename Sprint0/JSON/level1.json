@@ -2,6 +2,20 @@
   "Blocks": [
     {
       "Name": "floor",
+      "x": -16,
+      "y": 0,
+      "width": 16,
+      "height": 432
+    },
+    {
+      "Name": "floor",
+      "x": 2816,
+      "y": 0,
+      "width": 16,
+      "height": 432
+    },
+    {
+      "Name": "floor",
       "x": 0,
       "y": 416,
       "width": 256,
@@ -559,6 +573,251 @@
       "y": 331,
       "width": 26,
       "height": 26
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1073,
+      "y": 320,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1105,
+      "y": 288,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1137,
+      "y": 256,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1169,
+      "y": 224,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1201,
+      "y": 192,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1329,
+      "y": 80,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1345,
+      "y": 80,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1361,
+      "y": 80,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1473,
+      "y": 112,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1489,
+      "y": 112,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1537,
+      "y": 128,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1553,
+      "y": 128,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1569,
+      "y": 128,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1585,
+      "y": 128,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1617,
+      "y": 112,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1633,
+      "y": 112,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1649,
+      "y": 112,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1665,
+      "y": 112,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1697,
+      "y": 144,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1729,
+      "y": 112,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1761,
+      "y": 128,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1809,
+      "y": 96,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 1841,
+      "y": 128,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2177,
+      "y": 504,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2193,
+      "y": 488,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2209,
+      "y": 488,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2225,
+      "y": 504,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2225,
+      "y": 520,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2193,
+      "y": 536,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2209,
+      "y": 536,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2225,
+      "y": 552,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2225,
+      "y": 568,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2177,
+      "y": 568,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2193,
+      "y": 584,
+      "width": 14,
+      "height": 16
+    },
+    {
+      "Name": "spinning_coin",
+      "x": 2209,
+      "y": 584,
+      "width": 14,
+      "height": 16
     }
   ],
   "Items": [
@@ -619,6 +878,10 @@
       "Hitbox": [ 16, 16 ],
       "Position": [ 2049, 400 ]
     }
+  ],
+  "Songs": [
+    {
+      "Name": "mainTheme"
+    }
   ]
-
 }

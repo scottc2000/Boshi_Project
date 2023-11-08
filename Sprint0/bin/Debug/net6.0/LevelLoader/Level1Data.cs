@@ -31,11 +31,17 @@ namespace Sprint0.LevelLoader
             public List<int> Position { get; set; }
         }
 
+        public class Music
+        {
+            public string Name { get; set; }
+        }
+
         public class Root
         {
             public List<Block> Blocks { get; set; }
             public List<Item> Items { get; set; }
             public List<Enemy> Enemies { get; set; }
+            public List<Music> Songs { get; set; }
         }
 
 

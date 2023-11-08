@@ -7,6 +7,7 @@ namespace Sprint0.Interfaces
     {
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }
+        bool isInvinsible { get; set; }
 
         public void Move();
 
@@ -19,7 +20,7 @@ namespace Sprint0.Interfaces
         public void Die();
 
         public void Throw();
-
+      
         void ChangeToFire();
 
         void ChangeToRaccoon();

@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Sprint0.Interfaces;
-using Sprint0.Sprites.SpriteFactories;
-using System;
-using System.ComponentModel.Design;
 using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
@@ -12,14 +8,10 @@ namespace Sprint0.Characters.MarioStates
     {
         private Mario mario;
 
-        private Vector2 marioVelocity;
-        float jumpVelocity = -500f; // Initial jump velocity
-        bool isJumping = false;
-
         public MarioJumpState(Mario mario)
         {
             this.mario = mario;
-
+           
         }
 
         public void Move()
@@ -29,28 +21,15 @@ namespace Sprint0.Characters.MarioStates
 
         public void Jump()
         {
-            mario.pose = Mario.MarioPose.Jump;
-            if (mario.facingLeft)
-            {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpLeft");
-
-            }
-            else
-            {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpRight");
-            }
+            mario.State = new MarioJumpState(mario);
+        }
+        public void Fly()
+        {
+            mario.State = new MarioFlyState(mario);
         }
         public void Fall()
         {
-            if (mario.facingLeft)
-            {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillLeft");
-
-            }
-            else
-            {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioStillRight");
-            }
+            
         }
 
         public void Crouch()
@@ -64,49 +43,67 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Stop()
         {
+            mario.velocity.Y = 0;
             mario.State = new MarioIdleState(mario);
-        }
-        public void UpdateGravity()
-        {
-            mario.gravity = 20f;
         }
 
         public void Die()
         {
             mario.State = new DeadMarioState(mario);
         }
-        public void Update(GameTime gametime)
-        {
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && !isJumping)
-            {
-                marioVelocity.Y = jumpVelocity;
-                isJumping = true;
-            }
 
-            if (!mario.uphit)
+        public void UpdateVelocity(GameTime gametime)
+        {
+            if (mario.timeGap < 500)
             {
-                UpdateGravity();
+                mario.velocity.Y = -3.0f;
             }
             else
             {
-                isJumping = false;
+                mario.velocity.Y = 0;
             }
 
-            // Update Mario's position based on velocity
-            mario.position += marioVelocity * (float)gametime.ElapsedGameTime.TotalSeconds;
+            mario.timeGap += gametime.ElapsedGameTime.Milliseconds;
+        }
 
-            // Apply gravity
-            marioVelocity.Y += mario.gravity;
+        public void Update(GameTime gametime)
+        {
 
-            // Check for ground collision
-            if (mario.position.Y >= mario.mySprint._graphics.PreferredBackBufferHeight - 100)
+            mario.pose = Mario.MarioPose.Jump;
+
+            UpdateVelocity(gametime);
+
+            if (mario.facingLeft)
             {
-                mario.position.Y = mario.mySprint._graphics.PreferredBackBufferHeight - 100;
-                marioVelocity.Y = 0;
-                isJumping = false;
-                Fall();
+                if (mario.currentSprite.spriteName.Equals("MarioJumpLeft"))
+                {
+
+                    mario.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpLeft");
+                }
+
             }
+
+            else
+            {
+                if (mario.currentSprite.spriteName.Equals("MarioJumpRight"))
+                {
+
+                    mario.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioJumpRight");
+                }
+            }
+
 
         }
     }
+
 }

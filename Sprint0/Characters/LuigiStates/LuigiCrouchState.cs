@@ -1,10 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
-using System.ComponentModel.Design;
 
-namespace Sprint0.Characters.MarioStates
+namespace Sprint0.Characters.LuigiStates
 {
     internal class LuigiCrouchState : ICharacterState
     {
@@ -23,7 +20,10 @@ namespace Sprint0.Characters.MarioStates
         public void Jump()
         {
             luigi.State = new LuigiJumpState(luigi);
+            AudioManager audioManager = AudioManager.Instance;
+            audioManager.PlaySFX("jump");
         }
+        public void Fly() { }
         public void Fall()
         {
 
@@ -35,6 +35,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Stop()
         {
+            luigi.timeGap = 0;
             luigi.State = new LuigiIdleState(luigi);
         }
 
@@ -42,7 +43,7 @@ namespace Sprint0.Characters.MarioStates
         {
             luigi.State = new LuigiThrowState(luigi);
         }
-
+        public void TakeDamage() { }
         public void Die()
         {
     
@@ -50,7 +51,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void UpdateVelocity()
         {
-            luigi.velocity *= luigi.decay;
+            luigi.velocityX *= luigi.decay;
         }
 
         public void Update(GameTime gametime)
@@ -61,13 +62,33 @@ namespace Sprint0.Characters.MarioStates
 
             if (luigi.facingLeft)
             {
-                luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
+                if (luigi.currentSprite.spriteName.Equals("LuigiCrouchLeft"))
+                {
+
+                    luigi.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchLeft");
+                    luigi.UpStuck();
+                }
+
             }
+
             else
-            {    
-                 luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
-                           
-                     
+            {
+                if (luigi.currentSprite.spriteName.Equals("LuigiCrouchRight"))
+                {
+
+                    luigi.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiCrouchRight");
+                    luigi.UpStuck();
+                }
             }
         }
     }

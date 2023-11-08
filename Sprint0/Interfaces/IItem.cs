@@ -10,8 +10,9 @@ namespace Sprint0.Interfaces
 {
     public interface IItem
     {
-
+        public Rectangle itemRectangle { get; set; }
         void Draw(SpriteBatch spriteBatch);
+        void setPosition(List<int> position);
         void Update(GameTime gameTime);
     }
 }

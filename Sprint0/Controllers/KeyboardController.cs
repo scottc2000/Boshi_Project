@@ -1,21 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using Sprint0.Blocks;
-using Sprint0.Characters;
+﻿using Microsoft.Xna.Framework.Input;
 using Sprint0.Commands;
-using Sprint0.Commands.Blocks;
 using Sprint0.Commands.Luigi;
 using Sprint0.Commands.Mario;
 using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 namespace Sprint0.Controllers
 {
     public class KeyboardController : IController
@@ -94,6 +82,8 @@ namespace Sprint0.Controllers
             RegisterPressCommand(Keys.D7, new CLuigiFire(mySprint));
             RegisterPressCommand(Keys.D6, new CLuigiBig(mySprint));
             RegisterPressCommand(Keys.D5, new CLuigiNormal(mySprint));
+
+            RegisterCommand(Keys.D0, new Reset(mySprint));
         }
 
         private void pressedKeys(KeyboardState current, KeyboardState previous)

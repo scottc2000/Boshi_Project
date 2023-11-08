@@ -22,6 +22,10 @@ namespace Sprint0.Blocks
         private Vector2 location { get; set; }
         public Pipe(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
         {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations(content);
             sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "pipe", new Vector2(x, y));

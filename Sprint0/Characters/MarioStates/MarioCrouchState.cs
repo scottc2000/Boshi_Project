@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using Sprint0.Sprites.SpriteFactories;
-using System;
-using System.ComponentModel.Design;
-using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
@@ -24,6 +20,12 @@ namespace Sprint0.Characters.MarioStates
         public void Jump()
         {
             mario.State = new MarioJumpState(mario);
+            AudioManager audioManager = AudioManager.Instance;
+            audioManager.PlaySFX("jump");
+        }
+        public void Fly()
+        {
+            mario.State = new MarioFlyState(mario);
         }
         public void Fall()
         {
@@ -44,7 +46,13 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioThrowState(mario);
         }
-
+        public void TakeDamage() 
+        {
+        }
+        public void UpdateVelocity()
+        {
+            mario.velocity = Vector2.Zero;
+        }
         public void Die()
         {
             mario.State = new DeadMarioState(mario);
@@ -52,6 +60,7 @@ namespace Sprint0.Characters.MarioStates
         public void Update(GameTime gametime)
         {
             mario.pose = Mario.MarioPose.Crouch;
+
             if (mario.facingLeft)
             {
                 mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioCrouchLeft");

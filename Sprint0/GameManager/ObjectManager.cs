@@ -1,13 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Interfaces;
-using Sprint0.LevelLoader;
-using System.Collections.Generic;
+using Sprint0.Background;
+using Sprint0.Camera;
 using Sprint0.Characters;
-using Sprint0.Enemies;
+using Sprint0.HUD;
 using Sprint0.Collision;
-using System;
-using System.Diagnostics;
+using Sprint0.Interfaces;
+using System.Collections.Generic;
 
 namespace Sprint0.GameMangager
 {
@@ -15,29 +14,44 @@ namespace Sprint0.GameMangager
     {
         public string Name { get; }
 
+        public MarioCamera camera;
+
+        private Terrain terrain;
+        public GameStats hud;
         public List<IBlock> Blocks { get; set; }
+        public List<IBlock> TopCollidableBlocks { get; set; }
+        public List<IBlock> BottomCollidableBlocks { get; set; }
+        public List<IBlock> SideCollidableBlocks { get; set; }
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
-        public List<ICharacter> Players { get; set; }
+
+        public Luigi luigi;
+        public IMario mario;
 
         private Sprint0 sprint;
         
-        public ObjectManager(Sprint0 sprint0)
+        public ObjectManager(Sprint0 sprint0, MarioCamera camera)
         {
-            this.sprint = sprint0;
-            Players = new List<ICharacter>();
+            sprint = sprint0;
+            this.camera = camera;
+            terrain = new Terrain(sprint);
+            hud = new GameStats(sprint);
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
+            TopCollidableBlocks = new List<IBlock>();
+            BottomCollidableBlocks = new List<IBlock>();
+            SideCollidableBlocks = new List<IBlock>();
 
+            mario = new Mario(sprint);
+            luigi = new Luigi(sprint);
             
-            Players.Add(new Mario(sprint));
-            Players.Add(new Luigi(sprint));
-
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            terrain.Draw(spriteBatch); // need to draw terrain before any game objects
+
+            // Draw each game object
             foreach (var block in Blocks)
             {
                 block.Draw(spriteBatch);
@@ -50,37 +64,38 @@ namespace Sprint0.GameMangager
             {
                 enemy.Draw(spriteBatch);
             }
-            foreach (ICharacter player in Players)
-            {
-                player.Draw(spriteBatch);
-            }
+
+            mario.Draw(spriteBatch);
+            luigi.Draw(spriteBatch);
+            hud.Draw(spriteBatch);
+
         }
+
 
         public void Update(GameTime gameTime, CollisionHandler collision)
         {
-          foreach(var block in Blocks)
-          {
-             block.Update(gameTime);
-          }
-          foreach(var item in Items)
+            terrain.Update(gameTime);   // need to update terrain before any game objects
+
+            // Update each game object
+            foreach (var block in Blocks)
+            {
+                block.Update(gameTime);
+            }
+            foreach(var item in Items)
             {
                 item.Update(gameTime);
             }
-          foreach (var enemy in Enemies)
+            foreach (var enemy in Enemies)
             {
                 enemy.Update(gameTime);
             }
-            foreach (ICharacter player in Players)
-            {
-                player.Update(gameTime);
-                collision.playerUpdate();
+            mario.Update(gameTime);
+            luigi.Update(gameTime);
+            collision.Update();
 
-            }
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            throw new System.NotImplementedException();
+            camera.Update(gameTime, mario);
+            hud.Update(gameTime);
+            
         }
     }
 

@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters;
-using Sprint0.Characters.MarioStates;
-using Sprint0.Interfaces;
-using System;
 
 namespace Sprint0.Sprites.Players
 {
-    public class AnimatedSpriteMario : ISprite
+    public class AnimatedSpriteMario
     {
         private Texture2D texture;
 
@@ -51,14 +47,15 @@ namespace Sprint0.Sprites.Players
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             destination = new Rectangle((int)location.X, (int)location.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
 
             float rotation = 0;
             float layer = 0;
 
-            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), spriteEffect, layer);
+            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], color, rotation, new Vector2(0, 0), spriteEffect, layer);
         }
+    
     }
 }

@@ -1,30 +1,26 @@
-﻿using Microsoft.Xna.Framework;
-using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Sprint0.Characters.Mario;
+﻿using Sprint0.Interfaces;
 
 namespace Sprint0.Commands.Mario
 {
-    internal class CMarioJump : ICommand
+    public class CMarioJump : ICommand
     {
         private Sprint0 mySprint0;
-        private ICharacter mario;
+        private IMario mario;
         public CMarioJump(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
         }
         public void Execute()
         {
-
-            mario = mySprint0.objects.Players[0];
-            mario.Jump();
-
+            mario = mySprint0.objects.mario;
+            if (mario.health == Characters.Mario.MarioHealth.Raccoon && mario.runningTimer >= 75)
+            {
+                mario.Fly();
+            }
+            else
+            {
+                mario.Jump();
+            }
         }
-
     }
 }

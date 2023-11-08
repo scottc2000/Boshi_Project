@@ -1,19 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using Sprint0.Interfaces;
-using Sprint0.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Sprint0.Characters.Mario;
+﻿using Sprint0.Interfaces;
 
 namespace Sprint0.Commands.Mario
 {
-    internal class CMarioCrouch : ICommand
+    public class CMarioCrouch : ICommand
     {
         private Sprint0 mySprint0;
-        private ICharacter mario;
+        private IMario mario;
         public CMarioCrouch(Sprint0 Sprint0)
         {
             mySprint0 = Sprint0;
@@ -21,7 +13,7 @@ namespace Sprint0.Commands.Mario
         public void Execute()
         {
 
-            mario = mySprint0.objects.Players[0];
+            mario = mySprint0.objects.mario;
             mario.Crouch();
 
         }
