@@ -15,6 +15,7 @@ namespace Sprint0.Collision
         List<IItem> Items;
         List<IBlock> Blocks, TopCollidableBlocks, BottomCollidableBlocks, SideCollidableBlocks;
         CollisionDictionraryRegister register;
+        ObjectManager objectManager;
         Rectangle blockHitbox;
         ICharacter luigi;
         IMario mario;
@@ -22,6 +23,7 @@ namespace Sprint0.Collision
         public CollisionHandler(Sprint0 sprint, ObjectManager objects)
         { 
             this.sprint = sprint;
+            this.objectManager = objects;
 
             Enemies = objects.Enemies;
             Items = objects.Items;
@@ -173,7 +175,7 @@ namespace Sprint0.Collision
         {
             foreach(IItem item in Items)
             {
-                if (mario.destination.Intersects(item.itemRectangle))
+                if (mario.destination.Intersects(item.destination))
                 {
                     ICommand powerUp = new CMarioPowerUp(sprint, item);
                     powerUp.Execute();
@@ -185,24 +187,11 @@ namespace Sprint0.Collision
 
         public void itemBlockUpdate()
         {
-
-           /* foreach(IItem item in Items)
+            foreach (IItem item in Items)
             {
-                foreach (IBlock block in Blocks)
-                {
-                    blockHitbox = new Rectangle(block.x, block.y, block.width, block.height);
-                    if (item.itemRectangle.Intersects(blockHitbox))
-                    {
-                        //handles x collisions (left and right)
-                        if (Rectangle.Intersect(item.itemRectangle, blockHitbox).Width <= Rectangle.Intersect(item.itemRectangle, blockHitbox).Height)
-                        {
-                            register.collisions.itemBlock[new Tuple<List<IItem>, List<IBlock>, CollisionDictionary.Side>(Items, Blocks, CollisionDictionary.Side.Left)].Item1.Execute();
-                            register.collisions.itemBlock[new Tuple<List<IItem>, List<IBlock>, CollisionDictionary.Side>(Items, Blocks, CollisionDictionary.Side.Right)].Item2.Execute();
-                        }
-                    }
-                }
-
-            }*/
+                ICommand changeItemDirection = new CItemBlockX(sprint, item);
+                changeItemDirection.Execute();   
+            }
         }
 
         public void Update()
@@ -212,6 +201,26 @@ namespace Sprint0.Collision
             marioEnemyUpdate();
             marioBlockUpdate();
             marioItemUpdate();
+            for (int i = 0; i < objectManager.DynamicEntities.Count; i++)
+            {
+                IEntity entity1 = objectManager.DynamicEntities[i];
+
+                for (int j = i + 1; j < objectManager.DynamicEntities.Count; j++)
+                {
+                    IEntity entity2 = objectManager.DynamicEntities[j];
+                    if (entity1.destination.Intersects(entity2.destination))
+                    {
+                        if ()
+                    }
+                }
+                foreach (IEntity sEntity in objectManager.StaticEntities)
+                {
+                    if (entity1.destination.Intersects(sEntity.destination))
+                    {
+
+                    }
+                }
+            }
         }
     }
 }

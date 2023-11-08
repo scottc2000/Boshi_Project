@@ -15,6 +15,7 @@ namespace Sprint0.LevelLoader
             public int y { get; set; }
             public int width { get; set; }
             public int height { get; set; }
+            public string entityType { get; set; }
         }
 
         public class Item
@@ -22,6 +23,7 @@ namespace Sprint0.LevelLoader
             public string Name { get; set; }
             public List<int> Hitbox { get; set; }
             public List<int> Position { get; set; }
+            public string entityType { get; set; }
         }
 
         public class Enemy
@@ -29,6 +31,7 @@ namespace Sprint0.LevelLoader
             public string Name { get; set; }
             public List<int> Hitbox { get; set; }
             public List<int> Position { get; set; }
+            public string entityType { get; set; }
         }
 
         public class Root

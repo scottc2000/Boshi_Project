@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Characters\LuigiStates\" />
-    <Folder Include="Collision\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>

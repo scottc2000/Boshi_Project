@@ -8,7 +8,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Characters
 {
-    public class Mario : IMario
+    public class Mario : IMario, IEntity
     {
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health { get; set; }

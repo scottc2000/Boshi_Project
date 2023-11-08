@@ -11,16 +11,18 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Items
 {
-    internal class Shoe : IItem
+    internal class Shoe : IItem, IEntity
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle destination { get; set; }
+        public bool moveRight { get; set; }
+        
 
         public Shoe()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Shoe");
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)
@@ -31,7 +33,7 @@ namespace Sprint0.Items
 
         public void Update(GameTime time)
         {
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
             aniItem.Update(time);
         }
 

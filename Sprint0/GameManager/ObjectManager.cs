@@ -23,6 +23,11 @@ namespace Sprint0.GameMangager
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
 
+        public List<IEntity> StaticEntities { get; set; }
+        public List<IEntity> DynamicEntities { get; set; }
+        public List<IEntity> EntitiesToAdd { get; set; }
+        public List<IEntity> EntitiesToRemove { get; set; }
+
         public IMario mario;
         public ICharacter luigi;
 
@@ -39,6 +44,10 @@ namespace Sprint0.GameMangager
             TopCollidableBlocks = new List<IBlock>();
             BottomCollidableBlocks = new List<IBlock>();
             SideCollidableBlocks = new List<IBlock>();
+            StaticEntities = new List<IEntity>();
+            DynamicEntities = new List<IEntity>();
+            EntitiesToAdd = new List<IEntity>();
+            EntitiesToRemove = new List<IEntity>();
 
             mario = new Mario(sprint);
             luigi = new Luigi(sprint);
@@ -48,17 +57,13 @@ namespace Sprint0.GameMangager
         {
             terrain.Draw(spriteBatch); // need to draw terrain before any game objects
 
-            foreach (var block in Blocks)
+            foreach (var entity in StaticEntities)
             {
-                block.Draw(spriteBatch);
+                entity.Draw(spriteBatch);
             }
-            foreach(var item in Items)
+            foreach(var entity in DynamicEntities)
             {
-                item.Draw(spriteBatch);
-            }
-            foreach(var enemy in Enemies)
-            {
-                enemy.Draw(spriteBatch);
+                entity.Draw(spriteBatch);
             }
 
             mario.Draw(spriteBatch);
@@ -71,17 +76,13 @@ namespace Sprint0.GameMangager
         {
             terrain.Update(gameTime);   // need to update terrain before any game objects
 
-            foreach (var block in Blocks)
+            foreach (var entity in StaticEntities)
             {
-                block.Update(gameTime);
+                entity.Update(gameTime);
             }
-            foreach(var item in Items)
+            foreach (var entity in DynamicEntities)
             {
-                item.Update(gameTime);
-            }
-            foreach (var enemy in Enemies)
-            {
-                enemy.Update(gameTime);
+                entity.Update(gameTime);
             }
             mario.Update(gameTime);
             luigi.Update(gameTime);

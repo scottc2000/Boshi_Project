@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Sprint0.Enemies
 {
-    public class HammerBro : IEnemies
+    public class HammerBro : IEnemies, IEntity
     {
         public IEnemyState state;
         public Vector2 position;

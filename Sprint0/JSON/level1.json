@@ -1,242 +1,276 @@
 ﻿{
   "Blocks": [
     {
-      "Name": "floor",
-      "x": -16,
-      "y": 0,
-      "width": 16,
-      "height": 432
+        "Name": "floor",
+        "x": -16,
+        "y": 0,
+        "width": 16,
+        "height": 432,
+        "entity":  "static"
     },
     {
-      "Name": "floor",
-      "x": 2816,
-      "y": 0,
-      "width": 16,
-      "height": 432
+        "Name": "floor",
+        "x": 2816,
+        "y": 0,
+        "width": 16,
+        "height": 432,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 0,
-      "y": 416,
-      "width": 256,
-      "height": 16
+        "Name": "floor",
+        "x": 0,
+        "y": 416,
+        "width": 256,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 240,
-      "y": 368,
-      "width": 16,
-      "height": 48
-    },
-    {
-      "Name": "question_block",
-      "x": 176,
-      "y": 352,
-      "width": 16,
-      "height": 16
+        "Name": "large_block",
+        "x": 240,
+        "y": 368,
+        "width": 16,
+        "height": 48,
+        "entity": "static"
     },
     {
       "Name": "question_block",
-      "x": 192,
-      "y": 352,
-      "width": 16,
-      "height": 16
+        "x": 176,
+        "y": 352,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "question_block",
-      "x": 224,
-      "y": 304,
-      "width": 16,
-      "height": 16
+        "Name": "question_block",
+        "x": 192,
+        "y": 352,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "question_block",
-      "x": 240,
-      "y": 304,
-      "width": 16,
-      "height": 16
+        "Name": "question_block",
+        "x": 224,
+        "y": 304,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "floor",
-      "x": 256,
-      "y": 416,
-      "width": 256,
-      "height": 16
+        "Name": "question_block",
+        "x": 240,
+        "y": 304,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "large_block",
-      "x": 256,
-      "y": 368,
-      "width": 32,
-      "height": 48
+        "Name": "floor",
+        "x": 256,
+        "y": 416,
+        "width": 256,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 272,
-      "y": 336,
-      "width": 48,
-      "height": 80
+        "Name": "large_block",
+        "x": 256,
+        "y": 368,
+        "width": 32,
+        "height": 48,
+        "entity": "static"
     },
     {
-      "Name": "pipe",
-      "x": 352,
-      "y": 368,
-      "width": 32,
-      "height": 48
+        "Name": "large_block",
+        "x": 272,
+        "y": 336,
+        "width": 48,
+        "height": 80,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 400,
-      "y": 368,
-      "width": 80,
-      "height": 48
+        "Name": "pipe",
+        "x": 352,
+        "y": 368,
+        "width": 32,
+        "height": 48,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 464,
-      "y": 336,
-      "width": 48,
-      "height": 80
+        "Name": "large_block",
+        "x": 400,
+        "y": 368,
+        "width": 80,
+        "height": 48,
+        "entity": "static"
     },
     {
-      "Name": "question_block",
-      "x": 416,
-      "y": 320,
-      "width": 16,
-      "height": 16
+        "Name": "large_block",
+        "x": 464,
+        "y": 336,
+        "width": 48,
+        "height": 80,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 512,
-      "y": 416,
-      "width": 112,
-      "height": 16
+        "Name": "question_block",
+        "x": 416,
+        "y": 320,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "large_block",
-      "x": 512,
-      "y": 336,
-      "width": 16,
-      "height": 80
+        "Name": "floor",
+        "x": 512,
+        "y": 416,
+        "width": 112,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 512,
-      "y": 304,
-      "width": 64,
-      "height": 112
+        "Name": "large_block",
+        "x": 512,
+        "y": 336,
+        "width": 16,
+        "height": 80,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 512,
-      "y": 384,
-      "width": 96,
-      "height": 32
+        "Name": "large_block",
+        "x": 512,
+        "y": 304,
+        "width": 64,
+        "height": 112,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 624,
-      "y": 400,
-      "width": 144,
-      "height": 32
+        "Name": "large_block",
+        "x": 512,
+        "y": 384,
+        "width": 96,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "question_block",
-      "x": 656,
-      "y": 384,
-      "width": 16,
-      "height": 16
+        "Name": "floor",
+        "x": 624,
+        "y": 400,
+        "width": 144,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "question_block",
-      "x": 704,
-      "y": 352,
-      "width": 16,
-      "height": 16
+        "Name": "question_block",
+        "x": 656,
+        "y": 384,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "floor",
-      "x": 768,
-      "y": 400,
-      "width": 256,
-      "height": 32
+        "Name": "question_block",
+        "x": 704,
+        "y": 352,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "floor",
-      "x": 768,
-      "y": 400,
-      "width": 256,
-      "height": 32
+        "Name": "floor",
+        "x": 768,
+        "y": 400,
+        "width": 256,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 1024,
-      "y": 400,
-      "width": 64,
-      "height": 32
+        "Name": "floor",
+        "x": 768,
+        "y": 400,
+        "width": 256,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 1152,
-      "y": 416,
-      "width": 128,
-      "height": 16
+        "Name": "floor",
+        "x": 1024,
+        "y": 400,
+        "width": 64,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 1264,
-      "y": 384,
-      "width": 16,
-      "height": 32
+        "Name": "floor",
+        "x": 1152,
+        "y": 416,
+        "width": 128,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 1280,
-      "y": 384,
-      "width": 224,
-      "height": 16
+        "Name": "large_block",
+        "x": 1264,
+        "y": 384,
+        "width": 16,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 1264,
-      "y": 384,
-      "width": 96,
-      "height": 32
+        "Name": "floor",
+        "x": 1280,
+        "y": 384,
+        "width": 224,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 1296,
-      "y": 352,
-      "width": 112,
-      "height": 64
+        "Name": "large_block",
+        "x": 1264,
+        "y": 384,
+        "width": 96,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 1328,
-      "y": 320,
-      "width": 112,
-      "height": 96
+        "Name": "large_block",
+        "x": 1296,
+        "y": 352,
+        "width": 112,
+        "height": 64,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 1312,
-      "y": 144,
-      "width": 64,
-      "height": 32
+        "Name": "large_block",
+        "x": 1328,
+        "y": 320,
+        "width": 112,
+        "height": 96,
+        "entity": "static"
     },
     {
-      "Name": "clouds",
-      "x": 1408,
-      "y": 192,
-      "width": 64,
-      "height": 16
+        "Name": "large_block",
+        "x": 1312,
+        "y": 144,
+        "width": 64,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "clouds",
-      "x": 1488,
-      "y": 176,
-      "width": 48,
-      "height": 16
+        "Name": "clouds",
+        "x": 1408,
+        "y": 192,
+        "width": 64,
+        "height": 16,
+        "entity": "static"
+    },
+    {
+        "Name": "clouds",
+        "x": 1488,
+        "y": 176,
+        "width": 48,
+        "height": 16,
+        "entity": "static"
     },
     {
       "Name": "yellow_brick",
@@ -246,102 +280,116 @@
       "height": 16
     },
     {
-      "Name": "question_block",
-      "x": 1472,
-      "y": 368,
-      "width": 16,
-      "height": 16
+        "Name": "question_block",
+        "x": 1472,
+        "y": 368,
+        "width": 16,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "wood_blocks",
-      "x": 1504,
-      "y": 336,
-      "width": 32,
-      "height": 16
+        "Name": "wood_blocks",
+        "x": 1504,
+        "y": 336,
+        "width": 32,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 1536,
-      "y": 416,
-      "width": 80,
-      "height": 16
+        "Name": "floor",
+        "x": 1536,
+        "y": 416,
+        "width": 80,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 1568,
-      "y": 400,
-      "width": 16,
-      "height": 16
+        "Name": "wood_blocks",
+        "x": 1568,
+        "y": 400,
+        "width": 16,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 1584,
-      "y": 384,
-      "width": 16,
-      "height": 32
+        "Name": "wood_blocks",
+        "x": 1584,
+        "y": 384,
+        "width": 16,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 1600,
-      "y": 368,
-      "width": 16,
-      "height": 48
+        "Name": "wood_blocks",
+        "x": 1600,
+        "y": 368,
+        "width": 16,
+        "height": 48,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 1664,
-      "y": 416,
-      "width": 128,
-      "height": 16
+        "Name": "floor",
+        "x": 1664,
+        "y": 416,
+        "width": 128,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 1664,
-      "y": 368,
-      "width": 16,
-      "height": 48
+        "Name": "wood_blocks",
+        "x": 1664,
+        "y": 368,
+        "width": 16,
+        "height": 48,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 1680,
-      "y": 384,
-      "width": 16,
-      "height": 32
+        "Name": "wood_blocks",
+        "x": 1680,
+        "y": 384,
+        "width": 16,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 1696,
-      "y": 400,
-      "width": 16,
-      "height": 16
+        "Name": "wood_blocks",
+        "x": 1696,
+        "y": 400,
+        "width": 16,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "clouds",
-      "x": 1536,
-      "y": 176,
-      "width": 160,
-      "height": 16
+        "Name": "clouds",
+        "x": 1536,
+        "y": 176,
+        "width": 160,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 1792,
-      "y": 416,
-      "width": 256,
-      "height": 16
+        "Name": "floor",
+        "x": 1792,
+        "y": 416,
+        "width": 256,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "pipe",
-      "x": 1792,
-      "y": 384,
-      "width": 32,
-      "height": 32
+        "Name": "pipe",
+        "x": 1792,
+        "y": 384,
+        "width": 32,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "pipe",
-      "x": 1856,
-      "y": 368,
-      "width": 32,
-      "height": 48
+        "Name": "pipe",
+        "x": 1856,
+        "y": 368,
+        "width": 32,
+        "height": 48,
+        "entity": "static"
     },
     {
       "Name": "yellow_brick",
@@ -449,32 +497,34 @@
       "height": 16
     },
     {
-      "Name": "floor",
-      "x": 2048,
-      "y": 416,
-      "width": 192,
-      "height": 16
+        "Name": "floor",
+        "x": 2048,
+        "y": 416,
+        "width": 192,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 2256,
-      "y": 416,
-      "width": 48,
-      "height": 16
+        "Name": "floor",
+        "x": 2256,
+        "y": 416,
+        "width": 48,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "yellow_brick",
-      "x": 2048,
-      "y": 400,
-      "width": 16,
-      "height": 16
+        "Name": "yellow_brick",
+        "x": 2048,
+        "y": 400,
+        "width": 16,
+        "height": 16
     },
     {
-      "Name": "yellow_brick",
-      "x": 2096,
-      "y": 384,
-      "width": 16,
-      "height": 16
+        "Name": "yellow_brick",
+        "x": 2096,
+        "y": 384,
+        "width": 16,
+        "height": 16
     },
     {
       "Name": "yellow_brick",
@@ -491,392 +541,450 @@
       "height": 16
     },
     {
-      "Name": "large_block",
-      "x": 2144,
-      "y": 368,
-      "width": 48,
-      "height": 48
+        "Name": "large_block",
+        "x": 2144,
+        "y": 368,
+        "width": 48,
+        "height": 48,
+        "entity": "static"
     },
     {
-      "Name": "large_block",
-      "x": 2176,
-      "y": 274,
-      "width": 48,
-      "height": 144
+        "Name": "large_block",
+        "x": 2176,
+        "y": 274,
+        "width": 48,
+        "height": 144,
+        "entity": "static"
     },
     {
-      "Name": "pipe",
-      "x": 2256,
-      "y": 112,
-      "width": 32,
-      "height": 192
+        "Name": "pipe",
+        "x": 2256,
+        "y": 112,
+        "width": 32,
+        "height": 192,
+        "entity": "static"
     },
     {
-      "Name": "pipe",
-      "x": 2256,
-      "y": 384,
-      "width": 32,
-      "height": 32
+        "Name": "pipe",
+        "x": 2256,
+        "y": 384,
+        "width": 32,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 2256,
-      "y": 304,
-      "width": 32,
-      "height": 16
+        "Name": "wood_blocks",
+        "x": 2256,
+        "y": 304,
+        "width": 32,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "wood_blocks",
-      "x": 2256,
-      "y": 368,
-      "width": 32,
-      "height": 16
+        "Name": "wood_blocks",
+        "x": 2256,
+        "y": 368,
+        "width": 32,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 2304,
-      "y": 416,
-      "width": 256,
-      "height": 16
+        "Name": "floor",
+        "x": 2304,
+        "y": 416,
+        "width": 256,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "pipe",
-      "x": 2320,
-      "y": 384,
-      "width": 32,
-      "height": 32
+        "Name": "pipe",
+        "x": 2320,
+        "y": 384,
+        "width": 32,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 2304,
-      "y": 416,
-      "width": 256,
-      "height": 16
+        "Name": "floor",
+        "x": 2304,
+        "y": 416,
+        "width": 256,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "pipe",
-      "x": 2320,
-      "y": 384,
-      "width": 32,
-      "height": 32
+        "Name": "pipe",
+        "x": 2320,
+        "y": 384,
+        "width": 32,
+        "height": 32,
+        "entity": "static"
     },
     {
-      "Name": "floor",
-      "x": 2560,
-      "y": 416,
-      "width": 256,
-      "height": 16
+        "Name": "floor",
+        "x": 2560,
+        "y": 416,
+        "width": 256,
+        "height": 16,
+        "entity": "static"
     },
     {
-      "Name": "goal",
-      "x": 2683,
-      "y": 331,
-      "width": 26,
-      "height": 26
+        "Name": "goal",
+        "x": 2683,
+        "y": 331,
+        "width": 26,
+        "height": 26,
+        "entity": "static"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1073,
-      "y": 320,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1073,
+        "y": 320,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1105,
-      "y": 288,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1105,
+        "y": 288,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1137,
-      "y": 256,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1137,
+        "y": 256,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1169,
-      "y": 224,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1169,
+        "y": 224,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1201,
-      "y": 192,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1201,
+        "y": 192,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1329,
-      "y": 80,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1329,
+        "y": 80,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1345,
-      "y": 80,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1345,
+        "y": 80,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1361,
-      "y": 80,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1361,
+        "y": 80,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1473,
-      "y": 112,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1473,
+        "y": 112,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1489,
-      "y": 112,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1489,
+        "y": 112,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1537,
-      "y": 128,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1537,
+        "y": 128,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1553,
-      "y": 128,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1553,
+        "y": 128,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1569,
-      "y": 128,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1569,
+        "y": 128,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1585,
-      "y": 128,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1585,
+        "y": 128,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1617,
-      "y": 112,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1617,
+        "y": 112,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1633,
-      "y": 112,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1633,
+        "y": 112,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1649,
-      "y": 112,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1649,
+        "y": 112,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1665,
-      "y": 112,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1665,
+        "y": 112,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1697,
-      "y": 144,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1697,
+        "y": 144,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1729,
-      "y": 112,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1729,
+        "y": 112,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1761,
-      "y": 128,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1761,
+        "y": 128,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1809,
-      "y": 96,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1809,
+        "y": 96,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 1841,
-      "y": 128,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 1841,
+        "y": 128,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2177,
-      "y": 504,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2177,
+        "y": 504,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2193,
-      "y": 488,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2193,
+        "y": 488,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2209,
-      "y": 488,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2209,
+        "y": 488,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2225,
-      "y": 504,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2225,
+        "y": 504,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2225,
-      "y": 520,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2225,
+        "y": 520,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2193,
-      "y": 536,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2193,
+        "y": 536,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2209,
-      "y": 536,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2209,
+        "y": 536,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2225,
-      "y": 552,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2225,
+        "y": 552,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2225,
-      "y": 568,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2225,
+        "y": 568,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2177,
-      "y": 568,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2177,
+        "y": 568,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2193,
-      "y": 584,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2193,
+        "y": 584,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     },
     {
-      "Name": "spinning_coin",
-      "x": 2209,
-      "y": 584,
-      "width": 14,
-      "height": 16
+        "Name": "spinning_coin",
+        "x": 2209,
+        "y": 584,
+        "width": 14,
+        "height": 16,
+        "entity": "dynamic"
     }
   ],
   "Items": [
     {
-      "Name": "RedMushroom",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 240, 288 ]
+        "Name": "RedMushroom",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 240, 288 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Leaf",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 656, 368 ]
+        "Name": "Leaf",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 656, 368 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "OneUpMushroom",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 1472, 352 ]
+        "Name": "OneUpMushroom",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 1472, 352 ],
+        "entity": "dynamic"
     }
   ],
   "Enemies": [
     {
-      "Name": "Goomba",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 500, 400 ]
+        "Name": "Goomba",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 500, 400 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Koopa",
-      "Hitbox": [ 16, 24 ],
-      "Position": [ 595, 390 ]
+        "Name": "Koopa",
+        "Hitbox": [ 16, 24 ],
+        "Position": [ 595, 390 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Goomba",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 820, 385 ]
+        "Name": "Goomba",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 820, 385 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Goomba",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 940, 385 ]
+        "Name": "Goomba",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 940, 385 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Goomba",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 1050, 385 ]
+        "Name": "Goomba",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 1050, 385 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Koopa",
-      "Hitbox": [ 16, 24 ],
-      "Position": [ 1358, 358 ]
+        "Name": "Koopa",
+        "Hitbox": [ 16, 24 ],
+        "Position": [ 1358, 358 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Koopa",
-      "Hitbox": [ 16, 24 ],
-      "Position": [ 1418, 293 ]
+        "Name": "Koopa",
+        "Hitbox": [ 16, 24 ],
+        "Position": [ 1418, 293 ],
+        "entity": "dynamic"
     },
     {
-      "Name": "Goomba",
-      "Hitbox": [ 16, 16 ],
-      "Position": [ 2049, 400 ]
+        "Name": "Goomba",
+        "Hitbox": [ 16, 16 ],
+        "Position": [ 2049, 400 ],
+        "entity": "dynamic"
     }
   ]
 

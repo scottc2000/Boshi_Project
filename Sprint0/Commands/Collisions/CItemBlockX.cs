@@ -12,14 +12,15 @@ namespace Sprint0.Commands.Collisions
         private Sprint0 myGame;
         private IItem item;
 
-        public CItemBlockX(Sprint0 myGame)
+        public CItemBlockX(Sprint0 myGame, IItem item)
         {
             this.myGame = myGame;
+            this.item = item;
         }
 
         public void Execute()
         {
-            
+            item.moveRight = !item.moveRight;
         }
     }
 }

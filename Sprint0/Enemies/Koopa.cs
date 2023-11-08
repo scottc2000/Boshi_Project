@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Sprint0.Enemies
 {
-    public class Koopa : IEnemies
+    public class Koopa : IEnemies, IEntity
     {
         public IEnemyState state;
         public Vector2 position;

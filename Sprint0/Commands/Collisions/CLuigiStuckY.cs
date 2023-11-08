@@ -5,19 +5,15 @@ namespace Sprint0.Commands.Collisions
 {
     public class CLuigiStuckY : ICommand
     {
-
-        private Sprint0 mySprint0;
         private ICharacter luigi;
 
-        public CLuigiStuckY(Sprint0 mySprint0)
+        public CLuigiStuckY(ICharacter luigi)
         {
-            this.mySprint0 = mySprint0;
+            this.luigi = luigi;
         }
 
         public void Execute()
         {
-
-            luigi = mySprint0.objects.luigi;
             luigi.uphit = true;
         }
     }

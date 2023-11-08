@@ -13,7 +13,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
-    internal class SpinningCoin : IBlock
+    internal class SpinningCoin : IBlock, IEntity
     {
         public int x { get; set; }
         public int y { get; set; }
@@ -21,6 +21,7 @@ namespace Sprint0.Blocks
         public int height { get; set; }
         private ISprite sprite;
         private Vector2 location { get; set; }
+        public Rectangle destination { get; set; }
 
         public SpinningCoin(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
         {

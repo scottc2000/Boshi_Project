@@ -11,16 +11,17 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Items
 {
-    internal class Frog : IItem
+    internal class Frog : IItem, IEntity
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle destination { get; set; }
+        public bool moveRight { get; set; }
 
         public Frog()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Frog");
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)
@@ -31,7 +32,7 @@ namespace Sprint0.Items
 
         public void Update(GameTime gameTime)
         {
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

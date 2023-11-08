@@ -12,15 +12,14 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Items
 {
-    internal class OneUpMushroom : IItem
+    internal class OneUpMushroom : IItem, IEntity
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle destination { get; set; }
+        public bool moveRight { get; set; }
 
         private int itemSpeed = 1;
-
-        public bool moveRight = false;
 
         private float timer = 0f;
         private int interval = 15;
@@ -28,6 +27,7 @@ namespace Sprint0.Items
         public OneUpMushroom()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("OneUpMushroom");
+            moveRight = false;
         }
 
         public void setPosition(List<int> pos)
@@ -50,7 +50,7 @@ namespace Sprint0.Items
                 position.X -= itemSpeed;
                 timer = 0;
             }
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -6,17 +6,18 @@ using System.Collections.Generic;
 
 namespace Sprint0.Items
 {
-    internal class Leaf : IItem
+    internal class Leaf : IItem, IEntity
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle destination { get; set; }
+        public bool moveRight { get; set; }
 
         public Leaf()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Leaf");
-            itemRectangle = aniItem.itemPosition;
-            System.Diagnostics.Debug.WriteLine("Leaf Rectangle in IItem: " + itemRectangle);
+            destination = aniItem.itemPosition;
+            System.Diagnostics.Debug.WriteLine("Leaf Rectangle in IItem: " + destination);
         }
 
         public void setPosition(List<int> pos)
@@ -28,7 +29,7 @@ namespace Sprint0.Items
         public void Update(GameTime gameTime)
         {
             aniItem.Update(gameTime);
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

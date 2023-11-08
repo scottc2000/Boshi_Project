@@ -12,15 +12,17 @@ using Sprint0.Sprites.ItemSprites;
 
 namespace Sprint0.Items
 {
-    internal class FireFlower : IItem
+    internal class FireFlower : IItem, IEntity
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle destination { get; set; }
+        public bool moveRight { get; set; }
+
         public FireFlower()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("FireFlower");
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)
@@ -31,7 +33,7 @@ namespace Sprint0.Items
 
         public void Update(GameTime gameTime)
         {
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

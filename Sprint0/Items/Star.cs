@@ -11,13 +11,12 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Items
 {
-    internal class Star : IItem
+    internal class Star : IItem, IEntity
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
-
-        public bool moveRight = true;
+        public Rectangle destination { get; set; }
+        public bool moveRight { get; set; }
 
         //Physics
 
@@ -32,7 +31,8 @@ namespace Sprint0.Items
         public Star()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Star");
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
+            moveRight = true;
         }
 
         public void setPosition(List<int> pos)
@@ -55,7 +55,7 @@ namespace Sprint0.Items
                 position.X -= itemSpeed;
                 timer = 0;
             }
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -12,7 +12,7 @@ using Sprint0.Sprites;
 
 namespace Sprint0.Blocks
 {
-    internal class WoodBlocks : IBlock
+    internal class WoodBlocks : IBlock, IEntity
     {
         public int x { get; set; }
         public int y { get; set; }
@@ -20,6 +20,7 @@ namespace Sprint0.Blocks
         public int height { get; set; }
         private ISprite sprite;
         private Vector2 location { get; set; }
+        public Rectangle destination { get; set; }
         public WoodBlocks(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
         {
             this.x = x;

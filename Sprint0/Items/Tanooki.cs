@@ -11,16 +11,17 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Items
 {
-    internal class Tanooki : IItem
+    internal class Tanooki : IItem, IEntity
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle destination { get; set; }
+        public bool moveRight { get; set; }
 
         public Tanooki()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Tanooki");
-            itemRectangle = aniItem.itemPosition;
+            destination = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)

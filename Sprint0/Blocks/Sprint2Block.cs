@@ -13,7 +13,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
-    public class Sprint2Block : IBlock
+    public class Sprint2Block : IBlock, IEntity
     {
         public int x { get; set; }
         public int y { get; set; }
@@ -31,6 +31,7 @@ namespace Sprint0.Blocks
         private ISprite sprite5;
 
         public Vector2 location { get; set; }
+        public Rectangle destination { get; set; }
         private int blockCount;
         private int blockIndex;
 

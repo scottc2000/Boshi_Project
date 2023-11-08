@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Sprint0.Characters
 {
-    public class DamagedMario : IMario
+    public class DamagedMario : IMario, IEntity
     {
         public MarioCamera camera;
         public ICharacterState State { get; set; }

@@ -6,20 +6,15 @@ namespace Sprint0.Commands.Collisions
 {
     public class CLuigiStuckX : ICommand
     {
-
-        private Sprint0 mySprint0;
         private ICharacter luigi;
 
-        public CLuigiStuckX(Sprint0 mySprint0)
+        public CLuigiStuckX(ICharacter luigi)
         {
-            this.mySprint0 = mySprint0;
+            this.luigi = luigi;
         }
 
         public void Execute()
         {
-
-            luigi = mySprint0.objects.luigi;
-
             if (luigi.facingLeft)
             {
                 luigi.stuck = true;
