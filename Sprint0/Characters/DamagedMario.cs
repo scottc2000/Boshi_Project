@@ -46,6 +46,7 @@ namespace Sprint0.Characters
             currentSprite = mario.currentSprite;
             timer = 50;
             State = mario.State;
+            System.Diagnostics.Debug.WriteLine("position at creation: " + position);
         }
 
         public void ChangeToBig()   { decoratedMario.ChangeToBig(); }
@@ -76,14 +77,11 @@ namespace Sprint0.Characters
             timer--;
             if (timer == 0)
             {
-               
-                // Update the position of DamagedMario based on the offset
-                System.Diagnostics.Debug.WriteLine("position: " + position);
-
                 isInvinsible = false;
                 RemoveDecorator();
             }
 
+            destination = currentSprite.destination;
             decoratedMario.Update(gametime);
             camera.Update(gametime, decoratedMario);
 
@@ -91,13 +89,12 @@ namespace Sprint0.Characters
 
         void RemoveDecorator()
         {
-            System.Diagnostics.Debug.WriteLine("invinsible: " + isInvinsible);
             manager.mario = decoratedMario;
         }
 
         public void Draw(SpriteBatch spritebatch) 
         { 
-            currentSprite.Draw(spritebatch, position, colors[(timer / 3) % 2]); 
+            currentSprite.Draw(spritebatch, new Vector2(position.X, position.Y), colors[(timer / 3) % 2]); 
         }
     }
 }
