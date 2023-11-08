@@ -7,12 +7,13 @@ namespace Sprint0.HUD
 {
     public class GameStats
     {
-        public static readonly int MAXCOINS = 100;
-        public static readonly int MINCOINS = 0;
-        public static readonly int STARTINGLIVES = 3;
-        public static readonly int GAMEOVER = 0;
-
         private Sprint0 sprint;
+        // Constants
+        private static readonly int MAXCOINS = 100;
+        private static readonly int ZERO = 0;
+        private static readonly int STARTINGLIVES = 3;
+
+        // Stat variables
         public int coins { get; set; }
         public int lives { get; set; }
         public int score { get; set; }
@@ -20,7 +21,8 @@ namespace Sprint0.HUD
         public int gameTimer { get; set; }
         public int powerBoost { get; set; }
 
-        public HUDFactory mySpriteFactory;
+        // Sprite information
+        private HUDFactory mySpriteFactory;
         private ISprite staticSprite;
         private ISprite coinSprite;
         private ISprite lifeSprite;
@@ -30,14 +32,22 @@ namespace Sprint0.HUD
         public GameStats(Sprint0 sprint)
         {
             this.sprint = sprint;
-            coins = MINCOINS;
+
+            // Initial stats
+            coins = ZERO;
             lives = STARTINGLIVES;
             score = 0;
             gameTimer = 500;
+
+            // Initialize Factory
             mySpriteFactory = new HUDFactory(sprint);
             mySpriteFactory.LoadAllTextures(sprint.Content);
 
+            // Create initial game stats
             staticSprite = mySpriteFactory.CreateHud("static");
+            coinSprite = mySpriteFactory.UpdateCoins(coins);
+            lifeSprite = mySpriteFactory.UpdateLives(lives);
+
         }
 
         public void IncrementCoin()
@@ -46,8 +56,10 @@ namespace Sprint0.HUD
             if (coins == MAXCOINS)
             {
                 IncrementLives();
-                coins = MINCOINS;
+                coins = ZERO;
             }
+
+            coinSprite = mySpriteFactory.UpdateCoins(coins);
         }
 
         public void IncreaseScore(int points)
@@ -58,20 +70,25 @@ namespace Sprint0.HUD
         public void IncrementLives()
         {
             lives++;
+            lifeSprite = mySpriteFactory.UpdateLives(lives);
         }
 
         public void DecrementLives()
         {
             lives--;
-            if (lives == GAMEOVER)
+            if (lives == ZERO)
             {
                 // Is game over screen called here or handled somewhere else?
                 lives = STARTINGLIVES;
             }
+            else
+            {
+                lifeSprite = mySpriteFactory.UpdateLives(lives);
+            }
         }
         public void PowerLevel()
         {
-
+            // For mario and luigi's raccoon power boost
         }
 
         public void Update(GameTime gametime)
@@ -80,7 +97,10 @@ namespace Sprint0.HUD
         }
         public void Draw(SpriteBatch spritebatch)
         {
+            // Magic numbers will be removed later
             staticSprite.Draw(spritebatch, new Vector2(50, 450));
+            coinSprite.Draw(spritebatch, new Vector2(330, 464));
+            lifeSprite.Draw(spritebatch, new Vector2(115, 480));
         }
     }
 }

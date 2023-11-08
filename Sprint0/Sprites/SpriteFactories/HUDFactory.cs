@@ -5,7 +5,9 @@ using Newtonsoft.Json;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Hud;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 
 namespace Sprint0.Sprites.SpriteFactories
 {
@@ -40,13 +42,18 @@ namespace Sprint0.Sprites.SpriteFactories
 
         public ISprite CreateHud(string name)
         {
-            return new StaticHUD(sprint, hudSpriteSheet, new Vector2(deserializedGameData[0].spritesheetpos[0], deserializedGameData[0].spritesheetpos[1]), new Vector2(deserializedGameData[0].size[0], deserializedGameData[0].size[1]));
+            return new StaticHUD(hudSpriteSheet, new Vector2(deserializedGameData[0].spritesheetpos[0], deserializedGameData[0].spritesheetpos[1]), new Vector2(deserializedGameData[0].size[0], deserializedGameData[0].size[1]));
         }
         public ISprite UpdateCoins(int coins)
         {
-            //deserializedGameData.number = coins;
-            return null;
-            //return new CoinSprite(hudSpriteSheet, new Vector2(deserializedGameData.spritesheetpos[0], deserializedGameData.spritesheetpos[1]), new Vector2(deserializedGameData.size[0], deserializedGameData.size[1]));
+            // Find the element with the matching 'number' property
+            Root matchingElement = deserializedGameData.FirstOrDefault(item => item.number == coins);
+            return new CoinStats(hudSpriteSheet, new Vector2(matchingElement.spritesheetpos[0], matchingElement.spritesheetpos[1]), new Vector2(matchingElement.size[0], matchingElement.size[1]));
+        }
+        public ISprite UpdateLives(int lives)
+        {
+            Root matchingElement = deserializedGameData.FirstOrDefault(item => item.number == lives);
+            return new LifeStats(hudSpriteSheet, new Vector2(matchingElement.spritesheetpos[0], matchingElement.spritesheetpos[1]), new Vector2(matchingElement.size[0], matchingElement.size[1]));
         }
     }
 }
