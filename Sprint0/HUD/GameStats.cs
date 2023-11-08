@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.HUD
@@ -18,7 +19,13 @@ namespace Sprint0.HUD
         public int player { get; set; }
         public int gameTimer { get; set; }
         public int powerBoost { get; set; }
+
         public HUDFactory mySpriteFactory;
+        private ISprite staticSprite;
+        private ISprite coinSprite;
+        private ISprite lifeSprite;
+        private ISprite scoreSprite;
+        private ISprite powerSprite;
 
         public GameStats(Sprint0 sprint)
         {
@@ -29,6 +36,8 @@ namespace Sprint0.HUD
             gameTimer = 500;
             mySpriteFactory = new HUDFactory(sprint);
             mySpriteFactory.LoadAllTextures(sprint.Content);
+
+            staticSprite = mySpriteFactory.CreateHud("static");
         }
 
         public void IncrementCoin()
@@ -60,6 +69,10 @@ namespace Sprint0.HUD
                 lives = STARTINGLIVES;
             }
         }
+        public void PowerLevel()
+        {
+
+        }
 
         public void Update(GameTime gametime)
         {
@@ -67,7 +80,7 @@ namespace Sprint0.HUD
         }
         public void Draw(SpriteBatch spritebatch)
         {
-
+            staticSprite.Draw(spritebatch, new Vector2(50, 450));
         }
     }
 }

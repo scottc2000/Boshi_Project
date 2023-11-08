@@ -1,7 +1,4 @@
-﻿using Sprint0.Characters.MarioStates;
-using Sprint0.Commands.Mario;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Sprint0.Sprites.Players
 {
