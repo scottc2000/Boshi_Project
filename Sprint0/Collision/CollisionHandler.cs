@@ -13,7 +13,7 @@ namespace Sprint0.Collision
 
         List<IEnemies> Enemies;
         List<IItem> Items;
-        List<IBlock> Blocks, TopCollidableBlocks, BottomCollidableBlocks, SideCollidableBlocks;
+        List<IBlock> Blocks, TopCollidableBlocks, BottomCollidableBlocks, SideCollidableBlocks, Coins;
         CollisionDictionraryRegister register;
         Rectangle blockHitbox;
         ICharacter luigi;
