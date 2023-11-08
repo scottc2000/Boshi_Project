@@ -24,6 +24,7 @@ namespace Sprint0.GameMangager
         public List<IBlock> SideCollidableBlocks { get; set; }
         public List<IItem> Items { get; set; } 
         public List<IEnemies> Enemies { get;set; }
+        public List<IProjectile> Projectiles { get; set; }
 
         public Luigi luigi;
         public IMario mario;
@@ -42,6 +43,7 @@ namespace Sprint0.GameMangager
             TopCollidableBlocks = new List<IBlock>();
             BottomCollidableBlocks = new List<IBlock>();
             SideCollidableBlocks = new List<IBlock>();
+            Projectiles = new List<IProjectile>();
 
             mario = new Mario(sprint);
             luigi = new Luigi(sprint);

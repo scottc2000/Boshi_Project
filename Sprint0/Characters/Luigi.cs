@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
+using Sprint0.Items.Projectiles;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.Projectile;
 using Sprint0.Sprites.SpriteFactories;
@@ -45,9 +46,8 @@ namespace Sprint0.Characters
         public AnimatedSpriteLuigi currentSprite;
         public CharacterSpriteFactoryLuigi mySpriteFactory;
 
-        public ProjectileSpriteFactory projectileFactory;
+        public FireProjectile fireProjectile;
 
-        public List<AnimatedProjectile> ThrownProjectiles;
 
 
 
@@ -82,11 +82,8 @@ namespace Sprint0.Characters
             mySpriteFactory = new CharacterSpriteFactoryLuigi(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
-            projectileFactory = new ProjectileSpriteFactory();
+            fireProjectile = new FireProjectile(mySprint.Content);
 
-            ThrownProjectiles = new List<AnimatedProjectile>();
-
-            projectileFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
             destination = currentSprite.destination;
@@ -144,8 +141,7 @@ namespace Sprint0.Characters
             {
                 if (!fired)
                 {
-                    ThrownProjectiles.Add(projectileFactory.returnSprite("PlayerFireRight", position, facingLeft));
-                    fired = true;
+                    fireProjectile.addProjectile("PlayerFireRight", position, facingLeft);
                 }
 
                 State.Throw();
@@ -206,23 +202,6 @@ namespace Sprint0.Characters
                 position.Y += sizeDiff;
             }
             health = LuigiHealth.Normal;
-        }
-
-        public void UpdateProjectiles(GameTime gametime)
-        {
-            // checks if projectile is off screen, if so then deletes it
-            List<AnimatedProjectile> gone = new List<AnimatedProjectile>();
-            foreach (AnimatedProjectile am in ThrownProjectiles)
-            {
-                am.Update(gametime);
-                if (am.pos.X > 850 || am.pos.X < -50)
-                {
-                    gone.Add(am);
-                }
-            }
-
-            foreach (AnimatedProjectile item in gone) ThrownProjectiles.Remove(item);
-            gone.Clear();
         }
 
 
@@ -287,10 +266,7 @@ namespace Sprint0.Characters
         {
 
             currentSprite.Draw(spritebatch, position);
-            foreach (AnimatedProjectile am in ThrownProjectiles)
-            {
-                am.Draw(spritebatch);
-            }
+            
 
         }
     }
