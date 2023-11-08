@@ -16,7 +16,6 @@ namespace Sprint0.GameMangager
 
         public MarioCamera camera;
 
-        private Terrain terrain;
         public GameStats hud;
         public List<IBlock> Blocks { get; set; }
         public List<IBlock> TopCollidableBlocks { get; set; }
@@ -34,7 +33,6 @@ namespace Sprint0.GameMangager
         {
             sprint = sprint0;
             this.camera = camera;
-            terrain = new Terrain(sprint);
             hud = new GameStats(sprint);
             Items = new List<IItem>();
             Enemies = new List<IEnemies>();
@@ -49,7 +47,7 @@ namespace Sprint0.GameMangager
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            terrain.Draw(spriteBatch); // need to draw terrain before any game objects
+            //terrain.Draw(spriteBatch); // need to draw terrain before any game objects
 
             // Draw each game object
             foreach (var block in Blocks)
@@ -74,7 +72,7 @@ namespace Sprint0.GameMangager
 
         public void Update(GameTime gameTime, CollisionHandler collision)
         {
-            terrain.Update(gameTime);   // need to update terrain before any game objects
+            //terrain.Update(gameTime);   // need to update terrain before any game objects
 
             // Update each game object
             foreach (var block in Blocks)

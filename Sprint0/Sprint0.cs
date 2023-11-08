@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Background;
 using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Controllers;
@@ -7,6 +8,7 @@ using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 using System;
+using System.Security.Cryptography;
 
 namespace Sprint0
 {
@@ -18,6 +20,7 @@ namespace Sprint0
         
         public ObjectManager objects;
         public AudioManager audioManager;
+        public ScreenManager screens;
 
         private LevelLoader1 levelLoader;
         public MarioCamera camera;
@@ -51,6 +54,7 @@ namespace Sprint0
             audioManager = AudioManager.Instance;
 
             base.Initialize();
+            screens = new ScreenManager(this);
         }
 
         protected override void LoadContent()
@@ -81,6 +85,8 @@ namespace Sprint0
 
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
                 null, null, null, null, camera.transform);
+
+            screens.Draw(_spriteBatch);
 
             objects.Draw(_spriteBatch);
             
