@@ -96,9 +96,7 @@ namespace Sprint0
                     case "spinning_coin":
                         SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height);
                         objectManager.Blocks.Add(spinning_coin);
-                        objectManager.TopCollidableBlocks.Add(spinning_coin);
-                        objectManager.BottomCollidableBlocks.Add(spinning_coin);
-                        objectManager.SideCollidableBlocks.Add(spinning_coin);
+                        objectManager.Coins.Add(spinning_coin);
                         break;
                 }
             }
