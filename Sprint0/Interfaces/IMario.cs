@@ -5,7 +5,7 @@ using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
 {
-    public interface IMario : ICollidable, IGameObject
+    public interface IMario : ICollidable
     {
         Mario.MarioHealth health { get; set; }
         Mario.MarioPose pose { get; set; }

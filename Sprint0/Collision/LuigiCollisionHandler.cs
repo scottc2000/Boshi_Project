@@ -5,24 +5,24 @@ using static Sprint0.Collision.CollisionDetector;
 
 namespace Sprint0.Collision
 {
-    public class MarioCollisionHandler
+    public class LuigiCollisionHandler
     {
         private Sprint0 sprint;
 
-        public MarioCollisionHandler(Sprint0 sprint) 
+        public LuigiCollisionHandler(Sprint0 sprint) 
         {
             this.sprint = sprint;
         }
-        public void MarioStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side)
+        public void LuigiStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
             if (side == Side.Horizontal)
             {
-                ICollidableCommand command = new CMarioStuckX(sprint);
+                ICollidableCommand command = new CLuigiStuckX(sprint);
                 command.Execute(entity2.Destination);
             }
             else if (side == Side.Vertical)
             {
-                ICollidableCommand command = new CMarioStuckY(sprint);
+                ICollidableCommand command = new CLuigiStuckY(sprint);
                 command.Execute(entity2.Destination);
             }
         }
@@ -37,13 +37,10 @@ namespace Sprint0.Collision
                 command2.Execute();
             }
         }
-
-        public void MarioItemCollision(ICollidable entity1, ICollidable entity2, Side side)
+        public void LuigiItemCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
-            ICommand command1 = new CMarioPowerUp(sprint, (IItem)entity2);
-            ICommand command2 = new CItemDisappear(sprint, (IItem)entity2);
+            ICommand command1 = new CLuigiPowerUp(sprint, (IItem)entity2);
             command1.Execute();
-            command2.Execute();
         }
     }
 }

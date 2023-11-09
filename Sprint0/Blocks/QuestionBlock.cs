@@ -23,16 +23,18 @@ namespace Sprint0.Blocks
         public bool stuck { get; set; }
 
 
-        public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, Rectangle blockRectangle, int x, int y, int width, int height)
         {
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
+            Destination = blockRectangle;
             BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(x, y));
+            BlockSpriteFactory.Instance.LoadSpriteLocations();
+            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
+
 
         public void Update(GameTime gameTime)
         {

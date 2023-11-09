@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Interfaces
 {
-    public interface IEnemies : ICollidable, IGameObject
+    public interface IEnemies : ICollidable
     {
         public void SetPosition(List<int> position);
         public Rectangle Destination { get; set; }

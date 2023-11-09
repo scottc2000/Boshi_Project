@@ -28,13 +28,17 @@ namespace Sprint0.Commands.Collision
             if (hitarea.Width >= hitarea.Height)
             {
                 if (hitbox.Y <= mario.position.Y)
+                {
                     mario.position = new Vector2(mario.position.X, mario.position.Y + hitarea.Height);
+
+                }
                 else
                 {
                     mario.uphit = true;
                     mario.position = new Vector2(mario.position.X, mario.position.Y - hitarea.Height);
                 }
             }
+
         }
     }
 }

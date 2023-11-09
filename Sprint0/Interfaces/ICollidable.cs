@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Interfaces
 {
@@ -13,6 +14,9 @@ namespace Sprint0.Interfaces
         public bool downhit { get; set; }
         public bool gothit { get; set; }
         public bool stuck { get; set; }
+
+        void Draw(SpriteBatch spritebatch);
+        void Update(GameTime gametime);
     }
 }
 

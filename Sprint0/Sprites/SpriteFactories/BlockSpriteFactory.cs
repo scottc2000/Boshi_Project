@@ -21,10 +21,7 @@ namespace Sprint0.Sprites
         private string fileName { get; set; }
         private string jsonString { get; set; }
 
-        public static BlockSpriteFactory Instance
-        {
-            get => spriteFactory;
-        }
+        public static BlockSpriteFactory Instance { get { return spriteFactory; } }
 
         public BlockSpriteFactory()
         {
@@ -37,7 +34,7 @@ namespace Sprint0.Sprites
             blockTextures = content.Load<Texture2D>("SpriteImages/blocks");
         }
 
-        public void LoadSpriteLocations(ContentManager content)
+        public void LoadSpriteLocations()
         {
             // Deserialize the JSON data into an object
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "JSON/blockdata.json");
@@ -68,7 +65,7 @@ namespace Sprint0.Sprites
         {
             if (nonanimated_sprites.TryGetValue(spriteName, out Rectangle spriteRect))
             {
-                return new NonAnimatedBlockSprite(spriteBatch, blockTextures, spriteRect, position);
+                return new NonAnimatedBlockSprite(blockTextures, spriteRect, position);
             }
 
             return null;
@@ -79,7 +76,7 @@ namespace Sprint0.Sprites
         {
             if (animated_sprites.TryGetValue(spriteName, out Rectangle[] spriteRects))
             {
-                return new AnimatedBlockSprite(spriteBatch, blockTextures, spriteRects, position);
+                return new AnimatedBlockSprite(blockTextures, spriteRects, position);
             }
 
             return null;

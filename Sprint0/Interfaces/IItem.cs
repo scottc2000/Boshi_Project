@@ -2,7 +2,7 @@
 
 namespace Sprint0.Interfaces
 {
-    public interface IItem : ICollidable, IGameObject
+    public interface IItem : ICollidable
     { 
         void setPosition(List<int> position);
     }

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Interfaces
 {
-    public interface IBlock : ICollidable, IGameObject
+    public interface IBlock : ICollidable
     {
         public int x {  get; set; }
         public int y { get; set; }

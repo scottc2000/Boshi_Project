@@ -3,25 +3,26 @@ using Sprint0.Items;
 
 namespace Sprint0.Commands.Collisions
 {
-    public class CMarioPowerUp : ICommand
+    public class CLuigiPowerUp : ICommand
     {
         private Sprint0 sprint;
         private IItem item;
-        private IMario mario;
-        public CMarioPowerUp(Sprint0 sprint, IItem item)
+        private Characters.Luigi luigi;
+        public CLuigiPowerUp(Sprint0 sprint, IItem item)
         {
             this.sprint = sprint;
-            mario = this.sprint.objects.mario;
+            luigi = this.sprint.objects.luigi;
             this.item = item;
         }
         public void Execute()
         {
+
             if (item is RedMushroom)
-                mario.ChangeToBig();
+                luigi.ChangeToBig();
             else if (item is Leaf)
-                mario.ChangeToRaccoon();
+                luigi.ChangeToRaccoon();
             else if (item is FireFlower)
-                mario.ChangeToFire();
+                luigi.ChangeToFire();
             else if (item is OneUpMushroom) ;
                 // increase HUD life counter
         }

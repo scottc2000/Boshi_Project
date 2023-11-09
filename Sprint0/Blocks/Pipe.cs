@@ -28,15 +28,10 @@ namespace Sprint0.Blocks
         public bool gothit { get; set; }
         public bool stuck { get; set; }
 
-        public Pipe(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public Pipe(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-            BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "pipe", new Vector2(x, y));
+            Destination = blockRectangle;
+            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "pipe", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
 
         public void Update(GameTime gameTime)

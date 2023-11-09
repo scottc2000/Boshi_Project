@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
@@ -28,16 +22,12 @@ namespace Sprint0.Blocks
         public bool gothit { get; set; }
         public bool stuck { get; set; }
 
-        public LargeBlock(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public LargeBlock(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-            BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "large_block", new Vector2(x, y));
+            Destination = blockRectangle;
+            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "large_block", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
+
 
         public void Update(GameTime gameTime)
         {

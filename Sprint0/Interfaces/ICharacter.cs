@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Interfaces
 {
-    public interface ICharacter : ICollidable, IGameObject
+    public interface ICharacter : ICollidable
     {
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Sprint0.GameMangager
 {
-    public class ObjectManager : IGameObject
+    public class ObjectManager
     {
         public string Name { get; }
 
@@ -76,9 +76,9 @@ namespace Sprint0.GameMangager
                 enemy.Draw(spriteBatch);
             }
 
+            hud.Draw(spriteBatch);
             mario.Draw(spriteBatch);
             luigi.Draw(spriteBatch);
-            hud.Draw(spriteBatch);
 
         }
 

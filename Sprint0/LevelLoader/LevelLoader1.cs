@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Blocks;
 using Sprint0.Enemies;
@@ -48,23 +49,24 @@ namespace Sprint0
             // Load all blocks from the JSON file to objectManager
             foreach (Block block in data.Blocks)
             {
+                Rectangle blockRectangle = new Rectangle(block.x, block.y, block.width, block.height);
                 switch (block.Name)
                 {
                     case "floor":
-                        Floor floor = new Floor(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        Floor floor = new Floor(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(floor);
                         objectManager.TopCollidableBlocks.Add(floor);
                         objectManager.SideCollidableBlocks.Add(floor);
                         objectManager.StaticEntites.Add(floor);
                         break;
                     case "large_block":
-                        LargeBlock large_block = new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        LargeBlock large_block = new LargeBlock(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(large_block);
                         objectManager.TopCollidableBlocks.Add(large_block);
                         objectManager.StaticEntites.Add(large_block);
                         break;
                     case "yellow_brick":
-                        YellowBrick yellow_brick = new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        YellowBrick yellow_brick = new YellowBrick(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(yellow_brick);
                         objectManager.TopCollidableBlocks.Add(yellow_brick);
                         objectManager.BottomCollidableBlocks.Add(yellow_brick);
@@ -72,7 +74,7 @@ namespace Sprint0
                         objectManager.StaticEntites.Add(yellow_brick);
                         break;
                     case "wood_blocks":
-                        WoodBlocks wood_blocks = new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        WoodBlocks wood_blocks = new WoodBlocks(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(wood_blocks);
                         objectManager.TopCollidableBlocks.Add(wood_blocks);
                         objectManager.BottomCollidableBlocks.Add(wood_blocks);
@@ -80,20 +82,20 @@ namespace Sprint0
                         objectManager.StaticEntites.Add(wood_blocks);
                         break;
                     case "clouds":
-                        Clouds clouds = new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        Clouds clouds = new Clouds(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(clouds);
                         objectManager.TopCollidableBlocks.Add(clouds);
                         objectManager.StaticEntites.Add(clouds);
                         break;
                     case "pipe":
-                        Pipe pipe = new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        Pipe pipe = new Pipe(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(pipe);
                         objectManager.TopCollidableBlocks.Add(pipe);
                         objectManager.SideCollidableBlocks.Add(pipe);
                         objectManager.StaticEntites.Add(pipe);
                         break;
                     case "question_block":
-                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, blockRectangle, block.x, block.y, block.width, block.height);
                         objectManager.Blocks.Add(question_block);
                         objectManager.TopCollidableBlocks.Add(question_block);
                         objectManager.BottomCollidableBlocks.Add(question_block);
@@ -101,7 +103,7 @@ namespace Sprint0
                         objectManager.DynamicEntities.Add(question_block);
                         break;
                     case "spinning_coin":
-                        SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height);
+                        SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(spinning_coin);
                         objectManager.TopCollidableBlocks.Add(spinning_coin);
                         objectManager.BottomCollidableBlocks.Add(spinning_coin);
