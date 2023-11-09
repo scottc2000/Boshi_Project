@@ -58,6 +58,7 @@ namespace Sprint0
 
             ItemSpriteFactory.Instance.LoadTextures(Content);
             BlockSpriteFactory.Instance.LoadTextures(Content);
+            BlockSpriteFactory.Instance.LoadSpriteLocations();
             // collision
             collision = new CollisionHandler(this, objects);
 

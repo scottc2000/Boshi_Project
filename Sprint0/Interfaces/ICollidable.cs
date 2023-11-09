@@ -9,7 +9,7 @@ namespace Sprint0.Interfaces
 		public Rectangle destination {get; set;}
 
         //item will probably have to be split up
-        public enum collideAs { player, item, block, enemy}
+        public enum collideAs { player, item, block, enemy }
 
         //dont need these, dont know how to refactor to get rid of them
 		public bool lefthit { get; set; }

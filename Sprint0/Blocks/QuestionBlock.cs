@@ -19,25 +19,25 @@ namespace Sprint0.Blocks
         public int y { get; set; }
         public int width { get; set; }
         public int height { get; set; }
-        private AnimatedBlockSprite sprite;
-        private Vector2 location { get; set; }
+        private ISprite sprite;
         public Rectangle destination { get; set; }
+        private Vector2 location { get; set; }
 
-        public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, Rectangle blockRectangle, int x, int y, int width, int height)
         {
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
+            destination = blockRectangle;
             BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(x, y));
-            destination = sprite.scaledPosition;
+            BlockSpriteFactory.Instance.LoadSpriteLocations();
+            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
+
 
         public void Update(GameTime gameTime)
         {
-            destination = sprite.scaledPosition;
             sprite.Update(gameTime);
         }
 

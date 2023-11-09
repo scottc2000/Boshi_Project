@@ -13,8 +13,7 @@ namespace Sprint0.Sprites.BlockSprites
     public class NonAnimatedBlockSprite : ISprite
     {
         private Texture2D textures;
-        private Rectangle[] spriteFrames;
-        public Rectangle scaledPosition;
+        private Rectangle scaledPosition;
         private Rectangle sprite;
         public NonAnimatedBlockSprite(Texture2D textures, Rectangle sprite, Vector2 position)
         {

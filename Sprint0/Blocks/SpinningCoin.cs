@@ -19,25 +19,18 @@ namespace Sprint0.Blocks
         public int y { get; set; }
         public int width { get; set; }
         public int height { get; set; }
-        private AnimatedBlockSprite sprite;
+        private ISprite sprite;
         private Vector2 location { get; set; }
         public Rectangle destination { get; set; }
 
-        public SpinningCoin(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public SpinningCoin(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-            BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "spinning_coin", new Vector2(x, y));
-            destination = sprite.scaledPosition;
+            destination = blockRectangle;
+            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "spinning_coin", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
 
         public void Update(GameTime gameTime)
         {
-            destination = sprite.scaledPosition;
             sprite.Update(gameTime);
         }
 

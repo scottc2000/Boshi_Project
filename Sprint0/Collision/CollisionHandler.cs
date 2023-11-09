@@ -41,6 +41,7 @@ namespace Sprint0.Collision
             register.generate();
         }
 
+        /*
         public void luigiBlockUpdate()
         {
             foreach (IBlock block in Blocks)
@@ -184,6 +185,7 @@ namespace Sprint0.Collision
                
             }
         }
+        */
 
         public void Update()
         {
@@ -194,11 +196,13 @@ namespace Sprint0.Collision
                 for (int j = i + 1; j < objectManager.DynamicEntities.Count; j++)
                 {
                     IEntity entity2 = objectManager.DynamicEntities[j];
+
                     if (entity1.destination.Intersects(entity2.destination))
                     {
                         
                     }
                 }
+
                 foreach (IEntity sEntity in objectManager.StaticEntities)
                 {
                     if (entity1.destination.Intersects(sEntity.destination))

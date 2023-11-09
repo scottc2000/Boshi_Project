@@ -19,24 +19,17 @@ namespace Sprint0.Blocks
         public int y { get; set; }
         public int width { get; set; }
         public int height { get; set; }
-        private NonAnimatedBlockSprite sprite;
-        private Vector2 location { get; set; }
+        private ISprite sprite;
         public Rectangle destination { get; set; }
-        public WoodBlocks(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public WoodBlocks(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-            BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "question_block", new Vector2(x, y));
-            destination = sprite.scaledPosition;
+            destination = blockRectangle;
+            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "question_block", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
 
         public void Update(GameTime gameTime)
         {
-            destination = sprite.scaledPosition;
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)

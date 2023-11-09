@@ -16,7 +16,7 @@ namespace Sprint0.Sprites
     {
         private Texture2D textures;
         private Rectangle[] frames;
-        public Rectangle scaledPosition;
+        private Rectangle scaledPosition;
         private int currentFrame;
         private int totalFrames;
         private float frameTimer;

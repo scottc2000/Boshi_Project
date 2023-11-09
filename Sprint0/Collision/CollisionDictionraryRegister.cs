@@ -28,7 +28,7 @@ namespace Sprint0.Collision
         public void generate()
         {
             //(icollidable, icollidable, side), (constructorinfo, constructorinfo))
-            collisions.collision.Add();
+            //collisions.collision.Add();
         }
     }
 }
