@@ -8,13 +8,13 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Sprint0.Items.Projectiles
 {
-    public class FireProjectile : IProjectile
+    public class Projectile : IProjectile
 
     {
         public List<AnimatedProjectile> projectiles { get; set; }
         ProjectileSpriteFactory projectileFactory;
 
-        public FireProjectile(ContentManager content)
+        public Projectile(ContentManager content)
         {
             projectileFactory = new ProjectileSpriteFactory();
 
