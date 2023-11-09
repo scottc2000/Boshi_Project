@@ -1,21 +1,21 @@
 ﻿using Sprint0.Interfaces;
+using System.Reflection.Emit;
 
 namespace Sprint0.Commands.Luigi
 {
     public class CReleasedLuigi : ICommand
     {
-        private Sprint0 mySprint;
+        private Sprint0 sprint;
         private ICharacter luigi;
 
-        public CReleasedLuigi(Sprint0 sprint0) 
-        { 
-            mySprint = sprint0;
-
+        public CReleasedLuigi(Sprint0 sprint, LevelLoader1 level) 
+        {
+            this.sprint = sprint;
+            luigi = level.luigi;
         }
 
         public void Execute()
         {
-            luigi = mySprint.objects.luigi;
             luigi.Stop();
             
         }

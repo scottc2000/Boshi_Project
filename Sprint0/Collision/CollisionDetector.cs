@@ -27,7 +27,7 @@ namespace Sprint0.Collision
             this.sprint = sprint;
             this.objects = objects;
             DynamicEntities = objects.DynamicEntities;
-            StaticEntities = objects.StaticEntites;
+            StaticEntities = objects.StaticEntities;
 
             marioCollisionHandler = new MarioCollisionHandler(sprint);
             luigiCollisionHandler = new LuigiCollisionHandler(sprint);

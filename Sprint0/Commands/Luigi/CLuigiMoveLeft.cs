@@ -1,18 +1,19 @@
 ﻿using Sprint0.Interfaces;
+using System.Reflection.Emit;
 
 namespace Sprint0.Commands.Luigi
 {
     internal class CLuigiMoveLeft : ICommand
     {
-        private Sprint0 mySprint0;
+        private Sprint0 sprint;
         private ICharacter luigi;
-        public CLuigiMoveLeft(Sprint0 Sprint0)
+        public CLuigiMoveLeft(Sprint0 sprint, LevelLoader1 level)
         {
-            mySprint0 = Sprint0;
+            this.sprint = sprint;
+            luigi = level.luigi;
         }
         public void Execute()
         {
-            luigi = mySprint0.objects.luigi;
             luigi.facingLeft = true;
             
             luigi.Move();

@@ -11,7 +11,7 @@ namespace Sprint0.Commands.Collisions
         public CMarioPowerUp(Sprint0 sprint, IItem item)
         {
             this.sprint = sprint;
-            mario = this.sprint.objects.mario;
+            mario = this.sprint.levelLoader.mario;
             this.item = item;
         }
         public void Execute()

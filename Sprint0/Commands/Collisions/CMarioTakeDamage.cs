@@ -11,7 +11,7 @@ namespace Sprint0.Commands.Collisions
         public CMarioTakeDamage(Sprint0 sprint)
         {
             this.sprint = sprint;
-            mario = this.sprint.objects.mario;
+            mario = this.sprint.levelLoader.mario;
         }
 
         public void Execute()
@@ -29,7 +29,7 @@ namespace Sprint0.Commands.Collisions
                     {
                         IMario damagedMario = new DamagedMario(mario, sprint.objects);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
-                        sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
+                        sprint.levelLoader.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToNormal();
                         break;
                     }
@@ -37,7 +37,7 @@ namespace Sprint0.Commands.Collisions
                     {
                         IMario damagedMario = new DamagedMario(mario, sprint.objects);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
-                        sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
+                        sprint.levelLoader.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToBig();
                         break;
                     }
@@ -45,7 +45,7 @@ namespace Sprint0.Commands.Collisions
                     {
                         IMario damagedMario = new DamagedMario(mario, sprint.objects);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
-                        sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
+                        sprint.levelLoader.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToBig();
                         break;
                     }

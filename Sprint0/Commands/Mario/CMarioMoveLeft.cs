@@ -5,12 +5,14 @@ namespace Sprint0.Commands.Mario
 {
     public class CMarioMoveLeft : ICommand
     {
-        private Sprint0 mySprint0;
+        private Sprint0 sprint;
         private IMario mario;
-        public CMarioMoveLeft(Sprint0 Sprint0)
+        private LevelLoader1 level;
+        public CMarioMoveLeft(Sprint0 sprint, LevelLoader1 level)
         {
-            mySprint0 = Sprint0;
-            mario = mySprint0.objects.mario;
+            this.sprint = sprint;
+            this.level = level;
+            mario = level.mario;
         }
         public void Execute()
         {

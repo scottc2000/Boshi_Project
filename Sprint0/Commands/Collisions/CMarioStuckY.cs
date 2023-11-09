@@ -16,13 +16,13 @@ namespace Sprint0.Commands.Collision
 
         public void Execute()
         {
-            mario = mySprint0.objects.mario;
+            mario = mySprint0.levelLoader.mario;
             mario.uphit = true;
         }
 
         public void Execute(Rectangle hitbox)
         {
-            mario = mySprint0.objects.mario;
+            mario = mySprint0.levelLoader.mario;
             Rectangle hitarea = Rectangle.Intersect(hitbox, mario.Destination);
 
             if (hitarea.Width >= hitarea.Height)

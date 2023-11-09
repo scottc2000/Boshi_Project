@@ -20,7 +20,7 @@ namespace Sprint0
         public ObjectManager objects;
         public AudioManager audioManager;
 
-        private LevelLoader1 levelLoader;
+        public LevelLoader1 levelLoader; // change back to private later
         public MarioCamera camera;
         public static int ScreenWidth;
         public static int ScreenHeight;
@@ -46,8 +46,9 @@ namespace Sprint0
 
             // Initialize game components
             camera = new MarioCamera(GraphicsDevice.Viewport);
-            objects = new ObjectManager(this, camera);
-            KeyboardController = new KeyboardController(this);
+            objects = new ObjectManager(this);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera);
+            KeyboardController = new KeyboardController(this, levelLoader);
 
             audioManager = AudioManager.Instance;
 
@@ -59,7 +60,6 @@ namespace Sprint0
             audioManager.Load(Content);
 
             // load level
-            levelLoader = new LevelLoader1(this, _spriteBatch, Content);
             levelLoader.Load("JSON/level1.json");
 
             ItemSpriteFactory.Instance.LoadTextures(Content);
@@ -73,7 +73,7 @@ namespace Sprint0
         protected override void Update(GameTime gameTime)
         {
             KeyboardController.Update();
-            objects.Update(gameTime);
+            levelLoader.Update(gameTime);
             detector.DetectCollision();
 
             base.Update(gameTime);
@@ -86,7 +86,7 @@ namespace Sprint0
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
                 null, null, null, null, camera.transform);
 
-            objects.Draw(_spriteBatch);
+            levelLoader.Draw(_spriteBatch);
 
             _spriteBatch.End();
 

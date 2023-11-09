@@ -11,7 +11,7 @@ namespace Sprint0.Commands.Collisions
         public CLuigiPowerUp(Sprint0 sprint, IItem item)
         {
             this.sprint = sprint;
-            luigi = this.sprint.objects.luigi;
+            luigi = this.sprint.levelLoader.luigi;
             this.item = item;
         }
         public void Execute()
