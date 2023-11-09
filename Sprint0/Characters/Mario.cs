@@ -59,7 +59,7 @@ namespace Sprint0.Characters
             // mario object information
             facingLeft = true;
             sizeDiff = 12;
-            position = new Vector2(115, 300);
+            position = new Vector2(125, 300);
             
             // timers
             timeGap = 0;
