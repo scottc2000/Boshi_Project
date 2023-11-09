@@ -41,7 +41,7 @@ namespace Sprint0.Characters
         public Vector2 position;
         public Sprint0 mySprint;
         int sizeDiff;
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
 
         public AnimatedSpriteLuigi currentSprite;
         public CharacterSpriteFactoryLuigi mySpriteFactory;
@@ -86,7 +86,7 @@ namespace Sprint0.Characters
 
 
             currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
 
         }
 
@@ -256,7 +256,7 @@ namespace Sprint0.Characters
             UpdateMovement(gametime);
             applyGravity();
 
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
             resetHits();
 
         }

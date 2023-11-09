@@ -21,6 +21,14 @@ namespace Sprint0.Blocks
 
         private ISprite sprite;
         private Vector2 location { get; set; }
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
+
         public Floor(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
         {
             this.x = x;

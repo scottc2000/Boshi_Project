@@ -13,7 +13,7 @@ namespace Sprint0.Characters
         public MarioCamera camera;
         public ICharacterState State { get; set; }
         public bool facingLeft { get; set; }
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
         public bool uphit { get; set; }
@@ -81,7 +81,7 @@ namespace Sprint0.Characters
                 RemoveDecorator();
             }
 
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
             decoratedMario.Update(gametime);
             camera.Update(gametime, decoratedMario);
 

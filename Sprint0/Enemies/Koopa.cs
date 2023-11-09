@@ -17,7 +17,7 @@ namespace Sprint0.Enemies
         public Vector2 initialposition;
         public Sprint0 mySprint;
         public bool facingLeft { get; set; }
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
 
         public KoopaMoveSprite currentSprite;
         public EnemySpriteFactoryKoopa mySpriteFactory;
@@ -36,7 +36,7 @@ namespace Sprint0.Enemies
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("KoopaMove");
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
         }
 
         public void SetPosition(List<int> position)

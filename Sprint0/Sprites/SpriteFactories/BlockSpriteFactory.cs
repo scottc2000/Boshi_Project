@@ -1,20 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sprint0.Interfaces;
 using Microsoft.Xna.Framework.Content;
-using System.Reflection.Metadata;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.IO;
-using System.Net.Http.Json;
-using System.Reflection;
-using System.ComponentModel.Design.Serialization;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Interfaces;
 using Sprint0.Sprites.BlockSprites;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using System.Text.Json;
 
 namespace Sprint0.Sprites
 {

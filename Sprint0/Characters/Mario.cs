@@ -41,7 +41,7 @@ namespace Sprint0.Characters
         int sizeDiff;
         public Vector2 position { get; set; }
 
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
 
         public AnimatedSpriteMario currentSprite { get; set; }
         public CharacterSpriteFactoryMario mySpriteFactory;
@@ -81,7 +81,7 @@ namespace Sprint0.Characters
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("MarioStillLeft");
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
 
         }
 
@@ -222,7 +222,7 @@ namespace Sprint0.Characters
             UpdateMovement(gametime);
             applyGravity();
 
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
             resetHits();
         }
 

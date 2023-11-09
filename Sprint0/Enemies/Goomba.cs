@@ -17,7 +17,7 @@ namespace Sprint0.Enemies
         public Vector2 initialposition;
         public Sprint0 mySprint;
         public bool facingLeft { get; set;}
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
 
         public GoombaMoveSprite currentSprite;
         public EnemySpriteFactoryGoomba mySpriteFactory;
@@ -33,7 +33,7 @@ namespace Sprint0.Enemies
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("GoombaMove");
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
         }
 
         public void SetPosition(List<int> position)
@@ -67,7 +67,7 @@ namespace Sprint0.Enemies
         public void Update(GameTime gameTime)
         {
             currentSprite.Update(gameTime);
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
             state.Update();
         }
 

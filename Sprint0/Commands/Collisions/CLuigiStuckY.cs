@@ -27,7 +27,7 @@ namespace Sprint0.Commands.Collisions
         {
             luigi = mySprint0.objects.luigi;
 
-            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.destination);
+            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.Destination);
 
             if (hitarea.Width >= hitarea.Height)
             {

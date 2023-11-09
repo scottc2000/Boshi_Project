@@ -17,7 +17,7 @@ namespace Sprint0.Enemies
 
         public ISprite hammerBroSprite;
         public Texture2D hammerBroTexture;
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
 
 
         public HammerBro(Sprint0 sprint0)

@@ -33,7 +33,7 @@ namespace Sprint0.Commands.Collision
         public void Execute(Rectangle hitbox)
         {
             mario = mySprint0.objects.mario;
-            Rectangle hitarea = Rectangle.Intersect(hitbox, mario.destination);
+            Rectangle hitarea = Rectangle.Intersect(hitbox, mario.Destination);
 
             if (!(hitarea.Width >= hitarea.Height))
             {

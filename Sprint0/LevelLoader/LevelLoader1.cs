@@ -55,11 +55,13 @@ namespace Sprint0
                         objectManager.Blocks.Add(floor);
                         objectManager.TopCollidableBlocks.Add(floor);
                         objectManager.SideCollidableBlocks.Add(floor);
+                        objectManager.StaticEntites.Add(floor);
                         break;
                     case "large_block":
                         LargeBlock large_block = new LargeBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
                         objectManager.Blocks.Add(large_block);
                         objectManager.TopCollidableBlocks.Add(large_block);
+                        objectManager.StaticEntites.Add(large_block);
                         break;
                     case "yellow_brick":
                         YellowBrick yellow_brick = new YellowBrick(spriteBatch, content, block.x, block.y, block.width, block.height);
@@ -67,6 +69,7 @@ namespace Sprint0
                         objectManager.TopCollidableBlocks.Add(yellow_brick);
                         objectManager.BottomCollidableBlocks.Add(yellow_brick);
                         objectManager.SideCollidableBlocks.Add(yellow_brick);
+                        objectManager.StaticEntites.Add(yellow_brick);
                         break;
                     case "wood_blocks":
                         WoodBlocks wood_blocks = new WoodBlocks(spriteBatch, content, block.x, block.y, block.width, block.height);
@@ -74,17 +77,20 @@ namespace Sprint0
                         objectManager.TopCollidableBlocks.Add(wood_blocks);
                         objectManager.BottomCollidableBlocks.Add(wood_blocks);
                         objectManager.SideCollidableBlocks.Add(wood_blocks);
+                        objectManager.StaticEntites.Add(wood_blocks);
                         break;
                     case "clouds":
                         Clouds clouds = new Clouds(spriteBatch, content, block.x, block.y, block.width, block.height);
                         objectManager.Blocks.Add(clouds);
                         objectManager.TopCollidableBlocks.Add(clouds);
+                        objectManager.StaticEntites.Add(clouds);
                         break;
                     case "pipe":
                         Pipe pipe = new Pipe(spriteBatch, content, block.x, block.y, block.width, block.height);
                         objectManager.Blocks.Add(pipe);
                         objectManager.TopCollidableBlocks.Add(pipe);
                         objectManager.SideCollidableBlocks.Add(pipe);
+                        objectManager.StaticEntites.Add(pipe);
                         break;
                     case "question_block":
                         QuestionBlock question_block = new QuestionBlock(spriteBatch, content, block.x, block.y, block.width, block.height);
@@ -92,6 +98,7 @@ namespace Sprint0
                         objectManager.TopCollidableBlocks.Add(question_block);
                         objectManager.BottomCollidableBlocks.Add(question_block);
                         objectManager.SideCollidableBlocks.Add(question_block);
+                        objectManager.DynamicEntities.Add(question_block);
                         break;
                     case "spinning_coin":
                         SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, content, block.x, block.y, block.width, block.height);
@@ -99,6 +106,7 @@ namespace Sprint0
                         objectManager.TopCollidableBlocks.Add(spinning_coin);
                         objectManager.BottomCollidableBlocks.Add(spinning_coin);
                         objectManager.SideCollidableBlocks.Add(spinning_coin);
+                        objectManager.DynamicEntities.Add(spinning_coin);
                         break;
                 }
             }
@@ -112,16 +120,19 @@ namespace Sprint0
                         IItem RedMushroom = new RedMushroom();
                         RedMushroom.setPosition(item.Position);
                         objectManager.Items.Add(RedMushroom);
+                        objectManager.DynamicEntities.Add(RedMushroom);
                         break;
                     case "OneUpMushroom":
                         IItem OneUpMushroom = new OneUpMushroom();
                         OneUpMushroom.setPosition(item.Position);
                         objectManager.Items.Add(OneUpMushroom);
+                        objectManager.DynamicEntities.Add(OneUpMushroom);
                         break;
                     case "FireFlower":
                         IItem FireFlower = new FireFlower();
                         FireFlower.setPosition(item.Position);
                         objectManager.Items.Add(FireFlower);
+                        objectManager.DynamicEntities.Add(FireFlower);
                         break;
                     case "Leaf":
                         IItem Leaf = new Leaf();
@@ -164,14 +175,19 @@ namespace Sprint0
                     IEnemies goomba = new Goomba(sprint0);
                     goomba.SetPosition(enemy.Position);
                     objectManager.Enemies.Add(goomba);
+                    objectManager.DynamicEntities.Add(goomba);
                 }
                 if (enemy.Name == "Koopa")
                 {
                     IEnemies koopa = new Koopa(sprint0);
                     koopa.SetPosition(enemy.Position);
                     objectManager.Enemies.Add(koopa);
+                    objectManager.DynamicEntities.Add(koopa);
                 }
             }
+
+            objectManager.DynamicEntities.Add(objectManager.mario);
+            objectManager.DynamicEntities.Add(objectManager.luigi);
 
         }
 

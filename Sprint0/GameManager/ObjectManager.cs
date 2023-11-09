@@ -4,7 +4,6 @@ using Sprint0.Background;
 using Sprint0.Camera;
 using Sprint0.Characters;
 using Sprint0.HUD;
-using Sprint0.Collision;
 using Sprint0.Interfaces;
 using System.Collections.Generic;
 
@@ -26,6 +25,11 @@ namespace Sprint0.GameMangager
         public List<IEnemies> Enemies { get;set; }
         public List<IProjectile> Projectiles { get; set; }
 
+        public List<ICollidable> StaticEntites { get; set; }
+        public List<ICollidable> DynamicEntities { get; set; }
+        public List<ICollidable> EntitiesToAdd { get; set; }
+        public List<ICollidable> EntitiesToRemove { get; set; }
+
         public Luigi luigi;
         public IMario mario;
 
@@ -44,6 +48,11 @@ namespace Sprint0.GameMangager
             BottomCollidableBlocks = new List<IBlock>();
             SideCollidableBlocks = new List<IBlock>();
             Projectiles = new List<IProjectile>();
+
+            StaticEntites = new List<ICollidable>();
+            DynamicEntities = new List<ICollidable>();
+            EntitiesToAdd = new List<ICollidable>();
+            EntitiesToRemove = new List<ICollidable>();
 
             mario = new Mario(sprint);
             luigi = new Luigi(sprint);
@@ -74,7 +83,7 @@ namespace Sprint0.GameMangager
         }
 
 
-        public void Update(GameTime gameTime, CollisionHandler collision)
+        public void Update(GameTime gameTime)
         {
             terrain.Update(gameTime);   // need to update terrain before any game objects
 
@@ -93,7 +102,6 @@ namespace Sprint0.GameMangager
             }
             mario.Update(gameTime);
             luigi.Update(gameTime);
-            collision.Update();
 
             camera.Update(gameTime, mario);
             hud.Update(gameTime);

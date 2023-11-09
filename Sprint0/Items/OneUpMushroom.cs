@@ -1,14 +1,9 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
+using Sprint0.Sprites.ItemSprites;
 using Sprint0.Sprites.SpriteFactories;
+using System.Collections.Generic;
 
 namespace Sprint0.Items
 {
@@ -16,7 +11,6 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
 
         private int itemSpeed = 1;
 
@@ -24,6 +18,13 @@ namespace Sprint0.Items
 
         private float timer = 0f;
         private int interval = 15;
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
 
         public OneUpMushroom()
         {
@@ -50,7 +51,7 @@ namespace Sprint0.Items
                 position.X -= itemSpeed;
                 timer = 0;
             }
-            itemRectangle = aniItem.itemPosition;
+            Destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)
