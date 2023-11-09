@@ -18,6 +18,12 @@ namespace Sprint0.Enemies
         public Sprint0 mySprint;
         public bool facingLeft { get; set; }
         public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
 
         public KoopaMoveSprite currentSprite;
         public EnemySpriteFactoryKoopa mySpriteFactory;

@@ -103,7 +103,7 @@ namespace Sprint0.GameMangager
             mario.Update(gameTime);
             luigi.Update(gameTime);
 
-            camera.Update(gameTime, mario);
+            camera.Update(mario);
             hud.Update(gameTime);
             
         }

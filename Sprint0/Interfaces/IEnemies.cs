@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Interfaces
 {
-    public interface IEnemies : ICollidable
+    public interface IEnemies : ICollidable, IGameObject
     {
         public void SetPosition(List<int> position);
         public Rectangle Destination { get; set; }
@@ -18,10 +18,7 @@ namespace Sprint0.Interfaces
 
         public void BeFlipped();
 
-        public void Draw(SpriteBatch spriteBatch);
-
         public void Move();
 
-        public void Update(GameTime gameTime);
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Controllers;
+using Sprint0.GameManager;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
@@ -26,7 +27,7 @@ namespace Sprint0
        
         private IController KeyboardController;
 
-        private CollisionHandler collision; 
+        private CollisionDetector detector; 
 
         public Sprint0()
         {
@@ -64,13 +65,13 @@ namespace Sprint0
             ItemSpriteFactory.Instance.LoadTextures(Content);
             
             // collision
-            collision = new CollisionHandler(this, objects);
+            detector = new CollisionDetector(this, objects);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            KeyboardController.Update();;
-            objects.Update(gameTime, collision);
+            KeyboardController.Update();
+            objects.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -83,7 +84,7 @@ namespace Sprint0
                 null, null, null, null, camera.transform);
 
             objects.Draw(_spriteBatch);
-            
+
             _spriteBatch.End();
 
             base.Draw(gameTime);

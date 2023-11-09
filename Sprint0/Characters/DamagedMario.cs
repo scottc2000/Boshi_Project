@@ -5,6 +5,7 @@ using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Players;
 using System.Collections.Generic;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters
 {
@@ -40,7 +41,6 @@ namespace Sprint0.Characters
         public DamagedMario(IMario mario, ObjectManager manager) 
         {
             this.manager = manager;
-            camera = manager.camera;
             decoratedMario = mario;
             health = mario.health;
             currentSprite = mario.currentSprite;
@@ -83,13 +83,12 @@ namespace Sprint0.Characters
 
             Destination = currentSprite.destination;
             decoratedMario.Update(gametime);
-            camera.Update(gametime, decoratedMario);
-
+            camera.Update(decoratedMario);
         }
 
         void RemoveDecorator()
         {
-            manager.mario = decoratedMario;
+            manager.DynamicEntities.Insert(0, decoratedMario);
         }
 
         public void Draw(SpriteBatch spritebatch) 

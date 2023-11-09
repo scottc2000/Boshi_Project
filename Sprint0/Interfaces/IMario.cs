@@ -5,7 +5,7 @@ using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
 {
-    public interface IMario : ICollidable
+    public interface IMario : ICollidable, IGameObject
     {
         Mario.MarioHealth health { get; set; }
         Mario.MarioPose pose { get; set; }
@@ -39,9 +39,6 @@ namespace Sprint0.Interfaces
 
         void Reverse();
 
-        void Update(GameTime gametime);
-
-        void Draw(SpriteBatch spritebatch);
 
     }
 }

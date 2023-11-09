@@ -23,7 +23,7 @@ namespace Sprint0.Camera
             leftBound = 3; ;
         }
         
-        public void Update(GameTime gameTime, IMario mario)
+        public void Update(IMario mario)
         {
             // center camera on mario
             center = new Vector2(mario.position.X + (mario.Destination.Width / 2) - 120, mario.position.Y + (mario.Destination.Height / 2) - 200);

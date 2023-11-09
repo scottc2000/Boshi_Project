@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint0.Interfaces
 {
-    public interface ICharacter : ICollidable
+    public interface ICharacter : ICollidable, IGameObject
     {
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }
@@ -31,8 +31,5 @@ namespace Sprint0.Interfaces
 
         void Reverse();
 
-        void Update(GameTime gametime);
-
-        void Draw(SpriteBatch spritebatch);
     }
 }
