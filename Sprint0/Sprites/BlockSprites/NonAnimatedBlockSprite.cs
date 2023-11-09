@@ -10,10 +10,11 @@ using Sprint0.Interfaces;
 
 namespace Sprint0.Sprites.BlockSprites
 {
-    internal class NonAnimatedBlockSprite : ISprite
+    public class NonAnimatedBlockSprite : ISprite
     {
         private Texture2D textures;
-        private Rectangle scaledPosition;
+        private Rectangle[] spriteFrames;
+        public Rectangle scaledPosition;
         private Rectangle sprite;
         public NonAnimatedBlockSprite(Texture2D textures, Rectangle sprite, Vector2 position)
         {

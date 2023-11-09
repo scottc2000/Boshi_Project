@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Sprites.BlockSprites;
 
 namespace Sprint0.Blocks
 {
@@ -18,7 +19,7 @@ namespace Sprint0.Blocks
         public int y { get; set; }
         public int width { get; set; }
         public int height { get; set; }
-        private ISprite sprite;
+        private NonAnimatedBlockSprite sprite;
         private Vector2 location { get; set; }
         public Rectangle destination { get; set; }
         public Pipe(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
@@ -30,11 +31,12 @@ namespace Sprint0.Blocks
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations(content);
             sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "pipe", new Vector2(x, y));
+            destination = sprite.scaledPosition;
         }
 
         public void Update(GameTime gameTime)
         {
-
+            destination = sprite.scaledPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

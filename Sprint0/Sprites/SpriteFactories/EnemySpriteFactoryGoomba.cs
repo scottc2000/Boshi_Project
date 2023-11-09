@@ -55,17 +55,11 @@ namespace Sprint0.Sprites.SpriteFactories
 
         public GoombaMoveSprite returnSprite(string spriteType)
         {
-
-            string spriteName = "X";
-
             Sprite sprite = deserializedEnemyData.goomba.Sprites;
             if (string.Equals(sprite.name, spriteType))
             {
                 currentFrames = generateSprites(sprite.spritesheet_pos, sprite.hitbox);
-                spriteName = sprite.name;
             }
-
-
             return new GoombaMoveSprite(currentFrames, texture, goomba);
         }
     }

@@ -7,8 +7,6 @@ namespace Sprint0.Items
 {
     internal class AniItemSprite : ISprite
     {
-        string itemString;
-
         private float timer = 0;
         private int interval = 50;
         private int currentFrame = 0;

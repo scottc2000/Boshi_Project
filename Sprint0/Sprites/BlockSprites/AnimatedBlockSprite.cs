@@ -12,11 +12,11 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Sprint0.Sprites
 {
-    internal class AnimatedBlockSprite : ISprite
+    public class AnimatedBlockSprite : ISprite
     {
         private Texture2D textures;
         private Rectangle[] frames;
-        private Rectangle scaledPosition;
+        public Rectangle scaledPosition;
         private int currentFrame;
         private int totalFrames;
         private float frameTimer;

@@ -71,7 +71,7 @@ namespace Sprint0.Sprites
         }
 
         // Non-animated sprites
-        public ISprite CreateNonAnimatedBlock(SpriteBatch spriteBatch, string spriteName, Vector2 position)
+        public NonAnimatedBlockSprite CreateNonAnimatedBlock(SpriteBatch spriteBatch, string spriteName, Vector2 position)
         {
             if (nonanimated_sprites.TryGetValue(spriteName, out Rectangle spriteRect))
             {
@@ -82,7 +82,7 @@ namespace Sprint0.Sprites
         }
 
         // Animated sprites
-        public ISprite CreateAnimatedBlock(SpriteBatch spriteBatch, string spriteName, Vector2 position)
+        public AnimatedBlockSprite CreateAnimatedBlock(SpriteBatch spriteBatch, string spriteName, Vector2 position)
         {
             if (animated_sprites.TryGetValue(spriteName, out Rectangle[] spriteRects))
             {
