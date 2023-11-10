@@ -1,5 +1,6 @@
 ﻿using Sprint0.Blocks;
 using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -48,18 +49,32 @@ namespace Sprint0.GameMangager
             foreach (var entity in EntitiesToAdd)
             {
                 DynamicEntities.Add(entity);
+                if (entity is IItem)
+                    Items.Add((IItem)entity);
+                if (entity is IBlock)
+                    Blocks.Add((IBlock)entity);
+                if (entity is IEnemies)
+                    Enemies.Add((IEnemies)entity);
             }
             foreach (var entity in EntitiesToRemove)
             {
                 DynamicEntities.Remove(entity);
+                if (entity is IItem)
+                    Items.Remove((IItem)entity);
+                if (entity is IBlock)
+                    Blocks.Remove((IBlock)entity);
+                if (entity is IEnemies)
+                    Enemies.Remove((IEnemies)entity);
             }
             EntitiesToAdd.Clear();
             EntitiesToRemove.Clear();
         }
+
         public void AddToList()
         {
 
         }
+
         public void RemoveFromList(ICollidable removed)
         {
             if (removed is IItem) Items.Remove((IItem)removed);
