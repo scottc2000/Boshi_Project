@@ -14,7 +14,8 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Move()
         {
-            luigi.State = new LuigiMoveState(luigi);
+            luigi.velocityX = 2;
+            
         }
 
         public void Jump()

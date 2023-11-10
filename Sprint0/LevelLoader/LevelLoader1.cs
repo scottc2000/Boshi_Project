@@ -33,7 +33,7 @@ namespace Sprint0
         public IMario mario;
 
         public ObjectManager objectManager;
-        public AudioManager audioManager;
+        private AudioManager audioManager = AudioManager.Instance;
 
         public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, MarioCamera camera)
         {
@@ -42,7 +42,6 @@ namespace Sprint0
 
             this.spriteBatch = spriteBatch;
             this.content = content;
-            audioManager = AudioManager.Instance;
 
             this.camera = camera;
             terrain = new Terrain(sprint0);

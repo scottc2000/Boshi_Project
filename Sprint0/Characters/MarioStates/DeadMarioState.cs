@@ -12,12 +12,12 @@ namespace Sprint0.Characters.MarioStates
     internal class DeadMarioState : ICharacterState
     {
         private Mario mario;
+        private AudioManager audioManager = AudioManager.Instance;
         private FileNames FileNames = new FileNames();
 
         public DeadMarioState(Mario mario)
         {
             this.mario = mario;
-            AudioManager audioManager = AudioManager.Instance;
             audioManager.PlaySFX(FileNames.deathSFX);
             audioManager.StopMusic();
         }
