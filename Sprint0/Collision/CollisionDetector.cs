@@ -18,7 +18,7 @@ namespace Sprint0.Collision
         private ItemCollisionHandler itemCollisionHandler;
         private EnemyCollisionHandler enemyCollisionHandler;
 
-        public enum Side { None, Vertical, Horizontal }
+        public enum Side { None, Vertical, Horizontal, Both }
         public CollisionDetector(Sprint0 sprint, ObjectManager objects)
         {
             this.sprint = sprint;
@@ -79,15 +79,33 @@ namespace Sprint0.Collision
         {
             Side side = Side.None;
             if (objects.SideCollidableBlocks.Contains((IBlock)entity2))
+            {
                 side = Side.Horizontal;
+            }
 
             if (objects.TopCollidableBlocks.Contains((IBlock)entity2) || objects.BottomCollidableBlocks.Contains((IBlock)entity2))
-                side =  Side.Vertical;
+            {
+                if (side == Side.Horizontal)
+                {
+                    side = Side.Both;
+                }
+                else
+                {
+                    side = Side.Vertical;
+                }
+            }
+            Rectangle box = Rectangle.Intersect(entity2.Destination, entity1.Destination);
+
+            if (!(box.Width >= box.Height) && objects.SideCollidableBlocks.Contains((IBlock)entity2))
+                side = Side.Horizontal;
+            else if (box.Width >= box.Height && (objects.TopCollidableBlocks.Contains((IBlock)entity2) || (objects.BottomCollidableBlocks.Contains((IBlock)entity2))))
+                side = Side.Vertical;
 
             return side;
+
         }
-        
-        
+
+
         /*------------------------ Handle Collision ------------------------------*/
         public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
         {

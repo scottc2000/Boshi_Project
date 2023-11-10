@@ -9,7 +9,6 @@ namespace Sprint0.Commands.Collisions
         private Sprint0 sprint;
         private ObjectManager objectManager;
         private GameStats stats;
-        private IBlock block;
 
         public CGetCoin(Sprint0 sprint)
         {
@@ -17,8 +16,12 @@ namespace Sprint0.Commands.Collisions
             objectManager = sprint.objects;
             stats = sprint.stats;
         }
-
         public void Execute()
+        {
+
+        }
+
+        public void Execute(IBlock block)
         {
             stats.IncrementCoin();
             objectManager.RemoveFromList(block);

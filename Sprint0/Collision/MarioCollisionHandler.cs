@@ -46,6 +46,15 @@ namespace Sprint0.Collision
                 ICommand command = new CMarioDie(sprint);
                 command.Execute();
             }
+            if (entity1 is SpinningCoin)
+            {
+                CGetCoin command = new CGetCoin(sprint);
+                command.Execute((IBlock)entity1);
+            } else if (entity2 is SpinningCoin)
+            {
+                CGetCoin command = new CGetCoin(sprint);
+                command.Execute((IBlock)entity2);
+            }
             if (side == Side.Horizontal)
             {
                 ICollidableCommand command = new CMarioStuckX(sprint);
@@ -54,6 +63,13 @@ namespace Sprint0.Collision
             else if (side == Side.Vertical)
             {
                 ICollidableCommand command = new CMarioStuckY(sprint);
+                command.Execute(hitarea);
+            }
+            else if (side == Side.Both)
+            {
+                //CollisionSide(entity1, entity2)
+                ICollidableCommand command = new CMarioStuckY(sprint);
+
                 command.Execute(hitarea);
             }
         }
