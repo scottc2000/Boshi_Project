@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Xml.Linq;
 using MonoGame.Extended.Timers;
+using Sprint0.Utility;
 
 
 namespace Sprint0.Sprites.goombaSprite
@@ -21,11 +22,12 @@ namespace Sprint0.Sprites.goombaSprite
         private Vector2 position;
         public string spriteName;
 
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+
         // Frame stats
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
-        public int millisecondsPerFrame = 100;
 
         public KoopaMoveSprite(Rectangle[] currentFrames, Texture2D texture, Koopa koopa, string name)
         {
@@ -42,9 +44,9 @@ namespace Sprint0.Sprites.goombaSprite
             // changes spriteframe every 100 milliseconds
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (timeSinceLastFrame > millisecondsPerFrame)
+            if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
             {
-                timeSinceLastFrame -= millisecondsPerFrame;
+                timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
                 CurrentFrame++;
                 if (CurrentFrame == TotalFrames)
                 {

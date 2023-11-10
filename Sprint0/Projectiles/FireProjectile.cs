@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Utility;
 
 namespace Sprint0.Items.Projectiles
 {
@@ -12,6 +14,18 @@ namespace Sprint0.Items.Projectiles
 
     {
         public List<AnimatedProjectile> projectiles { get; set; }
+
+        AudioManager audioManager = AudioManager.Instance;
+        FileNames fileNames = new FileNames();
+
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool righthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool uphit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool downhit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool gothit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool stuck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         ProjectileSpriteFactory projectileFactory;
 
         public FireProjectile(ContentManager content)
@@ -25,6 +39,7 @@ namespace Sprint0.Items.Projectiles
 
         public void addProjectile(String projectileid, Vector2 position, Boolean facingLeft)
         {
+            audioManager.PlaySFX(fileNames.fireballSFX);
             projectiles.Add(projectileFactory.returnSprite("PlayerFireRight", position, facingLeft));
         }
 
@@ -43,6 +58,15 @@ namespace Sprint0.Items.Projectiles
 
             foreach (AnimatedProjectile item in gone) projectiles.Remove(item);
             gone.Clear();
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (AnimatedProjectile p in projectiles)
+            {
+                p.Draw(spriteBatch);
+                
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Controllers;
 using Sprint0.GameMangager;
+using Sprint0.HUD;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
@@ -18,6 +19,7 @@ namespace Sprint0
         private GameTime gametime;
         
         public ObjectManager objects;
+        public GameStats stats;
         public AudioManager audioManager;
 
         public LevelLoader1 levelLoader; // change back to private later

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Utility;
 
 namespace Sprint0.Sprites.ItemSprites
 {
@@ -10,10 +11,11 @@ namespace Sprint0.Sprites.ItemSprites
         string itemString;
 
         private float timer = 0;
-        private int interval = 50;
         private int currentFrame = 0;
         public Rectangle[] spriteFrames;
         public Rectangle itemPosition;
+
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
 
         public AniItemSprite(Rectangle[] currentFrames)
         {
@@ -22,8 +24,8 @@ namespace Sprint0.Sprites.ItemSprites
 
         public void Update(GameTime gameTime)
         {
-            timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
-            if (timer > interval)
+            timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / spriteNumbers.itemUpdateDivider;
+            if (timer > spriteNumbers.itemInterval)
             {
                 currentFrame++;
                 timer = 0;

@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sprint0.GameMangager;
 
 namespace Sprint0.Commands.Collisions
 {
@@ -23,3 +19,4 @@ namespace Sprint0.Commands.Collisions
         }
     }
 }
+

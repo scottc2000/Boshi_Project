@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Blocks;
 using Sprint0.Commands.Collision;
 using Sprint0.Commands.Collisions;
 using Sprint0.Interfaces;
@@ -40,6 +41,11 @@ namespace Sprint0.Collision
         }
         public void MarioStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
         {
+            if (entity1 is DeathZone || entity2 is DeathZone)
+            {
+                ICommand command = new CMarioDie(sprint);
+                command.Execute();
+            }
             if (side == Side.Horizontal)
             {
                 ICollidableCommand command = new CMarioStuckX(sprint);

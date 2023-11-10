@@ -52,7 +52,7 @@ namespace Sprint0.Characters.LuigiStates
         }
         public void Die()
         {
-
+            luigi.State = new DeadLuigiState(luigi);
         }
 
         public void UpdateVelocity()

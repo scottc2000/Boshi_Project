@@ -47,14 +47,14 @@ namespace Sprint0.Characters
         public AnimatedSpriteLuigi currentSprite {get; set; }
         public CharacterSpriteFactoryLuigi mySpriteFactory;
 
-        public FireProjectile fireProjectile;
+        public FireProjectile fireProjectile { get; set; }
 
 
 
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Big;
+            this.health = LuigiHealth.Fire;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
@@ -93,12 +93,15 @@ namespace Sprint0.Characters
 
         public void Move()
         {
-            State.Move();
+            if (health != LuigiHealth.Dead)
+            {
+                State.Move();
+            }
         }
 
         public void Jump()
         {
-            if (uphit)
+            if (uphit && health != LuigiHealth.Dead)
             {
                 State.Jump();
             }
@@ -111,6 +114,7 @@ namespace Sprint0.Characters
 
         public void Stop()
         {
+            fired = false;
             timeGap = 0;
             State.Stop();
         }
@@ -142,6 +146,7 @@ namespace Sprint0.Characters
                 if (!fired)
                 {
                     fireProjectile.addProjectile("PlayerFireRight", position, facingLeft);
+                    fired = true;
                 }
 
                 State.Throw();

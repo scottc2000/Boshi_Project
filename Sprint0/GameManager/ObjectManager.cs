@@ -8,6 +8,7 @@ namespace Sprint0.GameMangager
         public List<IBlock> TopCollidableBlocks { get; set; }
         public List<IBlock> BottomCollidableBlocks { get; set; }
         public List<IBlock> SideCollidableBlocks { get; set; }
+        public List<IBlock> ThroughCollidableBlocks { get; set; }
         public List<IProjectile> Projectiles { get; set; }
         public List<IItem> Items { get; set; }
         public List<IBlock> Blocks { get; set; }
@@ -30,6 +31,7 @@ namespace Sprint0.GameMangager
             TopCollidableBlocks = new List<IBlock>();
             BottomCollidableBlocks = new List<IBlock>();
             SideCollidableBlocks = new List<IBlock>();
+            ThroughCollidableBlocks = new List<IBlock>();
             Projectiles = new List<IProjectile>();
             
             StaticEntities = new List<ICollidable>();

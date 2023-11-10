@@ -3,6 +3,7 @@ using Sprint0.Enemies;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Sprint0.Utility;
 
 
 namespace Sprint0.Sprites.HammerBroSprite
@@ -11,15 +12,17 @@ namespace Sprint0.Sprites.HammerBroSprite
     {
         private HammerBro hammerbro;
 
+        //Unused fields and magic numbers, need removed or moved into Utility/SpriteNumbers
         private int currentFrame = 0;
         private int totalFrames = 4;
         private double frameSpeed = 0.2;
 
         public int timeSinceLastFrame = 0;
-        public int millisecondsPerFrame = 100;
 
         private Rectangle[] spriteFrames;
         private Rectangle destination;
+
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
 
         public HammerBroMoveSprite(HammerBro hammerBro) 
         { 
@@ -31,9 +34,9 @@ namespace Sprint0.Sprites.HammerBroSprite
         {
             timeSinceLastFrame += gametime.ElapsedGameTime.Milliseconds;
 
-            if (timeSinceLastFrame > millisecondsPerFrame)
+            if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
             {
-                timeSinceLastFrame -= millisecondsPerFrame;
+                timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
                 currentFrame++;
                 if (currentFrame == totalFrames)
                 {

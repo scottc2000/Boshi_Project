@@ -24,6 +24,7 @@ namespace Sprint0.Commands.Collisions
             {
                 case Characters.Luigi.LuigiHealth.Normal:
                     {
+                        luigi.Die();
                         break;
                     }
                 case Characters.Luigi.LuigiHealth.Big:
@@ -36,11 +37,17 @@ namespace Sprint0.Commands.Collisions
                     }
                 case Characters.Luigi.LuigiHealth.Fire:
                     {
+                        ILuigi luigidamanged = new DamagedLuigi(luigi, sprint.levelLoader);
+                        luigidamanged.isInvinsible = true; // Set Luigi as invincible
+                        sprint.levelLoader.luigi = luigidamanged;
                         luigi.ChangeToBig();
                         break;
                     }
                 case Characters.Luigi.LuigiHealth.Raccoon:
                     {
+                        ILuigi luigidamanged = new DamagedLuigi(luigi, sprint.levelLoader);
+                        luigidamanged.isInvinsible = true; // Set Luigi as invincible
+                        sprint.levelLoader.luigi = luigidamanged;
                         luigi.ChangeToBig();
                         break;
                     }

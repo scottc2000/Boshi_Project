@@ -79,11 +79,13 @@ namespace Sprint0.Controllers
             RegisterReleaseCommand(Keys.Down, new CLuigiStop(mySprint, level));
             RegisterCommand(Keys.Right, new CLuigiMoveRight(mySprint, level));
             RegisterReleaseCommand(Keys.Right, new CLuigiStop(mySprint, level));
+            RegisterCommand(Keys.M, new CLuigiThrow(mySprint, level));
+     
 
-            RegisterPressCommand(Keys.D8, new CLuigiRaccoon(mySprint, level));
-            RegisterPressCommand(Keys.D7, new CLuigiFire(mySprint, level));
-            RegisterPressCommand(Keys.D6, new CLuigiBig(mySprint, level));
-            RegisterPressCommand(Keys.D5, new CLuigiNormal(mySprint, level));
+            //RegisterPressCommand(Keys.D8, new CLuigiRaccoon(mySprint, level));
+            //RegisterPressCommand(Keys.D7, new CLuigiFire(mySprint, level));
+            //RegisterPressCommand(Keys.D6, new CLuigiBig(mySprint, level));
+            //RegisterPressCommand(Keys.D5, new CLuigiNormal(mySprint, level));
 
             RegisterCommand(Keys.D0, new Reset(mySprint, level));
         }

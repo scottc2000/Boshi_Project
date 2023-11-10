@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
+using Sprint0.Items.Projectiles;
 using Sprint0.Sprites.Players;
 using System.Collections.Generic;
 using static Sprint0.Sprites.Players.PlayerData;
@@ -29,6 +30,7 @@ namespace Sprint0.Characters
         public Luigi.LuigiHealth health { get; set; }
         public Luigi.LuigiPose pose { get; set; }
         public AnimatedSpriteLuigi currentSprite { get; set; }
+        public FireProjectile fireProjectile { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         private LevelLoader1 level;
         public ILuigi decoratedLuigi;

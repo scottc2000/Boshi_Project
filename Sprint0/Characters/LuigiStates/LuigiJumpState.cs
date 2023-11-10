@@ -44,7 +44,7 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Die()
         {
-            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            luigi.State = new DeadLuigiState(luigi);
         }
 
         public void UpdateVelocity(GameTime gametime)
