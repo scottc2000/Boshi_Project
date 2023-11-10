@@ -14,9 +14,6 @@ namespace Sprint0.Interfaces
         public bool downhit { get; set; }
         public bool gothit { get; set; }
         public bool stuck { get; set; }
-
-        void Draw(SpriteBatch spritebatch);
-        void Update(GameTime gametime);
     }
 }
 

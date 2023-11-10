@@ -1,11 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters;
 using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
 {
-    public interface IMario : ICollidable
+    public interface IMario : ICollidable, IGameObject
     {
         Mario.MarioHealth health { get; set; }
         Mario.MarioPose pose { get; set; }
