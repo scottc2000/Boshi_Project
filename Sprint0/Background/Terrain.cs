@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Sprint0.Background 
 {
-    public class Terrain
+    public class Terrain : IGameObject
     {
         private Texture2D terrain;
         private Sprint0 sprint0;

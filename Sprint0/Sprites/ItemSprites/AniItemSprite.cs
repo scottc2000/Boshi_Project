@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 
-namespace Sprint0.Items
+namespace Sprint0.Sprites.ItemSprites
 {
     internal class AniItemSprite : ISprite
     {

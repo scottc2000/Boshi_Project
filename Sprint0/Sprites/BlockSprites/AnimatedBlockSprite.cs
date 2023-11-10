@@ -1,18 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sprint0.Interfaces;
-using System.Data;
-using System.Net.Mime;
-using Microsoft.Xna.Framework.Content;
 
 namespace Sprint0.Sprites
 {
-    internal class AnimatedBlockSprite : ISprite
+    public class AnimatedBlockSprite : ISprite
     {
         private Texture2D textures;
         private Rectangle[] frames;
@@ -22,7 +14,7 @@ namespace Sprint0.Sprites
         private float frameTimer;
         private float frameInterval;
 
-        public AnimatedBlockSprite(SpriteBatch spriteBatch, Texture2D textures, Rectangle[] sprite, Vector2 position)
+        public AnimatedBlockSprite(Texture2D textures, Rectangle[] sprite, Vector2 position)
         {
             this.textures = textures;
             scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);

@@ -7,18 +7,20 @@ namespace Sprint0.Commands
 {
     public class Reset : ICommand
     {
-        private Sprint0 mySprint;
+        private Sprint0 sprint;
         private SpriteBatch spriteBatch;
+        private LevelLoader1 level;
 
-        public Reset(Sprint0 game)
+        public Reset(Sprint0 game, LevelLoader1 level)
         {
-            mySprint = game;
+             sprint = game;
+            this.level = level;
         }
         public void Execute()
         {
-            spriteBatch = new SpriteBatch(mySprint.GraphicsDevice);
-            mySprint.objects.mario = new Characters.Mario(mySprint);
-            mySprint.objects.luigi = new Characters.Luigi(mySprint);
+            spriteBatch = new SpriteBatch(sprint.GraphicsDevice);
+            level.mario = new Characters.Mario(sprint);
+            level.luigi = new Characters.Luigi(sprint);
 
         }
 

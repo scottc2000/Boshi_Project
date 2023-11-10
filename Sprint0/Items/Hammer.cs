@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Sprites.ItemSprites;
 
 namespace Sprint0.Items
 {
@@ -15,11 +16,17 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
         public Hammer()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Hammer");
-            itemRectangle = aniItem.itemPosition;
+            Destination = aniItem.itemPosition;
         }
 
         public void setPosition(List<int> pos)
@@ -30,7 +37,7 @@ namespace Sprint0.Items
 
         public void Update(GameTime gameTime)
         {
-            itemRectangle = aniItem.itemPosition;
+            Destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)
