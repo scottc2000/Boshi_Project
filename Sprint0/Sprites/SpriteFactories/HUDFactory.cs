@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Hud;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 
@@ -40,16 +39,38 @@ namespace Sprint0.Sprites.SpriteFactories
             hudSpriteSheet = content.Load<Texture2D>("HUD_transparent1");
         }
 
+        /*---------------------------- Create Hud Background -------------------------------*/
         public ISprite CreateHud(string name)
         {
-            return new StaticHUD(hudSpriteSheet, new Vector2(deserializedGameData[0].spritesheetpos[0], deserializedGameData[0].spritesheetpos[1]), new Vector2(deserializedGameData[0].size[0], deserializedGameData[0].size[1]));
+            Root element = deserializedGameData.FirstOrDefault(item =>  item.name == name);
+            return new StaticHUD(hudSpriteSheet, new Vector2(element.spritesheetpos[0], element.spritesheetpos[1]), new Vector2(element.size[0], element.size[1]));
         }
+
+        /*--------------------------- Update Coin Sprites ------------------------------------*/
         public ISprite UpdateCoins(int coins)
         {
-            // Find the element with the matching 'number' property
-            Root matchingElement = deserializedGameData.FirstOrDefault(item => item.number == coins);
-            return new CoinStats(hudSpriteSheet, new Vector2(matchingElement.spritesheetpos[0], matchingElement.spritesheetpos[1]), new Vector2(matchingElement.size[0], matchingElement.size[1]));
+            List<Rectangle> rectangles = new List<Rectangle>();
+
+            // check for 0 coins
+            if (coins == 0)
+            {
+                Root element = deserializedGameData.FirstOrDefault(item => item.number == coins);
+                rectangles.Add(new Rectangle(element.spritesheetpos[0], element.spritesheetpos[1], element.size[0], element.size[1]));
+            }
+
+            // draw each digit sprite for coins 1 - 99
+            while (coins > 0)
+            {
+                int digit = coins % 10;
+                coins = coins / 10;
+                Root element = deserializedGameData.FirstOrDefault(item => item.number == digit);
+                rectangles.Add(new Rectangle(element.spritesheetpos[0], element.spritesheetpos[1], element.size[0], element.size[1]));
+            }
+           
+            return new CoinStats(hudSpriteSheet, rectangles);
         }
+
+        /*--------------------------- Update Life Sprites ------------------------------------*/
         public ISprite UpdateLives(int lives)
         {
             Root matchingElement = deserializedGameData.FirstOrDefault(item => item.number == lives);

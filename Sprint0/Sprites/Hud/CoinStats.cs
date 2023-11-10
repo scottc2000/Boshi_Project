@@ -1,34 +1,44 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Sprites;
 using Sprint0.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sprint0.Sprites.Hud
 {
     public class CoinStats : ISprite
     {
         private Texture2D texture;
-        private Vector2 size;
 
-        private Rectangle spriteFrame;
-        private Rectangle destination;
+        private Rectangle[] spriteFrames;
+        private Rectangle[] destination;
+        private int count;
 
-        public CoinStats(Texture2D sheet, Vector2 position, Vector2 size)
-        {
-            texture = sheet;
-            this.size = size;
-            spriteFrame = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+        public CoinStats(Texture2D texture, List<Rectangle> frames) 
+        { 
+            this.texture = texture;
+            count = frames.Count;
+            spriteFrames = new Rectangle[count];
+            destination = new Rectangle[count];
+
+            for(int i = frames.Count - 1; i >= 0; i--) 
+            {
+                spriteFrames[i] = frames[i];
+            }
         }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Update(GameTime gametime) { }
+        public void Draw(SpriteBatch spriteBatch, Vector2 location) 
         {
-            destination = new Rectangle((int)location.X, (int)location.Y, (int)size.X * 2, (int)size.Y * 2);
+            int offset = 16; // afte testing, move magin number to HudNumbers
+            for (int i = spriteFrames.Count() - 1; i >= 0;i--) 
+            {
+               destination[i] = new Rectangle((int)location.X - (offset * i), (int)location.Y, spriteFrames[i].Width * 2, spriteFrames[i].Height * 2);
+            }
 
-            spriteBatch.Draw(texture, destination, spriteFrame, Color.White);
-        }
-        public void Update(GameTime gametime)
-        {
-            
+            for (int i = 0; i < spriteFrames.Count(); i++)
+            {
+                spriteBatch.Draw(texture, destination[i], spriteFrames[i], Color.White);
+            }
         }
     }
 }

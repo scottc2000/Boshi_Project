@@ -205,6 +205,7 @@ namespace Sprint0
         public void Draw(SpriteBatch spriteBatch)
         {
             terrain.Draw(spriteBatch); // need to draw terrain before any game objects
+            hud.Draw(spriteBatch);
 
             // Draw each game object
             foreach (var block in objectManager.Blocks)
@@ -220,7 +221,6 @@ namespace Sprint0
                 enemy.Draw(spriteBatch);
             }
 
-            hud.Draw(spriteBatch);
             mario.Draw(spriteBatch);
             luigi.Draw(spriteBatch);
 
@@ -229,6 +229,7 @@ namespace Sprint0
         public void Update(GameTime gameTime)
         {
             terrain.Update(gameTime);   // need to update terrain before any game objects
+            hud.Update(gameTime);
 
             // Update each game object
             foreach (var block in objectManager.Blocks)
@@ -245,7 +246,6 @@ namespace Sprint0
             }
 
             camera.Update(mario);
-            hud.Update(gameTime);
             mario.Update(gameTime);
             luigi.Update(gameTime);
 

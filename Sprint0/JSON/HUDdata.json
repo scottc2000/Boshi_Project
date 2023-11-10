@@ -1,8 +1,8 @@
 [
   {
-    "name": "static",
-    "spritesheetpos": [ 12, 128 ],
-    "size": [ 152, 27 ]
+    "number": 0,
+    "spritesheetpos": [ 77, 31 ],
+    "size": [ 8, 7 ]
   },
   {
     "number": 1,
@@ -45,8 +45,8 @@
     "size": [ 8, 7 ]
   },
   {
-    "number": 0,
-    "spritesheetpos": [ 77, 31 ],
-    "size": [ 8, 7 ]
+    "name": "static",
+    "spritesheetpos": [ 12, 128 ],
+    "size": [ 152, 27 ]
   }
 ]

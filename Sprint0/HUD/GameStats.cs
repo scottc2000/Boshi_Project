@@ -2,30 +2,28 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Utility;
 
 namespace Sprint0.HUD
 {
     public class GameStats : IGameObject
     {
         private Sprint0 sprint;
-        // Constants
-        private static readonly int MAXCOINS = 100;
-        private static readonly int ZERO = 0;
-        private static readonly int STARTINGLIVES = 3;
-
+        private HudNumbers numbers;
+       
         // Stat variables
-        public int coins { get; set; }
-        public int lives { get; set; }
-        public int score { get; set; }
-        public int player { get; set; }
-        public int gameTimer { get; set; }
-        public int powerBoost { get; set; }
+        private int coins { get; set; }
+        private int lives { get; set; }
+        private int score { get; set; }
+        private int player { get; set; }
+        private int gameTimer { get; set; }
+        private int powerBoost { get; set; }
 
         // Sprite information
         private HUDFactory mySpriteFactory;
-        private ISprite staticSprite;
-        private ISprite coinSprite;
-        private ISprite lifeSprite;
+        private ISprite staticSprite = null;
+        private ISprite coinSprite = null;
+        private ISprite lifeSprite = null;
         private ISprite scoreSprite;
         private ISprite timerSprite;
         private ISprite powerSprite;
@@ -33,12 +31,14 @@ namespace Sprint0.HUD
         public GameStats(Sprint0 sprint)
         {
             this.sprint = sprint;
+            numbers = new HudNumbers();
 
             // Initial stats
-            coins = ZERO;
-            lives = STARTINGLIVES;
+            coins = 0;
+            lives = numbers.STARTINGLIVES;
             score = 0;
-            gameTimer = 500;
+            gameTimer = numbers.gameTimer;
+            IncrementCoin();
 
             // Initialize Factory
             mySpriteFactory = new HUDFactory(sprint);
@@ -57,12 +57,12 @@ namespace Sprint0.HUD
         public void IncrementCoin()
         {
             coins++;
-            if (coins == MAXCOINS)
+            if (coins == numbers.MAXCOINS)
             {
                 IncrementLives();
-                coins = ZERO;
+                coins = 0;
             }
-
+            mySpriteFactory = new HUDFactory(sprint);
             coinSprite = mySpriteFactory.UpdateCoins(coins);
         }
 
@@ -74,19 +74,21 @@ namespace Sprint0.HUD
         public void IncrementLives()
         {
             lives++;
+            mySpriteFactory = new HUDFactory(sprint);
             lifeSprite = mySpriteFactory.UpdateLives(lives);
         }
 
         public void DecrementLives()
         {
             lives--;
-            if (lives == ZERO)
+            if (lives == 0)
             {
                 // Is game over screen called here or handled somewhere else?
-                lives = STARTINGLIVES;
+                lives = numbers.STARTINGLIVES;
             }
             else
             {
+                mySpriteFactory = new HUDFactory(sprint);
                 lifeSprite = mySpriteFactory.UpdateLives(lives);
             }
         }
