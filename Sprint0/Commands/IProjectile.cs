@@ -9,5 +9,7 @@ namespace Sprint0.Interfaces
     public interface IProjectile : ICollidable
     {
         List<AnimatedProjectile> projectiles { get; set; }
+        void Update(GameTime gameTime);
+        void Draw(SpriteBatch spriteBatch);
     }
 }
