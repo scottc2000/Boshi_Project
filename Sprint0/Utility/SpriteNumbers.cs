@@ -22,7 +22,7 @@ namespace Sprint0.Utility
         public double HammerBroFrameSpeed = 0.2;
 
         /*__________ Block Sheets ___________________*/
-        public int blockScaledPosRectangle = 16;
+        public int blockScaledPos = 16;
 
         /*__________ Item Data ___________________*/
         public int itemUpdateDivider = 2;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Sprites.BlockSprites
 {
@@ -9,10 +10,12 @@ namespace Sprint0.Sprites.BlockSprites
         private Texture2D textures;
         private Rectangle scaledPosition;
         private Rectangle sprite;
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+
         public NonAnimatedBlockSprite(Texture2D textures, Rectangle sprite, Vector2 position)
         {
             this.textures = textures;
-            scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);
+            scaledPosition = new Rectangle((int)position.X, (int)position.Y, spriteNumbers.blockScaledPos, spriteNumbers.blockScaledPos);
             this.sprite = sprite;
         }
 

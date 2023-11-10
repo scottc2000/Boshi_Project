@@ -18,7 +18,7 @@ namespace Sprint0.Sprites
         public AnimatedBlockSprite(Texture2D textures, Rectangle[] sprite, Vector2 position)
         {
             this.textures = textures;
-            scaledPosition = new Rectangle((int)position.X, (int)position.Y, spriteNumbers.blockScaledPosRectangle, spriteNumbers.blockScaledPosRectangle);
+            scaledPosition = new Rectangle((int)position.X, (int)position.Y, spriteNumbers.blockScaledPos, spriteNumbers.blockScaledPos);
 
             frames = sprite;
             currentFrame = 0;
@@ -31,7 +31,7 @@ namespace Sprint0.Sprites
 
             if (frameTimer >= spriteNumbers.frameInterval)
             {
-                currentFrame = (currentFrame + 1) % totalFrames;
+                currentFrame = (currentFrame++) % totalFrames;
                 frameTimer = 0f;
             }
         }
