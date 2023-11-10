@@ -83,6 +83,7 @@ namespace Sprint0.HUD
             {
                 mySpriteFactory = new HUDFactory(sprint);
                 lifeSprite = mySpriteFactory.UpdateDigits(lives);
+                audioManager.PlaySFX(fileNames.oneUpSFX);
             }
         }
 
