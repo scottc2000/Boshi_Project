@@ -68,6 +68,12 @@ namespace Sprint0
                 Rectangle blockRectangle = new Rectangle(block.x, block.y, block.width, block.height);
                 switch (block.Name)
                 {
+                    case "death_zone":
+                        DeathZone death_zone = new DeathZone(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(death_zone);
+                        objectManager.ThroughCollidableBlocks.Add(death_zone);
+                        objectManager.StaticEntities.Add(death_zone);
+                        break;
                     case "floor":
                         Floor floor = new Floor(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(floor);
@@ -121,9 +127,7 @@ namespace Sprint0
                     case "spinning_coin":
                         SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(spinning_coin);
-                        objectManager.TopCollidableBlocks.Add(spinning_coin);
-                        objectManager.BottomCollidableBlocks.Add(spinning_coin);
-                        objectManager.SideCollidableBlocks.Add(spinning_coin);
+                        objectManager.ThroughCollidableBlocks.Add(spinning_coin);
                         objectManager.DynamicEntities.Add(spinning_coin);
                         break;
                 }
