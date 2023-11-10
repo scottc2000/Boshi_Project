@@ -2,6 +2,7 @@
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Utility;
 using System;
 using System.ComponentModel.Design;
 using static Sprint0.Characters.Mario;
@@ -11,12 +12,13 @@ namespace Sprint0.Characters.MarioStates
     internal class DeadMarioState : ICharacterState
     {
         private Mario mario;
+        private FileNames FileNames = new FileNames();
 
         public DeadMarioState(Mario mario)
         {
             this.mario = mario;
             AudioManager audioManager = AudioManager.Instance;
-            audioManager.PlaySFX("die");
+            audioManager.PlaySFX(FileNames.deathSFX);
             audioManager.StopMusic();
         }
 
