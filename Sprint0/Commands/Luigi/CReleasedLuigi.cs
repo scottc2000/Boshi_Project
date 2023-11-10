@@ -6,7 +6,7 @@ namespace Sprint0.Commands.Luigi
     public class CReleasedLuigi : ICommand
     {
         private Sprint0 sprint;
-        private ICharacter luigi;
+        private ILuigi luigi;
 
         public CReleasedLuigi(Sprint0 sprint, LevelLoader1 level) 
         {

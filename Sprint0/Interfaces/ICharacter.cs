@@ -1,14 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Characters;
+using Sprint0.Items.Projectiles;
+using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
 {
-    public interface ICharacter : ICollidable
+    public interface ILuigi : ICollidable
     {
         ICharacterState State { get; set; }
+        public Luigi.LuigiHealth health { get; set; }
+        AnimatedSpriteLuigi currentSprite { get; set; }
+        public Vector2 position { get; set; }
         bool facingLeft { get; set; }
         bool isInvinsible { get; set; }
-
+        FireProjectile fireProjectile { get; set; }
         public void Move();
 
         public void Jump();

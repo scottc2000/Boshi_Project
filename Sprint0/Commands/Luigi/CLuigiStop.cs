@@ -6,7 +6,7 @@ namespace Sprint0.Commands.Luigi
     public class CLuigiStop : ICommand
     {
         private Sprint0 sprint;
-        private ICharacter luigi;
+        private ILuigi luigi;
 
         public CLuigiStop(Sprint0 sprint, LevelLoader1 level)
         {

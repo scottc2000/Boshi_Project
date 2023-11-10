@@ -9,7 +9,7 @@ namespace Sprint0.Commands.Collisions
     {
 
         private Sprint0 mySprint0;
-        Characters.Luigi luigi;
+        ILuigi luigi;
 
         public CLuigiStuckX(Sprint0 mySprint0)
         {
@@ -45,11 +45,11 @@ namespace Sprint0.Commands.Collisions
             {
                 if (luigi.facingLeft)
                 {
-                    luigi.position.X += hitarea.Width;
+                    luigi.position = new Vector2(luigi.position.X + hitarea.Width, luigi.position.Y);
                 }
                 else
                 {
-                    luigi.position.X -= hitarea.Width;
+                    luigi.position = new Vector2(luigi.position.X - hitarea.Width, luigi.position.Y);
                 }
             }
         }

@@ -7,7 +7,7 @@ namespace Sprint0.Commands.Collisions
     {
         private Sprint0 sprint;
         private IItem item;
-        private Characters.Luigi luigi;
+        private ILuigi luigi;
         public CLuigiPowerUp(Sprint0 sprint, IItem item)
         {
             this.sprint = sprint;

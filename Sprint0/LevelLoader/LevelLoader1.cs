@@ -28,7 +28,7 @@ namespace Sprint0
         public MarioCamera camera;
         private Terrain terrain;
         public GameStats hud;
-        public Luigi luigi;
+        public ILuigi luigi;
         public IMario mario;
 
         public ObjectManager objectManager;
@@ -68,6 +68,12 @@ namespace Sprint0
                 Rectangle blockRectangle = new Rectangle(block.x, block.y, block.width, block.height);
                 switch (block.Name)
                 {
+                    case "death_zone":
+                        DeathZone death_zone = new DeathZone(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(death_zone);
+                        objectManager.ThroughCollidableBlocks.Add(death_zone);
+                        objectManager.StaticEntities.Add(death_zone);
+                        break;
                     case "floor":
                         Floor floor = new Floor(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(floor);
@@ -121,9 +127,7 @@ namespace Sprint0
                     case "spinning_coin":
                         SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, blockRectangle);
                         objectManager.Blocks.Add(spinning_coin);
-                        objectManager.TopCollidableBlocks.Add(spinning_coin);
-                        objectManager.BottomCollidableBlocks.Add(spinning_coin);
-                        objectManager.SideCollidableBlocks.Add(spinning_coin);
+                        objectManager.ThroughCollidableBlocks.Add(spinning_coin);
                         objectManager.DynamicEntities.Add(spinning_coin);
                         break;
                 }
@@ -200,6 +204,8 @@ namespace Sprint0
 
             objectManager.DynamicEntities.Add(mario);
             objectManager.DynamicEntities.Add(luigi);
+            objectManager.Projectiles.Add(luigi.fireProjectile);
+            objectManager.DynamicEntities.Add(luigi.fireProjectile);
 
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -219,6 +225,10 @@ namespace Sprint0
             foreach (var enemy in objectManager.Enemies)
             {
                 enemy.Draw(spriteBatch);
+            }
+            foreach (var proj in objectManager.Projectiles)
+            {
+                proj.Draw(spriteBatch);
             }
 
             mario.Draw(spriteBatch);
@@ -243,6 +253,10 @@ namespace Sprint0
             foreach (var enemy in objectManager.Enemies)
             {
                 enemy.Update(gameTime);
+            }
+            foreach (var proj in objectManager.Projectiles)
+            {
+                proj.Update(gameTime);
             }
 
             camera.Update(mario);

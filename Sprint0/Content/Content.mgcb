@@ -31,12 +31,6 @@
 /processorParam:TextureFormat=Color
 /build:HUD_transparent1.png
 
-#begin jumpSmall.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:jumpSmall.wav
-
 #begin level1_1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -90,6 +84,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:smb_flagpole.wav
+
+#begin smb_jump-small.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_jump-small.wav
 
 #begin smb_mariodie.wav
 /importer:WavImporter

@@ -1,11 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
+using System.Security.AccessControl;
 
 namespace Sprint0.Characters.MarioStates
 {
     internal class MarioThrowState : ICharacterState
     {
         private Mario mario;
+        private FileNames FileNames = new FileNames();
 
         public MarioThrowState(Mario mario)
         {
@@ -21,7 +24,7 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioJumpState(mario);
             AudioManager audioManager = AudioManager.Instance;
-            audioManager.PlaySFX("jump");
+            audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly() { }
         public void Fall()

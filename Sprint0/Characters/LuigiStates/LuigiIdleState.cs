@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Characters.LuigiStates
 {
     internal class LuigiIdleState : ICharacterState
     {
         private Luigi luigi;
+        private FileNames FileNames = new FileNames();
         public LuigiIdleState(Luigi luigi)
         {
             this.luigi = luigi;
@@ -21,6 +23,8 @@ namespace Sprint0.Characters.LuigiStates
             if (luigi.timeGap == 0)
             {
                 luigi.State = new LuigiJumpState(luigi);
+                AudioManager audioManager = AudioManager.Instance;
+                audioManager.PlaySFX(FileNames.jumpSFX);
             }
 
         }
@@ -57,7 +61,7 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Die()
         {
-            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            luigi.State = new DeadLuigiState(luigi);
         }
         public void Update(GameTime gametime)
         {

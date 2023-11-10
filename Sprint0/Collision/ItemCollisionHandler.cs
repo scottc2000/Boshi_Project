@@ -1,4 +1,5 @@
 ﻿using Sprint0.Interfaces;
+using Microsoft.Xna.Framework;
 using static Sprint0.Collision.CollisionDetector;
 
 namespace Sprint0.Collision
@@ -11,6 +12,12 @@ namespace Sprint0.Collision
         {
             this.sprint = sprint;
         }
+
+        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        {
+
+        }
+        
         public void ItemStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
 

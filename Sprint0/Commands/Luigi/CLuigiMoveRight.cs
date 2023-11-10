@@ -7,7 +7,7 @@ namespace Sprint0.Commands.Luigi
     {
        
         private Sprint0 sprint;
-        private ICharacter luigi;
+        private ILuigi luigi;
 
         public CLuigiMoveRight(Sprint0 sprint, LevelLoader1 level)
         {

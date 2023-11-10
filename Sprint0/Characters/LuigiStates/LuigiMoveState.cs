@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Characters.LuigiStates
 {
     public class LuigiMoveState : ICharacterState
     {
         private Luigi luigi;
+        private FileNames FileNames = new FileNames();
 
         public LuigiMoveState(Luigi luigi)
         {
@@ -21,7 +23,9 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Jump()
         {
-            //luigi.State = new LuigiJumpState(luigi);
+            luigi.State = new LuigiJumpState(luigi);
+            AudioManager audioManager = AudioManager.Instance;
+            audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly()
         {
@@ -48,7 +52,7 @@ namespace Sprint0.Characters.LuigiStates
         }
         public void Die()
         {
-
+            luigi.State = new DeadLuigiState(luigi);
         }
 
         public void UpdateVelocity()

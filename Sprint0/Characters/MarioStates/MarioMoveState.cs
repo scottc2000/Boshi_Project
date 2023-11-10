@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Characters.MarioStates
 {
     public class MarioMoveState : ICharacterState
     {
         private Mario mario;
+        private FileNames FileNames = new FileNames();
 
         public MarioMoveState(Mario mario)
         {
@@ -22,7 +24,7 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.State = new MarioJumpState(mario);
             AudioManager audioManager = AudioManager.Instance;
-            audioManager.PlaySFX("jump");
+            audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly()
         {
