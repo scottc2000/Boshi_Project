@@ -44,8 +44,22 @@ namespace Sprint0.GameMangager
         {
 
         }
-        public void RemoveFromList()
+        public void RemoveFromList(ICollidable removed)
         {
+            Items.Remove((IItem)removed);
+            Blocks.Remove((IBlock)removed);
+            Enemies.Remove((IEnemies)removed);
+
+            TopCollidableBlocks.Remove((IBlock)removed);
+            BottomCollidableBlocks.Remove((IBlock)removed);
+            SideCollidableBlocks.Remove((IBlock)removed);
+            ThroughCollidableBlocks.Remove((IBlock)removed);
+            Projectiles.Remove((IProjectile)removed);
+
+            StaticEntities.Remove(removed);
+            DynamicEntities.Remove(removed);
+            EntitiesToAdd.Remove(removed);
+            EntitiesToRemove.Remove(removed);
 
         }
        
