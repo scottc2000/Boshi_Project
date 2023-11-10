@@ -31,7 +31,7 @@ namespace Sprint0.Sprites
 
             if (frameTimer >= spriteNumbers.frameInterval)
             {
-                currentFrame = (currentFrame++) % totalFrames;
+                currentFrame = (++currentFrame) % totalFrames;
                 frameTimer = 0f;
             }
         }
