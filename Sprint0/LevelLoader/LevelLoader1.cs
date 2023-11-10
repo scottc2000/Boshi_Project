@@ -200,6 +200,8 @@ namespace Sprint0
 
             objectManager.DynamicEntities.Add(mario);
             objectManager.DynamicEntities.Add(luigi);
+            objectManager.Projectiles.Add(luigi.fireProjectile);
+            objectManager.DynamicEntities.Add(luigi.fireProjectile);
 
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -219,7 +221,10 @@ namespace Sprint0
             {
                 enemy.Draw(spriteBatch);
             }
-
+            foreach (var proj in objectManager.Projectiles)
+            {
+                proj.Draw(spriteBatch);
+            }
             hud.Draw(spriteBatch);
             mario.Draw(spriteBatch);
             luigi.Draw(spriteBatch);
@@ -242,6 +247,10 @@ namespace Sprint0
             foreach (var enemy in objectManager.Enemies)
             {
                 enemy.Update(gameTime);
+            }
+            foreach (var proj in objectManager.Projectiles)
+            {
+                proj.Update(gameTime);
             }
 
             camera.Update(mario);

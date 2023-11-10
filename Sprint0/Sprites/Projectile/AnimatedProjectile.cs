@@ -63,7 +63,7 @@ namespace Sprint0.Sprites.Projectile
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width * 2, spriteFrames[CurrentFrame].Height * 2);
+            destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
             float rotation = 0;
             float layer = 0;
 

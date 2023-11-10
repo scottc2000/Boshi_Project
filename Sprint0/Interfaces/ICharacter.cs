@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters;
+using Sprint0.Items.Projectiles;
 using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
@@ -13,7 +14,7 @@ namespace Sprint0.Interfaces
         public Vector2 position { get; set; }
         bool facingLeft { get; set; }
         bool isInvinsible { get; set; }
-
+        FireProjectile fireProjectile { get; set; }
         public void Move();
 
         public void Jump();
