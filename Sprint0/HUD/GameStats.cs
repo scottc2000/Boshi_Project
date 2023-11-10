@@ -10,6 +10,8 @@ namespace Sprint0.HUD
     {
         private Sprint0 sprint;
         private HudNumbers numbers;
+        private AudioManager audioManager = AudioManager.Instance;
+        private FileNames fileNames = new FileNames();
        
         // Stat variables
         private int coins { get; set; }
@@ -63,6 +65,7 @@ namespace Sprint0.HUD
             }
             mySpriteFactory = new HUDFactory(sprint);
             coinSprite = mySpriteFactory.UpdateDigits(coins);
+            audioManager.PlaySFX(fileNames.coinSFX);
         }
 
         public void IncreaseScore(int points)
