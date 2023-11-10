@@ -67,7 +67,6 @@ namespace Sprint0.Collision
             }
             else if (side == Side.Both)
             {
-                //CollisionSide(entity1, entity2)
                 ICollidableCommand command = new CMarioStuckY(sprint);
 
                 command.Execute(hitarea);

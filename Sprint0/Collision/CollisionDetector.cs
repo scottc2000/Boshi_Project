@@ -78,6 +78,7 @@ namespace Sprint0.Collision
         public Side StaticCollisionSide(ICollidable entity1, ICollidable entity2)
         {
             Side side = Side.None;
+            Rectangle box = Rectangle.Intersect(entity2.Destination, entity1.Destination);
             if (objects.SideCollidableBlocks.Contains((IBlock)entity2))
             {
                 side = Side.Horizontal;
@@ -87,19 +88,24 @@ namespace Sprint0.Collision
             {
                 if (side == Side.Horizontal)
                 {
-                    side = Side.Both;
+                    if (!(box.Width >= box.Height))
+                        side = Side.Horizontal;
+                    else if (box.Width >= box.Height)
+                        side = Side.Vertical;
+
+                    
                 }
                 else
                 {
                     side = Side.Vertical;
                 }
             }
-            Rectangle box = Rectangle.Intersect(entity2.Destination, entity1.Destination);
+            //Rectangle box = Rectangle.Intersect(entity2.Destination, entity1.Destination);
 
-            if (!(box.Width >= box.Height) && objects.SideCollidableBlocks.Contains((IBlock)entity2))
-                side = Side.Horizontal;
-            else if (box.Width >= box.Height && (objects.TopCollidableBlocks.Contains((IBlock)entity2) || (objects.BottomCollidableBlocks.Contains((IBlock)entity2))))
-                side = Side.Vertical;
+            //if (!(box.Width >= box.Height) && objects.SideCollidableBlocks.Contains((IBlock)entity2))
+            //    side = Side.Horizontal;
+            //else if (box.Width >= box.Height && (objects.TopCollidableBlocks.Contains((IBlock)entity2) || (objects.BottomCollidableBlocks.Contains((IBlock)entity2))))
+            //    side = Side.Vertical;
 
             return side;
 
