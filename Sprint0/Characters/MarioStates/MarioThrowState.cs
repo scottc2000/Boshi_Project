@@ -48,8 +48,8 @@ namespace Sprint0.Characters.MarioStates
         }
         public void UpdateVelocity()
         {
-            mario.velocity.X = 1.0f;
-            mario.velocity.Y *= 0;
+            mario.velocityX = 1.0f;
+            mario.velocityY *= 0;
         }
 
         public void Die()
