@@ -84,6 +84,18 @@ namespace Sprint0.GameMangager
             {
                 entity.Update(gameTime);
             }
+
+            foreach (IEntity entity in EntitiesToAdd)
+            {
+                DynamicEntities.Add(entity);
+            }
+            foreach (IEntity entity in EntitiesToRemove)
+            {
+                DynamicEntities.Remove(entity);
+            }
+            EntitiesToAdd.Clear();
+            EntitiesToRemove.Clear();
+
             mario.Update(gameTime);
             luigi.Update(gameTime);
             collision.Update();

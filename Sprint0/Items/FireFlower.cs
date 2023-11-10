@@ -12,17 +12,20 @@ using Sprint0.Sprites.ItemSprites;
 
 namespace Sprint0.Items
 {
-    internal class FireFlower : IItem, IEntity
+    internal class FireFlower : IItem, ICollidable
     {
         private AniItemSprite aniItem;
         private Vector2 position;
         public Rectangle destination { get; set; }
         public bool moveRight { get; set; }
 
+        public ICollidable.collideAs collideAs { get; set; } 
+
         public FireFlower()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("FireFlower");
             destination = aniItem.itemPosition;
+            collideAs = ICollidable.collideAs.item;
         }
 
         public void setPosition(List<int> pos)

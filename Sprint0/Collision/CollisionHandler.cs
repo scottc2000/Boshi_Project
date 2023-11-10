@@ -4,6 +4,7 @@ using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Sprint0.Collision
 {
@@ -36,7 +37,7 @@ namespace Sprint0.Collision
             luigi = objects.luigi;
             mario = objects.mario;
 
-            register = new CollisionDictionraryRegister(sprint);
+            register = new CollisionDictionraryRegister();
 
             register.generate();
         }
@@ -191,26 +192,62 @@ namespace Sprint0.Collision
         {
             for (int i = 0; i < objectManager.DynamicEntities.Count; i++)
             {
-                IEntity entity1 = objectManager.DynamicEntities[i];
+                ICollidable entity1 = (ICollidable)objectManager.DynamicEntities[i];
 
                 for (int j = i + 1; j < objectManager.DynamicEntities.Count; j++)
                 {
-                    IEntity entity2 = objectManager.DynamicEntities[j];
+                    ICollidable entity2 = (ICollidable)objectManager.DynamicEntities[j];
 
                     if (entity1.destination.Intersects(entity2.destination))
                     {
-                        
+                        GetCollisionSide(entity1, entity2);
                     }
                 }
 
-                foreach (IEntity sEntity in objectManager.StaticEntities)
+                foreach (ICollidable sEntity in objectManager.StaticEntities)
                 {
                     if (entity1.destination.Intersects(sEntity.destination))
                     {
-
+                        GetCollisionSide(entity1, sEntity);
                     }
                 }
             }
+        }
+
+        private void GetCollisionSide(ICollidable entity1, ICollidable entity2)
+        {
+            if (Rectangle.Intersect(entity1.destination, entity2.destination).Width >=
+                Rectangle.Intersect(entity1.destination, entity2.destination).Height &&
+                )
+            {
+
+            } 
+            else if ()
+            {
+
+            } 
+        }
+
+        private void CollisionResponse(ICollidable entity1, ICollidable entity2, CollisionDictionraryRegister.Side side)
+        {
+            //explicitly setting to null !!!
+            //string collidableString1 = Enum.GetName(typeof(ICollidable.collideAs), entity1);
+            //string collidableString2 = Enum.GetName(typeof(ICollidable.collideAs), entity2);
+            //ICollidable.collideAs entity1collision =
+            //ICollidable.collideAs entity2collision =
+            //switch (collidableString1)
+            //{
+                
+            //}
+            //switch (collidableString2)
+            //{
+
+            //}
+            ICommand command1= null;
+            ICommand command2= null;
+            CollisionData collisionData = new CollisionData(Rectangle.Intersect(entity1.destination, entity2.destination), side);
+
+           (ConstructorInfo constructCommand1, ConstructorInfo constructComman2) = register.collision[(entity1collision, entity2collision, side)];
         }
     }
 }

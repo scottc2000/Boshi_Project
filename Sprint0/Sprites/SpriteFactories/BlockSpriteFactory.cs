@@ -20,7 +20,7 @@ namespace Sprint0.Sprites
 {
     public class BlockSpriteFactory : ISpriteFactory
     {
-        private Texture2D blockTextures;
+        public Texture2D blockTextures;
         private Dictionary<string, Rectangle> nonanimated_sprites;
         private Dictionary<string, Rectangle[]> animated_sprites;
         private static BlockSpriteFactory spriteFactory = new BlockSpriteFactory();

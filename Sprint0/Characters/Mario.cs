@@ -8,7 +8,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Characters
 {
-    public class Mario : IMario, IEntity
+    public class Mario : IMario, ICollidable
     {
         public enum MarioHealth { Normal, Raccoon, Fire, Big, Dead };
         public MarioHealth health { get; set; }
@@ -18,6 +18,7 @@ namespace Sprint0.Characters
         public bool facingLeft { get; set; }
 
         public ICharacterState State { get; set; }
+        public ICollidable.collideAs collideAs { get; set; }
 
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
