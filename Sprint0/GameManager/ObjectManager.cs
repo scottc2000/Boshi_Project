@@ -1,5 +1,8 @@
-﻿using Sprint0.Interfaces;
+﻿using Sprint0.Blocks;
+using Sprint0.Interfaces;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Sprint0.GameMangager
 {
@@ -37,7 +40,8 @@ namespace Sprint0.GameMangager
             StaticEntities = new List<ICollidable>();
             DynamicEntities = new List<ICollidable>();
             EntitiesToAdd = new List<ICollidable>();
-            EntitiesToRemove = new List<ICollidable>();            
+            EntitiesToRemove = new List<ICollidable>();
+
         }
 
         public void AddToList()
@@ -46,15 +50,19 @@ namespace Sprint0.GameMangager
         }
         public void RemoveFromList(ICollidable removed)
         {
-            Items.Remove((IItem)removed);
-            Blocks.Remove((IBlock)removed);
-            Enemies.Remove((IEnemies)removed);
+            if (removed is IItem) Items.Remove((IItem)removed);
+            if (removed is IEnemies) Enemies.Remove((IEnemies)removed);
 
-            TopCollidableBlocks.Remove((IBlock)removed);
-            BottomCollidableBlocks.Remove((IBlock)removed);
-            SideCollidableBlocks.Remove((IBlock)removed);
-            ThroughCollidableBlocks.Remove((IBlock)removed);
-            Projectiles.Remove((IProjectile)removed);
+            if (removed is IBlock)
+            {
+                Blocks.Remove((IBlock)removed);
+                TopCollidableBlocks.Remove((IBlock)removed);
+                BottomCollidableBlocks.Remove((IBlock)removed);
+                SideCollidableBlocks.Remove((IBlock)removed);
+                ThroughCollidableBlocks.Remove((IBlock)removed);
+            }
+
+            if(removed is IProjectile) Projectiles.Remove((IProjectile)removed);
 
             StaticEntities.Remove(removed);
             DynamicEntities.Remove(removed);

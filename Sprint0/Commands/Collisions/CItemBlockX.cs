@@ -18,7 +18,7 @@ namespace Sprint0.Commands.Collisions
 
         public void Execute()
         {
-            objectManager.RemoveFromList();
+            objectManager.RemoveFromList(block);
         }
     }
 }
