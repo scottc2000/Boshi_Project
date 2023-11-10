@@ -10,10 +10,10 @@ using System.Collections.Generic;
 
 namespace Sprint0.Characters
 {
-    public class Luigi : ICharacter
+    public class Luigi : ILuigi
     {
         public enum LuigiHealth { Normal, Raccoon, Fire, Big, Dead };
-        public LuigiHealth health = LuigiHealth.Normal;
+        public LuigiHealth health { get; set; }
 
         public enum LuigiPose { Jump, Crouch, Idle, Walking, Throwing };
         public LuigiPose pose = LuigiPose.Idle;
@@ -38,12 +38,13 @@ namespace Sprint0.Characters
         public ICharacterState State { get; set; }
 
 
-        public Vector2 position;
+        public Vector2 position { get; set; }
         public Sprint0 mySprint;
         int sizeDiff;
         public Rectangle Destination { get; set; }
 
-        public AnimatedSpriteLuigi currentSprite;
+
+        public AnimatedSpriteLuigi currentSprite {get; set; }
         public CharacterSpriteFactoryLuigi mySpriteFactory;
 
         public FireProjectile fireProjectile;
@@ -53,13 +54,12 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Normal;
+            this.health = LuigiHealth.Big;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
             this.facingLeft = true;
-            this.position.X = 100;
-            this.position.Y = 300;
+            this.position = new Vector2(200, 200);
             this.sizeDiff = 25;
             this.fired = false;
             this.timeGap = 0;
@@ -172,7 +172,7 @@ namespace Sprint0.Characters
         {
             if (health == LuigiHealth.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
             health = LuigiHealth.Fire;
         }
@@ -181,7 +181,7 @@ namespace Sprint0.Characters
         {
             if (health == LuigiHealth.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
             health = LuigiHealth.Raccoon;
         }
@@ -190,7 +190,7 @@ namespace Sprint0.Characters
         {
             if (health == LuigiHealth.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
             health = LuigiHealth.Big;
         }
@@ -199,17 +199,17 @@ namespace Sprint0.Characters
         {
             if (health != LuigiHealth.Normal)
             {
-                position.Y += sizeDiff;
+                position = new Vector2(position.X, position.Y + sizeDiff);
             }
             health = LuigiHealth.Normal;
         }
 
 
         public void applyGravity()
-        { 
-           
-           position.Y += this.gravity;
-           
+        {
+
+            position = new Vector2(position.X, position.Y + gravity);
+
         }
 
         public void UpdateMovement(GameTime gametime)
@@ -218,29 +218,29 @@ namespace Sprint0.Characters
 
             if (facingLeft)
             {
-                position.X -= (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position = new Vector2(position.X - (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
             else
             {
-                position.X += (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position = new Vector2(position.X + (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
-
-            position.Y += (velocityY * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            position = new Vector2(position.X, position.Y + (velocityY * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))));
+            
 
         }
 
         public void LeftStuck(GameTime gametime)
         {
-            position.X += (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            
         }
         public void RightStuck(GameTime gametime)
         {
-            position.X -= (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            
         }
 
         public void UpStuck()
         {
-            position.Y -= (gravity / 2);
+            //position.Y -= (gravity / 2);
         }
 
         public void Update(GameTime gametime)

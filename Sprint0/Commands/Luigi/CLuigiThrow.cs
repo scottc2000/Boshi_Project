@@ -7,7 +7,7 @@ namespace Sprint0.Commands.Luigi
     internal class CLuigiThrow : ICommand
     {
         private Sprint0 sprint;
-        private ICharacter luigi;
+        private ILuigi luigi;
         public CLuigiThrow(Sprint0 sprint, LevelLoader1 level)
         {
             this.sprint = sprint;

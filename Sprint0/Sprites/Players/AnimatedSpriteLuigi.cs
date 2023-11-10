@@ -53,6 +53,16 @@ namespace Sprint0.Sprites.Players
             }
         }
 
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        {
+            destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
+
+            float rotation = 0;
+            float layer = 0;
+
+            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], color, rotation, new Vector2(0, 0), spriteEffect, layer);
+        }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)luigi.position.X, (int)luigi.position.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);

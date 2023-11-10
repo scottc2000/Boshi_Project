@@ -28,7 +28,7 @@ namespace Sprint0
         public MarioCamera camera;
         private Terrain terrain;
         public GameStats hud;
-        public Luigi luigi;
+        public ILuigi luigi;
         public IMario mario;
 
         public ObjectManager objectManager;
