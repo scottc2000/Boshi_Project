@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Enemies;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 
 namespace Sprint0.Sprites.goombaSprite
@@ -15,6 +16,8 @@ namespace Sprint0.Sprites.goombaSprite
         private Rectangle[] spriteFrames;
         public Rectangle destination;
 
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+
         private Vector2 position;
         public string spriteName;
 
@@ -22,7 +25,6 @@ namespace Sprint0.Sprites.goombaSprite
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
-        public int millisecondsPerFrame = 100;
 
         public GoombaMoveSprite(Rectangle[] currentFrames, Texture2D texture, Goomba goomba, string name) 
         {
@@ -39,9 +41,9 @@ namespace Sprint0.Sprites.goombaSprite
             // changes spriteframe every 100 milliseconds
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (timeSinceLastFrame > millisecondsPerFrame)
+            if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
             {
-                timeSinceLastFrame -= millisecondsPerFrame;
+                timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
                 CurrentFrame++;
                 if (CurrentFrame == TotalFrames)
                 {

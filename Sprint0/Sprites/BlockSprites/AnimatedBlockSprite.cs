@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Sprites
 {
@@ -12,25 +13,23 @@ namespace Sprint0.Sprites
         private int currentFrame;
         private int totalFrames;
         private float frameTimer;
-        private float frameInterval;
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
 
         public AnimatedBlockSprite(Texture2D textures, Rectangle[] sprite, Vector2 position)
         {
             this.textures = textures;
-            scaledPosition = new Rectangle((int)position.X, (int)position.Y, 16, 16);
+            scaledPosition = new Rectangle((int)position.X, (int)position.Y, spriteNumbers.blockScaledPosRectangle, spriteNumbers.blockScaledPosRectangle);
 
             frames = sprite;
             currentFrame = 0;
             totalFrames = sprite.Length;
-            frameInterval = 0.1f;
-
         }
 
         public void Update(GameTime gameTime)
         {
             frameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (frameTimer >= frameInterval)
+            if (frameTimer >= spriteNumbers.frameInterval)
             {
                 currentFrame = (currentFrame + 1) % totalFrames;
                 frameTimer = 0f;

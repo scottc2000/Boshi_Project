@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Sprites.Hud
 {
@@ -12,6 +13,8 @@ namespace Sprint0.Sprites.Hud
         private Rectangle spriteFrame;
         private Rectangle destination;
 
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+
         public StaticHUD(Texture2D sheet, Vector2 position, Vector2 size)
         {
             texture = sheet;
@@ -21,10 +24,10 @@ namespace Sprint0.Sprites.Hud
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            destination = new Rectangle((int)location.X, (int)location.Y, (int)size.X * 2, (int)size.Y * 2);
+            destination = new Rectangle((int)location.X, (int)location.Y, (int)size.X * spriteNumbers.HUDDrawMultiplier, (int)size.Y * spriteNumbers.HUDDrawMultiplier);
 
-            Rectangle background = new Rectangle(0, 435, 537, 120);
-            Texture2D _blankTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+            Rectangle background = spriteNumbers.HUDBackground;
+            Texture2D _blankTexture = new Texture2D(spriteBatch.GraphicsDevice, spriteNumbers.blankTextureWidth, spriteNumbers.blankTextureHeight);
             _blankTexture.SetData(new[] { Color.Black });
 
             spriteBatch.Draw(_blankTexture, background, spriteFrame, Color.White);

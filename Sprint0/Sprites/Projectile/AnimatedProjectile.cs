@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Utility;
 
 
 namespace Sprint0.Sprites.Projectile
@@ -15,15 +16,16 @@ namespace Sprint0.Sprites.Projectile
         Rectangle destination;
         SpriteEffects effect;
 
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
-        public int millisecondsPerFrame = 100;
 
         public AnimatedProjectile(Rectangle[] currentFrames, Texture2D texture, bool facingLeft, Vector2 pos)
         {
             this.pos = pos;
-            pos.X += 10;
+            pos.X += spriteNumbers.projectileTravelDif;
             this.facingLeft = facingLeft;
             spriteFrames = currentFrames;
             TotalFrames = spriteFrames.Length;
@@ -32,12 +34,12 @@ namespace Sprint0.Sprites.Projectile
 
             if (this.facingLeft)
             {
-                direction = -3;
+                direction = spriteNumbers.projectileLeftOffset;
                 effect = SpriteEffects.FlipHorizontally;
             }
             else
             {
-                direction = 3;
+                direction = spriteNumbers.projectileRightOffset;
                 effect = SpriteEffects.None;
             }
 
@@ -48,9 +50,9 @@ namespace Sprint0.Sprites.Projectile
             // changes spriteframe every 100 milliseconds
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (timeSinceLastFrame > millisecondsPerFrame)
+            if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
             {
-                timeSinceLastFrame -= millisecondsPerFrame;
+                timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
                 CurrentFrame++;
                 if (CurrentFrame == TotalFrames)
                 {
@@ -63,7 +65,7 @@ namespace Sprint0.Sprites.Projectile
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width * 2, spriteFrames[CurrentFrame].Height * 2);
+            destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width * spriteNumbers.projectileDrawMultiplier, spriteFrames[CurrentFrame].Height * spriteNumbers.projectileDrawMultiplier);
             float rotation = 0;
             float layer = 0;
 

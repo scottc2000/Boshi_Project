@@ -6,7 +6,6 @@
   <SourceFiles>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/01-main-theme-overworld.wav</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/HUD_transparent1.png</File>
-    <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/jumpSmall.wav</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/level1_1.png</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/marioenemy.png</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_1-up.wav</File>
@@ -14,6 +13,7 @@
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_coin.wav</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_fireball.wav</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_flagpole.wav</File>
+    <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_jump-small.wav</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_mariodie.wav</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_pipe.wav</File>
     <File>C:/Users/Ben/source/repos/scottc2000/Boshi_Project/Sprint0/Content/smb_powerup.wav</File>
