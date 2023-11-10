@@ -21,7 +21,7 @@ namespace Sprint0.Commands.Collisions
         public void Execute()
         {
             stats.IncrementCoin();
-            objectManager.RemoveFromList();
+            objectManager.RemoveFromList(block);
         }
     }
 }
