@@ -67,6 +67,7 @@ namespace Sprint0.Characters
 
         public void Jump() { decoratedLuigi.Jump();  }
         //public void Fly() { decoratedLuigi.Fly(); }
+        public void Fall() { decoratedLuigi.Fall(); }
 
         public void Move() { decoratedLuigi.Move();  }
 

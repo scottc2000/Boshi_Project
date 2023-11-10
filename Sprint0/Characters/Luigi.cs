@@ -107,6 +107,14 @@ namespace Sprint0.Characters
             }
         }
 
+        public void Fall()
+        {
+            if (health != LuigiHealth.Dead)
+            {
+                State.Fall();
+            }
+        }
+
         public void Crouch()
         {
             State.Crouch();

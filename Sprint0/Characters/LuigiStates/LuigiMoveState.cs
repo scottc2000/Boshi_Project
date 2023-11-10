@@ -57,7 +57,7 @@ namespace Sprint0.Characters.LuigiStates
 
         public void UpdateVelocity()
         {
-            luigi.velocityX = 3.0f;
+            luigi.velocityX = 2.0f;
             luigi.velocityY = 0;
         }
 
