@@ -5,7 +5,7 @@ using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.HUD
 {
-    public class GameStats
+    public class GameStats : IGameObject
     {
         private Sprint0 sprint;
         // Constants

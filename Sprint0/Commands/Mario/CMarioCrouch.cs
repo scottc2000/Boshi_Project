@@ -4,16 +4,17 @@ namespace Sprint0.Commands.Mario
 {
     public class CMarioCrouch : ICommand
     {
-        private Sprint0 mySprint0;
+        private Sprint0 sprint;
         private IMario mario;
-        public CMarioCrouch(Sprint0 Sprint0)
+        private LevelLoader1 level;
+        public CMarioCrouch(Sprint0 sprint, LevelLoader1 level)
         {
-            mySprint0 = Sprint0;
+            this.sprint = sprint;
+            this.level = level;
         }
         public void Execute()
         {
-
-            mario = mySprint0.objects.mario;
+            mario = level.mario;
             mario.Crouch();
 
         }

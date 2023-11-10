@@ -1,19 +1,20 @@
 ﻿using Sprint0.Interfaces;
+using System.Reflection.Emit;
 
 namespace Sprint0.Commands.Luigi
 {
 
     internal class CLuigiRaccoon : ICommand
     {
-        private Sprint0 mySprint0;
+        private Sprint0 sprint;
         private ICharacter luigi;
-        public CLuigiRaccoon(Sprint0 Sprint0)
+        public CLuigiRaccoon(Sprint0 sprint, LevelLoader1 level)
         {
-            mySprint0 = Sprint0;
+            this.sprint = sprint;
+            luigi = level.luigi;
         }
         public void Execute()
         {
-            luigi = mySprint0.objects.luigi;
             luigi.ChangeToRaccoon();
         }
 

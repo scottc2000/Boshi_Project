@@ -31,8 +31,5 @@ namespace Sprint0.Interfaces
 
         void Reverse();
 
-        void Update(GameTime gametime);
-
-        void Draw(SpriteBatch spritebatch);
     }
 }

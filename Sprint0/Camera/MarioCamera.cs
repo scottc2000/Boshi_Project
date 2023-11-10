@@ -23,10 +23,10 @@ namespace Sprint0.Camera
             leftBound = 3; ;
         }
         
-        public void Update(GameTime gameTime, IMario mario)
+        public void Update(IMario mario)
         {
             // center camera on mario
-            center = new Vector2(mario.position.X + (mario.destination.Width / 2) - 120, mario.position.Y + (mario.destination.Height / 2) - 200);
+            center = new Vector2(mario.position.X + (mario.Destination.Width / 2) - 120, mario.position.Y + (mario.Destination.Height / 2) - 200);
 
             // if mario moves past the left bound, reset the camera
             if (center.X < leftBound)

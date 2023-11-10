@@ -16,25 +16,29 @@ namespace Sprint0.Commands.Collision
 
         public void Execute()
         {
-            mario = mySprint0.objects.mario;
+            mario = mySprint0.levelLoader.mario;
             mario.uphit = true;
         }
 
         public void Execute(Rectangle hitbox)
         {
-            mario = mySprint0.objects.mario;
-            Rectangle hitarea = Rectangle.Intersect(hitbox, mario.destination);
+            mario = mySprint0.levelLoader.mario;
+            Rectangle hitarea = Rectangle.Intersect(hitbox, mario.Destination);
 
             if (hitarea.Width >= hitarea.Height)
             {
                 if (hitbox.Y <= mario.position.Y)
+                {
                     mario.position = new Vector2(mario.position.X, mario.position.Y + hitarea.Height);
+
+                }
                 else
                 {
                     mario.uphit = true;
                     mario.position = new Vector2(mario.position.X, mario.position.Y - hitarea.Height);
                 }
             }
+
         }
     }
 }

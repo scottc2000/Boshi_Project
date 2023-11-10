@@ -6,15 +6,17 @@ namespace Sprint0.Commands.Mario
     {
         private Sprint0 mysprint;
         private IMario mario;
+        private LevelLoader1 level;
 
-        public CDeadMario(Sprint0 mysprint)
+        public CDeadMario(Sprint0 mysprint, LevelLoader1 level)
         {
             this.mysprint = mysprint;
+            this.level = level;
         }
 
         public void Execute()
         {
-            mario = mysprint.objects.mario;
+            mario = level.mario;
             mario.Die();
         }
     }

@@ -18,16 +18,16 @@ namespace Sprint0.Commands.Collisions
         public void Execute()
         {
 
-            luigi = mySprint0.objects.luigi;
+            luigi = mySprint0.levelLoader.luigi;
             luigi.uphit = true;
 
         }
 
         public void Execute(Rectangle hitbox)
         {
-            luigi = mySprint0.objects.luigi;
+            luigi = mySprint0.levelLoader.luigi;
 
-            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.destination);
+            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.Destination);
 
             if (hitarea.Width >= hitarea.Height)
             {

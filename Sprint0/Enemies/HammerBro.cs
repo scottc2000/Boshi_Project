@@ -17,7 +17,13 @@ namespace Sprint0.Enemies
 
         public ISprite hammerBroSprite;
         public Texture2D hammerBroTexture;
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
 
 
         public HammerBro(Sprint0 sprint0)
