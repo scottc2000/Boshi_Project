@@ -15,7 +15,7 @@
         public string mainTheme { get; } = "01-main-theme-overworld";
 
         /*________________ SFX _______________________*/
-        public string jumpSFX { get; } = "jumpSmall";
+        public string jumpSFX { get; } = "smb_jump-small";
         public string deathSFX { get; } = "smb_mariodie";
         public string oneUpSFX { get; } = "smb_1-up";
         public string breakBlockSFX { get; } = "smb_breakblock";
