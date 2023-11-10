@@ -259,6 +259,7 @@ namespace Sprint0
                 proj.Update(gameTime);
             }
 
+            objectManager.Update();
             camera.Update(mario);
             mario.Update(gameTime);
             luigi.Update(gameTime);

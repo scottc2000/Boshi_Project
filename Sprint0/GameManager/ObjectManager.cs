@@ -1,5 +1,6 @@
 ﻿using Sprint0.Interfaces;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Sprint0.GameMangager
 {
@@ -40,6 +41,19 @@ namespace Sprint0.GameMangager
             EntitiesToRemove = new List<ICollidable>();            
         }
 
+        public void Update()
+        {
+            foreach (var entity in EntitiesToAdd)
+            {
+                DynamicEntities.Add(entity);
+            }
+            foreach (var entity in EntitiesToRemove)
+            {
+                DynamicEntities.Remove(entity);
+            }
+            EntitiesToAdd.Clear();
+            EntitiesToRemove.Clear();
+        }
         public void AddToList()
         {
 

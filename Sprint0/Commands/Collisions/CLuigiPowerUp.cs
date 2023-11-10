@@ -16,15 +16,24 @@ namespace Sprint0.Commands.Collisions
         }
         public void Execute()
         {
-
+            ICommand command = new CRemoveDynamic(item, sprint.objects);
             if (item is RedMushroom)
+            {
                 luigi.ChangeToBig();
+            }
             else if (item is Leaf)
+            {
                 luigi.ChangeToRaccoon();
+            }
             else if (item is FireFlower)
+            {
                 luigi.ChangeToFire();
-            else if (item is OneUpMushroom) ;
+            }
+            else if (item is OneUpMushroom)
+            {
                 // increase HUD life counter
+            }
+            command.Execute();
         }
     }
 }
