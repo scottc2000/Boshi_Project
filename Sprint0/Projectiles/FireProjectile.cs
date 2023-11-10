@@ -6,6 +6,7 @@ using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Utility;
 
 namespace Sprint0.Items.Projectiles
 {
@@ -13,6 +14,9 @@ namespace Sprint0.Items.Projectiles
 
     {
         public List<AnimatedProjectile> projectiles { get; set; }
+
+        AudioManager audioManager = AudioManager.Instance;
+        FileNames fileNames = new FileNames();
 
         public Rectangle Destination { get; set; }
         public bool lefthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -35,6 +39,7 @@ namespace Sprint0.Items.Projectiles
 
         public void addProjectile(String projectileid, Vector2 position, Boolean facingLeft)
         {
+            audioManager.PlaySFX(fileNames.fireballSFX);
             projectiles.Add(projectileFactory.returnSprite("PlayerFireRight", position, facingLeft));
         }
 
@@ -60,6 +65,7 @@ namespace Sprint0.Items.Projectiles
             foreach (AnimatedProjectile p in projectiles)
             {
                 p.Draw(spriteBatch);
+                
             }
         }
     }
