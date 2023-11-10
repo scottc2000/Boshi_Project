@@ -101,7 +101,7 @@ namespace Sprint0.Collision
             
 
             /*_________ Item Collisions ______*/
-            if(entity1 is Item || entity2 is Item)
+            if(entity1 is IItem || entity2 is IItem)
                 itemCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
 
 

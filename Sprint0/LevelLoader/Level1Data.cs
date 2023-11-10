@@ -43,8 +43,5 @@ namespace Sprint0.LevelLoader
             public List<Enemy> Enemies { get; set; }
             public List<Music> Songs { get; set; }
         }
-
-
-
     }
 }
