@@ -70,17 +70,20 @@ namespace Sprint0
                 {
                     case "floor":
                         Floor floor = new Floor(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(floor);
                         objectManager.TopCollidableBlocks.Add(floor);
                         objectManager.SideCollidableBlocks.Add(floor);
                         objectManager.StaticEntities.Add(floor);
                         break;
                     case "large_block":
                         LargeBlock large_block = new LargeBlock(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(large_block);
                         objectManager.TopCollidableBlocks.Add(large_block);
                         objectManager.StaticEntities.Add(large_block);
                         break;
                     case "yellow_brick":
                         YellowBrick yellow_brick = new YellowBrick(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(yellow_brick);
                         objectManager.TopCollidableBlocks.Add(yellow_brick);
                         objectManager.BottomCollidableBlocks.Add(yellow_brick);
                         objectManager.SideCollidableBlocks.Add(yellow_brick);
@@ -88,6 +91,7 @@ namespace Sprint0
                         break;
                     case "wood_blocks":
                         WoodBlocks wood_blocks = new WoodBlocks(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(wood_blocks);
                         objectManager.TopCollidableBlocks.Add(wood_blocks);
                         objectManager.BottomCollidableBlocks.Add(wood_blocks);
                         objectManager.SideCollidableBlocks.Add(wood_blocks);
@@ -95,17 +99,20 @@ namespace Sprint0
                         break;
                     case "clouds":
                         Clouds clouds = new Clouds(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(clouds);
                         objectManager.TopCollidableBlocks.Add(clouds);
                         objectManager.StaticEntities.Add(clouds);
                         break;
                     case "pipe":
                         Pipe pipe = new Pipe(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(pipe);
                         objectManager.TopCollidableBlocks.Add(pipe);
                         objectManager.SideCollidableBlocks.Add(pipe);
                         objectManager.StaticEntities.Add(pipe);
                         break;
                     case "question_block":
                         QuestionBlock question_block = new QuestionBlock(spriteBatch, content, blockRectangle, block.x, block.y, block.width, block.height);
+                        objectManager.Blocks.Add(question_block);
                         objectManager.TopCollidableBlocks.Add(question_block);
                         objectManager.BottomCollidableBlocks.Add(question_block);
                         objectManager.SideCollidableBlocks.Add(question_block);
@@ -113,6 +120,7 @@ namespace Sprint0
                         break;
                     case "spinning_coin":
                         SpinningCoin spinning_coin = new SpinningCoin(spriteBatch, blockRectangle);
+                        objectManager.Blocks.Add(spinning_coin);
                         objectManager.TopCollidableBlocks.Add(spinning_coin);
                         objectManager.BottomCollidableBlocks.Add(spinning_coin);
                         objectManager.SideCollidableBlocks.Add(spinning_coin);
@@ -178,12 +186,14 @@ namespace Sprint0
                 {
                     IEnemies goomba = new Goomba(sprint0);
                     goomba.SetPosition(enemy.Position);
+                    objectManager.Enemies.Add(goomba);
                     objectManager.DynamicEntities.Add(goomba);
                 }
                 if (enemy.Name == "Koopa")
                 {
                     IEnemies koopa = new Koopa(sprint0);
                     koopa.SetPosition(enemy.Position);
+                    objectManager.Enemies.Add(koopa);
                     objectManager.DynamicEntities.Add(koopa);
                 }
             }
@@ -197,13 +207,17 @@ namespace Sprint0
             terrain.Draw(spriteBatch); // need to draw terrain before any game objects
 
             // Draw each game object
-            foreach (var entity in objectManager.DynamicEntities)
+            foreach (var block in objectManager.Blocks)
             {
-                entity.Draw(spriteBatch);
+                block.Draw(spriteBatch);
             }
-            foreach (var entity in objectManager.StaticEntities)
+            foreach(var item in objectManager.Items)
             {
-                entity.Draw(spriteBatch);
+                item.Draw(spriteBatch);
+            }
+            foreach (var enemy in objectManager.Enemies)
+            {
+                enemy.Draw(spriteBatch);
             }
 
             hud.Draw(spriteBatch);
@@ -217,17 +231,23 @@ namespace Sprint0
             terrain.Update(gameTime);   // need to update terrain before any game objects
 
             // Update each game object
-            foreach ( var entity in objectManager.DynamicEntities)
-            { 
-                entity.Update(gameTime);
-            }
-            foreach(var entity in objectManager.StaticEntities)
+            foreach (var block in objectManager.Blocks)
             {
-                entity.Update(gameTime);
+                block.Update(gameTime);
+            }
+            foreach (var item in objectManager.Items)
+            {
+                item.Update(gameTime);
+            }
+            foreach (var enemy in objectManager.Enemies)
+            {
+                enemy.Update(gameTime);
             }
 
             camera.Update(mario);
             hud.Update(gameTime);
+            mario.Update(gameTime);
+            luigi.Update(gameTime);
 
         }
     }

@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint0.Blocks;
 using Sprint0.Characters;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using System.Collections.Generic;
-using static Sprint0.Collision.CollisionDetector;
 
 namespace Sprint0.Collision
 {
@@ -21,7 +19,6 @@ namespace Sprint0.Collision
         private EnemyCollisionHandler enemyCollisionHandler;
 
         public enum Side { None, Vertical, Horizontal }
-
         public CollisionDetector(Sprint0 sprint, ObjectManager objects)
         {
             this.sprint = sprint;
@@ -94,33 +91,17 @@ namespace Sprint0.Collision
         /*------------------------ Handle Collision ------------------------------*/
         public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
         {
+
             /*________ Mario Collisions _______ */
-            if(entity1 is Mario && entity2 is Luigi)
-                marioCollisionHandler.PlayerCollision(entity1, entity2, side, hitarea);
-
-            if (entity1 is Mario && (entity2 is Floor || entity2 is LargeBlock || entity2 is Pipe || entity2 is WoodBlocks || entity2 is YellowBrick))
-                marioCollisionHandler.MarioStaticBlockCollision(entity1, entity2, side, hitarea);
-
-            if (entity1 is Mario && (entity2 is IItem))
-                marioCollisionHandler.MarioItemCollision(entity1, entity2, side);
-
-            if (entity1 is Mario && (entity2 is IEnemies))
-                marioCollisionHandler.MarioEnemyCollision(entity1, entity2, side);
+            if(entity1 is Mario || entity2 is Mario)
+                marioCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
 
 
             /*________ Luigi Collisions ______*/
-            if (entity1 is Luigi && entity2 is Mario)
-                marioCollisionHandler.PlayerCollision(entity1, entity2, side, hitarea);
-
-            if (entity1 is Luigi && (entity2 is Floor || entity2 is LargeBlock || entity2 is Pipe || entity2 is WoodBlocks || entity2 is YellowBrick))
-                luigiCollisionHandler.LuigiStaticBlockCollision(entity1, entity2, side);
-
-            if (entity1 is Luigi && (entity2 is IItem))
-                marioCollisionHandler.MarioItemCollision(entity1, entity2, side);
+            
 
             /*_________ Item Collisions ______*/
-            if (entity1 is IItem && (entity2 is Floor || entity2 is LargeBlock || entity2 is Pipe || entity2 is WoodBlocks || entity2 is YellowBrick))
-                itemCollisionHandler.ItemStaticBlockCollision(entity1, entity2, side);
+            
 
 
             /*________ Enemey Collisions _____*/

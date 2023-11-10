@@ -245,7 +245,7 @@ namespace Sprint0.Characters
 
         public void Update(GameTime gametime)
         {
-           // UpdateProjectiles(gametime);        
+            // UpdateProjectiles(gametime);        
 
             if (!(pose == LuigiPose.Throwing))
             {

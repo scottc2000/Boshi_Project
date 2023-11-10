@@ -30,7 +30,7 @@ namespace Sprint0.Characters
         public Mario.MarioPose pose { get; set; }
         public AnimatedSpriteMario currentSprite { get; set; }
 
-        private ObjectManager manager;
+        private LevelLoader1 level;
         public IMario decoratedMario;
         public int timer;
 
@@ -38,15 +38,15 @@ namespace Sprint0.Characters
             Color.Transparent,
             Color.White
         };
-        public DamagedMario(IMario mario, ObjectManager manager) 
+        public DamagedMario(IMario mario, LevelLoader1 level) 
         {
-            this.manager = manager;
+            this.level = level;
             decoratedMario = mario;
             health = mario.health;
             currentSprite = mario.currentSprite;
-            timer = 50;
+            timer = 75;
             State = mario.State;
-            System.Diagnostics.Debug.WriteLine("position at creation: " + position);
+            
         }
 
         public void ChangeToBig()   { decoratedMario.ChangeToBig(); }
@@ -80,15 +80,18 @@ namespace Sprint0.Characters
                 isInvinsible = false;
                 RemoveDecorator();
             }
-
+            int offset = 1;
+            position = new Vector2(position.X, position.Y - offset);
             Destination = currentSprite.destination;
             decoratedMario.Update(gametime);
-            camera.Update(decoratedMario);
+            level.camera.Update(decoratedMario);
         }
 
         void RemoveDecorator()
         {
-            manager.DynamicEntities.Insert(0, decoratedMario);
+            System.Diagnostics.Debug.WriteLine("Decorator Removed");
+            System.Diagnostics.Debug.WriteLine("Destination : " + Destination);
+            level.mario = decoratedMario;
         }
 
         public void Draw(SpriteBatch spritebatch) 

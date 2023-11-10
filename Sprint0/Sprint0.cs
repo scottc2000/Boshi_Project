@@ -59,7 +59,6 @@ namespace Sprint0
         {
             audioManager.Load(Content);
 
-            // load level
             levelLoader.Load("JSON/level1.json");
 
             ItemSpriteFactory.Instance.LoadTextures(Content);

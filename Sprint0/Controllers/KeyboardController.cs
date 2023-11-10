@@ -59,7 +59,7 @@ namespace Sprint0.Controllers
 
             RegisterPressCommand(Keys.W, new CMarioJump(mySprint, level));
             RegisterPressCommand(Keys.A, new CMarioMoveLeft(mySprint, level));
-            RegisterReleaseCommand(Keys.A, new CMarioStop(mySprint,level));
+            RegisterReleaseCommand(Keys.A, new CMarioStop(mySprint, level));
             RegisterPressCommand(Keys.S, new CMarioCrouch(mySprint, level));
             RegisterReleaseCommand(Keys.S, new CMarioStop(mySprint, level));
             RegisterPressCommand(Keys.D, new CMarioMoveRight(mySprint, level));
@@ -69,7 +69,7 @@ namespace Sprint0.Controllers
             RegisterPressCommand(Keys.Q, new CDeadMario(mySprint, level));
             RegisterPressCommand(Keys.D4, new CMarioRaccoon(mySprint, level));
             RegisterPressCommand(Keys.D3, new CMarioFire(mySprint, level));
-            RegisterPressCommand(Keys.D2, new CMarioBig(mySprint, level));
+            RegisterPressCommand(Keys.D2, new CMarioBig(mySprint, level)) ;
             RegisterPressCommand(Keys.D1, new CMarioNormal(mySprint, level));
 
             RegisterPressCommand(Keys.Up, new CLuigiJump(mySprint, level));

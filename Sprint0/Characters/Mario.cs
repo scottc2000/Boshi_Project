@@ -117,7 +117,8 @@ namespace Sprint0.Characters
         }
 
         public void Die()  
-        { 
+        {
+            health = MarioHealth.Dead;
             State.Die();
         }
         
@@ -200,8 +201,8 @@ namespace Sprint0.Characters
         }
 
         // Stuck methods
-        public void LeftStuck(GameTime gametime) { position = new Vector2(position.X + (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y); }
-        public void RightStuck(GameTime gametime) { position = new Vector2(position.X - (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y); }
+        public void LeftStuck() { position = new Vector2(position.X + 1, position.Y); }
+        public void RightStuck() { position = new Vector2(position.X - 1, position.Y); }
         public void UpStuck()   { position = new Vector2(position.X, position.Y - (gravity/2));  }
 
         public void Reverse() { velocity.X *= -1; }
@@ -218,9 +219,9 @@ namespace Sprint0.Characters
         /* ----------------------- Update & Draw --------------------*/
         public void Update(GameTime gametime)
         {
-            State.Update(gametime);
             UpdateMovement(gametime);
             applyGravity();
+            State.Update(gametime);
 
             Destination = currentSprite.destination;
             resetHits();
