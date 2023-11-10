@@ -9,18 +9,29 @@ namespace Sprint0.Characters.LuigiStates
 
         public LuigiJumpState(Luigi luigi)
         {
+            luigi.velocityY = -3.0f;
             this.luigi = luigi;
         }
 
         public void Move()
         {
-            luigi.State = new LuigiMoveState(luigi);
+            if (luigi.facingLeft)
+            {
+                luigi.velocityX = -2;
+            }
+            else
+            {
+                luigi.velocityX = 2;
+            }
+
+            // luigi.State = new LuigiMoveState(luigi);
         }
 
         public void Jump()
         {
             luigi.State = new LuigiJumpState(luigi);
         }
+
         public void Fly() { }
         public void Fall()
         {
@@ -51,7 +62,7 @@ namespace Sprint0.Characters.LuigiStates
         {
             if (luigi.timeGap < 500 )
             {
-                luigi.velocityY = -3.0f;
+                //luigi.velocityY = -3.0f;
             }
             else
             {
