@@ -59,8 +59,8 @@ namespace Sprint0.Characters.MarioStates
         }
         public void UpdateVelocity()
         {
-            mario.velocity.X *= 0;
-            mario.velocity.Y *= 0;
+            mario.velocityX *= 0;
+            mario.velocityY *= 0;
         }
         public void Update(GameTime gametime)
         {

@@ -58,6 +58,7 @@ namespace Sprint0.Controllers
             //RegisterCommand(Keys.D0, new Reset(mySprint, gametime, Content));
 
             RegisterPressCommand(Keys.W, new CMarioJump(mySprint, level));
+            RegisterReleaseCommand(Keys.W, new CMarioFall(mySprint, level));
             RegisterPressCommand(Keys.A, new CMarioMoveLeft(mySprint, level));
             RegisterReleaseCommand(Keys.A, new CMarioStop(mySprint, level));
             RegisterPressCommand(Keys.S, new CMarioCrouch(mySprint, level));
