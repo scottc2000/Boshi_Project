@@ -35,6 +35,7 @@ namespace Sprint0.Characters
         private LevelLoader1 level;
         public ILuigi decoratedLuigi;
         public int timer;
+        int ySnapshot;
 
         private List<Color> colors = new List<Color> {
             Color.Transparent,
@@ -48,6 +49,7 @@ namespace Sprint0.Characters
             currentSprite = luigi.currentSprite;
             timer = 75;
             State = luigi.State;
+            ySnapshot = (int)luigi.position.Y;
             
         }
 
@@ -65,6 +67,7 @@ namespace Sprint0.Characters
 
         public void Jump() { decoratedLuigi.Jump();  }
         //public void Fly() { decoratedLuigi.Fly(); }
+        public void Fall() { decoratedLuigi.Fall(); }
 
         public void Move() { decoratedLuigi.Move();  }
 
@@ -84,7 +87,7 @@ namespace Sprint0.Characters
             }
             int offset = 1;
 
-            position = new Vector2(position.X, position.Y - offset);
+            position = new Vector2(position.X, ySnapshot);
             
             Destination = currentSprite.destination;
             decoratedLuigi.Update(gametime);

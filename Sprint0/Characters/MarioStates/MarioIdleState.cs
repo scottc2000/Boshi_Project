@@ -7,6 +7,7 @@ namespace Sprint0.Characters.MarioStates
     public class MarioIdleState : ICharacterState
     {
         private Mario mario;
+        private AudioManager audioManager = AudioManager.Instance;
         private FileNames FileNames = new FileNames();
         public MarioIdleState(Mario mario)
         {
@@ -23,7 +24,6 @@ namespace Sprint0.Characters.MarioStates
             if (mario.timeGap == 0)
             {
                 mario.State = new MarioJumpState(mario);
-                AudioManager audioManager = AudioManager.Instance;
                 audioManager.PlaySFX(FileNames.jumpSFX);
             }
         }
