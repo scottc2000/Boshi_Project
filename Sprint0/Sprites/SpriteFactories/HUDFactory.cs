@@ -46,35 +46,31 @@ namespace Sprint0.Sprites.SpriteFactories
             return new StaticHUD(hudSpriteSheet, new Vector2(element.spritesheetpos[0], element.spritesheetpos[1]), new Vector2(element.size[0], element.size[1]));
         }
 
-        /*--------------------------- Update Coin Sprites ------------------------------------*/
-        public ISprite UpdateCoins(int coins)
+        /*--------------------------- Update Digit Sprites ------------------------------------*/
+        public ISprite UpdateDigits(int value)
         {
             List<Rectangle> rectangles = new List<Rectangle>();
-
-            // check for 0 coins
-            if (coins == 0)
+            System.Diagnostics.Debug.WriteLine("Value: " + value);
+            // check for 0
+            if (value == 0)
             {
-                Root element = deserializedGameData.FirstOrDefault(item => item.number == coins);
+                Root element = deserializedGameData.FirstOrDefault(item => item.number == value);
                 rectangles.Add(new Rectangle(element.spritesheetpos[0], element.spritesheetpos[1], element.size[0], element.size[1]));
             }
 
-            // draw each digit sprite for coins 1 - 99
-            while (coins > 0)
+            // draw each digit sprite
+            while (value > 0)
             {
-                int digit = coins % 10;
-                coins = coins / 10;
+                int digit = value % 10;
+                value = value / 10;
+                System.Diagnostics.Debug.WriteLine("Digit: " + digit);
+                System.Diagnostics.Debug.WriteLine("Value: " + value);
                 Root element = deserializedGameData.FirstOrDefault(item => item.number == digit);
+                System.Diagnostics.Debug.WriteLine("Element " + element.number);   
                 rectangles.Add(new Rectangle(element.spritesheetpos[0], element.spritesheetpos[1], element.size[0], element.size[1]));
             }
            
-            return new CoinStats(hudSpriteSheet, rectangles);
-        }
-
-        /*--------------------------- Update Life Sprites ------------------------------------*/
-        public ISprite UpdateLives(int lives)
-        {
-            Root matchingElement = deserializedGameData.FirstOrDefault(item => item.number == lives);
-            return new LifeStats(hudSpriteSheet, new Vector2(matchingElement.spritesheetpos[0], matchingElement.spritesheetpos[1]), new Vector2(matchingElement.size[0], matchingElement.size[1]));
+            return new Digits(hudSpriteSheet, rectangles);
         }
     }
 }

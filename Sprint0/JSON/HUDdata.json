@@ -35,13 +35,18 @@
     "size": [ 8, 7 ]
   },
   {
-    "number": 8,
+    "number": 7,
     "spritesheetpos": [ 147, 31 ],
     "size": [ 8, 7 ]
   },
   {
-    "number": 9,
+    "number": 8,
     "spritesheetpos": [ 157, 31 ],
+    "size": [ 8, 7 ]
+  },
+  {
+    "number": 9,
+    "spritesheetpos": [ 167, 31 ],
     "size": [ 8, 7 ]
   },
   {
