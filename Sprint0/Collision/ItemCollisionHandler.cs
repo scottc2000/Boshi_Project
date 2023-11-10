@@ -11,6 +11,12 @@ namespace Sprint0.Collision
         {
             this.sprint = sprint;
         }
+
+        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side)
+        {
+
+        }
+        
         public void ItemStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
 
