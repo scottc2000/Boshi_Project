@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Utility;
 
 namespace Sprint0.Sprites.Players
 {
@@ -12,13 +13,14 @@ namespace Sprint0.Sprites.Players
         public Rectangle destination;
         public string spriteName;
 
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+
         SpriteEffects spriteEffect;
 
         // Frame stats
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
-        public int millisecondsPerFrame = 100;
 
         public AnimatedSpriteMario(Rectangle[] currentFrames, Texture2D texture, SpriteEffects effect, string name)
         {
@@ -35,9 +37,9 @@ namespace Sprint0.Sprites.Players
             // changes spriteframe every 100 milliseconds
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (timeSinceLastFrame > millisecondsPerFrame)
+            if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
             {
-                timeSinceLastFrame -= millisecondsPerFrame;
+                timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
                 CurrentFrame++;
                 if (CurrentFrame == TotalFrames)
                 {
