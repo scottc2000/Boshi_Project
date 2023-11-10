@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
-using Sprint0.Characters;
 
 namespace Sprint0.Camera
 {
@@ -17,31 +16,24 @@ namespace Sprint0.Camera
         public Matrix transform;    // Used to draw camera to screen
         Viewport view;              // view port
         Vector2 center;         // point to focus on
-        float leftBound;        // left bound to prevent mario from moving off level
-        CameraNumbers cameraNumbers = new CameraNumbers();
+        CameraNumbers cameraNumbers;
+
         public MarioCamera(Viewport newview)
         {
             view = newview;
-            leftBound = 3; ;
+            cameraNumbers = new CameraNumbers();
         }
         
         public void Update(IMario mario)
         {
-            int marioSize = cameraNumbers.normalMarioSize;
-            if (mario.health.Equals(Mario.MarioHealth.Normal) || mario.health.Equals(Mario.MarioHealth.Dead) )
-            {
-                marioSize = cameraNumbers.normalMarioSize;
-            } else
-            {
-                marioSize = cameraNumbers.bigMarioSize;
-            }
             // center camera on mario
-            center = new Vector2(mario.position.X + (marioSize / cameraNumbers.sizeDivider) - cameraNumbers.XCcenterOffset, mario.position.Y + (marioSize / 2) - cameraNumbers.YCenterXOffset);
+            center = new Vector2(mario.position.X + (mario.Destination.Width / cameraNumbers.sizeDivider) - cameraNumbers.XCcenterOffset, 
+                mario.position.Y + (mario.Destination.Height / cameraNumbers.sizeDivider) - cameraNumbers.YCenterXOffset);
 
             // if mario moves past the left bound, reset the camera
-            if (center.X < leftBound)
+            if (center.X < cameraNumbers.leftBound)
             {
-                center.X = leftBound;
+                center.X = cameraNumbers.leftBound;
             }
 
             // zoom camera to mimic final game functionality

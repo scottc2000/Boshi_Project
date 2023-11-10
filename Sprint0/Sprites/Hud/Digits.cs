@@ -10,7 +10,7 @@ namespace Sprint0.Sprites.Hud
     public class Digits : ISprite
     {
         private Texture2D texture;
-        private HudNumbers numbers;
+        private SpriteNumbers spriteNumbers;
 
         private Rectangle[] spriteFrames;
         private Rectangle[] destination;
@@ -19,7 +19,7 @@ namespace Sprint0.Sprites.Hud
         public Digits(Texture2D texture, List<Rectangle> frames) 
         { 
             this.texture = texture;
-            numbers = new HudNumbers();
+            spriteNumbers = new SpriteNumbers();
 
             count = frames.Count;
             spriteFrames = new Rectangle[count];
@@ -32,9 +32,10 @@ namespace Sprint0.Sprites.Hud
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location) 
         {
-            for (int i = spriteFrames.Count() - 1; i >= 0;i--) 
+            for (int i = spriteFrames.Count() - 1; i >= 0; i--) 
             {
-               destination[i] = new Rectangle((int)location.X - (numbers.digitOffset * i), (int)location.Y, spriteFrames[i].Width * 2, spriteFrames[i].Height * 2);
+               destination[i] = new Rectangle((int)location.X - (spriteNumbers.digitOffset * i), 
+                   (int)location.Y, spriteFrames[i].Width * spriteNumbers.HUDDrawMultiplier, spriteFrames[i].Height * spriteNumbers.HUDDrawMultiplier);
             }
 
             for (int i = 0; i < spriteFrames.Count(); i++)
