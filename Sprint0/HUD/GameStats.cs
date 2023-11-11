@@ -34,9 +34,21 @@ namespace Sprint0.HUD
         private ISprite timerSprite;
         private ISprite powerSprite;
 
+        private Vector2 staticPosition;
+        private Vector2 letterPosition;
+        private Vector2 cardsPosition;
+        private Vector2 worldPosition;
+        private Vector2 coinPosition;
+        private Vector2 livesPosition;
+        private Vector2 scorePosition;
+        private Vector2 timerPosition;
+
+        private MarioCamera camera;
+
         public GameStats(Sprint0 sprint)
         {
             this.sprint = sprint;
+            camera = sprint.camera;
             numbers = new HudNumbers();
 
             // Initial stats
@@ -59,6 +71,16 @@ namespace Sprint0.HUD
             scoreSprite = mySpriteFactory.UpdateDigits(score);
             timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
             //powerSprite = mySpriteFactory.UpdatePower(score);
+
+            // Initialize starting location for HUD
+            staticPosition = numbers.staticStartingPosition;
+            letterPosition = numbers.letterStartingPosition;
+            cardsPosition = numbers.cardsStartingPosition;
+            worldPosition = numbers.worldStartingPosition;
+            coinPosition = numbers.coinStartingPosition;
+            livesPosition = numbers.livesStartingPosition;
+            scorePosition = numbers.scoreStartingPosition;
+            timerPosition = numbers.timerStartingPosition;
 
         }
 
@@ -124,17 +146,26 @@ namespace Sprint0.HUD
             mySpriteFactory = new HUDFactory(sprint);
             mySpriteFactory.LoadAllTextures(sprint.Content);
             //timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
+
+            staticPosition.X = camera.center.X + numbers.staticPositionOffset;
+            letterPosition.X = staticPosition.X + numbers.letterPositionOffset;
+            cardsPosition.X = staticPosition.X + numbers.cardsPositionOffset;
+            worldPosition.X = staticPosition.X + numbers.worldPositionOffset;
+            coinPosition.X = staticPosition.X + numbers.coinPositionOffset;
+            livesPosition.X = staticPosition.X + numbers.livesPositionOffset;
+            scorePosition.X = staticPosition.X + numbers.scorePositionOffset;
+            timerPosition.X = staticPosition.X + numbers.timerPositionOffset;
         }
         public void Draw(SpriteBatch spritebatch)
         {
-            staticSprite.Draw(spritebatch, numbers.staticStartingPosition);
-            letter.Draw(spritebatch, numbers.letterStartingPosition);
-            cards.Draw(spritebatch, numbers.cardsStartingPosition);
-            world.Draw(spritebatch, numbers.worldStartingPosition);
-            coinSprite.Draw(spritebatch, numbers.coinStartingPosition);
-            lifeSprite.Draw(spritebatch, numbers.livesStartingPosition);
-            scoreSprite.Draw(spritebatch, numbers.scoreStartingPosition);
-            timerSprite.Draw(spritebatch, numbers.timerStartingPosition);
+            staticSprite.Draw(spritebatch, staticPosition);
+            letter.Draw(spritebatch, letterPosition);
+            cards.Draw(spritebatch, cardsPosition);
+            world.Draw(spritebatch, worldPosition);
+            coinSprite.Draw(spritebatch, coinPosition);
+            lifeSprite.Draw(spritebatch, livesPosition);
+            scoreSprite.Draw(spritebatch, scorePosition);
+            timerSprite.Draw(spritebatch, timerPosition);
         }
     }
 }

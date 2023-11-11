@@ -27,6 +27,15 @@ namespace Sprint0.Utility
         public Vector2 cardsStartingPosition { get; } = new Vector2(375, 450);
         public Vector2 worldStartingPosition { get; } = new Vector2(125, 464);
 
+        public int staticPositionOffset { get; } = 35;
+        public int coinPositionOffset { get; } = 280;
+        public int livesPositionOffset { get; } = 65;
+        public int scorePositionOffset { get; } = 200;
+        public int timerPositionOffset { get; } = 280;
+        public int letterPositionOffset { get; } = 5;
+        public int cardsPositionOffset { get; } = 325;
+        public int worldPositionOffset { get; } = 75;
+
         // Sprite details
         public string staticHUD { get; } = "static";
         public string letter { get; } = "letter";
