@@ -11,6 +11,9 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
+
+        public float gravity = 1;
+
         public Rectangle Destination { get; set; }
         public bool moveRight { get; set; }
         public bool lefthit { get; set; }
@@ -33,9 +36,15 @@ namespace Sprint0.Items
             position.Y = pos[1];
         }
 
+        public void applyGravity()
+        {
+            position = new Vector2(position.X, position.Y + gravity);
+        }
+
         public void Update(GameTime gameTime)
         {
             aniItem.Update(gameTime);
+            applyGravity();
             Destination = aniItem.itemPosition;
         }
 
