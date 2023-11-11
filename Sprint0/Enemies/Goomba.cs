@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Enemies.GoombaStates;
+using Sprint0.Enemies.GooombaStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.goombaSprite;
 using Sprint0.Sprites.Players;
@@ -17,14 +18,20 @@ namespace Sprint0.Enemies
         public Vector2 initialposition;
         public Sprint0 mySprint;
         public bool facingLeft { get; set;}
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
 
         public GoombaMoveSprite currentSprite;
         public EnemySpriteFactoryGoomba mySpriteFactory;
 
         public Goomba(Sprint0 sprint0)
         {
-            this.state = new RightMovingGoombaState(this);
+            this.state = new LeftMovingGoombaState(this);
 
             this.facingLeft = true;
             this.mySprint = sprint0;
@@ -33,7 +40,7 @@ namespace Sprint0.Enemies
             mySpriteFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("GoombaMove");
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
         }
 
         public void SetPosition(List<int> position)
@@ -51,6 +58,7 @@ namespace Sprint0.Enemies
 
         public void BeStomped()
         {
+            currentSprite = mySpriteFactory.returnSprite("GoombaStomped");
             state.BeStomped();
         }
 
@@ -67,7 +75,7 @@ namespace Sprint0.Enemies
         public void Update(GameTime gameTime)
         {
             currentSprite.Update(gameTime);
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
             state.Update();
         }
 
@@ -76,7 +84,7 @@ namespace Sprint0.Enemies
             if (facingLeft)
             {
                 position.X -= 1;
-                if (position.X < initialposition.X-175)
+                if (position.X < initialposition.X-160)
                 {
                     ChangeDirection();
                 }

@@ -6,6 +6,7 @@ namespace Sprint0.Characters.LuigiStates
     internal class LuigiJumpState : ICharacterState
     {
         private Luigi luigi;
+        private float yVelocity = -3.0f;
 
         public LuigiJumpState(Luigi luigi)
         {
@@ -14,17 +15,20 @@ namespace Sprint0.Characters.LuigiStates
 
         public void Move()
         {
-            luigi.State = new LuigiMoveState(luigi);
+            luigi.velocityX = 2;
+            
         }
 
         public void Jump()
         {
             luigi.State = new LuigiJumpState(luigi);
         }
-        public void Fly() { }
+        public void Fly() {
+            //luigi.State = new LuigiFlyState(luigi);
+            }
         public void Fall()
         {
-
+            yVelocity = 0f;
         }
 
         public void Crouch()
@@ -38,20 +42,19 @@ namespace Sprint0.Characters.LuigiStates
         }
         public void Stop()
         {
-            luigi.velocityY = 0;
             luigi.State = new LuigiIdleState(luigi);
         }
 
         public void Die()
         {
-            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            luigi.State = new DeadLuigiState(luigi);
         }
 
         public void UpdateVelocity(GameTime gametime)
         {
             if (luigi.timeGap < 500 )
             {
-                luigi.velocityY = -3.0f;
+                luigi.velocityY = yVelocity;
             }
             else
             {
@@ -99,6 +102,11 @@ namespace Sprint0.Characters.LuigiStates
                     luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiJumpRight");
                     
                 }
+            }
+
+            if (luigi.uphit && luigi.timeGap > 50)
+            {
+                luigi.Stop();
             }
 
             

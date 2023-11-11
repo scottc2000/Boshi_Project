@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Sprites.goombaSprite;
 using Sprint0.Sprites.Players;
+using Sprint0.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,15 +20,17 @@ namespace Sprint0.Sprites.SpriteFactories
         private Texture2D texture;
         private JsonElement enemyData;
         private Root deserializedEnemyData;
+        private FileNames filenames;
 
         GoombaMoveSprite generatedEnemy;
 
         public EnemySpriteFactoryGoomba(Enemies.Goomba goomba)
         {
+            filenames = new FileNames();
             this.goomba = goomba;
 
             // opens file that contains sprite information and deserializes it
-            StreamReader r = new StreamReader("JSON/enemydata.json");
+            StreamReader r = new StreamReader(filenames.enemyData);
             string enemydatajson = r.ReadToEnd();
 
             deserializedEnemyData = JsonSerializer.Deserialize<Root>(enemydatajson);
@@ -36,7 +39,7 @@ namespace Sprint0.Sprites.SpriteFactories
         }
         public void LoadTextures(ContentManager content)
         {
-            texture = content.Load<Texture2D>("marioenemy");
+            texture = content.Load<Texture2D>(filenames.enemySheet);
 
         }
 
@@ -58,13 +61,13 @@ namespace Sprint0.Sprites.SpriteFactories
 
             string spriteName = "X";
 
-            Sprite sprite = deserializedEnemyData.goomba.Sprites;
-            if (string.Equals(sprite.name, spriteType))
-            {
-                currentFrames = generateSprites(sprite.spritesheet_pos, sprite.hitbox);
-                spriteName = sprite.name;
+            foreach(Sprite sprite in deserializedEnemyData.goomba.Sprites){
+                if (string.Equals(sprite.name, spriteType))
+                {
+                    currentFrames = generateSprites(sprite.spritesheet_pos, sprite.hitbox);
+                    spriteName = sprite.name;
+                }
             }
-
 
             return new GoombaMoveSprite(currentFrames, texture, goomba, spriteName);
         }

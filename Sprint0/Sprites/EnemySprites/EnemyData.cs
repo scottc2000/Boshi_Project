@@ -10,7 +10,7 @@ namespace Sprint0.Sprites.EnemySprites
     {
         public class Goomba
         {
-            public Sprite Sprites { get; set; }
+            public List<Sprite> Sprites { get; set; }
         }
 
         public class HammerBro

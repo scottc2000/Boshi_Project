@@ -1,23 +1,33 @@
-﻿using Sprint0.Interfaces;
+﻿using Sprint0.Commands.Mario;
+using Sprint0.Interfaces;
+using System.Reflection.Emit;
 
 namespace Sprint0.Commands.Luigi
 {
     internal class CLuigiJump : ICommand
     {
-        private Sprint0 mySprint0;
-        private ICharacter luigi;
-        public CLuigiJump(Sprint0 Sprint0)
+        private Sprint0 sprint;
+        private ILuigi luigi;
+        private LevelLoader1 level;
+        public CLuigiJump(Sprint0 sprint, LevelLoader1 level)
         {
-            mySprint0 = Sprint0;
+            this.sprint = sprint;
+            this.level = level;
+            luigi = level.luigi;
         }
         public void Execute()
         {
 
-            luigi = mySprint0.objects.luigi;
+            if (luigi.health == Characters.Luigi.LuigiHealth.Raccoon)
+            {
+                ICommand flyCommand = new CLuigiFly(sprint, level);
+                flyCommand.Execute();
+            }
+            else
+            {
+                luigi.Jump();
+            }
 
-            
-            luigi.Jump();
-            
 
         }
 

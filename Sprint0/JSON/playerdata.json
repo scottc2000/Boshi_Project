@@ -74,9 +74,15 @@
           "hitbox": [ 16, 17 ],
           "facingLeft": false,
           "looping": false
+        },
+
+        {
+          "name": "LuigiDead",
+          "spritesheet_pos": [ [ 307, 16 ] ],
+          "hitbox": [ 16, 16 ],
+          "facingLeft": false,
+          "looping": false
         }
-
-
 
       ]
     },
@@ -279,6 +285,24 @@
         },
 
         {
+          "name": "LuigiFlyLeft",
+          "spritesheet_pos": [ [ 261, 436 ] ],
+          "hitbox": [ 21, 28 ],
+          "facingLeft": true,
+          "looping": false
+
+        },
+
+        {
+          "name": "LuigiFlyRight",
+          "spritesheet_pos": [ [ 261, 436 ] ],
+          "hitbox": [ 21, 28 ],
+          "facingLeft": false,
+          "looping": false
+
+        },
+
+        {
           "name": "LuigiJumpLeft",
           "spritesheet_pos": [ [ 105, 436 ] ],
           "hitbox": [ 23, 28 ],
@@ -333,7 +357,33 @@
           "hitbox": [ 24, 28 ],
           "facingLeft": false,
           "looping": false
+        },
+
+        {
+          "name": "LuigtBoostLeft",
+          "spritesheet_pos": [
+            [ 209, 436 ],
+            [ 234, 436 ]
+          ],
+          "hitbox": [ 22, 28 ],
+          "facingLeft": true,
+          "looping": true
+
+        },
+
+        {
+          "name": "LuigiBoostRight",
+          "spritesheet_pos": [
+            [ 209, 436 ],
+            [ 234, 436 ]
+          ],
+          "hitbox": [ 22, 28 ],
+          "facingLeft": false,
+          "looping": true
+
         }
+
+
       ]
     }
 

@@ -11,7 +11,7 @@ namespace Sprint0.Commands.Collisions
         public CMarioTakeDamage(Sprint0 sprint)
         {
             this.sprint = sprint;
-            mario = this.sprint.objects.mario;
+            mario = this.sprint.levelLoader.mario;
         }
 
         public void Execute()
@@ -27,25 +27,25 @@ namespace Sprint0.Commands.Collisions
                     }
                 case Characters.Mario.MarioHealth.Big:
                     {
-                        IMario damagedMario = new DamagedMario(mario, sprint.objects);
+                        IMario damagedMario = new DamagedMario(mario, sprint.levelLoader);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
-                        sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
+                        sprint.levelLoader.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToNormal();
                         break;
                     }
                 case Characters.Mario.MarioHealth.Fire:
                     {
-                        IMario damagedMario = new DamagedMario(mario, sprint.objects);
+                        IMario damagedMario = new DamagedMario(mario, sprint.levelLoader);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
-                        sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
+                        sprint.levelLoader.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToBig();
                         break;
                     }
                 case Characters.Mario.MarioHealth.Raccoon:
                     {
-                        IMario damagedMario = new DamagedMario(mario, sprint.objects);
+                        IMario damagedMario = new DamagedMario(mario, sprint.levelLoader);
                         damagedMario.isInvinsible = true; // Set Mario as invincible
-                        sprint.objects.mario = damagedMario; // Update the game manager to use DamagedMario
+                        sprint.levelLoader.mario = damagedMario; // Update the game manager to use DamagedMario
                         mario.ChangeToBig();
                         break;
                     }

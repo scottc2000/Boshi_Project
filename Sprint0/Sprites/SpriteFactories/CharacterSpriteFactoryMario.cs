@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Sprites.Players;
+using Sprint0.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,13 +20,15 @@ namespace Sprint0.Sprites.SpriteFactories
         private SpriteEffects effect;
         private JsonElement playerData;
         private Root deserializedPlayerData;
+        private FileNames filenames;
 
         AnimatedSpriteMario generatedCharacter;
         public CharacterSpriteFactoryMario(Characters.Mario mario)
         {
             this.mario = mario;
+            filenames = new FileNames();
 
-            StreamReader r = new StreamReader("JSON/playerdata.json");
+            StreamReader r = new StreamReader(filenames.playerData);
             string playerdatajson = r.ReadToEnd();
 
             deserializedPlayerData = JsonSerializer.Deserialize<Root>(playerdatajson);
@@ -34,7 +37,7 @@ namespace Sprint0.Sprites.SpriteFactories
         }
         public void LoadTextures(ContentManager content)
         {
-            texture = content.Load<Texture2D>("SpriteImages/playerssclear");
+            texture = content.Load<Texture2D>(filenames.playerSheet);
 
         }
 

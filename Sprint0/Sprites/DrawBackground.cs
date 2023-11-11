@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters;
-using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
-using System;
+using Sprint0.Utility;
 
 namespace Sprint0.Sprites
 {
@@ -12,17 +10,17 @@ namespace Sprint0.Sprites
         private Texture2D texture;
 
         // Rectangles
-        private Rectangle[] spriteFrames;
         private Rectangle destination;
         public string spriteName;
 
         SpriteEffects spriteEffect;
 
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+
         // Frame stats
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
-        public int millisecondsPerFrame = 100;
 
         public DrawBackground(Texture2D texture, Rectangle rectangle)
         {
@@ -35,9 +33,9 @@ namespace Sprint0.Sprites
             // changes spriteframe every 100 milliseconds
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (timeSinceLastFrame > millisecondsPerFrame)
+            if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
             {
-                timeSinceLastFrame -= millisecondsPerFrame;
+                timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
                 CurrentFrame++;
                 if (CurrentFrame == TotalFrames)
                 {

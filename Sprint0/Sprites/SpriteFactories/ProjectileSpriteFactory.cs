@@ -1,14 +1,12 @@
-﻿using System;
-using static Sprint0.Sprites.Players.PlayerData;
-using System.IO;
-using System.Text.Json;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using static Sprint0.Sprites.Projectile.ProjectileData;
 using Sprint0.Sprites.Projectile;
+using Sprint0.Utility;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using static Sprint0.Sprites.Projectile.ProjectileData;
 
 namespace Sprint0.Sprites.SpriteFactories
 {
@@ -19,10 +17,12 @@ namespace Sprint0.Sprites.SpriteFactories
 
         AnimatedProjectile returnedSprite;
         Rectangle[] sprites;
+        private FileNames filenames;
 
         public ProjectileSpriteFactory()
         {
-            StreamReader r = new StreamReader("JSON/projectiledata.json");
+            filenames = new FileNames();
+            StreamReader r = new StreamReader(filenames.projectileData);
             string projdatajson = r.ReadToEnd();
 
             deserializedData = JsonSerializer.Deserialize<ProjRoot>(projdatajson);
@@ -30,7 +30,7 @@ namespace Sprint0.Sprites.SpriteFactories
 
         public void LoadTextures(ContentManager content)
         {
-            texture = content.Load<Texture2D>("marioenemy");
+            texture = content.Load<Texture2D>(filenames.enemySheet);
 
         }
 

@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
-using Sprint0.Sprites.SpriteFactories;
 
 namespace Sprint0.Blocks
 {
@@ -21,16 +13,21 @@ namespace Sprint0.Blocks
         public int height { get; set; }
         private ISprite sprite;
         private Vector2 location { get; set; }
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
+        private int totalFrames;
+        private float frameTimer;
+        private float frameInterval;
 
-        public YellowBrick(SpriteBatch spriteBatch, ContentManager content, int x, int y, int width, int height)
+        public YellowBrick(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-            BlockSpriteFactory.Instance.LoadTextures(content);
-            BlockSpriteFactory.Instance.LoadSpriteLocations(content);
-            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "yellow_brick", new Vector2(x, y));
+            Destination = blockRectangle;
+            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "yellow_brick", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
 
         public void Update(GameTime gameTime)
@@ -41,7 +38,25 @@ namespace Sprint0.Blocks
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, location);
-
         }
+
+        public void Bump(GameTime gameTime)
+        {
+            frameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (frameTimer >= frameInterval)
+            {
+                for (int i = 0; i < totalFrames / 2; i++)
+                {
+                    Destination = new Rectangle(Destination.X, Destination.Y - 2 * (i + 1), Destination.Width, Destination.Height);
+                }
+                for (int i = totalFrames / 2; i > 0 / 2; i--)
+                {
+                    Destination = new Rectangle(Destination.X, Destination.Y + 2 * (i + 1), Destination.Width, Destination.Height);
+                }
+                frameTimer = 0f;
+            }
+        }
+
     }
 }

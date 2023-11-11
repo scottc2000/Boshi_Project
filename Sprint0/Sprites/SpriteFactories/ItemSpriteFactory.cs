@@ -1,11 +1,18 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Items;
+using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
 using System.IO;
-using System.Text.Json;
 using static Sprint0.Sprites.ItemSprites.itemdata;
+using System.Text.Json;
+using Sprint0.Sprites.ItemSprites;
+using Sprint0.Utility;
 
 namespace Sprint0.Sprites.SpriteFactories
 {
@@ -15,13 +22,15 @@ namespace Sprint0.Sprites.SpriteFactories
         private Rectangle[] currentFrames;
 
         private Root deserializedItemData;
+        private FileNames filenames;
 
         private static ItemSpriteFactory instance = new ItemSpriteFactory();
         public static ItemSpriteFactory Instance { get { return instance; } }
 
         public ItemSpriteFactory()
         {
-            StreamReader r = new StreamReader("JSON/itemdata.json");
+            filenames = new FileNames();
+            StreamReader r = new StreamReader(filenames.itemData);
             string itemdatajson = r.ReadToEnd();
 
             deserializedItemData = JsonSerializer.Deserialize<Root>(itemdatajson);
@@ -29,7 +38,7 @@ namespace Sprint0.Sprites.SpriteFactories
 
         public void LoadTextures(ContentManager content)
         {
-            texture = content.Load<Texture2D>("NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs");
+            texture = content.Load<Texture2D>(filenames.itemSheet);
         }
 
         public Rectangle[] generateSprites(List<List<int>> sheetpos, List<int> hitbox)

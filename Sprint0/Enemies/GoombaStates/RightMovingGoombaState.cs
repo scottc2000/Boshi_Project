@@ -25,7 +25,7 @@ namespace Sprint0.Enemies.GoombaStates
 
         public void BeStomped()
         {
-
+            goomba.state = new StompedGoombaState(goomba);
         }
 
         public void BeFlipped()

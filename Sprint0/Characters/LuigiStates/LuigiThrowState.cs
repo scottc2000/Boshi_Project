@@ -1,11 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.LuigiStates
 {
     internal class LuigiThrowState : ICharacterState
     {
         private Luigi luigi;
+        private AudioManager audioManager = AudioManager.Instance;
+        private FileNames FileNames = new FileNames();
 
         public LuigiThrowState(Luigi luigi)
         {
@@ -20,8 +25,7 @@ namespace Sprint0.Characters.LuigiStates
         public void Jump()
         {
             luigi.State = new LuigiJumpState(luigi);
-            AudioManager audioManager = AudioManager.Instance;
-            audioManager.PlaySFX("jump");
+            audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly() { }
         public void Fall()
@@ -42,11 +46,9 @@ namespace Sprint0.Characters.LuigiStates
         {
 
         }
-
-        public void TakeDamage() { }
         public void Die()
         {
-            // mario.marioSprite = CharacterSpriteFactory.Instance.CreateDeadMarioSprite();
+            luigi.State = new DeadLuigiState(luigi);
         }
         public void Update(GameTime gametime)
         {
