@@ -1,4 +1,4 @@
-﻿using Sprint0.Enemies.GooombaStates;
+﻿using Sprint0.Enemies.GoombaStates;
 using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -6,26 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Enemies.GoombaStates
+namespace Sprint0.Enemies.GooombaStates
 {
-    public class RightMovingGoombaState : IEnemyState
+    public class StompedGoombaState : IEnemyState
     {
         private readonly Goomba goomba;
 
-        public RightMovingGoombaState (Goomba goomba)
+        public StompedGoombaState(Goomba goomba)
         {
             this.goomba = goomba;
         }
 
         public void ChangeDirection()
         {
-            goomba.state = new LeftMovingGoombaState(goomba);
-            goomba.facingLeft = true;
+            
         }
 
         public void BeStomped()
         {
-            goomba.state = new StompedGoombaState(goomba);
+
         }
 
         public void BeFlipped()
@@ -35,7 +34,7 @@ namespace Sprint0.Enemies.GoombaStates
 
         public void Update()
         {
-            goomba.Move();
+            goomba.currentSprite = goomba.mySpriteFactory.returnSprite("GoombaStomped");
         }
     }
 }

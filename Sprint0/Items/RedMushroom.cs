@@ -10,9 +10,10 @@ namespace Sprint0.Items
     public class RedMushroom : IItem
     {
         private AniItemSprite aniItem;
-        private Vector2 position;
+        public Vector2 position;
 
         private int itemSpeed = 1;
+        public float gravity = 1;
 
         public bool moveRight { get; set; }
 
@@ -39,6 +40,11 @@ namespace Sprint0.Items
             position.Y = pos[1];
         }
 
+        public void applyGravity()
+        {
+            position = new Vector2(position.X, position.Y + gravity);
+        }
+
         public void Update(GameTime gameTime)
         {
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -52,6 +58,7 @@ namespace Sprint0.Items
                 position.X -= itemSpeed;
                 timer = 0;
             }
+            applyGravity();
             Destination = aniItem.itemPosition;
         }
 
