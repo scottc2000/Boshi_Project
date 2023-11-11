@@ -8,6 +8,7 @@ namespace Sprint0.Characters.LuigiStates
     public class LuigiMoveState : ICharacterState
     {
         private Luigi luigi;
+        private AudioManager audioManager = AudioManager.Instance;
         private FileNames FileNames = new FileNames();
 
         public LuigiMoveState(Luigi luigi)
@@ -24,7 +25,6 @@ namespace Sprint0.Characters.LuigiStates
         public void Jump()
         {
             luigi.State = new LuigiJumpState(luigi);
-            AudioManager audioManager = AudioManager.Instance;
             audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly()
@@ -57,7 +57,7 @@ namespace Sprint0.Characters.LuigiStates
 
         public void UpdateVelocity()
         {
-            luigi.velocityX = 3.0f;
+            luigi.velocityX = 2.0f;
             luigi.velocityY = 0;
         }
 

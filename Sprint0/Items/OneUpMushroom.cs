@@ -14,7 +14,7 @@ namespace Sprint0.Items
 
         private int itemSpeed = 1;
 
-        public bool moveRight = false;
+        public bool moveRight { get; set; }
 
         private float timer = 0f;
         private int interval = 15;
@@ -29,6 +29,7 @@ namespace Sprint0.Items
         public OneUpMushroom()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("OneUpMushroom");
+            moveRight = false;
         }
 
         public void setPosition(List<int> pos)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +26,5 @@ namespace Sprint0.Utility
 
         // Sprite details
         public string staticHUD { get; } = "static";
-        public int digitOffset { get; } = 16;
     }
 }

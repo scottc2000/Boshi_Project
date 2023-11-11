@@ -7,6 +7,7 @@ namespace Sprint0.Characters.MarioStates
     public class MarioMoveState : ICharacterState
     {
         private Mario mario;
+        private AudioManager audioManager = AudioManager.Instance;
         private FileNames FileNames = new FileNames();
 
         public MarioMoveState(Mario mario)
@@ -23,7 +24,6 @@ namespace Sprint0.Characters.MarioStates
         public void Jump()
         {
             mario.State = new MarioJumpState(mario);
-            AudioManager audioManager = AudioManager.Instance;
             audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly()
@@ -66,7 +66,6 @@ namespace Sprint0.Characters.MarioStates
                 mario.velocity.X = 3.0f;
                 mario.boosted = true;
             }
-
             mario.velocity.Y *= 0;
         }
 

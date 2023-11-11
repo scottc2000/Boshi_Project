@@ -7,6 +7,7 @@ namespace Sprint0.Characters.LuigiStates
     internal class LuigiIdleState : ICharacterState
     {
         private Luigi luigi;
+        private AudioManager audioManager = AudioManager.Instance;
         private FileNames FileNames = new FileNames();
         public LuigiIdleState(Luigi luigi)
         {
@@ -23,7 +24,6 @@ namespace Sprint0.Characters.LuigiStates
             if (luigi.timeGap == 0)
             {
                 luigi.State = new LuigiJumpState(luigi);
-                AudioManager audioManager = AudioManager.Instance;
                 audioManager.PlaySFX(FileNames.jumpSFX);
             }
 

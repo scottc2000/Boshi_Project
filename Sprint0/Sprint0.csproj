@@ -42,13 +42,13 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Characters\LuigiStates\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Luigi\CLuigiBig.cs" />
     <Compile Include="Commands\Luigi\CLuigiCrouch.cs" />
     <Compile Include="Commands\Luigi\CLuigiFire.cs" />
+    <Compile Include="Commands\Luigi\CLuigiFall.cs" />
     <Compile Include="Commands\Luigi\CLuigiJump.cs" />
     <Compile Include="Commands\Luigi\CLuigiMoveLeft.cs" />
     <Compile Include="Commands\Luigi\CLuigiMoveRight.cs" />

@@ -24,7 +24,7 @@ namespace Sprint0.Blocks
         public WoodBlocks(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
             Destination = blockRectangle;
-            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "spinning_coin", new Vector2(blockRectangle.X, blockRectangle.Y));
+            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "wood_blocks", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
 
         public void Update(GameTime gameTime)
@@ -34,7 +34,7 @@ namespace Sprint0.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //do nothing, wood blocks are part of background
+            //do nothing, clouds are part of background
         }
     }
 }
