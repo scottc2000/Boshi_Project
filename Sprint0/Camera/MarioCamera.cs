@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.HUD;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
+using System.Diagnostics;
+using System;
 
 namespace Sprint0.Camera
 {
@@ -18,7 +20,6 @@ namespace Sprint0.Camera
         Viewport view;              // view port
         public Vector2 center;         // point to focus on
         CameraNumbers cameraNumbers;
-
         public MarioCamera(Viewport newview)
         {
             view = newview;
@@ -36,6 +37,10 @@ namespace Sprint0.Camera
             {
                 center.X = cameraNumbers.leftBound;
             }
+            if (center.Y > cameraNumbers.bottomBound)
+            {
+                center.Y = cameraNumbers.bottomBound;
+            }
 
             // zoom camera to mimic final game functionality
             var zoom = Matrix.CreateScale(new Vector3((float)cameraNumbers.zoom, (float)cameraNumbers.zoom, 0));
@@ -44,9 +49,12 @@ namespace Sprint0.Camera
             transform = zoom * translation;
 
         }
-        public void DrawHud(GameStats hud, SpriteBatch spritebatch)
+        public Vector2 GetCameraOffset(Vector2 position)
         {
-            hud.Draw(spritebatch);
+            // Update your offset vector based on camera movement - needs to be debugged
+            Vector2 offset = center - position;
+            return offset;
         }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 using Sprint0.Camera;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
@@ -18,7 +19,6 @@ namespace Sprint0.HUD
         private int coins { get; set; }
         private int lives { get; set; }
         private int score { get; set; }
-        private int player { get; set; }
         private int gameTimer { get; set; }
         private int powerBoost { get; set; }
 
@@ -45,10 +45,10 @@ namespace Sprint0.HUD
 
         private MarioCamera camera;
 
-        public GameStats(Sprint0 sprint)
+        public GameStats(Sprint0 sprint, MarioCamera camera)
         {
             this.sprint = sprint;
-            camera = sprint.camera;
+            this.camera = camera;
             numbers = new HudNumbers();
 
             // Initial stats
@@ -81,7 +81,6 @@ namespace Sprint0.HUD
             livesPosition = numbers.livesStartingPosition;
             scorePosition = numbers.scoreStartingPosition;
             timerPosition = numbers.timerStartingPosition;
-
         }
 
         public void IncrementCoin()
@@ -147,14 +146,31 @@ namespace Sprint0.HUD
             mySpriteFactory.LoadAllTextures(sprint.Content);
             //timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
 
-            staticPosition.X = camera.center.X + numbers.staticPositionOffset;
-            letterPosition.X = staticPosition.X + numbers.letterPositionOffset;
-            cardsPosition.X = staticPosition.X + numbers.cardsPositionOffset;
-            worldPosition.X = staticPosition.X + numbers.worldPositionOffset;
-            coinPosition.X = staticPosition.X + numbers.coinPositionOffset;
-            livesPosition.X = staticPosition.X + numbers.livesPositionOffset;
-            scorePosition.X = staticPosition.X + numbers.scorePositionOffset;
-            timerPosition.X = staticPosition.X + numbers.timerPositionOffset;
+
+            //need to debug offset to work based of camera offset - not static values
+            staticPosition.X = camera.center.X + numbers.staticPositionOffsetX;
+            //staticPosition.Y = camera.center.Y + numbers.staticPositionOffsetY;
+
+            letterPosition.X = staticPosition.X + numbers.letterPositionOffsetX;
+            //letterPosition.Y = staticPosition.Y + numbers.letterPositionOffsetY;
+
+            cardsPosition.X = staticPosition.X + numbers.cardsPositionOffsetX;
+            //cardsPosition.Y = staticPosition.Y + numbers.cardsPositionOffsetY;
+
+            worldPosition.X = staticPosition.X + numbers.worldPositionOffsetX;
+            //worldPosition.Y = staticPosition.Y + numbers.worldPositionOffsetY;
+
+            coinPosition.X = staticPosition.X + numbers.coinPositionOffsetX;
+            //coinPosition.Y = staticPosition.Y + numbers.coinPositionOffsetY;
+
+            livesPosition.X = staticPosition.X + numbers.livesPositionOffsetX;
+            //livesPosition.Y = staticPosition.Y + numbers.livesPositionOffsetY;
+
+            scorePosition.X = staticPosition.X + numbers.scorePositionOffsetX;
+            //scorePosition.Y = staticPosition.Y + numbers.scorePositionOffsetY;
+
+            timerPosition.X = staticPosition.X + numbers.timerPositionOffsetX;
+            //timerPosition.Y = staticPosition.Y + numbers.timerPositionOffsetY;
         }
         public void Draw(SpriteBatch spritebatch)
         {
@@ -165,6 +181,7 @@ namespace Sprint0.HUD
             coinSprite.Draw(spritebatch, coinPosition);
             lifeSprite.Draw(spritebatch, livesPosition);
             scoreSprite.Draw(spritebatch, scorePosition);
+            timerSprite.Draw(spritebatch, timerPosition);
             timerSprite.Draw(spritebatch, timerPosition);
         }
     }

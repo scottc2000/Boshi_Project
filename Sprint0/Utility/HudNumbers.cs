@@ -27,18 +27,32 @@ namespace Sprint0.Utility
         public Vector2 cardsStartingPosition { get; } = new Vector2(375, 450);
         public Vector2 worldStartingPosition { get; } = new Vector2(125, 464);
 
-        public int staticPositionOffset { get; } = 35;
-        public int coinPositionOffset { get; } = 280;
-        public int livesPositionOffset { get; } = 65;
-        public int scorePositionOffset { get; } = 200;
-        public int timerPositionOffset { get; } = 280;
-        public int letterPositionOffset { get; } = 5;
-        public int cardsPositionOffset { get; } = 325;
-        public int worldPositionOffset { get; } = 75;
+        public int staticPositionOffsetX { get; } = 35;
+        public int coinPositionOffsetX { get; } = 280;
+        public int livesPositionOffsetX { get; } = 65;
+        public int scorePositionOffsetX { get; } = 200;
+        public int timerPositionOffsetX { get; } = 280;
+        public int letterPositionOffsetX { get; } = 5;
+        public int cardsPositionOffsetX { get; } = 325;
+        public int worldPositionOffsetX { get; } = 75;
+
+        // need to fix later
+        public int staticPositionOffsetY { get; } = 240;
+        public int coinPositionOffsetY { get; } = 0;
+        public int livesPositionOffsetY { get; } = 0;
+        public int scorePositionOffsetY { get; } = 0;
+        public int timerPositionOffsetY { get; } = 30;
+        public int letterPositionOffsetY { get; } = 0;
+        public int cardsPositionOffsetY { get; } = 0;
+        public int worldPositionOffsetY { get; } = 10;
 
         // Sprite details
         public string staticHUD { get; } = "static";
         public string letter { get; } = "letter";
         public string card { get; } = "cards";
+        public string lightTriangle { get; } = "lightTriangle";
+        public string darkTriangle { get; } = "darkTriangle";
+        public string lightPower { get; } = "lightPower";
+        public string darkPower { get; } = "darkPower";
     }
 }

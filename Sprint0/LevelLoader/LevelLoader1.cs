@@ -45,7 +45,7 @@ namespace Sprint0
 
             this.camera = camera;
             terrain = new Terrain(sprint0);
-            hud = new GameStats(sprint0);
+            hud = new GameStats(sprint0, camera);
             mario = new Mario(sprint0);
             luigi = new Luigi(sprint0);
         }
@@ -239,7 +239,6 @@ namespace Sprint0
         public void Update(GameTime gameTime)
         {
             terrain.Update(gameTime);   // need to update terrain before any game objects
-            hud.Update(gameTime);
 
             // Update each game object
             foreach (var block in objectManager.Blocks)
@@ -261,6 +260,7 @@ namespace Sprint0
 
             objectManager.Update();
             camera.Update(mario);
+            hud.Update(gameTime);
             mario.Update(gameTime);
             luigi.Update(gameTime);
 
