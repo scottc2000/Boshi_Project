@@ -26,6 +26,5 @@ namespace Sprint0.Utility
 
         // Sprite details
         public string staticHUD { get; } = "static";
-        public int digitOffset { get; } = 16;
     }
 }

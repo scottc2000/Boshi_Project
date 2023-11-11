@@ -13,11 +13,12 @@ namespace Sprint0.Sprites.Hud
         private Rectangle spriteFrame;
         private Rectangle destination;
 
-        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+        private SpriteNumbers spriteNumbers;
 
         public StaticHUD(Texture2D sheet, Vector2 position, Vector2 size)
         {
             texture = sheet;
+            spriteNumbers = new SpriteNumbers();
             this.size = size;
             spriteFrame = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
         }

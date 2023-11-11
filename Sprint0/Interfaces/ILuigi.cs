@@ -6,7 +6,7 @@ using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
 {
-    public interface ILuigi : ICollidable
+    public interface ILuigi : ICollidable, IGameObject
     {
         ICharacterState State { get; set; }
         public Luigi.LuigiHealth health { get; set; }
