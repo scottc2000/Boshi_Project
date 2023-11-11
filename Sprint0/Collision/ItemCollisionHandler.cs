@@ -34,19 +34,16 @@ namespace Sprint0.Collision
         
         public void ItemStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
         {
-            System.Diagnostics.Debug.WriteLine("item and block collision. side: " + side);
             if (side == Side.Horizontal)
             {
                 if (entity1 is IItem)
                 {
                     ICommand command = new CItemBlockX((IItem)entity1);
                     command.Execute();
-                    System.Diagnostics.Debug.WriteLine("changed moveRight e1");
                 } else
                 {
                     ICommand command = new CItemBlockX((IItem)entity2);
                     command.Execute();
-                    System.Diagnostics.Debug.WriteLine("changed moveRight e2");
                 }
                 
             }
