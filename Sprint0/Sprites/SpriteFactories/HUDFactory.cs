@@ -50,7 +50,6 @@ namespace Sprint0.Sprites.SpriteFactories
         public ISprite UpdateDigits(int value)
         {
             List<Rectangle> rectangles = new List<Rectangle>();
-            System.Diagnostics.Debug.WriteLine("Value: " + value);
             // check for 0
             if (value == 0)
             {
@@ -63,10 +62,7 @@ namespace Sprint0.Sprites.SpriteFactories
             {
                 int digit = value % 10;
                 value = value / 10;
-                System.Diagnostics.Debug.WriteLine("Digit: " + digit);
-                System.Diagnostics.Debug.WriteLine("Value: " + value);
                 Root element = deserializedGameData.FirstOrDefault(item => item.number == digit);
-                System.Diagnostics.Debug.WriteLine("Element " + element.number);   
                 rectangles.Add(new Rectangle(element.spritesheetpos[0], element.spritesheetpos[1], element.size[0], element.size[1]));
             }
            

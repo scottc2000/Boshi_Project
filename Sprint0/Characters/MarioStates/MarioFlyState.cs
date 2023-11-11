@@ -7,6 +7,9 @@ namespace Sprint0.Characters.MarioStates
     public class MarioFlyState : ICharacterState
     {
         private Mario mario;
+        private float yVelocity = -4f;
+        private float flyingTimer;
+
         public MarioFlyState(Mario mario)
         {
             this.mario = mario;
@@ -23,7 +26,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Fall()
         {
-
+            yVelocity = 0f;
         }
 
         public void Fly()
@@ -38,7 +41,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Move()
         {
-            mario.State = new MarioMoveState(mario);
+            mario.velocity.X = 2;
         }
 
         public void Stop()
@@ -53,20 +56,17 @@ namespace Sprint0.Characters.MarioStates
 
         public void UpdateVelocity(GameTime gametime)
         {
-            if (mario.boosted)
+            if (flyingTimer < 200)
             {
-                mario.velocityY = -1.0f; // Ascend
-                mario.flyingTimer++;
+                mario.velocity.Y = yVelocity;
             }
             else
             {
-                mario.velocityY = 1.0f; // Gradually descend
+                mario.velocity.Y = 0;
             }
-            if (mario.flyingTimer >= 100)
-            {
-                mario.velocityY = 0;
-            }
+            flyingTimer += gametime.ElapsedGameTime.Milliseconds;
         }
+
         public void Update(GameTime gametime)
         {
            mario.pose = Mario.MarioPose.Flying;
@@ -74,7 +74,13 @@ namespace Sprint0.Characters.MarioStates
            UpdateVelocity(gametime);
             
            SetSprites(gametime);
+
+            if (mario.uphit)
+            {
+                mario.Stop();
+            }
         }
+
         public void SetSprites(GameTime gametime)
             {
             if (mario.facingLeft)

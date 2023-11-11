@@ -64,7 +64,7 @@ namespace Sprint0.Characters.MarioStates
         {
             mario.health = Mario.MarioHealth.Dead;
             mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioDead");
-            mario.velocityY = -1;
+            mario.velocity.Y = -1;
         }
     }
 }

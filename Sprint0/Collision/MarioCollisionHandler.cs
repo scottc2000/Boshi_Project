@@ -91,11 +91,11 @@ namespace Sprint0.Collision
 
         public void MarioEnemyCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
-            if(side == Side.Horizontal)
+           /* if(side == Side.Horizontal)
             {
                 ICommand command = new CMarioTakeDamage(sprint);
                 command.Execute();
-            }
+            }*/
         }
     }
 }

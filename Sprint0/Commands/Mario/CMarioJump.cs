@@ -15,9 +15,11 @@ namespace Sprint0.Commands.Mario
         public void Execute()
         {
             mario = level.mario;
-            if (mario.health == Characters.Mario.MarioHealth.Raccoon && mario.runningTimer >= 75)
+            if (mario.health == Characters.Mario.MarioHealth.Raccoon)
             {
-                mario.Fly();
+                System.Diagnostics.Debug.WriteLine("CFLy entered");
+                ICommand flyCommand = new CMarioFly(mySprint0, level);
+                flyCommand.Execute();
             }
             else
             {

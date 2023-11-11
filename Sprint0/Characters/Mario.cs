@@ -31,8 +31,7 @@ namespace Sprint0.Characters
         public bool isInvinsible { get; set; }
 
         // move into physics class eventually
-        public float velocityX;
-        public float velocityY;
+        public Vector2 velocity;
         public float decay;
         public float gravity;
         public int timeGap;
@@ -78,8 +77,7 @@ namespace Sprint0.Characters
             this.righthit = false;
 
             // default velocity is zero (still), decay makes player slippery the higher it is.
-            this.velocityX = 0.0f;
-            this.velocityY = 0.0f;
+            this.velocity = new Vector2(0, 0);
             this.decay = 0.9f;
             this.stuck = false;
             this.gravity = 1.0f;
@@ -108,9 +106,11 @@ namespace Sprint0.Characters
         }
 
         public void Jump()  
-        {   
-            if (uphit)
-                State.Jump(); 
+        {
+            if(uphit && health != MarioHealth.Dead)
+            {
+                State.Jump();
+            }
         }
         public void Fall()
         {
@@ -143,7 +143,7 @@ namespace Sprint0.Characters
 
         public void Reverse()
         {
-            velocityX *= -1;
+            velocity.X *= -1;
         }
 
         public void resetHits()
@@ -240,13 +240,13 @@ namespace Sprint0.Characters
 
             if (facingLeft)
             {
-                position = new Vector2(position.X - (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
+                position = new Vector2(position.X - (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
             else
             {
-                position = new Vector2(position.X + (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
+                position = new Vector2(position.X + (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
-            position = new Vector2(position.X, position.Y + (velocityY * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))));
+            position = new Vector2(position.X, position.Y + (velocity.Y * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))));
 
 
         }
