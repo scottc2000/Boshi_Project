@@ -13,6 +13,7 @@ namespace Sprint0.Interfaces
         ICharacterState State { get; set; }
         bool facingLeft { get; set; }
         bool isInvinsible { get; set; }
+        bool boosted { get; set; }
         int runningTimer { get; set; }
         int flyingTimer { get; set; }
 
