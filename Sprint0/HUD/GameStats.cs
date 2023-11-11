@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Camera;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 using Sprint0.Utility;
@@ -80,18 +81,21 @@ namespace Sprint0.HUD
             score += points;
 
             mySpriteFactory = new HUDFactory(sprint);
+            mySpriteFactory.LoadAllTextures(sprint.Content);
             scoreSprite = mySpriteFactory.UpdateDigits(points);
         }
 
         public void IncrementLives()
         {
             lives++;
-            if (lives < 99)
+            if (lives == 0)
             {
-                mySpriteFactory = new HUDFactory(sprint);
-                lifeSprite = mySpriteFactory.UpdateDigits(lives);
-                audioManager.PlaySFX(fileNames.oneUpSFX);
+                // game over
             }
+            mySpriteFactory = new HUDFactory(sprint);
+            mySpriteFactory.LoadAllTextures(sprint.Content);
+            lifeSprite = mySpriteFactory.UpdateDigits(lives);
+            audioManager.PlaySFX(fileNames.oneUpSFX);
         }
 
         public void DecrementLives()
@@ -105,6 +109,7 @@ namespace Sprint0.HUD
             else
             {
                 mySpriteFactory = new HUDFactory(sprint);
+                mySpriteFactory.LoadAllTextures(sprint.Content);
                 lifeSprite = mySpriteFactory.UpdateDigits(lives);
             }
         }
@@ -117,6 +122,7 @@ namespace Sprint0.HUD
         {
             gameTimer--;
             mySpriteFactory = new HUDFactory(sprint);
+            mySpriteFactory.LoadAllTextures(sprint.Content);
             //timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
         }
         public void Draw(SpriteBatch spritebatch)

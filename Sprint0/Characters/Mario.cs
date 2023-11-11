@@ -157,7 +157,7 @@ namespace Sprint0.Characters
         public void Throw()
         {
             // projectiles stored in list, only three at a time on screen
-            if (health == Mario.MarioHealth.Fire)
+            if (health == MarioHealth.Fire)
             {
                 if (!fired)
                 {
