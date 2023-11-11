@@ -47,18 +47,20 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 ## Controls:
     - Same as before
     - special controls to change player health will be removed later, used currently for testing purposes
-
 ## Known Bugs:
     Blocks have collision but do not react when hit (backlog)
         - Need to add question block item spawning and yellow brick bump animation
-    When player is small, they can clip through the floor in certain areas
-    Unable to trigger enemy stomped conditions
-    - game hud does not follow camera
-    Items do not collide with the floor of the stage but do collide with the side of blocks
-- game hud timer needs to be debugged - issues with GameTime gametime
-- Block interactions need to be added - item spawning from question block and bump animation for question block and brick
-- When player is small, they can clip through the floor at certain areas
-- Camera is stuttery
+        - Block interactions need to be added - item spawning from question block and bump animation for question block and brick
+    - When player is small, they can clip through the floor in certain areas most likely due to hitbox
+    - Unable to trigger enemy stomped conditions
+    - game hud moves horizontally but not vertically - needs to be refactored to move based on camera movement
+    - game hud needs power boost sprite and logic after camera movement is fixed (need to see the gamehud at all times to test power boost)
+    - game hud timer needs to be debugged - issues with GameTime gametime
+    - Camera is stuttery due to oscillating position from block collision
+    - Mario projectiles do not generate but Luigi's does. Raccoon power physics and logic works, but sprite changes need to be adjusted
+    - Need to remove all magic numbers and strings - only some were removed
+    - Need to create physics class
+    - screen changes and game states need to be added
 ## Comments
 - any commits by user "ch3ney" is done by skansher on a different device due to technology issues - not a different user
 
