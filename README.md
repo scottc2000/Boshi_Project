@@ -54,6 +54,7 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     When player is small, they can clip through the floor in certain areas
     Unable to trigger enemy stomped conditions
     - game hud does not follow camera
+    Items do not collide with the floor of the stage but do collide with the side of blocks
 - game hud timer needs to be debugged - issues with GameTime gametime
 - Block interactions need to be added - item spawning from question block and bump animation for question block and brick
 - When player is small, they can clip through the floor at certain areas
