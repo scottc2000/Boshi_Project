@@ -61,12 +61,6 @@ namespace Sprint0.Collision
                 ICollidableCommand command = new CLuigiStuckY(sprint);
                 command.Execute(hitarea);
             }
-            else if (side == Side.Both)
-            {
-                ICollidableCommand command = new CLuigiStuckY(sprint);
-
-                command.Execute(hitarea);
-            }
         }
 
         public void LuigiDynamicBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
@@ -89,12 +83,6 @@ namespace Sprint0.Collision
             else if (side == Side.Vertical)
             {
                 ICollidableCommand command = new CLuigiStuckY(sprint);
-                command.Execute(hitarea);
-            }
-            else if (side == Side.Both)
-            {
-                ICollidableCommand command = new CLuigiStuckY(sprint);
-
                 command.Execute(hitarea);
             }
         }

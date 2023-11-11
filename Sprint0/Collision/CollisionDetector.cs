@@ -18,7 +18,8 @@ namespace Sprint0.Collision
         private ItemCollisionHandler itemCollisionHandler;
         private EnemyCollisionHandler enemyCollisionHandler;
 
-        public enum Side { None, Vertical, Horizontal, Both }
+        public enum Side { None, Vertical, Horizontal}
+        public enum Vert { Top, Bottom, Both }
         public CollisionDetector(Sprint0 sprint, ObjectManager objects)
         {
             this.sprint = sprint;
@@ -46,7 +47,10 @@ namespace Sprint0.Collision
                     {
                         Rectangle hitarea = Rectangle.Intersect(dynamic2.Destination, dynamic1.Destination); // optional parameter
                         Side side = CollisionSide(dynamic1, dynamic2);
-                        HandleCollision(dynamic1, dynamic2, side, hitarea);
+                        Vert vert = Vert.Top;
+                        if (dynamic1 is IBlock) vert = TopOrBottom(dynamic1);
+                        if (dynamic2 is IBlock) vert = TopOrBottom(dynamic2);
+                        HandleCollision(dynamic1, dynamic2, side, vert,  hitarea);
                     }
                 }
                 foreach(ICollidable static1 in StaticEntities)
@@ -55,7 +59,8 @@ namespace Sprint0.Collision
                     {
                         Rectangle hitarea = Rectangle.Intersect(static1.Destination, dynamic1.Destination);
                         Side side = StaticCollisionSide(dynamic1, static1);
-                        HandleCollision(dynamic1, static1, side, hitarea);
+                        Vert vert = TopOrBottom(static1);
+                        HandleCollision(dynamic1, static1, side, vert, hitarea);
                     }
                 }
             }
@@ -92,33 +97,49 @@ namespace Sprint0.Collision
                         side = Side.Horizontal;
                     else if (box.Width >= box.Height)
                         side = Side.Vertical;
-
-                    
                 }
                 else
                 {
                     side = Side.Vertical;
                 }
             }
-            //Rectangle box = Rectangle.Intersect(entity2.Destination, entity1.Destination);
-
-            //if (!(box.Width >= box.Height) && objects.SideCollidableBlocks.Contains((IBlock)entity2))
-            //    side = Side.Horizontal;
-            //else if (box.Width >= box.Height && (objects.TopCollidableBlocks.Contains((IBlock)entity2) || (objects.BottomCollidableBlocks.Contains((IBlock)entity2))))
-            //    side = Side.Vertical;
+            
+            
 
             return side;
 
         }
 
+        public Vert TopOrBottom(ICollidable entity2)
+        {
+            Vert vert = Vert.Top;
+            if (objects.TopCollidableBlocks.Contains((IBlock)entity2))
+            {
+                if (objects.BottomCollidableBlocks.Contains((IBlock)entity2))
+                {
+                    vert = Vert.Both;
+                }
+                else
+                {
+                    vert = Vert.Top;
+                }
+                
+            }
+            else if (objects.BottomCollidableBlocks.Contains((IBlock)entity2))
+            {
+                vert = Vert.Bottom;
+            }
+            return vert;
+        }
+
 
         /*------------------------ Handle Collision ------------------------------*/
-        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
 
             /*________ Mario Collisions _______ */
             if(entity1 is Mario || entity2 is Mario)
-                marioCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
+                marioCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
 
 
             /*________ Luigi Collisions ______*/
