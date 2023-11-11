@@ -33,7 +33,7 @@ namespace Sprint0.Sprites.goombaSprite
             this.goomba = goomba;
             position = goomba.position;
             spriteName = name;
-            TotalFrames = spriteFrames.Length; ;
+            TotalFrames = spriteFrames.Length;
         }
 
         public void Update(GameTime gameTime)
