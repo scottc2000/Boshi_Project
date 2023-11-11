@@ -24,6 +24,9 @@ namespace Sprint0.HUD
         // Sprite information
         private HUDFactory mySpriteFactory;
         private ISprite staticSprite;
+        private ISprite letter;
+        private ISprite world;
+        private ISprite cards;
         private ISprite coinSprite;
         private ISprite lifeSprite;
         private ISprite scoreSprite;
@@ -47,6 +50,9 @@ namespace Sprint0.HUD
 
             // Create initial game stats
             staticSprite = mySpriteFactory.CreateHud(numbers.staticHUD);
+            letter = mySpriteFactory.Letter(numbers.letter);
+            world = mySpriteFactory.World();
+            cards = mySpriteFactory.Cards(numbers.card);
             coinSprite = mySpriteFactory.UpdateDigits(coins);
             lifeSprite = mySpriteFactory.UpdateDigits(lives);
             scoreSprite = mySpriteFactory.UpdateDigits(score);
@@ -115,6 +121,9 @@ namespace Sprint0.HUD
         public void Draw(SpriteBatch spritebatch)
         {
             staticSprite.Draw(spritebatch, numbers.staticStartingPosition);
+            letter.Draw(spritebatch, numbers.letterStartingPosition);
+            cards.Draw(spritebatch, numbers.cardsStartingPosition);
+            world.Draw(spritebatch, numbers.worldStartingPosition);
             coinSprite.Draw(spritebatch, numbers.coinStartingPosition);
             lifeSprite.Draw(spritebatch, numbers.livesStartingPosition);
             scoreSprite.Draw(spritebatch, numbers.scoreStartingPosition);

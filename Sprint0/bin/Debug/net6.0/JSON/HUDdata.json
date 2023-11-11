@@ -53,5 +53,15 @@
     "name": "static",
     "spritesheetpos": [ 12, 128 ],
     "size": [ 152, 27 ]
+  },
+  {
+    "name": "cards",
+    "spritesheetpos": [ 172, 128 ],
+    "size": [ 72, 28 ]
+  },
+  {
+    "name": "letter",
+    "spritesheetpos": [ 15, 161 ],
+    "size":  [ 17 , 7 ]
   }
 ]
