@@ -58,16 +58,15 @@ namespace Sprint0.Characters.MarioStates
             // if raccoon mario runs for certain amount of time, flight boost is given
             if (mario.runningTimer < 75)
             {
-                mario.velocityX = 2.0f;
+                mario.velocity.X = 2.0f;
                 mario.boosted = false;
             }
             else if (mario.runningTimer > 75)
             {
-                mario.velocityX = 3.0f;
+                mario.velocity.X = 3.0f;
                 mario.boosted = true;
             }
-
-            mario.velocityY *= 0;
+            mario.velocity.Y *= 0;
         }
 
 

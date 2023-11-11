@@ -24,6 +24,7 @@ namespace Sprint0.Characters
         public bool isInvinsible { get; set; }
         public int runningTimer { get; set; }
         public int flyingTimer { get; set; }
+        public bool boosted { get; set; }
         public Vector2 position { get { return decoratedMario.position; } set { decoratedMario.position = value; } }
 
         public Mario.MarioHealth health { get; set; }
@@ -33,6 +34,7 @@ namespace Sprint0.Characters
         private LevelLoader1 level;
         public IMario decoratedMario;
         public int timer;
+        int ySnapshot;
 
         private List<Color> colors = new List<Color> {
             Color.Transparent,
@@ -46,7 +48,7 @@ namespace Sprint0.Characters
             currentSprite = mario.currentSprite;
             timer = 75;
             State = mario.State;
-            
+            ySnapshot = (int)mario.position.Y;
         }
 
         public void ChangeToBig()   { decoratedMario.ChangeToBig(); }
@@ -64,6 +66,7 @@ namespace Sprint0.Characters
         public void Jump() { decoratedMario.Jump();  }
 
         public void Fall() { decoratedMario.Fall(); }
+
         public void Fly() { decoratedMario.Fly(); }
 
         public void Move() { decoratedMario.Move();  }
@@ -82,8 +85,7 @@ namespace Sprint0.Characters
                 isInvinsible = false;
                 RemoveDecorator();
             }
-            int offset = 1;
-            position = new Vector2(position.X, position.Y - offset);
+            position = new Vector2(position.X, ySnapshot);
             Destination = currentSprite.destination;
             decoratedMario.Update(gametime);
             level.camera.Update(decoratedMario);

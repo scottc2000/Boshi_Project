@@ -17,7 +17,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Move()
         {
-            mario.velocityX = 2;
+            mario.velocity.X = 2;
         }
 
         public void Jump()
@@ -56,11 +56,11 @@ namespace Sprint0.Characters.MarioStates
         {
             if (mario.timeGap < 500)
             {
-                mario.velocityY = yVelocity;
+                mario.velocity.Y = yVelocity;
             }
             else
             {
-                mario.velocityY = 0;
+                mario.velocity.Y = 0;
             }
 
             mario.timeGap += gametime.ElapsedGameTime.Milliseconds;
