@@ -12,6 +12,7 @@ namespace Sprint0.Collision
         private Sprint0 sprint;
 
         public enum staticBlocks { Floor, Cloud, LargeBlock, Pipe, WoodBlocks, YellowBrick }
+        public enum dynamicBlocks { YellowBrick, QuestionBlock, SpinningCoin }
 
         public enum Items { RedMushroom, OneUpMushroom, Leaf }
 
@@ -20,33 +21,46 @@ namespace Sprint0.Collision
             this.sprint = sprint;
         }
 
-        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side)
+        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
         {
             Type type1 = entity1.GetType();
             Type type2 = entity2.GetType();
 
             if (Enum.IsDefined(typeof(staticBlocks), type1.Name) || Enum.IsDefined(typeof(staticBlocks), type2.Name))
-                ItemStaticBlockCollision(entity1, entity2, side);
+                ItemStaticBlockCollision(entity1, entity2, side, hitarea);
+            if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
+                ItemStaticBlockCollision(entity1, entity2, side, hitarea);
         }
         
-        public void ItemStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side)
+        public void ItemStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
         {
+            System.Diagnostics.Debug.WriteLine("item and block collision. side: " + side);
             if (side == Side.Horizontal)
             {
                 if (entity1 is IItem)
                 {
                     ICommand command = new CItemBlockX((IItem)entity1);
                     command.Execute();
+                    System.Diagnostics.Debug.WriteLine("changed moveRight e1");
                 } else
                 {
                     ICommand command = new CItemBlockX((IItem)entity2);
                     command.Execute();
+                    System.Diagnostics.Debug.WriteLine("changed moveRight e2");
                 }
                 
             }
             if (side == Side.Vertical)
             {
-
+                if (entity1 is IItem)
+                {
+                    ICommand command = new CItemBlockY((IItem)entity1, hitarea);
+                    command.Execute();
+                } else
+                {
+                    ICommand command = new CItemBlockY((IItem)entity2, hitarea);
+                    command.Execute();
+                }
             }
         }
     }
