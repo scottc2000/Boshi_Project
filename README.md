@@ -52,4 +52,7 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 ## known bugs:
 - game hud does not follow camera
 - game hud timer needs to be debugged - issues with GameTime gametime
+- Block interactions need to be added - item spawning from question block and bump animation for question block and brick
+- When player is small, they can clip through the floor at certain areas
+- Camera is stuttery
   
