@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Blocks;
 using Sprint0.Commands.Collision;
 using Sprint0.Commands.Collisions;
 using Sprint0.Interfaces;
 using System;
 using static Sprint0.Collision.CollisionDetector;
+using static Sprint0.Collision.MarioCollisionHandler;
 
 namespace Sprint0.Collision
 {
@@ -13,7 +15,8 @@ namespace Sprint0.Collision
         private Type type1;
         private Type type2;
 
-        public enum staticBlocks { Floor, Cloud, LargeBlock, Pip, WoodBlocks, YellowBrick }
+        public enum staticBlocks { Floor, Clouds, LargeBlock, Pipe, WoodBlocks }
+        public enum dynamicBlocks { YellowBrick, QuestionBlock, SpinningCoin }
         public enum Items { RedMushroom, OneUpMushroom, Leaf }
         public enum Enemies { Koopa, Goomba }
         public LuigiCollisionHandler(Sprint0 sprint)
@@ -29,6 +32,9 @@ namespace Sprint0.Collision
             if (Enum.IsDefined(typeof(staticBlocks), type1.Name) || Enum.IsDefined(typeof(staticBlocks), type2.Name))
                 LuigiStaticBlockCollision(entity1, entity2, side, hitarea);
 
+            else if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
+                LuigiStaticBlockCollision(entity1, entity2, side, hitarea);
+
             else if (Enum.IsDefined(typeof(Items), type1.Name) || Enum.IsDefined(typeof(Items), type2.Name))
                 LuigiItemCollision(entity1, entity2, side);
 
@@ -40,6 +46,11 @@ namespace Sprint0.Collision
         }
         public void LuigiStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
         {
+            if (entity1 is DeathZone || entity2 is DeathZone)
+            {
+                //ICommand command = new CMarioDie(sprint);
+                //command.Execute();
+            }
             if (side == Side.Horizontal)
             {
                 ICollidableCommand command = new CLuigiStuckX(sprint);
@@ -48,6 +59,42 @@ namespace Sprint0.Collision
             else if (side == Side.Vertical)
             {
                 ICollidableCommand command = new CLuigiStuckY(sprint);
+                command.Execute(hitarea);
+            }
+            else if (side == Side.Both)
+            {
+                ICollidableCommand command = new CLuigiStuckY(sprint);
+
+                command.Execute(hitarea);
+            }
+        }
+
+        public void LuigiDynamicBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        {
+            if (entity1 is SpinningCoin)
+            {
+                CGetCoin command = new CGetCoin(sprint);
+                command.Execute((IBlock)entity1);
+            }
+            else if (entity2 is SpinningCoin)
+            {
+                CGetCoin command = new CGetCoin(sprint);
+                command.Execute((IBlock)entity2);
+            }
+            if (side == Side.Horizontal)
+            {
+                ICollidableCommand command = new CLuigiStuckX(sprint);
+                command.Execute(hitarea);
+            }
+            else if (side == Side.Vertical)
+            {
+                ICollidableCommand command = new CLuigiStuckY(sprint);
+                command.Execute(hitarea);
+            }
+            else if (side == Side.Both)
+            {
+                ICollidableCommand command = new CLuigiStuckY(sprint);
+
                 command.Execute(hitarea);
             }
         }

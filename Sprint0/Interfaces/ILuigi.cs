@@ -14,7 +14,12 @@ namespace Sprint0.Interfaces
         public Vector2 position { get; set; }
         bool facingLeft { get; set; }
         bool isInvinsible { get; set; }
+        public int flyingTimer { get; set; }
+        public bool boosted { get; set; }
         FireProjectile fireProjectile { get; set; }
+        public int runningTimer { get; set; }
+        public Luigi.LuigiPose pose { get; set; }
+
         public void Move();
 
         public void Fall();
@@ -28,6 +33,8 @@ namespace Sprint0.Interfaces
         public void Die();
 
         public void Throw();
+
+        public void Fly();
       
         void ChangeToFire();
 

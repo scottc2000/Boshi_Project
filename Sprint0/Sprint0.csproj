@@ -63,6 +63,8 @@
     <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
     <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
     <Compile Include="Characters\LuigiStates\DeadLuigiState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiFlyState.cs" />
+    <Compile Include="Commands\Luigi\CLuigiFly.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LevelLoader\Level1Data.cs">

@@ -16,7 +16,7 @@ namespace Sprint0.Commands.Luigi
         { 
   
             luigi.Fall();
-            
+            luigi.flyingTimer = 0;
 
         }
 

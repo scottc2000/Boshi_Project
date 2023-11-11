@@ -16,7 +16,7 @@ namespace Sprint0.Characters
         public LuigiHealth health { get; set; }
 
         public enum LuigiPose { Jump, Crouch, Idle, Walking, Throwing };
-        public LuigiPose pose = LuigiPose.Idle;
+        public LuigiPose pose { get; set; }
         public bool facingLeft { get; set; }
         public bool fired;
 
@@ -27,12 +27,14 @@ namespace Sprint0.Characters
         public bool gothit { get; set; }
         public bool stuck { get; set; }
         public bool isInvinsible { get; set; }
+        public int flyingTimer { get; set; }
 
         public float velocityX;
         public float velocityY;
         public float decay;
         public float gravity;
         public int timeGap;
+        public int runningTimer { get; set; }
 
 
         public ICharacterState State { get; set; }
@@ -42,6 +44,7 @@ namespace Sprint0.Characters
         public Sprint0 mySprint;
         int sizeDiff;
         public Rectangle Destination { get; set; }
+        public bool boosted { get; set; }
 
 
         public AnimatedSpriteLuigi currentSprite {get; set; }
@@ -54,15 +57,19 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Normal;
+            this.health = LuigiHealth.Big;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
+            flyingTimer = 0;
+            this.boosted = false;
             this.facingLeft = true;
             this.position = new Vector2(200, 200);
             this.sizeDiff = 25;
             this.fired = false;
             this.timeGap = 0;
+            this.runningTimer = 0;
+            this.flyingTimer = 0;
 
             this.downhit = false;
             this.uphit = false;
@@ -97,6 +104,11 @@ namespace Sprint0.Characters
             {
                 State.Move();
             }
+        }
+
+        public void Fly()
+        {
+            State.Fly();
         }
 
         public void Jump()
@@ -209,8 +221,9 @@ namespace Sprint0.Characters
             if (health == LuigiHealth.Normal)
             {
                 position = new Vector2(position.X, position.Y - sizeDiff);
+                health = LuigiHealth.Big;
             }
-            health = LuigiHealth.Big;
+            
         }
 
         public void ChangeToNormal()

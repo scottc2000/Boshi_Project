@@ -17,8 +17,13 @@ namespace Sprint0.Commands.Luigi
         public void Execute()
         {
             luigi.facingLeft = false;
-            
+            if (luigi.health == Characters.Luigi.LuigiHealth.Raccoon && luigi.pose == Characters.Luigi.LuigiPose.Walking)
+                luigi.runningTimer++;
+            else
+                luigi.runningTimer = 0;
+
             luigi.Move();
+
             
         }
     }

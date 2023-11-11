@@ -16,6 +16,7 @@ namespace Sprint0.Commands.Luigi
         public void Execute()
         {
             luigi.Stop();
+            
         }
     }
 }
