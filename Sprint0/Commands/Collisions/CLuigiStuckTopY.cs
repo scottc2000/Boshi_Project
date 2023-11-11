@@ -4,13 +4,13 @@ using Sprint0.Interfaces;
 
 namespace Sprint0.Commands.Collisions
 {
-    public class CLuigiStuckY : ICommand, ICollidableCommand
+    public class CLuigiStuckTopY : ICommand, ICollidableCommand
     {
 
         private Sprint0 mySprint0;
         private ILuigi luigi;
 
-        public CLuigiStuckY(Sprint0 mySprint0)
+        public CLuigiStuckTopY(Sprint0 mySprint0)
         {
             this.mySprint0 = mySprint0;
         }
@@ -33,7 +33,7 @@ namespace Sprint0.Commands.Collisions
             {
                 if (hitbox.Y <= luigi.position.Y)
                 {
-                    luigi.position = new Vector2(luigi.position.X, luigi.position.Y + hitarea.Height);
+                    
                                               
                 }
                 else

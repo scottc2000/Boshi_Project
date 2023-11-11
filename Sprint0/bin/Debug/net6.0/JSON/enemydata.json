@@ -1,14 +1,23 @@
 {
   "goomba": {
-    "Sprites": {
-      "name": "GoombaMove",
-      "spritesheet_pos": [
-        [ 0, 16 ],
-        [ 16, 16 ]
-      ],
-      "hitbox": [ 16, 16 ],
-      "facingLeft": true
-    }
+    "Sprites": [
+      {
+        "name": "GoombaMove",
+        "spritesheet_pos": [
+          [ 0, 16 ],
+          [ 16, 16 ]
+        ],
+        "hitbox": [ 16, 16 ],
+        "facingLeft": true
+      },
+
+      {
+        "name": "GoombaStomped",
+        "spritesheet_pos": [ [ 32, 16 ] ],
+        "hitbox": [ 16, 16 ],
+        "facingLeft": true
+      }
+    ]
   },
 
   "koopa": {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Enemies.GoombaStates;
+using Sprint0.Enemies.GooombaStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.goombaSprite;
 using Sprint0.Sprites.Players;
@@ -30,7 +31,7 @@ namespace Sprint0.Enemies
 
         public Goomba(Sprint0 sprint0)
         {
-            this.state = new RightMovingGoombaState(this);
+            this.state = new LeftMovingGoombaState(this);
 
             this.facingLeft = true;
             this.mySprint = sprint0;
@@ -57,6 +58,7 @@ namespace Sprint0.Enemies
 
         public void BeStomped()
         {
+            currentSprite = mySpriteFactory.returnSprite("GoombaStomped");
             state.BeStomped();
         }
 
@@ -82,7 +84,7 @@ namespace Sprint0.Enemies
             if (facingLeft)
             {
                 position.X -= 1;
-                if (position.X < initialposition.X-175)
+                if (position.X < initialposition.X-160)
                 {
                     ChangeDirection();
                 }

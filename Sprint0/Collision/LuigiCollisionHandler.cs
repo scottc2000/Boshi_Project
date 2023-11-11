@@ -24,16 +24,16 @@ namespace Sprint0.Collision
             this.sprint = sprint;
         }
 
-        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
             type1 = entity1.GetType();
             type2 = entity2.GetType();
 
             if (Enum.IsDefined(typeof(staticBlocks), type1.Name) || Enum.IsDefined(typeof(staticBlocks), type2.Name))
-                LuigiStaticBlockCollision(entity1, entity2, side, hitarea);
+                LuigiStaticBlockCollision(entity1, entity2, side, vert,hitarea);
 
             else if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
-                LuigiDynamicBlockCollision(entity1, entity2, side, hitarea);
+                LuigiDynamicBlockCollision(entity1, entity2, side, vert, hitarea);
 
             else if (Enum.IsDefined(typeof(Items), type1.Name) || Enum.IsDefined(typeof(Items), type2.Name))
                 LuigiItemCollision(entity1, entity2, side);
@@ -44,12 +44,12 @@ namespace Sprint0.Collision
             else if (type1 is IMario || type2 is IMario)
                 PlayerCollision(entity1, entity2, side, hitarea);
         }
-        public void LuigiStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        public void LuigiStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
             if (entity1 is DeathZone || entity2 is DeathZone)
             {
-                //ICommand command = new CMarioDie(sprint);
-                //command.Execute();
+                ICommand command = new CLuigiDie(sprint);
+                command.Execute();
             }
             if (side == Side.Horizontal)
             {
@@ -58,18 +58,14 @@ namespace Sprint0.Collision
             }
             else if (side == Side.Vertical)
             {
-                ICollidableCommand command = new CLuigiStuckY(sprint);
-                command.Execute(hitarea);
-            }
-            else if (side == Side.Both)
-            {
-                ICollidableCommand command = new CLuigiStuckY(sprint);
-
+                ICollidableCommand command = new CLuigiStuckTopY(sprint);
+                if (vert == Vert.Bottom) command = new CLuigiStuckBottomY(sprint);
+                if (vert == Vert.Both) command = new CLuigiStuckBothY(sprint);
                 command.Execute(hitarea);
             }
         }
 
-        public void LuigiDynamicBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        public void LuigiDynamicBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
             if (entity1 is SpinningCoin)
             {
@@ -88,13 +84,9 @@ namespace Sprint0.Collision
             }
             else if (side == Side.Vertical)
             {
-                ICollidableCommand command = new CLuigiStuckY(sprint);
-                command.Execute(hitarea);
-            }
-            else if (side == Side.Both)
-            {
-                ICollidableCommand command = new CLuigiStuckY(sprint);
-
+                ICollidableCommand command = new CLuigiStuckTopY(sprint);
+                if (vert == Vert.Bottom) command = new CLuigiStuckBottomY(sprint);
+                if (vert == Vert.Both) command = new CLuigiStuckBothY(sprint);
                 command.Execute(hitarea);
             }
         }
