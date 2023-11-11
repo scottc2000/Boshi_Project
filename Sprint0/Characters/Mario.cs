@@ -56,7 +56,7 @@ namespace Sprint0.Characters
 
         public Mario(Sprint0 sprint0)
         {
-            this.health = MarioHealth.Normal;
+            this.health = MarioHealth.Raccoon;
             this.State = new MarioIdleState(this);
 
             // timers

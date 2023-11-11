@@ -29,6 +29,7 @@ namespace Sprint0.Characters
         public Luigi.LuigiPose pose { get; set; }
         public AnimatedSpriteLuigi currentSprite { get; set; }
         public FireProjectile fireProjectile { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public bool boosted { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         private LevelLoader1 level;
         public ILuigi decoratedLuigi;
@@ -102,6 +103,11 @@ namespace Sprint0.Characters
         public void Draw(SpriteBatch spritebatch) 
         {
             currentSprite.Draw(spritebatch, new Vector2(position.X, position.Y), colors[(timer / 3) % 2]);
+        }
+
+        public void Fly()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

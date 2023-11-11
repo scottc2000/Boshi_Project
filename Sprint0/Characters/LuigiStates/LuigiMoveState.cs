@@ -2,6 +2,7 @@
 using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.LuigiStates
 {
@@ -29,7 +30,7 @@ namespace Sprint0.Characters.LuigiStates
         }
         public void Fly()
         {
-
+            luigi.State = new LuigiFlyState(luigi);
         }
         public void Fall()
         {
@@ -57,8 +58,17 @@ namespace Sprint0.Characters.LuigiStates
 
         public void UpdateVelocity()
         {
-            luigi.velocityX = 2.0f;
-            luigi.velocityY = 0;
+            if (luigi.runningTimer < 75)
+            {
+                luigi.velocityX = 2.0f;
+                luigi.boosted = false;
+            }
+            else if (luigi.runningTimer > 75)
+            {
+                luigi.velocityX = 3.0f;
+                luigi.boosted = true;
+            }
+            luigi.velocityY *= 0;
         }
 
 
@@ -70,31 +80,63 @@ namespace Sprint0.Characters.LuigiStates
 
             UpdateVelocity();
 
-            if (luigi.facingLeft)
+            if (luigi.boosted)
             {
-                if (luigi.currentSprite.spriteName.Equals("LuigiMoveLeft"))
+                if (luigi.facingLeft)
                 {
-                    luigi.currentSprite.Update(gametime);
+                    if (luigi.currentSprite.spriteName.Equals("LuigiBoostLeft"))
+                    {
+                        luigi.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiBoostLeft");
+
+                    }
                 }
                 else
                 {
-                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
-                    
+                    if (luigi.currentSprite.spriteName.Equals("LuigiBoostRight"))
+                    {
+                        luigi.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiBoostRight");
+
+
+                    }
+
                 }
             }
             else
             {
-                if (luigi.currentSprite.spriteName.Equals("LuigiMoveRight"))
+                if (luigi.facingLeft)
                 {
-                    luigi.currentSprite.Update(gametime);
+                    if (luigi.currentSprite.spriteName.Equals("LuigiMoveLeft"))
+                    {
+                        luigi.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveLeft");
+
+                    }
                 }
                 else
                 {
-                    luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
-                    
+                    if (luigi.currentSprite.spriteName.Equals("LuigiMoveRight"))
+                    {
+                        luigi.currentSprite.Update(gametime);
+                    }
+                    else
+                    {
+                        luigi.currentSprite = luigi.mySpriteFactory.returnSprite("LuigiMoveRight");
+
+
+                    }
 
                 }
-
             }
         }
     }
