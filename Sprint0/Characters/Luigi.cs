@@ -189,6 +189,11 @@ namespace Sprint0.Characters
                 position = new Vector2(position.X, position.Y - sizeDiff);
             }
             health = LuigiHealth.Raccoon;
+
+            if (facingLeft)
+                currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
+            else
+                currentSprite = mySpriteFactory.returnSprite("LuigiStillRight");
         }
 
         public void ChangeToBig()
