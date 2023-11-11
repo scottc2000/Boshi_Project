@@ -144,7 +144,7 @@ namespace Sprint0.Collision
 
             /*________ Luigi Collisions ______*/
             if (entity1 is Luigi || entity2 is Luigi)
-                luigiCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
+                luigiCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
 
             /*_________ Item Collisions ______*/
             if (entity1 is IItem || entity2 is IItem)
