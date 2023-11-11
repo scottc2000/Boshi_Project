@@ -32,7 +32,7 @@ namespace Sprint0.Collision
                 MarioStaticBlockCollision(entity1, entity2, side, hitarea);
 
             else if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
-                MarioStaticBlockCollision(entity1, entity2, side, hitarea);
+                MarioDynamicBlockCollision(entity1, entity2, side, hitarea);
 
             else if (Enum.IsDefined(typeof(Items), type1.Name) || Enum.IsDefined(typeof(Items), type2.Name))
                 MarioItemCollision(entity1, entity2, side);
@@ -80,6 +80,7 @@ namespace Sprint0.Collision
                 CGetCoin command = new CGetCoin(sprint);
                 command.Execute((IBlock)entity2);
             }
+            
             if (side == Side.Horizontal)
             {
                 ICollidableCommand command = new CMarioStuckX(sprint);
@@ -89,6 +90,14 @@ namespace Sprint0.Collision
             {
                 ICollidableCommand command = new CMarioStuckY(sprint);
                 command.Execute(hitarea);
+                if (entity1 is YellowBrick)
+                {
+                    
+            }
+                else if (entity2 is YellowBrick)
+                {
+
+                }
             }
             else if (side == Side.Both)
             {

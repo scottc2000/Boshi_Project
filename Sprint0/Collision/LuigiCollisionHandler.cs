@@ -33,7 +33,7 @@ namespace Sprint0.Collision
                 LuigiStaticBlockCollision(entity1, entity2, side, hitarea);
 
             else if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
-                LuigiStaticBlockCollision(entity1, entity2, side, hitarea);
+                LuigiDynamicBlockCollision(entity1, entity2, side, hitarea);
 
             else if (Enum.IsDefined(typeof(Items), type1.Name) || Enum.IsDefined(typeof(Items), type2.Name))
                 LuigiItemCollision(entity1, entity2, side);

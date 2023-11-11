@@ -70,6 +70,7 @@ namespace Sprint0.HUD
                 coins = 0;
             }
             mySpriteFactory = new HUDFactory(sprint);
+            mySpriteFactory.LoadAllTextures(sprint.Content);
             coinSprite = mySpriteFactory.UpdateDigits(coins);
             audioManager.PlaySFX(fileNames.coinSFX);
         }
