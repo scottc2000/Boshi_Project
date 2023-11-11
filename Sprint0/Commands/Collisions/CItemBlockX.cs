@@ -1,24 +1,21 @@
-﻿using Sprint0.Interfaces;
+﻿using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
 using Sprint0.GameMangager;
 
 namespace Sprint0.Commands.Collisions
 {
     internal class CItemBlockX : ICommand
     {
-        private Sprint0 myGame;
-        private ObjectManager objectManager;
-        private IBlock block;
         private IItem item;
 
-        public CItemBlockX(Sprint0 myGame)
+        public CItemBlockX(IItem item)
         {
-            this.myGame = myGame;
-            objectManager = myGame.objects;
+            this.item = item;
         }
 
         public void Execute()
         {
-            objectManager.RemoveFromList();
+            item.moveRight = !item.moveRight;
         }
     }
 }

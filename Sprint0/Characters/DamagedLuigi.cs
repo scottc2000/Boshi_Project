@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
-using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items.Projectiles;
 using Sprint0.Sprites.Players;
 using System.Collections.Generic;
-using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters
 {
@@ -35,6 +33,7 @@ namespace Sprint0.Characters
         private LevelLoader1 level;
         public ILuigi decoratedLuigi;
         public int timer;
+        int ySnapshot;
 
         private List<Color> colors = new List<Color> {
             Color.Transparent,
@@ -48,6 +47,7 @@ namespace Sprint0.Characters
             currentSprite = luigi.currentSprite;
             timer = 75;
             State = luigi.State;
+            ySnapshot = (int)luigi.position.Y;
             
         }
 
@@ -65,6 +65,7 @@ namespace Sprint0.Characters
 
         public void Jump() { decoratedLuigi.Jump();  }
         //public void Fly() { decoratedLuigi.Fly(); }
+        public void Fall() { decoratedLuigi.Fall(); }
 
         public void Move() { decoratedLuigi.Move();  }
 
@@ -84,7 +85,7 @@ namespace Sprint0.Characters
             }
             int offset = 1;
 
-            position = new Vector2(position.X, position.Y - offset);
+            position = new Vector2(position.X, ySnapshot);
             
             Destination = currentSprite.destination;
             decoratedLuigi.Update(gametime);

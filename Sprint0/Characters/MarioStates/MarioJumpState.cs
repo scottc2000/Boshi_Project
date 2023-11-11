@@ -7,6 +7,7 @@ namespace Sprint0.Characters.MarioStates
     internal class MarioJumpState : ICharacterState
     {
         private Mario mario;
+        private float yVelocity = -3.0f;
 
         public MarioJumpState(Mario mario)
         {
@@ -16,7 +17,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Move()
         {
-            mario.State = new MarioMoveState(mario);
+            mario.velocity.X = 2;
         }
 
         public void Jump()
@@ -29,7 +30,7 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Fall()
         {
-            
+            yVelocity = 0f;
         }
 
         public void Crouch()
@@ -43,7 +44,6 @@ namespace Sprint0.Characters.MarioStates
         }
         public void Stop()
         {
-            mario.velocity.Y = 0;
             mario.State = new MarioIdleState(mario);
         }
 
@@ -56,7 +56,7 @@ namespace Sprint0.Characters.MarioStates
         {
             if (mario.timeGap < 500)
             {
-                mario.velocity.Y = -3.0f;
+                mario.velocity.Y = yVelocity;
             }
             else
             {
@@ -102,6 +102,10 @@ namespace Sprint0.Characters.MarioStates
                 }
             }
 
+            if (mario.uphit && mario.timeGap > 50)
+            {
+                mario.Stop();
+            }
 
         }
     }

@@ -27,9 +27,17 @@ namespace Sprint0.Blocks
         public YellowBrick(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
             Destination = blockRectangle;
-            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "spinning_coin", new Vector2(blockRectangle.X, blockRectangle.Y));
-            totalFrames = 8;
-            frameInterval = 0.1f;
+            sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "yellow_brick", new Vector2(blockRectangle.X, blockRectangle.Y));
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            sprite.Draw(spriteBatch, location);
         }
 
         public void Bump(GameTime gameTime)
@@ -50,15 +58,5 @@ namespace Sprint0.Blocks
             }
         }
 
-        public void Update(GameTime gameTime)
-        {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, location);
-
-        }
     }
 }

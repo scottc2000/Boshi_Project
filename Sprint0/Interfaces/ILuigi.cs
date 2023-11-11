@@ -6,7 +6,7 @@ using Sprint0.Sprites.Players;
 
 namespace Sprint0.Interfaces
 {
-    public interface ILuigi : ICollidable
+    public interface ILuigi : ICollidable, IGameObject
     {
         ICharacterState State { get; set; }
         public Luigi.LuigiHealth health { get; set; }
@@ -16,6 +16,8 @@ namespace Sprint0.Interfaces
         bool isInvinsible { get; set; }
         FireProjectile fireProjectile { get; set; }
         public void Move();
+
+        public void Fall();
 
         public void Jump();
 
@@ -36,6 +38,10 @@ namespace Sprint0.Interfaces
         void ChangeToNormal();
 
         void Reverse();
+
+        void Update(GameTime gameTime);
+
+        void Draw(SpriteBatch spriteBatch);
 
     }
 }

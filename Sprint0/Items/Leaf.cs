@@ -12,6 +12,7 @@ namespace Sprint0.Items
         private AniItemSprite aniItem;
         private Vector2 position;
         public Rectangle Destination { get; set; }
+        public bool moveRight { get; set; }
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
         public bool uphit { get; set; }
@@ -23,6 +24,7 @@ namespace Sprint0.Items
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Leaf");
             Destination = aniItem.itemPosition;
+            moveRight = false;
         }
 
         public void setPosition(List<int> pos)

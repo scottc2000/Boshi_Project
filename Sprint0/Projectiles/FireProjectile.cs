@@ -14,9 +14,8 @@ namespace Sprint0.Items.Projectiles
 
     {
         public List<AnimatedProjectile> projectiles { get; set; }
-
-        AudioManager audioManager = AudioManager.Instance;
-        FileNames fileNames = new FileNames();
+        private AudioManager audioManager = AudioManager.Instance;
+        private FileNames fileNames = new FileNames();
 
         public Rectangle Destination { get; set; }
         public bool lefthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

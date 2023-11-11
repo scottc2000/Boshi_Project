@@ -2,6 +2,6 @@
 {
     public class PhysicsProperties
     {
-        float gravity { get; } = 3f;
+        public float gravity { get; } = 1f;
     }
 }
