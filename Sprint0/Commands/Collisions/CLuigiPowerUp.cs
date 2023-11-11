@@ -1,4 +1,5 @@
-﻿using Sprint0.Interfaces;
+﻿using Sprint0.HUD;
+using Sprint0.Interfaces;
 using Sprint0.Items;
 
 namespace Sprint0.Commands.Collisions
@@ -8,16 +9,18 @@ namespace Sprint0.Commands.Collisions
         private Sprint0 sprint;
         private IItem item;
         private ILuigi luigi;
+        private GameStats stats;
         public CLuigiPowerUp(Sprint0 sprint, IItem item)
         {
             this.sprint = sprint;
             luigi = this.sprint.levelLoader.luigi;
+            stats = this.sprint.levelLoader.hud;
             this.item = item;
         }
         public void Execute()
         {
             ICommand command = new CRemoveDynamic(item, sprint.objects);
-            if (item is RedMushroom)
+            if (item is RedMushroom && luigi.health == Characters.Luigi.LuigiHealth.Normal )
             {
                 luigi.ChangeToBig();
             }
@@ -31,7 +34,7 @@ namespace Sprint0.Commands.Collisions
             }
             else if (item is OneUpMushroom)
             {
-                // increase HUD life counter
+                stats.IncrementLives();
             }
             command.Execute();
         }
