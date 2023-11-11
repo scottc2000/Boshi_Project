@@ -80,6 +80,7 @@ namespace Sprint0.Collision
                 CGetCoin command = new CGetCoin(sprint);
                 command.Execute((IBlock)entity2);
             }
+            
             if (side == Side.Horizontal)
             {
                 ICollidableCommand command = new CMarioStuckX(sprint);
@@ -89,6 +90,14 @@ namespace Sprint0.Collision
             {
                 ICollidableCommand command = new CMarioStuckY(sprint);
                 command.Execute(hitarea);
+                if (entity1 is YellowBrick)
+                {
+                    
+            }
+                else if (entity2 is YellowBrick)
+                {
+
+                }
             }
             else if (side == Side.Both)
             {
