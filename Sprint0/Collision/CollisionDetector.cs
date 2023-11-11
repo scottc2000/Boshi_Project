@@ -130,8 +130,8 @@ namespace Sprint0.Collision
                 itemCollisionHandler.HandleCollision(entity1, entity2, side);
 
 
-            /*________ Enemey Collisions _____*/
-            if (entity1 is Mario || entity2 is IEnemies)
+            /*________ Enemey Collisions _____*/    
+            if (entity1 is IEnemies || entity2 is IEnemies)
                 enemyCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
 
         }

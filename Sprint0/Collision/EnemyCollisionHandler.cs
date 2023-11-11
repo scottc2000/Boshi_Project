@@ -4,6 +4,7 @@ using Sprint0.Commands.Collision;
 using Sprint0.Commands.Collisions;
 using System;
 using static Sprint0.Collision.CollisionDetector;
+using Sprint0.Enemies;
 
 namespace Sprint0.Collision
 {
@@ -13,6 +14,7 @@ namespace Sprint0.Collision
         private Type type1;
         private Type type2;
 
+        public enum Enemies { Koopa, Goomba }
         public EnemyCollisionHandler(Sprint0 sprint)
         {
             this.sprint = sprint;
@@ -29,10 +31,17 @@ namespace Sprint0.Collision
 
         public void EnemyPlayerCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
-            if (side == Side.Horizontal)
+            type1 = entity1.GetType();
+            type2 = entity2.GetType();
+
+            if (side == Side.Vertical)
             {
-                ICommand command = new CGoombaStomp(sprint);
-                command.Execute();
+                if (type1 is Goomba || type2 is Goomba)
+                {
+                    ICommand command = new CGoombaStomp(sprint);
+                    command.Execute();
+                    System.Diagnostics.Debug.WriteLine("Goomba Stomped");
+                }
             }
 
         }
