@@ -43,4 +43,12 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     Gravity has not been implemented due to block collisions not being done (backlog)
     Camera follows mario but screenscrolling is buggy (backlog)
     
+## Sprint 4
+## Controls:
+    - Same as before
 
+## Known Bugs:
+    Blocks have collision but do not react when hit (backlog)
+        - Need to add question block item spawning and yellow brick bump animation
+    When player is small, they can clip through the floor in certain areas
+    
