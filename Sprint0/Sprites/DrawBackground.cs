@@ -1,10 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Characters;
-using Sprint0.Characters.MarioStates;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
-using System;
 
 namespace Sprint0.Sprites
 {
@@ -13,7 +10,6 @@ namespace Sprint0.Sprites
         private Texture2D texture;
 
         // Rectangles
-        private Rectangle[] spriteFrames;
         private Rectangle destination;
         public string spriteName;
 

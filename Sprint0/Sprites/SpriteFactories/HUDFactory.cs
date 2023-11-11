@@ -4,9 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Newtonsoft.Json;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Hud;
+using Sprint0.Utility;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0.Sprites.SpriteFactories
 {
@@ -16,6 +18,7 @@ namespace Sprint0.Sprites.SpriteFactories
         private Texture2D hudSpriteSheet;
         private Sprint0 sprint;
         private List<Root> deserializedGameData;
+        private FileNames filenames;
 
         public class Root
         {
@@ -26,9 +29,10 @@ namespace Sprint0.Sprites.SpriteFactories
         }
         public HUDFactory(Sprint0 sprint) 
         {
+            filenames = new FileNames();
             this.sprint = sprint;
 
-            StreamReader r = new StreamReader("JSON/HUDdata.json");
+            StreamReader r = new StreamReader(filenames.hudData);
             string data = r.ReadToEnd();
 
             deserializedGameData = JsonConvert.DeserializeObject<List<Root>>(data);
@@ -36,7 +40,7 @@ namespace Sprint0.Sprites.SpriteFactories
 
         public void LoadAllTextures(ContentManager content)
         {
-            hudSpriteSheet = content.Load<Texture2D>("HUD_transparent1");
+            hudSpriteSheet = content.Load<Texture2D>(filenames.hudSheet);
         }
 
         /*---------------------------- Create Hud Background -------------------------------*/

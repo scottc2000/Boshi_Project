@@ -8,6 +8,7 @@ using Sprint0.HUD;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Utility;
 using System;
 
 namespace Sprint0
@@ -17,6 +18,7 @@ namespace Sprint0
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private GameTime gametime;
+        private FileNames filename;
         
         public ObjectManager objects;
         public GameStats stats;
@@ -36,6 +38,7 @@ namespace Sprint0
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            filename = new FileNames();
         }
 
         protected override void Initialize()
@@ -61,7 +64,7 @@ namespace Sprint0
         {
             audioManager.Load(Content);
 
-            levelLoader.Load("JSON/level1.json");
+            levelLoader.Load(filename.levelData);
 
             ItemSpriteFactory.Instance.LoadTextures(Content);
             BlockSpriteFactory.Instance.LoadTextures(Content);

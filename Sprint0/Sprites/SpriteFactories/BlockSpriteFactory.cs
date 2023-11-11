@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.BlockSprites;
+using Sprint0.Utility;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -18,7 +19,7 @@ namespace Sprint0.Sprites
         private Dictionary<string, Rectangle[]> animated_sprites;
         private static BlockSpriteFactory spriteFactory = new BlockSpriteFactory();
 
-        private string fileName { get; set; }
+        private FileNames filename = new FileNames();
         private string jsonString { get; set; }
 
         public static BlockSpriteFactory Instance { get { return spriteFactory; } }
@@ -31,13 +32,13 @@ namespace Sprint0.Sprites
 
         public void LoadTextures(ContentManager content)
         {
-            blockTextures = content.Load<Texture2D>("SpriteImages/blocks");
+            blockTextures = content.Load<Texture2D>(filename.blockSheet);
         }
 
         public void LoadSpriteLocations()
         {
             // Deserialize the JSON data into an object
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "JSON/blockdata.json");
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), filename.blockData);
             jsonString = File.ReadAllText(path, Encoding.Default);
             var data = JsonSerializer.Deserialize<SpriteData>(jsonString);
 
