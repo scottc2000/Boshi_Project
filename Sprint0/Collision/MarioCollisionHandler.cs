@@ -14,7 +14,7 @@ namespace Sprint0.Collision
         private Type type1;
         private Type type2;
 
-        public enum staticBlocks { Floor, Cloud, LargeBlock, Pipe, WoodBlocks }
+        public enum staticBlocks { Floor, Clouds, LargeBlock, Pipe, WoodBlocks }
         public enum dynamicBlocks { YellowBrick, QuestionBlock, SpinningCoin }
         public enum Items { RedMushroom, OneUpMushroom, Leaf}
         public enum Enemies { Koopa, Goomba}
