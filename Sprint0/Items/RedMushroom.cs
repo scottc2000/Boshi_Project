@@ -14,7 +14,7 @@ namespace Sprint0.Items
 
         private int itemSpeed = 1;
 
-        public bool moveRight = false;
+        public bool moveRight { get; set; }
 
         private float timer = 0f;
         private int interval = 15;
@@ -30,6 +30,7 @@ namespace Sprint0.Items
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("RedMushroom");
             Destination = aniItem.itemPosition;
+            moveRight = false;
         }
 
         public void setPosition(List<int> pos)

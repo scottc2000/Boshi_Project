@@ -16,14 +16,18 @@ namespace Sprint0.Commands.Collisions
         }
         public void Execute()
         {
+            ICommand command = new CRemoveDynamic(item, sprint.objects);
             if (item is RedMushroom)
                 mario.ChangeToBig();
             else if (item is Leaf)
                 mario.ChangeToRaccoon();
             else if (item is FireFlower)
                 mario.ChangeToFire();
-            else if (item is OneUpMushroom) ;
+            else if (item is OneUpMushroom)
+            {
                 // increase HUD life counter
+            }
+            command.Execute();
         }
     }
 }

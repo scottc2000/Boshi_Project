@@ -9,11 +9,11 @@ namespace Sprint0.Characters.LuigiStates
 	public class DeadLuigiState : ICharacterState
 	{
         Luigi luigi;
+        private AudioManager audioManager = AudioManager.Instance;
         private FileNames FileNames = new FileNames();
         public DeadLuigiState(Luigi luigi)
 		{
             this.luigi = luigi;
-            AudioManager audioManager = AudioManager.Instance;
             audioManager.PlaySFX(FileNames.deathSFX);
         }
 
