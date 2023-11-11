@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Characters.LuigiStates;
 using Sprint0.Interfaces;
+using Sprint0.Items.Projectiles;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.Projectile;
 using Sprint0.Sprites.SpriteFactories;
@@ -9,13 +10,13 @@ using System.Collections.Generic;
 
 namespace Sprint0.Characters
 {
-    public class Luigi : ICharacter
+    public class Luigi : ILuigi
     {
         public enum LuigiHealth { Normal, Raccoon, Fire, Big, Dead };
-        public LuigiHealth health = LuigiHealth.Normal;
+        public LuigiHealth health { get; set; }
 
         public enum LuigiPose { Jump, Crouch, Idle, Walking, Throwing };
-        public LuigiPose pose = LuigiPose.Idle;
+        public LuigiPose pose { get; set; }
         public bool facingLeft { get; set; }
         public bool fired;
 
@@ -26,43 +27,49 @@ namespace Sprint0.Characters
         public bool gothit { get; set; }
         public bool stuck { get; set; }
         public bool isInvinsible { get; set; }
+        public int flyingTimer { get; set; }
 
         public float velocityX;
         public float velocityY;
         public float decay;
         public float gravity;
         public int timeGap;
+        public int runningTimer { get; set; }
 
 
         public ICharacterState State { get; set; }
 
 
-        public Vector2 position;
+        public Vector2 position { get; set; }
         public Sprint0 mySprint;
         int sizeDiff;
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
+        public bool boosted { get; set; }
 
-        public AnimatedSpriteLuigi currentSprite;
+
+        public AnimatedSpriteLuigi currentSprite {get; set; }
         public CharacterSpriteFactoryLuigi mySpriteFactory;
 
-        public ProjectileSpriteFactory projectileFactory;
+        public FireProjectile fireProjectile { get; set; }
 
-        public List<AnimatedProjectile> ThrownProjectiles;
 
 
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Normal;
+            this.health = LuigiHealth.Big;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
+            flyingTimer = 0;
+            this.boosted = false;
             this.facingLeft = true;
-            this.position.X = 100;
-            this.position.Y = 300;
+            this.position = new Vector2(200, 200);
             this.sizeDiff = 25;
             this.fired = false;
             this.timeGap = 0;
+            this.runningTimer = 0;
+            this.flyingTimer = 0;
 
             this.downhit = false;
             this.uphit = false;
@@ -82,28 +89,41 @@ namespace Sprint0.Characters
             mySpriteFactory = new CharacterSpriteFactoryLuigi(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
-            projectileFactory = new ProjectileSpriteFactory();
+            fireProjectile = new FireProjectile(mySprint.Content);
 
-            ThrownProjectiles = new List<AnimatedProjectile>();
-
-            projectileFactory.LoadTextures(mySprint.Content);
 
             currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
 
         }
 
 
         public void Move()
         {
-            State.Move();
+            if (health != LuigiHealth.Dead)
+            {
+                State.Move();
+            }
+        }
+
+        public void Fly()
+        {
+            State.Fly();
         }
 
         public void Jump()
         {
-            if (uphit)
+            if (uphit && health != LuigiHealth.Dead)
             {
                 State.Jump();
+            }
+        }
+
+        public void Fall()
+        {
+            if (health != LuigiHealth.Dead)
+            {
+                State.Fall();
             }
         }
 
@@ -114,6 +134,7 @@ namespace Sprint0.Characters
 
         public void Stop()
         {
+            fired = false;
             timeGap = 0;
             State.Stop();
         }
@@ -140,11 +161,11 @@ namespace Sprint0.Characters
         public void Throw()
         {
             // projectiles stored in list, only three at a time on screen
-            if (health == Luigi.LuigiHealth.Fire)
+            if (health == LuigiHealth.Fire)
             {
                 if (!fired)
                 {
-                    ThrownProjectiles.Add(projectileFactory.returnSprite("PlayerFireRight", position, facingLeft));
+                    fireProjectile.addProjectile("PlayerFireRight", position, facingLeft);
                     fired = true;
                 }
 
@@ -176,7 +197,7 @@ namespace Sprint0.Characters
         {
             if (health == LuigiHealth.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
             health = LuigiHealth.Fire;
         }
@@ -185,52 +206,41 @@ namespace Sprint0.Characters
         {
             if (health == LuigiHealth.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
             }
             health = LuigiHealth.Raccoon;
+
+            if (facingLeft)
+                currentSprite = mySpriteFactory.returnSprite("LuigiStillLeft");
+            else
+                currentSprite = mySpriteFactory.returnSprite("LuigiStillRight");
         }
 
         public void ChangeToBig()
         {
             if (health == LuigiHealth.Normal)
             {
-                position.Y -= sizeDiff;
+                position = new Vector2(position.X, position.Y - sizeDiff);
+                health = LuigiHealth.Big;
             }
-            health = LuigiHealth.Big;
+            
         }
 
         public void ChangeToNormal()
         {
             if (health != LuigiHealth.Normal)
             {
-                position.Y += sizeDiff;
+                position = new Vector2(position.X, position.Y + sizeDiff);
             }
             health = LuigiHealth.Normal;
         }
 
-        public void UpdateProjectiles(GameTime gametime)
-        {
-            // checks if projectile is off screen, if so then deletes it
-            List<AnimatedProjectile> gone = new List<AnimatedProjectile>();
-            foreach (AnimatedProjectile am in ThrownProjectiles)
-            {
-                am.Update(gametime);
-                if (am.pos.X > 850 || am.pos.X < -50)
-                {
-                    gone.Add(am);
-                }
-            }
-
-            foreach (AnimatedProjectile item in gone) ThrownProjectiles.Remove(item);
-            gone.Clear();
-        }
-
 
         public void applyGravity()
-        { 
-           
-           position.Y += this.gravity;
-           
+        {
+
+            position = new Vector2(position.X, position.Y + gravity);
+
         }
 
         public void UpdateMovement(GameTime gametime)
@@ -239,34 +249,34 @@ namespace Sprint0.Characters
 
             if (facingLeft)
             {
-                position.X -= (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position = new Vector2(position.X - (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
             else
             {
-                position.X += (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+                position = new Vector2(position.X + (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))), position.Y);
             }
-
-            position.Y += (velocityY * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            position = new Vector2(position.X, position.Y + (velocityY * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f))));
+            
 
         }
 
         public void LeftStuck(GameTime gametime)
         {
-            position.X += (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            
         }
         public void RightStuck(GameTime gametime)
         {
-            position.X -= (velocityX * ((float)gametime.ElapsedGameTime.TotalSeconds / (1.0f / 60.0f)));
+            
         }
 
         public void UpStuck()
         {
-            position.Y -= (gravity / 2);
+            //position.Y -= (gravity / 2);
         }
 
         public void Update(GameTime gametime)
         {
-           // UpdateProjectiles(gametime);        
+            // UpdateProjectiles(gametime);        
 
             if (!(pose == LuigiPose.Throwing))
             {
@@ -277,7 +287,7 @@ namespace Sprint0.Characters
             UpdateMovement(gametime);
             applyGravity();
 
-            destination = currentSprite.destination;
+            Destination = currentSprite.destination;
             resetHits();
 
         }
@@ -285,13 +295,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch)
         {
-
-            currentSprite.Draw(spritebatch, position);
-            foreach (AnimatedProjectile am in ThrownProjectiles)
-            {
-                am.Draw(spritebatch);
-            }
-
+            currentSprite.Draw(spritebatch, position);  
         }
     }
 }

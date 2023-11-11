@@ -1,97 +1,100 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Background;
-using Sprint0.Camera;
-using Sprint0.Characters;
-using Sprint0.Collision;
+﻿using Sprint0.Blocks;
 using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Sprint0.GameMangager
 {
-    public class ObjectManager : IGameObject
+    public class ObjectManager
     {
-        public string Name { get; }
-
-        public MarioCamera camera;
-
-        private Terrain terrain;
-        public List<IBlock> Blocks { get; set; }
         public List<IBlock> TopCollidableBlocks { get; set; }
         public List<IBlock> BottomCollidableBlocks { get; set; }
         public List<IBlock> SideCollidableBlocks { get; set; }
-        public List<IItem> Items { get; set; } 
-        public List<IEnemies> Enemies { get;set; }
-
-        public Luigi luigi;
-        public IMario mario;
+        public List<IBlock> ThroughCollidableBlocks { get; set; }
+        public List<IProjectile> Projectiles { get; set; }
+        public List<IItem> Items { get; set; }
+        public List<IBlock> Blocks { get; set; }
+        public List<IEnemies> Enemies { get; set; }
+        public List<ICollidable> StaticEntities { get; set; }
+        public List<ICollidable> DynamicEntities { get; set; }
+        public List<ICollidable> EntitiesToAdd { get; set; }
+        public List<ICollidable> EntitiesToRemove { get; set; }
 
         private Sprint0 sprint;
         
-        public ObjectManager(Sprint0 sprint0, MarioCamera camera)
+        public ObjectManager(Sprint0 sprint0)
         {
             sprint = sprint0;
-            this.camera = camera;
-            terrain = new Terrain(sprint);
+
             Items = new List<IItem>();
-            Enemies = new List<IEnemies>();
             Blocks = new List<IBlock>();
+            Enemies = new List<IEnemies>();
+
             TopCollidableBlocks = new List<IBlock>();
             BottomCollidableBlocks = new List<IBlock>();
             SideCollidableBlocks = new List<IBlock>();
-
-            mario = new Mario(sprint);
-            luigi = new Luigi(sprint);
+            ThroughCollidableBlocks = new List<IBlock>();
+            Projectiles = new List<IProjectile>();
             
+            StaticEntities = new List<ICollidable>();
+            DynamicEntities = new List<ICollidable>();
+            EntitiesToAdd = new List<ICollidable>();
+            EntitiesToRemove = new List<ICollidable>();
+
         }
-        public void Draw(SpriteBatch spriteBatch)
+
+        public void Update()
         {
-            terrain.Draw(spriteBatch); // need to draw terrain before any game objects
-
-            // Draw each game object
-            foreach (var block in Blocks)
+            foreach (var entity in EntitiesToAdd)
             {
-                block.Draw(spriteBatch);
+                DynamicEntities.Add(entity);
+                if (entity is IItem)
+                    Items.Add((IItem)entity);
+                if (entity is IBlock)
+                    Blocks.Add((IBlock)entity);
+                if (entity is IEnemies)
+                    Enemies.Add((IEnemies)entity);
             }
-            foreach(var item in Items)
+            foreach (var entity in EntitiesToRemove)
             {
-                item.Draw(spriteBatch);
+                DynamicEntities.Remove(entity);
+                if (entity is IItem)
+                    Items.Remove((IItem)entity);
+                if (entity is IBlock)
+                    Blocks.Remove((IBlock)entity);
+                if (entity is IEnemies)
+                    Enemies.Remove((IEnemies)entity);
             }
-            foreach(var enemy in Enemies)
-            {
-                enemy.Draw(spriteBatch);
-            }
-
-            mario.Draw(spriteBatch);
-            luigi.Draw(spriteBatch);
-
+            EntitiesToAdd.Clear();
+            EntitiesToRemove.Clear();
         }
 
-
-        public void Update(GameTime gameTime, CollisionHandler collision)
+        public void AddToList()
         {
-            terrain.Update(gameTime);   // need to update terrain before any game objects
 
-            // Update each game object
-            foreach (var block in Blocks)
-            {
-                block.Update(gameTime);
-            }
-            foreach(var item in Items)
-            {
-                item.Update(gameTime);
-            }
-            foreach (var enemy in Enemies)
-            {
-                enemy.Update(gameTime);
-            }
-            mario.Update(gameTime);
-            luigi.Update(gameTime);
-            collision.Update();
-
-            camera.Update(gameTime, mario);
-            
         }
+
+        public void RemoveFromList(ICollidable removed)
+        {
+            if (removed is IItem) Items.Remove((IItem)removed);
+            if (removed is IEnemies) Enemies.Remove((IEnemies)removed);
+
+            if (removed is IBlock)
+            {
+                Blocks.Remove((IBlock)removed);
+                TopCollidableBlocks.Remove((IBlock)removed);
+                BottomCollidableBlocks.Remove((IBlock)removed);
+                SideCollidableBlocks.Remove((IBlock)removed);
+                ThroughCollidableBlocks.Remove((IBlock)removed);
+            }
+
+            if(removed is IProjectile) Projectiles.Remove((IProjectile)removed);
+
+            DynamicEntities.Remove(removed);
+
+        }
+       
     }
 
 }

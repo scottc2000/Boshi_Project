@@ -7,6 +7,8 @@ namespace Sprint0.Characters.MarioStates
     public class MarioFlyState : ICharacterState
     {
         private Mario mario;
+        private float yVelocity = -4f;
+
         public MarioFlyState(Mario mario)
         {
             this.mario = mario;
@@ -23,7 +25,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Fall()
         {
-
+            yVelocity = 0f;
         }
 
         public void Fly()
@@ -38,7 +40,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void Move()
         {
-            mario.State = new MarioMoveState(mario);
+            mario.velocity.X = 2;
         }
 
         public void Stop()
@@ -53,20 +55,24 @@ namespace Sprint0.Characters.MarioStates
 
         public void UpdateVelocity(GameTime gametime)
         {
-            if (mario.boosted)
+            if (mario.flyingTimer < 4000)
             {
-                mario.velocity.Y = -1.0f; // Ascend
-                mario.flyingTimer++;
+                mario.velocity.Y = yVelocity;
             }
             else
             {
-                mario.velocity.Y = 1.0f; // Gradually descend
-            }
-            if (mario.flyingTimer >= 100)
-            {
                 mario.velocity.Y = 0;
             }
+            mario.flyingTimer += gametime.ElapsedGameTime.Milliseconds;
+
+            if(mario.flyingTimer > 4000)
+            {
+                mario.boosted = false;
+                mario.flyingTimer = 0;
+                mario.State = new MarioIdleState(mario);
+            }
         }
+
         public void Update(GameTime gametime)
         {
            mario.pose = Mario.MarioPose.Flying;
@@ -74,7 +80,14 @@ namespace Sprint0.Characters.MarioStates
            UpdateVelocity(gametime);
             
            SetSprites(gametime);
+
+            if (mario.uphit && mario.flyingTimer > 4000)
+            {
+                mario.Stop();
+            }
+
         }
+
         public void SetSprites(GameTime gametime)
             {
             if (mario.facingLeft)

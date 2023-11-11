@@ -1,28 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using Sprint0.Sprites.ItemSprites;
 using Sprint0.Sprites.SpriteFactories;
 using System.Collections.Generic;
 
 namespace Sprint0.Items
 {
-   public class RedMushroom : IItem
+    public class RedMushroom : IItem
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
 
         private int itemSpeed = 1;
 
-        public bool moveRight = false;
+        public bool moveRight { get; set; }
 
         private float timer = 0f;
         private int interval = 15;
+        public Rectangle Destination { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
 
         public RedMushroom()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("RedMushroom");
-            itemRectangle = aniItem.itemPosition;
+            Destination = aniItem.itemPosition;
+            moveRight = false;
         }
 
         public void setPosition(List<int> pos)
@@ -44,7 +52,7 @@ namespace Sprint0.Items
                 position.X -= itemSpeed;
                 timer = 0;
             }
-            itemRectangle = aniItem.itemPosition;
+            Destination = aniItem.itemPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch)

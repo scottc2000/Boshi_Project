@@ -1,18 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Sprint0.Interfaces
 {
-    public interface IItem
-    {
-        public Rectangle itemRectangle { get; set; }
-        void Draw(SpriteBatch spriteBatch);
+    public interface IItem : ICollidable, IGameObject
+    { 
         void setPosition(List<int> position);
-        void Update(GameTime gameTime);
+        public bool moveRight { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Sprint0.Commands.Collisions
     {
 
         private Sprint0 mySprint0;
-        private Characters.Luigi luigi;
+        private ILuigi luigi;
 
         public CLuigiStuckY(Sprint0 mySprint0)
         {
@@ -18,28 +18,28 @@ namespace Sprint0.Commands.Collisions
         public void Execute()
         {
 
-            luigi = mySprint0.objects.luigi;
+            luigi = mySprint0.levelLoader.luigi;
             luigi.uphit = true;
 
         }
 
         public void Execute(Rectangle hitbox)
         {
-            luigi = mySprint0.objects.luigi;
+            luigi = mySprint0.levelLoader.luigi;
 
-            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.destination);
+            Rectangle hitarea = Rectangle.Intersect(hitbox, luigi.Destination);
 
             if (hitarea.Width >= hitarea.Height)
             {
                 if (hitbox.Y <= luigi.position.Y)
                 {
-                    luigi.position.Y += hitarea.Height;
+                    luigi.position = new Vector2(luigi.position.X, luigi.position.Y + hitarea.Height);
                                               
                 }
                 else
                 {
                     luigi.uphit = true;
-                    luigi.position.Y -= hitarea.Height;
+                    luigi.position = new Vector2(luigi.position.X, luigi.position.Y - hitarea.Height);
                 }
             }
             

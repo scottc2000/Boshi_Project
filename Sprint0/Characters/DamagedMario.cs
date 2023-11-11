@@ -5,6 +5,7 @@ using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.Players;
 using System.Collections.Generic;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters
 {
@@ -13,7 +14,7 @@ namespace Sprint0.Characters
         public MarioCamera camera;
         public ICharacterState State { get; set; }
         public bool facingLeft { get; set; }
-        public Rectangle destination { get; set; }
+        public Rectangle Destination { get; set; }
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
         public bool uphit { get; set; }
@@ -23,29 +24,31 @@ namespace Sprint0.Characters
         public bool isInvinsible { get; set; }
         public int runningTimer { get; set; }
         public int flyingTimer { get; set; }
+        public bool boosted { get; set; }
         public Vector2 position { get { return decoratedMario.position; } set { decoratedMario.position = value; } }
 
         public Mario.MarioHealth health { get; set; }
         public Mario.MarioPose pose { get; set; }
         public AnimatedSpriteMario currentSprite { get; set; }
 
-        private ObjectManager manager;
+        private LevelLoader1 level;
         public IMario decoratedMario;
         public int timer;
+        int ySnapshot;
 
         private List<Color> colors = new List<Color> {
             Color.Transparent,
             Color.White
         };
-        public DamagedMario(IMario mario, ObjectManager manager) 
+        public DamagedMario(IMario mario, LevelLoader1 level) 
         {
-            this.manager = manager;
-            camera = manager.camera;
+            this.level = level;
             decoratedMario = mario;
             health = mario.health;
             currentSprite = mario.currentSprite;
-            timer = 50;
+            timer = 75;
             State = mario.State;
+            ySnapshot = (int)mario.position.Y;
         }
 
         public void ChangeToBig()   { decoratedMario.ChangeToBig(); }
@@ -61,6 +64,9 @@ namespace Sprint0.Characters
         public void Die()  { decoratedMario.Die();  }
 
         public void Jump() { decoratedMario.Jump();  }
+
+        public void Fall() { decoratedMario.Fall(); }
+
         public void Fly() { decoratedMario.Fly(); }
 
         public void Move() { decoratedMario.Move();  }
@@ -76,28 +82,25 @@ namespace Sprint0.Characters
             timer--;
             if (timer == 0)
             {
-               
-                // Update the position of DamagedMario based on the offset
-                System.Diagnostics.Debug.WriteLine("position: " + position);
-
                 isInvinsible = false;
                 RemoveDecorator();
             }
-
+            position = new Vector2(position.X, ySnapshot);
+            Destination = currentSprite.destination;
             decoratedMario.Update(gametime);
-            camera.Update(gametime, decoratedMario);
-
+            level.camera.Update(decoratedMario);
         }
 
         void RemoveDecorator()
         {
-            System.Diagnostics.Debug.WriteLine("invinsible: " + isInvinsible);
-            manager.mario = decoratedMario;
+            System.Diagnostics.Debug.WriteLine("Decorator Removed");
+            System.Diagnostics.Debug.WriteLine("Destination : " + Destination);
+            level.mario = decoratedMario;
         }
 
         public void Draw(SpriteBatch spritebatch) 
         { 
-            currentSprite.Draw(spritebatch, position, colors[(timer / 3) % 2]); 
+            currentSprite.Draw(spritebatch, new Vector2(position.X, position.Y), colors[(timer / 3) % 2]); 
         }
     }
 }

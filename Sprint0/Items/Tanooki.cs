@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Sprites.ItemSprites;
 
 namespace Sprint0.Items
 {
@@ -15,12 +16,20 @@ namespace Sprint0.Items
     {
         private AniItemSprite aniItem;
         private Vector2 position;
-        public Rectangle itemRectangle { get; set; }
+        public Rectangle Destination { get; set; }
+        public bool moveRight { get; set; }
+        public bool lefthit { get; set; }
+        public bool righthit { get; set; }
+        public bool uphit { get; set; }
+        public bool downhit { get; set; }
+        public bool gothit { get; set; }
+        public bool stuck { get; set; }
 
         public Tanooki()
         {
             aniItem = ItemSpriteFactory.Instance.returnSprite("Tanooki");
-            itemRectangle = aniItem.itemPosition;
+            Destination = aniItem.itemPosition;
+            moveRight = false;
         }
 
         public void setPosition(List<int> pos)

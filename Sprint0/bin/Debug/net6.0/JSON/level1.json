@@ -1,6 +1,13 @@
 ﻿{
   "Blocks": [
     {
+      "Name": "death_zone",
+      "x": 0,
+      "y": 432,
+      "width": 2816,
+      "height": 16
+    },
+    {
       "Name": "floor",
       "x": -16,
       "y": 0,
@@ -881,7 +888,7 @@
   ],
   "Songs": [
     {
-      "Name": "mainTheme"
+      "Name": "01-main-theme-overworld"
     }
   ]
 }

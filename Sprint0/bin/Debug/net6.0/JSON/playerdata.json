@@ -74,8 +74,15 @@
           "hitbox": [ 16, 17 ],
           "facingLeft": false,
           "looping": false
-        }
+        },
 
+        {
+          "name": "LuigiDead",
+          "spritesheet_pos": [ [ 307, 16 ] ],
+          "hitbox": [ 16, 16 ],
+          "facingLeft": false,
+          "looping": false
+        }
 
 
       ]

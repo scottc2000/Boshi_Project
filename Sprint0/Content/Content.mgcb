@@ -19,11 +19,17 @@
 /processorParam:Quality=Best
 /build:01-main-theme-overworld.wav
 
-#begin jumpSmall.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:jumpSmall.wav
+#begin HUD_transparent1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD_transparent1.png
 
 #begin level1_1.png
 /importer:TextureImporter
@@ -78,6 +84,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:smb_flagpole.wav
+
+#begin smb_jump-small.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_jump-small.wav
 
 #begin smb_mariodie.wav
 /importer:WavImporter

@@ -1,11 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Characters.MarioStates
 {
     public class MarioMoveState : ICharacterState
     {
         private Mario mario;
+        private AudioManager audioManager = AudioManager.Instance;
+        private FileNames FileNames = new FileNames();
 
         public MarioMoveState(Mario mario)
         {
@@ -21,8 +24,7 @@ namespace Sprint0.Characters.MarioStates
         public void Jump()
         {
             mario.State = new MarioJumpState(mario);
-            AudioManager audioManager = AudioManager.Instance;
-            audioManager.PlaySFX("jump");
+            audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly()
         {
@@ -56,15 +58,14 @@ namespace Sprint0.Characters.MarioStates
             // if raccoon mario runs for certain amount of time, flight boost is given
             if (mario.runningTimer < 75)
             {
-                mario.velocity.X = 3.0f;
+                mario.velocity.X = 2.0f;
                 mario.boosted = false;
             }
             else if (mario.runningTimer > 75)
             {
-                mario.velocity.X = 4.0f;
+                mario.velocity.X = 3.0f;
                 mario.boosted = true;
             }
-
             mario.velocity.Y *= 0;
         }
 

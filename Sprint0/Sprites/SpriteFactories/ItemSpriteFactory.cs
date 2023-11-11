@@ -1,11 +1,17 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Items;
+using Microsoft.Xna.Framework;
+using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
 using System.IO;
-using System.Text.Json;
 using static Sprint0.Sprites.ItemSprites.itemdata;
+using System.Text.Json;
+using Sprint0.Sprites.ItemSprites;
 
 namespace Sprint0.Sprites.SpriteFactories
 {

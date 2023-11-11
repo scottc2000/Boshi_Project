@@ -5,15 +5,15 @@ namespace Sprint0.Commands.Mario
 
     internal class CMarioRaccoon : ICommand
     {
-        private Sprint0 mySprint0;
+        private Sprint0 sprint;
         private IMario mario;
-        public CMarioRaccoon(Sprint0 Sprint0)
+        public CMarioRaccoon(Sprint0 sprint, LevelLoader1 level)
         {
-            mySprint0 = Sprint0;
+            this.sprint = sprint;
+            mario = level.mario;
         }
         public void Execute()
         {
-            mario = mySprint0.objects.mario;
             mario.ChangeToRaccoon();
         }
 
