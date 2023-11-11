@@ -43,7 +43,7 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     Gravity has not been implemented due to block collisions not being done (backlog)
     Camera follows mario but screenscrolling is buggy (backlog)
     
-## Sprint 3
+## Sprint 4
 ## Comments
 - any commits by user "ch3ney" is done by skansher on a different device due to technology issues - not a different user
 ## Controls:
