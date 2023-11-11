@@ -65,7 +65,7 @@ namespace Sprint0.Sprites.SpriteFactories
                 Root element = deserializedGameData.FirstOrDefault(item => item.number == digit);
                 rectangles.Add(new Rectangle(element.spritesheetpos[0], element.spritesheetpos[1], element.size[0], element.size[1]));
             }
-           
+            System.Diagnostics.Debug.WriteLine("hudSpriteSheet: " + hudSpriteSheet);
             return new Digits(hudSpriteSheet, rectangles);
         }
 

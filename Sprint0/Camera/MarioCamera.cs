@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.HUD;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
 
@@ -15,7 +16,7 @@ namespace Sprint0.Camera
 
         public Matrix transform;    // Used to draw camera to screen
         Viewport view;              // view port
-        Vector2 center;         // point to focus on
+        public Vector2 center;         // point to focus on
         CameraNumbers cameraNumbers;
 
         public MarioCamera(Viewport newview)
@@ -42,6 +43,10 @@ namespace Sprint0.Camera
 
             transform = zoom * translation;
 
+        }
+        public void DrawHud(GameStats hud, SpriteBatch spritebatch)
+        {
+            hud.Draw(spritebatch);
         }
     }
 }

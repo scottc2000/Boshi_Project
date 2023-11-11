@@ -32,7 +32,7 @@ namespace Sprint0.Collision
                 MarioStaticBlockCollision(entity1, entity2, side, hitarea);
 
             else if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
-                MarioStaticBlockCollision(entity1, entity2, side, hitarea);
+                MarioDynamicBlockCollision(entity1, entity2, side, hitarea);
 
             else if (Enum.IsDefined(typeof(Items), type1.Name) || Enum.IsDefined(typeof(Items), type2.Name))
                 MarioItemCollision(entity1, entity2, side);
