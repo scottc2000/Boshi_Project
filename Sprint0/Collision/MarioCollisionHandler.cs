@@ -14,7 +14,8 @@ namespace Sprint0.Collision
         private Type type1;
         private Type type2;
 
-        public enum staticBlocks { Floor, Cloud, LargeBlock, Pip, WoodBlocks, YellowBrick }
+        public enum staticBlocks { Floor, Cloud, LargeBlock, Pipe, WoodBlocks }
+        public enum dynamicBlocks { YellowBrick, QuestionBlock, SpinningCoin }
         public enum Items { RedMushroom, OneUpMushroom, Leaf}
         public enum Enemies { Koopa, Goomba}
         public MarioCollisionHandler(Sprint0 sprint) 
@@ -28,6 +29,9 @@ namespace Sprint0.Collision
             type2 = entity2.GetType();
 
             if (Enum.IsDefined(typeof(staticBlocks), type1.Name) || Enum.IsDefined(typeof(staticBlocks), type2.Name))
+                MarioStaticBlockCollision(entity1, entity2, side, hitarea);
+
+            else if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
                 MarioStaticBlockCollision(entity1, entity2, side, hitarea);
 
             else if (Enum.IsDefined(typeof(Items), type1.Name) || Enum.IsDefined(typeof(Items), type2.Name))
@@ -54,6 +58,42 @@ namespace Sprint0.Collision
             else if (side == Side.Vertical)
             {
                 ICollidableCommand command = new CMarioStuckY(sprint);
+                command.Execute(hitarea);
+            }
+            else if (side == Side.Both)
+            {
+                ICollidableCommand command = new CMarioStuckY(sprint);
+
+                command.Execute(hitarea);
+            }
+        }
+
+        public void MarioDynamicBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        {
+            if (entity1 is SpinningCoin)
+            {
+                CGetCoin command = new CGetCoin(sprint);
+                command.Execute((IBlock)entity1);
+            }
+            else if (entity2 is SpinningCoin)
+            {
+                CGetCoin command = new CGetCoin(sprint);
+                command.Execute((IBlock)entity2);
+            }
+            if (side == Side.Horizontal)
+            {
+                ICollidableCommand command = new CMarioStuckX(sprint);
+                command.Execute(hitarea);
+            }
+            else if (side == Side.Vertical)
+            {
+                ICollidableCommand command = new CMarioStuckY(sprint);
+                command.Execute(hitarea);
+            }
+            else if (side == Side.Both)
+            {
+                ICollidableCommand command = new CMarioStuckY(sprint);
+
                 command.Execute(hitarea);
             }
         }
