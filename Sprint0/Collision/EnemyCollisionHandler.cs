@@ -41,6 +41,11 @@ namespace Sprint0.Collision
                     ICommand command = new CGoombaStomp(sprint);
                     command.Execute();
                     System.Diagnostics.Debug.WriteLine("Goomba Stomped");
+                } else if (type1 is Koopa || type2 is Koopa)
+                {
+                    ICommand command = new CKoopaStomp(sprint);
+                    command.Execute();
+                    System.Diagnostics.Debug.WriteLine("Goomba Stomped");
                 }
             }
 
