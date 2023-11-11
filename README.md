@@ -46,10 +46,18 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
 ## Sprint 4
 ## Controls:
     - Same as before
+    - special controls to change player health will be removed later, used currently for testing purposes
 
 ## Known Bugs:
     Blocks have collision but do not react when hit (backlog)
         - Need to add question block item spawning and yellow brick bump animation
     When player is small, they can clip through the floor in certain areas
     Unable to trigger enemy stomped conditions
-    
+    - game hud does not follow camera
+- game hud timer needs to be debugged - issues with GameTime gametime
+- Block interactions need to be added - item spawning from question block and bump animation for question block and brick
+- When player is small, they can clip through the floor at certain areas
+- Camera is stuttery
+## Comments
+- any commits by user "ch3ney" is done by skansher on a different device due to technology issues - not a different user
+
