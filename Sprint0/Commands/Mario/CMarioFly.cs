@@ -19,9 +19,13 @@ namespace Sprint0.Commands.Mario
         {
             if (mario.boosted)
             {
-                System.Diagnostics.Debug.WriteLine("Boosted");
                 mario.Fly();
             }
+            else
+            {
+                mario.Jump();
+            }
+
         }
     }
 }

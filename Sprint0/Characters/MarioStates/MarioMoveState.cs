@@ -66,7 +66,6 @@ namespace Sprint0.Characters.MarioStates
                 mario.velocity.X = 3.0f;
                 mario.boosted = true;
             }
-
             mario.velocity.Y *= 0;
         }
 

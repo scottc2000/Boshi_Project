@@ -17,7 +17,6 @@ namespace Sprint0.Commands.Mario
             mario = level.mario;
             if (mario.health == Characters.Mario.MarioHealth.Raccoon)
             {
-                System.Diagnostics.Debug.WriteLine("CFLy entered");
                 ICommand flyCommand = new CMarioFly(mySprint0, level);
                 flyCommand.Execute();
             }

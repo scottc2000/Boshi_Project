@@ -22,6 +22,7 @@ namespace Sprint0.Characters
         public bool facingLeft { get; set; }
         public bool fired;
 
+
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
         public bool uphit { get; set; }
@@ -37,7 +38,6 @@ namespace Sprint0.Characters
         public int timeGap;
 
         public ICharacterState State { get; set; }
-
 
         public int runningTimer { get; set; }
         public int flyingTimer { get; set; }
@@ -60,7 +60,6 @@ namespace Sprint0.Characters
             this.State = new MarioIdleState(this);
 
             // timers
-            runningTimer = 0;
             flyingTimer = 0;
             boosted = false;
 

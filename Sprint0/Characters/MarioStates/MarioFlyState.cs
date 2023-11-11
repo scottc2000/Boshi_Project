@@ -8,7 +8,6 @@ namespace Sprint0.Characters.MarioStates
     {
         private Mario mario;
         private float yVelocity = -4f;
-        private float flyingTimer;
 
         public MarioFlyState(Mario mario)
         {
@@ -56,7 +55,7 @@ namespace Sprint0.Characters.MarioStates
 
         public void UpdateVelocity(GameTime gametime)
         {
-            if (flyingTimer < 200)
+            if (mario.flyingTimer < 4000)
             {
                 mario.velocity.Y = yVelocity;
             }
@@ -64,7 +63,14 @@ namespace Sprint0.Characters.MarioStates
             {
                 mario.velocity.Y = 0;
             }
-            flyingTimer += gametime.ElapsedGameTime.Milliseconds;
+            mario.flyingTimer += gametime.ElapsedGameTime.Milliseconds;
+
+            if(mario.flyingTimer > 4000)
+            {
+                mario.boosted = false;
+                mario.flyingTimer = 0;
+                mario.State = new MarioIdleState(mario);
+            }
         }
 
         public void Update(GameTime gametime)
@@ -75,10 +81,11 @@ namespace Sprint0.Characters.MarioStates
             
            SetSprites(gametime);
 
-            if (mario.uphit)
+            if (mario.uphit && mario.flyingTimer > 4000)
             {
                 mario.Stop();
             }
+
         }
 
         public void SetSprites(GameTime gametime)
