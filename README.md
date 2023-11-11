@@ -43,4 +43,13 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     Gravity has not been implemented due to block collisions not being done (backlog)
     Camera follows mario but screenscrolling is buggy (backlog)
     
-
+## Sprint 3
+## Comments
+- any commits by user "ch3ney" is done by skansher on a different device due to technology issues - not a different user
+## Controls:
+- controls are the same as sprint 3
+- special controls to change player health will be removed later, used currently for testing purposes
+## known bugs:
+- game hud does not follow camera
+- game hud timer needs to be debugged - issues with GameTime gametime
+  
