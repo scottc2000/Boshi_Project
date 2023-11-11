@@ -51,4 +51,5 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     Blocks have collision but do not react when hit (backlog)
         - Need to add question block item spawning and yellow brick bump animation
     When player is small, they can clip through the floor in certain areas
+    Unable to trigger enemy stomped conditions
     
