@@ -1,15 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
+using System.Diagnostics;
 
 namespace Sprint0.Commands.Collision
 {
-    public class CMarioStuckY : ICommand, ICollidableCommand
+    public class CMarioStuckBottomY : ICommand, ICollidableCommand
     {
 
         private Sprint0 mySprint0;
         private IMario mario;
 
-        public CMarioStuckY(Sprint0 mySprint0)
+        public CMarioStuckBottomY(Sprint0 mySprint0)
         {
             this.mySprint0 = mySprint0;
         }
@@ -27,17 +29,13 @@ namespace Sprint0.Commands.Collision
 
             if (hitarea.Width >= hitarea.Height)
             {
-                if (hitbox.Y <= mario.position.Y)
+                if (mario.Destination.Top <= hitbox.Bottom && mario.Destination.Bottom >= hitbox.Top + 5)
                 {
                     mario.position = new Vector2(mario.position.X, mario.position.Y + hitarea.Height);
+                }
 
-                }
-                else
-                {
-                    mario.uphit = true;
-                    mario.position = new Vector2(mario.position.X, mario.position.Y - hitarea.Height);
-                }
             }
+            
 
         }
     }

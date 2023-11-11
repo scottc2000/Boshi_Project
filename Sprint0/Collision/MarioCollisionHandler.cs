@@ -23,16 +23,16 @@ namespace Sprint0.Collision
             this.sprint = sprint;
         }
 
-        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
             type1 = entity1.GetType();
             type2 = entity2.GetType();
 
             if (Enum.IsDefined(typeof(staticBlocks), type1.Name) || Enum.IsDefined(typeof(staticBlocks), type2.Name))
-                MarioStaticBlockCollision(entity1, entity2, side, hitarea);
+                MarioStaticBlockCollision(entity1, entity2, side, vert, hitarea);
 
             else if (Enum.IsDefined(typeof(dynamicBlocks), type1.Name) || Enum.IsDefined(typeof(dynamicBlocks), type2.Name))
-                MarioDynamicBlockCollision(entity1, entity2, side, hitarea);
+                MarioDynamicBlockCollision(entity1, entity2, side, vert, hitarea);
 
             else if (Enum.IsDefined(typeof(Items), type1.Name) || Enum.IsDefined(typeof(Items), type2.Name))
                 MarioItemCollision(entity1, entity2, side);
@@ -43,7 +43,7 @@ namespace Sprint0.Collision
             else if (type1 is IMario || type2 is IMario)
                 PlayerCollision(entity1, entity2, side, hitarea);
         }
-        public void MarioStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        public void MarioStaticBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
             if (entity1 is DeathZone || entity2 is DeathZone)
             {
@@ -57,18 +57,14 @@ namespace Sprint0.Collision
             }
             else if (side == Side.Vertical)
             {
-                ICollidableCommand command = new CMarioStuckY(sprint);
-                command.Execute(hitarea);
-            }
-            else if (side == Side.Both)
-            {
-                ICollidableCommand command = new CMarioStuckY(sprint);
-
+                ICollidableCommand command = new CMarioStuckTopY(sprint);
+                if (vert == Vert.Bottom) command = new CMarioStuckBottomY(sprint);
+                if (vert == Vert.Both) command = new CMarioStuckBothY(sprint);
                 command.Execute(hitarea);
             }
         }
 
-        public void MarioDynamicBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Rectangle hitarea)
+        public void MarioDynamicBlockCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
             if (entity1 is SpinningCoin)
             {
@@ -88,7 +84,9 @@ namespace Sprint0.Collision
             }
             else if (side == Side.Vertical)
             {
-                ICollidableCommand command = new CMarioStuckY(sprint);
+                ICollidableCommand command = new CMarioStuckTopY(sprint);
+                if (vert == Vert.Bottom) command = new CMarioStuckBottomY(sprint);
+                if (vert == Vert.Both) command = new CMarioStuckBothY(sprint);
                 command.Execute(hitarea);
                 if (entity1 is YellowBrick)
                 {
@@ -98,12 +96,6 @@ namespace Sprint0.Collision
                 {
 
                 }
-            }
-            else if (side == Side.Both)
-            {
-                ICollidableCommand command = new CMarioStuckY(sprint);
-
-                command.Execute(hitarea);
             }
         }
 
