@@ -54,7 +54,7 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Fire;
+            this.health = LuigiHealth.Normal;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
@@ -104,6 +104,14 @@ namespace Sprint0.Characters
             if (uphit && health != LuigiHealth.Dead)
             {
                 State.Jump();
+            }
+        }
+
+        public void Fall()
+        {
+            if (health != LuigiHealth.Dead)
+            {
+                State.Fall();
             }
         }
 
@@ -274,10 +282,7 @@ namespace Sprint0.Characters
 
         public void Draw(SpriteBatch spritebatch)
         {
-
-            currentSprite.Draw(spritebatch, position);
-            
-
+            currentSprite.Draw(spritebatch, position);  
         }
     }
 }

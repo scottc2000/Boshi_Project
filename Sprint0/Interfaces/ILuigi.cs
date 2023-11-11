@@ -17,6 +17,8 @@ namespace Sprint0.Interfaces
         FireProjectile fireProjectile { get; set; }
         public void Move();
 
+        public void Fall();
+
         public void Jump();
 
         public void Crouch();
@@ -36,6 +38,10 @@ namespace Sprint0.Interfaces
         void ChangeToNormal();
 
         void Reverse();
+
+        void Update(GameTime gameTime);
+
+        void Draw(SpriteBatch spriteBatch);
 
     }
 }

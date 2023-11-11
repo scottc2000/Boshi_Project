@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters.MarioStates
 {
     internal class MarioCrouchState : ICharacterState
     {
         private Mario mario;
+        private AudioManager audioManager = AudioManager.Instance;
         private FileNames FileNames = new FileNames();
 
         public MarioCrouchState(Mario mario)
@@ -22,7 +24,6 @@ namespace Sprint0.Characters.MarioStates
         public void Jump()
         {
             mario.State = new MarioJumpState(mario);
-            AudioManager audioManager = AudioManager.Instance;
             audioManager.PlaySFX(FileNames.jumpSFX);
         }
         public void Fly()
@@ -36,11 +37,11 @@ namespace Sprint0.Characters.MarioStates
 
         public void Crouch()
         {
-            mario.State = new MarioCrouchState(mario); 
         }
 
         public void Stop()
         {
+            mario.timeGap = 0;
             mario.State = new MarioIdleState(mario);
         }
 
@@ -51,27 +52,50 @@ namespace Sprint0.Characters.MarioStates
         public void TakeDamage() 
         {
         }
-        public void UpdateVelocity()
-        {
-            mario.velocity = Vector2.Zero;
-        }
         public void Die()
         {
             mario.State = new DeadMarioState(mario);
         }
+        public void UpdateVelocity()
+        {
+            mario.velocityX *= mario.decay;
+        }
+
         public void Update(GameTime gametime)
         {
             mario.pose = Mario.MarioPose.Crouch;
 
+            UpdateVelocity();
+
             if (mario.facingLeft)
             {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioCrouchLeft");
+                if (mario.currentSprite.spriteName.Equals("marioCrouchLeft"))
+                {
+
+                    mario.currentSprite.Update(gametime);
+
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("marioCrouchLeft");
+                    mario.UpStuck();
+                }
+
             }
+
             else
             {
-                mario.currentSprite = mario.mySpriteFactory.returnSprite("MarioCrouchRight");
+                if (mario.currentSprite.spriteName.Equals("marioCrouchRight"))
+                {
 
+                    mario.currentSprite.Update(gametime);
 
+                }
+                else
+                {
+                    mario.currentSprite = mario.mySpriteFactory.returnSprite("marioCrouchRight");
+                    mario.UpStuck();
+                }
             }
         }
     }

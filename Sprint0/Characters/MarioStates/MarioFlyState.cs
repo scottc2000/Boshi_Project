@@ -55,16 +55,16 @@ namespace Sprint0.Characters.MarioStates
         {
             if (mario.boosted)
             {
-                mario.velocity.Y = -1.0f; // Ascend
+                mario.velocityY = -1.0f; // Ascend
                 mario.flyingTimer++;
             }
             else
             {
-                mario.velocity.Y = 1.0f; // Gradually descend
+                mario.velocityY = 1.0f; // Gradually descend
             }
             if (mario.flyingTimer >= 100)
             {
-                mario.velocity.Y = 0;
+                mario.velocityY = 0;
             }
         }
         public void Update(GameTime gametime)
