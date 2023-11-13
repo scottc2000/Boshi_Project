@@ -32,7 +32,6 @@ namespace Sprint0.Commands.Collision
                 }
 
             }
-            
 
         }
     }

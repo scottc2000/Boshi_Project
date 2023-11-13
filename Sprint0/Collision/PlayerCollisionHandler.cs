@@ -52,6 +52,7 @@ namespace Sprint0.Collision
         }
         public void PlayerStaticBlockCollision(ICollidable player, ICollidable block, Side side, Vert vert, Rectangle hitarea)
         {
+            System.Diagnostics.Debug.WriteLine("entity2 is " + block);
             ICommand command = new CDeadPlayer((IPlayer)player);
             command.Execute();
 

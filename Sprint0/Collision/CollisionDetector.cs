@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Blocks;
 using Sprint0.Characters;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
@@ -134,7 +135,10 @@ namespace Sprint0.Collision
 
             /*________ Player Collisions ______*/
             if (entity1 is Player || entity2 is Player)
+            {
+                System.Diagnostics.Debug.WriteLine("enter player collision");
                 playerCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
+            }
 
             /*_________ Item Collisions ______*/
             if (entity1 is IItem || entity2 is IItem)

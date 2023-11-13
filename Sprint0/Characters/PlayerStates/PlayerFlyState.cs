@@ -86,34 +86,36 @@ namespace Sprint0.Characters.PlayerStates
 
         public AnimatedSpritePlayer SetSprites(GameTime gametime)
         {
+            // if player is mario
             if (player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioFlyLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioFlyLeft);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioFlyLeft);
             }
             else if (!player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioFlyRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioFlyRight);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioFlyRight);
             }
 
+            // if player is luigi
             if (player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiFlyLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiFlyLeft);
+                    player.currentSprite = player.mySpriteFactory.returnLuigiSprite(p.LuigiFlyLeft);
             }
             else if (!player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiFlyRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiFlyRight);
+                    player.currentSprite = player.mySpriteFactory.returnLuigiSprite(p.LuigiFlyRight);
             }
 
             return player.currentSprite;

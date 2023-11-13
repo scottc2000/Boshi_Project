@@ -55,159 +55,160 @@ namespace Sprint0.Sprites.SpriteFactories
             return myRect;
         }
 
-        public AnimatedSpritePlayer returnSprite(string spriteType)
+        public AnimatedSpritePlayer returnMarioSprite(string spriteType)
         {
             string spriteName = "X";
 
             // goes through json for sprites (depending on which form), returns animated player sprite
-            if (player.number == p.luigi)
+            switch (player.health)
             {
-                switch (player.health)
-                {
-                    case Characters.Player.PlayerHealth.Big:
-                        foreach (Sprite n in deserializedPlayerData.luigi.Big.Sprites)
+                case Characters.Player.PlayerHealth.Big:
+                    foreach (Sprite n in deserializedPlayerData.mario.Big.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
                         {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
+                            if (n.facingLeft)
+                            { effect = SpriteEffects.None; }
+                            else
+                            { effect = SpriteEffects.FlipHorizontally; }
 
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
                         }
+                    }
                     break;
 
-                    case Characters.Player.PlayerHealth.Normal:
-                        foreach (Sprite n in deserializedPlayerData.luigi.Normal.Sprites)
+                case Characters.Player.PlayerHealth.Normal:
+                    foreach (Sprite n in deserializedPlayerData.mario.Normal.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
                         {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
+                            if (n.facingLeft)
+                            { effect = SpriteEffects.None; }
+                            else
+                            { effect = SpriteEffects.FlipHorizontally; }
 
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
                         }
+                    }
                     break;
 
-                    case Characters.Player.PlayerHealth.Fire:
-                        foreach (Sprite n in deserializedPlayerData.luigi.Fire.Sprites)
+                case Characters.Player.PlayerHealth.Fire:
+                    foreach (Sprite n in deserializedPlayerData.mario.Fire.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
                         {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
+                            if (n.facingLeft)
+                            { effect = SpriteEffects.None; }
+                            else
+                            { effect = SpriteEffects.FlipHorizontally; }
 
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
                         }
+                    }
                     break;
 
-                    case Characters.Player.PlayerHealth.Raccoon:
-                        foreach (Sprite n in deserializedPlayerData.luigi.Raccoon.Sprites)
+                case Characters.Player.PlayerHealth.Raccoon:
+                    foreach (Sprite n in deserializedPlayerData.mario.Raccoon.Sprites)
+                    {
+                        if (string.Equals(n.name, spriteType))
                         {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
+                            if (n.facingLeft)
+                            { effect = SpriteEffects.None; }
+                            else
+                            { effect = SpriteEffects.FlipHorizontally; }
 
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
+                            currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                            spriteName = n.name;
                         }
+                    }
                     break;
 
-                    default:
-                        Console.WriteLine("NOT FOUND!!!");
-                        Environment.Exit(1);
+                default:
+                    Console.WriteLine("NOT FOUND!!!");
+                    Environment.Exit(1);
                     break;
-                }
             }
+            return new AnimatedSpritePlayer(currentFrames, texture, effect, spriteName);
+        }
 
-            if (player.number == p.mario)
+        public AnimatedSpritePlayer returnLuigiSprite(string spriteType)
+        {
+            string spriteName = "X";
+
+            // goes through json for sprites (depending on which form), returns animated player sprite
+            switch (player.health)
             {
-                switch (player.health)
+                case Characters.Player.PlayerHealth.Big:
+                foreach (Sprite n in deserializedPlayerData.luigi.Big.Sprites)
                 {
-                    case Characters.Player.PlayerHealth.Big:
-                        foreach (Sprite n in deserializedPlayerData.mario.Big.Sprites)
-                        {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
-
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
-                        }
-                        break;
-
-                    case Characters.Player.PlayerHealth.Normal:
-                        foreach (Sprite n in deserializedPlayerData.mario.Normal.Sprites)
-                        {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
-
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
-                        }
-                        break;
-
-                    case Characters.Player.PlayerHealth.Fire:
-                        foreach (Sprite n in deserializedPlayerData.mario.Fire.Sprites)
-                        {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
-
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
-                        }
-                        break;
-
-                    case Characters.Player.PlayerHealth.Raccoon:
-                        foreach (Sprite n in deserializedPlayerData.mario.Raccoon.Sprites)
-                        {
-                            if (string.Equals(n.name, spriteType))
-                            {
-                                if (n.facingLeft)
-                                { effect = SpriteEffects.None; }
-                                else
-                                { effect = SpriteEffects.FlipHorizontally; }
-
-                                currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
-                                spriteName = n.name;
-                            }
-                        }
-                        break;
-
-                    default:
-                        Console.WriteLine("NOT FOUND!!!");
-                        Environment.Exit(1);
-                        break;
+                    if (string.Equals(n.name, spriteType))
+                    {
+                        if (n.facingLeft)
+                        { effect = SpriteEffects.None; }
+                        else
+                        { effect = SpriteEffects.FlipHorizontally; }
+    
+                    currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                    spriteName = n.name;
+                     }
                 }
+                break;
+
+                case Characters.Player.PlayerHealth.Normal:
+                foreach (Sprite n in deserializedPlayerData.luigi.Normal.Sprites)
+                {
+                    if (string.Equals(n.name, spriteType))
+                    { 
+                        if (n.facingLeft)
+                        { effect = SpriteEffects.None; }
+                        else
+                        { effect = SpriteEffects.FlipHorizontally; }
+
+                    currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                    spriteName = n.name;
+                    }
+                }
+                break;
+
+               case Characters.Player.PlayerHealth.Fire:
+               foreach (Sprite n in deserializedPlayerData.luigi.Fire.Sprites)
+               {
+                    if (string.Equals(n.name, spriteType))
+                    {
+                        if (n.facingLeft)
+                        { effect = SpriteEffects.None; }
+                        else
+                        { effect = SpriteEffects.FlipHorizontally; }
+
+                    currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                    spriteName = n.name;
+                    }
+               }
+               break;
+
+               case Characters.Player.PlayerHealth.Raccoon:
+               foreach (Sprite n in deserializedPlayerData.luigi.Raccoon.Sprites)
+               {
+                    if (string.Equals(n.name, spriteType))
+                    {
+                        if (n.facingLeft)
+                        { effect = SpriteEffects.None; }
+                        else
+                        { effect = SpriteEffects.FlipHorizontally; }
+
+                    currentFrames = generateSprites(n.spritesheet_pos, n.hitbox);
+                    spriteName = n.name;
+                    }
+               }
+               break;
+
+               default:
+                 Console.WriteLine("NOT FOUND!!!");
+                 Environment.Exit(1);
+                break;
             }
             return new AnimatedSpritePlayer(currentFrames, texture, effect, spriteName);
         }

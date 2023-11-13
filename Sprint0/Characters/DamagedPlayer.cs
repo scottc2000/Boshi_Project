@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Camera;
-using Sprint0.GameMangager;
 using Sprint0.Interfaces;
 using Sprint0.Items.Projectiles;
 using Sprint0.Sprites.Players;
 using Sprint0.Utility;
 using System.Collections.Generic;
-using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0.Characters
 {
@@ -54,7 +51,7 @@ namespace Sprint0.Characters
             currentSprite = player.currentSprite;
             timer = 75;
             State = player.State;
-            ySnapshot = (int)player.position.Y;
+            ySnapshot = (int)player.position.Y; // store inital position
         }
 
         public void ChangeToBig()   { decoratedPlayer.ChangeToBig(); }
@@ -91,7 +88,7 @@ namespace Sprint0.Characters
                 isInvinsible = false;
                 RemoveDecorator();
             }
-            position = new Vector2(position.X, ySnapshot);
+            position = new Vector2(position.X, ySnapshot); // position adjusts as gametime continues, adjust appropiately
             Destination = currentSprite.destination;
             decoratedPlayer.Update(gametime);
             level.camera.Update(decoratedPlayer);

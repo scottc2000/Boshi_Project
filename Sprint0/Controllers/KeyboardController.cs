@@ -74,13 +74,6 @@ namespace Sprint0.Controllers
             RegisterReleaseCommand(Keys.D, new CPlayerStop(mario));
             RegisterPressCommand(Keys.E, new CPlayerThrow(mario));
 
-            // For testing
-            RegisterPressCommand(Keys.Q, new CDeadPlayer(mario));
-            RegisterPressCommand(Keys.D4, new CPlayerRaccoon(mario));
-            RegisterPressCommand(Keys.D3, new CPlayerFire(mario));
-            RegisterPressCommand(Keys.D2, new CPlayerBig(mario)) ;
-            RegisterPressCommand(Keys.D1, new CPlayerNormal(mario));
-
             RegisterPressCommand(Keys.Up, new CPlayerJump(luigi));
             RegisterReleaseCommand(Keys.Up, new CPlayerFall(luigi));
             RegisterPressCommand(Keys.Left, new CPlayerMoveLeft(luigi));

@@ -46,15 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Player\CDeadPlayer.cs" />
-    <Compile Include="Commands\Player\CPlayerBig.cs" />
     <Compile Include="Commands\Player\CPlayerCrouch.cs" />
-    <Compile Include="Commands\Player\CPlayerFire.cs" />
     <Compile Include="Commands\Player\CPlayerFall.cs" />
     <Compile Include="Commands\Player\CPlayerJump.cs" />
     <Compile Include="Commands\Player\CPlayerMoveLeft.cs" />
     <Compile Include="Commands\Player\CPlayerMoveRight.cs" />
-    <Compile Include="Commands\Player\CPlayerNormal.cs" />
-    <Compile Include="Commands\Player\CPlayerRaccoon.cs" />
     <Compile Include="Commands\Player\CPlayerStop.cs" />
     <Compile Include="Characters\PlayerStates\PlayerCrouchState.cs" />
     <Compile Include="Characters\PlayerStates\PlayerIdleState.cs" />

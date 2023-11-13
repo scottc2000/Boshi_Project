@@ -59,7 +59,7 @@ namespace Sprint0.Characters
             mySprint = sprint0;
             player = new PlayerNumbers();
 
-            health = PlayerHealth.Normal;
+            health = PlayerHealth.Big;
             State = new PlayerIdleState(this);
 
             // default position stuff
@@ -103,9 +103,9 @@ namespace Sprint0.Characters
             fireProjectile = new FireProjectile(mySprint.Content);
 
             if (playerNumber == player.mario)
-                currentSprite = mySpriteFactory.returnSprite(player.MarioIdleRight);
+                currentSprite = mySpriteFactory.returnMarioSprite(player.MarioIdleRight);
             else if (playerNumber == player.luigi)
-                currentSprite = mySpriteFactory.returnSprite(player.LuigiIdleRight);
+                currentSprite = mySpriteFactory.returnLuigiSprite(player.LuigiIdleRight);
 
             Destination = currentSprite.destination;
 

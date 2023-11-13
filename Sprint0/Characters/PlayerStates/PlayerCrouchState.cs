@@ -71,34 +71,36 @@ namespace Sprint0.Characters.PlayerStates
         }
         public AnimatedSpritePlayer SetSprite(GameTime gametime)
         {
+            // if player is mario
             if (player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioCrouchLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioCrouchLeft);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioCrouchLeft);
             }
             else if (!player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioCrouchRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioCrouchRight);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioCrouchRight);
             }
 
+            // if player is luigi
             if (player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiCrouchLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiCrouchLeft);
+                    player.currentSprite = player.mySpriteFactory.returnLuigiSprite(p.LuigiCrouchLeft);
             }
             else if (!player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiCrouchRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiCrouchRight);
+                    player.currentSprite = player.mySpriteFactory.returnLuigiSprite(p.LuigiCrouchRight);
             }
 
             return player.currentSprite;

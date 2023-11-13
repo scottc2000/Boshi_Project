@@ -83,68 +83,72 @@ namespace Sprint0.Characters.PlayerStates
         }
         public AnimatedSpritePlayer BoostedSetSprite(GameTime gametime)
         {
+            // if player is mario
             if (player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioBoostLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioBoostLeft);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioBoostLeft);
             }
             else if (!player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioBoostRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioBoostRight);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioBoostRight);
             }
 
+            // if player is luigi
             if (player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiBoostLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiBoostLeft);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.LuigiBoostLeft);
             }
             else if (!player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiBoostRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiBoostRight);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.LuigiBoostRight);
             }
 
             return player.currentSprite;
         }
         public AnimatedSpritePlayer NormalSetSprite(GameTime gametime) 
         {
+            // if player is mario
             if (player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioMoveLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioMoveLeft);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioMoveLeft);
             }
             else if (!player.facingLeft && player.number == p.mario)
             {
                 if (player.currentSprite.spriteName.Equals(p.MarioMoveRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.MarioMoveRight);
+                    player.currentSprite = player.mySpriteFactory.returnMarioSprite(p.MarioMoveRight);
             }
 
+            // if player is luigi
             if (player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiMoveLeft))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiMoveLeft);
+                    player.currentSprite = player.mySpriteFactory.returnLuigiSprite(p.LuigiMoveLeft);
             }
             else if (!player.facingLeft && player.number == p.luigi)
             {
                 if (player.currentSprite.spriteName.Equals(p.LuigiJumpRight))
                     player.currentSprite.Update(gametime);
                 else
-                    player.currentSprite = player.mySpriteFactory.returnSprite(p.LuigiMoveRight);
+                    player.currentSprite = player.mySpriteFactory.returnLuigiSprite(p.LuigiMoveRight);
             }
 
             return player.currentSprite;

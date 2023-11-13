@@ -60,9 +60,9 @@ namespace Sprint0.Characters.PlayerStates
         public AnimatedSpritePlayer SetSprite(GameTime gametime)
         {
             if(player.number == check.mario)
-                player.currentSprite = player.mySpriteFactory.returnSprite(check.MarioDead);
+                player.currentSprite = player.mySpriteFactory.returnMarioSprite(check.MarioDead);
             else if(player.number == check.luigi)
-                player.currentSprite = player.mySpriteFactory.returnSprite(check.LuigiDead);
+                player.currentSprite = player.mySpriteFactory.returnLuigiSprite(check.LuigiDead);
 
             return player.currentSprite;
         }
