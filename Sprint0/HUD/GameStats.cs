@@ -43,9 +43,9 @@ namespace Sprint0.HUD
         private Vector2 scorePosition;
         private Vector2 timerPosition;
 
-        private MarioCamera camera;
+        private Camera.PlayerCamera camera;
 
-        public GameStats(Sprint0 sprint, MarioCamera camera)
+        public GameStats(Sprint0 sprint, Camera.PlayerCamera camera)
         {
             this.sprint = sprint;
             this.camera = camera;

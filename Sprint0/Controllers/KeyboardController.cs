@@ -1,27 +1,34 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Sprint0.Commands;
-using Sprint0.Commands.Luigi;
-using Sprint0.Commands.Mario;
+using Sprint0.Commands.Player;
 using Sprint0.Interfaces;
 using System.Collections.Generic;
 namespace Sprint0.Controllers
 {
     public class KeyboardController : IController
     {
-        public Dictionary<Keys, ICommand> keyboardInput;
-        public Dictionary<Keys, ICommand> keyPressed;
-        public Dictionary<Keys, ICommand> keyReleased;
+        private Dictionary<Keys, ICommand> keyboardInput;
+        private Dictionary<Keys, ICommand> keyPressed;
+        private Dictionary<Keys, ICommand> keyReleased;
+
         private KeyboardState currentState;
         private KeyboardState previousState;
-        public Sprint0 mySprint;
+
+        private Sprint0 mySprint;
         private LevelLoader1 level;
 
-        public KeyboardController(Sprint0 sprint0, LevelLoader1 level)
+        private IPlayer mario;
+        private IPlayer luigi;
+
+        public KeyboardController(Sprint0 sprint0, IPlayer mario, IPlayer luigi)
         {
             keyboardInput = new Dictionary<Keys, ICommand>();
             keyPressed = new Dictionary<Keys, ICommand>();
             keyReleased = new Dictionary<Keys, ICommand>();
-            this.level = level;
+
+            this.mario = mario;
+            this.luigi = luigi;
+
             mySprint = sprint0;
             setKeyboardDict();
         }
@@ -57,40 +64,34 @@ namespace Sprint0.Controllers
             RegisterCommand(Keys.Escape, new Exit(mySprint));
             //RegisterCommand(Keys.D0, new Reset(mySprint, gametime, Content));
 
-            RegisterPressCommand(Keys.W, new CMarioJump(mySprint, level));
-            RegisterReleaseCommand(Keys.W, new CMarioFall(mySprint, level));
-            RegisterPressCommand(Keys.A, new CMarioMoveLeft(mySprint, level));
-            RegisterReleaseCommand(Keys.A, new CMarioStop(mySprint, level));
-            RegisterPressCommand(Keys.S, new CMarioCrouch(mySprint, level));
-            RegisterReleaseCommand(Keys.S, new CMarioStop(mySprint, level));
-            RegisterPressCommand(Keys.D, new CMarioMoveRight(mySprint, level));
-            RegisterReleaseCommand(Keys.D, new CMarioStop(mySprint, level));
-            RegisterPressCommand(Keys.E, new CMarioThrow(mySprint, level));      // Still needs projectile
+            RegisterPressCommand(Keys.W, new CPlayerJump(mario));
+            RegisterReleaseCommand(Keys.W, new CPlayerFall(mario));
+            RegisterPressCommand(Keys.A, new CPlayerMoveLeft(mario));
+            RegisterReleaseCommand(Keys.A, new CPlayerStop(mario));
+            RegisterPressCommand(Keys.S, new CPlayerCrouch(mario));
+            RegisterReleaseCommand(Keys.S, new CPlayerStop(mario));
+            RegisterPressCommand(Keys.D, new CPlayerMoveRight(mario));
+            RegisterReleaseCommand(Keys.D, new CPlayerStop(mario));
+            RegisterPressCommand(Keys.E, new CPlayerThrow(mario));
 
-            RegisterPressCommand(Keys.Q, new CDeadMario(mySprint, level));
-            RegisterPressCommand(Keys.D4, new CMarioRaccoon(mySprint, level));
-            RegisterPressCommand(Keys.D3, new CMarioFire(mySprint, level));
-            RegisterPressCommand(Keys.D2, new CMarioBig(mySprint, level)) ;
-            RegisterPressCommand(Keys.D1, new CMarioNormal(mySprint, level));
+            // For testing
+            RegisterPressCommand(Keys.Q, new CDeadPlayer(mario));
+            RegisterPressCommand(Keys.D4, new CPlayerRaccoon(mario));
+            RegisterPressCommand(Keys.D3, new CPlayerFire(mario));
+            RegisterPressCommand(Keys.D2, new CPlayerBig(mario)) ;
+            RegisterPressCommand(Keys.D1, new CPlayerNormal(mario));
 
-            RegisterPressCommand(Keys.Up, new CLuigiJump(mySprint, level));
-            RegisterReleaseCommand(Keys.Up, new CLuigiFall(mySprint, level));
-            RegisterCommand(Keys.Left, new CLuigiMoveLeft(mySprint, level));
-            RegisterReleaseCommand(Keys.Left, new CLuigiStop(mySprint, level));
-            RegisterCommand(Keys.Down, new CLuigiCrouch(mySprint, level));
-            RegisterReleaseCommand(Keys.Down, new CLuigiStop(mySprint, level));
-            RegisterCommand(Keys.Right, new CLuigiMoveRight(mySprint, level));
-            RegisterReleaseCommand(Keys.Right, new CLuigiStop(mySprint, level));
-            RegisterCommand(Keys.M, new CLuigiThrow(mySprint, level));
-            
-     
+            RegisterPressCommand(Keys.Up, new CPlayerJump(luigi));
+            RegisterReleaseCommand(Keys.Up, new CPlayerFall(luigi));
+            RegisterPressCommand(Keys.Left, new CPlayerMoveLeft(luigi));
+            RegisterReleaseCommand(Keys.Left, new CPlayerStop(luigi));
+            RegisterPressCommand(Keys.Down, new CPlayerCrouch(luigi));
+            RegisterReleaseCommand(Keys.Down, new CPlayerStop(luigi));
+            RegisterPressCommand(Keys.Right, new CPlayerMoveRight(luigi));
+            RegisterReleaseCommand(Keys.Right, new CPlayerStop(luigi));
+            RegisterPressCommand(Keys.M, new CPlayerThrow(luigi));
 
-            //RegisterPressCommand(Keys.D8, new CLuigiRaccoon(mySprint, level));
-            //RegisterPressCommand(Keys.D7, new CLuigiFire(mySprint, level));
-            //RegisterPressCommand(Keys.D6, new CLuigiBig(mySprint, level));
-            //RegisterPressCommand(Keys.D5, new CLuigiNormal(mySprint, level));
-
-            RegisterCommand(Keys.D0, new Reset(mySprint, level));
+            RegisterCommand(Keys.D0, new Reset(mySprint));
         }
 
         private void pressedKeys(KeyboardState current, KeyboardState previous)

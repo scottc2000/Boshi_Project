@@ -25,7 +25,7 @@ namespace Sprint0.Collision
             type1 = entity1.GetType();
             type2 = entity2.GetType();
 
-            if (type1 is IMario || type2 is IMario)
+            if (type1 is IPlayer || type2 is IPlayer)
                 EnemyPlayerCollision(entity1, entity2, side);
         }
 

@@ -13,8 +13,7 @@ namespace Sprint0.Collision
         private List<ICollidable> StaticEntities;
         private ObjectManager objects;
 
-        private MarioCollisionHandler marioCollisionHandler;
-        private LuigiCollisionHandler luigiCollisionHandler;
+        private PlayerCollisionHandler playerCollisionHandler;
         private ItemCollisionHandler itemCollisionHandler;
         private EnemyCollisionHandler enemyCollisionHandler;
 
@@ -27,8 +26,7 @@ namespace Sprint0.Collision
             DynamicEntities = objects.DynamicEntities;
             StaticEntities = objects.StaticEntities;
 
-            marioCollisionHandler = new MarioCollisionHandler(sprint);
-            luigiCollisionHandler = new LuigiCollisionHandler(sprint);
+            playerCollisionHandler = new PlayerCollisionHandler(sprint);
             itemCollisionHandler = new ItemCollisionHandler(sprint);
             enemyCollisionHandler = new EnemyCollisionHandler(sprint);
         }
@@ -103,9 +101,6 @@ namespace Sprint0.Collision
                     side = Side.Vertical;
                 }
             }
-            
-            
-
             return side;
 
         }
@@ -137,14 +132,9 @@ namespace Sprint0.Collision
         public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
 
-            /*________ Mario Collisions _______ */
-            if(entity1 is Mario || entity2 is Mario)
-                marioCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
-
-
-            /*________ Luigi Collisions ______*/
-            if (entity1 is Luigi || entity2 is Luigi)
-                luigiCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
+            /*________ Player Collisions ______*/
+            if (entity1 is Player || entity2 is Player)
+                playerCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
 
             /*_________ Item Collisions ______*/
             if (entity1 is IItem || entity2 is IItem)

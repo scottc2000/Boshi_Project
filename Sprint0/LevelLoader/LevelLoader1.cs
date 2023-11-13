@@ -5,14 +5,15 @@ using Sprint0.Background;
 using Sprint0.Blocks;
 using Sprint0.Camera;
 using Sprint0.Characters;
+using Sprint0.Controllers;
 using Sprint0.Enemies;
 using Sprint0.GameMangager;
 using Sprint0.HUD;
 using Sprint0.Interfaces;
 using Sprint0.Items;
+using Sprint0.Utility;
 using System.IO;
 using System.Text.Json;
-using Sprint0.GameMangager;
 using static Sprint0.LevelLoader.Level1Data;
 using Item = Sprint0.LevelLoader.Level1Data.Item;
 
@@ -24,30 +25,36 @@ namespace Sprint0
         private Sprint0 sprint0;
         private SpriteBatch spriteBatch;
         private ContentManager content;
+        private PlayerNumbers p;
         private Root data;
 
-        public MarioCamera camera;
+        public PlayerCamera camera;
         private Terrain terrain;
         public GameStats hud;
-        public ILuigi luigi;
-        public IMario mario;
+        public IPlayer luigi;
+        public IPlayer mario;
+        private IController KeyboardController;
 
         public ObjectManager objectManager;
         private AudioManager audioManager = AudioManager.Instance;
 
-        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, MarioCamera camera)
+        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, PlayerCamera camera)
         {
             this.sprint0 = sprint0;
             objectManager = sprint0.objects;
+            p = new PlayerNumbers();
+
+            this.camera = camera;
+
+            mario = new Player(sprint0, p.mario);
+            luigi = new Player(sprint0, p.luigi);
+            KeyboardController = new KeyboardController(sprint0, mario, luigi);
 
             this.spriteBatch = spriteBatch;
             this.content = content;
 
-            this.camera = camera;
             terrain = new Terrain(sprint0);
             hud = new GameStats(sprint0, camera);
-            mario = new Mario(sprint0);
-            luigi = new Luigi(sprint0);
         }
         public void Load(string jsonFilePath)
         {
@@ -204,6 +211,7 @@ namespace Sprint0
 
             objectManager.DynamicEntities.Add(mario);
             objectManager.DynamicEntities.Add(luigi);
+            objectManager.Projectiles.Add(mario.fireProjectile);
             objectManager.Projectiles.Add(luigi.fireProjectile);
             objectManager.DynamicEntities.Add(luigi.fireProjectile);
 
@@ -238,6 +246,7 @@ namespace Sprint0
 
         public void Update(GameTime gameTime)
         {
+            KeyboardController.Update();
             terrain.Update(gameTime);   // need to update terrain before any game objects
 
             // Update each game object
