@@ -136,7 +136,6 @@ namespace Sprint0.Collision
             /*________ Player Collisions ______*/
             if (entity1 is Player || entity2 is Player)
             {
-                System.Diagnostics.Debug.WriteLine("enter player collision");
                 playerCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
             }
 
