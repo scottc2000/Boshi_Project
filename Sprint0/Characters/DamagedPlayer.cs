@@ -91,7 +91,7 @@ namespace Sprint0.Characters
             position = new Vector2(position.X, ySnapshot); // position adjusts as gametime continues, adjust appropiately
             Destination = currentSprite.destination;
             decoratedPlayer.Update(gametime);
-            level.camera.Update(decoratedPlayer);
+            //level.camera.Update(decoratedPlayer);
         }
 
         void RemoveDecorator()
