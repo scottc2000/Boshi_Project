@@ -27,7 +27,7 @@ namespace Sprint0.Camera
         {
             center = Follow(mario, luigi);
 
-            // if mario moves past the left bound, reset the camera
+            // if mario moves past the world bounds, reset the camera
             if (center.X < cameraNumbers.leftBound)
             {
                 center.X = cameraNumbers.leftBound;
@@ -35,6 +35,10 @@ namespace Sprint0.Camera
             if (center.Y > cameraNumbers.bottomBound)
             {
                 center.Y = cameraNumbers.bottomBound;
+            }
+            if (center.Y < cameraNumbers.upperBound)
+            {
+                center.Y = cameraNumbers.upperBound;
             }
 
             // zoom camera to mimic final game functionality

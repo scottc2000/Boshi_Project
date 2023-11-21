@@ -18,5 +18,6 @@ namespace Sprint0.Utility
         public float zoom { get; } = 1.5f;
         public int leftBound { get; } = 2;
         public int bottomBound { get; } = 250;
+        public int upperBound { get; } = 50;
     }
 }
