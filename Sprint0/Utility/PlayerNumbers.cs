@@ -13,7 +13,7 @@ namespace Sprint0.Utility
         public Vector2 luigigPosition { get; } = new Vector2(200, 200);
         public float sixth { get; } = (1.0f / 60.0f);
         public int runningMax { get; } = 75;
-        public int flyingMax { get; } = 4000;
+        public int flyingMax { get; } = 2000;
         public int timeGapMax { get; } = 500;
         public int gap50 { get; } = 50;
 
