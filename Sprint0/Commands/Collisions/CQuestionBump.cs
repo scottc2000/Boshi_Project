@@ -4,13 +4,13 @@ using Sprint0.GameMangager;
 
 namespace Sprint0.Commands.Collisions
 {
-    public class CItemAppear : ICommand
+    public class CQuestionBump : ICommand
     {
         private Sprint0 sprint;
         private ObjectManager objectManager;
         private GameStats stats;
 
-        public CItemAppear(Sprint0 sprint)
+        public CQuestionBump(Sprint0 sprint)
         {
             this.sprint = sprint;
             objectManager = sprint.objects;
