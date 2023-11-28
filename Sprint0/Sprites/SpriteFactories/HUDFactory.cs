@@ -82,10 +82,5 @@ namespace Sprint0.Sprites.SpriteFactories
         {
             return new World(hudSpriteSheet, new Vector2(deserializedGameData[1].spritesheetpos[0], deserializedGameData[1].spritesheetpos[1]), new Vector2(deserializedGameData[1].size[0], deserializedGameData[1].size[1]));
         }
-        public ISprite Cards(string name)
-        {
-            Root element = deserializedGameData.FirstOrDefault(item => item.name == name);
-            return new Cards(hudSpriteSheet, new Vector2(element.spritesheetpos[0], element.spritesheetpos[1]), new Vector2(element.size[0], element.size[1]));
-        }
     }
 }

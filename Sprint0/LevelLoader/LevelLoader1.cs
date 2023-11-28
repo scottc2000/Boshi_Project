@@ -219,7 +219,6 @@ namespace Sprint0
         public void Draw(SpriteBatch spriteBatch)
         {
             terrain.Draw(spriteBatch); // need to draw terrain before any game objects
-            hud.Draw(spriteBatch);
 
             // Draw each game object
             foreach (var block in objectManager.Blocks)
@@ -239,6 +238,7 @@ namespace Sprint0
                 proj.Draw(spriteBatch);
             }
 
+            hud.Draw(spriteBatch);
             mario.Draw(spriteBatch);
             luigi.Draw(spriteBatch);
 
