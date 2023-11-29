@@ -22,13 +22,11 @@ namespace Sprint0.Blocks
         public bool gothit { get; set; }
         public bool stuck { get; set; }
 
+        public IItem item { get; set; }
 
-        public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, Rectangle blockRectangle, int x, int y, int width, int height)
+
+        public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, Rectangle blockRectangle, string item)
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
             Destination = blockRectangle;
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations();

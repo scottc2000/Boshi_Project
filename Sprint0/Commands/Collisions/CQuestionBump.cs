@@ -21,9 +21,9 @@ namespace Sprint0.Commands.Collisions
 
         }
 
-        public void Execute(IItem item)
+        public void Execute(IBlock block)
         {
-            objectManager.AddToList(item);
+            //objectManager.AddToList(item);
         }
     }
 }

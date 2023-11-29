@@ -124,7 +124,7 @@ namespace Sprint0
                         objectManager.StaticEntities.Add(pipe);
                         break;
                     case "question_block":
-                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, blockRectangle, block.x, block.y, block.width, block.height);
+                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, blockRectangle, block.item);
                         objectManager.Blocks.Add(question_block);
                         objectManager.TopCollidableBlocks.Add(question_block);
                         objectManager.BottomCollidableBlocks.Add(question_block);
