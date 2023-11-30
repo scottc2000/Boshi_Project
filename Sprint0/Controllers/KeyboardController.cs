@@ -22,7 +22,7 @@ namespace Sprint0.Controllers
         private IPlayer mario;
         private IPlayer luigi;
 
-        public KeyboardController(Sprint0 sprint0, IPlayer mario, IPlayer luigI, GameStats hud)
+        public KeyboardController(Sprint0 sprint0, IPlayer mario, IPlayer luigi, GameStats hud)
         {
             keyboardInput = new Dictionary<Keys, ICommand>();
             keyPressed = new Dictionary<Keys, ICommand>();
