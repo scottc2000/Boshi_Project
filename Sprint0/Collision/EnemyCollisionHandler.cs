@@ -31,22 +31,19 @@ namespace Sprint0.Collision
 
         public void EnemyPlayerCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
-            type1 = entity1.GetType();
-            type2 = entity2.GetType();
+            ICommand command;
 
             if (side == Side.Vertical)
             {
-                if (type1 is Goomba || type2 is Goomba)
+                if (type1 is IEnemies)
                 {
-                    ICommand command = new CGoombaStomp(sprint);
-                    command.Execute();
+                    command = new CGoombaStomp(sprint);
                     System.Diagnostics.Debug.WriteLine("Goomba Stomped");
-                } else if (type1 is Koopa || type2 is Koopa)
-                {
-                    ICommand command = new CKoopaStomp(sprint);
-                    command.Execute();
+                } else {
+                    command = new CKoopaStomp(sprint);
                     System.Diagnostics.Debug.WriteLine("Goomba Stomped");
                 }
+                command.Execute();
             }
 
         }
