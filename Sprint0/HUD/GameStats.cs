@@ -1,11 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended;
 using Sprint0.Camera;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
 using Sprint0.Utility;
-using System.ComponentModel.Design;
 
 namespace Sprint0.HUD
 {
@@ -22,7 +20,6 @@ namespace Sprint0.HUD
         private int score { get; set; }
         private int gameTimer { get; set; }
         private int delay { get; set; }
-        private int powerBoost { get; set; }
 
         // Sprite information
         private HUDFactory mySpriteFactory;
@@ -33,23 +30,24 @@ namespace Sprint0.HUD
         private ISprite lifeSprite;
         private ISprite scoreSprite;
         private ISprite timerSprite;
+        private ISprite cardSprite;
         private ISprite powerSprite;
 
         private Vector2 staticPosition;
         private Vector2 letterPosition;
-        private Vector2 cardsPosition;
+        private Vector2 powerPosition;
         private Vector2 worldPosition;
         private Vector2 coinPosition;
         private Vector2 livesPosition;
         private Vector2 scorePosition;
+        private Vector2 cardPosition;
         private Vector2 timerPosition;
 
         private PlayerCamera camera;
 
-        public GameStats(Sprint0 sprint, PlayerCamera camera)
+        public GameStats(Sprint0 sprint)
         {
             this.sprint = sprint;
-            this.camera = camera;
             numbers = new HudNumbers();
 
             // Initial stats
@@ -71,16 +69,19 @@ namespace Sprint0.HUD
             lifeSprite = mySpriteFactory.UpdateDigits(lives);
             scoreSprite = mySpriteFactory.UpdateDigits(score);
             timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
-            //powerSprite = mySpriteFactory.UpdatePower(score);
+            cardSprite = mySpriteFactory.Cards(numbers.card);
+            powerSprite = mySpriteFactory.UpdatePower(numbers.level0);
 
             // Initialize starting location for HUD
-            staticPosition = new Vector2(camera.center.X + numbers.staticPositionOffsetX, camera.center.Y + numbers.staticPositionOffsetY);
-            letterPosition = new Vector2(camera.center.X + numbers.letterPositionOffsetX, camera.center.Y + numbers.letterPositionOffsetY);
-            worldPosition = new Vector2(camera.center.X + numbers.worldPositionOffsetX, camera.center.Y + numbers.worldPositionOffsetY);
-            coinPosition = new Vector2(camera.center.X + numbers.coinPositionOffsetX, camera.center.Y + numbers.coinPositionOffsetY);
-            livesPosition = new Vector2(camera.center.X + numbers.livesPositionOffsetX, camera.center.Y + numbers.livesPositionOffsetY);
-            scorePosition = new Vector2(camera.center.X + numbers.scorePositionOffsetX, camera.center.Y + numbers.scorePositionOffsetY);
-            timerPosition = new Vector2(camera.center.X + numbers.timerPositionOffsetX, camera.center.Y + numbers.timerPositionOffsetY);
+            staticPosition = numbers.staticStartingPosition;
+            letterPosition = numbers.letterStartingPosition;
+            worldPosition = numbers.worldStartingPosition;
+            coinPosition = numbers.coinStartingPosition;
+            livesPosition = numbers.livesStartingPosition;
+            scorePosition = numbers.scoreStartingPosition;
+            timerPosition = numbers.timerStartingPosition;
+            cardPosition = numbers.cardStartingPosition;
+            powerPosition = numbers.powerStartingPosition;
         }
 
         public void IncrementCoin()
@@ -103,7 +104,7 @@ namespace Sprint0.HUD
 
             mySpriteFactory = new HUDFactory(sprint);
             mySpriteFactory.LoadAllTextures(sprint.Content);
-            scoreSprite = mySpriteFactory.UpdateDigits(points);
+            scoreSprite = mySpriteFactory.UpdateDigits(score);
         }
 
         public void IncrementLives()
@@ -134,16 +135,18 @@ namespace Sprint0.HUD
                 lifeSprite = mySpriteFactory.UpdateDigits(lives);
             }
         }
-        public void PowerLevel()
+        public void PowerLevel(string value)
         {
-            // For mario and luigi's raccoon power boost
+            mySpriteFactory = new HUDFactory(sprint);
+            mySpriteFactory.LoadAllTextures(sprint.Content);
+            powerSprite = mySpriteFactory.UpdatePower(value);
         }
 
         public void Timer()
         {
             gameTimer--;
             mySpriteFactory = new HUDFactory(sprint);
-            mySpriteFactory .LoadAllTextures(sprint.Content);
+            mySpriteFactory.LoadAllTextures(sprint.Content);
             timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
         }
 
@@ -161,23 +164,6 @@ namespace Sprint0.HUD
                 //gameover
             }
 
-            // adjust position based on camera posiiton
-            staticPosition.X = camera.center.X + numbers.staticPositionOffsetX;
-            letterPosition.X = staticPosition.X + numbers.letterPositionOffsetX;
-            worldPosition.X = staticPosition.X + numbers.worldPositionOffsetX;
-            coinPosition.X = staticPosition.X + numbers.coinPositionOffsetX;
-            livesPosition.X = staticPosition.X + numbers.livesPositionOffsetX;
-            scorePosition.X = staticPosition.X + numbers.scorePositionOffsetX;
-            timerPosition.X = staticPosition.X + numbers.timerPositionOffsetX;
-
-            staticPosition.Y = camera.center.Y + numbers.staticPositionOffsetY;
-            letterPosition.Y = staticPosition.Y + numbers.letterPositionOffsetY;
-            worldPosition.Y = staticPosition.Y + numbers.worldPositionOffsetY;
-            coinPosition.Y = staticPosition.Y + numbers.coinPositionOffsetY;
-            livesPosition.Y = staticPosition.Y + numbers.livesPositionOffsetY;
-            scorePosition.Y = staticPosition.Y + numbers.scorePositionOffsetY;
-            timerPosition.Y = staticPosition.Y + numbers.timerPositionOffsetY;
-
         }
         public void Draw(SpriteBatch spritebatch)
         {
@@ -188,7 +174,8 @@ namespace Sprint0.HUD
             lifeSprite.Draw(spritebatch, livesPosition);
             scoreSprite.Draw(spritebatch, scorePosition);
             timerSprite.Draw(spritebatch, timerPosition);
-            timerSprite.Draw(spritebatch, timerPosition);
+            cardSprite.Draw(spritebatch, cardPosition);
+            powerSprite.Draw(spritebatch, powerPosition);
         }
     }
 }

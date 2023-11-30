@@ -10,6 +10,7 @@ using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using Sprint0.Utility;
 using System;
+using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0
 {
@@ -21,7 +22,7 @@ namespace Sprint0
         private FileNames filename;
         
         public ObjectManager objects;
-        public GameStats stats;
+        public GameStats hud;
         public AudioManager audioManager;
 
         public LevelLoader1 levelLoader; // change back to private later
@@ -43,14 +44,12 @@ namespace Sprint0
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // May be removed later if not needed
-            ScreenHeight = _graphics.PreferredBackBufferHeight;
-            ScreenWidth = _graphics.PreferredBackBufferWidth;
+            hud = new GameStats(this);
 
             // Initialize game components
-            camera = new Camera.PlayerCamera(GraphicsDevice.Viewport);
+            camera = new PlayerCamera(GraphicsDevice.Viewport);
             objects = new ObjectManager(this);
-            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, hud);
 
             audioManager = AudioManager.Instance;
 
@@ -74,6 +73,7 @@ namespace Sprint0
         protected override void Update(GameTime gameTime)
         {
             levelLoader.Update(gameTime);
+            hud.Update(gameTime);
             detector.DetectCollision();
 
             base.Update(gameTime);
@@ -88,6 +88,10 @@ namespace Sprint0
 
             levelLoader.Draw(_spriteBatch);
 
+            _spriteBatch.End();
+
+            _spriteBatch.Begin();
+            hud.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);

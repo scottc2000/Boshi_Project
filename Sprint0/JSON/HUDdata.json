@@ -61,27 +61,32 @@
   },
   {
     "name": "letter",
-    "spritesheetpos": [ 15, 161 ],
+    "spritesheetpos": [ 15, 171 ],
     "size": [ 17, 7 ]
   },
   {
-    "name": "lightTriangle",
-    "spritesheetpos": [ 64, 162 ],
-    "size": [ 8, 7 ]
+    "name": "level0",
+    "spritesheetpos": [ 16, 200 ],
+    "size": [ 64, 7 ]
   },
   {
-    "name": "darkTriangle",
-    "spritesheetpos": [ 91, 162 ],
-    "size": [ 8, 7 ]
+    "name": "level1",
+    "spritesheetpos": [ 16, 208 ],
+    "size": [ 64, 7 ]
   },
   {
-    "name": "lightPower",
-    "spritesheetpos": [ 73, 162 ],
-    "size": [ 15, 7 ]
+    "name": "level2",
+    "spritesheetpos": [ 16, 217 ],
+    "size": [ 64, 7 ]
   },
   {
-    "name": "darkPower",
-    "spritesheetpos": [ 101, 162 ],
-    "size": [15, 7]
+    "name": "level3",
+    "spritesheetpos": [ 16, 226 ],
+    "size": [ 64, 7 ]
+  },
+  {
+    "name": "level4",
+    "spritesheetpos":[ 16, 190 ],
+    "size": [ 64, 7] 
   }
 ]
