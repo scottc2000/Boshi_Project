@@ -136,6 +136,9 @@ namespace Sprint0.Collision
         /*------------------------ Handle Collision ------------------------------*/
         public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
+            /*________ Enemey Collisions _____*/    
+            if (entity1 is IEnemies || entity2 is IEnemies)
+                enemyCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
 
             /*________ Mario Collisions _______ */
             if(entity1 is Mario || entity2 is Mario)
@@ -149,11 +152,6 @@ namespace Sprint0.Collision
             /*_________ Item Collisions ______*/
             if (entity1 is IItem || entity2 is IItem)
                 itemCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
-
-
-            /*________ Enemey Collisions _____*/    
-            if (entity1 is IEnemies || entity2 is IEnemies)
-                enemyCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
 
         }
     }

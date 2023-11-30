@@ -134,7 +134,25 @@ namespace Sprint0.Collision
         {
             if (side == Side.Horizontal)
             {
+                System.Diagnostics.Debug.WriteLine("Mario hit enemy side");
                 ICommand command = new CMarioTakeDamage(sprint);
+                command.Execute();
+            }
+
+            if (side == Side.Vertical)
+            {
+                ICommand command;
+                System.Diagnostics.Debug.WriteLine("Mario hit enemy top");
+                if (entity1 is IEnemies)
+                {
+                    command = new CEnemyStomp(sprint, (IEnemies)entity1);
+                    System.Diagnostics.Debug.WriteLine("Enemy Stomped");
+                }
+                else
+                {
+                    command = new CEnemyStomp(sprint, (IEnemies)entity2);
+                    System.Diagnostics.Debug.WriteLine("Enemy Stomped");
+                }
                 command.Execute();
             }
         }

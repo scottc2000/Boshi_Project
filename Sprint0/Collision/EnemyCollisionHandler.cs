@@ -32,16 +32,17 @@ namespace Sprint0.Collision
         public void EnemyPlayerCollision(ICollidable entity1, ICollidable entity2, Side side)
         {
             ICommand command;
-
+            System.Diagnostics.Debug.WriteLine("Enemy-Player Collision");
             if (side == Side.Vertical)
             {
-                if (type1 is IEnemies)
+                System.Diagnostics.Debug.WriteLine("Mario hit enemy top");
+                if (entity1 is IEnemies)
                 {
-                    command = new CGoombaStomp(sprint);
-                    System.Diagnostics.Debug.WriteLine("Goomba Stomped");
+                    command = new CEnemyStomp(sprint, (IEnemies)entity1);
+                    System.Diagnostics.Debug.WriteLine("Enemy Stomped");
                 } else {
-                    command = new CKoopaStomp(sprint);
-                    System.Diagnostics.Debug.WriteLine("Goomba Stomped");
+                    command = new CEnemyStomp(sprint, (IEnemies)entity2);
+                    System.Diagnostics.Debug.WriteLine("Enemy Stomped");
                 }
                 command.Execute();
             }
