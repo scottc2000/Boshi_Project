@@ -2,25 +2,26 @@
 using Sprint0.Interfaces;
 using Microsoft.Xna.Framework;
 using Sprint0.Enemies;
-using System.Runtime.Serialization;
+using Sprint0.GameMangager;
 
 namespace Sprint0.Commands.Collisions
 {
-    public class CGoombaStomp : ICommand
+    public class CEnemyStomp : ICommand
     {
         private Sprint0 sprint;
-        private Goomba goomba;
+        private IEnemies enemy;
         ObjectManager objectManager;
 
-        public CGoombaStomp(Sprint0 sprint)
+        public CEnemyStomp(Sprint0 sprint)
         {
             this.sprint = sprint;
-            //objectManager = sprint.objects;
+            objectManager = sprint.objects;
         }
 
         public void Execute()
         {
-            goomba.BeStomped();       
+            enemy.BeStomped();
+            objectManager.RemoveFromList(enemy);
         }
 
     }

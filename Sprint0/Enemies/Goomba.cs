@@ -58,7 +58,6 @@ namespace Sprint0.Enemies
 
         public void BeStomped()
         {
-            currentSprite = mySpriteFactory.returnSprite("GoombaStomped");
             state.BeStomped();
         }
 

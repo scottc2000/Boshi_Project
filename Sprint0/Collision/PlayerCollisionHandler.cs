@@ -129,14 +129,9 @@ namespace Sprint0.Collision
                 ICommand command = new CPlayerTakeDamage(sprint, (IPlayer) player);
                 command.Execute();
             }
-            if (side == Side.Vertical && enemy is Goomba)
+            if (side == Side.Vertical)
             {
-                ICommand command = new CGoombaStomp(sprint);
-                command.Execute();
-            }
-            if (side == Side.Vertical && enemy is Koopa)
-            {
-                ICommand command = new CKoopaStomp(sprint);
+                ICommand command = new CEnemyStomp(sprint);
                 command.Execute();
             }
         }
