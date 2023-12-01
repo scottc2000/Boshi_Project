@@ -130,16 +130,14 @@ namespace Sprint0.Collision
                 command.Execute();
                 System.Diagnostics.Debug.WriteLine("command executed");
             }
-         /*   if (side == Side.Vertical && enemy is Goomba)
-            {
-                ICommand command = new CGoombaStomp(sprint);
-                command.Execute();
-            }
-            if (side == Side.Vertical && enemy is Koopa)
-            {
-                ICommand command = new CKoopaStomp(sprint);
-                command.Execute();
-            }*/
+            /* if (side == Side.Vertical && enemy is Goomba){
+             *  ICommand command = new CGoombaStomp(sprint);
+             *  command.Execute();
+             *  }
+             *  if (side == Side.Vertical && enemy is Koopa){
+             *  ICommand command = new CKoopaStop(sprint);
+             *  command.Execute();
+             *  }*/
         }
     }
 }

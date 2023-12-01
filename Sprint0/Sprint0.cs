@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Controllers;
+using Sprint0.Enemies;
 using Sprint0.GameMangager;
 using Sprint0.HUD;
 using Sprint0.Interfaces;
@@ -23,6 +24,8 @@ namespace Sprint0
         
         public ObjectManager objects;
         public GameStats hud;
+
+        public Triggers triggers;
         public AudioManager audioManager;
 
         public LevelLoader1 levelLoader; // change back to private later
@@ -50,6 +53,7 @@ namespace Sprint0
             camera = new PlayerCamera(GraphicsDevice.Viewport);
             objects = new ObjectManager(this);
             levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, hud);
+            triggers = new Triggers(this);
 
             audioManager = AudioManager.Instance;
 
@@ -74,6 +78,7 @@ namespace Sprint0
         {
             levelLoader.Update(gameTime);
             hud.Update(gameTime);
+            triggers.Detect();
             detector.DetectCollision();
 
             base.Update(gameTime);

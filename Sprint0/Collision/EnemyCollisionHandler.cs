@@ -38,7 +38,7 @@ namespace Sprint0.Collision
             {
                 if (type1 is Goomba || type2 is Goomba)
                 {
-                    ICommand command = new CGoombaStomp(sprint);
+                    ICommand command = new CEnemyStomp(sprint);
                     command.Execute();
                     System.Diagnostics.Debug.WriteLine("Goomba Stomped");
                 } else if (type1 is Koopa || type2 is Koopa)
