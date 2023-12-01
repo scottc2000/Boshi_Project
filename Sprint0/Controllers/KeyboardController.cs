@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Sprint0.Commands;
 using Sprint0.Commands.Player;
+using Sprint0.HUD;
 using Sprint0.Interfaces;
 using System.Collections.Generic;
 namespace Sprint0.Controllers
@@ -15,12 +16,13 @@ namespace Sprint0.Controllers
         private KeyboardState previousState;
 
         private Sprint0 mySprint;
+        private GameStats hud;
         private LevelLoader1 level;
 
         private IPlayer mario;
         private IPlayer luigi;
 
-        public KeyboardController(Sprint0 sprint0, IPlayer mario, IPlayer luigi)
+        public KeyboardController(Sprint0 sprint0, IPlayer mario, IPlayer luigi, GameStats hud)
         {
             keyboardInput = new Dictionary<Keys, ICommand>();
             keyPressed = new Dictionary<Keys, ICommand>();
@@ -28,6 +30,7 @@ namespace Sprint0.Controllers
 
             this.mario = mario;
             this.luigi = luigi;
+            this.hud = hud;
 
             mySprint = sprint0;
             setKeyboardDict();
@@ -64,23 +67,23 @@ namespace Sprint0.Controllers
             RegisterCommand(Keys.Escape, new Exit(mySprint));
             //RegisterCommand(Keys.D0, new Reset(mySprint, gametime, Content));
 
-            RegisterPressCommand(Keys.W, new CPlayerJump(mario));
+            RegisterPressCommand(Keys.W, new CPlayerJump(mario, hud));
             RegisterReleaseCommand(Keys.W, new CPlayerFall(mario));
-            RegisterPressCommand(Keys.A, new CPlayerMoveLeft(mario));
+            RegisterPressCommand(Keys.A, new CPlayerMoveLeft(mario, hud));
             RegisterReleaseCommand(Keys.A, new CPlayerStop(mario));
             RegisterPressCommand(Keys.S, new CPlayerCrouch(mario));
             RegisterReleaseCommand(Keys.S, new CPlayerStop(mario));
-            RegisterPressCommand(Keys.D, new CPlayerMoveRight(mario));
+            RegisterPressCommand(Keys.D, new CPlayerMoveRight(mario, hud));
             RegisterReleaseCommand(Keys.D, new CPlayerStop(mario));
             RegisterPressCommand(Keys.E, new CPlayerThrow(mario));
 
-            RegisterPressCommand(Keys.Up, new CPlayerJump(luigi));
+            RegisterPressCommand(Keys.Up, new CPlayerJump(luigi, hud));
             RegisterReleaseCommand(Keys.Up, new CPlayerFall(luigi));
-            RegisterPressCommand(Keys.Left, new CPlayerMoveLeft(luigi));
+            RegisterPressCommand(Keys.Left, new CPlayerMoveLeft(luigi, hud));
             RegisterReleaseCommand(Keys.Left, new CPlayerStop(luigi));
             RegisterPressCommand(Keys.Down, new CPlayerCrouch(luigi));
             RegisterReleaseCommand(Keys.Down, new CPlayerStop(luigi));
-            RegisterPressCommand(Keys.Right, new CPlayerMoveRight(luigi));
+            RegisterPressCommand(Keys.Right, new CPlayerMoveRight(luigi, hud));
             RegisterReleaseCommand(Keys.Right, new CPlayerStop(luigi));
             RegisterPressCommand(Keys.M, new CPlayerThrow(luigi));
 

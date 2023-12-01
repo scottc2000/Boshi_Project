@@ -61,7 +61,7 @@ namespace Sprint0.Characters.PlayerStates
                 player.velocity.X = 2.0f;
                 player.boosted = false;
             }
-            else if (player.runningTimer > 75)
+            else if (player.runningTimer > p.runningMax)
             {
                 player.velocity.X = 3.0f;
                 player.boosted = true;

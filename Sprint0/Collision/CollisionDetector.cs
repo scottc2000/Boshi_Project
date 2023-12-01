@@ -135,16 +135,14 @@ namespace Sprint0.Collision
 
             /*________ Player Collisions ______*/
             if (entity1 is Player || entity2 is Player)
-            {
                 playerCollisionHandler.HandleCollision(entity1, entity2, side, vert, hitarea);
-            }
 
             /*_________ Item Collisions ______*/
             if (entity1 is IItem || entity2 is IItem)
                 itemCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
 
 
-            /*________ Enemey Collisions _____*/    
+            /*________ Enemey Collisions _____*/
             if (entity1 is IEnemies || entity2 is IEnemies)
                 enemyCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
 

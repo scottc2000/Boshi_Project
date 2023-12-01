@@ -15,7 +15,7 @@ namespace Sprint0.Commands.Collisions
         {
             this.sprint = sprint;
             this.item = item;
-            stats = sprint.levelLoader.hud;
+            stats = sprint.hud;
             numbers = new HudNumbers();
         }
         public void Execute()

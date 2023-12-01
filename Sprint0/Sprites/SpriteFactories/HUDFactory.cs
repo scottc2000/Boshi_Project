@@ -8,17 +8,16 @@ using Sprint0.Utility;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace Sprint0.Sprites.SpriteFactories
 {
-    // needs a JSON file with HUD sprite data
     public class HUDFactory
     {
         private Texture2D hudSpriteSheet;
         private Sprint0 sprint;
         private List<Root> deserializedGameData;
         private FileNames filenames;
+        private HudNumbers numbers;
 
         public class Root
         {
@@ -30,6 +29,7 @@ namespace Sprint0.Sprites.SpriteFactories
         public HUDFactory(Sprint0 sprint) 
         {
             filenames = new FileNames();
+            numbers = new HudNumbers();
             this.sprint = sprint;
 
             StreamReader r = new StreamReader(filenames.hudData);
@@ -86,6 +86,29 @@ namespace Sprint0.Sprites.SpriteFactories
         {
             Root element = deserializedGameData.FirstOrDefault(item => item.name == name);
             return new Cards(hudSpriteSheet, new Vector2(element.spritesheetpos[0], element.spritesheetpos[1]), new Vector2(element.size[0], element.size[1]));
+        }
+
+        public ISprite UpdatePower(string level)
+        {
+            ISprite power;
+            Root element = deserializedGameData.FirstOrDefault(item => item.name == level);
+
+            if (level == numbers.level0 || level == numbers.level1 || level == numbers.level2 || level == numbers.level3)
+            {
+                Vector2[] positions = new Vector2[1];
+                positions[0] = new Vector2(element.spritesheetpos[0], element.spritesheetpos[1]);
+                return power = new Power(hudSpriteSheet, positions, new Vector2(element.size[0], element.size[1]));
+            }
+            else if (level == numbers.level4)
+            {
+                Root element2 = deserializedGameData.FirstOrDefault(item =>item.name == numbers.level3);
+                Vector2[] positions = new Vector2[2];
+                positions[0] = new Vector2(element.spritesheetpos[0], element.spritesheetpos[1]);
+                positions[1] = new Vector2(element2.spritesheetpos[0], element2.spritesheetpos[1]);
+                return power = new Power(hudSpriteSheet, positions, new Vector2(element.size[0], element.size[1]));
+            }
+
+            return null;
         }
     }
 }

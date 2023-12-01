@@ -66,12 +66,5 @@ namespace Sprint0.Camera
 
             return center;
         }
-        public Vector2 GetCameraOffset(Vector2 position)
-        {
-            // Update your offset vector based on camera movement - needs to be debugged
-            Vector2 offset = center - position;
-            return offset;
-        }
-
     }
 }
