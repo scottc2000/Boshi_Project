@@ -31,11 +31,12 @@ namespace Sprint0.Blocks
         public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, Rectangle blockRectangle, string item)
         {
             Destination = blockRectangle;
+            itemPos = new List<int>(2);
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations();
             sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(blockRectangle.X, blockRectangle.Y));
-            itemPos[0] = blockRectangle.X;
-            itemPos[1] = blockRectangle.Y;
+            itemPos.Add(blockRectangle.X);
+            itemPos.Add(blockRectangle.Y);
             this.item = storeItem(item);
         }
 
