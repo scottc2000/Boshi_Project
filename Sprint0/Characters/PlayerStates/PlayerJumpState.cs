@@ -72,7 +72,7 @@ namespace Sprint0.Characters.PlayerStates
 
             player.currentSprite = SetSprite(gametime);
 
-            if (player.uphit && player.timeGap > p.gap50)
+            if (player.timeGap > p.gap50)
             {
                 player.Stop();
             }

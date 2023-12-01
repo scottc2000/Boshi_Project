@@ -24,7 +24,6 @@ namespace Sprint0.Commands.Collision
                     player.position = new Vector2(player.position.X, player.position.Y + hitarea.Height);
                 else
                 {
-                    player.uphit = true;
                     player.position = new Vector2(player.position.X, player.position.Y - hitarea.Height);
                 }
 
