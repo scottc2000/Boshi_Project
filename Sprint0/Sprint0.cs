@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Background;
 using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Controllers;
@@ -23,6 +24,7 @@ namespace Sprint0
         public ObjectManager objects;
         public GameStats stats;
         public AudioManager audioManager;
+        public ScrnManager screenManager;
 
         public LevelLoader1 levelLoader; // change back to private later
         public Camera.PlayerCamera camera;
@@ -53,6 +55,7 @@ namespace Sprint0
             levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera);
 
             audioManager = AudioManager.Instance;
+            screenManager = new ScrnManager(this, _spriteBatch);
 
             base.Initialize();
         }
