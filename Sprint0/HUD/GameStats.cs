@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using Sprint0.Background;
 using Sprint0.Camera;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.SpriteFactories;
@@ -13,6 +14,7 @@ namespace Sprint0.HUD
         private Sprint0 sprint;
         private HudNumbers numbers;
         private AudioManager audioManager = AudioManager.Instance;
+        private ScrnManager screenManager;
         private FileNames fileNames = new FileNames();
        
         // Stat variables
@@ -81,6 +83,8 @@ namespace Sprint0.HUD
             livesPosition = numbers.livesStartingPosition;
             scorePosition = numbers.scoreStartingPosition;
             timerPosition = numbers.timerStartingPosition;
+
+            screenManager = sprint.screenManager;
         }
 
         public void IncrementCoin()
@@ -125,7 +129,8 @@ namespace Sprint0.HUD
             if (lives == 0)
             {
                 // Is game over screen called here or handled somewhere else?
-                lives = numbers.STARTINGLIVES;
+                screenManager.Death();
+                //lives = numbers.STARTINGLIVES;
             }
             else
             {

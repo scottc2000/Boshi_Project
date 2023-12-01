@@ -216,33 +216,7 @@ namespace Sprint0
             objectManager.DynamicEntities.Add(luigi.fireProjectile);
 
         }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            terrain.Draw(spriteBatch); // need to draw terrain before any game objects
-            hud.Draw(spriteBatch);
 
-            // Draw each game object
-            foreach (var block in objectManager.Blocks)
-            {
-                block.Draw(spriteBatch);
-            }
-            foreach(var item in objectManager.Items)
-            {
-                item.Draw(spriteBatch);
-            }
-            foreach (var enemy in objectManager.Enemies)
-            {
-                enemy.Draw(spriteBatch);
-            }
-            foreach (var proj in objectManager.Projectiles)
-            {
-                proj.Draw(spriteBatch);
-            }
-
-            mario.Draw(spriteBatch);
-            luigi.Draw(spriteBatch);
-
-        }
 
         public void Update(GameTime gameTime)
         {

@@ -89,7 +89,10 @@ namespace Sprint0
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
                 null, null, null, null, camera.transform);
 
-            levelLoader.Draw(_spriteBatch);
+            screenManager.Draw();
+            //levelLoader.Draw(_spriteBatch);
+
+            
 
             _spriteBatch.End();
 
