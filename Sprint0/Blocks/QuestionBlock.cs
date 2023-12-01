@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Sprites;
+using Sprint0.Items;
+using System.Collections.Generic;
 
 namespace Sprint0.Blocks
 {
@@ -23,6 +25,7 @@ namespace Sprint0.Blocks
         public bool stuck { get; set; }
 
         public IItem item { get; set; }
+        public List<int> itemPos { get; set; }
 
 
         public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, Rectangle blockRectangle, string item)
@@ -31,6 +34,57 @@ namespace Sprint0.Blocks
             BlockSpriteFactory.Instance.LoadTextures(content);
             BlockSpriteFactory.Instance.LoadSpriteLocations();
             sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(blockRectangle.X, blockRectangle.Y));
+            itemPos[0] = blockRectangle.X;
+            itemPos[1] = blockRectangle.Y;
+            this.item = storeItem(item);
+        }
+
+        private IItem storeItem(string item)
+        {
+            switch (item)
+            {
+                case "RedMushroom":
+                    IItem RedMushroom = new RedMushroom();
+                    RedMushroom.setPosition(itemPos);
+                    return RedMushroom;
+                case "OneUpMushroom":
+                    IItem OneUpMushroom = new OneUpMushroom();
+                    OneUpMushroom.setPosition(itemPos);
+                    return OneUpMushroom;
+                case "FireFlower":
+                    IItem FireFlower = new FireFlower();
+                    FireFlower.setPosition(itemPos);
+                    return FireFlower;
+                case "Leaf":
+                    IItem Leaf = new Leaf();
+                    Leaf.setPosition(itemPos);
+                    return Leaf;
+                case "Star":
+                    IItem Star = new Star();
+                    Star.setPosition(itemPos);
+                    return Star;
+                case "Frog":
+                    IItem Frog = new Frog();
+                    Frog.setPosition(itemPos);
+                    return Frog;
+                case "Tanooki":
+                    IItem Tanooki = new Tanooki();
+                    Tanooki.setPosition(itemPos);
+                    return Tanooki;
+                case "Hammer":
+                    IItem Hammer = new Hammer();
+                    Hammer.setPosition(itemPos);
+                    return Hammer;
+                case "Shoe":
+                    IItem Shoe = new Shoe();
+                    Shoe.setPosition(itemPos);
+                    return Shoe;
+                default:
+                    IItem Coin = new Coin();
+                    Coin.setPosition(itemPos);
+                    return Coin;
+                    
+            }
         }
 
 
