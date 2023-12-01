@@ -204,8 +204,14 @@ namespace Sprint0
 
             objectManager.DynamicEntities.Add(mario);
             objectManager.DynamicEntities.Add(luigi);
+
+            for (int i = 0; i < luigi.fireProjectile.projectiles.Count; i++)
+            {
+                objectManager.DynamicEntities.Add(luigi.fireProjectile.projectiles[i]);
+            }
+            
             objectManager.Projectiles.Add(luigi.fireProjectile);
-            objectManager.DynamicEntities.Add(luigi.fireProjectile);
+            
 
         }
         public void Draw(SpriteBatch spriteBatch)

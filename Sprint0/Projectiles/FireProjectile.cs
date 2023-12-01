@@ -14,16 +14,9 @@ namespace Sprint0.Items.Projectiles
 
     {
         public List<AnimatedProjectile> projectiles { get; set; }
+
         private AudioManager audioManager = AudioManager.Instance;
         private FileNames fileNames = new FileNames();
-
-        public Rectangle Destination { get; set; }
-        public bool lefthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool righthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool uphit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool downhit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool gothit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool stuck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         ProjectileSpriteFactory projectileFactory;
 

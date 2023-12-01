@@ -2,6 +2,7 @@
 using Sprint0.Characters;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint0.Collision
@@ -43,13 +44,22 @@ namespace Sprint0.Collision
                 for(int j = i + 1; j < DynamicEntities.Count; j++)
                 {
                     ICollidable dynamic2 = DynamicEntities[j];
-                    if (dynamic1.Destination.Intersects(dynamic2.Destination)) 
+                    if (dynamic1.Destination.Intersects(dynamic2.Destination))
                     {
                         Rectangle hitarea = Rectangle.Intersect(dynamic2.Destination, dynamic1.Destination); // optional parameter
                         Side side = CollisionSide(dynamic1, dynamic2);
                         Vert vert = Vert.Top;
                         if (dynamic1 is IBlock) vert = TopOrBottom(dynamic1);
                         if (dynamic2 is IBlock) vert = TopOrBottom(dynamic2);
+
+                        if ((dynamic1 is ISingleProjectile && dynamic2 is IEnemies) || (dynamic2 is ISingleProjectile && dynamic1 is IEnemies))
+                        {
+                            Console.Write("Projectile hit! ");
+                            Console.Write(" " + dynamic1);
+                            Console.WriteLine(" " + dynamic2);
+
+                        }
+
                         HandleCollision(dynamic1, dynamic2, side, vert,  hitarea);
                     }
                 }

@@ -57,7 +57,7 @@ namespace Sprint0.Characters
 
         public Luigi(Sprint0 sprint0)
         {
-            this.health = LuigiHealth.Big;
+            this.health = LuigiHealth.Fire;
             this.State = new LuigiIdleState(this);
 
             // default position stuff
@@ -221,6 +221,10 @@ namespace Sprint0.Characters
             if (health == LuigiHealth.Normal)
             {
                 position = new Vector2(position.X, position.Y - sizeDiff);
+                health = LuigiHealth.Big;
+            }
+            else
+            {
                 health = LuigiHealth.Big;
             }
             

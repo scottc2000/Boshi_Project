@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sprint0.Interfaces
 {
-    public interface IProjectile : ICollidable, IGameObject
+    public interface IProjectile : IGameObject
     {
         List<AnimatedProjectile> projectiles { get; set; }
     }

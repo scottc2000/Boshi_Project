@@ -1,24 +1,32 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Sprint0.Interfaces;
 
 namespace Sprint0.Sprites.Projectile
 {
-    public class AnimatedProjectile
+    public class AnimatedProjectile : ICollidable, ISingleProjectile
     {
         public Vector2 pos;
         bool facingLeft;
         Rectangle[] spriteFrames;
         Texture2D texture;
         int direction;
-        Rectangle destination;
         SpriteEffects effect;
 
         public int CurrentFrame = 0;
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
         public int millisecondsPerFrame = 100;
+
+        public bool lefthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool righthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool uphit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool downhit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool gothit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool stuck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public Rectangle Destination { get; set; }
 
         public AnimatedProjectile(Rectangle[] currentFrames, Texture2D texture, bool facingLeft, Vector2 pos)
         {
@@ -63,11 +71,11 @@ namespace Sprint0.Sprites.Projectile
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
+            Destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
             float rotation = 0;
             float layer = 0;
 
-            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), effect, layer);
+            spriteBatch.Draw(texture, Destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), effect, layer);
         }
     }
 }
