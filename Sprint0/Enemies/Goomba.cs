@@ -1,9 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Enemies.GoombaStates;
 using Sprint0.Enemies.GooombaStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.goombaSprite;
+using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint0.Enemies
@@ -55,17 +58,13 @@ namespace Sprint0.Enemies
 
         public void BeStomped()
         {
+            currentSprite = mySpriteFactory.returnSprite("GoombaStomped");
             state.BeStomped();
         }
 
         public void BeFlipped()
         {
             state.BeFlipped();
-        }
-
-        public void StartSwarm()
-        {
-            state.startSwarm();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -96,17 +95,6 @@ namespace Sprint0.Enemies
                 {
                     ChangeDirection();
                 }
-            }
-        }
-
-        public void Swarm()
-        {
-            if (position.X < mySprint.levelLoader.mario.position.X)
-            {
-                position.X += 1;
-            } else
-            {
-                position.X -= 1;
             }
         }
     }

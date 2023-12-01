@@ -11,7 +11,7 @@ namespace Sprint0.Enemies.HammerBroStates
     {
         private readonly Koopa koopa;
 
-        public RightMovingKoopaState(Koopa koopa)
+        public RightMovingKoopaState (Koopa koopa)
         {
             this.koopa = koopa;
         }
@@ -35,10 +35,6 @@ namespace Sprint0.Enemies.HammerBroStates
         public void Update()
         {
             koopa.Move();
-        }
-
-        public void startSwarm()
-        {
         }
     }
 }
