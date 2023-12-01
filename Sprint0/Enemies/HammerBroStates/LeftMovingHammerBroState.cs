@@ -36,9 +36,5 @@ namespace Sprint0.Enemies.HammerBroStates
         {
             hammerBro.Move();
         }
-
-        public void startSwarm()
-        {
-        }
     }
 }

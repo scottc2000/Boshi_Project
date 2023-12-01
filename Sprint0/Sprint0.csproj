@@ -11,17 +11,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Characters\PlayerStates\**" />
+    <Compile Remove="Characters\LuigiStates\**" />
     <Compile Remove="Commands\Collision\**" />
-    <Compile Remove="Commands\Player\**" />
+    <Compile Remove="Commands\Luigi\**" />
     <Compile Remove="Sprites\Luigi\**" />
-    <EmbeddedResource Remove="Characters\PlayerStates\**" />
+    <EmbeddedResource Remove="Characters\LuigiStates\**" />
     <EmbeddedResource Remove="Commands\Collision\**" />
-    <EmbeddedResource Remove="Commands\Player\**" />
+    <EmbeddedResource Remove="Commands\Luigi\**" />
     <EmbeddedResource Remove="Sprites\Luigi\**" />
-    <None Remove="Characters\PlayerStates\**" />
+    <None Remove="Characters\LuigiStates\**" />
     <None Remove="Commands\Collision\**" />
-    <None Remove="Commands\Player\**" />
+    <None Remove="Commands\Luigi\**" />
     <None Remove="Sprites\Luigi\**" />
     <None Remove="Collision\" />
     <None Remove="Controllers\" />
@@ -45,22 +45,26 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Player\CDeadPlayer.cs" />
-    <Compile Include="Commands\Player\CPlayerCrouch.cs" />
-    <Compile Include="Commands\Player\CPlayerFall.cs" />
-    <Compile Include="Commands\Player\CPlayerJump.cs" />
-    <Compile Include="Commands\Player\CPlayerMoveLeft.cs" />
-    <Compile Include="Commands\Player\CPlayerMoveRight.cs" />
-    <Compile Include="Commands\Player\CPlayerStop.cs" />
-    <Compile Include="Characters\PlayerStates\PlayerCrouchState.cs" />
-    <Compile Include="Characters\PlayerStates\PlayerIdleState.cs" />
-    <Compile Include="Characters\PlayerStates\PlayerJumpState.cs" />
-    <Compile Include="Characters\PlayerStates\PlayerMoveState.cs" />
-    <Compile Include="Characters\PlayerStates\PlayerThrowState.cs" />
-    <Compile Include="Commands\Player\CPlayerThrow.cs" />
-    <Compile Include="Characters\PlayerStates\DeadPlayerState.cs" />
-    <Compile Include="Characters\PlayerStates\PlayerFlyState.cs" />
-    <Compile Include="Commands\Player\CPlayerFly.cs" />
+    <Compile Include="Commands\Luigi\CLuigiBig.cs" />
+    <Compile Include="Commands\Luigi\CLuigiCrouch.cs" />
+    <Compile Include="Commands\Luigi\CLuigiFire.cs" />
+    <Compile Include="Commands\Luigi\CLuigiFall.cs" />
+    <Compile Include="Commands\Luigi\CLuigiJump.cs" />
+    <Compile Include="Commands\Luigi\CLuigiMoveLeft.cs" />
+    <Compile Include="Commands\Luigi\CLuigiMoveRight.cs" />
+    <Compile Include="Commands\Luigi\CLuigiNormal.cs" />
+    <Compile Include="Commands\Luigi\CLuigiRaccoon.cs" />
+    <Compile Include="Commands\Luigi\CLuigiStop.cs" />
+    <Compile Include="Commands\Luigi\CReleasedLuigi.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiCrouchState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiIdleState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiJumpState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiMoveState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiThrowState.cs" />
+    <Compile Include="Commands\Luigi\CLuigiThrow.cs" />
+    <Compile Include="Characters\LuigiStates\DeadLuigiState.cs" />
+    <Compile Include="Characters\LuigiStates\LuigiFlyState.cs" />
+    <Compile Include="Commands\Luigi\CLuigiFly.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="LevelLoader\Level1Data.cs">

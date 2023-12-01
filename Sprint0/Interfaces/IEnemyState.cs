@@ -11,7 +11,6 @@ namespace Sprint0.Interfaces
         void ChangeDirection();
         void BeStomped();
         void BeFlipped();
-        void startSwarm();
         void Update();
     }
 }

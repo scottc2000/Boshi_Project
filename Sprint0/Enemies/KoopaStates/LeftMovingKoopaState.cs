@@ -36,8 +36,5 @@ namespace Sprint0.Enemies.HammerBroStates
         {
             koopa.Move();
         }
-        public void startSwarm()
-        {
-        }
     }
 }
