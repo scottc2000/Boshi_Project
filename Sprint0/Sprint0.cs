@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Controllers;
+using Sprint0.Enemies;
 using Sprint0.GameMangager;
 using Sprint0.HUD;
 using Sprint0.Interfaces;
@@ -22,14 +23,13 @@ namespace Sprint0
         
         public ObjectManager objects;
         public GameStats stats;
+        public Triggers triggers;
         public AudioManager audioManager;
 
         public LevelLoader1 levelLoader; // change back to private later
-        public MarioCamera camera;
+        public Camera.PlayerCamera camera;
         public static int ScreenWidth;
         public static int ScreenHeight;
-       
-        private IController KeyboardController;
 
         private CollisionDetector detector; 
 
@@ -50,10 +50,10 @@ namespace Sprint0
             ScreenWidth = _graphics.PreferredBackBufferWidth;
 
             // Initialize game components
-            camera = new MarioCamera(GraphicsDevice.Viewport);
+            camera = new Camera.PlayerCamera(GraphicsDevice.Viewport);
             objects = new ObjectManager(this);
             levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera);
-            KeyboardController = new KeyboardController(this, levelLoader);
+            triggers = new Triggers(this);
 
             audioManager = AudioManager.Instance;
 
@@ -76,8 +76,8 @@ namespace Sprint0
 
         protected override void Update(GameTime gameTime)
         {
-            KeyboardController.Update();
             levelLoader.Update(gameTime);
+            triggers.Detect();
             detector.DetectCollision();
 
             base.Update(gameTime);

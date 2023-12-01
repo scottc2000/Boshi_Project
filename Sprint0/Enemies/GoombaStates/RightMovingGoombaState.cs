@@ -33,6 +33,10 @@ namespace Sprint0.Enemies.GoombaStates
 
         }
 
+        public void startSwarm()
+        {
+            goomba.state = new SwarmingGoombaState(goomba);
+        }
         public void Update()
         {
             goomba.Move();

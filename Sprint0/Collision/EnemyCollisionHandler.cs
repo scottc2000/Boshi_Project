@@ -25,7 +25,7 @@ namespace Sprint0.Collision
             type1 = entity1.GetType();
             type2 = entity2.GetType();
 
-            if (type1 is IMario || type2 is IMario)
+            if (type1 is IPlayer || type2 is IPlayer)
                 EnemyPlayerCollision(entity1, entity2, side);
         }
 
@@ -38,7 +38,7 @@ namespace Sprint0.Collision
             {
                 if (type1 is Goomba || type2 is Goomba)
                 {
-                    ICommand command = new CGoombaStomp(sprint);
+                    ICommand command = new CEnemyStomp(sprint);
                     command.Execute();
                     System.Diagnostics.Debug.WriteLine("Goomba Stomped");
                 } else if (type1 is Koopa || type2 is Koopa)

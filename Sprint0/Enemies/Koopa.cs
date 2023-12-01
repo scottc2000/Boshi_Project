@@ -98,5 +98,10 @@ namespace Sprint0.Enemies
                 }
             }
         }
+
+        public void StartSwarm()
+        {
+            //does not swarm
+        }
     }
 }

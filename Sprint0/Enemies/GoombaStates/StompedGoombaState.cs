@@ -32,6 +32,11 @@ namespace Sprint0.Enemies.GooombaStates
 
         }
 
+        public void startSwarm()
+        {
+            //does not swarm
+        }
+
         public void Update()
         {
             goomba.currentSprite = goomba.mySpriteFactory.returnSprite("GoombaStomped");
