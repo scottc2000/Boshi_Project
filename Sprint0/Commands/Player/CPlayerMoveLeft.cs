@@ -23,14 +23,13 @@ namespace Sprint0.Commands.Player
             if (player.health == Characters.Player.PlayerHealth.Raccoon && player.pose == Characters.Player.PlayerPose.Walking)
             {
                 player.runningTimer++;
-                SetPower();
             }
             else
             {
                 player.runningTimer = 0;
-                SetPower();
             }
 
+            SetPower();
             player.Move();
             
         }

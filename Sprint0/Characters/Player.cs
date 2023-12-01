@@ -59,7 +59,7 @@ namespace Sprint0.Characters
             mySprint = sprint0;
             player = new PlayerNumbers();
 
-            health = PlayerHealth.Big;
+            health = PlayerHealth.Raccoon;
             State = new PlayerIdleState(this);
 
             // default position stuff
@@ -125,7 +125,7 @@ namespace Sprint0.Characters
         }
         public void Jump()
         {
-            if (uphit && health != PlayerHealth.Dead)
+            if (health != PlayerHealth.Dead)
             {
                 State.Jump();
             }
