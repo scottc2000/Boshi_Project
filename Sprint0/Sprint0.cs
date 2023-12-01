@@ -51,9 +51,9 @@ namespace Sprint0
 
             // Initialize game components
             camera = new MarioCamera(GraphicsDevice.Viewport);
+            stats = new GameStats(this);
             objects = new ObjectManager(this);
-            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera);
-            KeyboardController = new KeyboardController(this, levelLoader);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, stats);
 
             audioManager = AudioManager.Instance;
 
@@ -76,7 +76,6 @@ namespace Sprint0
 
         protected override void Update(GameTime gameTime)
         {
-            KeyboardController.Update();
             levelLoader.Update(gameTime);
             detector.DetectCollision();
 
@@ -92,6 +91,10 @@ namespace Sprint0
 
             levelLoader.Draw(_spriteBatch);
 
+            _spriteBatch.End();
+
+            _spriteBatch.Begin();
+            stats.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);

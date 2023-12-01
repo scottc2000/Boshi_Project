@@ -15,7 +15,7 @@ namespace Sprint0.Utility
 
         public int YCenterXOffset { get; } = 200;
 
-        public float zoom { get; } = 1.5f;
+        public float zoom { get; } = 2f;
         public int leftBound { get; } = 2;
         public int bottomBound { get; } = 250;
     }

@@ -15,6 +15,7 @@ using System.Text.Json;
 using Sprint0.GameMangager;
 using static Sprint0.LevelLoader.Level1Data;
 using Item = Sprint0.LevelLoader.Level1Data.Item;
+using Sprint0.Controllers;
 
 namespace Sprint0
 {
@@ -28,14 +29,13 @@ namespace Sprint0
 
         public MarioCamera camera;
         private Terrain terrain;
-        public GameStats hud;
         public ILuigi luigi;
         public IMario mario;
 
         public ObjectManager objectManager;
         private AudioManager audioManager = AudioManager.Instance;
 
-        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, MarioCamera camera)
+        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, MarioCamera camera, GameStats hud)
         {
             this.sprint0 = sprint0;
             objectManager = sprint0.objects;
@@ -45,9 +45,10 @@ namespace Sprint0
 
             this.camera = camera;
             terrain = new Terrain(sprint0);
-            hud = new GameStats(sprint0, camera);
             mario = new Mario(sprint0);
             luigi = new Luigi(sprint0);
+
+            IController keyboard = new KeyboardController(sprint0, this, hud);
         }
         public void Load(string jsonFilePath)
         {
@@ -211,7 +212,6 @@ namespace Sprint0
         public void Draw(SpriteBatch spriteBatch)
         {
             terrain.Draw(spriteBatch); // need to draw terrain before any game objects
-            hud.Draw(spriteBatch);
 
             // Draw each game object
             foreach (var block in objectManager.Blocks)
@@ -260,7 +260,6 @@ namespace Sprint0
 
             objectManager.Update();
             camera.Update(mario);
-            hud.Update(gameTime);
             mario.Update(gameTime);
             luigi.Update(gameTime);
 

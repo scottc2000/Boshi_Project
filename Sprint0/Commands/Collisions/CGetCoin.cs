@@ -14,7 +14,7 @@ namespace Sprint0.Commands.Collisions
         {
             this.sprint = sprint;
             objectManager = sprint.objects;
-            stats = sprint.levelLoader.hud;
+            stats = sprint.stats;
         }
         public void Execute()
         {

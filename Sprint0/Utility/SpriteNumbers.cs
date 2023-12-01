@@ -38,7 +38,7 @@ namespace Sprint0.Utility
 
         /*__________ HUD Data ___________________*/
         public int HUDDrawMultiplier { get; } = 2;
-        public int digitOffset { get; } = 16;
+        public int digitOffset { get; } = 20;
 
         public Microsoft.Xna.Framework.Rectangle HUDBackground = new Microsoft.Xna.Framework.Rectangle(0, 435, 537, 120);
 

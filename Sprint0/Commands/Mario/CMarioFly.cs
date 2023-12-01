@@ -1,5 +1,7 @@
 using Sprint0.Interfaces;
 using Sprint0.Characters;
+using Sprint0.HUD;
+using Sprint0.Utility;
 
 namespace Sprint0.Commands.Mario
 {
@@ -7,18 +9,21 @@ namespace Sprint0.Commands.Mario
     {
         private Sprint0 mySprint0;
         private IMario mario;
-        private LevelLoader1 level;
+        private GameStats hud;
+        private HudNumbers numbers;
 
-        public CMarioFly(Sprint0 Sprint0, LevelLoader1 level)
+        public CMarioFly(Sprint0 Sprint0, GameStats hud)
         {
             mySprint0 = Sprint0;
-            this.level = level;
-            mario = level.mario;
+            this.hud = hud;
+            numbers = new HudNumbers();
+            mario = mySprint0.levelLoader.mario;
         }
         public void Execute()
         {
             if (mario.boosted)
             {
+                hud.PowerLevel(numbers.level4);
                 mario.Fly();
             }
             else
@@ -27,6 +32,8 @@ namespace Sprint0.Commands.Mario
             }
 
         }
+
+
     }
 }
 

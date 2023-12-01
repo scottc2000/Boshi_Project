@@ -14,7 +14,7 @@ namespace Sprint0.Commands.Collisions
         {
             this.sprint = sprint;
             mario = this.sprint.levelLoader.mario;
-            stats = this.sprint.levelLoader.hud;
+            stats = this.sprint.stats;
             this.item = item;
         }
         public void Execute()

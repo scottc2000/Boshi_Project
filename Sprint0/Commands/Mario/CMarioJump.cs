@@ -1,4 +1,5 @@
-﻿using Sprint0.Interfaces;
+﻿using Sprint0.HUD;
+using Sprint0.Interfaces;
 
 namespace Sprint0.Commands.Mario
 {
@@ -7,17 +8,19 @@ namespace Sprint0.Commands.Mario
         private Sprint0 mySprint0;
         private IMario mario;
         private LevelLoader1 level;
-        public CMarioJump(Sprint0 Sprint0, LevelLoader1 level)
+        private GameStats hud;
+        public CMarioJump(Sprint0 Sprint0, LevelLoader1 level, GameStats hud)
         {
             mySprint0 = Sprint0;
             this.level = level;
+            this.hud = hud;
         }
         public void Execute()
         {
             mario = level.mario;
             if (mario.health == Characters.Mario.MarioHealth.Raccoon)
             {
-                ICommand flyCommand = new CMarioFly(mySprint0, level);
+                ICommand flyCommand = new CMarioFly(mySprint0, hud);
                 flyCommand.Execute();
             }
             else
