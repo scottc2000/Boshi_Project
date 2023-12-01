@@ -30,6 +30,7 @@ namespace Sprint0
 
         public PlayerCamera camera;
         private Terrain terrain;
+        public GameStats hud;
         public IPlayer luigi;
         public IPlayer mario;
         private IController KeyboardController;
@@ -37,7 +38,7 @@ namespace Sprint0
         public ObjectManager objectManager;
         private AudioManager audioManager = AudioManager.Instance;
 
-        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, PlayerCamera camera, GameStats hud)
+        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, PlayerCamera camera)
         {
             this.sprint0 = sprint0;
             objectManager = sprint0.objects;
@@ -47,13 +48,13 @@ namespace Sprint0
 
             mario = new Player(sprint0, p.mario);
             luigi = new Player(sprint0, p.luigi);
+            KeyboardController = new KeyboardController(sprint0, mario, luigi);
 
             this.spriteBatch = spriteBatch;
             this.content = content;
 
             terrain = new Terrain(sprint0);
-
-            KeyboardController = new KeyboardController(sprint0, mario, luigi, hud);
+            hud = new GameStats(sprint0, camera);
         }
         public void Load(string jsonFilePath)
         {
@@ -63,6 +64,7 @@ namespace Sprint0
 
             Load(data);
             audioManager.PlayMusic(data.Songs[0].Name);
+            System.Diagnostics.Debug.WriteLine(data.Songs[0].Name);
         }
 
         public void Load(Root data)
@@ -214,35 +216,11 @@ namespace Sprint0
             objectManager.DynamicEntities.Add(luigi.fireProjectile);
 
         }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            terrain.Draw(spriteBatch); // need to draw terrain before any game objects
 
-            // Draw each game object
-            foreach (var block in objectManager.Blocks)
-            {
-                block.Draw(spriteBatch);
-            }
-            foreach(var item in objectManager.Items)
-            {
-                item.Draw(spriteBatch);
-            }
-            foreach (var enemy in objectManager.Enemies)
-            {
-                enemy.Draw(spriteBatch);
-            }
-            foreach (var proj in objectManager.Projectiles)
-            {
-                proj.Draw(spriteBatch);
-            }
-
-            mario.Draw(spriteBatch);
-            luigi.Draw(spriteBatch);
-
-        }
 
         public void Update(GameTime gameTime)
         {
+            KeyboardController.Update();
             terrain.Update(gameTime);   // need to update terrain before any game objects
 
             // Update each game object
@@ -265,9 +243,9 @@ namespace Sprint0
 
             objectManager.Update();
             camera.Update(mario, luigi);
+            hud.Update(gameTime);
             mario.Update(gameTime);
             luigi.Update(gameTime);
-            KeyboardController.Update();
 
         }
     }

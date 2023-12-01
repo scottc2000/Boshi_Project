@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Background;
 using Sprint0.Camera;
 using Sprint0.Collision;
 using Sprint0.Controllers;
@@ -27,6 +28,7 @@ namespace Sprint0
 
         public Triggers triggers;
         public AudioManager audioManager;
+        public ScrnManager screenManager;
 
         public LevelLoader1 levelLoader; // change back to private later
         public Camera.PlayerCamera camera;
@@ -56,6 +58,7 @@ namespace Sprint0
             triggers = new Triggers(this);
 
             audioManager = AudioManager.Instance;
+            screenManager = new ScrnManager(this, _spriteBatch);
 
             base.Initialize();
         }
@@ -91,7 +94,10 @@ namespace Sprint0
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
                 null, null, null, null, camera.transform);
 
-            levelLoader.Draw(_spriteBatch);
+            screenManager.Draw();
+            //levelLoader.Draw(_spriteBatch);
+
+            
 
             _spriteBatch.End();
 
