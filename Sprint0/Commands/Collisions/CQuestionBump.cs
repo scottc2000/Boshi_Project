@@ -4,6 +4,7 @@ using Sprint0.GameMangager;
 using Sprint0.Blocks;
 using Sprint0.Characters;
 using Microsoft.Xna.Framework;
+using Sprint0.Commands;
 
 namespace Sprint0.Commands.Collisions
 {
@@ -34,6 +35,8 @@ namespace Sprint0.Commands.Collisions
             {
                 if (player.Destination.Top <= hitbox.Bottom && player.Destination.Bottom >= hitbox.Top + 5)
                 {
+                    CBlockBump command = new CBlockBump(sprint);
+                    command.Execute(block);
                     objectManager.AddToList(((QuestionBlock)block).item);
                 }
 

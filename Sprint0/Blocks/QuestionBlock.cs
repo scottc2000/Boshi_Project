@@ -36,7 +36,7 @@ namespace Sprint0.Blocks
             BlockSpriteFactory.Instance.LoadSpriteLocations();
             sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "question_block", new Vector2(blockRectangle.X, blockRectangle.Y));
             itemPos.Add(blockRectangle.X);
-            itemPos.Add(blockRectangle.Y);
+            itemPos.Add(blockRectangle.Y - 16);
             this.item = storeItem(item);
         }
 
