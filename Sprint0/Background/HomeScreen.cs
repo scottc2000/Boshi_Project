@@ -9,14 +9,14 @@ namespace Sprint0.Background
 {
     public class HomeScreen : IScreen
     {
-        private ScreenManager screenManager;
+        private ScrnManager screenManager;
         private Texture2D terrain;
         private Sprint0 sprint0;
         private ISprite sprite;
         private Vector2 location;
         private string file;
 
-        public HomeScreen(Sprint0 sprint0, ScreenManager screenManager)
+        public HomeScreen(Sprint0 sprint0, ScrnManager screenManager)
         {
             this.screenManager = screenManager;
             this.sprint0 = sprint0;
