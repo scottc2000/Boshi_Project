@@ -55,7 +55,6 @@ namespace Sprint0.Camera
             // Note camera snaps due to differences in Y - need to fix
             if (mario.position.X > luigi.position.X)
             {
-
                center = new Vector2(mario.position.X + (mario.Destination.Width / cameraNumbers.sizeDivider) - cameraNumbers.XCcenterOffset,
                mario.position.Y + (mario.Destination.Height / cameraNumbers.sizeDivider) - cameraNumbers.YCenterXOffset);
             }
@@ -67,6 +66,5 @@ namespace Sprint0.Camera
 
             return center;
         }
-
     }
 }

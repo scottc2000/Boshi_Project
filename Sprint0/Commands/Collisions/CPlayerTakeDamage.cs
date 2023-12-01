@@ -30,6 +30,7 @@ namespace Sprint0.Commands.Collisions
                     }
                 case Characters.Player.PlayerHealth.Big:
                     {
+                        System.Diagnostics.Debug.WriteLine(player.number + " becomes damaged");
                         IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader);
                         damagedPlayer.isInvinsible = true; // Set Mario as invincible
                         if (player.number == p.mario)
@@ -41,6 +42,7 @@ namespace Sprint0.Commands.Collisions
                     }
                 case Characters.Player.PlayerHealth.Fire:
                     {
+                        System.Diagnostics.Debug.WriteLine(player.number + " becomes damaged");
                         IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader);
                         damagedPlayer.isInvinsible = true; // Set Mario as invincible
                         if (player.number == p.mario)
