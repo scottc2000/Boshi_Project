@@ -56,11 +56,13 @@ namespace Sprint0.Background
                     spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                 null, null, null, null, startCamera.transform);
                     sprite = new DrawBackground(terrain, new Rectangle(0, 0, 2816, 626));
+                    startCamera.Update(mario, luigi);
                     break;
                 case Camera.Player:
                     spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                 null, null, null, null, playerCamera.transform);
                     sprite = new DrawBackground(terrain, new Rectangle(0, 0, 2816, 626));
+                    playerCamera.Update(mario, luigi);
                     break;
             }
 
