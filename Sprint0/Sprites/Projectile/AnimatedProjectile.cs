@@ -1,19 +1,20 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Sprint0.Interfaces;
 
 namespace Sprint0.Sprites.Projectile
 {
-    public class AnimatedProjectile
+    public class AnimatedProjectile : ICollidable, ISingleProjectile
     {
         public Vector2 pos;
         bool facingLeft;
         Rectangle[] spriteFrames;
         Texture2D texture;
         int direction;
-        Rectangle destination;
+        public Rectangle Destination { get; set; }
         SpriteEffects effect;
+        public int travel;
 
         public int CurrentFrame = 0;
         public int TotalFrames;
@@ -24,6 +25,7 @@ namespace Sprint0.Sprites.Projectile
         {
             this.pos = pos;
             pos.X += 10;
+            travel = 0;
             this.facingLeft = facingLeft;
             spriteFrames = currentFrames;
             TotalFrames = spriteFrames.Length;
@@ -59,15 +61,16 @@ namespace Sprint0.Sprites.Projectile
             }
 
             pos.X += direction;
+            travel += direction;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
+            Destination = new Rectangle((int)pos.X, (int)pos.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
             float rotation = 0;
             float layer = 0;
 
-            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), effect, layer);
+            spriteBatch.Draw(texture, Destination, spriteFrames[CurrentFrame], Color.White, rotation, new Vector2(0, 0), effect, layer);
         }
     }
 }

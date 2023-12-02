@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Blocks;
 using Sprint0.Characters;
+using Sprint0.Commands.Collisions;
 using Sprint0.GameMangager;
 using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint0.Collision
@@ -144,7 +146,34 @@ namespace Sprint0.Collision
 
             /*________ Enemey Collisions _____*/
             if (entity1 is IEnemies || entity2 is IEnemies)
-                enemyCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
+            {
+                if (entity1 is ISingleProjectile || entity2 is ISingleProjectile)
+                {
+                    if (entity1 is ISingleProjectile)
+                    {
+                        ICommand command;
+                        command = new CEnemyStomp(sprint, (IEnemies)entity2);
+                        command.Execute();
+                        sprint.objects.DynamicEntities.Remove(entity1);
+                        System.Diagnostics.Debug.WriteLine("Enemy Killed");
+                    }
+                    else
+                    {
+                        ICommand command;
+                        command = new CEnemyStomp(sprint, (IEnemies)entity1);
+                        command.Execute();
+                        sprint.objects.DynamicEntities.Remove(entity2);
+                        System.Diagnostics.Debug.WriteLine("Enemy Killed");
+                    }
+                }
+
+                else
+                {
+                    enemyCollisionHandler.HandleCollision(entity1, entity2, side, hitarea);
+                }
+                
+            }
+                
 
         }
     }

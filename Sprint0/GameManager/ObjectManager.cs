@@ -42,8 +42,24 @@ namespace Sprint0.GameMangager
 
         }
 
+        public void UpdateProjectileLists()
+        {
+            for (int i = 0; i < Projectiles.Count; i++)
+            {
+                for (int j = 0; j < Projectiles[i].projectiles.Count; j++)
+                {
+                    if (!DynamicEntities.Contains(Projectiles[i].projectiles[j]))
+                    {
+                        DynamicEntities.Add(Projectiles[i].projectiles[j]);
+                        Console.WriteLine(DynamicEntities.Count);
+                    }
+                }
+            }
+        }
+
         public void Update()
         {
+            UpdateProjectileLists();
             foreach (var entity in EntitiesToAdd)
             {
                 DynamicEntities.Add(entity);
