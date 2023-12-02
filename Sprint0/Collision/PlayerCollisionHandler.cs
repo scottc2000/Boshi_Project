@@ -91,7 +91,6 @@ namespace Sprint0.Collision
 
                 if (block is QuestionBlock)
                 {
-                    Debug.WriteLine("Question block");
                     CQuestionBump command2 = new CQuestionBump(sprint, (IPlayer)player);
                     command2.Execute(hitarea, (IBlock)block);
                     

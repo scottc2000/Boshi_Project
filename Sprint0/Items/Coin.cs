@@ -1,70 +1,81 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
-using Sprint0.Sprites.ItemSprites;
-using Sprint0.Sprites.SpriteFactories;
+using Sprint0.Sprites;
+using Sprint0.Utility;
 using System.Collections.Generic;
+using Sprint0.GameMangager;
+using Sprint0.Commands.Collisions;
 
-namespace Sprint0.Items
+namespace Sprint0.Blocks
 {
-    public class Coin : IItem
+    internal class Coin : IItem
     {
-        private AniItemSprite aniItem;
-        public Vector2 position;
-
-        private int itemSpeed = 1;
-        public float gravity = 1;
-
-        public bool moveRight { get; set; }
-
-        private float timer = 0f;
-        private int interval = 15;
+        public int x { get; set; }
+        public int y { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+        private ISprite sprite;
         public Rectangle Destination { get; set; }
+        public bool moveRight { get; set; }
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
         public bool uphit { get; set; }
         public bool downhit { get; set; }
         public bool gothit { get; set; }
         public bool stuck { get; set; }
+        private int totalFrames;
+        private float frameTimer;
+        private float frameInterval;
+        public Vector2 location;
+        private float timer = 0f;
+        private int count = 48;
+        private int fall = 16;
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
 
-        public Coin()
+        public Coin(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
-            aniItem = ItemSpriteFactory.Instance.returnSprite("RedMushroom");
-            Destination = aniItem.itemPosition;
-            moveRight = false;
+            Destination = blockRectangle;
+            location = new Vector2(blockRectangle.X, blockRectangle.Y);
+            sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "spinning_coin", location);
+            location.Y -= 16;
+            
         }
 
         public void setPosition(List<int> pos)
         {
-            position.X = pos[0];
-            position.Y = pos[1];
-        }
-
-        public void applyGravity()
-        {
-            position = new Vector2(position.X, position.Y + gravity);
+            location.X = pos[0];
+            location.Y = pos[1];
         }
 
         public void Update(GameTime gameTime)
         {
+            sprite.Update(gameTime);
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (timer > interval && moveRight)
+            if (timer >= spriteNumbers.frameInterval && count > fall)
             {
-                position.X += itemSpeed;
-                timer = 0;
+                location.Y -= 1;
+                count--;
+                timer = 0f;
             }
-            else if (timer > interval && !moveRight)
+            else if (timer >= spriteNumbers.frameInterval && count > 0)
             {
-                position.X -= itemSpeed;
-                timer = 0;
+                location.Y += 1;
+                count--;
+                timer = 0f;
             }
-            applyGravity();
-            Destination = aniItem.itemPosition;
+            else
+            {
+                //CGetCoin command = new CGetCoin();
+            }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            aniItem.Draw(spriteBatch, position);
+            sprite.Draw(spriteBatch, location);
         }
+
+
     }
 }

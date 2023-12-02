@@ -38,6 +38,8 @@ namespace Sprint0.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
+            scaledPosition.X = (int)location.X;
+            scaledPosition.Y = (int)location.Y;
             spriteBatch.Draw(textures, scaledPosition, frames[currentFrame], Color.White);
         }
 
