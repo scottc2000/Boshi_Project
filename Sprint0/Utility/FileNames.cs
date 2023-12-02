@@ -14,6 +14,7 @@ namespace Sprint0.Utility
         public string terrainSheet { get; } = "level1_1";
         public string hudSheet { get; } = "HUD_transparent1";
         public string titleSheet { get; } = "mario title with text";
+        public string font { get; } = "File";
 
         /*________________ MUSIC _______________________*/
         public string mainTheme { get; } = "01-main-theme-overworld";

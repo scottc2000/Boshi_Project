@@ -9,6 +9,7 @@ namespace Sprint0
     public enum GameStates
     {
         TITLE,
-        PLAY
+        PLAY,
+        GAMEOVER
     }
 }

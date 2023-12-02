@@ -18,20 +18,21 @@ namespace Sprint0
     public class Sprint0 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
         private GameTime gametime;
         private FileNames filename;
         private PlayerNumbers p;
 
         public ObjectManager objects;
         public GameStats hud;
-        public Title title;
+        private Title title;
+        private GameOver gameover;
         public GameStates gamestates { get; set; }
         public Triggers triggers;
         public AudioManager audioManager;
-        private IController KeyboardController;
+        public IController KeyboardController;
 
-        public LevelLoader1 levelLoader; // change back to private later
+        public LevelLoader1 levelLoader;
         public PlayerCamera camera;
         public IPlayer luigi;
         public IPlayer mario;
@@ -39,7 +40,7 @@ namespace Sprint0
         public static int ScreenWidth;
         public static int ScreenHeight;
 
-        private CollisionDetector detector; 
+        public CollisionDetector detector; 
 
         public Sprint0()
         {
@@ -59,6 +60,7 @@ namespace Sprint0
 
             hud = new GameStats(this);
             title = new Title(this);
+            gameover = new GameOver(this);
             gamestates = GameStates.TITLE;
 
             // Initialize game components
@@ -102,6 +104,10 @@ namespace Sprint0
                     triggers.Detect();
                     detector.DetectCollision();
                     break;
+                case GameStates.GAMEOVER:
+                    KeyboardController.Update();
+                    gameover.Update(gameTime);
+                    break;
             }
 
             base.Update(gameTime);
@@ -127,6 +133,11 @@ namespace Sprint0
 
                     _spriteBatch.Begin();
                     hud.Draw(_spriteBatch);
+                    _spriteBatch.End();
+                    break;
+                case GameStates.GAMEOVER:
+                    _spriteBatch.Begin();
+                    gameover.Draw(_spriteBatch);
                     _spriteBatch.End();
                     break;
 
