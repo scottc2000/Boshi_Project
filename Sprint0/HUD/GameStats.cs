@@ -110,10 +110,6 @@ namespace Sprint0.HUD
         public void IncrementLives()
         {
             lives++;
-            if (lives == 0)
-            {
-                // game over
-            }
             mySpriteFactory = new HUDFactory(sprint);
             mySpriteFactory.LoadAllTextures(sprint.Content);
             lifeSprite = mySpriteFactory.UpdateDigits(lives);
@@ -150,6 +146,13 @@ namespace Sprint0.HUD
             mySpriteFactory = new HUDFactory(sprint);
             mySpriteFactory.LoadAllTextures(sprint.Content);
             timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
+            if (gameTimer == 0)
+            {
+                mySpriteFactory = new HUDFactory(sprint);
+                mySpriteFactory.LoadAllTextures(sprint.Content);
+                timerSprite = mySpriteFactory.UpdateDigits(gameTimer);
+                sprint.gamestates = GameStates.GAMEOVER;
+            }
         }
 
         public void Update(GameTime gametime)
@@ -160,10 +163,6 @@ namespace Sprint0.HUD
                 delay = numbers.delay;
                 Timer();
                 
-            }
-            if (gameTimer <= 0)
-            {
-                //gameover
             }
 
         }
