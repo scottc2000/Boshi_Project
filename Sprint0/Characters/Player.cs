@@ -51,7 +51,7 @@ namespace Sprint0.Characters
             mySprint = sprint0;
             player = new PlayerNumbers();
 
-            health = PlayerHealth.Big;
+            health = PlayerHealth.Fire;
             State = new PlayerIdleState(this);
 
             // default position stuff

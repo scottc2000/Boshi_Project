@@ -12,6 +12,7 @@ using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using Sprint0.Utility;
+using System.Reflection.Metadata;
 
 namespace Sprint0.Commands
 {
@@ -29,6 +30,7 @@ namespace Sprint0.Commands
         }
         public void Execute()
         {
+
             sprint.gamestates = GameStates.TITLE;
             sprint.objects = new ObjectManager(sprint);
             sprint.mario = new Characters.Player(sprint, p.mario);

@@ -40,28 +40,32 @@
       "x": 176,
       "y": 352,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Coin"
     },
     {
       "Name": "question_block",
       "x": 192,
       "y": 352,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Coin"
     },
     {
       "Name": "question_block",
       "x": 224,
       "y": 304,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Coin"
     },
     {
       "Name": "question_block",
       "x": 240,
       "y": 304,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Leaf"
     },
     {
       "Name": "floor",
@@ -103,7 +107,8 @@
       "x": 416,
       "y": 320,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Coin"
     },
     {
       "Name": "floor",
@@ -138,14 +143,16 @@
       "x": 656,
       "y": 384,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Leaf"
     },
     {
       "Name": "question_block",
       "x": 704,
       "y": 352,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Coin"
     },
     {
       "Name": "floor",
@@ -185,7 +192,7 @@
     {
       "Name": "floor",
       "x": 1280,
-      "y": 384,
+      "y": 416,
       "width": 224,
       "height": 16
     },
@@ -236,7 +243,8 @@
       "x": 1472,
       "y": 368,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "Leaf"
     },
     {
       "Name": "wood_blocks",

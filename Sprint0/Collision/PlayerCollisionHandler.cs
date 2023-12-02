@@ -6,6 +6,7 @@ using Sprint0.Commands.Player;
 using Sprint0.Enemies;
 using Sprint0.Interfaces;
 using System;
+using System.Diagnostics;
 using static Sprint0.Collision.CollisionDetector;
 
 namespace Sprint0.Collision
@@ -88,9 +89,11 @@ namespace Sprint0.Collision
                 if (vert == Vert.Both) command = new CPlayerStuckBothY(sprint, (IPlayer)player);
                 command.Execute(hitarea);
 
-                if (block is YellowBrick)
+                if (block is QuestionBlock)
                 {
-                    // insert logic
+                    CQuestionBump command2 = new CQuestionBump(sprint, (IPlayer)player);
+                    command2.Execute(hitarea, (IBlock)block);
+                    
                 }
                 else if (block is YellowBrick)
                 {
