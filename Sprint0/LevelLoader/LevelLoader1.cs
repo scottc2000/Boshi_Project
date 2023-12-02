@@ -199,6 +199,13 @@ namespace Sprint0
                     added = new CAddDynamic(koopa, objectManager);
                     added.Execute();
                 }
+                if (enemy.Name == "Bowser")
+                {
+                    IEnemies koopa = new Bowser(sprint0);
+                    koopa.SetPosition(enemy.Position);
+                    objectManager.Enemies.Add(koopa);
+                    objectManager.DynamicEntities.Add(koopa);
+                }
             }
             added = new CAddDynamic(mario, objectManager);
             added.Execute();

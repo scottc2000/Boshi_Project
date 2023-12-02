@@ -8,6 +8,11 @@ namespace Sprint0.Sprites.EnemySprites
 {
     public class EnemyData
     {
+        public class Bowser
+        {
+            public List<Sprite> Sprites { get; set; }
+        }
+
         public class Goomba
         {
             public List<Sprite> Sprites { get; set; }
@@ -28,6 +33,7 @@ namespace Sprint0.Sprites.EnemySprites
             public Goomba goomba { get; set; }
             public Koopa koopa { get; set; }
             public HammerBro hammerBro { get; set; }
+            public Bowser bowser { get; set; }
         }
 
         public class Sprite

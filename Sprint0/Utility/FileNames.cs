@@ -10,6 +10,7 @@ namespace Sprint0.Utility
         public string blockSheet { get; } = "SpriteImages/blocks";
         public string playerSheet { get; } = "SpriteImages/playerssclear";
         public string enemySheet { get; } = "marioenemy";
+        public string bossSheet { get; } = "bosses";
         public string itemSheet { get; } = "NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs";
         public string terrainSheet { get; } = "level1_1";
         public string hudSheet { get; } = "HUD_transparent1";
