@@ -43,6 +43,18 @@
 /processorParam:TextureFormat=Color
 /build:level1_1.png
 
+#begin mario title with text.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:mario title with text.png
+
 #begin marioenemy.png
 /importer:TextureImporter
 /processor:TextureProcessor

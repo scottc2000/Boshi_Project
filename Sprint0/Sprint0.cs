@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Screens;
 using Sprint0.Background;
 using Sprint0.Camera;
+using Sprint0.Characters;
 using Sprint0.Collision;
 using Sprint0.Controllers;
 using Sprint0.Enemies;
@@ -12,8 +12,6 @@ using Sprint0.Interfaces;
 using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using Sprint0.Utility;
-using System;
-using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0
 {
@@ -23,16 +21,21 @@ namespace Sprint0
         private SpriteBatch _spriteBatch;
         private GameTime gametime;
         private FileNames filename;
-        
+        private PlayerNumbers p;
+
         public ObjectManager objects;
         public GameStats hud;
-
+        public Title title;
+        public GameStates gamestates { get; set; }
         public Triggers triggers;
         public AudioManager audioManager;
-        public ScrnManager screenManager;
+        private IController KeyboardController;
 
         public LevelLoader1 levelLoader; // change back to private later
-        public Camera.PlayerCamera camera;
+        public PlayerCamera camera;
+        public IPlayer luigi;
+        public IPlayer mario;
+
         public static int ScreenWidth;
         public static int ScreenHeight;
 
@@ -49,17 +52,23 @@ namespace Sprint0
         protected override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            p = new PlayerNumbers();
+
+            mario = new Player(this, p.mario);
+            luigi = new Player(this, p.luigi);
 
             hud = new GameStats(this);
+            title = new Title(this);
+            gamestates = GameStates.TITLE;
 
             // Initialize game components
             camera = new PlayerCamera(GraphicsDevice.Viewport);
             objects = new ObjectManager(this);
-            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, hud);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, mario, luigi, hud);
             triggers = new Triggers(this);
+            KeyboardController = new KeyboardController(this, mario, luigi, hud);
 
             audioManager = AudioManager.Instance;
-            screenManager = new ScrnManager(this, _spriteBatch);
 
             base.Initialize();
         }
@@ -80,10 +89,20 @@ namespace Sprint0
 
         protected override void Update(GameTime gameTime)
         {
-            levelLoader.Update(gameTime);
-            hud.Update(gameTime);
-            triggers.Detect();
-            detector.DetectCollision();
+            switch (gamestates)
+            {
+                case GameStates.TITLE:
+                    KeyboardController.Update();
+                    title.Update(gameTime);
+                    break;
+                case GameStates.PLAY:
+                    KeyboardController.Update();
+                    levelLoader.Update(gameTime);
+                    hud.Update(gameTime);
+                    triggers.Detect();
+                    detector.DetectCollision();
+                    break;
+            }
 
             base.Update(gameTime);
         }
@@ -92,17 +111,27 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
-                null, null, null, null, camera.transform);
 
-            screenManager.Draw();
-            _spriteBatch.End();
+            switch (gamestates)
+            {
+                case GameStates.TITLE:
+                    _spriteBatch.Begin();
+                    title.Draw(_spriteBatch);
+                    _spriteBatch.End();
+                    break;
+                case GameStates.PLAY:
+                    _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                        null, null, null, null, camera.transform);
+                    levelLoader.Draw(_spriteBatch);
+                    _spriteBatch.End();
 
-            _spriteBatch.Begin();
-            
-            hud.Draw(_spriteBatch);
-            _spriteBatch.End();
+                    _spriteBatch.Begin();
+                    hud.Draw(_spriteBatch);
+                    _spriteBatch.End();
+                    break;
 
+            }
+           
             base.Draw(gameTime);
         }
 

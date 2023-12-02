@@ -4,14 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Background;
 using Sprint0.Blocks;
 using Sprint0.Camera;
-using Sprint0.Characters;
-using Sprint0.Controllers;
 using Sprint0.Enemies;
 using Sprint0.GameMangager;
 using Sprint0.HUD;
 using Sprint0.Interfaces;
 using Sprint0.Items;
-using Sprint0.Utility;
 using System.IO;
 using System.Text.Json;
 using static Sprint0.LevelLoader.Level1Data;
@@ -25,35 +22,29 @@ namespace Sprint0
         private Sprint0 sprint0;
         private SpriteBatch spriteBatch;
         private ContentManager content;
-        private PlayerNumbers p;
         private Root data;
 
         public PlayerCamera camera;
-        private Terrain terrain;
-        public IPlayer luigi;
         public IPlayer mario;
-        private IController KeyboardController;
+        public IPlayer luigi;
+        private Terrain terrain;
 
         public ObjectManager objectManager;
         private AudioManager audioManager = AudioManager.Instance;
 
-        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, PlayerCamera camera, GameStats hud)
+        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, PlayerCamera camera, IPlayer mario, IPlayer luigi, GameStats hud)
         {
             this.sprint0 = sprint0;
             objectManager = sprint0.objects;
-            p = new PlayerNumbers();
 
             this.camera = camera;
-
-            mario = new Player(sprint0, p.mario);
-            luigi = new Player(sprint0, p.luigi);
+            this.mario = mario;
+            this.luigi = luigi;
 
             this.spriteBatch = spriteBatch;
             this.content = content;
 
             terrain = new Terrain(sprint0);
-
-            KeyboardController = new KeyboardController(sprint0, mario, luigi, hud);
         }
         public void Load(string jsonFilePath)
         {
@@ -241,7 +232,33 @@ namespace Sprint0
             camera.Update(mario, luigi);
             mario.Update(gameTime);
             luigi.Update(gameTime);
-            KeyboardController.Update();
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            terrain.Draw(spriteBatch); // need to draw terrain before any game objects
+
+            // Draw each game object
+            foreach (var block in objectManager.Blocks)
+            {
+                block.Draw(spriteBatch);
+            }
+            foreach (var item in objectManager.Items)
+            {
+                item.Draw(spriteBatch);
+            }
+            foreach (var enemy in objectManager.Enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
+            foreach (var proj in objectManager.Projectiles)
+            {
+                proj.Draw(spriteBatch);
+            }
+
+            mario.Draw(spriteBatch);
+            luigi.Draw(spriteBatch);
 
         }
     }
