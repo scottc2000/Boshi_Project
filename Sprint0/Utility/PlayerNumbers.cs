@@ -9,12 +9,12 @@ namespace Sprint0.Utility
         public int luigi { get; } = 2;
         public int sizeDiff { get; } = 25;
         public int reverse { get; } = -1;
-        public Vector2 marioPosition { get; } = new Vector2(180, 365);
-        public Vector2 luigigPosition { get; } = new Vector2(200, 365);
+        public Vector2 marioPosition { get; } = new Vector2(80, 365);
+        public Vector2 luigigPosition { get; } = new Vector2(100, 365);
         public float sixth { get; } = (1.0f / 60.0f);
         public int runningMax { get; } = 75;
         public int flyingMax { get; } = 4000;
-        public int timeGapMax { get; } = 500;
+        public int timeGapMax { get; } = 20;
         public int gap50 { get; } = 50;
 
         /*_____________ Sprite Strings _______________*/

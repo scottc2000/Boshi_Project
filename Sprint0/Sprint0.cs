@@ -105,6 +105,10 @@ namespace Sprint0
                     KeyboardController.Update();
                     gameover.Update(gameTime);
                     break;
+                case GameStates.WIN:
+                    KeyboardController.Update();
+                    // screen update
+                    break;
             }
 
             base.Update(gameTime);
@@ -135,6 +139,11 @@ namespace Sprint0
                 case GameStates.GAMEOVER:
                     _spriteBatch.Begin();
                     gameover.Draw(_spriteBatch);
+                    _spriteBatch.End();
+                    break;
+                case GameStates.WIN:
+                    _spriteBatch.Begin();
+                    // draw win screen
                     _spriteBatch.End();
                     break;
 

@@ -28,15 +28,15 @@ namespace Sprint0.Enemies
 
         public Bowser(Sprint0 sprint0)
         {
-            this.state = new LeftMovingGoombaState(this);
+            //this.state = new LeftMovingGoombaState(this);
 
             this.facingLeft = true;
             this.mySprint = sprint0;
 
-            mySpriteFactory = new EnemySpriteFactoryGoomba(this);
-            mySpriteFactory.LoadTextures(mySprint.Content);
+           // mySpriteFactory = new EnemySpriteFactoryGoomba(this);
+           // mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("GoombaMove");
+           // currentSprite = mySpriteFactory.returnSprite("GoombaMove");
             Destination = currentSprite.destination;
         }
 

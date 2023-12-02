@@ -52,7 +52,6 @@ namespace Sprint0.Collision
         }
         public void PlayerStaticBlockCollision(ICollidable player, ICollidable block, Side side, Vert vert, Rectangle hitarea)
         {
-            // need to redo deathzone collision - caused issues
 
             if (side == Side.Horizontal)
             {
