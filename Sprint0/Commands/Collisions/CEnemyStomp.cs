@@ -17,9 +17,10 @@ namespace Sprint0.Commands.Collisions
         private IEnemies enemy;
         ObjectManager objectManager;
 
-        public CEnemyStomp(Sprint0 sprint)
+        public CEnemyStomp(Sprint0 sprint, IEnemies Enemy)
         {
             this.sprint = sprint;
+            this.enemy = Enemy;
             stats = sprint.hud;
             numbers = new HudNumbers();
             objectManager = sprint.objects;
@@ -28,7 +29,6 @@ namespace Sprint0.Commands.Collisions
         public void Execute()
         {
             stats.IncreaseScore(numbers.enemyPoints);
-            goomba.BeStomped();       
             enemy.BeStomped();
             objectManager.RemoveFromList(enemy);
         }

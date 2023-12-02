@@ -34,7 +34,7 @@ namespace Sprint0.Collision
             type1 = entity1.GetType();
             type2 = entity2.GetType();
 
-            if (side == Side.Vertical)
+           /* if (side == Side.Vertical)
             {
                 if (type1 is Goomba || type2 is Goomba)
                 {
@@ -47,7 +47,7 @@ namespace Sprint0.Collision
                     command.Execute();
                     System.Diagnostics.Debug.WriteLine("Goomba Stomped");
                 }
-            }
+            }*/
 
         }
 
