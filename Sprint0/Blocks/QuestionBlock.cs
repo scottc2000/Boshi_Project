@@ -6,6 +6,7 @@ using Sprint0.Sprites;
 using Sprint0.Items;
 using System.Collections.Generic;
 using static Sprint0.LevelLoader.Level1Data;
+using Sprint0.Utility;
 
 namespace Sprint0.Blocks
 {
@@ -22,13 +23,17 @@ namespace Sprint0.Blocks
         public bool righthit { get; set; }
         public bool uphit { get; set; }
         public bool downhit { get; set; }
-        public bool gothit { get; set; }
+        public bool gothit {  get; set; }
         public bool stuck { get; set; }
-
+        public bool bumped { get; set; }
+        public bool newSpriteSet {  get; set; }
         public IItem item { get; set; }
         public List<int> itemPos { get; set; }
         private SpriteBatch spriteBatch;
-
+        private float timer = 0f;
+        private int count = 10;
+        private int fall = 5;
+        private SpriteNumbers spriteNumbers = new SpriteNumbers();
 
         public QuestionBlock(SpriteBatch spriteBatch, ContentManager content, Rectangle blockRectangle, string item)
         {
@@ -42,6 +47,8 @@ namespace Sprint0.Blocks
             itemPos.Add(blockRectangle.X);
             itemPos.Add(blockRectangle.Y - 16);
             this.item = storeItem(item);
+            bumped = false;
+            newSpriteSet = false;
             
         }
 
@@ -97,6 +104,32 @@ namespace Sprint0.Blocks
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
+            if (bumped)
+            {
+                if (!newSpriteSet)
+                {
+                    sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "empty_question_block", location);
+                    newSpriteSet = true;
+                }
+                timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer >= spriteNumbers.frameInterval && count > fall)
+                {
+                    location.Y -= 1;
+                    count--;
+                    timer = 0f;
+                }
+                else if (timer >= spriteNumbers.frameInterval && count > 0)
+                {
+                    location.Y += 1;
+                    count--;
+                    timer = 0f;
+                }
+            }
+            
+
+
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

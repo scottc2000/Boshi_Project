@@ -13,6 +13,7 @@ using Sprint0.Interfaces;
 using Sprint0.Items;
 using Sprint0.Utility;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using static Sprint0.LevelLoader.Level1Data;
 using Item = Sprint0.LevelLoader.Level1Data.Item;
@@ -254,7 +255,7 @@ namespace Sprint0
             {
                 block.Update(gameTime);
             }
-            foreach (var item in objectManager.Items)
+            foreach (var item in objectManager.Items.ToList())
             {
                 item.Update(gameTime);
             }

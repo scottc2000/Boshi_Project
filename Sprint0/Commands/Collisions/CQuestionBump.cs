@@ -14,6 +14,7 @@ namespace Sprint0.Commands.Collisions
         private ObjectManager objectManager;
         private GameStats stats;
         private IPlayer player;
+        private IItem item;
 
         public CQuestionBump(Sprint0 sprint, IPlayer player)
         {
@@ -30,14 +31,19 @@ namespace Sprint0.Commands.Collisions
         public void Execute(Rectangle hitbox, IBlock block)
         {
             Rectangle hitarea = Rectangle.Intersect(hitbox, player.Destination);
+            item = ((QuestionBlock)block).item;
 
             if (hitarea.Width >= hitarea.Height)
             {
                 if (player.Destination.Top <= hitbox.Bottom && player.Destination.Bottom >= hitbox.Top + 5)
                 {
-                    CBlockBump command = new CBlockBump(sprint);
-                    command.Execute(block);
-                    objectManager.AddToList(((QuestionBlock)block).item);
+                    ((QuestionBlock)block).bumped = true;
+                    if (item is Coin)
+                    {
+                        ((Coin)item).getInstance(sprint, item);
+                    }
+                    objectManager.AddToList(item);
+                    
                 }
 
             }

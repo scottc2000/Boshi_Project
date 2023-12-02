@@ -32,6 +32,8 @@ namespace Sprint0.Blocks
         private int count = 48;
         private int fall = 16;
         private SpriteNumbers spriteNumbers = new SpriteNumbers();
+        private IItem coin;
+        private Sprint0 sprint0;
 
         public Coin(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
@@ -46,6 +48,11 @@ namespace Sprint0.Blocks
         {
             location.X = pos[0];
             location.Y = pos[1];
+        }
+        public void getInstance(Sprint0 sprint0, IItem coin)
+        {
+            this.sprint0 = sprint0;
+            this.coin = coin;
         }
 
         public void Update(GameTime gameTime)
@@ -66,7 +73,8 @@ namespace Sprint0.Blocks
             }
             else
             {
-                //CGetCoin command = new CGetCoin();
+                CGetCoin command = new CGetCoin(sprint0);
+                command.Execute(coin);
             }
             
         }
