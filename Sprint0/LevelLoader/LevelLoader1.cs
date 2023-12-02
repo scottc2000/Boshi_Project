@@ -196,6 +196,13 @@ namespace Sprint0
                     objectManager.Enemies.Add(koopa);
                     objectManager.DynamicEntities.Add(koopa);
                 }
+                if (enemy.Name == "Bowser")
+                {
+                    IEnemies koopa = new Bowser(sprint0);
+                    koopa.SetPosition(enemy.Position);
+                    objectManager.Enemies.Add(koopa);
+                    objectManager.DynamicEntities.Add(koopa);
+                }
             }
 
             objectManager.DynamicEntities.Add(mario);

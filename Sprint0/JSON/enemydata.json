@@ -44,5 +44,65 @@
       "hitbox": [ 16, 24 ],
       "facingLeft": true
     }
+  },
+
+  "bowser": {
+    "Sprites": [
+      {
+        "name": "BowserStill",
+        "spritesheet_pos": [
+          [ 0, 560 ]
+        ],
+        "hitbox": [ 34, 42 ],
+        "facingLeft": true
+      },
+
+      {
+        "name": "BowserJump",
+        "spritesheet_pos": [
+          [ 34, 560 ],
+          [ 0, 560 ]
+        ],
+        "hitbox": [ 34, 42 ],
+        "facingLeft": true
+      },
+
+      {
+        "name": "BowserFall",
+        "spritesheet_pos": [ [ 170, 560 ] ],
+        "hitbox": [ 34, 42 ],
+        "facingLeft": true
+      },
+
+      {
+        "name": "BowserLook",
+        "spritesheet_pos": [
+          [ 238, 560 ],
+          [ 272, 560 ]
+        ],
+        "hitbox": [ 34, 42 ],
+        "facingLeft": true
+      },
+
+      {
+        "name": "BowserLand",
+        "spritesheet_pos": [
+          [ 204, 560 ]
+        ],
+        "hitbox": [ 34, 42 ],
+        "facingLeft": true
+      },
+
+      {
+        "name": "BowserFireball",
+        "spritesheet_pos": [
+          [ 68, 560 ],
+          [ 102, 560 ],
+          [0, 560]
+        ],
+        "hitbox": [ 34, 42 ],
+        "facingLeft": true
+      }
+    ]
   }
 }
