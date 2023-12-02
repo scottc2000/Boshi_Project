@@ -24,43 +24,63 @@ namespace Sprint0.Commands.Collisions
             {
                 case Characters.Player.PlayerHealth.Normal:
                     {
-                        player.health = Characters.Player.PlayerHealth.Dead;
                         player.Die();
                         break;
                     }
                 case Characters.Player.PlayerHealth.Big:
                     {
-                        System.Diagnostics.Debug.WriteLine(player.number + " becomes damaged");
-                        IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader);
+                        IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader, sprint);
                         damagedPlayer.isInvinsible = true; // Set Mario as invincible
                         if (player.number == p.mario)
+                        { 
                             sprint.levelLoader.mario = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
                         else if (player.number == p.luigi)
+                        { 
                             sprint.levelLoader.luigi = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
                         player.ChangeToNormal();
                         break;
                     }
                 case Characters.Player.PlayerHealth.Fire:
                     {
-                        System.Diagnostics.Debug.WriteLine(player.number + " becomes damaged");
-                        IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader);
+                        IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader, sprint);
                         damagedPlayer.isInvinsible = true; // Set Mario as invincible
                         if (player.number == p.mario)
+                        {
                             sprint.levelLoader.mario = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
                         else if (player.number == p.luigi)
+                        {
                             sprint.levelLoader.luigi = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
                         player.ChangeToBig();
                         break;
                     }
                 case Characters.Player.PlayerHealth.Raccoon:
                     {
-                        System.Diagnostics.Debug.WriteLine(player.number + " becomes damaged");
-                        IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader);
+                        IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader, sprint);
                         damagedPlayer.isInvinsible = true; // Set Mario as invincible
                         if (player.number == p.mario)
+                        {
                             sprint.levelLoader.mario = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
                         else if (player.number == p.luigi)
+                        {
                             sprint.levelLoader.luigi = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
                         player.ChangeToBig();
                         break;
                     }
