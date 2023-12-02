@@ -871,6 +871,11 @@
       "Name": "Goomba",
       "Hitbox": [ 16, 16 ],
       "Position": [ 2049, 400 ]
+    },
+    {
+      "Name": "Bowser",
+      "Hitbox": [ 34, 134 ],
+      "Position": [ 2800, 400 ]
     }
   ],
   "Songs": [
