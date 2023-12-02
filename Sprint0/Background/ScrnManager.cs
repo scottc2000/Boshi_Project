@@ -42,7 +42,6 @@ namespace Sprint0.Background
         {
             state.Draw(sprites);
             //terrain.Draw(spriteBatch); // need to draw terrain before any game objects
-            hud.Draw(sprites);
 
             // Draw each game object
             foreach (var block in objectManager.Blocks)
