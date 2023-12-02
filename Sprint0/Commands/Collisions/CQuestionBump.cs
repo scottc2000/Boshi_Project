@@ -20,7 +20,7 @@ namespace Sprint0.Commands.Collisions
         {
             this.sprint = sprint;
             objectManager = sprint.objects;
-            stats = sprint.levelLoader.hud;
+            
             this.player = player;
         }
         public void Execute(Rectangle hitbox)
