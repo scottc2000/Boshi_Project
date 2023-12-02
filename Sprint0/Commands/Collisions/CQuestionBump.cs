@@ -33,21 +33,25 @@ namespace Sprint0.Commands.Collisions
             Rectangle hitarea = Rectangle.Intersect(hitbox, player.Destination);
             item = ((QuestionBlock)block).item;
 
-            if (hitarea.Width >= hitarea.Height)
+            if (!((QuestionBlock)block).newSpriteSet)
             {
-                if (player.Destination.Top <= hitbox.Bottom && player.Destination.Bottom >= hitbox.Top + 5)
+                if (hitarea.Width >= hitarea.Height)
                 {
-                    ((QuestionBlock)block).bumped = true;
-                    if (item is Coin)
+                    if (player.Destination.Top <= hitbox.Bottom && player.Destination.Bottom >= hitbox.Top + 5)
                     {
-                        ((Coin)item).getInstance(sprint, item);
-                    }
-                    objectManager.AddToList(item);
-                    
-                }
+                        ((QuestionBlock)block).bumped = true;
+                        if (item is Coin)
+                        {
+                            ((Coin)item).getInstance(sprint, item);
+                        }
+                        objectManager.AddToList(item);
 
+                    }
+
+                }
             }
-            
+
+
         }
     }
 }
