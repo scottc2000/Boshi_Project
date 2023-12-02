@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Background;
 using Sprint0.Blocks;
 using Sprint0.Camera;
+using Sprint0.Commands;
 using Sprint0.Enemies;
 using Sprint0.GameMangager;
 using Sprint0.HUD;
@@ -28,6 +29,7 @@ namespace Sprint0
         public IPlayer mario;
         public IPlayer luigi;
         private Terrain terrain;
+        private ICommand added;
 
         public ObjectManager objectManager;
         private AudioManager audioManager = AudioManager.Instance;
@@ -137,20 +139,20 @@ namespace Sprint0
                     case "RedMushroom":
                         IItem RedMushroom = new RedMushroom();
                         RedMushroom.setPosition(item.Position);
-                        objectManager.Items.Add(RedMushroom);
-                        objectManager.DynamicEntities.Add(RedMushroom);
+                        added = new CAddDynamic(RedMushroom, objectManager);
+                        added.Execute();
                         break;
                     case "OneUpMushroom":
                         IItem OneUpMushroom = new OneUpMushroom();
                         OneUpMushroom.setPosition(item.Position);
-                        objectManager.Items.Add(OneUpMushroom);
-                        objectManager.DynamicEntities.Add(OneUpMushroom);
+                        added = new CAddDynamic(OneUpMushroom, objectManager);
+                        added.Execute();
                         break;
                     case "FireFlower":
                         IItem FireFlower = new FireFlower();
                         FireFlower.setPosition(item.Position);
-                        objectManager.Items.Add(FireFlower);
-                        objectManager.DynamicEntities.Add(FireFlower);
+                        added = new CAddDynamic (FireFlower, objectManager);
+                        added.Execute();
                         break;
                     case "Leaf":
                         IItem Leaf = new Leaf();
@@ -186,23 +188,25 @@ namespace Sprint0
                 {
                     IEnemies goomba = new Goomba(sprint0);
                     goomba.SetPosition(enemy.Position);
-                    objectManager.Enemies.Add(goomba);
-                    objectManager.DynamicEntities.Add(goomba);
+                    added = new CAddDynamic(goomba, objectManager);
+                    added.Execute();
                 }
                 if (enemy.Name == "Koopa")
                 {
                     IEnemies koopa = new Koopa(sprint0);
                     koopa.SetPosition(enemy.Position);
-                    objectManager.Enemies.Add(koopa);
-                    objectManager.DynamicEntities.Add(koopa);
+                    added = new CAddDynamic(koopa, objectManager);
+                    added.Execute();
                 }
             }
-
-            objectManager.DynamicEntities.Add(mario);
-            objectManager.DynamicEntities.Add(luigi);
-            objectManager.Projectiles.Add(mario.fireProjectile);
-            objectManager.Projectiles.Add(luigi.fireProjectile);
-            objectManager.DynamicEntities.Add(luigi.fireProjectile);
+            added = new CAddDynamic(mario, objectManager);
+            added.Execute();
+            added = new CAddDynamic(luigi, objectManager);
+            added.Execute();
+            added = new CAddDynamic(mario.fireProjectile, objectManager);
+            added.Execute();
+            added = new CAddDynamic(luigi.fireProjectile, objectManager);
+            added.Execute();
 
         }
 

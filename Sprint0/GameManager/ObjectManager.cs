@@ -1,4 +1,5 @@
 ﻿using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint0.GameMangager
@@ -69,6 +70,18 @@ namespace Sprint0.GameMangager
 
         public void AddToList(ICollidable added)
         {
+            if (added is IItem)
+            {
+                Items.Add((IItem)added);
+            }
+            if (added is IEnemies)
+            {
+                Enemies.Add((IEnemies)added);
+            }
+            if (added is IProjectile)
+            {
+                Projectiles.Add((IProjectile)added);
+            }
             DynamicEntities.Add(added);
         }
 
