@@ -28,7 +28,6 @@ namespace Sprint0
         private Title title;
         private GameOver gameover;
         public GameStates gamestates { get; set; }
-        public Triggers triggers;
         public AudioManager audioManager;
         public IController KeyboardController;
 
@@ -67,8 +66,9 @@ namespace Sprint0
             camera = new PlayerCamera(GraphicsDevice.Viewport);
             objects = new ObjectManager(this);
             levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, mario, luigi, hud);
-            triggers = new Triggers(this);
             KeyboardController = new KeyboardController(this, mario, luigi, hud);
+            // collision
+            detector = new CollisionDetector(this, objects);
 
             audioManager = AudioManager.Instance;
 
@@ -85,8 +85,6 @@ namespace Sprint0
             BlockSpriteFactory.Instance.LoadTextures(Content);
             BlockSpriteFactory.Instance.LoadSpriteLocations();
 
-            // collision
-            detector = new CollisionDetector(this, objects);
         }
 
         protected override void Update(GameTime gameTime)
@@ -101,7 +99,6 @@ namespace Sprint0
                     KeyboardController.Update();
                     levelLoader.Update(gameTime);
                     hud.Update(gameTime);
-                    triggers.Detect();
                     detector.DetectCollision();
                     break;
                 case GameStates.GAMEOVER:
