@@ -17,14 +17,6 @@ namespace Sprint0.Items.Projectiles
         private AudioManager audioManager = AudioManager.Instance;
         private FileNames fileNames = new FileNames();
 
-        public Rectangle Destination { get; set; }
-        public bool lefthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool righthit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool uphit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool downhit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool gothit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool stuck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         ProjectileSpriteFactory projectileFactory;
 
         public FireProjectile(ContentManager content)
@@ -49,7 +41,7 @@ namespace Sprint0.Items.Projectiles
             foreach (AnimatedProjectile am in projectiles)
             {
                 am.Update(gametime);
-                if (am.pos.X > 850 || am.pos.X < -50)
+                if (am.travel > 250 || am.travel < -250)
                 {
                     gone.Add(am);
                 }

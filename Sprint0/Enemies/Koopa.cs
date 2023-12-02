@@ -33,9 +33,6 @@ namespace Sprint0.Enemies
             this.state = new RightMovingKoopaState(this);
 
             this.facingLeft = true;
-
-            this.position.X = 500;
-            this.position.Y = 400;
             this.mySprint = sprint0;
 
             mySpriteFactory = new EnemySpriteFactoryKoopa(this);
@@ -76,6 +73,7 @@ namespace Sprint0.Enemies
         public void Update(GameTime gameTime)
         {
             currentSprite.Update(gameTime);
+            Destination = currentSprite.destination;
             state.Update();
         }
 

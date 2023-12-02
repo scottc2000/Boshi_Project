@@ -24,6 +24,7 @@ namespace Sprint0.Blocks
         public SpinningCoin(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
             Destination = blockRectangle;
+            location = new Vector2(blockRectangle.X, blockRectangle.Y);
             sprite = BlockSpriteFactory.Instance.CreateAnimatedBlock(spriteBatch, "spinning_coin", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
 

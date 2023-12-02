@@ -1,6 +1,8 @@
-﻿using Sprint0.Characters;
+﻿using Microsoft.Xna.Framework;
+using Sprint0.Characters;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
+using System;
 
 namespace Sprint0.Commands.Collisions
 {
@@ -24,7 +26,22 @@ namespace Sprint0.Commands.Collisions
             {
                 case Characters.Player.PlayerHealth.Normal:
                     {
-                        player.Die();
+                        player.position = new Vector2(player.position.X, player.position.Y - 100);
+                        IPlayer damagedPlayer = new DamagedPlayer(player, sprint.levelLoader, sprint);
+                        damagedPlayer.isInvinsible = true; // Set Mario as invincible
+                        if (player.number == p.mario)
+                        {
+                            sprint.levelLoader.mario = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
+                        else if (player.number == p.luigi)
+                        {
+                            sprint.levelLoader.luigi = damagedPlayer;
+                            ICommand remove = new CRemoveDynamic(player, sprint.objects);
+                            remove.Execute();
+                        }
+                        sprint.hud.DecrementLives();
                         break;
                     }
                 case Characters.Player.PlayerHealth.Big:

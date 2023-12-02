@@ -1,4 +1,5 @@
 ﻿using Sprint0.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint0.GameMangager
@@ -41,8 +42,24 @@ namespace Sprint0.GameMangager
 
         }
 
+        public void UpdateProjectileLists()
+        {
+            for (int i = 0; i < Projectiles.Count; i++)
+            {
+                for (int j = 0; j < Projectiles[i].projectiles.Count; j++)
+                {
+                    if (!DynamicEntities.Contains(Projectiles[i].projectiles[j]))
+                    {
+                        DynamicEntities.Add(Projectiles[i].projectiles[j]);
+                        Console.WriteLine(DynamicEntities.Count);
+                    }
+                }
+            }
+        }
+
         public void Update()
         {
+            UpdateProjectileLists();
             foreach (var entity in EntitiesToAdd)
             {
                 DynamicEntities.Add(entity);
@@ -69,6 +86,18 @@ namespace Sprint0.GameMangager
 
         public void AddToList(ICollidable added)
         {
+            if (added is IItem)
+            {
+                Items.Add((IItem)added);
+            }
+            if (added is IEnemies)
+            {
+                Enemies.Add((IEnemies)added);
+            }
+            if (added is IProjectile)
+            {
+                Projectiles.Add((IProjectile)added);
+            }
             DynamicEntities.Add(added);
         }
 
@@ -87,7 +116,7 @@ namespace Sprint0.GameMangager
             }
 
             if(removed is IProjectile) Projectiles.Remove((IProjectile)removed);
-
+            
             DynamicEntities.Remove(removed);
 
         }
