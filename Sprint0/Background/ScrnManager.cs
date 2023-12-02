@@ -29,7 +29,7 @@ namespace Sprint0.Background
             objectManager = sprint.objects;
             mario = sprint.levelLoader.mario;
             luigi = sprint.levelLoader.luigi;
-            hud = sprint.levelLoader.hud;
+            hud = sprint.hud;
         }
 
         public void Death()
