@@ -1,4 +1,7 @@
-﻿namespace Sprint0.Utility
+﻿using static Sprint0.Sprites.Players.PlayerData;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace Sprint0.Utility
 {
     // For content that needs to be loaded and JSON files that are referenced
     public class FileNames
@@ -10,6 +13,7 @@
         public string itemSheet { get; } = "NES - Super Mario Bros 3 - Level Items Magic Wands and NPCs";
         public string terrainSheet { get; } = "level1_1";
         public string hudSheet { get; } = "HUD_transparent1";
+        public string titleSheet { get; } = "mario title with text";
 
         /*________________ MUSIC _______________________*/
         public string mainTheme { get; } = "01-main-theme-overworld";

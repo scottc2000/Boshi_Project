@@ -65,7 +65,6 @@ namespace Sprint0.Controllers
         public void setKeyboardDict()
         {
             RegisterCommand(Keys.Escape, new Exit(mySprint));
-            //RegisterCommand(Keys.D0, new Reset(mySprint, gametime, Content));
 
             RegisterPressCommand(Keys.W, new CPlayerJump(mario, hud));
             RegisterReleaseCommand(Keys.W, new CPlayerFall(mario));
@@ -88,6 +87,7 @@ namespace Sprint0.Controllers
             RegisterPressCommand(Keys.M, new CPlayerThrow(luigi));
 
             RegisterCommand(Keys.D0, new Reset(mySprint));
+            RegisterCommand(Keys.Space, new Start(mySprint));
         }
 
         private void pressedKeys(KeyboardState current, KeyboardState previous)

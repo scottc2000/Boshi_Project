@@ -22,7 +22,7 @@ namespace Sprint0.Camera
             view = newview;
             cameraNumbers = new CameraNumbers();
         }
-        
+
         public void Update(IPlayer mario, IPlayer luigi)
         {
             center = Follow(mario, luigi);
