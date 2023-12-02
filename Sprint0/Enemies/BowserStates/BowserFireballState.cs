@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Enemies.BowserStates
 {
-    internal class BowserIdleState : IEnemyBowserState
+    internal class BowserFireballState : IEnemyBowserState
     {
         private Bowser bowser;
 
-        public BowserIdleState(Bowser bowser)
+        public BowserFireballState(Bowser bowser)
         {
             this.bowser = bowser;
         }
@@ -43,7 +43,8 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Update(GameTime gametime)
         {
-            bowser.currentSprite = bowser.mySpriteFactory.returnSprite("BowserStill");
+            bowser.currentSprite = bowser.mySpriteFactory.returnSprite("BowserFireball");
+            bowser.currentSprite.Update(gametime);
         }
 
     }

@@ -7,6 +7,7 @@ using Sprint0.Sprites.goombaSprite;
 using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0.Enemies
 {
@@ -16,6 +17,8 @@ namespace Sprint0.Enemies
         public Vector2 position;
         public Vector2 initialposition;
         public Sprint0 mySprint;
+
+        private int health;
         public bool facingLeft { get; set;}
         public Rectangle Destination { get; set; }
         public bool lefthit { get; set; }
@@ -30,7 +33,9 @@ namespace Sprint0.Enemies
 
         public Bowser(Sprint0 sprint0)
         {
-            this.state = new BowserIdleState(this);
+            this.state = new BowserFireballState(this);
+
+            this.health = 5;
 
             this.facingLeft = true;
             this.mySprint = sprint0;
