@@ -23,24 +23,24 @@ namespace Sprint0.Collision
         public void HandleCollision(ICollidable entity1, ICollidable entity2, Side side, Vert vert, Rectangle hitarea)
         {
             // Static and Player
-            if (entity2.GetType() == typeof(IPlayer) || Enum.IsDefined(typeof(staticBlocks), entity1.GetType().Name))
+            if (entity2 is IPlayer && Enum.IsDefined(typeof(staticBlocks), entity1.GetType().Name))
                 PlayerStaticBlockCollision(entity2, entity1, side, vert, hitarea);
 
-            else if (entity1.GetType() == typeof(IPlayer) || Enum.IsDefined(typeof(staticBlocks), entity2.GetType().Name))
+            else if (entity1 is IPlayer && Enum.IsDefined(typeof(staticBlocks), entity2.GetType().Name))
                 PlayerStaticBlockCollision(entity1, entity2, side, vert, hitarea);
 
             // Dynamic and Player
-            else if (entity2.GetType() == typeof(IPlayer) || Enum.IsDefined(typeof(dynamicBlocks), entity1.GetType().Name))
+            else if (entity2 is IPlayer && (entity1 is YellowBrick || entity1 is QuestionBlock || entity1 is SpinningCoin))
                 PlayerDynamicBlockCollision(entity2, entity1, side, vert, hitarea);
 
-            else if (entity1.GetType() == typeof(IPlayer) || Enum.IsDefined(typeof(dynamicBlocks), entity2.GetType().Name))
+            else if (entity1 is IPlayer && (entity1 is YellowBrick || entity1 is QuestionBlock || entity1 is SpinningCoin))
                 PlayerDynamicBlockCollision(entity1, entity2, side, vert, hitarea);
 
             // Item and Player
-            else if (entity1.GetType() == typeof(IPlayer) || entity2.GetType() == typeof(IItem))
+            else if (entity1 is IPlayer && entity2 is IItem)
                 PlayerItemCollision(entity1, entity2, side);
 
-            else if (entity2.GetType() == typeof(IPlayer) || entity1.GetType() == typeof(IItem))
+            else if (entity2 is IPlayer && entity1 is IItem)
                 PlayerItemCollision(entity2, entity1, side);
 
             // Enemy and Player

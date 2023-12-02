@@ -64,6 +64,7 @@ namespace Sprint0.Camera
                luigi.position.Y + (luigi.Destination.Height / cameraNumbers.sizeDivider) - cameraNumbers.YCenterXOffset);
             }
 
+            System.Diagnostics.Debug.WriteLine("center: " + center);
             return center;
         }
     }
