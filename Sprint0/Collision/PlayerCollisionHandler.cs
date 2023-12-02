@@ -37,10 +37,10 @@ namespace Sprint0.Collision
                 PlayerDynamicBlockCollision(entity1, entity2, side, vert, hitarea);
 
             // Item and Player
-            else if (entity1.GetType() == typeof(IPlayer) || entity2.GetType() == typeof(IItem))
+            else if (entity1 is IPlayer && entity2 is IItem)
                 PlayerItemCollision(entity1, entity2, side);
 
-            else if (entity2.GetType() == typeof(IPlayer) || entity1.GetType() == typeof(IItem))
+            else if (entity2 is IPlayer && entity1 is IItem)
                 PlayerItemCollision(entity2, entity1, side);
 
             // Enemy and Player
@@ -128,7 +128,6 @@ namespace Sprint0.Collision
             {
                 ICommand command = new CPlayerTakeDamage(sprint, (IPlayer) player);
                 command.Execute();
-                System.Diagnostics.Debug.WriteLine("command executed");
             }
             /* if (side == Side.Vertical && enemy is Goomba){
              *  ICommand command = new CGoombaStomp(sprint);
