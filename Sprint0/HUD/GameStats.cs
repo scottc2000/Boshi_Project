@@ -125,8 +125,10 @@ namespace Sprint0.HUD
             lives--;
             if (lives == 0)
             {
-                // Is game over screen called here or handled somewhere else?
-                lives = numbers.STARTINGLIVES;
+                mySpriteFactory = new HUDFactory(sprint);
+                mySpriteFactory.LoadAllTextures(sprint.Content);
+                lifeSprite = mySpriteFactory.UpdateDigits(lives);
+                sprint.gamestates = GameStates.GAMEOVER;
             }
             else
             {

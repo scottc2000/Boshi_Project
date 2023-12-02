@@ -1,5 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/01-main-theme-overworld.wav","C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/bin/DesktopGL/01-main-theme-overworld.xnb","SoundEffectProcessor","SoundEffectContent",32486598,32486505,1.4282612
+"C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/File.spritefont","C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/bin/DesktopGL/File.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0.2916466
 "C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/HUD_transparent1.png","C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/bin/DesktopGL/HUD_transparent1.xnb","TextureProcessor","Texture2DContent",13023,389749,0.106101
 "C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/level1_1.png","C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/bin/DesktopGL/level1_1.xnb","TextureProcessor","Texture2DContent",32834,7920237,0.4457493
 "C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/mario title with text.png","C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/bin/DesktopGL/mario title with text.xnb","TextureProcessor","Texture2DContent",4218,226389,0.0146475
