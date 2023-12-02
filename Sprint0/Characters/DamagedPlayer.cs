@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Commands;
 using Sprint0.Interfaces;
 using Sprint0.Items.Projectiles;
 using Sprint0.Sprites.Players;
@@ -28,6 +29,7 @@ namespace Sprint0.Characters
         public FireProjectile fireProjectile { get; set; }
 
         private LevelLoader1 level;
+        private Sprint0 sprint;
         public IPlayer decoratedPlayer;
         public int timer;
         int ySnapshot;
@@ -36,9 +38,10 @@ namespace Sprint0.Characters
             Color.Transparent,
             Color.White
         };
-        public DamagedPlayer(IPlayer player, LevelLoader1 level) 
+        public DamagedPlayer(IPlayer player, LevelLoader1 level, Sprint0 sprint) 
         {
             this.level = level;
+            this.sprint = sprint;
             p = new PlayerNumbers();
             decoratedPlayer = player;
             health = player.health;
@@ -87,12 +90,10 @@ namespace Sprint0.Characters
             decoratedPlayer.Update(gametime);
             if (decoratedPlayer.number == p.mario)
             {
-                System.Diagnostics.Debug.WriteLine("number: " + decoratedPlayer.number);
                 level.camera.Update(decoratedPlayer, level.luigi);
             }
             else
             {
-                System.Diagnostics.Debug.WriteLine("number: " + decoratedPlayer.number);
                 level.camera.Update(level.mario, decoratedPlayer);
             }
         }
@@ -100,14 +101,22 @@ namespace Sprint0.Characters
         void RemoveDecorator()
         {
             if (decoratedPlayer.number == p.mario)
+            {
                 level.mario = decoratedPlayer;
+                ICommand add = new CAddDynamic(decoratedPlayer, sprint.objects);
+                add.Execute();
+            }
             else if (decoratedPlayer.number == p.luigi)
+            {
                 level.luigi = decoratedPlayer;
+                ICommand add = new CAddDynamic(decoratedPlayer, sprint.objects);
+                add.Execute();
+            }
         }
 
         public void Draw(SpriteBatch spritebatch) 
         { 
-            currentSprite.Draw(spritebatch, new Vector2(position.X, position.Y), colors[(timer / 3) % 2]); 
+            currentSprite.Draw(spritebatch, position, colors[(timer / 3) % 2]); 
         }
     }
 }

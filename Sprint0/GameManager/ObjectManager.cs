@@ -67,9 +67,9 @@ namespace Sprint0.GameMangager
             EntitiesToRemove.Clear();
         }
 
-        public void AddToList()
+        public void AddToList(ICollidable added)
         {
-
+            DynamicEntities.Add(added);
         }
 
         public void RemoveFromList(ICollidable removed)

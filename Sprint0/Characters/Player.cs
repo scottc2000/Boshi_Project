@@ -135,6 +135,7 @@ namespace Sprint0.Characters
         public void Die()
         {
             State.Die();
+            System.Diagnostics.Debug.WriteLine("Dead State Entered");
         }
         public void Reverse()
         {

@@ -54,18 +54,17 @@ namespace Sprint0.Characters.PlayerStates
         public void Update(GameTime gametime)
         {
             player.health = Player.PlayerHealth.Dead;
-            player.currentSprite = SetSprite(gametime);
-            player.velocity.Y = -1;
-        }
-        public AnimatedSpritePlayer SetSprite(GameTime gametime)
-        {
-            if(player.number == check.mario)
+            if (player.number == check.mario)
+            {
                 player.currentSprite = player.mySpriteFactory.returnMarioSprite(check.MarioDead);
-            else if(player.number == check.luigi)
+            }
+            else if (player.number == check.luigi)
+            {
                 player.currentSprite = player.mySpriteFactory.returnLuigiSprite(check.LuigiDead);
-
-            return player.currentSprite;
+            }
+            player.velocity = Vector2.Zero;
         }
+
     }
 }
 
