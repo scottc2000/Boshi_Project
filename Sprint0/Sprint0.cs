@@ -13,6 +13,7 @@ using Sprint0.Sprites;
 using Sprint0.Sprites.SpriteFactories;
 using Sprint0.Utility;
 using System;
+using System.Diagnostics.Contracts;
 using static Sprint0.Sprites.Players.PlayerData;
 
 namespace Sprint0
@@ -32,7 +33,6 @@ namespace Sprint0
         public ScrnManager screenManager;
 
         public LevelLoader1 levelLoader; // change back to private later
-        public Camera.PlayerCamera camera;
         public static int ScreenWidth;
         public static int ScreenHeight;
 
@@ -53,13 +53,13 @@ namespace Sprint0
             hud = new GameStats(this);
 
             // Initialize game components
-            camera = new PlayerCamera(GraphicsDevice.Viewport);
+            
             objects = new ObjectManager(this);
-            levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, hud);
+            levelLoader = new LevelLoader1(this, _spriteBatch, Content, hud);
             triggers = new Triggers(this);
 
             audioManager = AudioManager.Instance;
-            screenManager = new ScrnManager(this, _spriteBatch);
+            screenManager = new ScrnManager(this, _spriteBatch, GraphicsDevice);
 
             base.Initialize();
         }
@@ -92,8 +92,8 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.LightSlateGray);
 
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
-                null, null, null, null, camera.transform);
+            //_spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
+            // null, null, null, null, camera.transform);
 
             screenManager.Draw();
             _spriteBatch.End();

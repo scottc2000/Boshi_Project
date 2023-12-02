@@ -88,6 +88,7 @@ namespace Sprint0.Controllers
             RegisterPressCommand(Keys.M, new CPlayerThrow(luigi));
 
             RegisterCommand(Keys.D0, new Reset(mySprint));
+            RegisterCommand(Keys.Space, new Start(mySprint));
         }
 
         private void pressedKeys(KeyboardState current, KeyboardState previous)

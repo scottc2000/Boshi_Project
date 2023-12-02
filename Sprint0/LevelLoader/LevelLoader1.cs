@@ -37,7 +37,7 @@ namespace Sprint0
         public ObjectManager objectManager;
         private AudioManager audioManager = AudioManager.Instance;
 
-        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, PlayerCamera camera, GameStats hud)
+        public LevelLoader1(Sprint0 sprint0, SpriteBatch spriteBatch, ContentManager content, GameStats hud)
         {
             this.sprint0 = sprint0;
             objectManager = sprint0.objects;
@@ -238,7 +238,7 @@ namespace Sprint0
             }
 
             objectManager.Update();
-            camera.Update(mario, luigi);
+            
             mario.Update(gameTime);
             luigi.Update(gameTime);
             KeyboardController.Update();

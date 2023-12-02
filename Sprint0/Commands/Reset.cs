@@ -18,6 +18,5 @@ namespace Sprint0.Commands
             spriteBatch = new SpriteBatch(sprint.GraphicsDevice);
 
         }
-
     }
 }

@@ -10,7 +10,7 @@ namespace Sprint0.Camera
      * Video: XNA Tutorial 20 - 2D Camera
      * Needs to be adjusted to match final game funcitonality
      */
-    public class PlayerCamera
+    public class PlayerCamera : ICamera
     {
 
         public Matrix transform;    // Used to draw camera to screen
