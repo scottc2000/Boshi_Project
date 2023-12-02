@@ -203,10 +203,9 @@ namespace Sprint0
             added.Execute();
             added = new CAddDynamic(luigi, objectManager);
             added.Execute();
-            added = new CAddDynamic(mario.fireProjectile, objectManager);
-            added.Execute();
-            added = new CAddDynamic(luigi.fireProjectile, objectManager);
-            added.Execute();
+
+            objectManager.Projectiles.Add(mario.fireProjectile);
+            objectManager.Projectiles.Add(luigi.fireProjectile);
 
         }
 
