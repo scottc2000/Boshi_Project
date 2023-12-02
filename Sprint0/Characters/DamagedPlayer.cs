@@ -14,12 +14,6 @@ namespace Sprint0.Characters
         public ICharacterState State { get; set; }
         public bool facingLeft { get; set; }
         public Rectangle Destination { get; set; }
-        public bool lefthit { get; set; }
-        public bool righthit { get; set; }
-        public bool uphit { get; set; }
-        public bool downhit { get; set; }
-        public bool gothit { get; set; }
-        public bool stuck { get; set; }
         public bool isInvinsible { get; set; }
         public int runningTimer { get; set; }
         public int flyingTimer { get; set; }
@@ -80,7 +74,7 @@ namespace Sprint0.Characters
 
         public void Throw() {  }
 
-        public void Update(GameTime gametime)  
+        public void Update(GameTime gametime)
         {
             timer--;
             if (timer == 0)
@@ -91,7 +85,16 @@ namespace Sprint0.Characters
             position = new Vector2(position.X, ySnapshot); // position adjusts as gametime continues, adjust appropiately
             Destination = currentSprite.destination;
             decoratedPlayer.Update(gametime);
-            level.camera.Update(decoratedPlayer);
+            if (decoratedPlayer.number == p.mario)
+            {
+                System.Diagnostics.Debug.WriteLine("number: " + decoratedPlayer.number);
+                level.camera.Update(decoratedPlayer, level.luigi);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("number: " + decoratedPlayer.number);
+                level.camera.Update(level.mario, decoratedPlayer);
+            }
         }
 
         void RemoveDecorator()

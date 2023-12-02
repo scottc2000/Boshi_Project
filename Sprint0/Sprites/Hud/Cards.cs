@@ -31,7 +31,7 @@ namespace Sprint0.Sprites.Hud
         }
         public void Update(GameTime gametime)
         {
-            
+
         }
     }
 }

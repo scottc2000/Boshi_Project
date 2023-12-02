@@ -37,10 +37,10 @@ namespace Sprint0.Utility
         public int projectileDrawMultiplier { get; } = 2;
 
         /*__________ HUD Data ___________________*/
-        public int HUDDrawMultiplier { get; } = 2;
-        public int digitOffset { get; } = 16;
+        public int HUDDrawMultiplier { get; } = 3;
+        public int digitOffset { get; } = 20;
 
-        public Microsoft.Xna.Framework.Rectangle HUDBackground = new Microsoft.Xna.Framework.Rectangle(0, 435, 537, 120);
+        public Microsoft.Xna.Framework.Rectangle HUDBackground = new Microsoft.Xna.Framework.Rectangle(0, 435, 600, 150);
 
         public int blankTextureWidth { get; } = 1;
 

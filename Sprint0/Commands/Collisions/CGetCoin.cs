@@ -1,6 +1,7 @@
 ﻿using Sprint0.Interfaces;
 using Sprint0.HUD;
 using Sprint0.GameMangager;
+using Sprint0.Utility;
 
 namespace Sprint0.Commands.Collisions
 {
@@ -9,12 +10,14 @@ namespace Sprint0.Commands.Collisions
         private Sprint0 sprint;
         private ObjectManager objectManager;
         private GameStats stats;
+        private HudNumbers numbers;
 
         public CGetCoin(Sprint0 sprint)
         {
             this.sprint = sprint;
+            numbers = new HudNumbers();
             objectManager = sprint.objects;
-            stats = sprint.levelLoader.hud;
+            stats = sprint.hud;
         }
         public void Execute()
         {
@@ -24,6 +27,7 @@ namespace Sprint0.Commands.Collisions
         public void Execute(IBlock block)
         {
             stats.IncrementCoin();
+            stats.IncreaseScore(numbers.coinPoints);
             objectManager.RemoveFromList(block);
         }
     }

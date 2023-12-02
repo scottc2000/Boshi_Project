@@ -13,6 +13,8 @@ namespace Sprint0.Interfaces
 
         public void BeFlipped();
 
+        public void StartSwarm();
+
         public void Move();
 
     }

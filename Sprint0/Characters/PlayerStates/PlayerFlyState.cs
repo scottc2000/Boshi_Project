@@ -80,7 +80,7 @@ namespace Sprint0.Characters.PlayerStates
 
             player.currentSprite = SetSprites(gametime);
 
-            if (player.uphit && player.flyingTimer > p.flyingMax)
+            if (player.flyingTimer > p.flyingMax)
                 player.Stop();
         }
 

@@ -23,13 +23,11 @@ namespace Sprint0.Camera
             cameraNumbers = new CameraNumbers();
         }
         
-        public void Update(IPlayer player)
+        public void Update(IPlayer mario, IPlayer luigi)
         {
-            // center camera on mario
-            center = new Vector2(player.position.X + (player.Destination.Width / cameraNumbers.sizeDivider) - cameraNumbers.XCcenterOffset, 
-                player.position.Y + (player.Destination.Height / cameraNumbers.sizeDivider) - cameraNumbers.YCenterXOffset);
+            center = Follow(mario, luigi);
 
-            // if mario moves past the left bound, reset the camera
+            // if mario moves past the world bounds, reset the camera
             if (center.X < cameraNumbers.leftBound)
             {
                 center.X = cameraNumbers.leftBound;
@@ -37,6 +35,10 @@ namespace Sprint0.Camera
             if (center.Y > cameraNumbers.bottomBound)
             {
                 center.Y = cameraNumbers.bottomBound;
+            }
+            if (center.Y < cameraNumbers.upperBound)
+            {
+                center.Y = cameraNumbers.upperBound;
             }
 
             // zoom camera to mimic final game functionality
@@ -46,12 +48,23 @@ namespace Sprint0.Camera
             transform = zoom * translation;
 
         }
-        public Vector2 GetCameraOffset(Vector2 position)
-        {
-            // Update your offset vector based on camera movement - needs to be debugged
-            Vector2 offset = center - position;
-            return offset;
-        }
 
+        public Vector2 Follow(IPlayer mario, IPlayer luigi)
+        {
+            // Set camera to the player who is ahead
+            // Note camera snaps due to differences in Y - need to fix
+            if (mario.position.X > luigi.position.X)
+            {
+               center = new Vector2(mario.position.X + (mario.Destination.Width / cameraNumbers.sizeDivider) - cameraNumbers.XCcenterOffset,
+               mario.position.Y + (mario.Destination.Height / cameraNumbers.sizeDivider) - cameraNumbers.YCenterXOffset);
+            }
+            else if (luigi.position.X > mario.position.X)
+            {
+               center = new Vector2(luigi.position.X + (luigi.Destination.Width / cameraNumbers.sizeDivider) - cameraNumbers.XCcenterOffset,
+               luigi.position.Y + (luigi.Destination.Height / cameraNumbers.sizeDivider) - cameraNumbers.YCenterXOffset);
+            }
+
+            return center;
+        }
     }
 }

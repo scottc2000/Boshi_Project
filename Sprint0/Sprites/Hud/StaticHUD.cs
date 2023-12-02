@@ -12,6 +12,7 @@ namespace Sprint0.Sprites.Hud
 
         private Rectangle spriteFrame;
         private Rectangle destination;
+        private Rectangle background;
 
         private SpriteNumbers spriteNumbers;
 
@@ -21,17 +22,17 @@ namespace Sprint0.Sprites.Hud
             spriteNumbers = new SpriteNumbers();
             this.size = size;
             spriteFrame = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+            background = new Rectangle((int)position.X, (int)position.Y, (int)size.X * 6, (int)size.Y * 4);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)location.X, (int)location.Y, (int)size.X * spriteNumbers.HUDDrawMultiplier, (int)size.Y * spriteNumbers.HUDDrawMultiplier);
 
-            Rectangle background = spriteNumbers.HUDBackground;
             Texture2D _blankTexture = new Texture2D(spriteBatch.GraphicsDevice, spriteNumbers.blankTextureWidth, spriteNumbers.blankTextureHeight);
             _blankTexture.SetData(new[] { Color.Black });
 
-            spriteBatch.Draw(_blankTexture, background, spriteFrame, Color.White);
+            spriteBatch.Draw(_blankTexture, new Vector2(location.X - 50, location.Y - 10), background, Color.White);
             spriteBatch.Draw(texture, destination, spriteFrame, Color.White);
         }
         public void Update(GameTime gametime)

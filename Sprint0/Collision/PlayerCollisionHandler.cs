@@ -44,10 +44,10 @@ namespace Sprint0.Collision
                 PlayerItemCollision(entity2, entity1, side);
 
             // Enemy and Player
-            else if (entity1.GetType() == typeof(IPlayer) || entity2.GetType() == typeof(IEnemies))
+            else if (entity1 is IPlayer && entity2 is IEnemies)
                 PlayerEnemyCollision(entity1, entity2, side);
 
-            else if (entity2.GetType() == typeof(IPlayer) || entity1.GetType() == typeof(IEnemies))
+            else if (entity2 is IPlayer && entity1 is IEnemies)
                 PlayerEnemyCollision(entity2, entity1, side);
         }
         public void PlayerStaticBlockCollision(ICollidable player, ICollidable block, Side side, Vert vert, Rectangle hitarea)
@@ -128,17 +128,16 @@ namespace Sprint0.Collision
             {
                 ICommand command = new CPlayerTakeDamage(sprint, (IPlayer) player);
                 command.Execute();
+                System.Diagnostics.Debug.WriteLine("command executed");
             }
-            if (side == Side.Vertical && enemy is Goomba)
-            {
-                ICommand command = new CGoombaStomp(sprint);
-                command.Execute();
-            }
-            if (side == Side.Vertical && enemy is Koopa)
-            {
-                ICommand command = new CKoopaStomp(sprint);
-                command.Execute();
-            }
+            /* if (side == Side.Vertical && enemy is Goomba){
+             *  ICommand command = new CGoombaStomp(sprint);
+             *  command.Execute();
+             *  }
+             *  if (side == Side.Vertical && enemy is Koopa){
+             *  ICommand command = new CKoopaStop(sprint);
+             *  command.Execute();
+             *  }*/
         }
     }
 }

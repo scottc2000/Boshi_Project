@@ -33,14 +33,6 @@ namespace Sprint0.Characters
 
         int sizeDiff;
 
-        // ICollidable
-        public bool lefthit { get; set; }
-        public bool righthit { get; set; }
-        public bool uphit { get; set; }
-        public bool downhit { get; set; }
-        public bool gothit { get; set; }
-        public bool stuck { get; set; }
-
         // Physics components - on refactor list
         public Vector2 velocity;
         public float decay;
@@ -84,16 +76,9 @@ namespace Sprint0.Characters
             runningTimer = 0;
             flyingTimer = 0;
 
-            // Collidables
-            downhit = false;
-            uphit = false;
-            lefthit = false;
-            righthit = false;
-
             // default velocity is zero (still), decay makes player slippery the higher it is.
             velocity = player.velocity;
             decay = 0.9f;
-            stuck = false;
             gravity = 1.0f;
 
             // creates new sprite factory and projectile factory
@@ -125,7 +110,7 @@ namespace Sprint0.Characters
         }
         public void Jump()
         {
-            if (uphit && health != PlayerHealth.Dead)
+            if (health != PlayerHealth.Dead)
             {
                 State.Jump();
             }
@@ -154,14 +139,6 @@ namespace Sprint0.Characters
         public void Reverse()
         {
             velocity.X *= player.reverse;
-        }
-        public void resetHits()
-        {
-            downhit = false;
-            uphit = false;
-            lefthit = false;
-            righthit = false;
-            stuck = false;
         }
         public void Throw()
         {
@@ -228,17 +205,6 @@ namespace Sprint0.Characters
             position = new Vector2(position.X, position.Y + (velocity.Y * ((float)gametime.ElapsedGameTime.TotalSeconds / player.sixth)));
         }
 
-        // Are these no longer used? please remove if so
-        public void LeftStuck(GameTime gametime)
-        {
-        }
-        public void RightStuck(GameTime gametime)
-        {
-        }
-        public void UpStuck()
-        {
-            //position.Y -= (gravity / 2);
-        }
         public void Update(GameTime gametime)
         {
             // UpdateProjectiles(gametime);        
@@ -253,7 +219,6 @@ namespace Sprint0.Characters
             applyGravity();
 
             Destination = currentSprite.destination;
-            resetHits();
         }
         public void Draw(SpriteBatch spritebatch)
         {
