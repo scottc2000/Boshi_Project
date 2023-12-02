@@ -1,22 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Enemies.HammerBroStates;
+using Sprint0.Enemies.GooombaStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.goombaSprite;
-using Sprint0.Sprites.HammerBroSprite;
 using Sprint0.Sprites.SpriteFactories;
-using System;
 using System.Collections.Generic;
 
 namespace Sprint0.Enemies
 {
-    public class Koopa : IEnemies
+    public class Bowser :IEnemies
     {
         public IEnemyState state;
         public Vector2 position;
         public Vector2 initialposition;
         public Sprint0 mySprint;
-        public bool facingLeft { get; set; }
+        public bool facingLeft { get; set;}
         public Rectangle Destination { get; set; }
         public bool lefthit { get; set; }
         public bool righthit { get; set; }
@@ -25,20 +23,20 @@ namespace Sprint0.Enemies
         public bool gothit { get; set; }
         public bool stuck { get; set; }
 
-        public KoopaMoveSprite currentSprite;
-        public EnemySpriteFactoryKoopa mySpriteFactory;
+        public GoombaMoveSprite currentSprite;
+        public EnemySpriteFactoryGoomba mySpriteFactory;
 
-        public Koopa(Sprint0 sprint0)
+        public Bowser(Sprint0 sprint0)
         {
-            this.state = new RightMovingKoopaState(this);
+            this.state = new LeftMovingGoombaState(this);
 
             this.facingLeft = true;
             this.mySprint = sprint0;
 
-            mySpriteFactory = new EnemySpriteFactoryKoopa(this);
+            mySpriteFactory = new EnemySpriteFactoryGoomba(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("KoopaMove");
+            currentSprite = mySpriteFactory.returnSprite("GoombaMove");
             Destination = currentSprite.destination;
         }
 
@@ -65,11 +63,16 @@ namespace Sprint0.Enemies
             state.BeFlipped();
         }
 
+        public void StartSwarm()
+        {
+            state.startSwarm();
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             currentSprite.Draw(spriteBatch, position);
         }
-
+        
         public void Update(GameTime gameTime)
         {
             currentSprite.Update(gameTime);
@@ -82,12 +85,11 @@ namespace Sprint0.Enemies
             if (facingLeft)
             {
                 position.X -= 1;
-                if (position.X < initialposition.X - 100)
+                if (position.X < initialposition.X-160)
                 {
                     ChangeDirection();
                 }
-            }
-            else
+            } else
             {
                 position.X += 1;
                 if (position.X > initialposition.X)
@@ -97,9 +99,15 @@ namespace Sprint0.Enemies
             }
         }
 
-        public void StartSwarm()
+        public void Swarm()
         {
-            //does not swarm
+            if (position.X < mySprint.levelLoader.mario.position.X)
+            {
+                position.X += 1;
+            } else
+            {
+                position.X -= 1;
+            }
         }
     }
 }
