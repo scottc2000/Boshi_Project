@@ -73,8 +73,8 @@ namespace Sprint0.Blocks
             }
             else
             {
-                CGetCoin command = new CGetCoin(sprint0);
-                command.Execute(coin);
+                //CGetCoin command = new CGetCoin(sprint0);
+                //command.Execute(coin);
             }
             
         }
