@@ -63,4 +63,18 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     - screen changes and game states need to be added
 ## Comments
 - any commits by user "ch3ney" is done by skansher on a different device due to technology issues - not a different user
-
+## Sprint 5
+## Controls:
+    - Mario: WASD Movement, E for fire power, W to fly after racoon boost
+    - Luigi: Arrow Key Movement, M for fire power, Up Arror to fly after racoon boost
+## Special Features
+    - Mutliplayer (mario and luigi)
+    - AI: Goombas swarm players
+    - AI: Bowser follows and attacks players
+## Known Bugs:
+    - Enemies don't have "damaged" transition like Mario and Luigi (aesthetic bug)
+    - Player/Enemy movement may be laggy at times (efficiency issue)
+    - Game Hud doesn't have end of game "special card" ability due to Bowser Fight instead of goal
+    - Coins from blocks have fast animation
+    - Game reset doesn't have full functionality after Title Screen
+    - Camera Y movement may be snappy depending on player position
