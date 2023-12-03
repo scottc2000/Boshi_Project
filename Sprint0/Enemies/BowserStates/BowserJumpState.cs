@@ -17,7 +17,7 @@ namespace Sprint0.Enemies.BowserStates
         public BowserJumpState(Bowser bowser)
         {
             this.bowser = bowser;
-            this.bowser.velocity.Y = yVelocity;
+            //this.bowser.velocity.Y = yVelocity;
         }
 
         public void Move()
@@ -50,6 +50,7 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Update(GameTime gametime)
         {
+            bowser.velocity.Y = yVelocity;
             bowser.Move();
         }
 

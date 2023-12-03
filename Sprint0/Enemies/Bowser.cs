@@ -167,10 +167,11 @@ namespace Sprint0.Enemies
                     }
                 }
 
-                if ((mySprint.mario.position.Y - 10) <= position.Y)
-                {
-                    state.Look();
-                }
+                if (state is BowserFallState)
+                    if ((mySprint.mario.position.Y - 10) <= position.Y)
+                    {
+                        state.Look();
+                    }
             }
         }
 
@@ -180,7 +181,11 @@ namespace Sprint0.Enemies
                 waitTimerStart = (float)gameTime.TotalGameTime.TotalSeconds;
 
             if (((float)gameTime.TotalGameTime.TotalSeconds - waitTimerStart) >= waitTimerEnd)
+            {
                 state.Idle();
+                System.Diagnostics.Debug.WriteLine("bowserIdle");
+                waitTimerStart = 0;
+            }
         }
 
     }

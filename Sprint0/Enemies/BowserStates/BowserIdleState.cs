@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Interfaces;
+using Sprint0.Sprites.Players;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,22 @@ namespace Sprint0.Enemies.BowserStates
         public void Update(GameTime gametime)
         {
             bowser.Move();
+            bowser.currentSprite = setSprite(gametime);
+        }
+
+        public AnimatedSpriteBowser setSprite(GameTime gameTime)
+        {
+
+            if (bowser.currentSprite.spriteName.Equals("BowserStill"))
+            {
+                bowser.currentSprite.Update(gameTime);
+            }
+            else
+            {
+                bowser.currentSprite = bowser.mySpriteFactory.returnSprite("BowserStill");
+            }
+
+            return bowser.currentSprite;
         }
 
     }
