@@ -145,7 +145,7 @@ namespace Sprint0.Characters.PlayerStates
             }
             else if (!player.facingLeft && player.number == p.luigi)
             {
-                if (player.currentSprite.spriteName.Equals(p.LuigiJumpRight))
+                if (player.currentSprite.spriteName.Equals(p.LuigiMoveRight))
                     player.currentSprite.Update(gametime);
                 else
                     player.currentSprite = player.mySpriteFactory.returnLuigiSprite(p.LuigiMoveRight);
