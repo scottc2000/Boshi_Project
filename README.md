@@ -78,3 +78,4 @@ Muskan, Jerrin, Ismail, Michael, Scott, Ben
     - Coins from blocks have fast animation
     - Game reset doesn't have full functionality after Title Screen
     - Camera Y movement may be snappy depending on player position
+    - Goomba enemies do not have gravity affecting them
