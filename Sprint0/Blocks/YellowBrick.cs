@@ -92,12 +92,10 @@ namespace Sprint0.Blocks
                     IItem Shoe = new Shoe();
                     Shoe.setPosition(itemPos);
                     return Shoe;
-                case "Coin":
+                default:
                     IItem Coin = new Coin(spriteBatch, Destination);
                     Coin.setPosition(itemPos);
                     return Coin;
-                default:
-                    return null;
 
             }
         }

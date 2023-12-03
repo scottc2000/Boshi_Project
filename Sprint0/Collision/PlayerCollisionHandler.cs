@@ -94,7 +94,7 @@ namespace Sprint0.Collision
                     command2.Execute(hitarea, (IBlock)block);
                     
                 }
-                else if (block is YellowBrick)
+                if (block is YellowBrick)
                 {
                     CBlockBump command2 = new CBlockBump(sprint, (IPlayer)player);
                     command2.Execute(hitarea, (IBlock)block);
