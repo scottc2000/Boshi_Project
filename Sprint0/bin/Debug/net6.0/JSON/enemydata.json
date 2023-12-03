@@ -4,8 +4,8 @@
       {
         "name": "GoombaMove",
         "spritesheet_pos": [
-          [ 0, 16 ],
-          [ 16, 16 ]
+          [ 0, 0 ],
+          [ 16, 0 ]
         ],
         "hitbox": [ 16, 16 ],
         "facingLeft": true

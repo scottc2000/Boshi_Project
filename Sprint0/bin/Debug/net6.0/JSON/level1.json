@@ -852,6 +852,26 @@
       "Position": [ 1050, 385 ]
     },
     {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 1100, 385 ]
+    },
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 1120, 385 ]
+    },
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 1040, 385 ]
+    },
+    {
+      "Name": "Goomba",
+      "Hitbox": [ 16, 16 ],
+      "Position": [ 1160, 385 ]
+    },
+    {
       "Name": "Koopa",
       "Hitbox": [ 16, 24 ],
       "Position": [ 1358, 358 ]
