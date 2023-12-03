@@ -20,7 +20,7 @@ namespace Sprint0.Background
             this.sprint0 = sprint0;
             filename = new FileNames();
             terrain = sprint0.Content.Load<Texture2D>(filename.terrainSheet);
-            sprite = new DrawBackground(terrain, new Rectangle(0, 0, 3132, 626));
+            sprite = new DrawBackground(terrain, new Rectangle(0, 0, 3163, 626));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
