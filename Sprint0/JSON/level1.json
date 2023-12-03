@@ -536,7 +536,7 @@
     },
     {
       "Name": "pipe",
-      "x": 2250,
+      "x": 2320,
       "y": 384,
       "width": 32,
       "height": 32
@@ -547,13 +547,6 @@
       "y": 416,
       "width": 256,
       "height": 16
-    },
-    {
-      "Name": "pipe",
-      "x": 2250,
-      "y": 384,
-      "width": 32,
-      "height": 32
     },
     {
       "Name": "floor",
