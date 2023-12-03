@@ -19,6 +19,8 @@ namespace Sprint0.Interfaces
         int flyingTimer { get; set; }
         bool boosted { get; set; }
         bool fired { get; set; }
+
+        bool upHit { get; set; }
         FireProjectile fireProjectile { get; set; }
         int runningTimer { get; set; }
 

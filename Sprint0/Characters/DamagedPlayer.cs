@@ -26,6 +26,7 @@ namespace Sprint0.Characters
         public AnimatedSpritePlayer currentSprite { get; set; }
         public int number { get; set; }
         public bool fired { get; set; }
+        public bool upHit { get; set; }
         public FireProjectile fireProjectile { get; set; }
 
         private LevelLoader1 level;

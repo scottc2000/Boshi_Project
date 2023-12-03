@@ -18,6 +18,7 @@ namespace Sprint0.Commands.Collision
         public void Execute(Rectangle hitbox)
         {
             Rectangle hitarea = Rectangle.Intersect(hitbox, player.Destination);
+            player.upHit = true;
 
             if (hitarea.Width >= hitarea.Height)
             {
