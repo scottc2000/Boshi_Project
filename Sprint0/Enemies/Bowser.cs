@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Characters;
 using Sprint0.Enemies.BowserStates;
 using Sprint0.Enemies.GooombaStates;
 using Sprint0.Interfaces;
@@ -18,6 +19,11 @@ namespace Sprint0.Enemies
         public Vector2 initialposition;
         public Sprint0 mySprint;
 
+        //Jumping values
+        private int gravity;
+        public Vector2 velocity;
+        private float sixtyith;
+
         private int health;
         public bool facingLeft { get; set;}
         public Rectangle Destination { get; set; }
@@ -33,9 +39,14 @@ namespace Sprint0.Enemies
 
         public Bowser(Sprint0 sprint0)
         {
-            this.state = new BowserFireballState(this);
+            this.state = new BowserIdleState(this);
 
             this.health = 5;
+
+            gravity = 6;
+            sixtyith = 1.0f / 60.0f;
+            velocity.X = 0;
+            velocity.Y = 0;
 
             this.facingLeft = true;
             this.mySprint = sprint0;
@@ -62,7 +73,9 @@ namespace Sprint0.Enemies
 
         public void BeStomped()
         {
-            //Does not be stomped
+            health--;
+            if (health == 0)
+                mySprint.objects.RemoveFromList(this);
         }
 
         public void BeFlipped()
@@ -75,33 +88,74 @@ namespace Sprint0.Enemies
             //Does not swarm
         }
 
+        public void Jump() 
+        { 
+            state.Jump();
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentSprite.Draw(spriteBatch, position, Color.White);
+            //System.Diagnostics.Debug.WriteLine("Draw bowser");
+            currentSprite.Draw(spriteBatch, position);
         }
-        
+
+        public void applyGravity()
+        {
+            if (position.Y > 500)
+                velocity.Y += gravity;
+        }
+        public void UpdateMovement(GameTime gametime)
+        {
+            // updates movement using pos +/- v * dt
+
+            if (facingLeft)
+            {
+                position = new Vector2(position.X - (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / sixtyith)), position.Y);
+            }
+            else
+            {
+                position = new Vector2(position.X + (velocity.X * ((float)gametime.ElapsedGameTime.TotalSeconds / sixtyith)), position.Y);
+            }
+            position = new Vector2(position.X, position.Y + (velocity.Y * ((float)gametime.ElapsedGameTime.TotalSeconds / sixtyith)));
+        }
+
         public void Update(GameTime gameTime)
         {
-            currentSprite.Update(gameTime);
-            Destination = currentSprite.destination;
             state.Update(gameTime);
+            UpdateMovement(gameTime);
+            applyGravity();
+            
+            Destination = currentSprite.destination;
         }
 
         public void Move()
         {
-            if (facingLeft)
+            if (System.Math.Abs(mySprint.levelLoader.mario.position.X - position.X) < 300)
             {
-                position.X -= 1;
-                if (position.X < initialposition.X-160)
+
+                if (state is BowserIdleState)
+                    state.Jump();
+
+                if (state is BowserJumpState)
                 {
-                    ChangeDirection();
+                    if (mySprint.mario.position.X < position.X)
+                    {
+                        position.X -= 2;
+                    }
+                    else if (mySprint.mario.position.X > position.X)
+                    {
+                        position.X += 2;
+                    }
+                    else
+                    {
+                        if (!(state is BowserFallState))
+                            state.Fall();
+                    }
                 }
-            } else
-            {
-                position.X += 1;
-                if (position.X > initialposition.X)
+
+                if (mySprint.mario.position.Y <= position.Y)
                 {
-                    ChangeDirection();
+                    state.Look();
                 }
             }
         }

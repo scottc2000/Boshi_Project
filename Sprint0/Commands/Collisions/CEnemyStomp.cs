@@ -33,9 +33,6 @@ namespace Sprint0.Commands.Collisions
             if (!(enemy is Bowser))
             {
                 objectManager.RemoveFromList(enemy);
-            } else
-            {
-                
             }
         }
 
