@@ -236,7 +236,8 @@
       "x": 1440,
       "y": 128,
       "width": 16,
-      "height": 16
+      "height": 16,
+      "item": "OneUpMushroom"
     },
     {
       "Name": "question_block",
