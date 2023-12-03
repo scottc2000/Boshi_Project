@@ -1,10 +1,8 @@
-﻿using Sprint0.Characters;
-using Sprint0.Interfaces;
-using Microsoft.Xna.Framework;
-using Sprint0.Enemies;
-using Sprint0.Utility;
-using Sprint0.HUD;
+﻿using Sprint0.Enemies;
 using Sprint0.GameMangager;
+using Sprint0.HUD;
+using Sprint0.Interfaces;
+using Sprint0.Utility;
 
 namespace Sprint0.Commands.Collisions
 {
@@ -33,6 +31,10 @@ namespace Sprint0.Commands.Collisions
             if (!(enemy is Bowser))
             {
                 objectManager.RemoveFromList(enemy);
+            }
+            else
+            {
+                sprint.gamestates = GameStates.WIN;
             }
         }
 

@@ -11,6 +11,7 @@
     <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/level1_1.png</File>
     <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/mario title with text.png</File>
     <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/marioenemy.png</File>
+    <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/NES - Super Mario Bros 3 - Fireworks.png</File>
     <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/smb_1-up.wav</File>
     <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/smb_breakblock.wav</File>
     <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/smb_coin.wav</File>
@@ -25,6 +26,7 @@
     <File>C:/Users/muska/source/repos/Boshi_Project3/Sprint0/Content/SpriteImages/playerssclear.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

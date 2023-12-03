@@ -27,6 +27,7 @@ namespace Sprint0
         public GameStats hud;
         private Title title;
         private GameOver gameover;
+        private Win win;
         public GameStates gamestates { get; set; }
         public AudioManager audioManager;
         public IController KeyboardController;
@@ -61,6 +62,7 @@ namespace Sprint0
             hud = new GameStats(this);
             title = new Title(this);
             gameover = new GameOver(this);
+            win = new Win(this);
             gamestates = GameStates.TITLE;
 
             // Initialize game components
@@ -110,7 +112,7 @@ namespace Sprint0
                     break;
                 case GameStates.WIN:
                     KeyboardController.Update();
-                    // screen update
+                    win.Update(gameTime);
                     break;
             }
 
@@ -146,10 +148,9 @@ namespace Sprint0
                     break;
                 case GameStates.WIN:
                     _spriteBatch.Begin();
-                    // draw win screen
+                    win.Draw(_spriteBatch);
                     _spriteBatch.End();
                     break;
-
             }
            
             base.Draw(gameTime);
