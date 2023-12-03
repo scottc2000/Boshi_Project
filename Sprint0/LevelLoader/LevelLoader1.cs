@@ -87,7 +87,7 @@ namespace Sprint0
                         objectManager.StaticEntities.Add(large_block);
                         break;
                     case "yellow_brick":
-                        YellowBrick yellow_brick = new YellowBrick(spriteBatch, blockRectangle);
+                        YellowBrick yellow_brick = new YellowBrick(spriteBatch, blockRectangle, block.item);
                         objectManager.Blocks.Add(yellow_brick);
                         objectManager.TopCollidableBlocks.Add(yellow_brick);
                         objectManager.BottomCollidableBlocks.Add(yellow_brick);
@@ -255,7 +255,7 @@ namespace Sprint0
             {
                 block.Draw(spriteBatch);
             }
-            foreach (var item in objectManager.Items)
+            foreach (var item in objectManager.Items.ToList())
             {
                 item.Draw(spriteBatch);
             }
