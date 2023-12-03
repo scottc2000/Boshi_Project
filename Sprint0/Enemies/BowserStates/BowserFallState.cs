@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MonoGame.Extended.Timers;
 using Sprint0.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Enemies.BowserStates
 {
-    internal class BowserIdleState : IEnemyBowserState
+    internal class BowserFallState : IEnemyBowserState
     {
         private Bowser bowser;
+        private float yVelocity = 3.0f;
 
-        public BowserIdleState(Bowser bowser)
+        public BowserFallState(Bowser bowser)
         {
             this.bowser = bowser;
-            this.bowser.velocity.X = 0;
-            this.bowser.velocity.Y = 0;
+            this.bowser.velocity.Y = yVelocity;
         }
 
         public void Move()
@@ -29,11 +30,11 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Fall()
         {
-            bowser.state = new BowserFallState(bowser);
+            
         }
         public void Look()
         {
-
+            bowser.state = new BowserIdleState(bowser);
         }
         public void Die()
         {

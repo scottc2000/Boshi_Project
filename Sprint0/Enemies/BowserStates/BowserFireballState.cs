@@ -43,8 +43,7 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Update(GameTime gametime)
         {
-            bowser.currentSprite = bowser.mySpriteFactory.returnSprite("BowserFireball");
-            bowser.currentSprite.Update(gametime);
+            //
         }
 
     }
