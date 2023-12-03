@@ -46,10 +46,10 @@ namespace Sprint0.Collision
 
             // Enemy and Player
             else if (entity1 is IPlayer && entity2 is IEnemies)
-                PlayerEnemyCollision(entity1, entity2, side);
+                PlayerEnemyCollision(entity1, entity2, side, hitarea);
 
             else if (entity2 is IPlayer && entity1 is IEnemies)
-                PlayerEnemyCollision(entity2, entity1, side);
+                PlayerEnemyCollision(entity2, entity1, side, hitarea);
         }
         public void PlayerStaticBlockCollision(ICollidable player, ICollidable block, Side side, Vert vert, Rectangle hitarea)
         {
@@ -124,7 +124,7 @@ namespace Sprint0.Collision
             command2.Execute();
         }
 
-        public void PlayerEnemyCollision(ICollidable player, ICollidable enemy, Side side)
+        public void PlayerEnemyCollision(ICollidable player, ICollidable enemy, Side side, Rectangle hitarea)
         {
             if (side == Side.Horizontal)
             {
@@ -134,10 +134,26 @@ namespace Sprint0.Collision
 
             if (side == Side.Vertical)
             {
-                Debug.WriteLine("Mario hit enemy top");
-                ICommand commands = new CEnemyStomp(sprint, (IEnemies)enemy);
-                commands.Execute();
-                Debug.WriteLine("Enemy stomped");
+                Vert vert = EnemyStomp(player, enemy, hitarea);
+                if (vert == Vert.Top)
+                {
+                    Debug.WriteLine("Mario hit enemy top");
+                    ICommand commands = new CEnemyStomp(sprint, (IEnemies)enemy);
+                    commands.Execute();
+                    Debug.WriteLine("Enemy stomped");
+                }
+            }
+        }
+
+        public Vert EnemyStomp(ICollidable player, ICollidable enemy, Rectangle hitarea)
+        {
+            if (player.Destination.Top <= hitarea.Bottom && player.Destination.Bottom >= hitarea.Top + 5)
+            {
+                return Vert.Bottom;
+            }
+            else
+            {
+                return Vert.Top;
             }
         }
     }
