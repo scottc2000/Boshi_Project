@@ -101,12 +101,16 @@ namespace Sprint0.Enemies
 
         public void Swarm()
         {
-            if (position.X < mySprint.levelLoader.mario.position.X)
+            if (System.Math.Abs(mySprint.levelLoader.mario.position.X - position.X) < 500)
             {
-                position.X += 1;
-            } else
-            {
-                position.X -= 1;
+                if (position.X < mySprint.levelLoader.mario.position.X)
+                {
+                    position.X += 1;
+                }
+                else
+                {
+                    position.X -= 1;
+                }
             }
         }
     }
