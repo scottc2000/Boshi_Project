@@ -30,10 +30,10 @@ namespace Sprint0.Enemies
 
         public Bowser(Sprint0 sprint0)
         {
-            this.state = new BowserIdleState(this);
+            state = new BowserIdleState(this);
 
-            this.facingLeft = true;
-            this.mySprint = sprint0;
+            facingLeft = true;
+            mySprint = sprint0;
 
             mySpriteFactory = new EnemySpriteFactoryBowser(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
@@ -44,8 +44,8 @@ namespace Sprint0.Enemies
 
         public void SetPosition(List<int> position)
         {
-            this.initialposition.X = position[0];
-            this.initialposition.Y = position[1];
+            initialposition.X = position[0];
+            initialposition.Y = position[1];
             this.position.X = position[0];
             this.position.Y = position[1];
         }

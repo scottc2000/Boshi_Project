@@ -10,6 +10,7 @@ namespace Sprint0
     {
         TITLE,
         PLAY,
-        GAMEOVER
+        GAMEOVER,
+        WIN,
     }
 }

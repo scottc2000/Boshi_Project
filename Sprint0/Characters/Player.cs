@@ -30,6 +30,7 @@ namespace Sprint0.Characters
 
         public bool fired { get; set; }
         public int number { get; set; }
+        public bool IsJumping { get; set; }
 
         int sizeDiff;
 
@@ -75,6 +76,7 @@ namespace Sprint0.Characters
             timeGap = 0;
             runningTimer = 0;
             flyingTimer = 0;
+            IsJumping = false;
 
             // default velocity is zero (still), decay makes player slippery the higher it is.
             velocity = player.velocity;
@@ -112,6 +114,7 @@ namespace Sprint0.Characters
         {
             if (health != PlayerHealth.Dead)
             {
+                IsJumping = true;
                 State.Jump();
             }
         }
