@@ -53,7 +53,6 @@ namespace Sprint0.Collision
         }
         public void PlayerStaticBlockCollision(ICollidable player, ICollidable block, Side side, Vert vert, Rectangle hitarea)
         {
-            // need to redo deathzone collision - caused issues
 
             if (side == Side.Horizontal)
             {
@@ -135,20 +134,11 @@ namespace Sprint0.Collision
 
             if (side == Side.Vertical)
             {
-                System.Diagnostics.Debug.WriteLine("Mario hit enemy top");
+                Debug.WriteLine("Mario hit enemy top");
                 ICommand commands = new CEnemyStomp(sprint, (IEnemies)enemy);
                 commands.Execute();
-                System.Diagnostics.Debug.WriteLine("Enemy stomped");
+                Debug.WriteLine("Enemy stomped");
             }
-
-            /* if (side == Side.Vertical && enemy is Goomba){
-             *  ICommand command = new CGoombaStomp(sprint);
-             *  command.Execute();
-             *  }
-             *  if (side == Side.Vertical && enemy is Koopa){
-             *  ICommand command = new CKoopaStop(sprint);
-             *  command.Execute();
-             *  }*/
         }
     }
 }

@@ -40,6 +40,11 @@ namespace Sprint0.Camera
             {
                 center.Y = cameraNumbers.upperBound;
             }
+            if (center.X > cameraNumbers.rightBound)
+            {
+                center.X = cameraNumbers.rightBound;
+                cameraNumbers.leftBound = cameraNumbers.updatedLeftBound;
+            }
 
             // zoom camera to mimic final game functionality
             var zoom = Matrix.CreateScale(new Vector3((float)cameraNumbers.zoom, (float)cameraNumbers.zoom, 0));

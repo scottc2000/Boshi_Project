@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.GameStates
 {
     public class DrawGameOver : ISprite
     {
@@ -14,15 +14,15 @@ namespace Sprint0.Sprites
         // Rectangles
         private Rectangle destination;
 
-        private string GameOver;
-        private string Reset;
+        private string header;
+        private string instructions;
 
-        public DrawGameOver(SpriteFont font, string GameOver, string Reset)
+        public DrawGameOver(SpriteFont font, string Header, string Instructions)
         {
             spriteNumbers = new SpriteNumbers();
             this.font = font;
-            this.GameOver = GameOver;
-            this.Reset = Reset;
+            header = Header;
+            instructions = Instructions;
             destination = new Rectangle(0, 0, 800, 500);
         }
 
@@ -37,8 +37,8 @@ namespace Sprint0.Sprites
             _blankTexture.SetData(new[] { Color.Black });
 
             spriteBatch.Draw(_blankTexture, destination, Color.White);
-            spriteBatch.DrawString(font, GameOver, new Vector2(250, 150), Color.White);
-            spriteBatch.DrawString(font, Reset, new Vector2(250, 250), Color.White);
+            spriteBatch.DrawString(font, header, new Vector2(250, 150), Color.White);
+            spriteBatch.DrawString(font, instructions, new Vector2(250, 250), Color.White);
         }
     }
 }

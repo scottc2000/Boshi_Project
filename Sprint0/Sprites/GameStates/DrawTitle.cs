@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Interfaces;
 using Sprint0.Utility;
 
-namespace Sprint0.Sprites
+namespace Sprint0.Sprites.GameStates
 {
-    public class DrawBackground : ISprite
+    public class DrawTitle : ISprite
     {
         private Texture2D texture;
 
@@ -22,26 +22,14 @@ namespace Sprint0.Sprites
         public int TotalFrames;
         public int timeSinceLastFrame = 0;
 
-        public DrawBackground(Texture2D texture, Rectangle rectangle)
+        public DrawTitle(Texture2D texture, Rectangle destination)
         {
             this.texture = texture;
-            destination = rectangle;
+            this.destination = destination;
         }
 
         public void Update(GameTime gameTime)
         {
-            // changes spriteframe every 100 milliseconds
-            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
-
-            if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
-            {
-                timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
-                CurrentFrame++;
-                if (CurrentFrame == TotalFrames)
-                {
-                    CurrentFrame = 0;
-                }
-            }
 
         }
 

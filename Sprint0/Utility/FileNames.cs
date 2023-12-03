@@ -15,6 +15,7 @@ namespace Sprint0.Utility
         public string terrainSheet { get; } = "level1_1";
         public string hudSheet { get; } = "HUD_transparent1";
         public string titleSheet { get; } = "mario title with text";
+        public string fireWorkSheet { get; } = "NES - Super Mario Bros 3 - Fireworks";
         public string font { get; } = "File";
 
         /*________________ MUSIC _______________________*/
