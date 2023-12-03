@@ -27,10 +27,9 @@ namespace Sprint0.Characters
         public int runningTimer { get; set; }
         public bool boosted { get; set; }
         public bool facingLeft { get; set; }
-
+        public bool upHit { get; set; }
         public bool fired { get; set; }
         public int number { get; set; }
-        public bool IsJumping { get; set; }
 
         int sizeDiff;
 
@@ -76,7 +75,7 @@ namespace Sprint0.Characters
             timeGap = 0;
             runningTimer = 0;
             flyingTimer = 0;
-            IsJumping = false;
+
 
             // default velocity is zero (still), decay makes player slippery the higher it is.
             velocity = player.velocity;
@@ -112,9 +111,8 @@ namespace Sprint0.Characters
         }
         public void Jump()
         {
-            if (health != PlayerHealth.Dead)
+            if (upHit && health != PlayerHealth.Dead)
             {
-                IsJumping = true;
                 State.Jump();
             }
         }
@@ -223,6 +221,7 @@ namespace Sprint0.Characters
             applyGravity();
 
             Destination = currentSprite.destination;
+            upHit = false;
         }
         public void Draw(SpriteBatch spritebatch)
         {
