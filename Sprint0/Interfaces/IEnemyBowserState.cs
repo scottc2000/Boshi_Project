@@ -5,7 +5,7 @@ namespace Sprint0.Interfaces
     public interface IEnemyBowserState
     {
         public void Move();
-
+        public void Idle();
         public void Jump();
         public void Fall();
         public void Look();

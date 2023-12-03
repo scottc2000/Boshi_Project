@@ -12,7 +12,7 @@ namespace Sprint0.Enemies.BowserStates
     internal class BowserFallState : IEnemyBowserState
     {
         private Bowser bowser;
-        private float yVelocity = 3.0f;
+        private float yVelocity = 2.75f;
 
         public BowserFallState(Bowser bowser)
         {
@@ -24,6 +24,10 @@ namespace Sprint0.Enemies.BowserStates
         {
 
         }
+        public void Idle()
+        {
+            bowser.state = new BowserIdleState(bowser);
+        }
         public void Jump()
         {
             bowser.state = new BowserJumpState(bowser);
@@ -34,7 +38,7 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Look()
         {
-            bowser.state = new BowserIdleState(bowser);
+            bowser.state = new BowserLookState(bowser);
         }
         public void Die()
         {

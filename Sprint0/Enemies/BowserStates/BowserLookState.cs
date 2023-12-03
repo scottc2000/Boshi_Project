@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Enemies.BowserStates
 {
-    internal class BowserIdleState : IEnemyBowserState
+    internal class BowserLookState : IEnemyBowserState
     {
         private Bowser bowser;
 
-        public BowserIdleState(Bowser bowser)
+        public BowserLookState(Bowser bowser)
         {
             this.bowser = bowser;
             this.bowser.velocity.X = 0;
@@ -49,7 +49,7 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Update(GameTime gametime)
         {
-            bowser.Move();
+            bowser.Wait(gametime);
         }
 
     }

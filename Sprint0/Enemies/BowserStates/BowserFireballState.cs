@@ -21,6 +21,10 @@ namespace Sprint0.Enemies.BowserStates
         {
 
         }
+        public void Idle()
+        {
+            bowser.state = new BowserIdleState(bowser);
+        }
         public void Jump()
         {
 
