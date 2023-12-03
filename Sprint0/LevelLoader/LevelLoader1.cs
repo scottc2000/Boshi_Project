@@ -11,6 +11,7 @@ using Sprint0.HUD;
 using Sprint0.Interfaces;
 using Sprint0.Items;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using static Sprint0.LevelLoader.Level1Data;
 using Item = Sprint0.LevelLoader.Level1Data.Item;
@@ -115,7 +116,7 @@ namespace Sprint0
                         objectManager.StaticEntities.Add(pipe);
                         break;
                     case "question_block":
-                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, blockRectangle, block.x, block.y, block.width, block.height);
+                        QuestionBlock question_block = new QuestionBlock(spriteBatch, content, blockRectangle, block.item);
                         objectManager.Blocks.Add(question_block);
                         objectManager.TopCollidableBlocks.Add(question_block);
                         objectManager.BottomCollidableBlocks.Add(question_block);
@@ -198,6 +199,13 @@ namespace Sprint0
                     added = new CAddDynamic(koopa, objectManager);
                     added.Execute();
                 }
+                if (enemy.Name == "Bowser")
+                {
+                    IEnemies bowser = new Bowser(sprint0);
+                    bowser.SetPosition(enemy.Position);
+                    added = new CAddDynamic(bowser, objectManager);
+                    added.Execute();
+                }
             }
             added = new CAddDynamic(mario, objectManager);
             added.Execute();
@@ -218,7 +226,7 @@ namespace Sprint0
             {
                 block.Update(gameTime);
             }
-            foreach (var item in objectManager.Items)
+            foreach (var item in objectManager.Items.ToList())
             {
                 item.Update(gameTime);
             }

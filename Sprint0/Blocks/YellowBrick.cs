@@ -27,6 +27,7 @@ namespace Sprint0.Blocks
         public YellowBrick(SpriteBatch spriteBatch, Rectangle blockRectangle)
         {
             Destination = blockRectangle;
+            location = new Vector2(blockRectangle.X, blockRectangle.Y);
             sprite = BlockSpriteFactory.Instance.CreateNonAnimatedBlock(spriteBatch, "yellow_brick", new Vector2(blockRectangle.X, blockRectangle.Y));
         }
 

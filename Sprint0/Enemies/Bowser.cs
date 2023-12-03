@@ -1,19 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Enemies.BowserStates;
 using Sprint0.Enemies.GooombaStates;
 using Sprint0.Interfaces;
 using Sprint0.Sprites.goombaSprite;
+using Sprint0.Sprites.Players;
 using Sprint0.Sprites.SpriteFactories;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Sprint0.Enemies
 {
     public class Bowser :IEnemies
     {
-        public IEnemyState state;
+        public IEnemyBowserState state;
         public Vector2 position;
         public Vector2 initialposition;
         public Sprint0 mySprint;
+
+        private int health;
         public bool facingLeft { get; set;}
         public Rectangle Destination { get; set; }
         public bool lefthit { get; set; }
@@ -23,20 +28,22 @@ namespace Sprint0.Enemies
         public bool gothit { get; set; }
         public bool stuck { get; set; }
 
-        public GoombaMoveSprite currentSprite;
-        public EnemySpriteFactoryGoomba mySpriteFactory;
+        public AnimatedSpriteBowser currentSprite;
+        public EnemySpriteFactoryBowser mySpriteFactory;
 
         public Bowser(Sprint0 sprint0)
         {
-            //this.state = new LeftMovingGoombaState(this);
+            this.state = new BowserFireballState(this);
+
+            this.health = 5;
 
             this.facingLeft = true;
             this.mySprint = sprint0;
 
-            //mySpriteFactory = new EnemySpriteFactoryGoomba(this);
+            mySpriteFactory = new EnemySpriteFactoryBowser(this);
             mySpriteFactory.LoadTextures(mySprint.Content);
 
-            currentSprite = mySpriteFactory.returnSprite("GoombaMove");
+            currentSprite = mySpriteFactory.returnSprite("BowserStill");
             Destination = currentSprite.destination;
         }
 
@@ -50,34 +57,34 @@ namespace Sprint0.Enemies
 
         public void ChangeDirection()
         {
-            state.ChangeDirection();
+            
         }
 
         public void BeStomped()
         {
-            state.BeStomped();
+            //Does not be stomped
         }
 
         public void BeFlipped()
         {
-            state.BeFlipped();
+            //Does not flip
         }
 
         public void StartSwarm()
         {
-            state.startSwarm();
+            //Does not swarm
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentSprite.Draw(spriteBatch, position);
+            currentSprite.Draw(spriteBatch, position, Color.White);
         }
         
         public void Update(GameTime gameTime)
         {
             currentSprite.Update(gameTime);
             Destination = currentSprite.destination;
-            state.Update();
+            state.Update(gameTime);
         }
 
         public void Move()
@@ -99,15 +106,5 @@ namespace Sprint0.Enemies
             }
         }
 
-        public void Swarm()
-        {
-            if (position.X < mySprint.levelLoader.mario.position.X)
-            {
-                position.X += 1;
-            } else
-            {
-                position.X -= 1;
-            }
-        }
     }
 }

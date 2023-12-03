@@ -116,7 +116,7 @@ namespace Sprint0.GameMangager
             }
 
             if(removed is IProjectile) Projectiles.Remove((IProjectile)removed);
-
+            
             DynamicEntities.Remove(removed);
 
         }

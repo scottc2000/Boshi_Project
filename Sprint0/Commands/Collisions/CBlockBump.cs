@@ -15,12 +15,18 @@ namespace Sprint0.Commands.Collisions
         {
             this.myGame = myGame;
             objectManager = myGame.objects;
-            local = block.Destination;
+            //local = new Rectangle();
+            //local = block.Destination;
         }
 
         public void Execute()
         {
-            
+
+        }
+        public void Execute(IBlock block)
+        {
+            block.Destination = new Rectangle(block.Destination.X, block.Destination.Y - 1, block.Destination.Width, block.Destination.Height);
+            block.Destination = new Rectangle(block.Destination.X, block.Destination.Y + 1, block.Destination.Width, block.Destination.Height);
         }
     }
 }

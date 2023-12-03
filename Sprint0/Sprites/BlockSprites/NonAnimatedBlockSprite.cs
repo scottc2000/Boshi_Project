@@ -26,6 +26,8 @@ namespace Sprint0.Sprites.BlockSprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
+            scaledPosition.X = (int)location.X;
+            scaledPosition.Y = (int)location.Y;
             spriteBatch.Draw(textures, scaledPosition, sprite, Color.White);
         }
     }

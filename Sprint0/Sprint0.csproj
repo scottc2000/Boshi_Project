@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Enemies\BowserStates\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Player\CDeadPlayer.cs" />
