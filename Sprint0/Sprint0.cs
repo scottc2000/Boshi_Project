@@ -30,6 +30,7 @@ namespace Sprint0
         public GameStates gamestates { get; set; }
         public AudioManager audioManager;
         public IController KeyboardController;
+        public Triggers triggers;
 
         public LevelLoader1 levelLoader;
         public PlayerCamera camera;
@@ -67,6 +68,7 @@ namespace Sprint0
             objects = new ObjectManager(this);
             levelLoader = new LevelLoader1(this, _spriteBatch, Content, camera, mario, luigi, hud);
             KeyboardController = new KeyboardController(this, mario, luigi, hud);
+            triggers = new Triggers(this);
             // collision
             detector = new CollisionDetector(this, objects);
 
@@ -100,6 +102,7 @@ namespace Sprint0
                     levelLoader.Update(gameTime);
                     hud.Update(gameTime);
                     detector.DetectCollision();
+                    triggers.Detect();
                     break;
                 case GameStates.GAMEOVER:
                     KeyboardController.Update();

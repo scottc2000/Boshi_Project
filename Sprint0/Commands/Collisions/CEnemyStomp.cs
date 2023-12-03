@@ -30,7 +30,10 @@ namespace Sprint0.Commands.Collisions
         {
             stats.IncreaseScore(numbers.enemyPoints);
             enemy.BeStomped();
-            objectManager.RemoveFromList(enemy);
+            if (!(enemy is Bowser))
+            {
+                objectManager.RemoveFromList(enemy);
+            }
         }
 
     }

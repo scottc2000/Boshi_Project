@@ -874,8 +874,8 @@
     },
     {
       "Name": "Bowser",
-      "Hitbox": [ 34, 134 ],
-      "Position": [ 2800, 400 ]
+      "Hitbox": [ 34, 42 ],
+      "Position": [ 2700, 377 ]
     }
   ],
   "Songs": [

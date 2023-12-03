@@ -36,11 +36,12 @@ namespace Sprint0.Sprites.Players
         {
             // changes spriteframe every 100 milliseconds
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
-
+            //System.Diagnostics.Debug.WriteLine("changing spriteframe");
             if (timeSinceLastFrame > spriteNumbers.millisecondsPerFrame)
             {
                 timeSinceLastFrame -= spriteNumbers.millisecondsPerFrame;
                 CurrentFrame++;
+                System.Diagnostics.Debug.WriteLine(CurrentFrame);
                 if (CurrentFrame == TotalFrames)
                 {
                     CurrentFrame = 0;
@@ -48,14 +49,14 @@ namespace Sprint0.Sprites.Players
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             destination = new Rectangle((int)location.X, (int)location.Y, spriteFrames[CurrentFrame].Width, spriteFrames[CurrentFrame].Height);
 
             float rotation = 0;
             float layer = 0;
 
-            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], color, rotation, new Vector2(0, 0), spriteEffect, layer);
+            spriteBatch.Draw(texture, destination, spriteFrames[CurrentFrame], Color.White);
         }
     
     }

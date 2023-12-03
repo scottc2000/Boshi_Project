@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Enemies.BowserStates
 {
-    internal class BowserIdleState : IEnemyBowserState
+    internal class BowserFireballState : IEnemyBowserState
     {
         private Bowser bowser;
 
-        public BowserIdleState(Bowser bowser)
+        public BowserFireballState(Bowser bowser)
         {
             this.bowser = bowser;
-            this.bowser.velocity.X = 0;
-            this.bowser.velocity.Y = 0;
         }
 
         public void Move()
@@ -25,11 +23,11 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Jump()
         {
-            bowser.state = new BowserJumpState(bowser);
+
         }
         public void Fall()
         {
-            bowser.state = new BowserFallState(bowser);
+
         }
         public void Look()
         {
@@ -45,7 +43,7 @@ namespace Sprint0.Enemies.BowserStates
         }
         public void Update(GameTime gametime)
         {
-            bowser.Move();
+            //
         }
 
     }

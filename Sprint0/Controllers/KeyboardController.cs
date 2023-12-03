@@ -68,7 +68,7 @@ namespace Sprint0.Controllers
 
             RegisterPressCommand(Keys.W, new CPlayerJump(mario, hud));
             RegisterReleaseCommand(Keys.W, new CPlayerFall(mario));
-            RegisterPressCommand(Keys.A, new CPlayerMoveLeft(mario, hud));
+            RegisterPressCommand(Keys.A, new CPlayerMoveLeft(mario, hud, mySprint));
             RegisterReleaseCommand(Keys.A, new CPlayerStop(mario));
             RegisterPressCommand(Keys.S, new CPlayerCrouch(mario));
             RegisterReleaseCommand(Keys.S, new CPlayerStop(mario));
@@ -78,7 +78,7 @@ namespace Sprint0.Controllers
 
             RegisterPressCommand(Keys.Up, new CPlayerJump(luigi, hud));
             RegisterReleaseCommand(Keys.Up, new CPlayerFall(luigi));
-            RegisterPressCommand(Keys.Left, new CPlayerMoveLeft(luigi, hud));
+            RegisterPressCommand(Keys.Left, new CPlayerMoveLeft(luigi, hud, mySprint));
             RegisterReleaseCommand(Keys.Left, new CPlayerStop(luigi));
             RegisterPressCommand(Keys.Down, new CPlayerCrouch(luigi));
             RegisterReleaseCommand(Keys.Down, new CPlayerStop(luigi));
