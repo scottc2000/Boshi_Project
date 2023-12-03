@@ -31,7 +31,7 @@ namespace Sprint0.Blocks
         private float timer = 0f;
         private int count = 48;
         private int fall = 16;
-        private SpriteNumbers spriteNumbers = new SpriteNumbers();
+        private float interval = 0.1f;
         private IItem coin;
         private Sprint0 sprint0;
 
@@ -59,13 +59,13 @@ namespace Sprint0.Blocks
         {
             sprite.Update(gameTime);
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (timer >= spriteNumbers.frameInterval && count > fall)
+            if (timer >= interval && count > fall)
             {
                 location.Y -= 1;
                 count--;
                 timer = 0f;
             }
-            else if (timer >= spriteNumbers.frameInterval && count > 0)
+            else if (timer >= interval && count > 0)
             {
                 location.Y += 1;
                 count--;

@@ -9,8 +9,8 @@ namespace Sprint0.Utility
         public int luigi { get; } = 2;
         public int sizeDiff { get; } = 25;
         public int reverse { get; } = -1;
-        public Vector2 marioPosition { get; } = new Vector2(180, 365);
-        public Vector2 luigigPosition { get; } = new Vector2(200, 365);
+        public Vector2 marioPosition { get; } = new Vector2(180, 380);
+        public Vector2 luigigPosition { get; } = new Vector2(200, 380);
         public float sixth { get; } = (1.0f / 60.0f);
         public int runningMax { get; } = 75;
         public int flyingMax { get; } = 4000;
