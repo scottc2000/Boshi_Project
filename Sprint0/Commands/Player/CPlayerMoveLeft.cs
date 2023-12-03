@@ -11,11 +11,13 @@ namespace Sprint0.Commands.Player
         private IPlayer player;
         private GameStats stats;
         private HudNumbers numbers;
-        public CPlayerMoveLeft(IPlayer player, GameStats hud)
+        Sprint0 sprint;
+        public CPlayerMoveLeft(IPlayer player, GameStats hud, Sprint0 sprint)
         {
             this.player = player;
             stats = hud;
             numbers = new HudNumbers();
+            this.sprint = sprint;
         }
         public void Execute()
         {
@@ -31,7 +33,8 @@ namespace Sprint0.Commands.Player
 
             SetPower();
             player.Move();
-            
+            sprint.detector.DetectCollision();
+
         }
 
         public void SetPower()
